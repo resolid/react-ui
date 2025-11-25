@@ -7,7 +7,7 @@
 1. 克隆存储库
 
    ```shell
-   git clone https://github.com/huijiewei/resolid-react-ui.git
+   git clone https://github.com/resolid/react-ui.git
    ```
 
 2. 安装依赖

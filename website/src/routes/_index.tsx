@@ -28,7 +28,7 @@ export default function Index() {
           render={(props) => (
             <a
               {...props}
-              href="https://github.com/huijiewei/resolid-react-ui"
+              href="https://github.com/resolid/react-ui"
               target="_blank"
               rel="noreferrer"
             >

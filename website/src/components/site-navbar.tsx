@@ -77,7 +77,7 @@ export const SiteNavbar = () => {
                 aria-label={"Github 上的 Resolid React UI"}
                 render={(props) => (
                   <a
-                    href={"https://github.com/huijiewei/resolid-react-ui"}
+                    href={"https://github.com/resolid/react-ui"}
                     target={"_blank"}
                     rel={"noreferrer"}
                     {...props}

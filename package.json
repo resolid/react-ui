@@ -4,7 +4,7 @@
   "homepage": "https://ui.resolid.tech",
   "repository": {
     "type": "git",
-    "url": "https://github.com/huijiewei/resolid-react-ui.git"
+    "url": "https://github.com/resolid/react-ui.git"
   },
   "type": "module",
   "scripts": {

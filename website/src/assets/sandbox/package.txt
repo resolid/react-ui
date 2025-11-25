@@ -6,7 +6,7 @@
     "start": "vite"
   },
   "dependencies": {
-    "@resolid/react-ui": "https://pkg.pr.new/huijiewei/resolid-react-ui/@resolid/react-ui@${commitSha}",
+    "@resolid/react-ui": "https://pkg.pr.new/resolid/react-ui/@resolid/react-ui@${commitSha}",
     "react": "latest",
     "react-dom": "latest",
     "react-router": "latest"

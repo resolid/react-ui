@@ -15,7 +15,7 @@
     <div class="p-5 text-sm flex item-center border-t gap-3 border-bd-normal">
       <span>${name} 组件</span>
       <a class="text-link" href="https://ui.resolid.tech" rel="noreferrer" target="_blank">Resolid UI</a>
-      <a class="text-link" href="https://github.com/huijiewei/resolid-react-ui" rel="noreferrer" target="_blank">Github</a>
+      <a class="text-link" href="https://github.com/resolid/react-ui" rel="noreferrer" target="_blank">Github</a>
     </div>
     <script type="module" src="/src/root.tsx"></script>
   </body>

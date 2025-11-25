@@ -77,7 +77,7 @@ const MATTER_RE = /^---(?:\r?\n|\r)(?:([\s\S]*?)(?:\r?\n|\r))?---(?:\r?\n|\r|$)/
 const contentBuild = async ({ root, contentDir, watch }) => {
   const pattern = "src/routes/docs/_mdx/**/*.mdx";
   const routesPath = join(root, "src/routes");
-  const githubRepo = "https://github.com/huijiewei/resolid-react-ui/blob/main/";
+  const githubRepo = "https://github.com/resolid/react-ui/blob/main/";
 
   const build = async () => {
     const files = await glob(pattern, { cwd: root, absolute: true, onlyFiles: true });
