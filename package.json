@@ -20,21 +20,21 @@
     "typecheck": "pnpm run -r --if-present typecheck"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.29.7",
+    "@changesets/cli": "^2.29.8",
     "@commitlint/cli": "^20.1.0",
     "@commitlint/config-conventional": "^20.0.0",
-    "@resolid/config": "^3.10.2",
+    "@resolid/config": "^3.10.3",
     "@svitejs/changesets-changelog-github-compact": "^1.2.0",
     "@tailwindcss/language-server": "^0.14.29",
     "@types/node": "^22.19.1",
     "eslint": "^9.39.1",
     "eslint-plugin-react-you-might-not-need-an-effect": "^0.7.0",
-    "lefthook": "^2.0.4",
-    "prettier": "^3.6.2",
-    "prettier-plugin-tailwindcss": "^0.7.1",
+    "lefthook": "^2.0.5",
+    "prettier": "^3.7.3",
+    "prettier-plugin-tailwindcss": "^0.7.2",
     "typescript": "^5.9.3"
   },
-  "packageManager": "pnpm@10.23.0",
+  "packageManager": "pnpm@10.24.0",
   "engines": {
     "node": "^20.19.0 || ^22.13.0 || >=24",
     "pnpm": "10.x"

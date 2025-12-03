@@ -133,13 +133,11 @@ export const useCombobox = <T extends ListboxItem>({
   });
 
   const {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     selectedItems,
     setActiveIndex,
     selectedIndices,
     selectedIndex,
     navigationInteraction,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     typeaheadInteraction,
     interactiveHandlers,
     handleEnterKeydown,

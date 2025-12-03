@@ -25,6 +25,8 @@
     },
     "./tailwindcss": "./tailwindcss/index.css"
   },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist",
     "tailwindcss"
@@ -49,8 +51,8 @@
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "jsdom": "^27.2.0",
-    "tsdown": "^0.16.6",
-    "vitest": "^4.0.13",
+    "tsdown": "^0.16.8",
+    "vitest": "^4.0.15",
     "vitest-axe": "pre"
   },
   "peerDependencies": {
