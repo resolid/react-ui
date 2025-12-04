@@ -4,14 +4,14 @@ pre-commit:
     eslint-react-ui:
       root: "packages/react-ui/"
       glob: "*.{js,jsx,ts,tsx}"
-      run: npx --no eslint --fix {staged_files}
+      run: npx --no -- eslint --fix {staged_files}
     eslint-website:
       root: "website/"
       glob: "*.{js,jsx,ts,tsx}"
-      run: npx --no eslint --fix {staged_files}
+      run: npx --no -- eslint --fix {staged_files}
     prettier:
       glob: "*.{js,jsx,ts,tsx,json}"
-      run: npx --no prettier --write {staged_files}
+      run: npx --no -- prettier --write {staged_files}
 
 commit-msg:
   parallel: true
