@@ -26,15 +26,15 @@
     "@resolid/config": "^3.10.3",
     "@svitejs/changesets-changelog-github-compact": "^1.2.0",
     "@tailwindcss/language-server": "^0.14.29",
-    "@types/node": "^22.19.1",
-    "eslint": "^9.39.1",
+    "@types/node": "^22.19.3",
+    "eslint": "^9.39.2",
     "eslint-plugin-react-you-might-not-need-an-effect": "^0.7.0",
-    "lefthook": "^2.0.8",
+    "lefthook": "^2.0.12",
     "prettier": "^3.7.4",
     "prettier-plugin-tailwindcss": "^0.7.2",
     "typescript": "^5.9.3"
   },
-  "packageManager": "pnpm@10.24.0",
+  "packageManager": "pnpm@10.26.1",
   "engines": {
     "node": "^20.19.0 || ^22.13.0 || >=24",
     "pnpm": "10.x"
@@ -45,9 +45,9 @@
       "lefthook"
     ],
     "overrides": {
-      "react": "^19.2.1",
-      "react-dom": "^19.2.1",
-      "react-is": "^19.2.1",
+      "react": "^19.2.3",
+      "react-dom": "^19.2.3",
+      "react-is": "^19.2.3",
       "array-includes": "npm:@nolyfill/array-includes@^1",
       "array.prototype.findlast": "npm:@nolyfill/array.prototype.findlast@^1",
       "array.prototype.flat": "npm:@nolyfill/array.prototype.flat@^1",

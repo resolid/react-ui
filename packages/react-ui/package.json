@@ -40,19 +40,19 @@
   "dependencies": {
     "@floating-ui/react": "^0.27.16",
     "@resolid/utils": "^1.1.0",
-    "@tanstack/react-virtual": "^3.13.12",
+    "@tanstack/react-virtual": "^3.13.13",
     "tailwind-variants": "^3.2.2"
   },
   "devDependencies": {
     "@babel/core": "^7.28.5",
     "@testing-library/jest-dom": "^6.9.1",
-    "@testing-library/react": "^16.3.0",
+    "@testing-library/react": "^16.3.1",
     "@testing-library/user-event": "^14.6.1",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
-    "jsdom": "^27.2.0",
-    "tsdown": "^0.17.0",
-    "vitest": "^4.0.15",
+    "jsdom": "^27.3.0",
+    "tsdown": "^0.18.1",
+    "vitest": "^4.0.16",
     "vitest-axe": "pre"
   },
   "peerDependencies": {

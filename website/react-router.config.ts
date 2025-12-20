@@ -19,7 +19,7 @@ export default {
       : nodePreset({
           entryFile: "server.node.ts",
           includeFiles,
-          nodeVersion: 22,
+          nodeVersion: 24,
         }),
   ],
   future: {
