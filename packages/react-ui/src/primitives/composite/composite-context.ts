@@ -4,6 +4,7 @@ import { createSafeContext, type SafeContext, type UseSafeContext } from "../con
 export type CompositeContextValue = {
   activeIndex: number | undefined;
   setActiveIndex: Dispatch<SetStateAction<number | undefined>>;
+  setActiveElement?: Dispatch<SetStateAction<HTMLElement | null>>;
 };
 
 const dest = createSafeContext<CompositeContextValue>({ name: "CompositeContext" });

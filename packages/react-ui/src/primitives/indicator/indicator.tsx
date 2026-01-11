@@ -1,6 +1,5 @@
-import { type CSSProperties, useEffect, useEffectEvent, useState } from "react";
+import { type CSSProperties, useMemo } from "react";
 import type { JSX } from "react/jsx-runtime";
-import { useResizeObserver } from "../../hooks";
 import type { Orientation } from "../../shared/types";
 import { tx } from "../../utils";
 import type { PrimitiveProps } from "../polymorphic";
@@ -15,36 +14,24 @@ export const Indicator = (
 ): JSX.Element => {
   const { orientation, className, style, ...rest } = props;
 
-  const [indicatorStyle, setIndicatorStyle] = useState<CSSProperties>();
+  const { listElement, itemElement } = useIndicator();
 
-  const { listRef, activeIndex } = useIndicator();
-
-  const computeStyle = () => {
-    const active = listRef.current?.querySelector<HTMLElement>("[data-active]");
-
-    if (!active) {
-      return;
+  const indicatorStyle = useMemo(() => {
+    if (!listElement || !itemElement) {
+      return null;
     }
 
-    const style = getComputedStyle(listRef.current!);
+    const listStyle = getComputedStyle(listElement);
 
-    setIndicatorStyle({
-      "--wv": active.offsetWidth + "px",
-      "--hv": active.offsetHeight + "px",
+    return {
+      "--wv": itemElement.offsetWidth + "px",
+      "--hv": itemElement.offsetHeight + "px",
       "--tv":
         orientation == "vertical"
-          ? `${active.offsetTop - parseFloat(style.paddingTop)}px`
-          : `${active.offsetLeft - parseFloat(style.paddingLeft)}px`,
-    } as CSSProperties);
-  };
-
-  const computeStyleEvent = useEffectEvent(computeStyle);
-
-  useEffect(() => {
-    computeStyleEvent();
-  }, [activeIndex]);
-
-  useResizeObserver(listRef, computeStyle);
+          ? `${itemElement.offsetTop - parseFloat(listStyle.paddingTop)}px`
+          : `${itemElement.offsetLeft - parseFloat(listStyle.paddingLeft)}px`,
+    } as CSSProperties;
+  }, [itemElement, listElement, orientation]);
 
   return (
     <span

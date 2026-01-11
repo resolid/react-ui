@@ -1,5 +1,5 @@
 import { Composite } from "@floating-ui/react";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import type { JSX } from "react/jsx-runtime";
 import { useMergeRefs } from "../../hooks";
 import type { EmptyObject, PrimitiveProps } from "../../primitives";
@@ -13,10 +13,11 @@ export const TabsList = (props: PrimitiveProps<"div", EmptyObject, "role">): JSX
 
   const orientation = useOrientation();
 
-  const listRef = useRef<HTMLDivElement>(null);
+  const [listElement, setListElement] = useState<HTMLElement | null>(null);
+  const [itemElement, setActiveElement] = useState<HTMLElement | null>(null);
   const [activeIndex, setActiveIndex] = useState<number | undefined>(0);
 
-  const refs = useMergeRefs(ref, listRef);
+  const refs = useMergeRefs(ref, setListElement);
 
   return (
     <Composite
@@ -32,8 +33,10 @@ export const TabsList = (props: PrimitiveProps<"div", EmptyObject, "role">): JSX
       )}
       {...rest}
     >
-      <IndicatorContext value={{ listRef, activeIndex }}>
-        <CompositeContext value={{ activeIndex, setActiveIndex }}>{children}</CompositeContext>
+      <IndicatorContext value={{ listElement, itemElement }}>
+        <CompositeContext value={{ activeIndex, setActiveIndex, setActiveElement }}>
+          {children}
+        </CompositeContext>
       </IndicatorContext>
     </Composite>
   );

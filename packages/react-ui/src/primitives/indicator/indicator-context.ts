@@ -1,9 +1,8 @@
-import type { RefObject } from "react";
 import { createSafeContext, type SafeContext, type UseSafeContext } from "../context";
 
 export type IndicatorContextValue = {
-  listRef: RefObject<HTMLElement | null>;
-  activeIndex: number | undefined;
+  listElement: HTMLElement | null;
+  itemElement: HTMLElement | null;
 };
 
 const dest = createSafeContext<IndicatorContextValue>({
