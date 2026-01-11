@@ -1,7 +1,5 @@
 import { useCallback, useSyncExternalStore } from "react";
 
-const getServerSnapshot = () => false;
-
 export const useMediaQuery = (query: string): boolean => {
   const subscribe = useCallback(
     (callback: () => void) => {
@@ -17,6 +15,7 @@ export const useMediaQuery = (query: string): boolean => {
   );
 
   const getSnapshot = () => window.matchMedia(query).matches;
+  const getServerSnapshot = () => false;
 
   return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 };

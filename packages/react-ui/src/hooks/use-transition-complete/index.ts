@@ -1,16 +1,16 @@
 import { useEffect, useEffectEvent } from "react";
-import { usePrevious } from "../../hooks";
-import type { PopperTransitionStatus } from "./popper-transtion-context";
+import type { TransitionStatus } from "../../shared/types";
+import { usePrevious } from "../use-previous";
 
-export type UsePopperCloseCompleteOptions = {
-  status: PopperTransitionStatus;
+export type UseTransitionCompleteOptions = {
+  status: TransitionStatus;
   onCloseComplete: () => void;
 };
 
-export const usePopperCloseComplete = ({
+export function useTransitionComplete({
   status,
   onCloseComplete,
-}: UsePopperCloseCompleteOptions): void => {
+}: UseTransitionCompleteOptions): void {
   const prevStatus = usePrevious(status);
 
   const onCloseCompleteEvent = useEffectEvent(onCloseComplete);
@@ -20,4 +20,4 @@ export const usePopperCloseComplete = ({
       onCloseCompleteEvent();
     }
   }, [prevStatus, status]);
-};
+}

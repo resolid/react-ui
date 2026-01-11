@@ -15,3 +15,4 @@ export * from "./use-prevent-scroll";
 export * from "./use-previous";
 export * from "./use-resize-observer";
 export * from "./use-timeout";
+export * from "./use-transition-complete";

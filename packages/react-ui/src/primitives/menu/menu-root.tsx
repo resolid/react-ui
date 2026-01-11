@@ -23,7 +23,7 @@ import {
 } from "@floating-ui/react";
 import { type PropsWithChildren, useEffect, useEffectEvent, useRef, useState } from "react";
 import type { JSX } from "react/jsx-runtime";
-import { useDisclosure, usePreventScroll } from "../../hooks";
+import { useDisclosure, usePreventScroll, useTransitionComplete } from "../../hooks";
 import type { DisclosureProps } from "../../shared/types";
 import {
   PopperAnchorContext,
@@ -51,7 +51,6 @@ import {
   PopperTriggerContext,
   type PopperTriggerContextValue,
 } from "../popper/popper-trigger-context";
-import { usePopperCloseComplete } from "../popper/use-popper-close-complete";
 import { MenuContext, type MenuContextValue } from "./menu-context";
 import { MenuHoverContext } from "./menu-hover-context";
 
@@ -260,9 +259,9 @@ const MenuTree = (props: PropsWithChildren<MenuRootProps>) => {
     duration,
   });
 
-  usePopperCloseComplete({
+  useTransitionComplete({
     status,
-    onCloseComplete: () => {
+    onCloseComplete() {
       setHoverEnabled(true);
     },
   });

@@ -2,6 +2,8 @@ import type { UseDisclosureOptions } from "../hooks";
 
 export type Orientation = "horizontal" | "vertical";
 
+export type TransitionStatus = "unmounted" | "initial" | "open" | "close";
+
 export type DisclosureProps = UseDisclosureOptions & {
   /**
    * 动画持续时间

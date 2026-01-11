@@ -1,9 +1,8 @@
+import type { TransitionStatus } from "../../shared/types";
 import { createSafeContext, type SafeContext, type UseSafeContext } from "../index";
 
-export type PopperTransitionStatus = "unmounted" | "initial" | "open" | "close";
-
 export type PopperTransitionContextValue = {
-  status: PopperTransitionStatus;
+  status: TransitionStatus;
   mounted: boolean;
   duration: number;
 };

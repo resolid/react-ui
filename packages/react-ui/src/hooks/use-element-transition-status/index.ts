@@ -4,13 +4,14 @@ import {
   type UseTransitionStatusProps,
 } from "@floating-ui/react";
 import { useState, type Dispatch, type SetStateAction } from "react";
+import type { TransitionStatus } from "../../shared/types";
 
 export const useElementTransitionStatus = <E extends HTMLElement = HTMLElement>(
   open: boolean,
   props?: UseTransitionStatusProps,
 ): {
   isMounted: boolean;
-  status: "unmounted" | "initial" | "open" | "close";
+  status: TransitionStatus;
   element: E | null;
   setElement: Dispatch<SetStateAction<E | null>>;
 } => {
