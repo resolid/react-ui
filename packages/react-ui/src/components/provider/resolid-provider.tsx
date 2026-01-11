@@ -5,17 +5,17 @@ import { ColorModeProvider, type ColorModeProviderProps } from "./color-mode-pro
 
 export type ResolidProviderProps = {
   colorMode?: ColorModeProviderProps;
-  toastOptions?: ToastProviderProps;
+  toastConfig?: ToastProviderProps;
 };
 
 export const ResolidProvider = ({
   children,
   colorMode,
-  toastOptions,
+  toastConfig,
 }: PropsWithChildren<ResolidProviderProps>): JSX.Element => {
   return (
     <ColorModeProvider {...colorMode}>
-      <ToastProvider {...toastOptions}>{children}</ToastProvider>
+      <ToastProvider {...toastConfig}>{children}</ToastProvider>
     </ColorModeProvider>
   );
 };

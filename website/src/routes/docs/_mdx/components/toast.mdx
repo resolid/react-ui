@@ -107,7 +107,7 @@ import {
 import { useRef } from "react";
 
 export default function App() {
-  const { show, update } = useToast();
+  const { show, update, dismiss } = useToast();
   const toastId = useRef("");
 
   return (
@@ -151,6 +151,14 @@ export default function App() {
         }}
       >
         更新通知提醒
+      </Button>
+      <Button
+        color={"warning"}
+        onClick={() => {
+          dismiss(toastId.current);
+        }}
+      >
+        关闭通知提醒
       </Button>
     </div>
   );
@@ -271,7 +279,7 @@ import {
 } from "@resolid/react-ui";
 
 export default function App() {
-  const { showPromise } = useToast();
+  const { promise } = useToast();
 
   const promiseFn = (state) => {
     return state === "success"
@@ -304,7 +312,7 @@ export default function App() {
   };
 
   const handleClick = (state) => {
-    showPromise(promiseFn(state), PromiseToast);
+    promise(promiseFn(state), PromiseToast);
   };
 
   return (
@@ -405,7 +413,7 @@ import {
 } from "@resolid/react-ui";
 
 export default function App() {
-  const { show, clearAll } = useToast();
+  const { show, clear } = useToast();
 
   return (
     <div
@@ -434,7 +442,7 @@ export default function App() {
             style={{ gridArea: placement }}
             onClick={() => {
               placement === "center"
-                ? clearAll()
+                ? clear()
                 : show(
                     <Toast className={"flex gap-2"}>
                       <ToastIndicator className={"pt-1"}>
@@ -465,7 +473,7 @@ export default function App() {
 
 ## 全局配置
 
-您可以通过将 `toastOptions` 属性传递给 `ResolidProvider` 组件来全局配置 toast。
+您可以通过将 `toastConfig` 属性传递给 `ResolidProvider` 组件来全局配置 toast。
 
 - `duration` 自动关闭延时, 设置为 `null` 时不自动关闭, 默认值 `5000`
 - `placement` 放置位置, 默认值 `bottom-left`
@@ -476,7 +484,7 @@ export default function App() {
 `useToast` 返回 5 个方法来操作 toast。
 
 ```js
-const { show, update, dismiss, showPromise, clearAll } = useToast();
+const { show, update, dismiss, promise, clear } = useToast();
 ```
 
 `ToastOptions` 拥有 3 个选项
@@ -503,7 +511,7 @@ const { show, update, dismiss, showPromise, clearAll } = useToast();
 
 从可见 toast 和队列中删除具有指定 id 的 toast。
 
-### showPromise
+### promise
 
 > (promise: Promise | (() => Promise), component: ToastPromiseComponent, options?: ToastOptions) => ToastId
 
@@ -515,9 +523,9 @@ const { show, update, dismiss, showPromise, clearAll } = useToast();
 - `data` promise 履行时返回的数据<sup>（如果有）</sup>
 - `error` promise 被拒绝时返回的错误<sup>（如果有）</sup>
 
-### clearAll
+### clear
 
-> clearAll: (...args: ToastPlacement[]) => void
+> clear: (...args: ToastPlacement[]) => void
 
 从可见 toast 和队列中删除所有 toast。
 

@@ -52,12 +52,12 @@ export type ToastContextValue = {
   show: (component: ReactElement, options?: ToastOptions) => ToastId;
   update: (id: ToastId, component: ReactElement) => void;
   dismiss: (id: ToastId) => void;
-  showPromise: <T = unknown, E extends Error = Error>(
+  promise: <T = unknown, E extends Error = Error>(
     promise: Promise<T> | (() => Promise<T>),
     component: (props: ToastPromiseComponentProps<T, E>) => ReactElement,
     options?: ToastOptions,
   ) => ToastId;
-  clearAll: (...args: ToastPlacement[]) => void;
+  clear: (...args: ToastPlacement[]) => void;
 };
 
 const toastDesc = createSafeContext<ToastContextValue>({

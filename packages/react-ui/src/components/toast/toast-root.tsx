@@ -1,6 +1,11 @@
-import { useEffect, useEffectEvent, useState } from "react";
+import { useEffect, useState } from "react";
 import type { JSX } from "react/jsx-runtime";
-import { useElementTransitionStatus, useEventListener, usePrevious, useTimeout } from "../../hooks";
+import {
+  useElementTransitionStatus,
+  useEventListener,
+  useTimeout,
+  useTransitionComplete,
+} from "../../hooks";
 import type { PrimitiveProps } from "../../primitives";
 import { PopperAriaContext } from "../../primitives/popper/popper-aria-context";
 import { PopperDispatchContext } from "../../primitives/popper/popper-dispatch-context";
@@ -36,13 +41,28 @@ export const ToastRoot = (
     ...rest
   } = props;
 
+  const transitionDuration = 300;
+
   const { id, duration, placement, dismiss, update, remove } = useToastComponent();
 
   const [openState, setOpenState] = useState(true);
   const [transitionEnable, setTransitionEnable] = useState(!update);
 
-  const { isMounted, status, setElement } = useElementTransitionStatus(openState, {
-    duration: 300,
+  const { isMounted, status, setElement } = useElementTransitionStatus(openState && !dismiss, {
+    duration: transitionDuration,
+  });
+
+  useEffect(() => {
+    if (dismiss) {
+      onDismiss?.();
+    }
+  }, [dismiss, onDismiss]);
+
+  useTransitionComplete({
+    status,
+    onCloseComplete() {
+      remove();
+    },
   });
 
   const handleDismiss = () => {
@@ -50,22 +70,6 @@ export const ToastRoot = (
     setOpenState(false);
     onDismiss?.();
   };
-
-  const handleDismissEvent = useEffectEvent(handleDismiss);
-
-  useEffect(() => {
-    if (dismiss) {
-      handleDismissEvent();
-    }
-  }, [dismiss]);
-
-  const prevStatus = usePrevious(status);
-
-  useEffect(() => {
-    if (prevStatus == "close" && status == "unmounted") {
-      remove();
-    }
-  }, [prevStatus, remove, status]);
 
   const { reset, clear } = useTimeout(handleDismiss, duration);
 
@@ -89,7 +93,7 @@ export const ToastRoot = (
 
   const animationProps = getPopperAnimationProps({
     status,
-    duration: 300,
+    duration: transitionDuration,
     transitionClassName: "transition-[opacity,translate]",
     defaultClassName: ["opacity-0", translateStyle.close],
     openClassName: ["opacity-100", translateStyle.open],
@@ -102,7 +106,10 @@ export const ToastRoot = (
       aria-atomic="true"
       ref={setElement}
       style={{ ...style, ...animationProps.style }}
-      className={tx("flex flex-col items-center", transitionEnable && animationProps.className)}
+      className={tx(
+        "flex flex-col items-center",
+        (transitionEnable || dismiss) && animationProps.className,
+      )}
       onFocus={clear}
       onBlur={reset}
       onMouseOver={clear}

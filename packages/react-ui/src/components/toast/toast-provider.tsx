@@ -145,16 +145,14 @@ export const ToastProvider = ({
   const context: ToastContextValue = {
     show: (component, options) => {
       const toastId = options?.id ?? `t-${Math.random().toString(36).slice(2, 9)}`;
-      const toastDuration = options?.duration === undefined ? duration : options.duration;
-      const toastPlacement = options?.placement ?? placement;
 
       dispatch({
         type: "ADD",
         payload: {
           toast: {
             id: toastId,
-            placement: toastPlacement,
-            duration: toastDuration,
+            placement: options?.placement ?? placement,
+            duration: options?.duration === undefined ? duration : options.duration,
             component: () => component,
             update: false,
             dismiss: false,
@@ -170,7 +168,7 @@ export const ToastProvider = ({
     dismiss: (id) => {
       dispatch({ type: "DISMISS", payload: { id } });
     },
-    showPromise: (promise, component, options) => {
+    promise: (promise, component, options) => {
       const originalDuration = options?.duration === undefined ? duration : options.duration;
 
       const toastId = context.show(component({ state: "pending" }), { ...options, duration: null });
@@ -199,7 +197,7 @@ export const ToastProvider = ({
 
       return toastId;
     },
-    clearAll: (...args) => {
+    clear: (...args) => {
       dispatch({ type: "CLEAR", payload: { placements: args } });
     },
   };
