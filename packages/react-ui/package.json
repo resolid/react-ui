@@ -25,7 +25,6 @@
     },
     "./tailwindcss": "./tailwindcss/index.css"
   },
-  "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist",
@@ -40,7 +39,7 @@
   "dependencies": {
     "@floating-ui/react": "^0.27.16",
     "@resolid/utils": "^1.1.0",
-    "@tanstack/react-virtual": "^3.13.13",
+    "@tanstack/react-virtual": "^3.13.18",
     "tailwind-variants": "^3.2.2"
   },
   "devDependencies": {
@@ -48,17 +47,17 @@
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.1",
     "@testing-library/user-event": "^14.6.1",
-    "@types/react": "^19.2.7",
+    "@types/react": "^19.2.8",
     "@types/react-dom": "^19.2.3",
-    "jsdom": "^27.3.0",
-    "tsdown": "^0.18.1",
+    "jsdom": "^27.4.0",
+    "tsdown": "^0.19.0",
     "vitest": "^4.0.16",
     "vitest-axe": "pre"
   },
   "peerDependencies": {
-    "react": "^19.2.1",
-    "react-dom": "^19.2.1",
-    "tailwindcss": "^4.1.17"
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "tailwindcss": "^4.1.18"
   },
   "publishConfig": {
     "access": "public",
