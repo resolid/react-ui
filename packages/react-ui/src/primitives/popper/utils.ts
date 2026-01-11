@@ -1,6 +1,6 @@
-import type { CSSProperties } from "react";
+import type { CSSProperties, RefObject } from "react";
+import type { TransitionStatus } from "../../shared/types";
 import { tx } from "../../utils";
-import type { PopperTransitionStatus } from "./popper-transtion-context";
 
 export type PopperFocusProps = {
   /**
@@ -15,7 +15,7 @@ export type PopperFocusProps = {
 };
 
 export type PopperAnimationProps = {
-  status: PopperTransitionStatus;
+  status: TransitionStatus;
   duration: number;
   transitionClassName?: string | string[];
   openClassName?: string | string[];
