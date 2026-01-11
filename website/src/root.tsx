@@ -46,7 +46,7 @@ export const Layout = ({ children }: PropsWithChildren) => {
       </head>
       <body className={"min-h-screen overflow-y-scroll"}>
         <RouteProcessBar />
-        <ResolidProvider colorMode={{ disableTransitionOnChange: true }}>
+        <ResolidProvider colorMode={{ disableTransition: true }}>
           <SiteLayout>{children}</SiteLayout>
         </ResolidProvider>
         <ScrollRestoration />

@@ -13,31 +13,57 @@ const COLOR_MODE_STORAGE_KEY = "rui:color-mode";
 
 export type ColorModeProviderProps = {
   nonce?: string;
-  disableTransitionOnChange?: boolean;
+  disableTransition?: boolean;
 };
 
 export const ColorModeProvider = ({
   children,
   nonce,
-  disableTransitionOnChange = false,
+  disableTransition = true,
 }: PropsWithChildren<ColorModeProviderProps>): JSX.Element => {
   const osDark = useMediaQuery(COLOR_SCHEME_QUERY);
 
   const [value, setValue] = useLocalStorage<ColorMode>(COLOR_MODE_STORAGE_KEY, "auto");
 
   useEffect(() => {
-    const root = document.documentElement;
+    let style: HTMLStyleElement | undefined;
 
-    const enable = disableTransitionOnChange ? disableTransition(nonce) : null;
+    if (disableTransition) {
+      style = document.createElement("style");
 
-    if (value == "dark" || (value == "auto" && osDark)) {
-      root.classList.add("dark-mode");
-    } else {
-      root.classList.remove("dark-mode");
+      if (nonce) {
+        style.setAttribute("nonce", nonce);
+      }
+
+      style.appendChild(
+        document.createTextNode(
+          `* {
+        -webkit-transition: none !important;
+        -moz-transition: none !important;
+        -o-transition: none !important;
+        -ms-transition: none !important;
+        transition: none !important;
+      }`,
+        ),
+      );
+
+      document.head.appendChild(style);
     }
 
-    enable?.();
-  }, [value, osDark, disableTransitionOnChange, nonce]);
+    if (value == "dark" || (value == "auto" && osDark)) {
+      document.documentElement.classList.add("dark-mode");
+    } else {
+      document.documentElement.classList.remove("dark-mode");
+    }
+
+    if (style) {
+      void window.getComputedStyle(style).opacity;
+
+      requestAnimationFrame(() => {
+        document.head.removeChild(style);
+      });
+    }
+  }, [value, osDark, disableTransition, nonce]);
 
   return (
     <ColorModeDispatchContext value={setValue}>
@@ -52,28 +78,4 @@ export const ColorModeProvider = ({
       </ColorModeStateContext>
     </ColorModeDispatchContext>
   );
-};
-
-const disableTransition = (nonce?: string) => {
-  const css = document.createElement("style");
-
-  if (nonce) {
-    css.setAttribute("nonce", nonce);
-  }
-
-  css.appendChild(
-    document.createTextNode(
-      `*,*::before,*::after{-webkit-transition:none!important;-moz-transition:none!important;-o-transition:none!important;-ms-transition:none!important;transition:none!important}`,
-    ),
-  );
-
-  document.head.appendChild(css);
-
-  return () => {
-    (() => window.getComputedStyle(document.body))();
-
-    setTimeout(() => {
-      document.head.removeChild(css);
-    }, 1);
-  };
 };
