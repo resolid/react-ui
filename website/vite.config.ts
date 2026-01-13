@@ -109,15 +109,13 @@ export default defineConfig(({ command }) => {
 
             if (
               id.includes("/node_modules/@react-router/") ||
-              id.includes("/node_modules/react-router/") ||
-              id.includes("/node_modules/turbo-stream/") ||
-              id.includes("react-router/with-props") ||
-              id.includes("react-router-meta")
+              id.includes("/node_modules/react-router/")
             ) {
               return "react-router";
             }
 
             if (
+              id.includes("react-router-meta.ts") ||
               id.includes("src/components/history-link.tsx") ||
               id.includes("src/components/error-component.tsx") ||
               id.includes("src/components/route-process-bar.tsx") ||
