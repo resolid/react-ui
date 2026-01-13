@@ -3,7 +3,7 @@ import type { PrimitiveProps } from "../../primitives";
 import { inputTextShareStyles } from "../../shared/styles";
 import type { FormInputFieldProps } from "../../shared/types";
 import { tx } from "../../utils";
-import { inputHeightStyles, inputStyles } from "../input/input.styles";
+import { inputPyStyles, inputStyles, selectHeightStyles } from "../input/input.styles";
 import { SelectChevron } from "./select-chevron";
 import { type SelectSize, selectSizeStyles } from "./select.styles";
 
@@ -29,7 +29,8 @@ export const NativeSelect = (
         className={tx(
           "appearance-none bg-bg-normal",
           inputStyles({ disabled, invalid, focusable: true }),
-          inputHeightStyles[size],
+          inputPyStyles[size],
+          selectHeightStyles[size],
           sizeStyle.select,
           sizeStyle.native,
           className,

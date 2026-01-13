@@ -10,7 +10,12 @@ import {
 import { inputTextShareStyles } from "../../shared/styles";
 import type { FormInputFieldProps } from "../../shared/types";
 import { ariaAttr, tx } from "../../utils";
-import { inputHeightStyles, type InputSize, inputStyles } from "../input/input.styles";
+import {
+  inputHeightStyles,
+  inputPyStyles,
+  type InputSize,
+  inputStyles,
+} from "../input/input.styles";
 import { VisuallyHiddenInput } from "../visually-hidden/visually-hidden-input";
 import { TagsInputItem } from "./tags-input-item";
 import {
@@ -149,6 +154,7 @@ export const TagsInputRoot = (props: PrimitiveProps<"div", TagsInputRootProps>):
           "flex-wrap gap-1 bg-bg-normal",
           inputStyles({ disabled, invalid, focusable: true }),
           tagsInputSizeStyle.root,
+          inputPyStyles[size],
           inputHeightStyles[size],
           inputTextShareStyles[size],
           className,

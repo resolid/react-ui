@@ -4,7 +4,7 @@ import { inputTextShareStyles } from "../../shared/styles";
 import { hasBackgroundClass } from "../../shared/utils";
 import { tx } from "../../utils";
 import { useInputGroup } from "./input-group-context";
-import { inputGroupStyles, inputSizeStyles } from "./input.styles";
+import { inputGroupStyles, inputPxStyles } from "./input.styles";
 
 export const InputAddon = (props: PrimitiveProps<"div">): JSX.Element => {
   const { className, children, ...rest } = props;
@@ -16,7 +16,7 @@ export const InputAddon = (props: PrimitiveProps<"div">): JSX.Element => {
       className={tx(
         "inline-flex items-center rounded-md border border-bd-normal text-nowrap text-fg-muted",
         inputGroupStyles,
-        inputSizeStyles[group.size],
+        inputPxStyles[group.size],
         inputTextShareStyles[group.size],
         !hasBackgroundClass(className) && "bg-bg-subtlest",
         className,

@@ -11,7 +11,8 @@ import {
   inputAffixDefaultSizes,
   inputGroupStyles,
   inputHeightStyles,
-  inputSizeStyles,
+  inputPxStyles,
+  inputPyStyles,
   inputStyles,
 } from "./input.styles";
 
@@ -130,7 +131,8 @@ export const InputBase = (
           "w-full resize-none appearance-none text-left align-middle outline-none",
           "rounded-md bg-bg-normal transition-colors",
           disabled && "bg-bg-subtlest/60",
-          inputSizeStyles[size],
+          inputPxStyles[size],
+          inputPyStyles[size],
           inputHeightStyles[size],
           inputTextShareStyles[size],
           prefix && "ps-(--pw)",

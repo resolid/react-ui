@@ -18,7 +18,7 @@ export default function App() {
   ];
 
   return (
-    <Select className={"w-50"} collection={collection}>
+    <Select placeholder={"选择器"} className={"w-50"} collection={collection}>
       <SelectContent className={"p-1"}>
         <SelectEmpty />
         <SelectList />
@@ -79,7 +79,7 @@ import { Select, SelectContent, SelectList } from "@resolid/react-ui";
 import { useState } from "react";
 
 export default function App() {
-  const [value, setValue] = useState([]);
+  const [value, setValue] = useState();
 
   const collection = [
     { value: "apple", label: "Apple" },
@@ -91,8 +91,14 @@ export default function App() {
 
   return (
     <div className={"flex flex-col gap-2"}>
-      <p>你选择了水果: {value.join(", ")}</p>
-      <Select className={"w-50"} value={value} onChange={setValue} collection={collection}>
+      <p>你选择了水果: {value}</p>
+      <Select
+        placeholder={"选择器"}
+        className={"w-50"}
+        value={value}
+        onChange={setValue}
+        collection={collection}
+      >
         <SelectContent className={"p-1"}>
           <SelectList />
         </SelectContent>
@@ -118,12 +124,18 @@ export default function App() {
 
   return (
     <div className={"flex gap-3"}>
-      <Select defaultValue={"blueberry"} className={"w-50"} collection={collection}>
+      <Select
+        placeholder={"选择器"}
+        defaultValue={"blueberry"}
+        className={"w-50"}
+        collection={collection}
+      >
         <SelectContent className={"p-1"}>
           <SelectList />
         </SelectContent>
       </Select>
       <Select
+        placeholder={"选择器"}
         multiple
         defaultValue={["apple", "pineapple"]}
         className={"min-w-50"}
@@ -153,7 +165,7 @@ export default function App() {
   ];
 
   return (
-    <Select className={"min-w-50"} multiple collection={collection}>
+    <Select placeholder={"选择器"} className={"min-w-50"} multiple collection={collection}>
       <SelectContent className={"p-1"}>
         <SelectList />
       </SelectContent>
@@ -177,7 +189,7 @@ export default function App() {
   ];
 
   return (
-    <Select className={"min-w-50"} collection={collection}>
+    <Select placeholder={"选择器"} className={"min-w-50"} collection={collection}>
       <div className={"p-1 pb-0"}>
         <SelectFilter size={"sm"} />
       </div>
@@ -209,21 +221,21 @@ export default function App() {
     label: `Item ${i + 1}`,
   }));
 
-  const groupCollection = Array.from({ length: Math.ceil(collection.length / 20) }, (_, i) => ({
-    label: `Group ${i + 1}`,
-    children: collection.slice(i * 20, (i + 1) * 20),
+  const groupCollection = Array.from({ length: Math.ceil(collection.length / 10) }, (_, i) => ({
+    label: `Group ${i}`,
+    children: collection.slice(i * 10, (i + 1) * 10),
   }));
 
   return (
     <div className={"flex gap-3"}>
-      <Select className={"w-50"} collection={collection}>
+      <Select placeholder={"选择器"} className={"w-50"} collection={collection}>
         <SelectContent className={"max-h-60 px-1"}>
           <SelectVirtualizer>
             <SelectList />
           </SelectVirtualizer>
         </SelectContent>
       </Select>
-      <Select className={"w-50"} collection={groupCollection}>
+      <Select placeholder={"选择器"} className={"w-50"} value={55} collection={groupCollection}>
         <SelectContent className={"max-h-60 px-1"}>
           <SelectVirtualizer>
             <SelectList />
@@ -272,6 +284,7 @@ export default function App() {
 
   return (
     <Select
+      placeholder={"选择器"}
       className={"w-50"}
       collection={collection}
       renderValue={(item) => {

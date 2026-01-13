@@ -4,7 +4,7 @@ import type { AnyObject, PrimitiveProps } from "../../primitives";
 import { CheckIcon } from "../../shared/icons";
 import { getInteractiveHandlers } from "../../shared/utils";
 import { ariaAttr, dataAttr, tx } from "../../utils";
-import { type InputSize, inputSizeStyles } from "../input/input.styles";
+import { type InputSize, inputPxStyles } from "../input/input.styles";
 import { useListboxFields } from "./listbox-field-context";
 import { useListboxItem } from "./listbox-item-context";
 import { listboxItemStyles } from "./listbox.styles";
@@ -87,7 +87,7 @@ export const ListboxItem = (
         "flex w-full cursor-default items-center justify-between gap-1 rounded-md leading-none transition-colors outline-none",
         disabled ? !selected && "text-fg-subtlest" : "active:bg-bg-subtle",
         listboxItemStyles[size],
-        inputSizeStyles[size],
+        inputPxStyles[size],
         selected && "text-fg-primary",
         className,
       )}

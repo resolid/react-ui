@@ -4,7 +4,7 @@ import { type EmptyObject, Polymorphic, type PolymorphicProps } from "../../prim
 import { usePopperTrigger } from "../../primitives/popper/popper-trigger-context";
 import { inputTextShareStyles } from "../../shared/styles";
 import { tx } from "../../utils";
-import { inputHeightStyles, inputSizeStyles } from "../input/input.styles";
+import { inputHeightStyles, inputPxStyles, inputPyStyles } from "../input/input.styles";
 import { useListboxState } from "../listbox/listbox-state-context";
 import { useComboboxInput } from "./combobox-input-context";
 
@@ -38,7 +38,8 @@ export const ComboboxInput = (
         !render && [
           "outline-none",
           comboboxInputSizes[size],
-          inputSizeStyles[size],
+          inputPxStyles[size],
+          inputPyStyles[size],
           inputHeightStyles[size],
           inputTextShareStyles[size],
         ],

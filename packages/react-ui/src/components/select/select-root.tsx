@@ -24,7 +24,7 @@ import { getPopperAnimationProps } from "../../primitives/popper/utils";
 import { inputTextShareStyles } from "../../shared/styles";
 import type { DisclosureProps } from "../../shared/types";
 import { ariaAttr, dataAttr, tx } from "../../utils";
-import { inputHeightStyles, inputStyles } from "../input/input.styles";
+import { inputPyStyles, inputStyles, selectHeightStyles } from "../input/input.styles";
 import { ListboxProvider } from "../listbox/listbox-provider";
 import type { ListboxRootProps } from "../listbox/listbox-root";
 import { type ListboxItem, useListbox } from "../listbox/use-listbox";
@@ -78,7 +78,7 @@ export const SelectRoot = <T extends ListboxItem>(
     invalid = false,
     duration = 250,
     size = "md",
-    placeholder = "选择器",
+    placeholder,
     closeOnSelect = true,
     renderValue,
     children,
@@ -206,7 +206,8 @@ export const SelectRoot = <T extends ListboxItem>(
         className={tx(
           "bg-bg-normal select-none",
           inputStyles({ disabled, invalid, active: openState, focusable: true }),
-          inputHeightStyles[size],
+          inputPyStyles[size],
+          selectHeightStyles[size],
           inputTextShareStyles[size],
           sizeStyle.select,
           sizeStyle.root,
