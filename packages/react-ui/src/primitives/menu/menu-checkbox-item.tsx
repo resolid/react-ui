@@ -32,7 +32,7 @@ export const MenuCheckboxItem = (
         role="menuitemcheckbox"
         onSelect={handleSelect}
         aria-checked={checked == "indeterminate" ? "mixed" : ariaAttr(checked)}
-        className={tx("relative pl-6", className)}
+        className={tx("relative ps-6", className)}
         {...rest}
       >
         {children}

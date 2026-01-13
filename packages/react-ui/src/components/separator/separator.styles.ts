@@ -56,7 +56,7 @@ export const separatorStyles: TvReturnType<
       vertical: "h-auto self-stretch",
     },
     label: {
-      true: `flex items-center text-xs before:mr-2 before:h-0 before:shrink before:content-[""] after:ml-2 after:h-0 after:shrink after:content-[""]`,
+      true: `flex items-center text-xs before:me-2 before:h-0 before:shrink before:content-[""] after:ms-2 after:h-0 after:shrink after:content-[""]`,
       false: "",
     },
     position: {

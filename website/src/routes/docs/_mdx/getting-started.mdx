@@ -51,18 +51,18 @@ bun add @resolid/react-ui
 
 ## 设置 Provider
 
-在您的应用程序的 `root` 添加 `ResolidProvider` 至关重要。
+在您的应用程序的 `root` 添加 `ConfigProvider` 至关重要。
 
 ```jsx
-// 1. 导入 `ResolidProvider`
-import { ResolidProvider } from "@resolid/react-ui";
+// 1. 导入 `ConfigProvider`
+import { ConfigProvider } from "@resolid/react-ui";
 
 function Root() {
-  // 2. 使用 ResolidProvider 包裹你的 App
+  // 2. 使用 ConfigProvider 包裹你的 App
   return (
-    <ResolidProvider>
+    <ConfigProvider>
       <YourApp />
-    </ResolidProvider>
+    </ConfigProvider>
   );
 }
 ```

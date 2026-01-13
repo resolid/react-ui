@@ -49,7 +49,7 @@ const mdxComponents = {
         {...rest}
       >
         {children}
-        {external && <SpriteIcon size={"1em"} className={"ml-1"} name={"external-link"} />}
+        {external && <SpriteIcon size={"1em"} className={"ms-1"} name={"external-link"} />}
       </a>
     );
   },

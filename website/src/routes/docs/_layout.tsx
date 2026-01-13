@@ -36,7 +36,7 @@ export default function Layout() {
       </div>
       <aside
         className={tx(
-          "fixed z-15 w-48 border-r border-r-bg-normal bg-bg-normal md:z-0 md:block md:border-none",
+          "fixed z-15 w-48 border-e border-e-bg-normal bg-bg-normal md:z-0 md:block md:border-none",
           "scrollbar scrollbar-base overflow-y-auto",
           "max-h-[calc(100vh-var(--spacing)*16)] md:sticky md:top-16",
           opened ? "block" : "hidden",

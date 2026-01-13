@@ -32,7 +32,7 @@ export const MenuRadioItem = (
         onSelect={handleSelect}
         label={value as string}
         aria-checked={ariaAttr(checked)}
-        className={tx("relative pl-6", className)}
+        className={tx("relative ps-6", className)}
         {...rest}
       >
         {children}

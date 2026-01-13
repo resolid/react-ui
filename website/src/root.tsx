@@ -1,4 +1,4 @@
-import { ResolidProvider } from "@resolid/react-ui";
+import { ConfigProvider } from "@resolid/react-ui";
 import type { PropsWithChildren } from "react";
 import { Links, type LinksFunction, Meta, Outlet, Scripts, ScrollRestoration } from "react-router";
 import { RouteProcessBar } from "~/components/route-process-bar";
@@ -31,9 +31,11 @@ export const meta = () => {
 
 // noinspection JSUnusedGlobalSymbols
 export const Layout = ({ children }: PropsWithChildren) => {
+  const defaultLocale = "zh-CN";
+
   // noinspection HtmlRequiredTitleElement
   return (
-    <html lang="zh-CN" suppressHydrationWarning>
+    <html lang={defaultLocale} suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -46,9 +48,9 @@ export const Layout = ({ children }: PropsWithChildren) => {
       </head>
       <body className={"min-h-screen overflow-y-scroll"}>
         <RouteProcessBar />
-        <ResolidProvider colorMode={{ disableTransition: true }}>
+        <ConfigProvider locale={defaultLocale} colorMode={{ disableTransition: true }}>
           <SiteLayout>{children}</SiteLayout>
-        </ResolidProvider>
+        </ConfigProvider>
         <ScrollRestoration />
         <Scripts />
         {!!import.meta.env.VITE_VERCEL_URL && (

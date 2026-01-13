@@ -20,6 +20,7 @@ import { useControllableState } from "../../hooks";
 import type { AnyObject } from "../../primitives";
 import type { MultipleValueProps } from "../../shared/types";
 import type { InputSize } from "../input/input.styles";
+import { useDirection } from "../provider/direction-context";
 
 export type ListboxValue = (string | number)[] | string | number | null;
 export type ListboxItem = AnyObject;
@@ -150,6 +151,8 @@ export const useListbox = <T extends ListboxItem>(
     defaultValue,
     onChange: onChange,
   });
+
+  const direction = useDirection(true);
 
   const getItemValue = useCallback(
     (item: T) => {
@@ -302,6 +305,7 @@ export const useListbox = <T extends ListboxItem>(
     virtual,
     focusItemOnOpen: focusItemOnOpen ?? "auto",
     openOnArrowKeyDown,
+    rtl: direction == "rtl",
   });
 
   // noinspection JSUnusedGlobalSymbols

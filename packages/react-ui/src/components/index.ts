@@ -29,7 +29,7 @@ export * from "./pagination/use-pagination";
 export * from "./popover/popover";
 export * from "./popover/popover-provider";
 export * from "./popover/use-popover";
-export * from "./provider/resolid-provider";
+export * from "./provider/config-provider";
 export * from "./provider/use-color-mode";
 export * from "./radio/radio";
 export * from "./radio/radio-group";

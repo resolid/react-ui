@@ -1,5 +1,7 @@
 import type { UseDisclosureOptions } from "../hooks";
 
+export type Direction = "ltr" | "rtl";
+
 export type Orientation = "horizontal" | "vertical";
 
 export type TransitionStatus = "unmounted" | "initial" | "open" | "close";

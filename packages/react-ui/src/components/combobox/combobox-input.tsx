@@ -9,11 +9,11 @@ import { useListboxState } from "../listbox/listbox-state-context";
 import { useComboboxInput } from "./combobox-input-context";
 
 const comboboxInputSizes = {
-  xs: "mr-4",
-  sm: "mr-4.5",
-  md: "mr-5",
-  lg: "mr-5.5",
-  xl: "mr-6",
+  xs: "me-4",
+  sm: "me-4.5",
+  md: "me-5",
+  lg: "me-5.5",
+  xl: "me-6",
 };
 
 export const ComboboxInput = (

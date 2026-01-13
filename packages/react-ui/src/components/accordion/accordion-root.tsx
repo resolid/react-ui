@@ -10,6 +10,7 @@ import {
 import { OrientationContext } from "../../primitives/composite/orientation-context";
 import type { MultipleValueProps, Orientation } from "../../shared/types";
 import { tx } from "../../utils";
+import { useDirection } from "../provider/direction-context";
 import {
   type AccordionBaseProps,
   AccordionContext,
@@ -56,6 +57,8 @@ export const AccordionRoot = (props: PrimitiveProps<"div", AccordionRootProps>):
 
   const [activeIndex, setActiveIndex] = useState<number | undefined>(0);
 
+  const direction = useDirection(true);
+
   const context: AccordionContextValue = {
     disabled,
     duration,
@@ -89,6 +92,7 @@ export const AccordionRoot = (props: PrimitiveProps<"div", AccordionRootProps>):
 
   return (
     <Composite
+      rtl={direction == "rtl"}
       orientation={orientation}
       activeIndex={activeIndex}
       onNavigate={setActiveIndex}

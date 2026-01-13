@@ -128,7 +128,7 @@ export const InputBase = (
       <input
         ref={refs}
         className={tx(
-          "w-full resize-none appearance-none text-left align-middle outline-none",
+          "w-full resize-none appearance-none text-start align-middle outline-none",
           "rounded-md bg-bg-normal transition-colors",
           disabled && "bg-bg-subtlest/60",
           inputPxStyles[size],

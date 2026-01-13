@@ -473,10 +473,10 @@ export default function App() {
 
 ## 全局配置
 
-您可以通过将 `toastConfig` 属性传递给 `ResolidProvider` 组件来全局配置 toast。
+您可以通过将 `toastConfig` 属性传递给 `ConfigProvider` 组件来全局配置 toast。
 
 - `duration` 自动关闭延时, 设置为 `null` 时不自动关闭, 默认值 `5000`
-- `placement` 放置位置, 默认值 `bottom-left`
+- `placement` 放置位置, 默认值 `bottom-end`
 - `spacing` Toast 之间的间隔, 默认值 `0.75rem`
 
 ## Hook API
@@ -490,8 +490,8 @@ const { show, update, dismiss, promise, clear } = useToast();
 `ToastOptions` 拥有 3 个选项
 
 - `id` toast 不可重复的 id; <sup>（可选）</sup>
-- `duration` 自动关闭延时, 默认使用 `ResolidProvider` 提供的值; <sup>（可选）</sup>
-- `placement` 显示位置, 默认使用 `ResolidProvider` 提供的值; <sup>（可选）</sup>
+- `duration` 自动关闭延时, 默认使用 `ConfigProvider` 提供的值; <sup>（可选）</sup>
+- `placement` 显示位置, 默认使用 `ConfigProvider` 提供的值; <sup>（可选）</sup>
 
 ### show
 

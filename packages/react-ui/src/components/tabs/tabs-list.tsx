@@ -7,11 +7,13 @@ import { CompositeContext } from "../../primitives/composite/composite-context";
 import { useOrientation } from "../../primitives/composite/orientation-context";
 import { IndicatorContext } from "../../primitives/indicator/indicator-context";
 import { tx } from "../../utils";
+import { useDirection } from "../provider/direction-context";
 
 export const TabsList = (props: PrimitiveProps<"div", EmptyObject, "role">): JSX.Element => {
   const { children, className, ref, ...rest } = props;
 
   const orientation = useOrientation();
+  const direction = useDirection(true);
 
   const [listElement, setListElement] = useState<HTMLElement | null>(null);
   const [itemElement, setActiveElement] = useState<HTMLElement | null>(null);
@@ -22,6 +24,7 @@ export const TabsList = (props: PrimitiveProps<"div", EmptyObject, "role">): JSX
   return (
     <Composite
       ref={refs}
+      rtl={direction == "rtl"}
       role={"tablist"}
       orientation={orientation}
       activeIndex={activeIndex}

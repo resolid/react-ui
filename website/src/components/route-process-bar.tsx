@@ -37,7 +37,7 @@ export const RouteProcessBar = () => {
         ref={ref}
         className={tx(
           "h-full transition-[width,background-image] duration-500",
-          "bg-gradient-to-r from-bg-primary-emphasis to-bg-primary-pressed",
+          "bg-linear-to-r from-bg-primary-emphasis to-bg-primary-pressed",
           transition.state === "idle" && (animating ? "w-full" : "w-0 opacity-0 transition-none"),
           transition.state === "submitting" && "w-4/12",
           transition.state === "loading" && "w-10/12",

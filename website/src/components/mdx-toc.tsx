@@ -40,7 +40,7 @@ export const MdxToc = ({
             <a
               href={href}
               className={tx(
-                "-ml-px block border-s border-s-bd-normal py-1",
+                "-ms-px block border-s border-s-bd-normal py-1",
                 depth == 2 ? "ps-4" : depth == 3 ? "ps-8" : "ps-10",
                 href == activeHeading
                   ? "border-link text-link"

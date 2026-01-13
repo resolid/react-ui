@@ -16,6 +16,7 @@ import {
   type InputSize,
   inputStyles,
 } from "../input/input.styles";
+import { useDirection } from "../provider/direction-context";
 import { VisuallyHiddenInput } from "../visually-hidden/visually-hidden-input";
 import { TagsInputItem } from "./tags-input-item";
 import {
@@ -78,6 +79,8 @@ export const TagsInputRoot = (props: PrimitiveProps<"div", TagsInputRootProps>):
     children,
     ...rest
   } = props;
+
+  const direction = useDirection(true);
 
   const [valueState, setValueState] = useControllableState({ value, defaultValue, onChange });
 
@@ -146,6 +149,7 @@ export const TagsInputRoot = (props: PrimitiveProps<"div", TagsInputRootProps>):
   return (
     <>
       <Composite
+        rtl={direction == "rtl"}
         orientation={"horizontal"}
         activeIndex={activeIndex}
         onNavigate={setActiveIndex}

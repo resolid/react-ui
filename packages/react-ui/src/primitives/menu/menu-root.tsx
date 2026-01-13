@@ -23,6 +23,7 @@ import {
 } from "@floating-ui/react";
 import { type PropsWithChildren, useEffect, useEffectEvent, useRef, useState } from "react";
 import type { JSX } from "react/jsx-runtime";
+import { useDirection } from "../../components/provider/direction-context";
 import { useDisclosure, usePreventScroll, useTransitionComplete } from "../../hooks";
 import type { DisclosureProps } from "../../shared/types";
 import {
@@ -100,6 +101,8 @@ const MenuTree = (props: PropsWithChildren<MenuRootProps>) => {
     children,
   } = props;
 
+  const direction = useDirection(true);
+
   const nodeId = useFloatingNodeId();
   const parentId = useFloatingParentNodeId();
   const nested = parentId != null;
@@ -173,6 +176,7 @@ const MenuTree = (props: PropsWithChildren<MenuRootProps>) => {
       nested,
       activeIndex,
       onNavigate: setActiveIndex,
+      rtl: direction == "rtl",
     }),
     useTypeahead(context, {
       listRef: labelsRef,
