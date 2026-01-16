@@ -1,4 +1,5 @@
 import { defineConfig, type UserConfig } from "tsdown";
+import { reactCompilerRolldownPlugin } from "./plugins/react-compiler-plugin.js";
 
 // noinspection JSUnusedGlobalSymbols
 export default defineConfig({
@@ -9,4 +10,5 @@ export default defineConfig({
   dts: true,
   treeshake: true,
   clean: true,
+  plugins: [reactCompilerRolldownPlugin({ filter: /\.[jt]sx?$/ })],
 }) as UserConfig;

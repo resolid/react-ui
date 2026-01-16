@@ -2,7 +2,6 @@
   "extends": "@resolid/config/tsconfig/react",
   "include": ["src/**/*", "tsdown.config.ts", "vitest.config.ts", "vitest.setup.ts"],
   "compilerOptions": {
-    "allowJs": false,
     "declaration": true,
     "isolatedDeclarations": true
   }
