@@ -27,7 +27,6 @@
   "devDependencies": {
     "@mdx-js/rollup": "^3.1.1",
     "@react-router/dev": "^7.12.0",
-    "@resolid/config": "^3.10.3",
     "@resolid/flex-routes": "^1.6.0",
     "@resolid/react-router-hono": "^2.3.1",
     "@shikijs/rehype": "^3.21.0",

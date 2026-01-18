@@ -235,7 +235,12 @@ export default function App() {
           </SelectVirtualizer>
         </SelectContent>
       </Select>
-      <Select placeholder={"选择器"} className={"w-50"} value={55} collection={groupCollection}>
+      <Select
+        placeholder={"选择器"}
+        className={"w-50"}
+        defaultValue={55}
+        collection={groupCollection}
+      >
         <SelectContent className={"max-h-60 px-1"}>
           <SelectVirtualizer>
             <SelectList />
