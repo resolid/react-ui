@@ -4,6 +4,7 @@ import type { PrimitiveProps } from "../../primitives";
 import { useComposite } from "../../primitives/composite/composite-context";
 import { ariaAttr, tx } from "../../utils";
 import { CloseButton } from "../close-button/close-button";
+import { useLocale } from "../provider/locale-context";
 
 type TagsInputItemProps = {
   value: string;
@@ -24,6 +25,8 @@ export const TagsInputItem = (
   const handelDelete = () => {
     onDelete(index);
   };
+
+  const { t } = useLocale();
 
   return (
     <div
@@ -46,7 +49,7 @@ export const TagsInputItem = (
         onClick={handelDelete}
         tabIndex={-1}
         noPadding
-        aria-label={"删除标签"}
+        aria-label={t("tagsInput.deleteTag")}
         size={"1em"}
       />
     </div>

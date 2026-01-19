@@ -1,6 +1,7 @@
 import type { JSX } from "react/jsx-runtime";
 import type { PrimitiveProps } from "../../primitives";
 import { tx } from "../../utils";
+import { useLocale } from "../provider/locale-context";
 import { VisuallyHidden } from "../visually-hidden/visually-hidden";
 import { type SpinnerStyleProps, spinnerStyles } from "./spinner.styles";
 
@@ -25,7 +26,15 @@ export type SpinnerProps = {
 };
 
 export const Spinner = (props: PrimitiveProps<"span", SpinnerProps>): JSX.Element => {
-  const { label = "加载中", className, size = "md", color = "primary", ...rest } = props;
+  const { t } = useLocale();
+
+  const {
+    label = t("spinner.loading"),
+    className,
+    size = "md",
+    color = "primary",
+    ...rest
+  } = props;
 
   return (
     <span className={tx(spinnerStyles({ color, size }), className)} {...rest}>

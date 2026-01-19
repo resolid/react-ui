@@ -3,7 +3,7 @@ import { reactRouter } from "@react-router/dev/vite";
 import { reactRouterHonoServer } from "@resolid/react-router-hono/dev";
 import rehypeShiki from "@shikijs/rehype";
 import tailwindcss from "@tailwindcss/vite";
-import { join } from "node:path";
+import { extname, join } from "node:path";
 import rehypeSlug from "rehype-slug";
 import remarkDirective from "remark-directive";
 import remarkFrontmatter from "remark-frontmatter";
@@ -72,6 +72,9 @@ export default defineConfig(({ command }) => {
               },
             ],
           ],
+        },
+        loader: (path) => {
+          return extname(path).substring(1) as "js" | "jsx";
         },
       }),
       viteContent(),

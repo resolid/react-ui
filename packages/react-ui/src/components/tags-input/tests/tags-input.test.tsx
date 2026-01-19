@@ -2,13 +2,16 @@ import { cleanup, render, screen, waitFor } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import { afterEach, describe, expect, test } from "vitest";
 import { axe } from "vitest-axe";
+import { LocaleProvider } from "../../provider/locale-provider";
 import { TagsInput, TagsInputInput, type TagsInputProps } from "../tags-input";
 
 const ComponentUnderTest = (props: TagsInputProps) => {
   return (
-    <TagsInput placeholder={"Add tag"} defaultValue={["react", "solid", "vue"]} {...props}>
-      <TagsInputInput aria-label={"Input"} />
-    </TagsInput>
+    <LocaleProvider>
+      <TagsInput placeholder={"Add tag"} defaultValue={["react", "solid", "vue"]} {...props}>
+        <TagsInputInput aria-label={"Input"} />
+      </TagsInput>
+    </LocaleProvider>
   );
 };
 

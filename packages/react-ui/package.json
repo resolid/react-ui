@@ -23,6 +23,10 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
+    "./locales/*": {
+      "types": "./dist/locales/*.d.ts",
+      "import": "./dist/locales/*.js"
+    },
     "./tailwindcss": "./tailwindcss/index.css"
   },
   "types": "./dist/index.d.ts",
@@ -38,7 +42,7 @@
   },
   "dependencies": {
     "@floating-ui/react": "^0.27.16",
-    "@resolid/utils": "^1.1.0",
+    "@resolid/utils": "^1.2.0",
     "@tanstack/react-virtual": "^3.13.18",
     "tailwind-variants": "^3.2.2"
   },

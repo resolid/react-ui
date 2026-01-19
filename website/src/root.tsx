@@ -1,11 +1,12 @@
 import { ConfigProvider } from "@resolid/react-ui";
+import zhCN from "@resolid/react-ui/locales/zh-CN";
 import type { PropsWithChildren } from "react";
 import { Links, type LinksFunction, Meta, Outlet, Scripts, ScrollRestoration } from "react-router";
+import { ErrorComponent } from "~/components/error-component";
 import { RouteProcessBar } from "~/components/route-process-bar";
+import { SiteLayout } from "~/components/site-layout";
 import { VercelAnalytics } from "~/components/vercel-analytics";
 
-import { ErrorComponent } from "~/components/error-component";
-import { SiteLayout } from "~/components/site-layout";
 import styles from "~/root.css?url";
 
 // noinspection JSUnusedGlobalSymbols
@@ -48,7 +49,7 @@ export const Layout = ({ children }: PropsWithChildren) => {
       </head>
       <body className={"min-h-screen overflow-y-scroll"}>
         <RouteProcessBar />
-        <ConfigProvider locale={defaultLocale} colorMode={{ disableTransition: true }}>
+        <ConfigProvider locale={zhCN} colorMode={{ disableTransition: true }}>
           <SiteLayout>{children}</SiteLayout>
         </ConfigProvider>
         <ScrollRestoration />

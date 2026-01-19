@@ -4,6 +4,7 @@ import { CloseIcon } from "../../shared/icons";
 import { tx } from "../../utils";
 import { Button } from "../button/button";
 import type { ButtonStyleProps } from "../button/button.styles";
+import { useLocale } from "../provider/locale-context";
 
 export type CloseButtonProps = {
   /**
@@ -40,6 +41,8 @@ export type CloseButtonProps = {
 export const CloseButton = (
   props: PrimitiveProps<"button", CloseButtonProps, "type">,
 ): JSX.Element => {
+  const { t } = useLocale();
+
   const {
     className,
     disabled,
@@ -48,7 +51,7 @@ export const CloseButton = (
     color = "neutral",
     size = "1.125em",
     radius = "full",
-    "aria-label": ariaLabel = "关闭",
+    "aria-label": ariaLabel = t("closeButton.label"),
     children,
     ...rest
   } = props;

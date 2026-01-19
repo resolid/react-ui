@@ -1,7 +1,16 @@
 import { cleanup, render } from "@testing-library/react";
 import { afterEach, describe, expect, test } from "vitest";
 import { axe } from "vitest-axe";
-import { Spinner } from "../spinner";
+import { LocaleProvider } from "../../provider/locale-provider";
+import { Spinner, type SpinnerProps } from "../spinner";
+
+const ComponentUnderTest = (props: SpinnerProps) => {
+  return (
+    <LocaleProvider>
+      <Spinner {...props} />
+    </LocaleProvider>
+  );
+};
 
 describe("Spinner", () => {
   afterEach(() => {
@@ -9,15 +18,15 @@ describe("Spinner", () => {
   });
 
   test("should have no a11y violations", async () => {
-    const { container } = render(<Spinner />);
+    const { container } = render(<ComponentUnderTest />);
     const results = await axe(container);
 
     expect(results).toHaveNoViolations();
   });
 
   test("should render with default sr-only", () => {
-    const { getByText } = render(<Spinner />);
+    const { getByText } = render(<ComponentUnderTest />);
 
-    expect(getByText("加载中")).toHaveClass("sr-only");
+    expect(getByText("Loading")).toHaveClass("sr-only");
   });
 });

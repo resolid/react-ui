@@ -4,6 +4,7 @@ import { useButtonProps } from "../../hooks";
 import { Polymorphic, type PolymorphicProps } from "../../primitives";
 import { AngleLeftIcon, AngleRightIcon } from "../../shared/icons";
 import { tx } from "../../utils";
+import { useLocale } from "../provider/locale-context";
 import { type PageColor, currentPageColorStyles } from "./pagination.styles";
 import type { PageType } from "./use-pagination";
 
@@ -33,7 +34,14 @@ export const PaginationItem = (
     ...rest
   } = props;
 
-  const title = pageType == "previous" ? "上一页" : pageType == "next" ? "下一页" : `第 ${page} 页`;
+  const { t } = useLocale();
+
+  const title =
+    pageType == "previous"
+      ? t("pagination.previous")
+      : pageType == "next"
+        ? t("pagination.next")
+        : t("pagination.pageOf", { page });
   const current = pageType == "page" && page == currentPage;
   const currentStyle = currentPageColorStyles[color];
 

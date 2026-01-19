@@ -3,7 +3,10 @@ import { reactCompilerRolldownPlugin } from "./plugins/react-compiler-plugin.js"
 
 // noinspection JSUnusedGlobalSymbols
 export default defineConfig({
-  entry: "src/index.ts",
+  entry: {
+    index: "src/index.ts",
+    "locales/*": "src/locales/*.ts",
+  },
   format: "esm",
   platform: "browser",
   target: "es2022",

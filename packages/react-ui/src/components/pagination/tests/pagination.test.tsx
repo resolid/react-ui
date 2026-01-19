@@ -2,9 +2,17 @@ import { cleanup, render, screen } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import { afterEach, describe, expect, test } from "vitest";
 import { axe } from "vitest-axe";
+import zhCN from "../../../locales/zh-CN";
+import { LocaleProvider } from "../../provider/locale-provider";
 import { Pagination, type PaginationProps } from "../pagination";
 
-const ComponentUnderTest = (props: PaginationProps) => <Pagination {...props} />;
+const ComponentUnderTest = (props: PaginationProps) => {
+  return (
+    <LocaleProvider locale={zhCN}>
+      <Pagination {...props} />
+    </LocaleProvider>
+  );
+};
 
 describe("Pagination", () => {
   afterEach(() => {
