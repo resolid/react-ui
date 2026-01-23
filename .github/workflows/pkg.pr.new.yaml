@@ -36,6 +36,6 @@ jobs:
         run: pnpm run build:packages
 
       - name: Publish
-        run: pnpm dlx pkg-pr-new publish --no-template --pnpm ./packages/react-ui
+        run: pnpm dlx pkg-pr-new publish --compact --no-template --pnpm ./packages/react-ui
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

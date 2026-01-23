@@ -1,6 +1,7 @@
 {
   "name": "@resolid/react-ui",
   "version": "0.1.0",
+  "private": false,
   "description": "Resolid React components",
   "keywords": [
     "resolid",
