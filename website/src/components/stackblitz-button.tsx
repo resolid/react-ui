@@ -37,6 +37,7 @@ const openProject = async (name: string, code: string) => {
     .toLowerCase();
 
   inputs.push(createHiddenInput("project[title]", `${name} - Resolid UI`));
+  inputs.push(createHiddenInput("project[template]", "node"));
 
   inputs.push(
     createHiddenInput(

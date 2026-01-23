@@ -8,12 +8,9 @@
   "dependencies": {
     "@resolid/react-ui": "https://pkg.pr.new/@resolid/react-ui@${commitSha}",
     "react": "latest",
-    "react-dom": "latest",
-    "react-router": "latest"
+    "react-dom": "latest"
   },
   "devDependencies": {
-    "@types/react": "latest",
-    "@types/react-dom": "latest",
     "@vitejs/plugin-react": "latest",
     "typescript": "latest",
     "vite": "latest"

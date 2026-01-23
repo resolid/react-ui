@@ -1,15 +1,12 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter } from "react-router";
 import { ConfigProvider } from "@resolid/react-ui";
-import App from './app'
+import App from './app';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter>
-      <ConfigProvider>
-        <App />
-      </ConfigProvider>
-    </BrowserRouter>
+    <ConfigProvider>
+      <App />
+    </ConfigProvider>
   </StrictMode>,
 );

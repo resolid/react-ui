@@ -8,10 +8,11 @@ export default defineConfig({
     "locales/*": "src/locales/*.ts",
   },
   format: "esm",
-  platform: "browser",
+  platform: "neutral",
   target: "es2022",
   dts: true,
   treeshake: true,
   clean: true,
+  minify: "dce-only",
   plugins: [reactCompilerRolldownPlugin({ filter: /\.[jt]sx?$/ })],
 }) as UserConfig;
