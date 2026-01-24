@@ -5,7 +5,7 @@ import { usePopperAria } from "../../primitives/popper/popper-aria-context";
 import { PopperFloating } from "../../primitives/popper/popper-floating";
 import { usePopperTransition } from "../../primitives/popper/popper-transtion-context";
 import { getPopperAnimationProps } from "../../primitives/popper/utils";
-import { hasBackgroundClass } from "../../shared/utils";
+import { hasBackgroundBaseClass } from "../../shared/utils";
 import { tx } from "../../utils";
 import { useDialog } from "./dialog-context";
 
@@ -44,7 +44,7 @@ export const DialogContent = (props: PrimitiveProps<"div">): JSX.Element | null 
             "relative mx-auto shadow-md",
             animationProps.className,
             scrollBehavior == "inside" && "max-h-[calc(100%-10rem)]",
-            !hasBackgroundClass(className) && "bg-bg-normal",
+            !hasBackgroundBaseClass(className) && "bg-bg-normal",
             className,
           )}
           aria-labelledby={labelId}

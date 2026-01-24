@@ -6,7 +6,7 @@ import { PopperFloating } from "../../primitives/popper/popper-floating";
 import { PopperPositioner } from "../../primitives/popper/popper-positioner";
 import { usePopperTransition } from "../../primitives/popper/popper-transtion-context";
 import { getPopperAnimationProps } from "../../primitives/popper/utils";
-import { hasBackgroundClass } from "../../shared/utils";
+import { hasBackgroundBaseClass } from "../../shared/utils";
 import { tx } from "../../utils";
 import { Portal } from "../portal/portal";
 import { usePopoverRoot } from "./popover-root-context";
@@ -40,7 +40,7 @@ export const PopoverContent = (props: PrimitiveProps<"div">): JSX.Element | null
           <PopperFloating
             className={tx(
               "relative border shadow-md",
-              hasBackgroundClass(className)
+              hasBackgroundBaseClass(className)
                 ? "border-transparent"
                 : "border-bd-normal bg-bg-normal",
               className,

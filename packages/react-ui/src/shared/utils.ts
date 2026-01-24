@@ -1,11 +1,7 @@
 import type { KeyboardEvent, MouseEvent, RefObject } from "react";
 
-export const hasBackgroundClass = (className?: string): boolean => {
-  if (!className) {
-    return false;
-  }
-
-  return className.includes("bg-") && className.split(" ").some((cls) => cls.startsWith("bg-"));
+export const hasBackgroundBaseClass = (className?: string): boolean => {
+  return !!className && /(?:^|\s)bg-\S+/.test(className);
 };
 
 export const getInteractiveHandlers = <E extends HTMLElement = HTMLDivElement>({

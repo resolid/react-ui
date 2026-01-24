@@ -5,7 +5,7 @@ import { usePopperAria } from "../../primitives/popper/popper-aria-context";
 import { PopperFloating } from "../../primitives/popper/popper-floating";
 import { usePopperTransition } from "../../primitives/popper/popper-transtion-context";
 import { getPopperAnimationProps } from "../../primitives/popper/utils";
-import { hasBackgroundClass } from "../../shared/utils";
+import { hasBackgroundBaseClass } from "../../shared/utils";
 import { tx } from "../../utils";
 import { useDialog } from "../dialog/dialog-context";
 import { useDrawer } from "./drawer-context";
@@ -68,7 +68,7 @@ export const DrawerContent = (props: PrimitiveProps<"div">): JSX.Element | null 
             "fixed flex flex-col shadow-md transition-[opacity,translate]",
             drawerStyle.base,
             animationProps.className,
-            !hasBackgroundClass(className) && "bg-bg-normal",
+            !hasBackgroundBaseClass(className) && "bg-bg-normal",
             className,
           )}
           aria-labelledby={labelId}

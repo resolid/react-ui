@@ -1,7 +1,7 @@
 import type { JSX } from "react/jsx-runtime";
 import type { PrimitiveProps } from "../../primitives";
 import { inputTextShareStyles } from "../../shared/styles";
-import { hasBackgroundClass } from "../../shared/utils";
+import { hasBackgroundBaseClass } from "../../shared/utils";
 import { tx } from "../../utils";
 import { useInputGroup } from "./input-group-context";
 import { inputGroupStyles, inputPxStyles } from "./input.styles";
@@ -18,7 +18,7 @@ export const InputAddon = (props: PrimitiveProps<"div">): JSX.Element => {
         inputGroupStyles,
         inputPxStyles[group.size],
         inputTextShareStyles[group.size],
-        !hasBackgroundClass(className) && "bg-bg-subtlest",
+        !hasBackgroundBaseClass(className) && "bg-bg-subtlest",
         className,
       )}
       {...rest}

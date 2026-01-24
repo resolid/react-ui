@@ -1,5 +1,5 @@
 import type { JSX } from "react/jsx-runtime";
-import { hasBackgroundClass } from "../../shared/utils";
+import { hasBackgroundBaseClass } from "../../shared/utils";
 import { tx } from "../../utils";
 import type { PrimitiveProps } from "../index";
 import { usePopperTransition } from "./popper-transtion-context";
@@ -22,7 +22,7 @@ export const PopperBackdrop = (props: PrimitiveProps<"div">): JSX.Element | null
       className={tx(
         "fixed inset-0 z-50 overflow-auto",
         animationProps.className,
-        !hasBackgroundClass(className) && "bg-black",
+        !hasBackgroundBaseClass(className) && "bg-black",
         className,
       )}
       {...rest}

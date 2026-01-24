@@ -3,7 +3,7 @@ import { type CSSProperties, useState } from "react";
 import type { JSX } from "react/jsx-runtime";
 import type { ImageLoadStatus } from "../../hooks";
 import type { PrimitiveProps } from "../../primitives";
-import { hasBackgroundClass } from "../../shared/utils";
+import { hasBackgroundBaseClass } from "../../shared/utils";
 import { tx } from "../../utils";
 import { AvatarContext, AvatarStatusContext } from "./avatar-context";
 import { type AvatarBaseProps, useAvatarGroup } from "./avatar-group-context";
@@ -47,7 +47,7 @@ export const AvatarRoot = (props: PrimitiveProps<"div", AvatarRootProps>): JSX.E
         "relative inline-flex h-(--sv) w-(--sv) shrink-0 items-center justify-center select-none",
         radiusClass,
         group && "border-2 border-bg-normal not-first:ms-(--pv)",
-        !hasBackgroundClass(className) && "bg-bg-subtlest",
+        !hasBackgroundBaseClass(className) && "bg-bg-subtlest",
         className,
       )}
       {...rest}
