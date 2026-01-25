@@ -1,6 +1,6 @@
 import { cleanup, render, screen, waitFor } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import { afterEach, describe, expect, test, vi } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { axe } from "vitest-axe";
 import {
   Dialog,
@@ -33,14 +33,14 @@ describe("Dialog", () => {
     cleanup();
   });
 
-  test("should have no a11y violations", async () => {
+  it("should have no a11y violations", async () => {
     const { container } = render(<ComponentUnderTest />);
     const results = await axe(container);
 
     expect(results).toHaveNoViolations();
   });
 
-  test("should show dialog content when opened", async () => {
+  it("should show dialog content when opened", async () => {
     render(<ComponentUnderTest />);
 
     await userEvent.click(screen.getByText("Open Dialog"));
@@ -51,7 +51,7 @@ describe("Dialog", () => {
     await waitFor(() => expect(screen.queryByText("Dialog Title")).not.toBeInTheDocument());
   });
 
-  test("should invoke onOpenChange if dialog is closed", async () => {
+  it("should invoke onOpenChange if dialog is closed", async () => {
     const onOpenChange = vi.fn();
     render(<ComponentUnderTest open onOpenChange={onOpenChange} />);
 
@@ -59,7 +59,7 @@ describe("Dialog", () => {
     expect(onOpenChange).toHaveBeenCalledTimes(1);
   });
 
-  test("should be fully controlled (true)", async () => {
+  it("should be fully controlled (true)", async () => {
     render(<ComponentUnderTest open={true} />);
 
     expect(screen.queryByRole("button", { name: "Close" })).toBeVisible();
@@ -68,7 +68,7 @@ describe("Dialog", () => {
     expect(screen.queryByRole("button", { name: "Close" })).toBeVisible();
   });
 
-  test("should be fully controlled (false)", async () => {
+  it("should be fully controlled (false)", async () => {
     render(<ComponentUnderTest open={false} />);
 
     expect(screen.queryByRole("button", { name: "Close" })).not.toBeInTheDocument();

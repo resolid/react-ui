@@ -1,5 +1,5 @@
 import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
-import { afterEach, describe, expect, test, vi } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { axe } from "vitest-axe";
 import type { ListboxItem } from "../../listbox/use-listbox";
 import {
@@ -41,14 +41,14 @@ describe("Combobox", () => {
     cleanup();
   });
 
-  test("should have no a11y violations", async () => {
+  it("should have no a11y violations", async () => {
     const { container } = render(<ComponentUnderTest />);
     const results = await axe(container);
 
     expect(results).toHaveNoViolations();
   });
 
-  test("should show options on click", async () => {
+  it("should show options on click", async () => {
     render(<ComponentUnderTest />);
 
     fireEvent.click(screen.getByText("Open"));
@@ -57,7 +57,7 @@ describe("Combobox", () => {
     await waitFor(() => expect(screen.getByRole("option", { name: "react" })).toBeVisible());
   });
 
-  test("should handle item selection", async () => {
+  it("should handle item selection", async () => {
     render(<ComponentUnderTest />);
 
     fireEvent.click(screen.getByText("Open"));
@@ -67,7 +67,7 @@ describe("Combobox", () => {
     await waitFor(() => expect(screen.getByRole("combobox")).toHaveValue("react"));
   });
 
-  test("should call onChange when item is selected", async () => {
+  it("should call onChange when item is selected", async () => {
     const onChange = vi.fn();
     render(<ComponentUnderTest onChange={onChange} />);
 
@@ -80,7 +80,7 @@ describe("Combobox", () => {
     });
   });
 
-  test("should open menu when onOpenChange is called", async () => {
+  it("should open menu when onOpenChange is called", async () => {
     const onOpenChange = vi.fn();
     render(<ComponentUnderTest onOpenChange={onOpenChange} />);
 

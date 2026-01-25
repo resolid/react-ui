@@ -1,6 +1,6 @@
 import { cleanup, render, screen } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import { afterEach, describe, expect, test } from "vitest";
+import { afterEach, describe, expect, it } from "vitest";
 import { axe } from "vitest-axe";
 import zhCN from "../../../locales/zh-CN";
 import { LocaleProvider } from "../../provider/locale-provider";
@@ -19,14 +19,14 @@ describe("Pagination", () => {
     cleanup();
   });
 
-  test("should have no a11y violations", async () => {
+  it("should have no a11y violations", async () => {
     const { container } = render(<ComponentUnderTest total={100} pageSize={10} />);
     const results = await axe(container);
 
     expect(results).toHaveNoViolations();
   });
 
-  test("should update page when item is clicked", async () => {
+  it("should update page when item is clicked", async () => {
     render(<ComponentUnderTest total={100} pageSize={10} />);
 
     const pageTwoLink = screen.getByLabelText("第 2 页");
@@ -38,7 +38,7 @@ describe("Pagination", () => {
     expect(pageTwoLink).toHaveAttribute("aria-current", "page");
   });
 
-  test("should update page when next button is clicked", async () => {
+  it("should update page when next button is clicked", async () => {
     render(<ComponentUnderTest total={100} pageSize={10} />);
 
     const pageOneLink = screen.getByLabelText("第 1 页");
@@ -52,7 +52,7 @@ describe("Pagination", () => {
     expect(pageTwoLink).toHaveAttribute("aria-current", "page");
   });
 
-  test("should update page when prev button is clicked", async () => {
+  it("should update page when prev button is clicked", async () => {
     render(<ComponentUnderTest total={100} pageSize={10} />);
 
     const pageTwoLink = screen.getByLabelText("第 2 页");

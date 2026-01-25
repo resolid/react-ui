@@ -1,6 +1,6 @@
 import { cleanup, render, screen } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import { afterEach, describe, expect, test, vi } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { axe } from "vitest-axe";
 import { Radio } from "../radio";
 import { RadioGroup, type RadioGroupProps } from "../radio-group";
@@ -28,14 +28,14 @@ describe("Radio", () => {
     cleanup();
   });
 
-  test("should have no a11y violations", async () => {
+  it("should have no a11y violations", async () => {
     const { container } = render(<ComponentUnderTest />);
     const results = await axe(container);
 
     expect(results).toHaveNoViolations();
   });
 
-  test("should invoke onChange if another value has selected", async () => {
+  it("should invoke onChange if another value has selected", async () => {
     const onChange = vi.fn();
 
     render(<ComponentUnderTest onChange={onChange} />);
@@ -45,7 +45,7 @@ describe("Radio", () => {
     expect(onChange).toHaveBeenCalledWith("solid");
   });
 
-  test("should not invoke onChange if option is disabled", async () => {
+  it("should not invoke onChange if option is disabled", async () => {
     const onChange = vi.fn();
 
     render(<ComponentUnderTest onChange={onChange} />);

@@ -1,9 +1,9 @@
 import { act, renderHook } from "@testing-library/react";
-import { describe, expect, test } from "vitest";
+import { describe, expect, it } from "vitest";
 import { useControllableState } from "./index";
 
 describe("useControllableState", () => {
-  test("should be uncontrolled when defaultValue is passed", () => {
+  it("should be uncontrolled when defaultValue is passed", () => {
     const { result } = renderHook(() => useControllableState({ defaultValue: "testing" }));
     const [value] = result.current;
     expect(value).toBe("testing");
@@ -17,7 +17,7 @@ describe("useControllableState", () => {
     expect(next).toBe("naruto");
   });
 
-  test("should be controlled when value is passed", () => {
+  it("should be controlled when value is passed", () => {
     const { result } = renderHook(() => useControllableState({ value: "testing" }));
     const [value] = result.current;
     expect(value).toBe("testing");

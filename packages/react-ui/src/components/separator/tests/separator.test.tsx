@@ -1,5 +1,5 @@
 import { cleanup, render } from "@testing-library/react";
-import { afterEach, describe, expect, test } from "vitest";
+import { afterEach, describe, expect, it } from "vitest";
 import { Separator } from "../separator";
 
 describe("Separator", () => {
@@ -7,13 +7,13 @@ describe("Separator", () => {
     cleanup();
   });
 
-  test("renders a div with the `separator` role", async () => {
+  it("renders a div with the `separator` role", async () => {
     const { getByRole } = render(<Separator />);
 
     expect(getByRole("separator")).toBeVisible();
   });
 
-  test("should have implicit 'aria-orientation' by default", () => {
+  it("should have implicit 'aria-orientation' by default", () => {
     const { getByRole } = render(<Separator />);
 
     const separator = getByRole("separator");

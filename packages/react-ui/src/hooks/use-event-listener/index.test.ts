@@ -1,9 +1,9 @@
 import { renderHook } from "@testing-library/react";
-import { afterEach, beforeEach, describe, expect, test } from "vitest";
+import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { useEventListener } from "./index";
 
 describe("useEventListener", () => {
-  test("should be defined", () => {
+  it("should be defined", () => {
     expect(useEventListener).toBeDefined();
   });
 
@@ -18,7 +18,7 @@ describe("useEventListener", () => {
     document.body.removeChild(container);
   });
 
-  test("test on click listener", async () => {
+  it("test on click listener", async () => {
     let state = 0;
 
     const onClick = () => {

@@ -1,6 +1,6 @@
 import { cleanup, render, screen, waitFor } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import { afterEach, describe, expect, test } from "vitest";
+import { afterEach, describe, expect, it } from "vitest";
 import { axe } from "vitest-axe";
 import {
   Popover,
@@ -30,14 +30,14 @@ describe("Popover", () => {
     cleanup();
   });
 
-  test("should have no a11y violations", async () => {
+  it("should have no a11y violations", async () => {
     const { container } = render(<ComponentUnderTest />);
     const results = await axe(container);
 
     expect(results).toHaveNoViolations();
   });
 
-  test("should open and close the popover", async () => {
+  it("should open and close the popover", async () => {
     render(<ComponentUnderTest />);
 
     await userEvent.click(screen.getByText("click me"));
@@ -49,14 +49,14 @@ describe("Popover", () => {
     });
   });
 
-  test("should focus the first focusable element", async () => {
+  it("should focus the first focusable element", async () => {
     render(<ComponentUnderTest />);
 
     await userEvent.click(screen.getByText("click me"));
     await waitFor(() => expect(screen.getByRole("dialog")).toBeInTheDocument());
   });
 
-  test("should open by default", async () => {
+  it("should open by default", async () => {
     render(<ComponentUnderTest defaultOpen />);
     expect(screen.getByRole("dialog")).toBeInTheDocument();
   });

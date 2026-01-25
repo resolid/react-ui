@@ -1,6 +1,6 @@
 import { cleanup, render, screen, waitFor } from "@testing-library/react";
 import user from "@testing-library/user-event";
-import { afterEach, describe, expect, test, vi } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { axe } from "vitest-axe";
 import { Select, SelectContent, SelectList, type SelectProps } from "../select";
 
@@ -25,14 +25,14 @@ describe("Select", () => {
     cleanup();
   });
 
-  test("should have no a11y violations", async () => {
+  it("should have no a11y violations", async () => {
     const { container } = render(<ComponentUnderTest />);
     const results = await axe(container);
 
     expect(results).toHaveNoViolations();
   });
 
-  test("should handle item selection", async () => {
+  it("should handle item selection", async () => {
     render(<ComponentUnderTest />);
 
     const trigger = screen.getByRole("combobox", { name: "Framework" });
@@ -44,7 +44,7 @@ describe("Select", () => {
     await waitFor(() => expect(trigger).toHaveTextContent("React"));
   });
 
-  test("should close on select", async () => {
+  it("should close on select", async () => {
     render(<ComponentUnderTest />);
 
     const trigger = screen.getByRole("combobox", { name: "Framework" });
@@ -56,7 +56,7 @@ describe("Select", () => {
     await waitFor(() => expect(screen.queryByText("Frameworks")).not.toBeInTheDocument());
   });
 
-  test("should be disabled when disabled is true", async () => {
+  it("should be disabled when disabled is true", async () => {
     render(<ComponentUnderTest disabled />);
 
     const trigger = screen.getByRole("combobox", { name: "Framework" });
@@ -64,7 +64,7 @@ describe("Select", () => {
     expect(trigger).toHaveAttribute("aria-disabled", "true");
   });
 
-  test("should handle multiple selection", async () => {
+  it("should handle multiple selection", async () => {
     render(<ComponentUnderTest multiple />);
 
     const trigger = screen.getByRole("combobox", { name: "Framework" });
@@ -79,7 +79,7 @@ describe("Select", () => {
     await waitFor(() => expect(trigger).toHaveTextContent("ReactVue"));
   });
 
-  test("should call onChange when item is selected", async () => {
+  it("should call onChange when item is selected", async () => {
     const onChange = vi.fn();
     render(<ComponentUnderTest onChange={onChange} />);
 
@@ -95,7 +95,7 @@ describe("Select", () => {
     });
   });
 
-  test("should open menu when onOpenChange is called", async () => {
+  it("should open menu when onOpenChange is called", async () => {
     const onOpenChange = vi.fn();
     render(<ComponentUnderTest onOpenChange={onOpenChange} />);
 
@@ -105,7 +105,7 @@ describe("Select", () => {
     await waitFor(() => expect(onOpenChange).toHaveBeenCalledTimes(1));
   });
 
-  test("should be read-only when readOnly is true", async () => {
+  it("should be read-only when readOnly is true", async () => {
     render(<ComponentUnderTest readOnly />);
 
     const trigger = screen.getByRole("combobox", { name: "Framework" });

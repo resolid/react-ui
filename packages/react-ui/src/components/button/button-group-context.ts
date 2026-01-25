@@ -36,7 +36,7 @@ export type ButtonBaseProps = {
 
 export type ButtonGroupContextValue = ButtonBaseProps & {
   /**
-   * 布局方向
+   * 方向
    * @default "horizontal"
    */
   orientation?: Orientation;

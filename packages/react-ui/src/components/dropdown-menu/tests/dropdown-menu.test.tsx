@@ -1,6 +1,6 @@
 import { act, cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import { afterEach, describe, expect, test, vi } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { axe } from "vitest-axe";
 import {
   DropdownMenu,
@@ -72,20 +72,20 @@ describe("Menu", () => {
     cleanup();
   });
 
-  test("should have no a11y violations", async () => {
+  it("should have no a11y violations", async () => {
     const { container } = render(<ComponentUnderTest />);
     const results = await axe(container);
 
     expect(results).toHaveNoViolations();
   });
 
-  test("should set correct aria attributes on disabled MenuItems", () => {
+  it("should set correct aria attributes on disabled MenuItems", () => {
     render(<ComponentUnderTest open />);
 
     expect(screen.getByText("Dialog")).toHaveAttribute("aria-disabled", "true");
   });
 
-  test("should not fire onValueChange on disabled MenuItems", async () => {
+  it("should not fire onValueChange on disabled MenuItems", async () => {
     const onValueChange = vi.fn();
 
     render(<ComponentUnderTest open onValueChange={onValueChange} />);
@@ -95,7 +95,7 @@ describe("Menu", () => {
     expect(onValueChange).not.toHaveBeenCalled();
   });
 
-  test("should apply correct role to MenuItemGroup", async () => {
+  it("should apply correct role to MenuItemGroup", async () => {
     render(<ComponentUnderTest />);
 
     const button = screen.getByRole("button", { name: /open menu/i });
@@ -105,7 +105,7 @@ describe("Menu", () => {
     await waitFor(() => expect(screen.getAllByRole("group")).toHaveLength(2));
   });
 
-  test("should open on nested menu", async () => {
+  it("should open on nested menu", async () => {
     render(<ComponentUnderTest />);
 
     const button = screen.getByRole("button", { name: /open menu/i });
@@ -119,7 +119,7 @@ describe("Menu", () => {
     await waitFor(() => expect(screen.getByText(/Tailwind CSS/i)).toBeVisible());
   });
 
-  test("should select a radio option", async () => {
+  it("should select a radio option", async () => {
     render(<ComponentUnderTest />);
 
     const menuButton = screen.getByRole("button", { name: /open menu/i });
@@ -132,7 +132,7 @@ describe("Menu", () => {
     await waitFor(() => expect(radioButton).toHaveAttribute("aria-checked", "true"));
   });
 
-  test("focuses the first item after the menu is opened by keyboard", async () => {
+  it("focuses the first item after the menu is opened by keyboard", async () => {
     render(<ComponentUnderTest />);
 
     const menuButton = screen.getByRole("button", { name: /open menu/i });
@@ -154,7 +154,7 @@ describe("Menu", () => {
     });
   });
 
-  test("focuses the first item when down arrow key opens the menu", async () => {
+  it("focuses the first item when down arrow key opens the menu", async () => {
     render(<ComponentUnderTest />);
 
     const menuButton = screen.getByRole("button", { name: /open menu/i });

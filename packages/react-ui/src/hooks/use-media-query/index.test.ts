@@ -1,5 +1,5 @@
 import { renderHook } from "@testing-library/react";
-import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { useMediaQuery } from "./index";
 
 type MediaQueryList = {
@@ -125,7 +125,7 @@ describe("useMediaQuery", () => {
     matchMedia.clear();
   });
 
-  test("should return true when the media query matches", () => {
+  it("should return true when the media query matches", () => {
     const query = "(min-width: 500px)";
 
     matchMedia.useMediaQuery(query);
@@ -135,7 +135,7 @@ describe("useMediaQuery", () => {
     expect(result.current).toBe(true);
   });
 
-  test("should return false when the media query does not match", () => {
+  it("should return false when the media query does not match", () => {
     const query = "(max-width: 1000px)";
 
     matchMedia.useMediaQuery("(max-width: 500px)");
@@ -145,7 +145,7 @@ describe("useMediaQuery", () => {
     expect(result.current).toBe(false);
   });
 
-  test("should update the result when the media query changes", () => {
+  it("should update the result when the media query changes", () => {
     matchMedia.useMediaQuery("(max-width: 500px)");
 
     const query = "(min-width: 768px)";

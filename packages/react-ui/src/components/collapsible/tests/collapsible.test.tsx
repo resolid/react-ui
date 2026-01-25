@@ -1,6 +1,6 @@
 import { cleanup, render, screen, waitFor } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import { afterEach, describe, expect, test } from "vitest";
+import { afterEach, describe, expect, it } from "vitest";
 import { axe } from "vitest-axe";
 import {
   Collapsible,
@@ -21,14 +21,14 @@ describe("Collapsible", () => {
     cleanup();
   });
 
-  test("should have no a11y violations", async () => {
+  it("should have no a11y violations", async () => {
     const { container } = render(<ComponentUnderTest />);
     const results = await axe(container);
 
     expect(results).toHaveNoViolations();
   });
 
-  test("should toggle", async () => {
+  it("should toggle", async () => {
     render(<ComponentUnderTest />);
 
     expect(screen.queryByText("Content")).not.toBeInTheDocument();
@@ -40,14 +40,14 @@ describe("Collapsible", () => {
     await waitFor(() => expect(screen.queryByText("Content")).not.toBeInTheDocument());
   });
 
-  test("should be fully controlled (true)", async () => {
+  it("should be fully controlled (true)", async () => {
     render(<ComponentUnderTest open={true} />);
 
     await userEvent.click(screen.getByRole("button", { name: "Toggle" }));
     expect(screen.getByText("Content")).toBeVisible();
   });
 
-  test("should be fully controlled (false)", async () => {
+  it("should be fully controlled (false)", async () => {
     render(<ComponentUnderTest open={false} />);
 
     await userEvent.click(screen.getByRole("button", { name: "Toggle" }));

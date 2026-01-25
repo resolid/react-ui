@@ -1,6 +1,6 @@
 import { cleanup, render, screen, waitFor } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import { afterEach, describe, expect, test } from "vitest";
+import { afterEach, describe, expect, it } from "vitest";
 import { axe } from "vitest-axe";
 import { Tooltip, TooltipArrow, TooltipContent, TooltipTrigger } from "../tooltip";
 import type { TooltipProps } from "../use-tooltip";
@@ -20,14 +20,14 @@ describe("Tooltip", () => {
     cleanup();
   });
 
-  test("should have no a11y violations", async () => {
+  it("should have no a11y violations", async () => {
     const { container } = render(<ComponentUnderTest />);
     const results = await axe(container);
 
     expect(results).toHaveNoViolations();
   });
 
-  test("should show the tooltip on pointerover and close on pointer leave", async () => {
+  it("should show the tooltip on pointerover and close on pointer leave", async () => {
     render(<ComponentUnderTest />);
 
     const tooltipTrigger = screen.getByText("trigger");
@@ -43,7 +43,7 @@ describe("Tooltip", () => {
     });
   });
 
-  test("should hide the tooltip when escape is pressed", async () => {
+  it("should hide the tooltip when escape is pressed", async () => {
     render(<ComponentUnderTest />);
 
     const tooltipTrigger = screen.getByText("trigger");
@@ -59,7 +59,7 @@ describe("Tooltip", () => {
     });
   });
 
-  test("should have pointer-events none style if interactive is set to false", async () => {
+  it("should have pointer-events none style if interactive is set to false", async () => {
     render(<ComponentUnderTest interactive={false} />);
 
     const tooltipTrigger = screen.getByText("trigger");

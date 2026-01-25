@@ -311,15 +311,24 @@ const tsParser = withCustomConfig("tsconfig.json", {
 });
 
 const componentPropsSorts = [
+  "name",
   "value",
   "defaultValue",
+
   "checked",
   "defaultChecked",
+
   "onChange",
-  "name",
+  "onChangeEnd",
+
   "open",
   "defaultOpen",
   "onOpenChange",
+
+  "size",
+  "color",
+  "orientation",
+
   "disabled",
   "required",
   "readOnly",

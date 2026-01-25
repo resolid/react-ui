@@ -1,7 +1,7 @@
 import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import { useState } from "react";
-import { afterEach, describe, expect, test, vi } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { axe } from "vitest-axe";
 import { Checkbox, type CheckboxProps } from "../checkbox";
 
@@ -24,14 +24,14 @@ describe("Checkbox", () => {
     cleanup();
   });
 
-  test("should have no a11y violations", async () => {
+  it("should have no a11y violations", async () => {
     const { container } = render(<ComponentUnderTest />);
     const results = await axe(container);
 
     expect(results).toHaveNoViolations();
   });
 
-  test("should handle check and unchecked", async () => {
+  it("should handle check and unchecked", async () => {
     const onChange = vi.fn();
     render(<ComponentUnderTest onChange={onChange} />);
 
@@ -41,7 +41,7 @@ describe("Checkbox", () => {
     expect(checkbox).toBeChecked();
   });
 
-  test("should invoke onChange", async () => {
+  it("should invoke onChange", async () => {
     const onChange = vi.fn();
     render(<ComponentUnderTest onChange={onChange} />);
 
@@ -54,7 +54,7 @@ describe("Checkbox", () => {
     await waitFor(() => expect(onChange).toHaveBeenCalledWith(false));
   });
 
-  test("should allow controlled usage", async () => {
+  it("should allow controlled usage", async () => {
     render(<ControlledComponentUnderTest />);
 
     const checkbox = screen.getByRole("checkbox");

@@ -1,9 +1,9 @@
 import { act, renderHook } from "@testing-library/react";
-import { describe, expect, test, vi } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { useDisclosure } from "./index";
 
 describe("useDisclosure", () => {
-  test("handles close correctly", () => {
+  it("handles close correctly", () => {
     const { result } = renderHook(() => useDisclosure({ defaultOpen: true }));
 
     const [open, { handleClose }] = result.current;
@@ -16,7 +16,7 @@ describe("useDisclosure", () => {
     expect(next).toBe(false);
   });
 
-  test("handles open correctly", () => {
+  it("handles open correctly", () => {
     const { result } = renderHook(() => useDisclosure({ defaultOpen: false }));
 
     const [open, { handleOpen }] = result.current;
@@ -28,7 +28,7 @@ describe("useDisclosure", () => {
     expect(next).toBe(true);
   });
 
-  test("handles toggle correctly", () => {
+  it("handles toggle correctly", () => {
     const { result } = renderHook(() => useDisclosure({ defaultOpen: false }));
 
     const [open, { handleToggle }] = result.current;
@@ -48,7 +48,7 @@ describe("useDisclosure", () => {
     expect(last).toBe(false);
   });
 
-  test("calls onClose when close is called", () => {
+  it("calls onClose when close is called", () => {
     const onOpenChange = vi.fn();
 
     const { result } = renderHook(() => useDisclosure({ defaultOpen: true, onOpenChange }));
@@ -69,7 +69,7 @@ describe("useDisclosure", () => {
     expect(onOpenChange).toHaveBeenCalledTimes(1);
   });
 
-  test("calls onOpen when open is called", () => {
+  it("calls onOpen when open is called", () => {
     const onOpenChange = vi.fn();
 
     const { result } = renderHook(() => useDisclosure({ defaultOpen: false, onOpenChange }));
@@ -90,7 +90,7 @@ describe("useDisclosure", () => {
     expect(onOpenChange).toHaveBeenCalledTimes(1);
   });
 
-  test("calls onOpen and onClose correctly when toggle is called", () => {
+  it("calls onOpen and onClose correctly when toggle is called", () => {
     const onOpenChange = vi.fn();
     const { result } = renderHook(() => useDisclosure({ defaultOpen: false, onOpenChange }));
     expect(onOpenChange).toHaveBeenCalledTimes(0);

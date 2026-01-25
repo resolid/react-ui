@@ -1,6 +1,6 @@
 import { cleanup, render, screen, waitFor } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import { afterEach, describe, expect, test, vi } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { axe } from "vitest-axe";
 import { Tabs, TabsList, TabsPanel, type TabsProps, TabsTab } from "../tabs";
 
@@ -34,14 +34,14 @@ describe("Tabs", () => {
     cleanup();
   });
 
-  test("should have no a11y violations", async () => {
+  it("should have no a11y violations", async () => {
     const { container } = render(<ComponentUnderTest defaultValue={"React"} />);
     const results = await axe(container);
 
     expect(results).toHaveNoViolations();
   });
 
-  test("should activate tab on click", async () => {
+  it("should activate tab on click", async () => {
     const onChange = vi.fn();
     render(<ComponentUnderTest defaultValue={"React"} onChange={onChange} />);
 
@@ -51,7 +51,7 @@ describe("Tabs", () => {
     expect(onChange).toHaveBeenCalledWith("Vue");
   });
 
-  test("should not focus disabled tab", async () => {
+  it("should not focus disabled tab", async () => {
     render(<ComponentUnderTest defaultValue={"React"} />);
 
     const disabledTab = screen.getByText("Svelte Trigger");
@@ -61,7 +61,7 @@ describe("Tabs", () => {
     expect(disabledTab).not.toHaveFocus();
   });
 
-  test("should show content when tab is activated", async () => {
+  it("should show content when tab is activated", async () => {
     render(<ComponentUnderTest defaultValue={"Vue"} />);
 
     const firstTab = screen.getByText("React Trigger");
@@ -72,7 +72,7 @@ describe("Tabs", () => {
     expect(screen.getByText("React Content")).toBeVisible();
   });
 
-  test("should loop focus", async () => {
+  it("should loop focus", async () => {
     render(<ComponentUnderTest defaultValue={"React"} />);
 
     const firstTab = screen.getByText("React Trigger");
@@ -85,7 +85,7 @@ describe("Tabs", () => {
     await waitFor(() => expect(firstTab).toHaveFocus());
   });
 
-  test("should handle orientation", async () => {
+  it("should handle orientation", async () => {
     render(<ComponentUnderTest defaultValue={"React"} orientation="vertical" />);
 
     const firstTab = screen.getByText("React Trigger");

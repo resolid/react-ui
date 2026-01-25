@@ -1,6 +1,6 @@
 import { cleanup, render } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import { afterEach, describe, expect, test, vi } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { axe } from "vitest-axe";
 import { Listbox, ListboxContent, ListboxList, type ListboxProps } from "../listbox";
 
@@ -26,14 +26,14 @@ describe("Listbox", () => {
     cleanup();
   });
 
-  test("should have no a11y violations", async () => {
+  it("should have no a11y violations", async () => {
     const { container } = render(<ComponentUnderTest />);
     const results = await axe(container);
 
     expect(results).toHaveNoViolations();
   });
 
-  test("allows user to change option focus via up/down arrow keys", async () => {
+  it("allows user to change option focus via up/down arrow keys", async () => {
     const { getAllByRole } = render(<ComponentUnderTest />);
 
     const options = getAllByRole("option");
@@ -51,7 +51,7 @@ describe("Listbox", () => {
     expect(document.activeElement).toBe(options[0]);
   });
 
-  test("allows user to select an option by clicking", async () => {
+  it("allows user to select an option by clicking", async () => {
     const handleChange = vi.fn();
     const { getAllByRole } = render(<ComponentUnderTest onChange={handleChange} />);
 
@@ -62,7 +62,7 @@ describe("Listbox", () => {
     expect(handleChange).toHaveBeenCalledWith("2");
   });
 
-  test("does not allow user to select a disabled option", async () => {
+  it("does not allow user to select a disabled option", async () => {
     const handleChange = vi.fn();
     const { getAllByRole } = render(<ComponentUnderTest onChange={handleChange} />);
 

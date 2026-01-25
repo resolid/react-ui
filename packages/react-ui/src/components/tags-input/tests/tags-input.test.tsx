@@ -1,6 +1,6 @@
 import { cleanup, render, screen, waitFor } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import { afterEach, describe, expect, test } from "vitest";
+import { afterEach, describe, expect, it } from "vitest";
 import { axe } from "vitest-axe";
 import { LocaleProvider } from "../../provider/locale-provider";
 import { TagsInput, TagsInputInput, type TagsInputProps } from "../tags-input";
@@ -20,14 +20,14 @@ describe("TagsInput", () => {
     cleanup();
   });
 
-  test("should have no a11y violations", async () => {
+  it("should have no a11y violations", async () => {
     const { container } = render(<ComponentUnderTest />);
     const results = await axe(container);
 
     expect(results).toHaveNoViolations();
   });
 
-  test("should allow to add a new item", async () => {
+  it("should allow to add a new item", async () => {
     render(<ComponentUnderTest />);
 
     const input = screen.getByPlaceholderText("Add tag");
@@ -38,7 +38,7 @@ describe("TagsInput", () => {
     expect(screen.getByText("angular")).toBeInTheDocument();
   });
 
-  test("should allow to add and delete a new item", async () => {
+  it("should allow to add and delete a new item", async () => {
     render(<ComponentUnderTest />);
     const input = screen.getByPlaceholderText("Add tag");
     await userEvent.type(input, "angular[enter]");

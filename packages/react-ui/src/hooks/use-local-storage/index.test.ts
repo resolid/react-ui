@@ -1,5 +1,5 @@
 import { act, renderHook } from "@testing-library/react";
-import { beforeEach, describe, expect, test } from "vitest";
+import { beforeEach, describe, expect, it } from "vitest";
 import { useLocalStorage } from "./index";
 
 describe("useLocalStorage", () => {
@@ -7,25 +7,25 @@ describe("useLocalStorage", () => {
     window.localStorage.clear();
   });
 
-  test("initial state is in the returned state", () => {
+  it("initial state is in the returned state", () => {
     const { result } = renderHook(() => useLocalStorage("key", "value"));
 
     expect(result.current[0]).toBe("value");
   });
 
-  test("Initial state is a callback function", () => {
+  it("Initial state is a callback function", () => {
     const { result } = renderHook(() => useLocalStorage("key", () => "value"));
 
     expect(result.current[0]).toBe("value");
   });
 
-  test("Initial state is an array", () => {
+  it("Initial state is an array", () => {
     const { result } = renderHook(() => useLocalStorage("digits", [1, 2]));
 
     expect(result.current[0]).toEqual([1, 2]);
   });
 
-  test("Update the state", () => {
+  it("Update the state", () => {
     const { result } = renderHook(() => useLocalStorage("key", "value"));
 
     act(() => {
@@ -35,7 +35,7 @@ describe("useLocalStorage", () => {
     expect(result.current[0]).toBe("edited");
   });
 
-  test("Update the state writes localStorage", () => {
+  it("Update the state writes localStorage", () => {
     const { result } = renderHook(() => useLocalStorage("key", "value"));
 
     act(() => {
@@ -45,7 +45,7 @@ describe("useLocalStorage", () => {
     expect(window.localStorage.getItem("key")).toBe(JSON.stringify("edited"));
   });
 
-  test("Update localStorage trigger event", () => {
+  it("Update localStorage trigger event", () => {
     const { result } = renderHook(() => useLocalStorage("key", "value"));
 
     act(() => {
@@ -63,7 +63,7 @@ describe("useLocalStorage", () => {
     expect(result.current[0]).toBe("edited");
   });
 
-  test("Update the state with null", () => {
+  it("Update the state with null", () => {
     const { result } = renderHook(() => useLocalStorage<string | null>("key", "value"));
 
     act(() => {
@@ -73,7 +73,7 @@ describe("useLocalStorage", () => {
     expect(result.current[0]).toBeNull();
   });
 
-  test("Update the state with undefined", () => {
+  it("Update the state with undefined", () => {
     const { result } = renderHook(() => useLocalStorage<string | undefined>("key", "value"));
 
     act(() => {
@@ -83,7 +83,7 @@ describe("useLocalStorage", () => {
     expect(result.current[0]).toBeUndefined();
   });
 
-  test("Update the state with a callback function", () => {
+  it("Update the state with a callback function", () => {
     const { result } = renderHook(() => useLocalStorage("count", 2));
 
     act(() => {
