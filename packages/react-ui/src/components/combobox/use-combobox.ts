@@ -7,7 +7,7 @@ import {
   useInteractions,
   useRole,
 } from "@floating-ui/react";
-import { type HTMLProps, type KeyboardEvent, type SyntheticEvent, useRef, useState } from "react";
+import { type HTMLProps, type InputEvent, type KeyboardEvent, useRef, useState } from "react";
 import { useDisclosure } from "../../hooks";
 import type { PopperAnchorContextValue } from "../../primitives/popper/popper-anchor-context";
 import type { PopperStateContextValue } from "../../primitives/popper/popper-state-context";
@@ -213,7 +213,7 @@ export const useCombobox = <T extends ListboxItem>({
 
             onKeyDown?.(e);
           },
-          onInput: (e: SyntheticEvent<HTMLInputElement, InputEvent>) => {
+          onInput: (e: InputEvent<HTMLInputElement>) => {
             setInputValue(e.currentTarget.value);
 
             if (!context.open && openOnChange) {

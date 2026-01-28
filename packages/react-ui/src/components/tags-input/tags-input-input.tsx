@@ -1,5 +1,5 @@
 import { useListItem } from "@floating-ui/react";
-import type { ChangeEvent, ClipboardEvent, FocusEvent, KeyboardEvent, SyntheticEvent } from "react";
+import type { ChangeEvent, ClipboardEvent, FocusEvent, InputEvent, KeyboardEvent } from "react";
 import type { JSX } from "react/jsx-runtime";
 import { useControllableState, useMergeRefs } from "../../hooks";
 import type { PrimitiveProps } from "../../primitives";
@@ -127,7 +127,7 @@ export const TagsInputInput = (
     }
   };
 
-  const handleInput = (e: SyntheticEvent<HTMLInputElement, InputEvent>) => {
+  const handleInput = (e: InputEvent<HTMLInputElement>) => {
     onInput?.(e);
 
     if (!e.nativeEvent.data) {
