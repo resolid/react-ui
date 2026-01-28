@@ -389,22 +389,12 @@ export const buttonStyles: TVReturnType<
       className: "text-xs",
     },
     {
-      size: "sm",
+      size: ["sm", "md"],
       iconOnly: false,
       className: "text-sm",
     },
     {
-      size: "md",
-      iconOnly: false,
-      className: "text-sm",
-    },
-    {
-      size: "lg",
-      iconOnly: false,
-      className: "text-base",
-    },
-    {
-      size: "xl",
+      size: ["lg", "xl"],
       iconOnly: false,
       className: "text-base",
     },
