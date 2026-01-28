@@ -4,6 +4,10 @@ export const hasBackgroundBaseClass = (className?: string): boolean => {
   return !!className && /(?:^|\s)bg-\S+/.test(className);
 };
 
+export const hasWidthHeightBaseClass = (className?: string): boolean => {
+  return !!className && /(?:^|\s)[wh]-\S+/.test(className);
+};
+
 export const getInteractiveHandlers = <E extends HTMLElement = HTMLDivElement>({
   disabled,
   typingRef,

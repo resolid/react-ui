@@ -14,6 +14,8 @@ export type ConfigProviderProps = {
   toastConfig?: ToastProviderProps;
 };
 
+export { DirectionContext };
+
 export const ConfigProvider = ({
   dir = "ltr",
   locale,

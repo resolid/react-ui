@@ -1,0 +1,308 @@
+---
+title: 滑动选择器
+description: 滑动选择器，使用拖动交互快速选择数值或数值范围。
+---
+
+## 演示
+
+```jsx demo online=Slider componentProps=slider/slider.tsx|color,size,disabled
+import { Slider, SliderTrack, SliderThumb } from "@resolid/react-ui";
+
+export default function App() {
+  return (
+    <Slider className={"w-full md:w-1/2"} defaultValue={20}>
+      <SliderTrack />
+      <SliderThumb />
+    </Slider>
+  );
+}
+```
+
+## 用法
+
+```js
+import { Slider, SliderTrack, SliderThumb } from "@resolid/react-ui";
+```
+
+- `Slider`: 滑动选择器的根容器。
+- `SliderTrack`: 滑动选择器的轨道。
+- `SliderThumb`: 滑动选择器的视觉指示。
+
+## 特点
+
+- 遵循 [WAI ARIA Slider](https://www.w3.org/WAI/ARIA/apg/patterns/slider-multithumb/) 设计模式。
+- 支持多个滑块。
+- 支持点击或触摸轨道更改值。
+- 支持从右向左的方向。
+- 可以是受控的，也可以是不受控的。
+
+## 举例
+
+### 禁用
+
+使用 `disabled` 属性禁用轨道。
+
+```jsx demo
+import { Slider, SliderTrack, SliderThumb } from "@resolid/react-ui";
+
+export default function App() {
+  return (
+    <div className="flex w-full flex-col gap-3 md:w-1/2">
+      <Slider disabled defaultValue={20}>
+        <SliderTrack />
+        <SliderThumb />
+      </Slider>
+      <Slider disabled defaultValue={[15, 60]}>
+        <SliderTrack />
+        <SliderThumb />
+      </Slider>
+    </div>
+  );
+}
+```
+
+### 倒转
+
+使用 `inverted` 属性倒转轨道。
+
+```jsx demo
+import { Slider, SliderTrack, SliderThumb } from "@resolid/react-ui";
+
+export default function App() {
+  return (
+    <div className="flex w-full flex-col gap-3 md:w-1/2">
+      <Slider inverted defaultValue={20}>
+        <SliderTrack />
+        <SliderThumb />
+      </Slider>
+      <Slider inverted defaultValue={[15, 60]}>
+        <SliderTrack />
+        <SliderThumb />
+      </Slider>
+    </div>
+  );
+}
+```
+
+### 范围滑块
+
+把 `value` 或 `defaultValue` 属性设置为数组，创建范围滑块。
+
+```jsx demo
+import { Slider, SliderTrack, SliderThumb } from "@resolid/react-ui";
+
+export default function App() {
+  return (
+    <Slider className={"w-full md:w-1/2"} defaultValue={[15, 60]}>
+      <SliderTrack />
+      <SliderThumb />
+    </Slider>
+  );
+}
+```
+
+### 标记
+
+用 `marks` 属性在滑块上显示标记。
+
+```jsx demo
+import { Slider, SliderTrack, SliderThumb, DirectionContext } from "@resolid/react-ui";
+
+export default function App() {
+  const marks = [
+    { value: 0, label: "0KM" },
+    { value: 25, label: "25KM" },
+    { value: 50, label: "50KM" },
+    { value: 75, label: "75KM" },
+    { value: 100, label: "100KM" },
+  ];
+
+  return (
+    <div className="flex w-full flex-col gap-3 md:w-1/2">
+      <Slider marks={marks.map((mark) => ({ value: mark.value }))} defaultValue={25}>
+        <SliderTrack />
+        <SliderThumb />
+      </Slider>
+      <Slider marks={marks} className={"mb-5"} defaultValue={[25, 75]}>
+        <SliderTrack />
+        <SliderThumb />
+      </Slider>
+    </div>
+  );
+}
+```
+
+### 颜色
+
+通过传递 `color` 属性，可以选择使用 `primary`、`secondary`、`success`、`warning`、`danger` 或 `neutral` 中的任意一种颜色。
+
+```jsx demo
+import { Slider, SliderTrack, SliderThumb } from "@resolid/react-ui";
+
+export default function App() {
+  return (
+    <div className="flex w-full flex-col gap-3 md:w-1/2">
+      {["primary", "secondary", "success", "warning", "danger", "neutral"].map((color, idx) => (
+        <Slider key={color} color={color} defaultValue={15 * (idx + 1)}>
+          <SliderTrack />
+          <SliderThumb />
+        </Slider>
+      ))}
+    </div>
+  );
+}
+```
+
+### 大小
+
+通过传递 `size` 属性，可以选择使用 `xs`、`sm`、`md`、`lg` 或 `xl` 中的任意一种大小。
+
+```jsx demo
+import { Slider, SliderTrack, SliderThumb } from "@resolid/react-ui";
+
+export default function App() {
+  return (
+    <div className="flex w-full flex-col gap-3 md:w-1/2">
+      {["xs", "sm", "md", "lg", "xl"].map((size, idx) => (
+        <Slider key={size} size={size} defaultValue={15 * (idx + 1)}>
+          <SliderTrack />
+          <SliderThumb />
+        </Slider>
+      ))}
+    </div>
+  );
+}
+```
+
+### 垂直
+
+用 `orientation` 属性改变滑块的方向。
+
+```jsx demo
+import { Slider, SliderTrack, SliderThumb } from "@resolid/react-ui";
+
+export default function App() {
+  return (
+    <div className="flex flex-row gap-6">
+      <Slider orientation="vertical" className={"h-60"} defaultValue={20}>
+        <SliderTrack />
+        <SliderThumb />
+      </Slider>
+      <Slider
+        marks={[
+          { value: 0, label: "0KM" },
+          { value: 25, label: "25KM" },
+          { value: 50, label: "50KM" },
+          { value: 75, label: "75KM" },
+          { value: 100, label: "100KM" },
+        ]}
+        orientation="vertical"
+        className={"me-10 h-60"}
+        defaultValue={35}
+      >
+        <SliderTrack />
+        <SliderThumb />
+      </Slider>
+      <Slider orientation="vertical" className={"h-60"} defaultValue={[25, 65]}>
+        <SliderTrack />
+        <SliderThumb />
+      </Slider>
+      <Slider orientation="vertical" inverted className={"h-60"} defaultValue={35}>
+        <SliderTrack />
+        <SliderThumb />
+      </Slider>
+      <Slider orientation="vertical" inverted className={"h-60"} defaultValue={[25, 65]}>
+        <SliderTrack />
+        <SliderThumb />
+      </Slider>
+    </div>
+  );
+}
+```
+
+### 可控值
+
+使用 `value` 和 `onChange` 来控制滑动选择器的数值  
+使用 `onChangeEnd` 来监听滑动选择器最终的值
+
+```jsx demo
+import { Slider, SliderTrack, SliderThumb, Separator } from "@resolid/react-ui";
+import { useState } from "react";
+
+export default function App() {
+  const [value, setValue] = useState(50);
+  const [endValue, setEndValue] = useState(50);
+
+  const [rangeValue, setRangeValue] = useState([25, 75]);
+  const [endRangeValue, setEndRangeValue] = useState([25, 75]);
+
+  return (
+    <div className={"flex w-full flex-col gap-3 md:w-1/2"}>
+      <div>
+        <p>
+          onChange value: <strong>{value}</strong>
+        </p>
+        <p>
+          onChangeEnd value: <strong>{endValue}</strong>
+        </p>
+      </div>
+      <Slider value={value} onChange={setValue} onChangeEnd={setEndValue}>
+        <SliderTrack />
+        <SliderThumb />
+      </Slider>
+      <Separator />
+      <div>
+        <p>
+          onChange value: <strong>{rangeValue && rangeValue.join(", ")}</strong>
+        </p>
+        <p>
+          onChangeEnd value: <strong>{endRangeValue && endRangeValue.join(", ")}</strong>
+        </p>
+      </div>
+      <Slider value={rangeValue} onChange={setRangeValue} onChangeEnd={setEndRangeValue}>
+        <SliderTrack />
+        <SliderThumb />
+      </Slider>
+    </div>
+  );
+}
+```
+
+### 自定义
+
+```jsx demo
+import { Slider, SliderTrack, SliderThumb } from "@resolid/react-ui";
+import { useState } from "react";
+import { SpriteIcon } from "~/components/sprite-icon";
+
+export default function App() {
+  const [checked, setChecked] = useState(false);
+
+  return (
+    <div className={"flex w-full flex-col gap-3 md:w-1/2"}>
+      <Slider defaultValue={35} thumbSize={{ width: 26, height: 26 }}>
+        <SliderTrack />
+        <SliderThumb className={"flex items-center justify-center border"}>
+          <SpriteIcon size={"1.25em"} name="heart" />
+        </SliderThumb>
+      </Slider>
+      <Slider defaultValue={[20, 75]} thumbSize={{ width: 26, height: 26 }}>
+        <SliderTrack />
+        <SliderThumb className={"flex items-center justify-center border"}>
+          {(index) =>
+            index == 1 ? (
+              <SpriteIcon size={"1.25em"} name="heart-broken" />
+            ) : (
+              <SpriteIcon size={"1.25em"} name="heart" />
+            )
+          }
+        </SliderThumb>
+      </Slider>
+    </div>
+  );
+}
+```
+
+## 属性
+
+::PropsTable{file=slider/slider.tsx}

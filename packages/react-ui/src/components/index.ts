@@ -36,6 +36,7 @@ export * from "./radio/radio-group";
 export * from "./select/native-select";
 export * from "./select/select";
 export * from "./separator/separator";
+export * from "./slider/slider";
 export * from "./spinner/spinner";
 export * from "./switch/switch";
 export * from "./tabs/tabs";

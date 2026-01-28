@@ -166,7 +166,7 @@ const menus: Menu[] = [
         path: "components/switch",
       },
       {
-        label: "滑动输入条",
+        label: "滑动选择器",
         path: "components/slider",
       },
     ],
