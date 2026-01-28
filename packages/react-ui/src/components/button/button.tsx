@@ -3,6 +3,7 @@ import type { AriaRole, CSSProperties, ReactNode } from "react";
 import type { JSX } from "react/jsx-runtime";
 import { useButtonProps } from "../../hooks";
 import { Polymorphic, type PolymorphicProps } from "../../primitives";
+import { getRadiusClass } from "../../shared/utils";
 import { dataAttr, tx } from "../../utils";
 import { type ButtonBaseProps, useButtonGroup } from "./button-group-context";
 import { ButtonSpinner } from "./button-spinner";
@@ -87,13 +88,7 @@ export const Button = (props: PolymorphicProps<"button", ButtonProps, "role">): 
     disabled: disabledStatus,
   });
   const radiusStyle = isNumber(radius) && radius > 0 ? `${radius}px` : undefined;
-  const radiusClass = radiusStyle
-    ? "rounded-(--rv)"
-    : radius == "full"
-      ? "rounded-full"
-      : radius == true
-        ? "rounded-md"
-        : "";
+  const radiusClass = getRadiusClass(radiusStyle, radius);
 
   return (
     <Polymorphic<"button">

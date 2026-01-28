@@ -1,5 +1,18 @@
 import type { KeyboardEvent, MouseEvent, RefObject } from "react";
 
+export const getRadiusClass = (
+  radiusStyle: string | undefined,
+  radius: number | boolean | "full",
+): string => {
+  return radiusStyle
+    ? "rounded-(--rv)"
+    : radius == "full"
+      ? "rounded-full"
+      : radius == true
+        ? "rounded-md"
+        : "";
+};
+
 export const hasBackgroundBaseClass = (className?: string): boolean => {
   return !!className && /(?:^|\s)bg-\S+/.test(className);
 };

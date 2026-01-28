@@ -3,7 +3,7 @@ import { type CSSProperties, useState } from "react";
 import type { JSX } from "react/jsx-runtime";
 import type { ImageLoadStatus } from "../../hooks";
 import type { PrimitiveProps } from "../../primitives";
-import { hasBackgroundBaseClass } from "../../shared/utils";
+import { getRadiusClass, hasBackgroundBaseClass } from "../../shared/utils";
 import { tx } from "../../utils";
 import { AvatarContext, AvatarStatusContext } from "./avatar-context";
 import { type AvatarBaseProps, useAvatarGroup } from "./avatar-group-context";
@@ -30,13 +30,7 @@ export const AvatarRoot = (props: PrimitiveProps<"div", AvatarRootProps>): JSX.E
 
   const sizeStyle = isNumber(size) ? `${size}px` : size;
   const radiusStyle = isNumber(radius) && radius > 0 ? `${radius}px` : undefined;
-  const radiusClass = radiusStyle
-    ? "rounded-(--rv)"
-    : radius == "full"
-      ? "rounded-full"
-      : radius == true
-        ? "rounded-md"
-        : "";
+  const radiusClass = getRadiusClass(radiusStyle, radius);
 
   const [imageLoadStatus, setImageLoadStatus] = useState<ImageLoadStatus>("idle");
 
