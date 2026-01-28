@@ -67,7 +67,7 @@ export const Button = (props: PolymorphicProps<"button", ButtonProps, "role">): 
     spinner,
     spinnerPlacement = "start",
     iconOnly = false,
-    noPadding: noPadding = false,
+    noPadding = false,
     type = "button",
     tabIndex,
     className,
