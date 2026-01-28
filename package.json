@@ -29,12 +29,12 @@
     "@types/node": "^24.10.9",
     "eslint": "^9.39.2",
     "eslint-plugin-react-you-might-not-need-an-effect": "^0.8.5",
-    "lefthook": "^2.0.15",
+    "lefthook": "^2.0.16",
     "prettier": "^3.8.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
     "typescript": "^5.9.3"
   },
-  "packageManager": "pnpm@10.28.1",
+  "packageManager": "pnpm@10.28.2",
   "engines": {
     "node": "^20.19.0 || ^22.13.0 || >=24",
     "pnpm": "10.x"
@@ -45,9 +45,9 @@
       "lefthook"
     ],
     "overrides": {
-      "react": "^19.2.3",
-      "react-dom": "^19.2.3",
-      "react-is": "^19.2.3",
+      "react": "^19.2.4",
+      "react-dom": "^19.2.4",
+      "react-is": "^19.2.4",
       "array-includes": "npm:@nolyfill/array-includes@^1",
       "array.prototype.findlast": "npm:@nolyfill/array.prototype.findlast@^1",
       "array.prototype.flat": "npm:@nolyfill/array.prototype.flat@^1",
