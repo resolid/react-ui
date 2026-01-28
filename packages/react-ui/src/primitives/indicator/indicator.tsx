@@ -1,5 +1,6 @@
 import { type CSSProperties, useMemo } from "react";
 import type { JSX } from "react/jsx-runtime";
+import { useDirection } from "../../components/provider/direction-context";
 import type { Orientation } from "../../shared/types";
 import { tx } from "../../utils";
 import type { PrimitiveProps } from "../polymorphic";
@@ -14,6 +15,9 @@ export const Indicator = (
 ): JSX.Element => {
   const { orientation, className, style, ...rest } = props;
 
+  const direction = useDirection(true);
+  const vertical = orientation == "vertical";
+
   const { listElement, itemElement } = useIndicator();
 
   const indicatorStyle = useMemo(() => {
@@ -23,15 +27,22 @@ export const Indicator = (
 
     const listStyle = getComputedStyle(listElement);
 
+    const offset = vertical
+      ? itemElement.offsetTop - parseFloat(listStyle.paddingTop)
+      : direction == "rtl"
+        ? -1 *
+            ((itemElement.offsetParent as HTMLElement)?.offsetWidth -
+              itemElement.offsetWidth -
+              itemElement.offsetLeft) +
+          parseFloat(listStyle.paddingLeft)
+        : itemElement.offsetLeft - parseFloat(listStyle.paddingLeft);
+
     return {
       "--wv": itemElement.offsetWidth + "px",
       "--hv": itemElement.offsetHeight + "px",
-      "--tv":
-        orientation == "vertical"
-          ? `${itemElement.offsetTop - parseFloat(listStyle.paddingTop)}px`
-          : `${itemElement.offsetLeft - parseFloat(listStyle.paddingLeft)}px`,
+      "--tv": offset + "px",
     } as CSSProperties;
-  }, [itemElement, listElement, orientation]);
+  }, [direction, itemElement, listElement, vertical]);
 
   return (
     <span
@@ -42,7 +53,7 @@ export const Indicator = (
       }}
       className={tx(
         "absolute transition-[width,height,translate] duration-200",
-        orientation == "vertical" ? "translate-y-(--tv)" : "translate-x-(--tv)",
+        vertical ? "translate-y-(--tv)" : "translate-x-(--tv)",
         className,
       )}
       {...rest}

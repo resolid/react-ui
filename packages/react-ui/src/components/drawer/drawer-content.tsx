@@ -22,12 +22,12 @@ const placementStyles = {
     close: "translate-x-full",
   },
   top: {
-    base: "top-0 left-0 right-0",
+    base: "top-0 start-0 end-0",
     open: "translate-y-none",
     close: "-translate-y-full",
   },
   bottom: {
-    base: "bottom-0 left-0 right-0",
+    base: "bottom-0 start-0 end-0",
     open: "translate-y-none",
     close: "translate-y-full",
   },

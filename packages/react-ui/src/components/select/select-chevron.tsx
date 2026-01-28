@@ -6,7 +6,7 @@ export const SelectChevron = ({ className }: { className: string }): JSX.Element
   return (
     <span
       className={tx(
-        "pointer-events-none absolute top-0 right-0 bottom-0 flex items-center justify-center",
+        "pointer-events-none absolute end-0 top-0 bottom-0 flex items-center justify-center",
         className,
       )}
     >

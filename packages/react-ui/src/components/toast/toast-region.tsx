@@ -85,11 +85,11 @@ const getToastListStyles = (placement: ToastPlacement) => {
   }
 
   if (!placement.includes("start")) {
-    styles.push("right-0");
+    styles.push("end-0");
   }
 
   if (!placement.includes("end")) {
-    styles.push("left-0");
+    styles.push("start-0");
   }
 
   return styles.join(" ");
