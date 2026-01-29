@@ -28,7 +28,8 @@
       "types": "./dist/locales/*.d.ts",
       "import": "./dist/locales/*.js"
     },
-    "./tailwindcss": "./tailwindcss/index.css"
+    "./tailwindcss": "./tailwindcss/index.css",
+    "./package.json": "./package.json"
   },
   "types": "./dist/index.d.ts",
   "files": [
