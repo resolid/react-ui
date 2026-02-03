@@ -30,7 +30,7 @@
     "@resolid/config": "^4.0.1",
     "@resolid/flex-routes": "^1.6.0",
     "@resolid/react-router-hono": "^2.3.2",
-    "@shikijs/rehype": "^3.21.0",
+    "@shikijs/rehype": "^3.22.0",
     "@tailwindcss/vite": "^4.1.18",
     "@types/react": "^19.2.10",
     "@types/react-dom": "^19.2.3",
