@@ -1,6 +1,7 @@
 import type { JSX } from "react/jsx-runtime";
 import type { PrimitiveProps } from "../../primitives";
 import { CloseIcon } from "../../shared/icons";
+import type { Radius } from "../../shared/utils";
 import { tx } from "../../utils";
 import { Button } from "../button/button";
 import type { ButtonStyleProps } from "../button/button.styles";
@@ -26,10 +27,10 @@ export type CloseButtonProps = {
   size?: string;
 
   /**
-   * 按钮圆角
-   * @default true
+   * 圆角
+   * @default "full"
    */
-  radius?: number | boolean | "full";
+  radius?: Radius;
 
   /**
    * 无内边距

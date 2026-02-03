@@ -1,5 +1,6 @@
 import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives";
 import type { Orientation } from "../../shared/types";
+import type { Radius } from "../../shared/utils";
 import type { ButtonStyleProps } from "./button.styles";
 
 export type ButtonBaseProps = {
@@ -22,10 +23,10 @@ export type ButtonBaseProps = {
   size?: ButtonStyleProps["size"];
 
   /**
-   * 按钮圆角
-   * @default true
+   * 圆角
+   * @default "md"
    */
-  radius?: number | boolean | "full";
+  radius?: Radius;
 
   /**
    * 是否禁用

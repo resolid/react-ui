@@ -43,7 +43,7 @@ export const TagsInputItem = (
     >
       {value}
       <CloseButton
-        radius
+        radius={"md"}
         disabled={disabled}
         className={"pointer-events-auto h-full"}
         onClick={handelDelete}

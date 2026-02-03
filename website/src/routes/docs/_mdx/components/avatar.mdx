@@ -93,7 +93,11 @@ import { Avatar, AvatarFallback, AvatarImage } from "@resolid/react-ui";
 export default function App() {
   return (
     <div className={"flex flex-row items-center justify-center gap-6"}>
-      <Avatar radius={false} name={"Alex Suprun"}>
+      <Avatar radius={"none"} name={"Alex Suprun"}>
+        <AvatarImage src={"https://file.resolid.tech/images%2Fa001.jpg"} />
+        <AvatarFallback />
+      </Avatar>
+      <Avatar radius={"md"} name={"Alex Suprun"}>
         <AvatarImage src={"https://file.resolid.tech/images%2Fa001.jpg"} />
         <AvatarFallback />
       </Avatar>

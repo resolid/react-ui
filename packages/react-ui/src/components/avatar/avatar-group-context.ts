@@ -1,17 +1,18 @@
 import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives";
+import type { Radius } from "../../shared/utils";
 
 export type AvatarBaseProps = {
   /**
-   * 头像大小
+   * 大小
    * @default 64
    */
   size?: number | string;
 
   /**
-   * 头像圆角
+   * 圆角
    * @default "full"
    */
-  radius?: number | boolean | "full";
+  radius?: Radius;
 };
 
 export type AvatarGroupContextValue = AvatarBaseProps;

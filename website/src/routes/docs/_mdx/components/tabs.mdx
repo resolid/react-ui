@@ -15,13 +15,13 @@ export default function App() {
       <TabsList className={"gap-1 border-b border-bd-normal p-1"}>
         <TabsIndicator className={"-bottom-px h-0.5 w-(--wv) bg-bg-primary-emphasis"} />
         <TabsTab value={"auto"} className={"rounded-md px-3"}>
-          Auto
+          自动
         </TabsTab>
         <TabsTab value={"light"} className={"rounded-md px-3"}>
-          Light
+          亮色
         </TabsTab>
         <TabsTab value={"dark"} className={"rounded-md px-3"}>
-          Dark
+          暗色
         </TabsTab>
       </TabsList>
       <TabsPanel value={"auto"} className={"flex items-center justify-center p-16 text-bg-muted"}>
@@ -86,13 +86,13 @@ export default function App() {
       <TabsList className={"border-e border-bd-normal p-1"}>
         <TabsIndicator className={"-z-1 h-(--hv) w-(--wv) rounded-md bg-bg-subtle"} />
         <TabsTab value={"auto"} className={"rounded-md px-3"}>
-          Auto
+          自动
         </TabsTab>
         <TabsTab value={"light"} className={"rounded-md px-3"}>
-          Light
+          亮色
         </TabsTab>
         <TabsTab value={"dark"} className={"rounded-md px-3"}>
-          Dark
+          暗色
         </TabsTab>
       </TabsList>
       <TabsPanel value={"auto"} className={"flex items-center justify-center p-16 text-bg-muted"}>
@@ -121,13 +121,13 @@ export default function App() {
       <TabsList className={"border-b border-bd-normal p-1"}>
         <TabsIndicator className={"-bottom-px h-0.5 w-(--wv) bg-bg-primary-emphasis"} />
         <TabsTab value={"auto"} className={"rounded-md px-3"}>
-          Auto
+          自动
         </TabsTab>
         <TabsTab value={"light"} disabled className={"rounded-md px-3"}>
-          Light
+          亮色
         </TabsTab>
         <TabsTab value={"dark"} className={"rounded-md px-3"}>
-          Dark
+          暗色
         </TabsTab>
       </TabsList>
       <TabsPanel value={"auto"} className={"flex items-center justify-center p-16 text-bg-muted"}>
@@ -161,9 +161,9 @@ import {
 } from "@resolid/react-ui";
 
 const items = [
-  { id: "1", title: "Tab", content: "Tab-1" },
-  { id: "2", title: "Tab", content: "Tab-2" },
-  { id: "3", title: "Tab", content: "Tab-3" },
+  { id: "1", title: "选项卡", content: "选项卡-1" },
+  { id: "2", title: "选项卡", content: "选项卡-2" },
+  { id: "3", title: "选项卡", content: "选项卡-3" },
 ];
 
 export default function App() {
@@ -177,8 +177,8 @@ export default function App() {
       ...tabs,
       {
         id: uid,
-        title: `Tab`,
-        content: `Tab-${uid}`,
+        title: `选项卡`,
+        content: `选项卡-${uid}`,
       },
     ]);
 
@@ -233,7 +233,7 @@ export default function App() {
           noPadding
           onClick={addTab}
         >
-          Add Tab
+          增加
         </Button>
       </TabsList>
       {tabs.map((tab) => {

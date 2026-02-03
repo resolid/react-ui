@@ -13,7 +13,7 @@ export const badgeStyles: TvReturnType<
   undefined,
   AlertAndBadgeShareStyles
 > = tv({
-  base: "inline-flex items-center rounded-md border px-2 py-1 text-xs",
+  base: "inline-flex items-center border px-2 py-1 text-xs",
   extend: alertAndBadgeShareStyles,
 });
 

@@ -327,6 +327,8 @@ const componentPropsSorts = [
 
   "size",
   "color",
+  "variant",
+  "radius",
   "orientation",
 
   "disabled",

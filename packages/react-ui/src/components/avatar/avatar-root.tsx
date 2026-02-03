@@ -3,7 +3,7 @@ import { type CSSProperties, useState } from "react";
 import type { JSX } from "react/jsx-runtime";
 import type { ImageLoadStatus } from "../../hooks";
 import type { PrimitiveProps } from "../../primitives";
-import { getRadiusClass, hasBackgroundBaseClass } from "../../shared/utils";
+import { getRadiusStyleAndClass, hasBackgroundBaseClass } from "../../shared/utils";
 import { tx } from "../../utils";
 import { AvatarContext, AvatarStatusContext } from "./avatar-context";
 import { type AvatarBaseProps, useAvatarGroup } from "./avatar-group-context";
@@ -28,15 +28,14 @@ export const AvatarRoot = (props: PrimitiveProps<"div", AvatarRootProps>): JSX.E
     ...rest
   } = props;
 
-  const sizeStyle = isNumber(size) ? `${size}px` : size;
-  const radiusStyle = isNumber(radius) && radius > 0 ? `${radius}px` : undefined;
-  const radiusClass = getRadiusClass(radiusStyle, radius);
+  const sizeVariable = isNumber(size) ? `${size}px` : size;
+  const { radiusStyle, radiusClass } = getRadiusStyleAndClass(radius);
 
   const [imageLoadStatus, setImageLoadStatus] = useState<ImageLoadStatus>("idle");
 
   return (
     <div
-      style={{ ...style, "--sv": sizeStyle, "--rv": radiusStyle } as CSSProperties}
+      style={{ ...style, ...radiusStyle, "--sv": sizeVariable } as CSSProperties}
       className={tx(
         "relative inline-flex h-(--sv) w-(--sv) shrink-0 items-center justify-center select-none",
         radiusClass,

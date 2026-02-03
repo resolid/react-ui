@@ -1,16 +1,31 @@
-import type { KeyboardEvent, MouseEvent, RefObject } from "react";
+import { isNumber } from "@resolid/utils";
+import type { CSSProperties, KeyboardEvent, MouseEvent, RefObject } from "react";
 
-export const getRadiusClass = (
-  radiusStyle: string | undefined,
-  radius: number | boolean | "full",
-): string => {
-  return radiusStyle
+export type Radius = number | keyof typeof RadiusStyles;
+
+const RadiusStyles = {
+  none: "",
+  xs: "rounded-xs",
+  sm: "rounded-sm",
+  md: "rounded-md",
+  lg: "rounded-lg",
+  xl: "rounded-xl",
+  full: "rounded-full",
+};
+
+export const getRadiusStyleAndClass = (
+  radius: Radius,
+): {
+  radiusStyle: CSSProperties | undefined;
+  radiusClass: string;
+} => {
+  const radiusStyle =
+    isNumber(radius) && radius > 0 ? ({ "--rv": `${radius}px` } as CSSProperties) : undefined;
+  const radiusClass = radiusStyle
     ? "rounded-(--rv)"
-    : radius == "full"
-      ? "rounded-full"
-      : radius == true
-        ? "rounded-md"
-        : "";
+    : (RadiusStyles[radius as keyof typeof RadiusStyles] ?? "");
+
+  return { radiusStyle, radiusClass };
 };
 
 export const hasBackgroundBaseClass = (className?: string): boolean => {

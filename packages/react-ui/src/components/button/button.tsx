@@ -1,9 +1,8 @@
-import { isNumber } from "@resolid/utils";
 import type { AriaRole, CSSProperties, ReactNode } from "react";
 import type { JSX } from "react/jsx-runtime";
 import { useButtonProps } from "../../hooks";
 import { Polymorphic, type PolymorphicProps } from "../../primitives";
-import { getRadiusClass } from "../../shared/utils";
+import { getRadiusStyleAndClass } from "../../shared/utils";
 import { dataAttr, tx } from "../../utils";
 import { type ButtonBaseProps, useButtonGroup } from "./button-group-context";
 import { ButtonSpinner } from "./button-spinner";
@@ -60,7 +59,7 @@ export const Button = (props: PolymorphicProps<"button", ButtonProps, "role">): 
     variant = group?.variant ?? "solid",
     color = group?.color ?? "primary",
     size = group?.size ?? "md",
-    radius = group?.radius ?? true,
+    radius = group?.radius ?? "md",
     disabled = group?.disabled ?? false,
     active = false,
     loading = false,
@@ -87,8 +86,8 @@ export const Button = (props: PolymorphicProps<"button", ButtonProps, "role">): 
     tabIndex,
     disabled: disabledStatus,
   });
-  const radiusStyle = isNumber(radius) && radius > 0 ? `${radius}px` : undefined;
-  const radiusClass = getRadiusClass(radiusStyle, radius);
+
+  const { radiusStyle, radiusClass } = getRadiusStyleAndClass(radius);
 
   return (
     <Polymorphic<"button">
@@ -96,7 +95,7 @@ export const Button = (props: PolymorphicProps<"button", ButtonProps, "role">): 
       render={render}
       {...buttonProps}
       data-active={dataAttr(active)}
-      style={{ ...style, "--rv": radiusStyle } as CSSProperties}
+      style={{ ...style, ...radiusStyle } as CSSProperties}
       className={tx(
         buttonStyles({ variant, color, size, disabled: disabledStatus, iconOnly, noPadding }),
         radiusClass,

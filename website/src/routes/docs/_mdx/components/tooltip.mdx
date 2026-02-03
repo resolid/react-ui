@@ -11,10 +11,10 @@ import { Tooltip, TooltipArrow, TooltipContent, TooltipTrigger, Button } from "@
 export default function App() {
   return (
     <Tooltip>
-      <TooltipTrigger render={(props) => <Button {...props} />}>Hover me</TooltipTrigger>
+      <TooltipTrigger render={(props) => <Button {...props} />}>按钮</TooltipTrigger>
       <TooltipContent>
         <TooltipArrow />
-        Tooltip content
+        工具提示内容
       </TooltipContent>
     </Tooltip>
   );
@@ -93,7 +93,7 @@ import { Button, Tooltip, TooltipArrow, TooltipContent, TooltipTrigger } from "@
 export default function App() {
   return (
     <Tooltip interactive>
-      <TooltipTrigger render={(props) => <Button {...props} />}>Hover me</TooltipTrigger>
+      <TooltipTrigger render={(props) => <Button {...props} />}>按钮</TooltipTrigger>
       <TooltipContent>
         <TooltipArrow />
         工具提示内容可交互
@@ -117,11 +117,11 @@ export default function App() {
   return (
     <Tooltip open={open} onOpenChange={setOpen}>
       <TooltipTrigger render={(props) => <Button {...props} />}>
-        {open ? "Hide" : "Show"} tooltip
+        工具提示{open ? "已显示" : "已隐藏"}
       </TooltipTrigger>
       <TooltipContent>
         <TooltipArrow />
-        Tooltip content
+        工具提示内容
       </TooltipContent>
     </Tooltip>
   );
@@ -139,11 +139,11 @@ export default function App() {
   return (
     <Tooltip openDelay={1000} closeDelay={500}>
       <TooltipTrigger render={(props) => <Button {...props} />}>
-        Delay (open: 1000ms, close: 500ms)
+        延迟 (打开: 1000ms, 关闭: 500ms)
       </TooltipTrigger>
       <TooltipContent>
         <TooltipArrow />
-        Tooltip content
+        工具提示内容
       </TooltipContent>
     </Tooltip>
   );
@@ -160,10 +160,10 @@ import { Button, Tooltip, TooltipArrow, TooltipContent, TooltipTrigger } from "@
 export default function App() {
   return (
     <Tooltip duration={2500}>
-      <TooltipTrigger render={(props) => <Button {...props} />}>Hover me</TooltipTrigger>
+      <TooltipTrigger render={(props) => <Button {...props} />}>按钮</TooltipTrigger>
       <TooltipContent>
         <TooltipArrow />
-        Tooltip content
+        工具提示内容
       </TooltipContent>
     </Tooltip>
   );
@@ -258,7 +258,7 @@ export default function App() {
       <TooltipProvider value={tooltip}>
         <TooltipContent>
           <TooltipArrow />
-          Tooltip content
+          工具提示内容
         </TooltipContent>
       </TooltipProvider>
     </>
@@ -315,7 +315,7 @@ export default function App() {
           </TooltipTrigger>
           <TooltipContent>
             <TooltipArrow />
-            {name}位置的消息提示
+            {name}位置的工具提示
           </TooltipContent>
         </Tooltip>
       ))}

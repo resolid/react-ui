@@ -19,7 +19,9 @@ export default function App() {
 import { Badge } from "@resolid/react-ui";
 ```
 
-## 外观
+## 举例
+
+### 外观
 
 徽标有四种不同的外观可供使用。通过传递 `variant` 属性，可以选择使用 `solid`、`outline`、`subtle` 和 `soft` 中的任意一种。
 
@@ -43,6 +45,26 @@ export default function App() {
           ))}
         </div>
       ))}
+    </div>
+  );
+}
+```
+
+### 圆角
+
+通过传递 `radius` 属性来更改徽标的圆角。
+
+```jsx demo
+import { Badge } from "@resolid/react-ui";
+
+export default function App() {
+  return (
+    <div className={"flex flex-row gap-3"}>
+      <Badge radius={"none"}>徽标</Badge>
+      <Badge radius={2}>徽标</Badge>
+      <Badge>徽标</Badge>
+      <Badge radius={"lg"}>徽标</Badge>
+      <Badge radius={"full"}>徽标</Badge>
     </div>
   );
 }

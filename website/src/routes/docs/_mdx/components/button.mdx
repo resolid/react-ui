@@ -9,7 +9,7 @@ description: 使用户能够触发操作或事件，例如提交表单、打开�
 import { Button } from "@resolid/react-ui";
 
 export default function App() {
-  return <Button>Button</Button>;
+  return <Button>按钮</Button>;
 }
 ```
 
@@ -49,7 +49,7 @@ export default function App() {
         <div key={color} className={"flex gap-3"}>
           {variants.map((variant) => (
             <Button key={`${color}-${variant}`} variant={variant} color={color}>
-              Button
+              按钮
             </Button>
           ))}
         </div>
@@ -69,11 +69,11 @@ import { Button } from "@resolid/react-ui";
 export default function App() {
   return (
     <div className={"flex flex-row items-center gap-3"}>
-      <Button size={"xs"}>Button</Button>
-      <Button size={"sm"}>Button</Button>
-      <Button>Button</Button>
-      <Button size={"lg"}>Button</Button>
-      <Button size={"xl"}>Button</Button>
+      <Button size={"xs"}>按钮</Button>
+      <Button size={"sm"}>按钮</Button>
+      <Button>按钮</Button>
+      <Button size={"lg"}>按钮</Button>
+      <Button size={"xl"}>按钮</Button>
     </div>
   );
 }
@@ -89,11 +89,11 @@ import { Button } from "@resolid/react-ui";
 export default function App() {
   return (
     <div className={"flex flex-row gap-3"}>
-      <Button radius={false}>Button</Button>
-      <Button radius={2}>Button</Button>
-      <Button>Button</Button>
-      <Button radius={12}>Button</Button>
-      <Button radius={"full"}>Button</Button>
+      <Button radius={"none"}>按钮</Button>
+      <Button radius={2}>按钮</Button>
+      <Button>按钮</Button>
+      <Button radius={"lg"}>按钮</Button>
+      <Button radius={"full"}>按钮</Button>
     </div>
   );
 }
@@ -112,11 +112,11 @@ export default function App() {
     <div className={"flex flex-row gap-3"}>
       <Button>
         <SpriteIcon size={"1.25em"} className={"me-1.5"} name={"sun"} />
-        Light Mode
+        亮色模式
       </Button>
       <Button variant={"outline"}>
         <SpriteIcon size={"1.25em"} className={"me-1.5"} name={"moon"} />
-        Dark Mode
+        暗色模式
       </Button>
       <Button iconOnly>
         <SpriteIcon size={"1.25em"} name={"home"} />
@@ -139,17 +139,17 @@ import { Button } from "@resolid/react-ui";
 export default function App() {
   return (
     <div className={"flex flex-row gap-3"}>
-      <Button loading>Loading</Button>
+      <Button loading>加载中</Button>
       <Button color={"neutral"} loading>
         Loading
       </Button>
-      <Button loading loadingText={"Loading"}>
+      <Button loading loadingText={"加载中"}>
         Loading
       </Button>
       <Button variant={"outline"} color={"neutral"} loading>
         Loading
       </Button>
-      <Button variant={"outline"} loading loadingText={"Loading"}>
+      <Button variant={"outline"} loading loadingText={"加载中"}>
         Loading
       </Button>
     </div>
@@ -170,25 +170,25 @@ export default function App() {
     <div className={"flex flex-col items-center gap-3"}>
       <div className={"flex flex-row gap-3"}>
         <ButtonGroup>
-          <Button>Button</Button>
+          <Button>按钮</Button>
           <Button iconOnly>
             <SpriteIcon name={"menu"} />
           </Button>
         </ButtonGroup>
         <ButtonGroup color={"neutral"}>
-          <Button variant="subtle">Button</Button>
+          <Button variant="subtle">按钮</Button>
           <Button variant="outline" iconOnly>
             <SpriteIcon name={"menu"} />
           </Button>
         </ButtonGroup>
         <ButtonGroup color={"neutral"}>
-          <Button variant="subtle">One</Button>
-          <Button variant="outline">Two</Button>
-          <Button variant="outline">Three</Button>
-          <Button variant="outline">Four</Button>
+          <Button variant="subtle">黑体</Button>
+          <Button variant="outline">斜体</Button>
+          <Button variant="outline">下划线</Button>
+          <Button variant="outline">删除线</Button>
         </ButtonGroup>
         <ButtonGroup color={"neutral"} disabled>
-          <Button variant="subtle">Button</Button>
+          <Button variant="subtle">按钮</Button>
           <Button variant="outline" iconOnly>
             <SpriteIcon name={"menu"} />
           </Button>
@@ -196,20 +196,20 @@ export default function App() {
       </div>
       <div className={"flex flex-row gap-3"}>
         <ButtonGroup orientation={"vertical"}>
-          <Button>Submit</Button>
-          <Button>Cancel</Button>
+          <Button>提交</Button>
+          <Button>取消</Button>
         </ButtonGroup>
         <ButtonGroup variant="outline" orientation={"vertical"}>
-          <Button>Submit</Button>
-          <Button>Cancel</Button>
+          <Button>提交</Button>
+          <Button>取消</Button>
         </ButtonGroup>
         <ButtonGroup orientation={"vertical"} disabled>
-          <Button>Submit</Button>
-          <Button>Cancel</Button>
+          <Button>提交</Button>
+          <Button>取消</Button>
         </ButtonGroup>
         <ButtonGroup variant="outline" orientation={"vertical"} disabled>
-          <Button>Submit</Button>
-          <Button>Cancel</Button>
+          <Button>提交</Button>
+          <Button>取消</Button>
         </ButtonGroup>
       </div>
     </div>
