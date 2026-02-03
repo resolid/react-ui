@@ -1,5 +1,15 @@
 # @resolid/react-ui
 
+## 0.1.3
+
+### Patch Changes
+
+- feat: add ProgressBar component ([`eeb475c`](https://github.com/resolid/react-ui/commit/eeb475cf216833a2081789e876be17289c2e4c85))
+
+- chore: update dependencies ([`75900c4`](https://github.com/resolid/react-ui/commit/75900c4b5c71b87743cddcf0515573ded22b0814))
+
+- feat: update component radius prop ([`4a01b22`](https://github.com/resolid/react-ui/commit/4a01b2257c73dc29ac519254540a078c60d5e29f))
+
 ## 0.1.2
 
 ### Patch Changes
