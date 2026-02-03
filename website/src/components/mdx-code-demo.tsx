@@ -27,21 +27,24 @@ export type PropItem = {
 export const MdxCodeDemo = (props: {
   children: (props: Dict<string | boolean | number | undefined>) => ReactNode;
   componentProps: PropItem[];
-  settingProps: string[];
+  settingProps: Record<string, string | undefined>;
 }) => {
+  const settingPropsKeys = Object.keys(props.settingProps);
+
   const validProps = props.componentProps
     .filter((prop) => {
-      return props.settingProps.includes(prop.name);
+      return settingPropsKeys.includes(prop.name);
     })
     .sort((a, b) => {
-      return props.settingProps.indexOf(a.name) - props.settingProps.indexOf(b.name);
+      return settingPropsKeys.indexOf(a.name) - settingPropsKeys.indexOf(b.name);
     });
 
   const [state, setState] = useState<Dict<string | boolean | number | undefined>>(
     Object.fromEntries(
       validProps.map(({ name, defaultValue }) => {
-        const value =
-          defaultValue && /^[+-]?(\d+\.?\d*|\.\d+)([eE][+-]?\d+)?$/.test(defaultValue)
+        const value = props.settingProps[name]
+          ? props.settingProps[name]
+          : defaultValue && /^[+-]?(\d+\.?\d*|\.\d+)([eE][+-]?\d+)?$/.test(defaultValue)
             ? defaultValue
             : defaultValue == "Number.MIN_SAFE_INTEGER" || defaultValue == "Number.MAX_SAFE_INTEGER"
               ? undefined

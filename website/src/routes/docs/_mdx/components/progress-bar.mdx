@@ -1,0 +1,195 @@
+---
+title: 进度条
+description: 用于展示用户操作的当前进度和状态，也可用来表示任务/对象的完成度。
+---
+
+## 演示
+
+```jsx demo online=Progress componentProps=progress/progress-bar.tsx|color,size,percent=32
+import { ProgressBar } from "@resolid/react-ui";
+
+export default function App() {
+  return <ProgressBar className={"w-full md:w-1/2"} />;
+}
+```
+
+## 用法
+
+```js
+import { ProgressBar } from "@resolid/react-ui";
+```
+
+## 举例
+
+### 颜色
+
+进度条有六种不同的颜色可供使用。通过传递 `color` 属性，可以选择使用 `primary`、`secondary`、`success`、`warning`、`danger` 和 `neutral` 这些颜色。
+
+```jsx demo
+import { ProgressBar } from "@resolid/react-ui";
+
+export default function App() {
+  const colors = ["primary", "secondary", "success", "warning", "danger", "neutral"];
+
+  return (
+    <div className={"flex w-full flex-col gap-3 md:w-1/2"}>
+      {colors.map((color) => (
+        <ProgressBar key={color} color={color} percent={32} />
+      ))}
+    </div>
+  );
+}
+```
+
+### 圆角
+
+通过传递 `radius` 属性来更改徽标的圆角。
+
+```jsx demo
+import { ProgressBar } from "@resolid/react-ui";
+
+export default function App() {
+  return (
+    <div className={"flex w-full flex-col gap-3 md:w-1/2"}>
+      <ProgressBar percent={32} radius={"none"} />
+      <ProgressBar percent={32} radius={2} />
+      <ProgressBar percent={32} />
+      <ProgressBar percent={32} radius={"lg"} />
+      <ProgressBar percent={32} radius={"full"} />
+    </div>
+  );
+}
+```
+
+### 条纹动画
+
+把 `striped` 属性设为 `true`，这样进度条就会有条纹。
+把 `animated` 属性设置为 `true` 条纹就会有动画。
+
+```jsx demo
+import { ProgressBar } from "@resolid/react-ui";
+
+export default function App() {
+  return (
+    <div className={"flex w-full flex-col gap-3 md:w-1/2"}>
+      <ProgressBar striped percent={50} />
+      <ProgressBar animated percent={50} />
+    </div>
+  );
+}
+```
+
+### 分段
+
+使用 `ProgressBarRoot` 和 `ProgressBarSection` 可以分段显示进度条
+
+```jsx demo
+import {
+  ProgressBarRoot,
+  ProgressBarSection,
+  Tooltip,
+  TooltipArrow,
+  TooltipContent,
+  TooltipTrigger,
+} from "@resolid/react-ui";
+
+export default function App() {
+  return (
+    <div className={"flex w-full flex-col gap-3 md:w-1/2"}>
+      <ProgressBarRoot radius={"md"} size={20} className={"text-xs"}>
+        <ProgressBarSection percent={25}>文档</ProgressBarSection>
+        <ProgressBarSection color={"success"} percent={25}>
+          图片
+        </ProgressBarSection>
+        <ProgressBarSection color={"warning"} percent={30}>
+          其他
+        </ProgressBarSection>
+      </ProgressBarRoot>
+      <ProgressBarRoot radius={"md"} size={20} className={"text-xs"}>
+        <Tooltip placement="top">
+          <TooltipTrigger
+            render={(props) => (
+              <ProgressBarSection percent={33} {...props}>
+                文档
+              </ProgressBarSection>
+            )}
+          ></TooltipTrigger>
+          <TooltipContent>
+            <TooltipArrow />
+            文档 - 33GB
+          </TooltipContent>
+        </Tooltip>
+        <Tooltip placement="top">
+          <TooltipTrigger
+            render={(props) => (
+              <ProgressBarSection color={"success"} percent={28} {...props}>
+                图片
+              </ProgressBarSection>
+            )}
+          ></TooltipTrigger>
+          <TooltipContent>
+            <TooltipArrow />
+            图片 - 28GB
+          </TooltipContent>
+        </Tooltip>
+        <Tooltip placement="top">
+          <TooltipTrigger
+            render={(props) => (
+              <ProgressBarSection
+                className={"bg-purple-500 dark:bg-purple-300"}
+                percent={15}
+                {...props}
+              >
+                其他
+              </ProgressBarSection>
+            )}
+          ></TooltipTrigger>
+          <TooltipContent>
+            <TooltipArrow />
+            其他 - 15GB
+          </TooltipContent>
+        </Tooltip>
+      </ProgressBarRoot>
+    </div>
+  );
+}
+```
+
+### 垂直
+
+```jsx demo
+import { ProgressBar, ProgressBarRoot, ProgressBarSection } from "@resolid/react-ui";
+
+export default function App() {
+  return (
+    <div className={"flex h-60 flex-row gap-3"}>
+      <ProgressBar orientation="vertical" percent={50} />
+      <ProgressBar orientation="vertical" color={"success"} striped percent={50} />
+      <ProgressBar orientation="vertical" color={"neutral"} animated percent={50} />
+      <ProgressBarRoot orientation="vertical" radius={"md"} size={20} className={"text-xs"}>
+        <ProgressBarSection percent={25}>文档</ProgressBarSection>
+        <ProgressBarSection color={"success"} percent={25}>
+          图片
+        </ProgressBarSection>
+        <ProgressBarSection color={"warning"} percent={30}>
+          其他
+        </ProgressBarSection>
+      </ProgressBarRoot>
+    </div>
+  );
+}
+```
+
+## 属性
+
+### ProgressBar
+
+::PropsTable{file=progress/progress-bar.tsx}
+
+### ProgressBarRoot
+
+::PropsTable{file=progress/progress-bar-root.tsx}
+
+### ProgressBarSection
+
+::PropsTable{file=progress/progress-bar-section.tsx}

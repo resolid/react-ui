@@ -10,6 +10,7 @@
 @import "./themes/reset.css";
 
 @import "./plugins/scrollbar.css" layer(components);
+@import "./plugins/bg-striped.css" layer(components);
 
 @source "../src";
 @source "../dist";

@@ -82,7 +82,7 @@ const mdxComponents = {
   CodeDemo: (props: {
     children: [ReactNode, ReactNode];
     componentProps?: PropItem[];
-    settingProps?: string[];
+    settingProps?: Record<string, string | undefined>;
   }) => {
     const { children, componentProps, settingProps } = props;
 

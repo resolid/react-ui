@@ -138,11 +138,24 @@ export default function ({ sourceRoot }) {
                     {
                       type: "ExpressionStatement",
                       expression: {
-                        type: "ArrayExpression",
-                        elements: propsMeta.settingProps.map((prop) => ({
-                          type: "Literal",
-                          value: prop,
-                          raw: JSON.stringify(prop),
+                        type: "ObjectExpression",
+                        properties: Object.entries(propsMeta.settingProps).map(([key, value]) => ({
+                          type: "Property",
+                          key: {
+                            type: "Identifier",
+                            name: key,
+                          },
+                          computed: false,
+                          shorthand: false,
+                          kind: "init",
+                          value:
+                            value === undefined
+                              ? { type: "Identifier", name: "undefined" }
+                              : {
+                                  type: "Literal",
+                                  value,
+                                  raw: JSON.stringify(value),
+                                },
                         })),
                       },
                     },
@@ -464,6 +477,11 @@ const getComponentDemoPropsMeta = (meta) => {
 
   return {
     componentFile: metas[0],
-    settingProps: metas[1].split(","),
+    settingProps: Object.fromEntries(
+      metas[1].split(",").map((item) => {
+        const [key, value] = item.split("=");
+        return [key, value];
+      }),
+    ),
   };
 };
