@@ -1,5 +1,11 @@
 # @resolid/react-ui
 
+## 0.1.4
+
+### Patch Changes
+
+- feat: add FileUpload and FilePicker components ([`6ba6ad5`](https://github.com/resolid/react-ui/commit/6ba6ad52d267cc6a21837b7f99c8e4f34e3c7217))
+
 ## 0.1.3
 
 ### Patch Changes
