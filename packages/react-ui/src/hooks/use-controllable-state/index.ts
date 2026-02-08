@@ -3,7 +3,7 @@ import { type SetStateAction, useState } from "react";
 
 export type UseControllableStateOptions<T> = {
   value?: T;
-  defaultValue?: T;
+  defaultValue?: T | (() => T);
   onChange?: (value: T) => void;
   shouldUpdate?: (prev: T, next: T) => boolean;
 };

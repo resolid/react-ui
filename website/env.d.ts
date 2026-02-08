@@ -11,6 +11,7 @@ interface ImportMetaEnv {
   readonly VITE_VERCEL_URL?: string;
   readonly VITE_VERCEL_GIT_COMMIT_SHA?: string;
   readonly VITE_GIT_COMMIT_SHA: string;
+  readonly UPLOADTHING_API_KEY: string;
 }
 
 interface ImportMeta {

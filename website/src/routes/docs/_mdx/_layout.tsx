@@ -102,7 +102,7 @@ const mdxComponents = {
               }
             </MdxCodeDemo>
           ) : (
-            <div className={"flex min-w-max justify-center"}>{children[1]}</div>
+            <div className={"flex justify-center"}>{children[1]}</div>
           )}
         </div>
         {children[0]}

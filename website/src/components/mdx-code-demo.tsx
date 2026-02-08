@@ -61,9 +61,7 @@ export const MdxCodeDemo = (props: {
 
   return (
     <div className={"relative"}>
-      <div className={"flex min-h-32 min-w-max items-center justify-center"}>
-        {props.children(state)}
-      </div>
+      <div className={"flex min-h-32 items-center justify-center"}>{props.children(state)}</div>
       <Popover placement={"top-end"}>
         <PopoverTrigger
           className={"absolute start-0 bottom-0"}

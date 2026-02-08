@@ -1,4 +1,5 @@
 import type { JSX } from "react";
+import type { PrimitiveProps } from "../../primitives";
 
 export type VisuallyHiddenInputProps<T> = {
   name: string;
@@ -15,7 +16,8 @@ export const VisuallyHiddenInput = <T,>({
   getValue,
   required,
   disabled,
-}: VisuallyHiddenInputProps<T>): JSX.Element | JSX.Element[] => {
+  ...rest
+}: PrimitiveProps<"input", VisuallyHiddenInputProps<T>>): JSX.Element | JSX.Element[] => {
   if (Array.isArray(value)) {
     if (value.length == 0 && required) {
       return (
@@ -26,6 +28,7 @@ export const VisuallyHiddenInput = <T,>({
           className="sr-only"
           name={name}
           value=""
+          {...rest}
         />
       );
     }
@@ -42,6 +45,7 @@ export const VisuallyHiddenInput = <T,>({
           name={`${name}[]`}
           key={sv}
           value={sv}
+          {...rest}
         />
       );
     });
@@ -55,6 +59,7 @@ export const VisuallyHiddenInput = <T,>({
       required={required}
       name={name}
       value={value ? (getValue ? getValue(value) : (value as string)) : ""}
+      {...rest}
     />
   );
 };

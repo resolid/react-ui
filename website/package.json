@@ -6,7 +6,7 @@
     "build": "react-router build",
     "dev": "react-router dev",
     "lint": "eslint .",
-    "start": "NODE_ENV=production SERVER_PORT=3001 node --env-file=.env ./build/server/server.mjs",
+    "start": "NODE_ENV=production SERVER_PORT=3001 node --env-file=.env.local ./build/server/server.mjs",
     "typecheck": "tsc --noEmit --project tsconfig.check.json",
     "typegen": "react-router typegen"
   },

@@ -1,5 +1,5 @@
 import { getSearchData } from "~/utils/mdx-utils.server";
-import type { Route } from "./+types/search";
+import type { Route } from "../../../.react-router/types/src/routes/api/+types/search";
 
 export const loader = async ({ request }: Route.LoaderArgs) => {
   const keyword = new URL(request.url).searchParams.get("q");

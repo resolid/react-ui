@@ -10,21 +10,28 @@ export type PrimitiveProps<
   O extends keyof JSX.IntrinsicElements[T] = never,
 > = P & Omit<JSX.IntrinsicElements[T], keyof P | O>;
 
-type RenderProps = { render?: (props: AnyObject) => ReactNode };
+type StateProp<S> = S extends undefined ? { state?: undefined } : { state: S };
+
+type RenderProps<S = undefined> = {
+  render?: S extends undefined
+    ? (props: AnyObject) => ReactNode
+    : (props: AnyObject, state: S) => ReactNode;
+};
 
 export type PolymorphicProps<
   T extends keyof JSX.IntrinsicElements,
   P extends AnyObject = EmptyObject,
   O extends keyof JSX.IntrinsicElements[T] = never,
-> = RenderProps & PrimitiveProps<T, P, O>;
+  S = undefined,
+> = RenderProps<S> & PrimitiveProps<T, P, O>;
 
-export const Polymorphic = <T extends keyof JSX.IntrinsicElements>(
-  props: RenderProps & { as: string } & JSX.IntrinsicElements[T],
+export const Polymorphic = <T extends keyof JSX.IntrinsicElements, S = undefined>(
+  props: { as: string } & RenderProps<S> & StateProp<S> & JSX.IntrinsicElements[T],
 ): ReactNode => {
-  const { render, as: Tag, ...rest } = props;
+  const { render, as: Tag, state, ...rest } = props;
 
   if (render) {
-    return render(rest);
+    return render(rest, state as S);
   }
 
   return <Tag {...rest} />;

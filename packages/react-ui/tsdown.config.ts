@@ -5,7 +5,7 @@ import { reactCompilerRolldownPlugin } from "./plugins/react-compiler-plugin.js"
 export default defineConfig({
   entry: {
     index: "src/index.ts",
-    "locales/*": "src/locales/*.ts",
+    "locales/*": ["src/locales/*.ts", "!src/locales/en-US.ts"],
   },
   format: "esm",
   platform: "neutral",

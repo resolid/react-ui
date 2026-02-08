@@ -30,7 +30,7 @@ export const SiteSearch = () => {
 
   const handleChange = debounce(async (value) => {
     if (value != "") {
-      await load("/search?q=" + value);
+      await load("/api/search?q=" + value);
     }
   }, 500);
 

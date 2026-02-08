@@ -138,5 +138,28 @@
         <path d="m12 6l-2 4l4 3l-2 4v3"/>
       </g>
     </symbol>
+    <symbol id="upload" viewBox="0 0 24 24">
+      <path fill="currentColor"
+            d="M11 16V7.85l-2.6 2.6L7 9l5-5l5 5l-1.4 1.45l-2.6-2.6V16zm-5 4q-.825 0-1.412-.587T4 18v-3h2v3h12v-3h2v3q0 .825-.587 1.413T18 20z"/>
+    </symbol>
+    <symbol id="cloud-done" viewBox="0 0 24 24">
+      <path fill="currentColor"
+            d="m10.325 14.125l-1.4-1.4q-.3-.3-.7-.3t-.7.3t-.3.713t.3.712L9.65 16.3q.3.3.7.3t.7-.3l4.225-4.225q.3-.3.3-.725t-.3-.725t-.725-.3t-.725.3zM6.5 20q-2.275 0-3.887-1.575T1 14.575q0-1.95 1.175-3.475T5.25 9.15q.625-2.3 2.5-3.725T12 4q2.925 0 4.963 2.038T19 11q1.725.2 2.863 1.488T23 15.5q0 1.875-1.312 3.188T18.5 20zm0-2h12q1.05 0 1.775-.725T21 15.5t-.725-1.775T18.5 13H17v-2q0-2.075-1.463-3.538T12 6T8.463 7.463T7 11h-.5q-1.45 0-2.475 1.025T3 14.5t1.025 2.475T6.5 18m5.5-6"/>
+    </symbol>
+    <symbol id="file-pdf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+      <path d="m10 12 1 1v4l-1 1H8v-6z"/>
+      <path d="M14 2v4a2 2 0 0 0 2 2h4"/>
+      <path d="M17 12h-3v6"/>
+      <path d="M17 15h-3"/>
+      <path d="M2 18v-6h3v3H2"/>
+      <path d="M4 22h14a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v4"/>
+    </symbol>
+    <symbol id="user" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 20a6 6 0 0 0-12 0"/>
+      <circle cx="12" cy="10" r="4"/>
+      <circle cx="12" cy="12" r="10"/>
+    </symbol>
   </defs>
 </svg>

@@ -169,6 +169,10 @@ const menus: Menu[] = [
         label: "滑动选择器",
         path: "components/slider",
       },
+      {
+        label: "文件上传",
+        path: "components/file-upload",
+      },
     ],
   },
   {
