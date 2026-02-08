@@ -11,7 +11,7 @@ import type { JSX } from "react/jsx-runtime";
 import { useControllableState, useMergeRefs, useMove, type UseMovePosition } from "../../hooks";
 import type { PrimitiveProps } from "../../primitives";
 import type { Orientation } from "../../shared/types";
-import { hasWidthHeightBaseClass } from "../../shared/utils";
+import { hasSizeBaseClass } from "../../shared/utils";
 import { tx } from "../../utils";
 import { useDirection } from "../provider/direction-context";
 import { VisuallyHiddenInput } from "../visually-hidden/visually-hidden-input";
@@ -161,7 +161,6 @@ export const SliderRoot = (props: PrimitiveProps<"div", SliderRootProps>): JSX.E
     dragging: active,
   };
 
-  const shouldApplyDefaultSize = !hasWidthHeightBaseClass(className);
   const sizeStyle = sliderSizeStyles[size];
 
   const rootRef = useRef<HTMLDivElement | null>(null);
@@ -251,7 +250,7 @@ export const SliderRoot = (props: PrimitiveProps<"div", SliderRootProps>): JSX.E
             style={style as CSSProperties}
             className={tx(
               "relative isolate flex touch-none items-center outline-none",
-              shouldApplyDefaultSize && (vertical ? "h-full" : "w-full"),
+              !hasSizeBaseClass(className) && (vertical ? "h-full" : "w-full"),
               vertical
                 ? "w-[calc(var(--s-root-s)*3)] touch-pan-y flex-col"
                 : "h-[calc(var(--s-root-s)*3)] touch-pan-x flex-row",

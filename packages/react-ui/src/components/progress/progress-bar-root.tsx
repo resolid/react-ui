@@ -1,7 +1,7 @@
 import type { JSX } from "react/jsx-runtime";
 import type { PrimitiveProps } from "../../primitives";
 import type { Orientation } from "../../shared/types";
-import { getRadiusStyleAndClass, hasWidthHeightBaseClass, type Radius } from "../../shared/utils";
+import { getRadiusStyleAndClass, hasSizeBaseClass, type Radius } from "../../shared/utils";
 import { tx } from "../../utils";
 import { ProgressBaseContext, type ProgressBaseContextValue } from "./progress-context";
 
@@ -43,15 +43,13 @@ export const ProgressBarRoot = (
     radiusClass,
   };
 
-  const shouldApplyDefaultSize = !hasWidthHeightBaseClass(className);
-
   return (
     <div
       style={{ ...style, ...radiusStyle }}
       className={tx(
         "relative flex overflow-hidden bg-bg-subtle",
         vertical ? "flex-col-reverse" : "flex-row",
-        shouldApplyDefaultSize && (vertical ? "h-full" : "w-full"),
+        !hasSizeBaseClass(className) && (vertical ? "h-full" : "w-full"),
         radiusClass,
         className,
       )}
