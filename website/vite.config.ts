@@ -60,9 +60,6 @@ export default defineConfig(({ command }) => {
       babel({
         filter: /\.[jt]sx?$/,
         babelConfig: {
-          compact: false,
-          babelrc: false,
-          configFile: false,
           presets: ["@babel/preset-typescript"],
           plugins: [
             [
@@ -72,10 +69,16 @@ export default defineConfig(({ command }) => {
               },
             ],
           ],
+          cloneInputAst: false,
+          compact: false,
+          sourceMaps: false,
+          babelrc: false,
+          configFile: false,
         },
         loader: (path) => {
           return extname(path).substring(1) as "js" | "jsx";
         },
+        optimizeOnSSR: true,
       }),
       viteContent(),
       !isBuild && tsconfigPaths(),

@@ -21,7 +21,6 @@ export const reactCompilerRolldownPlugin = ({ filter }) => {
       async handler(code, id) {
         const result = await transformAsync(code, {
           filename: id,
-          cloneInputAst: false,
           plugins: [
             [
               "babel-plugin-react-compiler",
@@ -32,6 +31,7 @@ export const reactCompilerRolldownPlugin = ({ filter }) => {
           ],
           parserOpts: { sourceType: "module", plugins: ["jsx", "typescript"] },
           ast: false,
+          cloneInputAst: false,
           compact: false,
           sourceMaps: false,
           babelrc: false,
