@@ -42,13 +42,13 @@ export const MdxPropsTable = ({ componentProps }: { componentProps: PropItem[] }
                       {prop.description.split("\n").map((p, idx) => {
                         const key = `p${idx}`;
 
-                        if (p.slice(0, 6) == "@link") {
+                        if (p.slice(0, 5) == "@link") {
                           const link = p.slice(6);
 
                           return (
                             <p key={key}>
                               <a
-                                className={"text-link hover:text-link-hovered"}
+                                className={"text-link-emphasis hover:text-link-emphasis-hovered"}
                                 href={link}
                                 rel={"noreferrer"}
                                 target={"_blank"}
@@ -71,7 +71,7 @@ export const MdxPropsTable = ({ componentProps }: { componentProps: PropItem[] }
                 {prop.description.split("\n").map((p, idx) => {
                   const key = `p${idx}`;
 
-                  if (p.slice(0, 6) == "@link") {
+                  if (p.slice(0, 5) == "@link") {
                     const link = p.slice(6);
 
                     return (

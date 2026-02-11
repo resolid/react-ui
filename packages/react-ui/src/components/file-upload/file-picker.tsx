@@ -3,7 +3,7 @@ import { type ChangeEvent, useReducer, useRef } from "react";
 import type { JSX } from "react/jsx-runtime";
 import { useMergeRefs } from "../../hooks";
 import type { PrimitiveProps } from "../../primitives";
-import type { FormFieldProps } from "../../shared/types";
+import type { FormFieldProps, MultipleValueProps } from "../../shared/types";
 import { tx } from "../../utils";
 import { useLocale } from "../provider/locale-context";
 import { FileHiddenInput } from "./file-hidden-input";
@@ -22,66 +22,46 @@ import { useFileUpload } from "./file-upload-context";
 
 export type FilePickerProps = FormFieldProps & {
   /**
-   * 允许文件类型
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/accept
-   *
-   * @default "*"
-   */
-  accept?: string;
-
-  /**
    * 允许多文件
-   *
    * @default false
    */
   multiple?: boolean;
+} & Omit<MultipleValueProps<FileItem, RemoteFile>, "multiple"> & {
+    /**
+     * 允许文件类型
+     * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/accept
+     * @default "*"
+     */
+    accept?: string;
 
-  /**
-   * 最大文件数量
-   *
-   * @default Infinity
-   */
-  maxFiles?: number;
+    /**
+     * 最大文件数量
+     * @default Infinity
+     */
+    maxFiles?: number;
 
-  /**
-   * 最大文件大小（字节单位）
-   *
-   * @default Infinity
-   */
-  maxSize?: number;
+    /**
+     * 最大文件大小（字节单位）
+     * @default Infinity
+     */
+    maxSize?: number;
 
-  /**
-   * 最小文件大小（字节单位）
-   *
-   * @default 0
-   */
-  minSize?: number;
+    /**
+     * 最小文件大小（字节单位）
+     * @default 0
+     */
+    minSize?: number;
 
-  /**
-   * 可控值
-   */
-  value?: FileItem[] | FileItem | null;
+    /**
+     * 选取文件出现错误回调
+     */
+    onError?: (error: string[] | string) => void;
 
-  /**
-   * 默认值
-   */
-  defaultValue?: RemoteFile[] | RemoteFile | null;
-
-  /**
-   * onChange 回调
-   */
-  onChange?: (value: FileItem[] | FileItem | null) => void;
-
-  /**
-   * 选取文件出现错误回调
-   */
-  onError?: (error: string[] | string) => void;
-
-  /**
-   * 用于转换已接受的文件
-   */
-  transformFile?: (file: File) => Promise<File>;
-};
+    /**
+     * 用于转换已接受的文件
+     */
+    transformFile?: (file: File) => Promise<File>;
+  };
 
 type PickerReducerBaseAction = {
   multiple: boolean;

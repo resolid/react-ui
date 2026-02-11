@@ -87,4 +87,8 @@
   --color-link: var(--color-blue-500);
   --color-link-hovered: var(--color-blue-600);
   --color-link-pressed: var(--color-blue-700);
+
+  --color-link-emphasis: var(--color-blue-200);
+  --color-link-emphasis-hovered: var(--color-blue-300);
+  --color-link-emphasis-pressed: var(--color-blue-400);
 }

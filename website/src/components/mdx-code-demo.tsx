@@ -17,11 +17,11 @@ import { SpriteIcon } from "~/components/sprite-icon";
 export type PropItem = {
   name: string;
   type: string;
-  control: string;
-  typeValues: null | string[];
-  description: string;
-  defaultValue?: string;
   required: boolean;
+  description: string;
+  control?: string;
+  typeValues?: string[];
+  defaultValue?: string;
 };
 
 export const MdxCodeDemo = (props: {
@@ -33,7 +33,7 @@ export const MdxCodeDemo = (props: {
 
   const validProps = props.componentProps
     .filter((prop) => {
-      return settingPropsKeys.includes(prop.name);
+      return prop.control && settingPropsKeys.includes(prop.name);
     })
     .sort((a, b) => {
       return settingPropsKeys.indexOf(a.name) - settingPropsKeys.indexOf(b.name);

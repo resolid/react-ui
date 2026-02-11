@@ -325,6 +325,8 @@ const tsParser = withCustomConfig("tsconfig.json", {
 
 const componentPropsSorts = [
   "name",
+
+  "multiple",
   "value",
   "defaultValue",
 
@@ -343,6 +345,7 @@ const componentPropsSorts = [
   "variant",
   "radius",
   "orientation",
+  "duration",
 
   "disabled",
   "required",
@@ -367,58 +370,7 @@ const getComponentPropsData = (componentFile, sourceRoot, virtualDir) => {
     const props = componentDoc
       ? Object.entries(componentDoc.props)
           .map(([key, value]) => {
-            const type = {
-              type: value.type.name,
-              control: value.type.name,
-              typeValues: null,
-            };
-
-            if (value.type.name === "enum") {
-              if (!value.type.raw) {
-                type.type = value.type.name;
-              } else if (
-                value.type.raw.includes(" | ") ||
-                ["string", "number", "boolean", "ReactNode"].includes(value.type.raw)
-              ) {
-                type.type = value.type.raw;
-                type.control = value.type.raw;
-
-                if (value.type.raw.includes(" | ")) {
-                  type.control = "select";
-                  type.typeValues = value.type.value
-                    .map((item) => item.value)
-                    .filter((v) => v !== "number" && v !== "string");
-                }
-              } else {
-                const typeValues = value.type.value.map((item) => item.value);
-                type.type = typeValues.join(" | ");
-                type.control = "select";
-                type.typeValues = typeValues.filter((v) => v !== "number" && v !== "string");
-              }
-            }
-
-            if (!value.required) {
-              type.type = type.type.replace(" | undefined", "");
-            }
-
-            if (type.type.startsWith("NonNullable<")) {
-              type.type = type.type
-                .slice(12, -1)
-                .replace(" | null", "")
-                .replace(" | undefined", "");
-            }
-
-            type.type = type.type
-              .replace("React.", "")
-              .replace(/ReactElement<.*>/g, "ReactElement");
-
-            return {
-              name: key,
-              ...type,
-              required: value.required,
-              description: value.description,
-              defaultValue: value.defaultValue?.value ?? "",
-            };
+            return parsePropsType(key, value);
           })
           .sort((a, b) => {
             return componentPropsSorts.indexOf(a.name) - componentPropsSorts.indexOf(b.name);
@@ -484,4 +436,53 @@ const getComponentDemoPropsMeta = (meta) => {
       }),
     ),
   };
+};
+
+const parsePropsType = (typeName, typeValue) => {
+  const propType = {
+    name: typeName,
+    required: typeValue.required,
+    description: typeValue.description,
+    defaultValue: typeValue.defaultValue?.value ?? "",
+    type: typeValue.type.name,
+    control: undefined,
+    typeValues: undefined,
+  };
+
+  if (["boolean", "string", "number"].includes(typeValue.type.raw)) {
+    propType.type = typeValue.type.raw;
+    propType.control = typeValue.type.raw;
+
+    return propType;
+  }
+
+  if (["ReactNode", "RectElement"].includes(typeValue.type.raw)) {
+    propType.type = typeValue.type.raw;
+
+    return propType;
+  }
+
+  if (Array.isArray(typeValue.type.value)) {
+    const typeValues = typeValue.type.value.map((v) => v.value);
+
+    propType.type = typeValues
+      .join(" | ")
+      .replace("React.", "")
+      .replace(/ReactElement<.*>/g, "ReactElement");
+
+    if (propType.type.includes(" | null)")) {
+      propType.type = propType.type.replace("value: ", "value: null | ").replace(" | null", "");
+    }
+
+    const stringValues = typeValues.filter((v) => v.includes('"'));
+
+    if (stringValues.length > 0) {
+      propType.control = "select";
+      propType.typeValues = stringValues;
+    }
+
+    return propType;
+  }
+
+  return propType;
 };

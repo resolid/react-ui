@@ -14,7 +14,7 @@ export type DisclosureProps = UseDisclosureOptions & {
   duration?: number;
 };
 
-export type MultipleValueProps = {
+export type MultipleValueProps<T, D = T> = {
   /**
    * 是否多个值
    * @default false
@@ -24,18 +24,18 @@ export type MultipleValueProps = {
   /**
    * 受控值
    */
-  value?: (string | number)[] | string | number | null;
+  value?: T[] | T | null;
 
   /**
    * 默认值
    * @default null | []
    */
-  defaultValue?: (string | number)[] | string | number | null;
+  defaultValue?: D[] | D | null;
 
   /**
    * onChange 回调
    */
-  onChange?: (value: (string | number)[] | string | number | null) => void;
+  onChange?: (value: T[] | T | null) => void;
 };
 
 export type CheckedValueProps = {

@@ -17,7 +17,7 @@ import {
   type AccordionContextValue,
 } from "./accordion-context";
 
-export type AccordionRootProps = MultipleValueProps & {
+export type AccordionRootProps = MultipleValueProps<string | number> & {
   /**
    * 允许关闭内容, 当 `multiple` 为 `false` 时有效
    * @default false

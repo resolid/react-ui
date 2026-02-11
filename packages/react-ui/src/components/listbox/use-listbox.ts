@@ -27,7 +27,7 @@ export type ListboxItem = AnyObject;
 export type ListboxNodeItem = ListboxItem & { __index: number };
 export type ListboxFlatItem = ListboxNodeItem & { __group?: boolean };
 
-export type ListboxBaseProps<T extends ListboxItem> = MultipleValueProps & {
+export type ListboxBaseProps<T extends ListboxItem> = MultipleValueProps<string | number> & {
   /**
    * 项目的集合
    */
