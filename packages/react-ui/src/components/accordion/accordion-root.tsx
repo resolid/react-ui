@@ -47,12 +47,10 @@ export const AccordionRoot = (props: PrimitiveProps<"div", AccordionRootProps>):
     ...rest
   } = props;
 
-  const [valueState, setValueState] = useControllableState<
-    (string | number)[] | string | number | null
-  >({
+  const [valueState, setValueState] = useControllableState({
     value,
     defaultValue,
-    onChange: onChange as (value: (string | number)[] | string | number | null) => void,
+    onChange,
   });
 
   const [activeIndex, setActiveIndex] = useState<number | undefined>(0);

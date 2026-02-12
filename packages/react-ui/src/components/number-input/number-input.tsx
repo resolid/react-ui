@@ -107,7 +107,7 @@ export const NumberInput = (
 
   const [valueState, setValueState] = useControllableState<number | undefined>({
     value,
-    defaultValue: defaultValue,
+    defaultValue,
     onChange,
   });
 

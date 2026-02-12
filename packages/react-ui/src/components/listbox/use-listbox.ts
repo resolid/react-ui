@@ -149,7 +149,7 @@ export const useListbox = <T extends ListboxItem>(
   const [valueState, setValueState] = useControllableState<ListboxValue>({
     value,
     defaultValue,
-    onChange: onChange,
+    onChange,
   });
 
   const direction = useDirection(true);
