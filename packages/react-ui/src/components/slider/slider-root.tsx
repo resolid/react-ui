@@ -31,7 +31,7 @@ import { getChangeValue, getNextValue, getOffset, getPosition, linearScale } fro
 export type SliderRootProps = Partial<SliderControlContextValue> &
   Partial<Omit<SliderContextValue, "vertical" | "direction">> & {
     /**
-     * 非可控默认值
+     * 默认值
      */
     defaultValue?: ValueType;
 

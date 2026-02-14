@@ -8,7 +8,7 @@ import {
   type CompositeContextValue,
 } from "../../primitives/composite/composite-context";
 import { inputTextShareStyles } from "../../shared/styles";
-import type { FormInputFieldProps } from "../../shared/types";
+import type { FormInputFieldProps, ValueProp } from "../../shared/types";
 import { ariaAttr, tx } from "../../utils";
 import {
   inputHeightStyles,
@@ -27,23 +27,8 @@ import {
 import { tagsInputSizeStyles } from "./tags-input.styles";
 
 export type TagsInputRootProps = Omit<FormInputFieldProps, "placeholder"> &
-  TagsInputBaseProps & {
-    /**
-     * 可控值
-     */
-    value?: string[];
-
-    /**
-     * 默认值
-     * @default []
-     */
-    defaultValue?: string[];
-
-    /**
-     * onChange 回调
-     */
-    onChange?: (value: string[]) => void;
-
+  TagsInputBaseProps &
+  ValueProp<string[]> & {
     /**
      * 大小
      * @default "md"

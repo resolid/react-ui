@@ -14,6 +14,23 @@ export type DisclosureProps = UseDisclosureOptions & {
   duration?: number;
 };
 
+export type ValueProp<T, D = T> = {
+  /**
+   * 受控值
+   */
+  value?: T;
+
+  /**
+   * 默认值
+   */
+  defaultValue?: D;
+
+  /**
+   * onChange 回调
+   */
+  onChange?: (value: T) => void;
+};
+
 export type MultipleValueProps<T, D = T> = {
   /**
    * 是否多个值

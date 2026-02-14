@@ -303,6 +303,7 @@ const tsParser = withCustomConfig("tsconfig.json", {
   shouldExtractLiteralValuesFromEnum: true,
   shouldExtractValuesFromUnion: true,
   shouldRemoveUndefinedFromOptional: true,
+  shouldSortUnions: true,
   propFilter: (prop) => {
     if (["render", "ref", "style", "className"].includes(prop.name)) {
       return false;
@@ -449,6 +450,10 @@ const parsePropsType = (typeName, typeValue) => {
     typeValues: undefined,
   };
 
+  if (!typeValue.type.raw) {
+    return propType;
+  }
+
   if (["boolean", "string", "number"].includes(typeValue.type.raw)) {
     propType.type = typeValue.type.raw;
     propType.control = typeValue.type.raw;
@@ -456,23 +461,25 @@ const parsePropsType = (typeName, typeValue) => {
     return propType;
   }
 
-  if (["ReactNode", "RectElement"].includes(typeValue.type.raw)) {
+  if (["ReactNode", "RectElement", "DateValue"].includes(typeValue.type.raw)) {
     propType.type = typeValue.type.raw;
 
     return propType;
   }
 
-  if (Array.isArray(typeValue.type.value)) {
-    const typeValues = typeValue.type.value.map((v) => v.value);
+  if (typeValue.type.raw.includes("((")) {
+    propType.type = typeValue.type.value.map((v) => v.value).join(" | ");
+
+    return propType;
+  }
+
+  if (typeValue.type.raw.includes(" | ")) {
+    const typeValues = typeValue.type.raw.split(" | ");
 
     propType.type = typeValues
       .join(" | ")
       .replace("React.", "")
       .replace(/ReactElement<.*>/g, "ReactElement");
-
-    if (propType.type.includes(" | null)")) {
-      propType.type = propType.type.replace("value: ", "value: null | ").replace(" | null", "");
-    }
 
     const stringValues = typeValues.filter((v) => v.includes('"'));
 
@@ -480,6 +487,12 @@ const parsePropsType = (typeName, typeValue) => {
       propType.control = "select";
       propType.typeValues = stringValues;
     }
+
+    return propType;
+  }
+
+  if (Array.isArray(typeValue.type.value)) {
+    propType.type = typeValue.type.value.map((v) => v.value).join(" | ");
 
     return propType;
   }

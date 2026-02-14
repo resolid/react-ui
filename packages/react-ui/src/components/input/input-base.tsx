@@ -3,7 +3,7 @@ import type { JSX } from "react/jsx-runtime";
 import { useControllableState, useMergeRefs } from "../../hooks";
 import type { PrimitiveProps } from "../../primitives";
 import { inputTextShareStyles } from "../../shared/styles";
-import type { FormInputFieldProps } from "../../shared/types";
+import type { FormInputFieldProps, ValueProp } from "../../shared/types";
 import { tx } from "../../utils";
 import { InputAffix } from "./input-affix";
 import { type InputGroupContextValue, useInputGroup } from "./input-group-context";
@@ -17,23 +17,8 @@ import {
 } from "./input.styles";
 
 export type InputBaseProps = Partial<InputGroupContextValue> &
-  FormInputFieldProps & {
-    /**
-     * 可控值
-     */
-    value?: string | number;
-
-    /**
-     * 默认值
-     * @default ""
-     */
-    defaultValue?: string | number;
-
-    /**
-     * onChange 回调
-     */
-    onChange?: (value: string | number) => void;
-
+  FormInputFieldProps &
+  ValueProp<string | number> & {
     /**
      * 前置元素
      */

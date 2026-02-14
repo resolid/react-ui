@@ -4,26 +4,11 @@ import type { JSX } from "react/jsx-runtime";
 import { useControllableState, useMergeRefs } from "../../hooks";
 import type { PrimitiveProps } from "../../primitives";
 import { useComposite } from "../../primitives/composite/composite-context";
+import type { ValueProp } from "../../shared/types";
 import { tx } from "../../utils";
 import { useTagsInputRoot } from "./tags-input-root-context";
 
-export type TagsInputInputProps = {
-  /**
-   * 可控值
-   */
-  value?: string;
-
-  /**
-   * 输入框值
-   * @default ""
-   */
-  defaultValue?: string;
-
-  /**
-   * onChange 回调
-   */
-  onChange?: (value: string) => void;
-
+export type TagsInputInputProps = ValueProp<string> & {
   /**
    * 允许的最大字符数
    */

@@ -3,74 +3,61 @@ import { type FocusEvent, type KeyboardEvent, useId, useRef, useState } from "re
 import type { JSX } from "react/jsx-runtime";
 import { useControllableState, useEventListener, useMergeRefs } from "../../hooks";
 import type { PrimitiveProps } from "../../primitives";
+import type { ValueProp } from "../../shared/types";
 import { Input, type InputProps } from "../input/input";
 import { NumberInputControl } from "./number-input-control";
 
 export type NumberInputProps = Omit<
   InputProps,
   "type" | "suffix" | "suffixWidth" | "value" | "defaultValue" | "onChange"
-> & {
-  /**
-   * 可控值
-   */
-  value?: number;
+> &
+  ValueProp<number | undefined> & {
+    /**
+     * 最小值
+     * @default Number.MIN_SAFE_INTEGER
+     */
+    min?: number;
 
-  /**
-   * 默认值
-   */
-  defaultValue?: number;
+    /**
+     * 最大值
+     * @default Number.MAX_SAFE_INTEGER
+     */
+    max?: number;
 
-  /**
-   * onChange 回调
-   */
-  onChange?: (value: number | undefined) => void;
+    /**
+     * 步进
+     * @default 1
+     */
+    step?: number;
 
-  /**
-   * 最小值
-   * @default Number.MIN_SAFE_INTEGER
-   */
-  min?: number;
+    /**
+     * 小数精度
+     * @default 0
+     */
+    precision?: number;
 
-  /**
-   * 最大值
-   * @default Number.MAX_SAFE_INTEGER
-   */
-  max?: number;
+    /**
+     * 自定义显示格式
+     */
+    format?: (value: string) => string;
 
-  /**
-   * 步进
-   * @default 1
-   */
-  step?: number;
+    /**
+     * 如果使用自定义显示格式，转换为 parseFloat 可以处理的格式
+     */
+    parse?: (value: string) => string;
 
-  /**
-   * 小数精度
-   * @default 0
-   */
-  precision?: number;
+    /**
+     * 提示用户可能输入的数据类型。它还确定了移动设备上向用户显示的键盘类型
+     * @default "decimal"
+     */
+    inputMode?: "decimal" | "numeric";
 
-  /**
-   * 自定义显示格式
-   */
-  format?: (value: string) => string;
-
-  /**
-   * 如果使用自定义显示格式，转换为 parseFloat 可以处理的格式
-   */
-  parse?: (value: string) => string;
-
-  /**
-   * 提示用户可能输入的数据类型。它还确定了移动设备上向用户显示的键盘类型
-   * @default "decimal"
-   */
-  inputMode?: "decimal" | "numeric";
-
-  /**
-   * 通过滚轮改变值
-   * @default false
-   */
-  changeOnWheel?: boolean;
-};
+    /**
+     * 通过滚轮改变值
+     * @default false
+     */
+    changeOnWheel?: boolean;
+  };
 
 export const NumberInput = (
   props: PrimitiveProps<"input", NumberInputProps, "type" | "role">,

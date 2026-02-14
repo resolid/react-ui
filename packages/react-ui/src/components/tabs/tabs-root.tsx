@@ -3,26 +3,11 @@ import type { JSX } from "react/jsx-runtime";
 import { useControllableState } from "../../hooks";
 import type { PrimitiveProps } from "../../primitives";
 import { OrientationContext } from "../../primitives/composite/orientation-context";
-import type { Orientation } from "../../shared/types";
+import type { Orientation, ValueProp } from "../../shared/types";
 import { tx } from "../../utils";
 import { TabsContext, type TabsContextValue } from "./tabs-context";
 
-export type TabsRootProps = {
-  /**
-   * 受控值
-   */
-  value?: string;
-
-  /**
-   * 默认值
-   */
-  defaultValue: string;
-
-  /**
-   * onChange 回调
-   */
-  onChange?: (value: string) => void;
-
+export type TabsRootProps = ValueProp<string> & {
   /**
    * 方向
    * @default "horizontal"
