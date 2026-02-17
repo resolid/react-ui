@@ -1,5 +1,13 @@
 # @resolid/react-ui
 
+## 0.1.5
+
+### Patch Changes
+
+- refactor: add generic ValueProp type ([`92256d9`](https://github.com/resolid/react-ui/commit/92256d967d143fc0b68cc017062e705879dd0bd0))
+
+- refactor: re-exports FilePicker and FileUpload components ([`c14e3fc`](https://github.com/resolid/react-ui/commit/c14e3fcca8c0eb51170d2b778fe958cc86463a12))
+
 ## 0.1.4
 
 ### Patch Changes
