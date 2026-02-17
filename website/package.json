@@ -14,7 +14,7 @@
     "@mdx-js/react": "^3.1.1",
     "@react-router/node": "^7.13.0",
     "@resolid/react-ui": "workspace:^",
-    "@resolid/utils": "^1.2.2",
+    "@resolid/utils": "^1.2.4",
     "@tailwindcss/typography": "^0.5.19",
     "@vercel/analytics": "^1.6.1",
     "isbot": "^5.1.35",
@@ -50,7 +50,7 @@
     "vite": "^7.3.1",
     "vite-plugin-babel": "^1.5.1",
     "vite-plugin-inspect": "^11.3.3",
-    "vite-tsconfig-paths": "^6.1.0",
+    "vite-tsconfig-paths": "^6.1.1",
     "yaml": "^2.8.2"
   },
   "engines": {

@@ -43,9 +43,9 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@floating-ui/react": "^0.27.17",
+    "@floating-ui/react": "^0.27.18",
     "@internationalized/date": "^3.11.0",
-    "@resolid/utils": "^1.2.2",
+    "@resolid/utils": "^1.2.4",
     "@tanstack/react-virtual": "^3.13.18",
     "tailwind-variants": "^3.2.2"
   },
