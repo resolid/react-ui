@@ -12,22 +12,22 @@ import { useDrawer } from "./drawer-context";
 
 const placementStyles = {
   start: {
-    base: "start-0 top-0 bottom-0",
+    base: "inset-s-0 top-0 bottom-0",
     open: "translate-x-none",
     close: "-translate-x-full",
   },
   end: {
-    base: "end-0 top-0 bottom-0",
+    base: "inset-e-0 top-0 bottom-0",
     open: "translate-x-none",
     close: "translate-x-full",
   },
   top: {
-    base: "top-0 start-0 end-0",
+    base: "top-0 inset-s-0 inset-e-0",
     open: "translate-y-none",
     close: "-translate-y-full",
   },
   bottom: {
-    base: "bottom-0 start-0 end-0",
+    base: "bottom-0 inset-s-0 inset-e-0",
     open: "translate-y-none",
     close: "translate-y-full",
   },

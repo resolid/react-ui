@@ -52,12 +52,15 @@ export const SliderMark = ({
                   : "-translate-x-1/2",
               vertical
                 ? "bottom-[calc(var(--s-mark-s)+var(--s-mark-o))]"
-                : "start-[calc(var(--s-mark-s)+var(--s-mark-o))]",
+                : "inset-s-[calc(var(--s-mark-s)+var(--s-mark-o))]",
             )}
           >
             {mark.label && (
               <span
-                className={tx("absolute text-sm leading-none", vertical ? "start-3.5" : "top-3.5")}
+                className={tx(
+                  "absolute text-sm leading-none",
+                  vertical ? "inset-s-3.5" : "top-3.5",
+                )}
               >
                 {mark.label}
               </span>

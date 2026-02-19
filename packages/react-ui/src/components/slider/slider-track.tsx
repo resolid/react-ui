@@ -28,7 +28,7 @@ export const SliderTrack = (props: PrimitiveProps<"div">): JSX.Element => {
           inverted ? "bg-bg-subtle" : colorStyle,
           vertical
             ? "top-(--s-track-e) bottom-(--s-track-s) w-full"
-            : "start-(--s-track-s) end-(--s-track-e) h-full",
+            : "inset-s-(--s-track-s) inset-e-(--s-track-e) h-full",
         )}
       />
     </div>

@@ -21,7 +21,7 @@ export const AvatarIndicator = (
   return (
     <div
       className={tx(
-        "absolute end-0 flex items-center justify-center",
+        "absolute inset-e-0 flex items-center justify-center",
         direction == "rtl" ? "-translate-x-1/10" : "translate-x-1/10",
         position == "top" ? "top-0 -translate-y-1/10" : "bottom-0 translate-y-1/10",
         className,

@@ -85,11 +85,11 @@ const getToastListStyles = (placement: ToastPlacement) => {
   }
 
   if (!placement.includes("start")) {
-    styles.push("end-0");
+    styles.push("inset-e-0");
   }
 
   if (!placement.includes("end")) {
-    styles.push("start-0");
+    styles.push("inset-s-0");
   }
 
   return styles.join(" ");

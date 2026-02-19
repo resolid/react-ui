@@ -41,7 +41,7 @@ export const MdxCode = (
       >
         {children}
       </pre>
-      <div className={"z-base absolute end-1.5 top-1.5 flex gap-1"}>
+      <div className={"z-base absolute inset-e-1.5 top-1.5 flex gap-1"}>
         {online && <StackblitzButton name={online} code={content} />}
         <ClipboardButton content={content} />
       </div>

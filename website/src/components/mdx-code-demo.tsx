@@ -66,7 +66,7 @@ export const MdxCodeDemo = (props: {
       </div>
       <Popover placement={"top-end"}>
         <PopoverTrigger
-          className={"absolute start-0 bottom-0"}
+          className={"absolute inset-s-0 bottom-0"}
           render={(props) => <Button size={"xs"} variant={"soft"} color={"neutral"} {...props} />}
         >
           属性设置

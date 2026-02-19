@@ -40,7 +40,10 @@ export const ComboboxTrigger = (
       as={"button"}
       render={render}
       ref={refs}
-      className={tx("absolute end-0 top-0 bottom-0 outline-none", selectSizeStyles[size].chevron)}
+      className={tx(
+        "absolute inset-e-0 top-0 bottom-0 outline-none",
+        selectSizeStyles[size].chevron,
+      )}
       onClick={handleClick}
       onFocus={handleFocus}
       aria-haspopup="listbox"

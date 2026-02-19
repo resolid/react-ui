@@ -145,7 +145,7 @@ export const SliderThumb = (
           className={tx(
             vertical
               ? "bottom-[calc(var(--s-thumb-s0)+var(--s-thumb-o0))]"
-              : "start-[calc(var(--s-thumb-s0)+var(--s-thumb-o0))]",
+              : "inset-s-[calc(var(--s-thumb-s0)+var(--s-thumb-o0))]",
             className,
           )}
           onKeyDown={(e) => {
@@ -159,7 +159,7 @@ export const SliderThumb = (
           className={tx(
             vertical
               ? "bottom-[calc(var(--s-thumb-s1)+var(--s-thumb-o1))]"
-              : "start-[calc(var(--s-thumb-s1)+var(--s-thumb-o1))]",
+              : "inset-s-[calc(var(--s-thumb-s1)+var(--s-thumb-o1))]",
             className,
           )}
           onKeyDown={(e) => {
@@ -177,7 +177,7 @@ export const SliderThumb = (
       className={tx(
         vertical
           ? "bottom-[calc(var(--s-thumb-s0)+var(--s-thumb-o0))]"
-          : "start-[calc(var(--s-thumb-s0)+var(--s-thumb-o0))]",
+          : "inset-s-[calc(var(--s-thumb-s0)+var(--s-thumb-o0))]",
         className,
       )}
       onKeyDown={(e) => {

@@ -46,7 +46,7 @@ export default function Layout() {
           <CloseButton
             size={"1.5em"}
             onClick={() => setOpened(false)}
-            className={"absolute end-2 top-2 md:hidden"}
+            className={"absolute inset-e-2 top-2 md:hidden"}
           />
           <AsideLayoutMenu menus={menus} onClickMenu={() => setOpened(false)} />
         </nav>

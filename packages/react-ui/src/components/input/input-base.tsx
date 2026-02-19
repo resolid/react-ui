@@ -109,7 +109,7 @@ export const InputBase = (
         } as CSSProperties
       }
     >
-      {prefix && <InputAffix className={"start-0 w-(--pw)"}>{prefix}</InputAffix>}
+      {prefix && <InputAffix className={"inset-s-0 w-(--pw)"}>{prefix}</InputAffix>}
       <input
         ref={refs}
         className={tx(
@@ -133,7 +133,7 @@ export const InputBase = (
         onChange={handleChange}
         {...rest}
       />
-      {suffix && <InputAffix className={"end-0 w-(--sw)"}>{suffix}</InputAffix>}
+      {suffix && <InputAffix className={"inset-e-0 w-(--sw)"}>{suffix}</InputAffix>}
     </div>
   );
 };

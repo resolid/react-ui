@@ -38,7 +38,7 @@ export default function App() {
             {Array.isArray(e) ? e.join("<br>") : e}
           </ToastDescription>
         </ToastContent>
-        <ToastCloseButton className={"absolute end-2 top-2"} />
+        <ToastCloseButton className={"absolute inset-e-2 top-2"} />
       </Toast>,
       {
         placement: "top",
@@ -295,17 +295,17 @@ export default function App() {
               {(file) => (
                 <>
                   {file.kind == "remote" && (
-                    <span className={"absolute start-1 top-1 rounded-md bg-bg-neutral/60 p-px"}>
+                    <span className={"absolute inset-s-1 top-1 rounded-md bg-bg-neutral/60 p-px"}>
                       <SpriteIcon size={"1rem"} className={"text-fg-success"} name="cloud-done" />
                     </span>
                   )}
                   {file.status == "uploading" && (
-                    <div className={"absolute start-0 bottom-0 w-full"}>
+                    <div className={"absolute inset-s-0 bottom-0 w-full"}>
                       <ProgressBar radius={"none"} size="xs" percent={file.progress} />
                     </div>
                   )}
                   {file.status == "error" && (
-                    <span className="absolute start-0 bottom-0 w-full truncate bg-bg-neutral/60 p-px text-xs text-fg-danger">
+                    <span className="inset-s absolute bottom-0 w-full truncate bg-bg-neutral/60 p-px text-xs text-fg-danger">
                       {file.error}
                     </span>
                   )}
@@ -318,7 +318,7 @@ export default function App() {
               radius={"md"}
               variant={"soft"}
               noPadding={true}
-              className="absolute end-1 top-1 size-5 opacity-60"
+              className="absolute inset-e-1 top-1 size-5 opacity-60"
             />
           </FilePickerItem>
         </FilePickerList>
@@ -375,17 +375,17 @@ export default function App() {
               {(file) => (
                 <>
                   {file.kind == "remote" && (
-                    <span className={"absolute start-1 top-1 rounded-md bg-bg-neutral/60 p-px"}>
+                    <span className={"absolute inset-s-1 top-1 rounded-md bg-bg-neutral/60 p-px"}>
                       <SpriteIcon size={"1rem"} className={"text-fg-success"} name="cloud-done" />
                     </span>
                   )}
                   {file.status == "uploading" && (
-                    <div className={"absolute start-0 bottom-0 w-full"}>
+                    <div className={"absolute inset-s-0 bottom-0 w-full"}>
                       <ProgressBar radius={"none"} size="xs" percent={file.progress} />
                     </div>
                   )}
                   {file.status == "error" && (
-                    <span className="absolute start-0 bottom-0 w-full truncate bg-bg-neutral/60 p-px text-xs text-fg-danger">
+                    <span className="absolute inset-s-0 bottom-0 w-full truncate bg-bg-neutral/60 p-px text-xs text-fg-danger">
                       {file.error}
                     </span>
                   )}
@@ -398,7 +398,7 @@ export default function App() {
               radius={"md"}
               variant={"soft"}
               noPadding={true}
-              className="absolute end-1 top-1 size-5 opacity-60"
+              className="absolute inset-e-1 top-1 size-5 opacity-60"
             />
           </FilePickerItem>
         </FilePickerList>
