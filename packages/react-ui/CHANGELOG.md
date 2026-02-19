@@ -1,5 +1,11 @@
 # @resolid/react-ui
 
+## 0.1.6
+
+### Patch Changes
+
+- refactor: update deprecated start/end utilities to inset-s/e ([`08d72a7`](https://github.com/resolid/react-ui/commit/08d72a7b3fdee0ca65a6fe308b1b95cd7e215f69))
+
 ## 0.1.5
 
 ### Patch Changes
