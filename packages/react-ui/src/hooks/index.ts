@@ -9,7 +9,7 @@ export * from "./use-hover";
 export * from "./use-hydrated";
 export * from "./use-image-load";
 export * from "./use-isomorphic-effect";
-export * from "./use-lastest-ref";
+export * from "./use-latest-ref";
 export * from "./use-local-storage";
 export * from "./use-media-query";
 export * from "./use-merge-refs";

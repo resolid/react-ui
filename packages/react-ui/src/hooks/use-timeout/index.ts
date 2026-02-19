@@ -1,5 +1,5 @@
 import { useEffect, useEffectEvent, useRef } from "react";
-import { useLatestRef } from "../use-lastest-ref";
+import { useLatestRef } from "../use-latest-ref";
 
 export const useTimeout = (
   callback: () => void,
