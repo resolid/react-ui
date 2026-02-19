@@ -159,9 +159,9 @@ export const TagsInputRoot = (props: PrimitiveProps<"div", TagsInputRootProps>):
       >
         <TagsInputRootContext value={rootContext}>
           <CompositeContext value={context}>
-            {valueState.map((value, index) => (
+            {valueState.map((value) => (
               <TagsInputItem
-                key={index}
+                key={value}
                 value={value}
                 className={tagsInputSizeStyle.item}
                 disabled={disabled || readOnly}
