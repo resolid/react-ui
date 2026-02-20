@@ -71,12 +71,14 @@ export const DialogRoot = (props: PropsWithChildren<DialogRootProps>): JSX.Eleme
     scrollBehavior = "inside",
     role = "dialog",
     closeOnEscape = true,
-    closeOnOutsideClick = role == "dialog",
+    closeOnOutsideClick: closeOnOutsideClickProp,
     preventScroll = true,
     placement = "top",
     duration = 250,
     children,
   } = props;
+
+  const closeOnOutsideClick = closeOnOutsideClickProp ?? role == "dialog";
 
   const [openState, { handleOpen, handleClose }] = useDisclosure({
     open,

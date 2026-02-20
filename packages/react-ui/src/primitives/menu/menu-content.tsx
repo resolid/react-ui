@@ -3,7 +3,7 @@ import type { JSX } from "react/jsx-runtime";
 import { Portal } from "../../components/portal/portal";
 import { useMergeRefs } from "../../hooks";
 import { tx } from "../../utils";
-import type { PrimitiveProps } from "../index";
+import type { PrimitiveProps } from "../polymorphic";
 import { PopperFloating } from "../popper/popper-floating";
 import { usePopperPositioner } from "../popper/popper-positioner-context";
 import { usePopperTransition } from "../popper/popper-transtion-context";

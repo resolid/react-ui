@@ -3,7 +3,7 @@ import type { JSX } from "react/jsx-runtime";
 import { useMergeRefs } from "../../hooks";
 import { AngleRightIcon } from "../../shared/icons";
 import { dataAttr, tx } from "../../utils";
-import type { PolymorphicProps } from "../index";
+import type { PolymorphicProps } from "../polymorphic";
 import { usePopperState } from "../popper/popper-state-context";
 import { usePopperTrigger } from "../popper/popper-trigger-context";
 import { MenuBaseItem, type MenuBaseItemProps } from "./menu-base-item";

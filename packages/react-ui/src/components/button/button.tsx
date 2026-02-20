@@ -56,11 +56,11 @@ export const Button = (props: PolymorphicProps<"button", ButtonProps, "role">): 
 
   const {
     render,
-    variant = group?.variant ?? "solid",
-    color = group?.color ?? "primary",
-    size = group?.size ?? "md",
-    radius = group?.radius ?? "md",
-    disabled = group?.disabled ?? false,
+    variant: variantProp,
+    color: colorProp,
+    size: sizeProp,
+    radius: radiusProp,
+    disabled: disabledProp,
     active = false,
     loading = false,
     loadingText,
@@ -76,6 +76,12 @@ export const Button = (props: PolymorphicProps<"button", ButtonProps, "role">): 
     role,
     ...rest
   } = props as typeof props & { role?: AriaRole };
+
+  const variant = variantProp ?? group?.variant ?? "solid";
+  const color = colorProp ?? group?.color ?? "primary";
+  const size = sizeProp ?? group?.size ?? "md";
+  const radius = radiusProp ?? group?.radius ?? "md";
+  const disabled = disabledProp ?? group?.disabled ?? false;
 
   const disabledStatus = disabled || loading;
 

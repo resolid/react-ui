@@ -34,9 +34,9 @@ export const Radio = (
   const group = useRadioGroup();
 
   const {
-    size = group.size || "md",
-    color = group.color || "primary",
-    disabled = group.disabled ?? false,
+    size: sizeProp,
+    color: colorProp,
+    disabled: disabledProp,
     spacing = "0.5em",
     value,
     style,
@@ -44,6 +44,10 @@ export const Radio = (
     children,
     ...rest
   } = props;
+
+  const size = sizeProp ?? group.size ?? "md";
+  const color = colorProp ?? group.color ?? "primary";
+  const disabled = disabledProp ?? group.disabled ?? false;
 
   const checked = group.value == value;
   const readOnly = group.readOnly;

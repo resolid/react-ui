@@ -24,6 +24,10 @@ export type PaginationProps = UsePaginationOptions & {
   renderTotal?: (total: number, totalPages: number) => ReactElement;
 };
 
+function defaultRenderItem(props: PaginationItemProps) {
+  return <PaginationItem {...props} />;
+}
+
 export const Pagination = (props: PrimitiveProps<"nav", PaginationProps, "role">): JSX.Element => {
   const {
     page,
@@ -35,7 +39,7 @@ export const Pagination = (props: PrimitiveProps<"nav", PaginationProps, "role">
     boundaries,
     disabled,
     color = "primary",
-    renderItem = (props) => <PaginationItem {...props} />,
+    renderItem: renderItemProp,
     renderTotal,
     className,
     ...rest
@@ -51,6 +55,8 @@ export const Pagination = (props: PrimitiveProps<"nav", PaginationProps, "role">
     boundaries,
     disabled,
   });
+
+  const renderItem = renderItemProp ?? defaultRenderItem;
 
   return (
     <nav

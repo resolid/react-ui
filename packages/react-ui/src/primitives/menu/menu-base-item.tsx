@@ -3,7 +3,7 @@ import { isString } from "@resolid/utils";
 import type { JSX } from "react/jsx-runtime";
 import { useMergeRefs } from "../../hooks";
 import { ariaAttr, dataAttr, tx } from "../../utils";
-import { Polymorphic, type PolymorphicProps } from "../index";
+import { Polymorphic, type PolymorphicProps } from "../polymorphic";
 import { useMenuItem } from "./menu-item-context";
 
 export type MenuBaseItemProps = {

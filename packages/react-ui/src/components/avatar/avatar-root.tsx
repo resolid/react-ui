@@ -18,15 +18,10 @@ export type AvatarRootProps = {
 export const AvatarRoot = (props: PrimitiveProps<"div", AvatarRootProps>): JSX.Element => {
   const group = useAvatarGroup(true);
 
-  const {
-    name,
-    size = group?.size ?? 64,
-    radius = group?.radius ?? "full",
-    className,
-    style,
-    children,
-    ...rest
-  } = props;
+  const { name, size: sizeProp, radius: radiusProp, className, style, children, ...rest } = props;
+
+  const size = sizeProp ?? group?.size ?? 64;
+  const radius = radiusProp ?? group?.radius ?? "full";
 
   const sizeVariable = isNumber(size) ? `${size}px` : size;
   const { radiusStyle, radiusClass } = getRadiusStyleAndClass(radius);

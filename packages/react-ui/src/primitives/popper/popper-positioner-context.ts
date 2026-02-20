@@ -1,8 +1,8 @@
-import type { CSSProperties } from "react";
+import type { CSSProperties, RefCallback } from "react";
 import { createSafeContext, type SafeContext, type UseSafeContext } from "../context";
 
 export type PopperPositionerContextValue = {
-  setPositioner: (node: HTMLElement | null) => void;
+  setPositioner: RefCallback<HTMLElement> | null;
   positionerStyles: CSSProperties;
 };
 

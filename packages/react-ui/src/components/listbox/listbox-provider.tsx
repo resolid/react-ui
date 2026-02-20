@@ -68,8 +68,8 @@ export const ListboxProvider = <T extends ListboxItem>(
       pointer,
       setFloating,
       getFloatingProps,
-      renderGroupLabel = (item) => getItemLabel(item) as ReactNode,
-      renderItem = (item) => getItemLabel(item) as ReactNode,
+      renderGroupLabel: renderGroupLabelProp,
+      renderItem: renderItemProp,
       getItemProps,
       getNavigationProps,
       filterInputRef,
@@ -84,6 +84,9 @@ export const ListboxProvider = <T extends ListboxItem>(
     },
     children,
   } = props;
+
+  const renderGroupLabel = renderGroupLabelProp ?? ((item) => getItemLabel(item) as ReactNode);
+  const renderItem = renderItemProp ?? ((item) => getItemLabel(item) as ReactNode);
 
   const itemContext = {
     activeIndex,

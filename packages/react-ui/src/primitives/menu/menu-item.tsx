@@ -1,6 +1,6 @@
 import type { JSX } from "react/jsx-runtime";
 import { getInteractiveHandlers } from "../../shared/utils";
-import type { PolymorphicProps } from "../index";
+import type { PolymorphicProps } from "../polymorphic";
 import { MenuBaseItem, type MenuBaseItemProps } from "./menu-base-item";
 import { useMenuItem } from "./menu-item-context";
 

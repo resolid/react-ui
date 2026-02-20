@@ -1,5 +1,5 @@
 import type { JSX } from "react/jsx-runtime";
-import type { EmptyObject, PrimitiveProps } from "../index";
+import type { EmptyObject, PrimitiveProps } from "../polymorphic";
 import { usePopperAria } from "./popper-aria-context";
 
 export const PopperDescription = (props: PrimitiveProps<"div", EmptyObject, "id">): JSX.Element => {

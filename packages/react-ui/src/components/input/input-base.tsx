@@ -54,7 +54,7 @@ export const InputBase = (
   const group = useInputGroup(true);
 
   const {
-    size = group?.size ?? "md",
+    size: sizeProp,
     invalid = false,
     disabled = false,
     required = false,
@@ -74,6 +74,8 @@ export const InputBase = (
     ref,
     ...rest
   } = props;
+
+  const size = sizeProp ?? group?.size ?? "md";
 
   const [valueState, setValueState] = useControllableState({ value, defaultValue, onChange });
 

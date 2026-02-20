@@ -72,5 +72,16 @@
   "publishConfig": {
     "access": "public",
     "provenance": true
+  },
+  "reactDoctor": {
+    "ignore": {
+      "files": [
+        "plugins/**",
+        "**/*.test.tsx",
+        "**/color-mode-provider.tsx",
+        "**/listbox-virtualizer.tsx",
+        "**/tags-input-input.tsx"
+      ]
+    }
   }
 }

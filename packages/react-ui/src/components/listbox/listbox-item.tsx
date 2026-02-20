@@ -42,6 +42,7 @@ export const ListboxItem = (
     renderItem,
     elementsRef,
   } = useListboxItem();
+
   const { getItemDisabled } = useListboxFields();
 
   const refs = useMergeRefs(ref, (node) => {

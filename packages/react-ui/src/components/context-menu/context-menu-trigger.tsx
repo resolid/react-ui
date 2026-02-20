@@ -4,7 +4,7 @@ import { Polymorphic, type PolymorphicProps } from "../../primitives";
 import { usePopperAnchor } from "../../primitives/popper/popper-anchor-context";
 import { usePopperDispatch } from "../../primitives/popper/popper-dispatch-context";
 import { usePopperState } from "../../primitives/popper/popper-state-context";
-import { dataAttr } from "../../utils";
+import { dataAttr, tx } from "../../utils";
 
 type ContextMenuTriggerProps = {
   /**
@@ -26,6 +26,7 @@ export const ContextMenuTrigger = (
     onPointerCancel,
     onPointerUp,
     children,
+    className,
     ...rest
   } = props;
 
@@ -127,6 +128,7 @@ export const ContextMenuTrigger = (
       onPointerMove={handlePointerMove}
       onPointerCancel={handlePointerCancel}
       onPointerUp={handlePointerUp}
+      className={tx("", className)}
       {...rest}
     >
       {children}

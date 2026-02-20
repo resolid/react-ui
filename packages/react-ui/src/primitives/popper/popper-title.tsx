@@ -1,6 +1,6 @@
 import type { JSX } from "react/jsx-runtime";
 import { tx } from "../../utils";
-import type { EmptyObject, PrimitiveProps } from "../index";
+import type { EmptyObject, PrimitiveProps } from "../polymorphic";
 import { usePopperAria } from "./popper-aria-context";
 
 export const PopperTitle = (props: PrimitiveProps<"h2", EmptyObject, "id">): JSX.Element => {

@@ -47,11 +47,11 @@ export const Checkbox = (
 
   const {
     name,
-    size = group?.size || "md",
-    color = group?.color || "primary",
-    disabled = group?.disabled || false,
-    readOnly = group?.readOnly || false,
-    required = group?.required || false,
+    size: sizeProp,
+    color: colorProp,
+    disabled: disabledProp,
+    readOnly: readOnlyProp,
+    required: requiredProp,
     invalid = false,
     spacing = "0.5em",
     checked,
@@ -66,10 +66,17 @@ export const Checkbox = (
     ...rest
   } = props;
 
+  const size = sizeProp ?? group?.size ?? "md";
+  const color = colorProp ?? group?.color ?? "primary";
+  const disabled = disabledProp ?? group?.disabled ?? false;
+  const readOnly = readOnlyProp ?? group?.readOnly ?? false;
+  const required = requiredProp ?? group?.required ?? false;
+
   const inputRef = useRef<HTMLInputElement>(null);
+  const groupChecked = group?.value && value ? group.value.includes(value) : undefined;
 
   const [checkedState, setCheckedState] = useControllableState({
-    value: group?.value && value ? group.value.includes(value) : checked,
+    value: groupChecked ?? checked,
     defaultValue: defaultChecked,
     onChange,
   });

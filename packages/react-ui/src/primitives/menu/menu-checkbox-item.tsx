@@ -1,6 +1,6 @@
 import type { JSX } from "react/jsx-runtime";
 import { ariaAttr, tx } from "../../utils";
-import type { PolymorphicProps } from "../index";
+import type { PolymorphicProps } from "../polymorphic";
 import { MenuItem, type MenuItemProps } from "./menu-item";
 import { type CheckedState, MenuItemIndicatorContext } from "./menu-item-indicator-context";
 

@@ -73,8 +73,8 @@ export const NumberInput = (
     precision,
     inputMode = "decimal",
     changeOnWheel = false,
-    format = (value) => value,
-    parse = (value) => value,
+    format: formatProp,
+    parse: parseProp,
     disabled = false,
     readOnly = false,
     size = "md",
@@ -83,6 +83,9 @@ export const NumberInput = (
     ref,
     ...rest
   } = props;
+
+  const format = formatProp ?? ((value) => value);
+  const parse = parseProp ?? ((value) => value);
 
   const uid = useId();
   const inputId = id ?? uid;

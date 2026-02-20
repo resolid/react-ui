@@ -1,5 +1,5 @@
 import { formatBytes, isNullish, matchesAccept, omit, random } from "@resolid/utils";
-import { type ChangeEvent, useReducer, useRef } from "react";
+import { type ChangeEvent, useCallback, useReducer, useRef } from "react";
 import type { JSX } from "react/jsx-runtime";
 import { useMergeRefs } from "../../hooks";
 import type { PrimitiveProps } from "../../primitives";
@@ -130,6 +130,22 @@ const reducer = (state: FileItem[], action: PickerReducerAction): FileItem[] => 
   }
 };
 
+const convertToDataTransfer = (files: FileItem[]) => {
+  try {
+    const dataTransfer = new DataTransfer();
+
+    for (const file of files) {
+      if (file.kind === "local") {
+        dataTransfer.items.add(file.file);
+      }
+    }
+
+    return dataTransfer.files;
+  } catch {
+    return null;
+  }
+};
+
 export const FilePickerRoot = (
   props: PrimitiveProps<"input", FilePickerRootProps, "type">,
 ): JSX.Element => {
@@ -180,27 +196,22 @@ export const FilePickerRoot = (
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const onChangeCallback = (value: FileItem[] | FileItem) => {
-    queueMicrotask(() => {
-      if (inputRef.current) {
-        try {
-          const dataTransfer = new DataTransfer();
+  const onChangeCallback = useCallback(
+    (value: FileItem[] | FileItem) => {
+      queueMicrotask(() => {
+        if (inputRef.current) {
+          const files = convertToDataTransfer(Array.isArray(value) ? value : [value]);
 
-          (Array.isArray(value) ? value : [value]).forEach((file) => {
-            if (file.kind == "local") {
-              dataTransfer.items.add(file.file);
-            }
-          });
-
-          inputRef.current.files = dataTransfer.files;
-        } catch {
-          // do nothing
+          if (files) {
+            inputRef.current.files = files;
+          }
         }
-      }
-    });
+      });
 
-    onChange?.(value);
-  };
+      onChange?.(value);
+    },
+    [onChange],
+  );
 
   const addFiles = async (files: File[] | FileList) => {
     if (!files || files.length === 0) {
@@ -286,18 +297,11 @@ export const FilePickerRoot = (
       });
 
       if (upload && upload.autoUpload) {
-        let index = 0;
-
-        const worker = async () => {
-          while (index < validFiles.length) {
-            const current = index++;
-            await upload.uploadFile(validFiles[current], updateFile);
+        const workers = Array.from({ length: upload.maxParallel }, async (_, workerIndex) => {
+          for (let i = workerIndex; i < validFiles.length; i += upload.maxParallel) {
+            await upload.uploadFile(validFiles[i], updateFile);
           }
-        };
-
-        const workers = Array(upload.maxParallel)
-          .fill(null)
-          .map(() => worker());
+        });
 
         await Promise.all(workers);
       }

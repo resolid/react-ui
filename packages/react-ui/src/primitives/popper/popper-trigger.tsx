@@ -1,7 +1,7 @@
 import type { JSX } from "react/jsx-runtime";
 import { useButtonProps, useMergeRefs } from "../../hooks";
 import { dataAttr } from "../../utils";
-import { Polymorphic, type PolymorphicProps } from "../index";
+import { Polymorphic, type PolymorphicProps } from "../polymorphic";
 import { usePopperState } from "./popper-state-context";
 import { usePopperTrigger } from "./popper-trigger-context";
 
