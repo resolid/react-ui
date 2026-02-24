@@ -1,5 +1,11 @@
 # @resolid/react-ui
 
+## 0.1.8
+
+### Patch Changes
+
+- chore: merge eslint and prettier to oxlint and oxfmt ([`4079529`](https://github.com/resolid/react-ui/commit/407952901899d64c98a18fd19bdef807cb48b5d6))
+
 ## 0.1.7
 
 ### Patch Changes
