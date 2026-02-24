@@ -1,3 +1,4 @@
+import type { JSX } from "react/jsx-runtime";
 import {
   autoUpdate,
   flip,
@@ -8,9 +9,8 @@ import {
   useFloating,
   useTransitionStatus,
 } from "@floating-ui/react";
-import type { JSX } from "react/jsx-runtime";
-import { useMergeRefs } from "../../hooks";
 import type { PrimitiveProps } from "../../primitives";
+import { useMergeRefs } from "../../hooks";
 import { PopperPositioner } from "../../primitives/popper/popper-positioner";
 import {
   PopperPositionerContext,

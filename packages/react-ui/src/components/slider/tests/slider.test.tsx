@@ -1,7 +1,7 @@
+import type { JSX } from "react/jsx-runtime";
 import { act, cleanup, render, waitFor } from "@testing-library/react";
 import user from "@testing-library/user-event";
 import { useState } from "react";
-import type { JSX } from "react/jsx-runtime";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { axe } from "vitest-axe";
 import { DirectionContext } from "../../provider/direction-context";

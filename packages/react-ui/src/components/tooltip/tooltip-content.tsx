@@ -1,6 +1,6 @@
 import type { JSX } from "react/jsx-runtime";
-import { useMergeRefs } from "../../hooks";
 import type { PrimitiveProps } from "../../primitives";
+import { useMergeRefs } from "../../hooks";
 import { PopperFloating } from "../../primitives/popper/popper-floating";
 import { usePopperPositioner } from "../../primitives/popper/popper-positioner-context";
 import { usePopperTransition } from "../../primitives/popper/popper-transtion-context";

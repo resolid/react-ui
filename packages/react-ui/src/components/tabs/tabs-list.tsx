@@ -1,8 +1,8 @@
+import type { JSX } from "react/jsx-runtime";
 import { Composite } from "@floating-ui/react";
 import { useState } from "react";
-import type { JSX } from "react/jsx-runtime";
-import { useMergeRefs } from "../../hooks";
 import type { EmptyObject, PrimitiveProps } from "../../primitives";
+import { useMergeRefs } from "../../hooks";
 import { CompositeContext } from "../../primitives/composite/composite-context";
 import { useOrientation } from "../../primitives/composite/orientation-context";
 import { IndicatorContext } from "../../primitives/indicator/indicator-context";

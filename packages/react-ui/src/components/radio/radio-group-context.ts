@@ -1,5 +1,5 @@
-import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives";
 import type { BinarySize, ToggleColor } from "../../shared/styles";
+import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives";
 
 export type RadioBaseProps = {
   /**

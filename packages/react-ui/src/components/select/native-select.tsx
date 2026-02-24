@@ -1,7 +1,7 @@
 import type { JSX } from "react/jsx-runtime";
 import type { PrimitiveProps } from "../../primitives";
-import { inputTextShareStyles } from "../../shared/styles";
 import type { FormInputFieldProps } from "../../shared/types";
+import { inputTextShareStyles } from "../../shared/styles";
 import { tx } from "../../utils";
 import { inputPyStyles, inputStyles, selectHeightStyles } from "../input/input.styles";
 import { SelectChevron } from "./select-chevron";

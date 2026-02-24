@@ -1,5 +1,5 @@
-import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives";
 import type { ListboxNodeItem } from "./use-listbox";
+import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives";
 
 export type ListboxCollectionContextValue = {
   nodeItems: ListboxNodeItem[];

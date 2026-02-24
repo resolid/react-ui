@@ -6,7 +6,8 @@
     "src/**/*",
     "env.d.ts",
     "react-router.config.ts",
-    "vite.config.ts"
+    "vite.config.ts",
+    "oxlint.config.ts"
   ],
   "compilerOptions": {
     "rootDirs": [".", "./.react-router/types"],

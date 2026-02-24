@@ -1,7 +1,7 @@
-import { type CSSProperties, useEffect, useState } from "react";
 import type { JSX } from "react/jsx-runtime";
-import { useElementTransitionStatus, useIsomorphicEffect, useMergeRefs } from "../../hooks";
+import { type CSSProperties, useEffect, useState } from "react";
 import type { EmptyObject, PrimitiveProps } from "../../primitives";
+import { useElementTransitionStatus, useIsomorphicEffect, useMergeRefs } from "../../hooks";
 import { useOrientation } from "../../primitives/composite/orientation-context";
 import { tx } from "../../utils";
 import { useCollapsibleContent } from "./collapsible-content-context";

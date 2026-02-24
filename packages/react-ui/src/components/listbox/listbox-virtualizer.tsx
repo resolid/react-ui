@@ -1,7 +1,8 @@
+import type { JSX } from "react/jsx-runtime";
 import { omit } from "@resolid/utils";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { type PropsWithChildren, useLayoutEffect, useMemo } from "react";
-import type { JSX } from "react/jsx-runtime";
+import type { ListboxFlatItem, ListboxNodeItem } from "./use-listbox";
 import { usePopperFloating } from "../../primitives/popper/popper-floating-context";
 import { useListboxCollection } from "./listbox-collection-context";
 import { useListboxFields } from "./listbox-field-context";
@@ -9,7 +10,6 @@ import { useListboxScroll } from "./listbox-scroll-context";
 import { useListboxState } from "./listbox-state-context";
 import { ListboxVirtualizerContext } from "./listbox-virtualizer-context";
 import { listboxGroupLabelHeights, listboxItemHeights } from "./listbox.styles";
-import type { ListboxFlatItem, ListboxNodeItem } from "./use-listbox";
 
 export type ListboxVirtualizerProps = {
   /**
@@ -161,7 +161,7 @@ export const ListboxVirtualizer = ({
 const useListboxVirtualizer = (options: Parameters<typeof useVirtualizer>[0]) => {
   "use no memo";
 
-  // eslint-disable-next-line react-hooks/incompatible-library
+  // oxlint-disable-next-line react-hooks-js/incompatible-library
   const { getVirtualItems, getTotalSize, scrollToIndex } = useVirtualizer(options);
 
   return { virtualItems: getVirtualItems(), totalSize: getTotalSize(), scrollToIndex };

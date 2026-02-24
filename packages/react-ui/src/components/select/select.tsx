@@ -1,8 +1,8 @@
-import { OptionEmpty } from "../../primitives/common/option-empty";
 import type { ListboxFilter } from "../listbox/listbox";
+import type { ListboxItem } from "../listbox/use-listbox";
+import { OptionEmpty } from "../../primitives/common/option-empty";
 import { ListboxContent, ListboxList } from "../listbox/listbox";
 import { ListboxFilterBase } from "../listbox/listbox-filter-base";
-import type { ListboxItem } from "../listbox/use-listbox";
 import { SelectRoot, type SelectRootProps } from "./select-root";
 
 export type SelectProps<T extends ListboxItem = ListboxItem> = SelectRootProps<T>;

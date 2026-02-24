@@ -1,7 +1,7 @@
 import type { JSX } from "react/jsx-runtime";
 import type { PrimitiveProps } from "../../primitives";
-import { VisuallyHiddenInput } from "../visually-hidden/visually-hidden-input";
 import type { FileItem } from "./file-picker-context";
+import { VisuallyHiddenInput } from "../visually-hidden/visually-hidden-input";
 
 type FileHiddenInputProps = {
   name: string;

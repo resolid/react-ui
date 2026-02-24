@@ -1,5 +1,5 @@
-import { FloatingPortal, type FloatingPortalProps } from "@floating-ui/react";
 import type { JSX } from "react/jsx-runtime";
+import { FloatingPortal, type FloatingPortalProps } from "@floating-ui/react";
 
 export type PortalProps = FloatingPortalProps;
 

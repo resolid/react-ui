@@ -1,5 +1,5 @@
-import { isNumber } from "@resolid/utils";
 import type { CSSProperties, KeyboardEvent, MouseEvent, RefObject } from "react";
+import { isNumber } from "@resolid/utils";
 
 export type Radius = number | keyof typeof RadiusStyles;
 

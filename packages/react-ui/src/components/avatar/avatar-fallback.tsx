@@ -1,5 +1,5 @@
-import { type CSSProperties, useEffect, useState } from "react";
 import type { JSX } from "react/jsx-runtime";
+import { type CSSProperties, useEffect, useState } from "react";
 import type { PrimitiveProps } from "../../primitives";
 import { tx } from "../../utils";
 import { useAvatar, useAvatarStatus } from "./avatar-context";

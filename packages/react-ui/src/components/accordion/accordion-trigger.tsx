@@ -1,8 +1,8 @@
-import { useListItem } from "@floating-ui/react";
 import type { MouseEvent } from "react";
 import type { JSX } from "react/jsx-runtime";
-import { useMergeRefs } from "../../hooks";
+import { useListItem } from "@floating-ui/react";
 import type { EmptyObject, PolymorphicProps } from "../../primitives";
+import { useMergeRefs } from "../../hooks";
 import { useComposite } from "../../primitives/composite/composite-context";
 import { dataAttr } from "../../utils";
 import { CollapsibleTrigger } from "../collapsible/collapsible-trigger";

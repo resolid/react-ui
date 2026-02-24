@@ -1,10 +1,10 @@
 import type { JSX } from "react/jsx-runtime";
 import type { PrimitiveProps } from "../../primitives";
-import { CloseIcon } from "../../shared/icons";
 import type { Radius } from "../../shared/utils";
+import type { ButtonStyleProps } from "../button/button.styles";
+import { CloseIcon } from "../../shared/icons";
 import { tx } from "../../utils";
 import { Button } from "../button/button";
-import type { ButtonStyleProps } from "../button/button.styles";
 import { useLocale } from "../provider/locale-context";
 
 export type CloseButtonProps = {

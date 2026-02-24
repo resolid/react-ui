@@ -1,5 +1,5 @@
-import { ListboxRoot, type ListboxRootProps } from "./listbox-root";
 import type { ListboxItem } from "./use-listbox";
+import { ListboxRoot, type ListboxRootProps } from "./listbox-root";
 
 export type ListboxProps<T extends ListboxItem = ListboxItem> = ListboxRootProps<T>;
 

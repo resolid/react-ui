@@ -1,9 +1,9 @@
-import { type ChangeEvent, type CSSProperties, type ReactNode, useRef } from "react";
 import type { JSX } from "react/jsx-runtime";
-import { useControllableState, useMergeRefs } from "../../hooks";
+import { type ChangeEvent, type CSSProperties, type ReactNode, useRef } from "react";
 import type { PrimitiveProps } from "../../primitives";
-import { inputTextShareStyles } from "../../shared/styles";
 import type { FormInputFieldProps, ValueProp } from "../../shared/types";
+import { useControllableState, useMergeRefs } from "../../hooks";
+import { inputTextShareStyles } from "../../shared/styles";
 import { tx } from "../../utils";
 import { InputAffix } from "./input-affix";
 import { type InputGroupContextValue, useInputGroup } from "./input-group-context";

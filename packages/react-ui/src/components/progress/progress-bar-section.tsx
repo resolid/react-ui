@@ -1,6 +1,6 @@
-import { isNumber } from "@resolid/utils";
 import type { CSSProperties } from "react";
 import type { JSX } from "react/jsx-runtime";
+import { isNumber } from "@resolid/utils";
 import type { PrimitiveProps } from "../../primitives";
 import { hasBackgroundBaseClass } from "../../shared/utils";
 import { tx } from "../../utils";

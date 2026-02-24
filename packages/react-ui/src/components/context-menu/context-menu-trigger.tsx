@@ -1,5 +1,5 @@
-import { type MouseEvent, type PointerEvent, useCallback, useEffect, useRef } from "react";
 import type { JSX } from "react/jsx-runtime";
+import { type MouseEvent, type PointerEvent, useCallback, useEffect, useRef } from "react";
 import { Polymorphic, type PolymorphicProps } from "../../primitives";
 import { usePopperAnchor } from "../../primitives/popper/popper-anchor-context";
 import { usePopperDispatch } from "../../primitives/popper/popper-dispatch-context";

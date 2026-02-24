@@ -1,9 +1,9 @@
 import type { JSX } from "react/jsx-runtime";
 import type { PrimitiveProps } from "../../primitives";
+import type { InputSize } from "../input/input.styles";
 import { AngleDownIcon, AngleUpIcon } from "../../shared/icons";
 import { inputTextShareStyles } from "../../shared/styles";
 import { tx } from "../../utils";
-import type { InputSize } from "../input/input.styles";
 
 export const NumberInputControl = (
   props: PrimitiveProps<

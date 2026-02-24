@@ -4,21 +4,26 @@
   "private": false,
   "description": "Resolid React components",
   "keywords": [
-    "resolid",
     "react",
     "react-hook",
+    "resolid",
     "tailwindcss"
   ],
   "homepage": "https://ui.resolid.tech",
+  "license": "MIT",
+  "author": "Huijie Wei",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/resolid/react-ui.git",
     "directory": "packages/react-ui"
   },
-  "license": "MIT",
-  "author": "Huijie Wei",
-  "sideEffects": false,
+  "files": [
+    "dist",
+    "tailwindcss"
+  ],
   "type": "module",
+  "sideEffects": false,
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -31,14 +36,13 @@
     "./tailwindcss": "./tailwindcss/index.css",
     "./package.json": "./package.json"
   },
-  "types": "./dist/index.d.ts",
-  "files": [
-    "dist",
-    "tailwindcss"
-  ],
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
   "scripts": {
     "build": "tsdown",
-    "lint": "eslint .",
+    "lint": "oxlint",
     "test": "vitest run",
     "typecheck": "tsc --noEmit"
   },
@@ -68,10 +72,6 @@
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "tailwindcss": "^4.2.0"
-  },
-  "publishConfig": {
-    "access": "public",
-    "provenance": true
   },
   "reactDoctor": {
     "ignore": {

@@ -1,5 +1,5 @@
-import { FloatingArrow, type FloatingArrowProps } from "@floating-ui/react";
 import type { JSX } from "react/jsx-runtime";
+import { FloatingArrow, type FloatingArrowProps } from "@floating-ui/react";
 import { usePopperArrow } from "./popper-arrow-context";
 
 export type PopperArrowProps = Omit<FloatingArrowProps, "context" | "stroke" | "fill">;

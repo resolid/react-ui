@@ -2,6 +2,7 @@ import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/re
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { axe } from "vitest-axe";
 import type { ListboxItem } from "../../listbox/use-listbox";
+import type { ComboboxProps } from "../use-combobox";
 import {
   Combobox,
   ComboboxAnchor,
@@ -11,7 +12,6 @@ import {
   ComboboxPopup,
   ComboboxTrigger,
 } from "../combobox";
-import type { ComboboxProps } from "../use-combobox";
 
 const ComponentUnderTest = (props: Omit<ComboboxProps<ListboxItem>, "collection">) => {
   const collection = [

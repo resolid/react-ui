@@ -1,7 +1,6 @@
 import { defineConfig, type UserConfig } from "tsdown";
 import { reactCompilerRolldownPlugin } from "./plugins/react-compiler-plugin.js";
 
-// noinspection JSUnusedGlobalSymbols
 export default defineConfig({
   entry: {
     index: "src/index.ts",

@@ -1,10 +1,10 @@
 import type { JSX } from "react/jsx-runtime";
 import type { PrimitiveProps } from "../../primitives";
-import { tx } from "../../utils";
 import type { InputSize } from "../input/input.styles";
+import type { ListboxItem } from "./use-listbox";
+import { tx } from "../../utils";
 import { useListboxGroup } from "./listbox-group-context";
 import { listboxGroupLabelStyles } from "./listbox.styles";
-import type { ListboxItem } from "./use-listbox";
 
 type ListboxGroupLabelProps = {
   group: ListboxItem;

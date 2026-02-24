@@ -1,7 +1,7 @@
-import { type PropsWithChildren, useState } from "react";
 import type { JSX } from "react/jsx-runtime";
-import { useLocale } from "../provider/locale-context";
+import { type PropsWithChildren, useState } from "react";
 import type { LocalFile, UploadedFile } from "./file-picker-context";
+import { useLocale } from "../provider/locale-context";
 import {
   type FileUploadBaseProps,
   FileUploadContext,

@@ -1,6 +1,6 @@
 import type { JSX } from "react/jsx-runtime";
-import { useMergeRefs } from "../../hooks";
 import type { AnyObject, PrimitiveProps } from "../../primitives";
+import { useMergeRefs } from "../../hooks";
 import { CheckIcon } from "../../shared/icons";
 import { getInteractiveHandlers } from "../../shared/utils";
 import { ariaAttr, dataAttr, tx } from "../../utils";

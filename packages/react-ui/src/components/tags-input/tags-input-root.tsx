@@ -1,14 +1,14 @@
+import type { JSX } from "react/jsx-runtime";
 import { Composite } from "@floating-ui/react";
 import { useState } from "react";
-import type { JSX } from "react/jsx-runtime";
-import { useControllableState } from "../../hooks";
 import type { PrimitiveProps } from "../../primitives";
+import type { FormInputFieldProps, ValueProp } from "../../shared/types";
+import { useControllableState } from "../../hooks";
 import {
   CompositeContext,
   type CompositeContextValue,
 } from "../../primitives/composite/composite-context";
 import { inputTextShareStyles } from "../../shared/styles";
-import type { FormInputFieldProps, ValueProp } from "../../shared/types";
 import { ariaAttr, tx } from "../../utils";
 import {
   inputHeightStyles,

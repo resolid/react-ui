@@ -1,6 +1,6 @@
 import type { JSX } from "react/jsx-runtime";
-import { useMergeRefs } from "../../hooks";
 import type { PrimitiveProps } from "../../primitives";
+import { useMergeRefs } from "../../hooks";
 import { SearchIcon } from "../../shared/icons";
 import { tx } from "../../utils";
 import { InputBase, type InputBaseProps } from "../input/input-base";

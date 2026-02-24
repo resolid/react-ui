@@ -1,5 +1,5 @@
-import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives";
 import type { FileItem } from "./file-picker-context";
+import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives";
 
 const contextTuple = createSafeContext<FileItem>({
   name: "FilePickerItemContext",

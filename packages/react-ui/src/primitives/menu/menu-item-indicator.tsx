@@ -1,6 +1,6 @@
 import type { JSX } from "react/jsx-runtime";
-import { tx } from "../../utils";
 import type { PrimitiveProps } from "../polymorphic";
+import { tx } from "../../utils";
 import { useMenuItemIndicator } from "./menu-item-indicator-context";
 
 export const MenuItemIndicator = (props: PrimitiveProps<"span">): JSX.Element | null => {

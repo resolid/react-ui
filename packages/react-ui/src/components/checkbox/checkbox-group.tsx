@@ -1,8 +1,8 @@
 import type { ChangeEvent } from "react";
 import type { JSX } from "react/jsx-runtime";
-import { useControllableState } from "../../hooks";
 import type { PrimitiveProps } from "../../primitives";
 import type { Orientation } from "../../shared/types";
+import { useControllableState } from "../../hooks";
 import { isInputEvent, tx } from "../../utils";
 import { type CheckboxGroupBaseProps, CheckboxGroupContext } from "./checkbox-group-context";
 

@@ -1,5 +1,5 @@
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@resolid/react-ui";
 import type { ComponentProps, ReactElement } from "react";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@resolid/react-ui";
 import { SpriteIcon } from "~/components/sprite-icon";
 
 export type MdxDetailsProps = {

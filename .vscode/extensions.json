@@ -2,9 +2,8 @@
   "recommendations": [
     "unifiedjs.vscode-mdx",
     "editorconfig.editorconfig",
-    "dbaeumer.vscode-eslint",
-    "esbenp.prettier-vscode",
     "bradlc.vscode-tailwindcss",
-    "vitest.explorer"
+    "vitest.explorer",
+    "oxc.oxc-vscode"
   ]
 }

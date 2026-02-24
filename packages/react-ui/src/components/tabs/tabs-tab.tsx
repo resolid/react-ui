@@ -1,6 +1,6 @@
+import type { JSX } from "react/jsx-runtime";
 import { useListItem } from "@floating-ui/react";
 import { type FocusEvent, type MouseEvent, useEffectEvent, useRef } from "react";
-import type { JSX } from "react/jsx-runtime";
 import { useButtonProps, useIsomorphicEffect, useMergeRefs } from "../../hooks";
 import { Polymorphic, type PolymorphicProps } from "../../primitives";
 import { useComposite } from "../../primitives/composite/composite-context";

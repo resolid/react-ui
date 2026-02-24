@@ -8,18 +8,18 @@ import {
   useRole,
 } from "@floating-ui/react";
 import { type HTMLProps, type InputEvent, type KeyboardEvent, useRef, useState } from "react";
-import { useDisclosure } from "../../hooks";
 import type { PopperAnchorContextValue } from "../../primitives/popper/popper-anchor-context";
 import type { PopperStateContextValue } from "../../primitives/popper/popper-state-context";
 import type { PopperTriggerContextValue } from "../../primitives/popper/popper-trigger-context";
 import type { DisclosureProps } from "../../shared/types";
 import type { ListboxProviderProps } from "../listbox/listbox-provider";
 import type { ListboxRootProps } from "../listbox/listbox-root";
-import { type ListboxItem, useListbox } from "../listbox/use-listbox";
 import type { ComboboxInputContextValue } from "./combobox-input-context";
 import type { ComboboxPopupContextValue } from "./combobox-popup-context";
 import type { ComboboxStateContextValue } from "./combobox-state-context";
 import type { ComboboxTriggerContextValue } from "./combobox-trigger-context";
+import { useDisclosure } from "../../hooks";
+import { type ListboxItem, useListbox } from "../listbox/use-listbox";
 
 export type ComboboxProps<T extends ListboxItem> = DisclosureProps &
   ListboxRootProps<T> & {
@@ -133,12 +133,12 @@ export const useCombobox = <T extends ListboxItem>({
   });
 
   const {
-    selectedItems,
+    selectedItems: _,
     setActiveIndex,
     selectedIndices,
     selectedIndex,
     navigationInteraction,
-    typeaheadInteraction,
+    typeaheadInteraction: __,
     interactiveHandlers,
     handleEnterKeydown,
     setFilterKeyword,

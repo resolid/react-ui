@@ -5,7 +5,7 @@
   "scripts": {
     "build": "react-router build",
     "dev": "react-router dev",
-    "lint": "eslint .",
+    "lint": "oxlint",
     "start": "NODE_ENV=production SERVER_PORT=3001 node --env-file=.env.local ./build/server/server.mjs",
     "typecheck": "tsc --noEmit --project tsconfig.check.json",
     "typegen": "react-router typegen"
@@ -27,7 +27,7 @@
   "devDependencies": {
     "@mdx-js/rollup": "^3.1.1",
     "@react-router/dev": "^7.13.1",
-    "@resolid/config": "^4.0.1",
+    "@resolid/config": "^5.0.0",
     "@resolid/flex-routes": "^1.6.0",
     "@resolid/react-router-hono": "^2.3.2",
     "@shikijs/rehype": "^3.22.0",

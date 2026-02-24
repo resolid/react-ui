@@ -1,7 +1,7 @@
 import type { JSX } from "react/jsx-runtime";
+import type { PrimitiveProps } from "../polymorphic";
 import { hasBackgroundBaseClass } from "../../shared/utils";
 import { tx } from "../../utils";
-import type { PrimitiveProps } from "../polymorphic";
 import { usePopperTransition } from "./popper-transtion-context";
 import { getPopperAnimationProps } from "./utils";
 

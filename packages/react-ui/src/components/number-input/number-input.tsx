@@ -1,9 +1,9 @@
+import type { JSX } from "react/jsx-runtime";
 import { clamp, isNumber } from "@resolid/utils";
 import { type FocusEvent, type KeyboardEvent, useId, useRef, useState } from "react";
-import type { JSX } from "react/jsx-runtime";
-import { useControllableState, useEventListener, useMergeRefs } from "../../hooks";
 import type { PrimitiveProps } from "../../primitives";
 import type { ValueProp } from "../../shared/types";
+import { useControllableState, useEventListener, useMergeRefs } from "../../hooks";
 import { Input, type InputProps } from "../input/input";
 import { NumberInputControl } from "./number-input-control";
 

@@ -1,8 +1,8 @@
 import type { JSX } from "react/jsx-runtime";
 import type { PrimitiveProps } from "../../primitives";
+import type { progressBarSizeStyles } from "./progress-bar.styles";
 import { ProgressBarRoot, type ProgressBarRootProps } from "./progress-bar-root";
 import { ProgressBarSection, type ProgressBarSectionProps } from "./progress-bar-section";
-import type { progressBarSizeStyles } from "./progress-bar.styles";
 
 export type ProgressBarProps = Omit<ProgressBarRootProps, "size"> &
   ProgressBarSectionProps & {

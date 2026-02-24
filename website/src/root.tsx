@@ -1,6 +1,6 @@
+import type { PropsWithChildren } from "react";
 import { ConfigProvider } from "@resolid/react-ui";
 import zhCN from "@resolid/react-ui/locales/zh-CN";
-import type { PropsWithChildren } from "react";
 import { Links, type LinksFunction, Meta, Outlet, Scripts, ScrollRestoration } from "react-router";
 import { ErrorComponent } from "~/components/error-component";
 import { RouteProcessBar } from "~/components/route-process-bar";

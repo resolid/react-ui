@@ -1,3 +1,4 @@
+import type { JSX } from "react/jsx-runtime";
 import {
   arrow,
   autoUpdate,
@@ -22,10 +23,9 @@ import {
   useTypeahead,
 } from "@floating-ui/react";
 import { type PropsWithChildren, useEffect, useEffectEvent, useRef, useState } from "react";
-import type { JSX } from "react/jsx-runtime";
+import type { DisclosureProps } from "../../shared/types";
 import { useDirection } from "../../components/provider/direction-context";
 import { useDisclosure, usePreventScroll, useTransitionComplete } from "../../hooks";
-import type { DisclosureProps } from "../../shared/types";
 import {
   PopperAnchorContext,
   type PopperAnchorContextValue,

@@ -1,8 +1,8 @@
 import type { JSX } from "react/jsx-runtime";
 import type { Dict, PrimitiveProps } from "../../primitives";
+import type { ButtonStyleProps } from "./button.styles";
 import { tx } from "../../utils";
 import { Spinner } from "../spinner/spinner";
-import type { ButtonStyleProps } from "./button.styles";
 
 export type ButtonSpinnerProps = {
   size: NonNullable<ButtonStyleProps["size"]>;

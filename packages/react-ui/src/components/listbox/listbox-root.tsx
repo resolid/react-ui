@@ -1,6 +1,6 @@
+import type { JSX } from "react/jsx-runtime";
 import { useFloatingRootContext, useInteractions, useRole } from "@floating-ui/react";
 import { type FocusEvent, useState } from "react";
-import type { JSX } from "react/jsx-runtime";
 import type { PrimitiveProps } from "../../primitives";
 import type { FormFieldProps } from "../../shared/types";
 import { tx } from "../../utils";

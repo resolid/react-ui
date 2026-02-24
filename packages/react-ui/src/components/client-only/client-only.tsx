@@ -1,5 +1,5 @@
-import { runIf } from "@resolid/utils";
 import type { ReactNode } from "react";
+import { runIf } from "@resolid/utils";
 import { useHydrated } from "../../hooks";
 
 export type ClientOnlyProps = {

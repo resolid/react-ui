@@ -1,3 +1,4 @@
+import type { JSX } from "react/jsx-runtime";
 import { clamp, isNumber } from "@resolid/utils";
 import {
   type CSSProperties,
@@ -7,10 +8,9 @@ import {
   useRef,
   useState,
 } from "react";
-import type { JSX } from "react/jsx-runtime";
-import { useControllableState, useMergeRefs, useMove, type UseMovePosition } from "../../hooks";
 import type { PrimitiveProps } from "../../primitives";
 import type { Orientation } from "../../shared/types";
+import { useControllableState, useMergeRefs, useMove, type UseMovePosition } from "../../hooks";
 import { hasSizeBaseClass } from "../../shared/utils";
 import { tx } from "../../utils";
 import { useDirection } from "../provider/direction-context";

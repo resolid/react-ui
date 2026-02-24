@@ -1,7 +1,7 @@
 import type { JSX } from "react";
+import type { PrimitiveProps } from "../polymorphic";
 import { useLocale } from "../../components/provider/locale-context";
 import { tx } from "../../utils";
-import type { PrimitiveProps } from "../polymorphic";
 import { useOptionEmpty } from "./option-empty-context";
 
 export const OptionEmpty = ({

@@ -1,3 +1,4 @@
+import type { JSX } from "react/jsx-runtime";
 import {
   type HTMLProps,
   type PropsWithChildren,
@@ -5,14 +6,14 @@ import {
   useEffectEvent,
   useRef,
 } from "react";
-import type { JSX } from "react/jsx-runtime";
-import { useIsomorphicEffect, usePrevious } from "../../hooks";
 import type { AnyObject } from "../../primitives";
+import type { InputSize } from "../input/input.styles";
+import type { ListboxBaseProps, ListboxItem, UseListboxResult } from "./use-listbox";
+import { useIsomorphicEffect, usePrevious } from "../../hooks";
 import {
   PopperFloatingContext,
   type PopperFloatingContextValue,
 } from "../../primitives/popper/popper-floating-context";
-import type { InputSize } from "../input/input.styles";
 import { ListboxCollectionContext } from "./listbox-collection-context";
 import { ListboxFieldsContext, type ListboxFieldsContextValue } from "./listbox-field-context";
 import { ListboxFilterContext } from "./listbox-filter-context";
@@ -20,7 +21,6 @@ import { ListboxGroupContext, type ListboxGroupContextValue } from "./listbox-gr
 import { ListboxItemContext, type ListboxItemContextValue } from "./listbox-item-context";
 import { ListboxScrollContext, type VirtualScrollTo } from "./listbox-scroll-context";
 import { ListboxStateContext } from "./listbox-state-context";
-import type { ListboxBaseProps, ListboxItem, UseListboxResult } from "./use-listbox";
 
 export type ListboxProviderProps<T extends ListboxItem> = {
   value: Omit<

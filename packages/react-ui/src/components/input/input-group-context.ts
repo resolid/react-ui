@@ -1,5 +1,5 @@
-import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives";
 import type { InputSize } from "./input.styles";
+import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives";
 
 export type InputGroupContextValue = {
   /**

@@ -1,9 +1,9 @@
+import type { JSX } from "react/jsx-runtime";
 import { formatBytes, isNullish, matchesAccept, omit, random } from "@resolid/utils";
 import { type ChangeEvent, useCallback, useReducer, useRef } from "react";
-import type { JSX } from "react/jsx-runtime";
-import { useMergeRefs } from "../../hooks";
 import type { PrimitiveProps } from "../../primitives";
 import type { FormFieldProps, MultipleValueProps } from "../../shared/types";
+import { useMergeRefs } from "../../hooks";
 import { tx } from "../../utils";
 import { useLocale } from "../provider/locale-context";
 import { FileHiddenInput } from "./file-hidden-input";

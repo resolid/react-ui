@@ -1,5 +1,5 @@
-import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives";
 import type { Direction } from "../../shared/types";
+import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives";
 
 const desc = createSafeContext<Direction>({
   name: "DirectionContext",

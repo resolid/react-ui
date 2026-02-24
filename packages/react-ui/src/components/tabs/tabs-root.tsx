@@ -1,9 +1,9 @@
-import { useId } from "react";
 import type { JSX } from "react/jsx-runtime";
-import { useControllableState } from "../../hooks";
+import { useId } from "react";
 import type { PrimitiveProps } from "../../primitives";
-import { OrientationContext } from "../../primitives/composite/orientation-context";
 import type { Orientation, ValueProp } from "../../shared/types";
+import { useControllableState } from "../../hooks";
+import { OrientationContext } from "../../primitives/composite/orientation-context";
 import { tx } from "../../utils";
 import { TabsContext, type TabsContextValue } from "./tabs-context";
 

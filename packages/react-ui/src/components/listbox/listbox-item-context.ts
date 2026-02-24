@@ -1,7 +1,7 @@
 import type { HTMLProps, RefObject } from "react";
 import type { AnyObject, SafeContext, UseSafeContext } from "../../primitives";
-import { createSafeContext } from "../../primitives";
 import type { ListboxBaseProps, ListboxItem, UseListboxResult } from "./use-listbox";
+import { createSafeContext } from "../../primitives";
 
 export type ListboxItemContextValue = {
   activeIndex: number | null;

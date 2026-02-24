@@ -1,7 +1,8 @@
 import type { ChangeEvent, CSSProperties } from "react";
 import type { JSX } from "react/jsx-runtime";
-import { useControllableState } from "../../hooks";
 import type { PrimitiveProps } from "../../primitives";
+import type { CheckedValueProps, FormFieldProps } from "../../shared/types";
+import { useControllableState } from "../../hooks";
 import {
   inputTextShareStyles,
   type ToggleColor,
@@ -9,7 +10,6 @@ import {
   toggleControlShareStyles,
   toggleLabelShareStyles,
 } from "../../shared/styles";
-import type { CheckedValueProps, FormFieldProps } from "../../shared/types";
 import { ariaAttr, tx } from "../../utils";
 import { type SwitchSize, switchSizeStyles } from "./switch.styles";
 

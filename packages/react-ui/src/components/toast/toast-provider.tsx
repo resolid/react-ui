@@ -1,6 +1,6 @@
+import type { JSX } from "react/jsx-runtime";
 import { runIf } from "@resolid/utils";
 import { type PropsWithChildren, type ReactElement, useReducer } from "react";
-import type { JSX } from "react/jsx-runtime";
 import { PortalLite } from "../portal/portal-lite";
 import {
   type ToastConfig,

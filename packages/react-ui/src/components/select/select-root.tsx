@@ -1,3 +1,4 @@
+import type { JSX, ReactNode } from "react";
 import {
   autoUpdate,
   flip,
@@ -11,9 +12,10 @@ import {
   useRole,
   useTransitionStatus,
 } from "@floating-ui/react";
-import type { JSX, ReactNode } from "react";
-import { useDisclosure, useMergeRefs } from "../../hooks";
 import type { PrimitiveProps } from "../../primitives";
+import type { DisclosureProps } from "../../shared/types";
+import type { ListboxRootProps } from "../listbox/listbox-root";
+import { useDisclosure, useMergeRefs } from "../../hooks";
 import { OptionEmptyContext } from "../../primitives/common/option-empty-context";
 import { PopperPositioner } from "../../primitives/popper/popper-positioner";
 import {
@@ -22,11 +24,9 @@ import {
 } from "../../primitives/popper/popper-positioner-context";
 import { getPopperAnimationProps } from "../../primitives/popper/utils";
 import { inputTextShareStyles } from "../../shared/styles";
-import type { DisclosureProps } from "../../shared/types";
 import { ariaAttr, dataAttr, tx } from "../../utils";
 import { inputPyStyles, inputStyles, selectHeightStyles } from "../input/input.styles";
 import { ListboxProvider } from "../listbox/listbox-provider";
-import type { ListboxRootProps } from "../listbox/listbox-root";
 import { type ListboxItem, useListbox } from "../listbox/use-listbox";
 import { Portal } from "../portal/portal";
 import { VisuallyHiddenInput } from "../visually-hidden/visually-hidden-input";

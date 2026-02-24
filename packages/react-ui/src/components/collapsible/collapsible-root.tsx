@@ -1,8 +1,8 @@
-import { type CSSProperties, useId } from "react";
 import type { JSX } from "react/jsx-runtime";
-import { useDisclosure } from "../../hooks";
+import { type CSSProperties, useId } from "react";
 import type { PrimitiveProps } from "../../primitives";
 import type { DisclosureProps } from "../../shared/types";
+import { useDisclosure } from "../../hooks";
 import { tx } from "../../utils";
 import {
   CollapsibleContentContext,

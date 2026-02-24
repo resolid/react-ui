@@ -1,9 +1,9 @@
-import { type CSSProperties, useMemo } from "react";
 import type { JSX } from "react/jsx-runtime";
-import { useDirection } from "../../components/provider/direction-context";
+import { type CSSProperties, useMemo } from "react";
 import type { Orientation } from "../../shared/types";
-import { tx } from "../../utils";
 import type { PrimitiveProps } from "../polymorphic";
+import { useDirection } from "../../components/provider/direction-context";
+import { tx } from "../../utils";
 import { useIndicator } from "./indicator-context";
 
 export type IndicatorProps = {

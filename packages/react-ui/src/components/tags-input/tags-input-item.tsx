@@ -1,5 +1,5 @@
-import { useListItem } from "@floating-ui/react";
 import type { JSX } from "react/jsx-runtime";
+import { useListItem } from "@floating-ui/react";
 import type { PrimitiveProps } from "../../primitives";
 import { useComposite } from "../../primitives/composite/composite-context";
 import { ariaAttr, tx } from "../../utils";

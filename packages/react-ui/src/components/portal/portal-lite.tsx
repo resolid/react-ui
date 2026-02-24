@@ -1,5 +1,5 @@
-import { useFloatingPortalNode, type UseFloatingPortalNodeProps } from "@floating-ui/react";
 import type { PropsWithChildren, ReactPortal } from "react";
+import { useFloatingPortalNode, type UseFloatingPortalNodeProps } from "@floating-ui/react";
 import { createPortal } from "react-dom";
 
 export type PortalLiteProps = UseFloatingPortalNodeProps;

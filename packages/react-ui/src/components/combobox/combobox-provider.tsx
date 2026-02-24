@@ -1,16 +1,16 @@
 import type { JSX, PropsWithChildren } from "react";
+import type { ListboxItem } from "../listbox/use-listbox";
+import type { UserComboboxReturnType } from "./use-combobox";
 import { OptionEmptyContext } from "../../primitives/common/option-empty-context";
 import { PopperAnchorContext } from "../../primitives/popper/popper-anchor-context";
 import { PopperStateContext } from "../../primitives/popper/popper-state-context";
 import { PopperTriggerContext } from "../../primitives/popper/popper-trigger-context";
 import { ListboxProvider } from "../listbox/listbox-provider";
-import type { ListboxItem } from "../listbox/use-listbox";
 import { ComboboxInputContext } from "./combobox-input-context";
 import { ComboboxPopupContext } from "./combobox-popup-context";
 import { ComboboxRootContext } from "./combobox-root-context";
 import { ComboboxStateContext } from "./combobox-state-context";
 import { ComboboxTriggerContext } from "./combobox-trigger-context";
-import type { UserComboboxReturnType } from "./use-combobox";
 
 export type ComboboxProviderProps<T extends ListboxItem> = {
   value: UserComboboxReturnType<T>;

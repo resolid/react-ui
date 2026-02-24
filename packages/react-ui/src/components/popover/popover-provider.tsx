@@ -1,5 +1,6 @@
 import type { PropsWithChildren } from "react";
 import type { JSX } from "react/jsx-runtime";
+import type { usePopover } from "./use-popover";
 import { PopperAnchorContext } from "../../primitives/popper/popper-anchor-context";
 import { PopperAriaContext } from "../../primitives/popper/popper-aria-context";
 import { PopperArrowContext } from "../../primitives/popper/popper-arrow-context";
@@ -10,7 +11,6 @@ import { PopperStateContext } from "../../primitives/popper/popper-state-context
 import { PopperTransitionContext } from "../../primitives/popper/popper-transtion-context";
 import { PopperTriggerContext } from "../../primitives/popper/popper-trigger-context";
 import { PopoverRootContext } from "./popover-root-context";
-import type { usePopover } from "./use-popover";
 
 export type PopoverProviderProps = {
   value: ReturnType<typeof usePopover>;

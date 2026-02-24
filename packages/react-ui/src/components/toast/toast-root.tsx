@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
 import type { JSX } from "react/jsx-runtime";
+import { useEffect, useState } from "react";
+import type { PrimitiveProps } from "../../primitives";
 import {
   useElementTransitionStatus,
   useEventListener,
   useTimeout,
   useTransitionComplete,
 } from "../../hooks";
-import type { PrimitiveProps } from "../../primitives";
 import { PopperAriaContext } from "../../primitives/popper/popper-aria-context";
 import { PopperDispatchContext } from "../../primitives/popper/popper-dispatch-context";
 import { getPopperAnimationProps } from "../../primitives/popper/utils";

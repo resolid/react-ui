@@ -1,5 +1,5 @@
-import { isString } from "@resolid/utils";
 import type { MetaDescriptor } from "react-router";
+import { isString } from "@resolid/utils";
 
 type MetaArgs = {
   matches: Array<

@@ -1,7 +1,7 @@
-import { useLayoutEffect, useState } from "react";
 import type { JSX } from "react/jsx-runtime";
-import { useMergeRefs } from "../../hooks";
+import { useLayoutEffect, useState } from "react";
 import type { EmptyObject, PrimitiveProps } from "../../primitives";
+import { useMergeRefs } from "../../hooks";
 import { usePopperFloating } from "../../primitives/popper/popper-floating-context";
 import { inputTextShareStyles } from "../../shared/styles";
 import { ariaAttr, tx } from "../../utils";

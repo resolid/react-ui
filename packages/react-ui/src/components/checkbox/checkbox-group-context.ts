@@ -1,7 +1,7 @@
 import type { ChangeEvent } from "react";
-import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives";
 import type { BinarySize, ToggleColor } from "../../shared/styles";
 import type { FormFieldProps } from "../../shared/types";
+import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives";
 
 export type CheckboxBaseProps = FormFieldProps & {
   /**

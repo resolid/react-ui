@@ -1,6 +1,6 @@
+import type { JSX } from "react/jsx-runtime";
 import { isNumber } from "@resolid/utils";
 import { type CSSProperties, useState } from "react";
-import type { JSX } from "react/jsx-runtime";
 import type { ImageLoadStatus } from "../../hooks";
 import type { PrimitiveProps } from "../../primitives";
 import { getRadiusStyleAndClass, hasBackgroundBaseClass } from "../../shared/utils";

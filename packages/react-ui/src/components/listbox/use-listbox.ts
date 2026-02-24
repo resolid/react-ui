@@ -16,10 +16,10 @@ import {
   useRef,
   useState,
 } from "react";
-import { useControllableState } from "../../hooks";
 import type { AnyObject } from "../../primitives";
 import type { MultipleValueProps } from "../../shared/types";
 import type { InputSize } from "../input/input.styles";
+import { useControllableState } from "../../hooks";
 import { useDirection } from "../provider/direction-context";
 
 export type ListboxValue = (string | number)[] | string | number | null;

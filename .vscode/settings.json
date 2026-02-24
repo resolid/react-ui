@@ -1,9 +1,5 @@
 {
-  "eslint.useFlatConfig": true,
-  "eslint.useESLintClass": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "prettier.requireConfig": true,
-  "prettier.printWidth": 120,
+  "editor.defaultFormatter": "oxc.oxc-vscode",
   "editor.formatOnSave": true,
   "files.associations": {
     "*.css": "tailwindcss"
@@ -33,5 +29,7 @@
     "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb, bun.lock, .editorconfig, lefthook.*, .pnpm*, .commitlint*, .npm*, .eslint*, eslint*, .prettier*",
     "vite.config.*": "vitest.config.*, tsdown.config.*, react-router.config.*",
     "README*": "LICENSE*, README.*, CODE_OF_CONDUCT*, CONTRIBUTING*, CHANGELOG*"
-  }
+  },
+  "prettier.enable": false,
+  "eslint.enable": false
 }

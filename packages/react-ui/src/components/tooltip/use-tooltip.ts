@@ -8,7 +8,6 @@ import {
   useTransitionStatus,
   type ReferenceType,
 } from "@floating-ui/react";
-import { useDisclosure } from "../../hooks";
 import type { PopperAnchorContextValue } from "../../primitives/popper/popper-anchor-context";
 import type { PopperArrowContextValue } from "../../primitives/popper/popper-arrow-context";
 import type { PopperFloatingContextValue } from "../../primitives/popper/popper-floating-context";
@@ -16,12 +15,13 @@ import type { PopperPositionerContextValue } from "../../primitives/popper/poppe
 import type { PopperStateContextValue } from "../../primitives/popper/popper-state-context";
 import type { PopperTransitionContextValue } from "../../primitives/popper/popper-transtion-context";
 import type { PopperTriggerContextValue } from "../../primitives/popper/popper-trigger-context";
+import type { DisclosureProps } from "../../shared/types";
+import type { TooltipRootContextValue } from "./tooltip-root-context";
+import { useDisclosure } from "../../hooks";
 import {
   usePopperWithInline,
   type PopperWithInlineProps,
 } from "../../primitives/popper/use-popper-with-inline";
-import type { DisclosureProps } from "../../shared/types";
-import type { TooltipRootContextValue } from "./tooltip-root-context";
 import { tooltipColorStyles } from "./tooltip.styles";
 
 export type TooltipProps = DisclosureProps & {

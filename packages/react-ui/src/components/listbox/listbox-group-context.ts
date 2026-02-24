@@ -1,5 +1,5 @@
-import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives";
 import type { ListboxBaseProps, ListboxItem } from "./use-listbox";
+import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives";
 
 export type ListboxGroupContextValue = Required<
   Pick<ListboxBaseProps<ListboxItem>, "renderGroupLabel">

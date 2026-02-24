@@ -1,7 +1,7 @@
 import type { JSX } from "react/jsx-runtime";
+import type { PrimitiveProps } from "../polymorphic";
 import { useMergeRefs } from "../../hooks";
 import { tx } from "../../utils";
-import type { PrimitiveProps } from "../polymorphic";
 import { usePopperFloating } from "./popper-floating-context";
 
 export const PopperFloating = (props: PrimitiveProps<"div">): JSX.Element => {

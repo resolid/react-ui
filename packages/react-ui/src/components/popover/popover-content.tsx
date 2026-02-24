@@ -1,5 +1,5 @@
-import { FloatingFocusManager } from "@floating-ui/react";
 import type { JSX } from "react/jsx-runtime";
+import { FloatingFocusManager } from "@floating-ui/react";
 import type { PrimitiveProps } from "../../primitives";
 import { usePopperAria } from "../../primitives/popper/popper-aria-context";
 import { PopperFloating } from "../../primitives/popper/popper-floating";

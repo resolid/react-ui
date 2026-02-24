@@ -1,12 +1,12 @@
 import type { MouseEvent } from "react";
 import type { JSX } from "react/jsx-runtime";
+import type { PageType } from "./use-pagination";
 import { useButtonProps } from "../../hooks";
 import { Polymorphic, type PolymorphicProps } from "../../primitives";
 import { AngleLeftIcon, AngleRightIcon } from "../../shared/icons";
 import { tx } from "../../utils";
 import { useLocale } from "../provider/locale-context";
 import { type PageColor, currentPageColorStyles } from "./pagination.styles";
-import type { PageType } from "./use-pagination";
 
 export type PaginationItemProps = {
   page: number;

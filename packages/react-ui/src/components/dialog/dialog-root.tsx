@@ -1,3 +1,4 @@
+import type { JSX } from "react/jsx-runtime";
 import {
   useClick,
   useDismiss,
@@ -8,7 +9,7 @@ import {
   type FloatingContext,
 } from "@floating-ui/react";
 import { useId, useState, type PropsWithChildren } from "react";
-import type { JSX } from "react/jsx-runtime";
+import type { DisclosureProps } from "../../shared/types";
 import { useDisclosure, usePreventScroll } from "../../hooks";
 import { PopperAriaContext } from "../../primitives/popper/popper-aria-context";
 import {
@@ -31,7 +32,6 @@ import {
   PopperTriggerContext,
   type PopperTriggerContextValue,
 } from "../../primitives/popper/popper-trigger-context";
-import type { DisclosureProps } from "../../shared/types";
 import { DialogContext, type DialogBaseProps, type DialogContextValue } from "./dialog-context";
 
 export type DialogRootProps = DisclosureProps &

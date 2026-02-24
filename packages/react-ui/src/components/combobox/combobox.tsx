@@ -1,8 +1,8 @@
 import type { JSX, PropsWithChildren } from "react";
+import type { ListboxItem } from "../listbox/use-listbox";
 import { OptionEmpty } from "../../primitives/common/option-empty";
 import { ListboxContent } from "../listbox/listbox-content";
 import { ListboxList } from "../listbox/listbox-list";
-import type { ListboxItem } from "../listbox/use-listbox";
 import { ComboboxProvider } from "./combobox-provider";
 import { type ComboboxProps, useCombobox } from "./use-combobox";
 

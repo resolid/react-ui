@@ -1,9 +1,9 @@
 import type { ReactElement } from "react";
 import type { JSX } from "react/jsx-runtime";
 import type { PrimitiveProps } from "../../primitives";
+import type { PageColor } from "./pagination.styles";
 import { tx } from "../../utils";
 import { PaginationItem, type PaginationItemProps } from "./pagination-item";
-import type { PageColor } from "./pagination.styles";
 import { usePagination, type UsePaginationOptions } from "./use-pagination";
 
 export type PaginationProps = UsePaginationOptions & {

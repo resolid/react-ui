@@ -1,5 +1,5 @@
-import { Polymorphic, tx } from "@resolid/react-ui";
 import type { ComponentProps } from "react";
+import { Polymorphic, tx } from "@resolid/react-ui";
 
 export const MdxHeading = (props: ComponentProps<"h2" | "h3" | "h4"> & { as: string }) => {
   const { as, id, children, className, ...rest } = props;

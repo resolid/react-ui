@@ -7,7 +7,6 @@ import {
   type ReferenceType,
 } from "@floating-ui/react";
 import { useId } from "react";
-import { useDisclosure } from "../../hooks";
 import type { PopperAnchorContextValue } from "../../primitives/popper/popper-anchor-context";
 import type { PopperArrowContextValue } from "../../primitives/popper/popper-arrow-context";
 import type { PopperDispatchContextValue } from "../../primitives/popper/popper-dispatch-context";
@@ -16,12 +15,13 @@ import type { PopperPositionerContextValue } from "../../primitives/popper/poppe
 import type { PopperStateContextValue } from "../../primitives/popper/popper-state-context";
 import type { PopperTransitionContextValue } from "../../primitives/popper/popper-transtion-context";
 import type { PopperTriggerContextValue } from "../../primitives/popper/popper-trigger-context";
+import type { DisclosureProps } from "../../shared/types";
+import type { PopoverBaseProps, PopoverRootContextValue } from "./popover-root-context";
+import { useDisclosure } from "../../hooks";
 import {
   usePopperWithInline,
   type PopperWithInlineProps,
 } from "../../primitives/popper/use-popper-with-inline";
-import type { DisclosureProps } from "../../shared/types";
-import type { PopoverBaseProps, PopoverRootContextValue } from "./popover-root-context";
 
 export type PopoverProps = DisclosureProps &
   PopoverBaseProps & {

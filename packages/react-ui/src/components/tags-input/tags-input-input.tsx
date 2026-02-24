@@ -1,10 +1,10 @@
-import { useListItem } from "@floating-ui/react";
 import type { ChangeEvent, ClipboardEvent, FocusEvent, InputEvent, KeyboardEvent } from "react";
 import type { JSX } from "react/jsx-runtime";
-import { useControllableState, useMergeRefs } from "../../hooks";
+import { useListItem } from "@floating-ui/react";
 import type { PrimitiveProps } from "../../primitives";
-import { useComposite } from "../../primitives/composite/composite-context";
 import type { ValueProp } from "../../shared/types";
+import { useControllableState, useMergeRefs } from "../../hooks";
+import { useComposite } from "../../primitives/composite/composite-context";
 import { tx } from "../../utils";
 import { useTagsInputRoot } from "./tags-input-root-context";
 

@@ -1,7 +1,8 @@
-import { type ChangeEvent, type CSSProperties, useRef } from "react";
 import type { JSX } from "react/jsx-runtime";
-import { useControllableState, useIsomorphicEffect, useMergeRefs } from "../../hooks";
+import { type ChangeEvent, type CSSProperties, useRef } from "react";
 import type { PrimitiveProps } from "../../primitives";
+import type { CheckedValueProps } from "../../shared/types";
+import { useControllableState, useIsomorphicEffect, useMergeRefs } from "../../hooks";
 import { CheckedIcon, IndeterminateIcon } from "../../shared/icons";
 import {
   binaryColorShareStyles,
@@ -10,7 +11,6 @@ import {
   toggleControlShareStyles,
   toggleLabelShareStyles,
 } from "../../shared/styles";
-import type { CheckedValueProps } from "../../shared/types";
 import { ariaAttr, tx } from "../../utils";
 import { type CheckboxBaseProps, useCheckboxGroup } from "./checkbox-group-context";
 
