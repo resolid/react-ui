@@ -123,14 +123,14 @@ export const TagsInputInput = (
       e.nativeEvent.data == delimiter ||
       (delimiter instanceof RegExp && delimiter.test(e.nativeEvent.data))
     ) {
-      const value = e.currentTarget.value.replaceAll(delimiter, "").trim();
+      const trimmed = e.currentTarget.value.replaceAll(delimiter, "").trim();
 
-      if (value == "") {
+      if (trimmed == "") {
         e.currentTarget.value = "";
         return;
       }
 
-      if (onAdd(value)) {
+      if (onAdd(trimmed)) {
         e.currentTarget.value = "";
       }
     }
@@ -169,13 +169,13 @@ export const TagsInputInput = (
         return;
       }
 
-      const value = e.currentTarget.value.trim();
+      const trimmed = e.currentTarget.value.trim();
 
-      if (!value) {
+      if (!trimmed) {
         return;
       }
 
-      if (onAdd(value)) {
+      if (onAdd(trimmed)) {
         setValueState("");
       }
 
@@ -211,10 +211,10 @@ export const TagsInputInput = (
     <input
       ref={refs}
       role={role}
-      type={"text"}
-      autoComplete={"off"}
-      autoCapitalize={"off"}
-      autoCorrect={"off"}
+      type="text"
+      autoComplete="off"
+      autoCapitalize="off"
+      autoCorrect="off"
       disabled={disabled}
       readOnly={readOnly}
       placeholder={placeholder}

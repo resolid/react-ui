@@ -47,12 +47,12 @@ export const RadioGroup = (props: PrimitiveProps<"div", RadioGroupProps, "role">
     onChange,
   });
 
-  const handleChange = (value: string | number) => {
+  const handleChange = (changed: string | number) => {
     if (disabled || readOnly) {
       return;
     }
 
-    setValueState(value);
+    setValueState(changed);
   };
 
   const groupContext = {
@@ -69,7 +69,7 @@ export const RadioGroup = (props: PrimitiveProps<"div", RadioGroupProps, "role">
 
   return (
     <div
-      role={"radiogroup"}
+      role="radiogroup"
       aria-disabled={ariaAttr(disabled)}
       aria-required={ariaAttr(required)}
       aria-readonly={ariaAttr(readOnly)}

@@ -10,9 +10,9 @@ export type DrawerContextValue = {
   placement: DrawerPlacement;
 };
 
-const desc = createSafeContext<DrawerContextValue>({
+const [context, hook] = createSafeContext<DrawerContextValue>({
   name: "DrawerContext",
 });
 
-export const DrawerContext: SafeContext<DrawerContextValue> = desc[0];
-export const useDrawer: UseSafeContext<DrawerContextValue> = desc[1];
+export const DrawerContext: SafeContext<DrawerContextValue> = context;
+export const useDrawer: UseSafeContext<DrawerContextValue> = hook;

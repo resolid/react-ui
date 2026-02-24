@@ -43,9 +43,9 @@ export type ButtonGroupContextValue = ButtonBaseProps & {
   orientation?: Orientation;
 };
 
-const desc = createSafeContext<ButtonGroupContextValue>({
+const [context, hook] = createSafeContext<ButtonGroupContextValue>({
   name: "ButtonGroupContext",
 });
 
-export const ButtonGroupContext: SafeContext<ButtonGroupContextValue> = desc[0];
-export const useButtonGroup: UseSafeContext<ButtonGroupContextValue> = desc[1];
+export const ButtonGroupContext: SafeContext<ButtonGroupContextValue> = context;
+export const useButtonGroup: UseSafeContext<ButtonGroupContextValue> = hook;

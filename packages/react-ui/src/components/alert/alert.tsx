@@ -10,15 +10,13 @@ export type AlertProps = Partial<AlertContextValue>;
 export const Alert = (props: PrimitiveProps<"div", AlertProps, "role">): JSX.Element => {
   const { children, className, color = "primary", variant = "soft", ...rest } = props;
   return (
-    <div role={"alert"} className={tx(alertStyles({ variant, color }), className)} {...rest}>
+    <div role="alert" className={tx(alertStyles({ variant, color }), className)} {...rest}>
       <AlertContext value={{ variant, color }}>{children}</AlertContext>
     </div>
   );
 };
 
-export const AlertContent = (props: PrimitiveProps<"div">): JSX.Element => {
-  return <div {...props} />;
-};
+export const AlertContent = (props: PrimitiveProps<"div">): JSX.Element => <div {...props} />;
 
 export const AlertTitle = (props: PrimitiveProps<"div">): JSX.Element => {
   const { className, ...rest } = props;

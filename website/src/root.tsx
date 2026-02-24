@@ -10,25 +10,21 @@ import { VercelAnalytics } from "~/components/vercel-analytics";
 import styles from "~/root.css?url";
 
 // noinspection JSUnusedGlobalSymbols
-export const links: LinksFunction = () => {
-  return [
-    {
-      rel: "stylesheet",
-      href: styles,
-    },
-  ];
-};
+export const links: LinksFunction = () => [
+  {
+    rel: "stylesheet",
+    href: styles,
+  },
+];
 
 // noinspection JSUnusedGlobalSymbols
-export const meta = () => {
-  return [
-    { title: "Resolid UI" },
-    {
-      name: "description",
-      content: "React 19 and TailwindCSS components",
-    },
-  ];
-};
+export const meta = () => [
+  { title: "Resolid UI" },
+  {
+    name: "description",
+    content: "React 19 and TailwindCSS components",
+  },
+];
 
 // noinspection JSUnusedGlobalSymbols
 export const Layout = ({ children }: PropsWithChildren) => {
@@ -47,7 +43,7 @@ export const Layout = ({ children }: PropsWithChildren) => {
         <Meta />
         <Links />
       </head>
-      <body className={"min-h-screen overflow-y-scroll"}>
+      <body className="min-h-screen overflow-y-scroll">
         <RouteProcessBar />
         <ConfigProvider locale={zhCN} colorMode={{ disableTransition: true }}>
           <SiteLayout>{children}</SiteLayout>
@@ -55,7 +51,7 @@ export const Layout = ({ children }: PropsWithChildren) => {
         <ScrollRestoration />
         <Scripts />
         {!!import.meta.env.VITE_VERCEL_URL && (
-          <VercelAnalytics endpoint={"/growth"} scriptSrc={"/growth/script.js"} />
+          <VercelAnalytics endpoint="/growth" scriptSrc="/growth/script.js" />
         )}
       </body>
     </html>

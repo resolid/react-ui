@@ -9,7 +9,7 @@ export const BreadcrumbSeparator = (
 
   return (
     <span
-      className={"inline-flex items-center text-fg-subtle"}
+      className="inline-flex items-center text-fg-subtle"
       aria-hidden="true"
       role="presentation"
       {...props}

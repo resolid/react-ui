@@ -24,8 +24,8 @@ importers:
         specifier: ^20.4.2
         version: 20.4.2
       '@resolid/config':
-        specifier: ^5.0.0
-        version: 5.0.0(eslint-plugin-react-hooks@7.0.1(eslint@9.39.3(jiti@2.6.1)))(eslint-plugin-react-you-might-not-need-an-effect@0.9.1(eslint@9.39.3(jiti@2.6.1)))(oxlint@1.50.0)(typescript@5.9.3)
+        specifier: ^5.0.1
+        version: 5.0.1(eslint-plugin-react-hooks@7.0.1(eslint@9.39.3(jiti@2.6.1)))(eslint-plugin-react-you-might-not-need-an-effect@0.9.1(eslint@9.39.3(jiti@2.6.1)))(oxlint@1.50.0)(typescript@5.9.3)
       '@svitejs/changesets-changelog-github-compact':
         specifier: ^1.2.0
         version: 1.2.0
@@ -63,8 +63,8 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0
       '@resolid/utils':
-        specifier: ^1.2.6
-        version: 1.2.6(typescript@5.9.3)
+        specifier: ^1.2.7
+        version: 1.2.7(typescript@5.9.3)
       '@tanstack/react-virtual':
         specifier: ^3.13.19
         version: 3.13.19(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -127,8 +127,8 @@ importers:
         specifier: workspace:^
         version: link:../packages/react-ui
       '@resolid/utils':
-        specifier: ^1.2.6
-        version: 1.2.6(typescript@5.9.3)
+        specifier: ^1.2.7
+        version: 1.2.7(typescript@5.9.3)
       '@tailwindcss/typography':
         specifier: ^0.5.19
         version: 0.5.19(tailwindcss@4.2.1)
@@ -161,8 +161,8 @@ importers:
         specifier: ^7.13.1
         version: 7.13.1(@types/node@24.10.13)(jiti@2.6.1)(lightningcss@1.31.1)(react-router@7.13.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(typescript@5.9.3)(vite@7.3.1(@types/node@24.10.13)(jiti@2.6.1)(lightningcss@1.31.1)(yaml@2.8.2))(yaml@2.8.2)
       '@resolid/config':
-        specifier: ^5.0.0
-        version: 5.0.0(eslint-plugin-react-hooks@7.0.1(eslint@9.39.3(jiti@2.6.1)))(eslint-plugin-react-you-might-not-need-an-effect@0.9.1(eslint@9.39.3(jiti@2.6.1)))(oxlint@1.50.0)(typescript@5.9.3)
+        specifier: ^5.0.1
+        version: 5.0.1(eslint-plugin-react-hooks@7.0.1(eslint@9.39.3(jiti@2.6.1)))(eslint-plugin-react-you-might-not-need-an-effect@0.9.1(eslint@9.39.3(jiti@2.6.1)))(oxlint@1.50.0)(typescript@5.9.3)
       '@resolid/flex-routes':
         specifier: ^1.6.0
         version: 1.6.0(@react-router/dev@7.13.1(@types/node@24.10.13)(jiti@2.6.1)(lightningcss@1.31.1)(react-router@7.13.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(typescript@5.9.3)(vite@7.3.1(@types/node@24.10.13)(jiti@2.6.1)(lightningcss@1.31.1)(yaml@2.8.2))(yaml@2.8.2))
@@ -1193,8 +1193,8 @@ packages:
   '@remix-run/node-fetch-server@0.13.0':
     resolution: {integrity: sha512-1EsNo0ZpgXu/90AWoRZf/oE3RVTUS80tiTUpt+hv5pjtAkw7icN4WskDwz/KdAw5ARbJLMhZBrO1NqThmy/McA==}
 
-  '@resolid/config@5.0.0':
-    resolution: {integrity: sha512-DPq0W1NbF4HkGmWwZHYAp7O8S4mKNay751++39nUeyz+vwxs95Tw54PQ4jZsvnwiLL/MZnUPDTfytM5utGfdeA==}
+  '@resolid/config@5.0.1':
+    resolution: {integrity: sha512-mYmwCrI7F4Ug8e/piV9tGUG7YoohFQ9r8KrB9PX+RIPA88CziqbMtaiQueC/jsSbljkKFSDPBh8fqLb4ud5PBw==}
     engines: {node: ^20.19.0 || ^22.13.0 || >=24}
     peerDependencies:
       eslint-plugin-react-hooks: ^7.0.1
@@ -1220,8 +1220,8 @@ packages:
       react-router: ^7.12.0
       vite: ^7.3.1
 
-  '@resolid/utils@1.2.6':
-    resolution: {integrity: sha512-ZpEA07fDCGRRBjiSB0M/onFf3puuTJgshhZyqcGXxyIwEEcd9rXs0Z7ZyGA6o7oSWrHJVN9UO5qr6gmi4B3n7w==}
+  '@resolid/utils@1.2.7':
+    resolution: {integrity: sha512-bGw4aJwMCM5N0S3IvS9nR94VO98bQqf+uzClzpkdpg1Qwthhg4jAV1p25F8Cbxu7RDFoYGfwr2vvm7GZPJERXA==}
     engines: {node: ^20.19.0 || ^22.13.0 || >=24}
     peerDependencies:
       typescript: ^5.9.3
@@ -4975,7 +4975,7 @@ snapshots:
 
   '@remix-run/node-fetch-server@0.13.0': {}
 
-  '@resolid/config@5.0.0(eslint-plugin-react-hooks@7.0.1(eslint@9.39.3(jiti@2.6.1)))(eslint-plugin-react-you-might-not-need-an-effect@0.9.1(eslint@9.39.3(jiti@2.6.1)))(oxlint@1.50.0)(typescript@5.9.3)':
+  '@resolid/config@5.0.1(eslint-plugin-react-hooks@7.0.1(eslint@9.39.3(jiti@2.6.1)))(eslint-plugin-react-you-might-not-need-an-effect@0.9.1(eslint@9.39.3(jiti@2.6.1)))(oxlint@1.50.0)(typescript@5.9.3)':
     dependencies:
       eslint-plugin-react-hooks: 7.0.1(eslint@9.39.3(jiti@2.6.1))
       eslint-plugin-react-you-might-not-need-an-effect: 0.9.1(eslint@9.39.3(jiti@2.6.1))
@@ -5005,7 +5005,7 @@ snapshots:
       - rollup
       - supports-color
 
-  '@resolid/utils@1.2.6(typescript@5.9.3)':
+  '@resolid/utils@1.2.7(typescript@5.9.3)':
     dependencies:
       '@formkit/tempo': 1.0.0
       nanoid: 5.1.6

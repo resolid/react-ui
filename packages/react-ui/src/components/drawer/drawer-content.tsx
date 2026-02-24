@@ -55,7 +55,7 @@ export const DrawerContent = (props: PrimitiveProps<"div">): JSX.Element | null 
   });
 
   return (
-    <div className={"fixed top-0 left-0 z-55 flex h-screen w-screen justify-center"}>
+    <div className="fixed top-0 left-0 z-55 flex h-screen w-screen justify-center">
       <FloatingFocusManager
         disabled={!context.open}
         context={context}

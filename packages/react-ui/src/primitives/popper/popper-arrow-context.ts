@@ -7,9 +7,9 @@ export type PopperArrowContextValue = {
   arrowClassName?: string;
 };
 
-const dest = createSafeContext<PopperArrowContextValue>({
+const [context, hook] = createSafeContext<PopperArrowContextValue>({
   name: "PopperArrowContext",
 });
 
-export const PopperArrowContext: SafeContext<PopperArrowContextValue> = dest[0];
-export const usePopperArrow: UseSafeContext<PopperArrowContextValue> = dest[1];
+export const PopperArrowContext: SafeContext<PopperArrowContextValue> = context;
+export const usePopperArrow: UseSafeContext<PopperArrowContextValue> = hook;

@@ -28,17 +28,14 @@ export const getRadiusStyleAndClass = (
   return { radiusStyle, radiusClass };
 };
 
-export const hasBackgroundBaseClass = (className?: string): boolean => {
-  return !!className && /(?:^|\s)bg-\S+/.test(className);
-};
+export const hasBackgroundBaseClass = (className?: string): boolean =>
+  !!className && /(?:^|\s)bg-\S+/.test(className);
 
-export const hasSizeBaseClass = (className?: string): boolean => {
-  return !!className && /(?:^|\s)(?:[wh]|size)-\S+/.test(className);
-};
+export const hasSizeBaseClass = (className?: string): boolean =>
+  !!className && /(?:^|\s)(?:[wh]|size)-\S+/.test(className);
 
-export const hasRoundedBaseClass = (className?: string): boolean => {
-  return !!className && /(?:^|\s)rounded-\S+/.test(className);
-};
+export const hasRoundedBaseClass = (className?: string): boolean =>
+  !!className && /(?:^|\s)rounded-\S+/.test(className);
 
 export const getInteractiveHandlers = <E extends HTMLElement = HTMLDivElement>({
   disabled,

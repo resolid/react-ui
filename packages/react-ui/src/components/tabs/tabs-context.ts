@@ -6,12 +6,12 @@ export type TabsContextValue = {
   setSelectedValue: (value: string) => void;
 };
 
-const dest = createSafeContext<TabsContextValue>({
+const [context, hook] = createSafeContext<TabsContextValue>({
   name: "TabsContext",
 });
 
-export const TabsContext: SafeContext<TabsContextValue> = dest[0];
-export const useTabs: UseSafeContext<TabsContextValue> = dest[1];
+export const TabsContext: SafeContext<TabsContextValue> = context;
+export const useTabs: UseSafeContext<TabsContextValue> = hook;
 
 export const getTabId = (baseId: string, value: string) => `${baseId}-t-${value}`;
 

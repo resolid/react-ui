@@ -55,9 +55,9 @@ export type RadioGroupContextValue = RadioGroupBaseProps & {
   onChange: (value: string | number) => void;
 };
 
-const dest = createSafeContext<RadioGroupContextValue>({
+const [context, hook] = createSafeContext<RadioGroupContextValue>({
   name: "RadioGroupContext",
 });
 
-export const RadioGroupContext: SafeContext<RadioGroupContextValue> = dest[0];
-export const useRadioGroup: UseSafeContext<RadioGroupContextValue> = dest[1];
+export const RadioGroupContext: SafeContext<RadioGroupContextValue> = context;
+export const useRadioGroup: UseSafeContext<RadioGroupContextValue> = hook;

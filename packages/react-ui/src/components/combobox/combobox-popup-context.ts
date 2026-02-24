@@ -5,9 +5,9 @@ export type ComboboxPopupContextValue = {
   setFloating: (node: HTMLElement) => void;
 };
 
-const desc = createSafeContext<ComboboxPopupContextValue>({
+const [context, hook] = createSafeContext<ComboboxPopupContextValue>({
   name: "ComboboxRootContext",
 });
 
-export const ComboboxPopupContext: SafeContext<ComboboxPopupContextValue> = desc[0];
-export const useComboboxPopup: UseSafeContext<ComboboxPopupContextValue> = desc[1];
+export const ComboboxPopupContext: SafeContext<ComboboxPopupContextValue> = context;
+export const useComboboxPopup: UseSafeContext<ComboboxPopupContextValue> = hook;

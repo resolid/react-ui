@@ -7,9 +7,9 @@ export type CollapsibleTriggerContextValue = {
   toggle: () => void;
 };
 
-const desc = createSafeContext<CollapsibleTriggerContextValue>({
+const [context, hook] = createSafeContext<CollapsibleTriggerContextValue>({
   name: "CollapsibleTriggerContext",
 });
 
-export const CollapsibleTriggerContext: SafeContext<CollapsibleTriggerContextValue> = desc[0];
-export const useCollapsibleTrigger: UseSafeContext<CollapsibleTriggerContextValue> = desc[1];
+export const CollapsibleTriggerContext: SafeContext<CollapsibleTriggerContextValue> = context;
+export const useCollapsibleTrigger: UseSafeContext<CollapsibleTriggerContextValue> = hook;

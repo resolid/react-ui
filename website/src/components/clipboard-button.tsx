@@ -6,21 +6,17 @@ export const ClipboardButton = ({ content }: { content: string }) => {
 
   return (
     <Button
-      title={"复制代码"}
-      size={"xs"}
+      title="复制代码"
+      size="xs"
       iconOnly
-      color={"neutral"}
-      variant={"soft"}
+      color="neutral"
+      variant="soft"
       onClick={() => copy(content)}
     >
       {copied ? (
-        <SpriteIcon size={16} className={"text-fg-success"} name={"clipboard-check"} />
+        <SpriteIcon size={16} className="text-fg-success" name="clipboard-check" />
       ) : (
-        <SpriteIcon
-          size={16}
-          className={"text-fg-muted hover:text-link-hovered"}
-          name={"clipboard"}
-        />
+        <SpriteIcon size={16} className="text-fg-muted hover:text-link-hovered" name="clipboard" />
       )}
     </Button>
   );

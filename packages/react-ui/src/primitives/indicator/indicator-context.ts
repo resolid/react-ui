@@ -5,9 +5,9 @@ export type IndicatorContextValue = {
   itemElement: HTMLElement | null;
 };
 
-const dest = createSafeContext<IndicatorContextValue>({
+const [context, hook] = createSafeContext<IndicatorContextValue>({
   name: "IndicatorContext",
 });
 
-export const IndicatorContext: SafeContext<IndicatorContextValue> = dest[0];
-export const useIndicator: UseSafeContext<IndicatorContextValue> = dest[1];
+export const IndicatorContext: SafeContext<IndicatorContextValue> = context;
+export const useIndicator: UseSafeContext<IndicatorContextValue> = hook;

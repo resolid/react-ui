@@ -25,7 +25,7 @@ export const DialogContent = (props: PrimitiveProps<"div">): JSX.Element | null 
 
   return (
     <div
-      role={"presentation"}
+      role="presentation"
       className={tx(
         "fixed top-0 left-0 z-50 flex w-screen justify-center",
         placement == "top" ? "items-start" : placement == "bottom" ? "items-end" : "items-center",

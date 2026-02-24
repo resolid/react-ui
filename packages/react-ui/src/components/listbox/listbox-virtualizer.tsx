@@ -83,46 +83,45 @@ export const ListboxVirtualizer = ({
   const { scrollToRef, scrollRef } = useListboxScroll();
 
   const { flatItems, groupLabelIndices, groupIndices } = useMemo(() => {
-    const flatItems: ListboxFlatItem[] = [];
-    const groupLabelIndices = new Set<number>();
-    const groupIndices: number[] = [];
+    const items: ListboxFlatItem[] = [];
+    const labelIndices = new Set<number>();
+    const indices: number[] = [];
 
     let itemIndex = 0;
     let groupIndex = 0;
 
     for (const item of nodeItems) {
-      const children = getItemChildren<ListboxNodeItem>(item);
+      const itemChildren = getItemChildren<ListboxNodeItem>(item);
 
-      if (Array.isArray(children)) {
-        groupLabelIndices.add(itemIndex);
-        groupIndices.push(groupIndex);
+      if (Array.isArray(itemChildren)) {
+        labelIndices.add(itemIndex);
+        indices.push(groupIndex);
 
-        flatItems.push({ ...(omit(item, [childrenKey]) as ListboxNodeItem), __group: true });
+        items.push({ ...(omit(item, [childrenKey]) as ListboxNodeItem), __group: true });
         itemIndex++;
 
-        for (const child of children) {
-          flatItems.push(child);
+        for (const child of itemChildren) {
+          items.push(child);
           itemIndex++;
           groupIndex++;
         }
       } else {
-        flatItems.push(item);
+        items.push(item);
         itemIndex++;
         groupIndex++;
       }
     }
 
-    return { flatItems, groupLabelIndices, groupIndices };
+    return { flatItems: items, groupLabelIndices: labelIndices, groupIndices: indices };
   }, [childrenKey, nodeItems, getItemChildren]);
 
   const { virtualItems, totalSize, scrollToIndex } = useListboxVirtualizer({
     count: flatItems.length,
     getScrollElement: () => scrollRef.current,
-    estimateSize: (index) => {
-      return groupLabelIndices.has(index)
+    estimateSize: (index) =>
+      groupLabelIndices.has(index)
         ? (groupLabelHeight ?? listboxGroupLabelHeights[size])
-        : (itemHeight ?? listboxItemHeights[size]);
-    },
+        : (itemHeight ?? listboxItemHeights[size]),
     overscan,
     paddingStart,
     paddingEnd,
@@ -147,7 +146,7 @@ export const ListboxVirtualizer = ({
 
   return (
     <div
-      className={"relative w-full outline-none"}
+      className="relative w-full outline-none"
       style={{ height: `${totalSize}px` }}
       {...getFloatingProps()}
     >

@@ -6,9 +6,9 @@ export type PopperFloatingContextValue = {
   getFloatingProps: (userProps?: HTMLProps<HTMLElement> | undefined) => AnyObject;
 };
 
-const dest = createSafeContext<PopperFloatingContextValue>({
+const [context, hook] = createSafeContext<PopperFloatingContextValue>({
   name: "PopperFloatingContext",
 });
 
-export const PopperFloatingContext: SafeContext<PopperFloatingContextValue> = dest[0];
-export const usePopperFloating: UseSafeContext<PopperFloatingContextValue> = dest[1];
+export const PopperFloatingContext: SafeContext<PopperFloatingContextValue> = context;
+export const usePopperFloating: UseSafeContext<PopperFloatingContextValue> = hook;

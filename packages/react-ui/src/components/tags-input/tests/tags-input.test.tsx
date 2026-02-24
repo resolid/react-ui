@@ -5,15 +5,13 @@ import { axe } from "vitest-axe";
 import { LocaleProvider } from "../../provider/locale-provider";
 import { TagsInput, TagsInputInput, type TagsInputProps } from "../tags-input";
 
-const ComponentUnderTest = (props: TagsInputProps) => {
-  return (
-    <LocaleProvider>
-      <TagsInput placeholder={"Add tag"} defaultValue={["react", "solid", "vue"]} {...props}>
-        <TagsInputInput aria-label={"Input"} />
-      </TagsInput>
-    </LocaleProvider>
-  );
-};
+const ComponentUnderTest = (props: TagsInputProps) => (
+  <LocaleProvider>
+    <TagsInput placeholder="Add tag" defaultValue={["react", "solid", "vue"]} {...props}>
+      <TagsInputInput aria-label="Input" />
+    </TagsInput>
+  </LocaleProvider>
+);
 
 describe("TagsInput", () => {
   afterEach(() => {

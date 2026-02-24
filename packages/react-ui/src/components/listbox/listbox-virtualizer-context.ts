@@ -7,9 +7,9 @@ export type ListboxVirtualizerContextValue = {
   flatItems: ListboxFlatItem[];
 };
 
-const dest = createSafeContext<ListboxVirtualizerContextValue>({
+const [context, hook] = createSafeContext<ListboxVirtualizerContextValue>({
   name: "ListboxVirtualizerContext",
 });
 
-export const ListboxVirtualizerContext: SafeContext<ListboxVirtualizerContextValue> = dest[0];
-export const useListboxVirtualizer: UseSafeContext<ListboxVirtualizerContextValue> = dest[1];
+export const ListboxVirtualizerContext: SafeContext<ListboxVirtualizerContextValue> = context;
+export const useListboxVirtualizer: UseSafeContext<ListboxVirtualizerContextValue> = hook;

@@ -16,7 +16,7 @@ export const NumberInputControl = (
 
   return (
     <button
-      type={"button"}
+      type="button"
       tabIndex={-1}
       disabled={disabled}
       aria-label={`${stepper} value`}
@@ -31,8 +31,8 @@ export const NumberInputControl = (
       )}
       {...rest}
     >
-      {stepper == "increment" && <AngleUpIcon size={"0.875em"} />}
-      {stepper == "decrement" && <AngleDownIcon size={"0.875em"} />}
+      {stepper == "increment" && <AngleUpIcon size="0.875em" />}
+      {stepper == "decrement" && <AngleDownIcon size="0.875em" />}
     </button>
   );
 };

@@ -3,6 +3,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { axe } from "vitest-axe";
 import type { ListboxItem } from "../../listbox/use-listbox";
 import type { ComboboxProps } from "../use-combobox";
+import { LocaleProvider } from "../../provider/locale-provider";
 import {
   Combobox,
   ComboboxAnchor,
@@ -22,17 +23,19 @@ const ComponentUnderTest = (props: Omit<ComboboxProps<ListboxItem>, "collection"
   ];
 
   return (
-    <Combobox collection={collection} {...props}>
-      <ComboboxAnchor>
-        <ComboboxInput placeholder={"搜索"} />
-        <ComboboxTrigger>Open</ComboboxTrigger>
-      </ComboboxAnchor>
-      <ComboboxPopup>
-        <ComboboxContent>
-          <ComboboxList />
-        </ComboboxContent>
-      </ComboboxPopup>
-    </Combobox>
+    <LocaleProvider>
+      <Combobox collection={collection} {...props}>
+        <ComboboxAnchor>
+          <ComboboxInput placeholder="搜索" />
+          <ComboboxTrigger>Open</ComboboxTrigger>
+        </ComboboxAnchor>
+        <ComboboxPopup>
+          <ComboboxContent>
+            <ComboboxList />
+          </ComboboxContent>
+        </ComboboxPopup>
+      </Combobox>
+    </LocaleProvider>
   );
 };
 

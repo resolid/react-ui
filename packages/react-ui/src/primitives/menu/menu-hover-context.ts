@@ -3,9 +3,9 @@ import { createSafeContext, type SafeContext, type UseSafeContext } from "../ind
 
 export type MenuHoverContextValue = { setHoverEnabled: Dispatch<SetStateAction<boolean>> };
 
-const dest = createSafeContext<MenuHoverContextValue>({
+const [context, hook] = createSafeContext<MenuHoverContextValue>({
   name: "MenuHoverContext",
 });
 
-export const MenuHoverContext: SafeContext<MenuHoverContextValue> = dest[0];
-export const useMenuHover: UseSafeContext<MenuHoverContextValue> = dest[1];
+export const MenuHoverContext: SafeContext<MenuHoverContextValue> = context;
+export const useMenuHover: UseSafeContext<MenuHoverContextValue> = hook;

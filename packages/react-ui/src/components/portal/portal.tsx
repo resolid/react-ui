@@ -3,6 +3,4 @@ import { FloatingPortal, type FloatingPortalProps } from "@floating-ui/react";
 
 export type PortalProps = FloatingPortalProps;
 
-export const Portal = (props: PortalProps): JSX.Element => {
-  return <FloatingPortal {...props} />;
-};
+export const Portal = (props: PortalProps): JSX.Element => <FloatingPortal {...props} />;

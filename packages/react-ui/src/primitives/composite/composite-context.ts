@@ -7,7 +7,7 @@ export type CompositeContextValue = {
   setActiveElement?: Dispatch<SetStateAction<HTMLElement | null>>;
 };
 
-const dest = createSafeContext<CompositeContextValue>({ name: "CompositeContext" });
+const [context, hook] = createSafeContext<CompositeContextValue>({ name: "CompositeContext" });
 
-export const CompositeContext: SafeContext<CompositeContextValue> = dest[0];
-export const useComposite: UseSafeContext<CompositeContextValue> = dest[1];
+export const CompositeContext: SafeContext<CompositeContextValue> = context;
+export const useComposite: UseSafeContext<CompositeContextValue> = hook;

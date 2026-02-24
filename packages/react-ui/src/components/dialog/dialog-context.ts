@@ -18,7 +18,7 @@ export type DialogBaseProps = PopperFocusProps & {
 
 export type DialogContextValue = DialogBaseProps & { context: FloatingRootContext };
 
-const desc = createSafeContext<DialogContextValue>({ name: "DialogContext" });
+const [context, hook] = createSafeContext<DialogContextValue>({ name: "DialogContext" });
 
-export const DialogContext: SafeContext<DialogContextValue> = desc[0];
-export const useDialog: UseSafeContext<DialogContextValue> = desc[1];
+export const DialogContext: SafeContext<DialogContextValue> = context;
+export const useDialog: UseSafeContext<DialogContextValue> = hook;

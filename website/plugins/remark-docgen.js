@@ -4,7 +4,7 @@ import { cwd } from "node:process";
 import { withCustomConfig } from "react-docgen-typescript";
 import { visit } from "unist-util-visit";
 
-export default function ({ sourceRoot }) {
+export default function remarkDocgen({ sourceRoot }) {
   if (!sourceRoot) {
     throw new Error("Please set sourceRoot.");
   }
@@ -370,12 +370,8 @@ const getComponentPropsData = (componentFile, sourceRoot, virtualDir) => {
 
     const props = componentDoc
       ? Object.entries(componentDoc.props)
-          .map(([key, value]) => {
-            return parsePropsType(key, value);
-          })
-          .sort((a, b) => {
-            return componentPropsSorts.indexOf(a.name) - componentPropsSorts.indexOf(b.name);
-          })
+          .map(([key, value]) => parsePropsType(key, value))
+          .sort((a, b) => componentPropsSorts.indexOf(a.name) - componentPropsSorts.indexOf(b.name))
       : null;
 
     writeFileSync(componentPropsFile, JSON.stringify(props, null, 2), "utf8");

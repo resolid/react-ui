@@ -9,9 +9,9 @@ import { MenuSubTrigger } from "../../primitives/menu/menu-sub-trigger";
 
 export type ContextMenuProps = Omit<MenuRootProps, "placement" | "preventScroll">;
 
-export const ContextMenu = (props: ContextMenuProps): JSX.Element => {
-  return <MenuRoot preventScroll {...props} />;
-};
+export const ContextMenu = (props: ContextMenuProps): JSX.Element => (
+  <MenuRoot preventScroll {...props} />
+);
 
 export { ContextMenuCheckboxItem } from "./context-menu-checkbox-item";
 export { ContextMenuItem } from "./context-menu-item";

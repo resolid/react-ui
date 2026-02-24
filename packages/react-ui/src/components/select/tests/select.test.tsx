@@ -12,9 +12,9 @@ const ComponentUnderTest = (props: Omit<SelectProps, "collection">) => {
     { label: "Svelte", value: "svelte", disabled: true },
   ];
   return (
-    <Select aria-label={"Framework"} collection={items} {...props}>
+    <Select aria-label="Framework" collection={items} {...props}>
       <SelectContent>
-        <SelectList></SelectList>
+        <SelectList />
       </SelectContent>
     </Select>
   );

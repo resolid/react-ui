@@ -10,9 +10,9 @@ export type MenuContextValue = MenuItemContextValue & {
   elementsRef: RefObject<(HTMLElement | null)[]>;
 };
 
-const dest = createSafeContext<MenuContextValue>({
+const [context, hook] = createSafeContext<MenuContextValue>({
   name: "MenuContext",
 });
 
-export const MenuContext: SafeContext<MenuContextValue> = dest[0];
-export const useMenu: UseSafeContext<MenuContextValue> = dest[1];
+export const MenuContext: SafeContext<MenuContextValue> = context;
+export const useMenu: UseSafeContext<MenuContextValue> = hook;

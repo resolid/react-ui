@@ -22,7 +22,7 @@ export const AvatarGroup = (props: PrimitiveProps<"div", AvatarGroupProps>): JSX
 
   return (
     <div
-      role={"group"}
+      role="group"
       style={{ ...style, "--pv": spacing } as CSSProperties}
       className={tx("isolate flex w-fit items-center", className)}
       {...rest}

@@ -5,9 +5,9 @@ export type ComboboxRootContextValue = {
   rootContext: FloatingRootContext;
 };
 
-const desc = createSafeContext<ComboboxRootContextValue>({
+const [context, hook] = createSafeContext<ComboboxRootContextValue>({
   name: "ComboboxRootContext",
 });
 
-export const ComboboxRootContext: SafeContext<ComboboxRootContextValue> = desc[0];
-export const useComboboxRoot: UseSafeContext<ComboboxRootContextValue> = desc[1];
+export const ComboboxRootContext: SafeContext<ComboboxRootContextValue> = context;
+export const useComboboxRoot: UseSafeContext<ComboboxRootContextValue> = hook;

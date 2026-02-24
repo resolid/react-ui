@@ -5,9 +5,9 @@ export type ListboxCollectionContextValue = {
   nodeItems: ListboxNodeItem[];
 };
 
-const desc = createSafeContext<ListboxCollectionContextValue>({
+const [context, hook] = createSafeContext<ListboxCollectionContextValue>({
   name: "ListboxCollectionContext",
 });
 
-export const ListboxCollectionContext: SafeContext<ListboxCollectionContextValue> = desc[0];
-export const useListboxCollection: UseSafeContext<ListboxCollectionContextValue> = desc[1];
+export const ListboxCollectionContext: SafeContext<ListboxCollectionContextValue> = context;
+export const useListboxCollection: UseSafeContext<ListboxCollectionContextValue> = hook;

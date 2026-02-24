@@ -32,7 +32,7 @@ const SliderThumbButton = (props: PrimitiveProps<"div", SliderThumbButtonProps>)
     <Tooltip open={dragging || hovered || focused} placement={vertical ? "right" : "top"}>
       <TooltipTrigger
         ref={refs}
-        role={"slider"}
+        role="slider"
         disabled={disabled}
         aria-valuemax={max}
         aria-valuemin={min}
@@ -58,7 +58,7 @@ const SliderThumbButton = (props: PrimitiveProps<"div", SliderThumbButtonProps>)
           </div>
         )}
       />
-      <TooltipContent className={"capitalize"}>
+      <TooltipContent className="capitalize">
         <TooltipArrow />
         {value}
       </TooltipContent>

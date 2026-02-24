@@ -63,7 +63,7 @@ export const PaginationItem = (
 
   return (
     <Polymorphic<"button">
-      as={"button"}
+      as="button"
       render={render}
       {...buttonProps}
       title={title}

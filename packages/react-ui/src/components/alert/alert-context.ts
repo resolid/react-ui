@@ -15,9 +15,9 @@ export type AlertContextValue = {
   color: AlertStyleProps["color"];
 };
 
-const desc = createSafeContext<AlertContextValue>({
+const [context, hook] = createSafeContext<AlertContextValue>({
   name: "AlertContext",
 });
 
-export const AlertContext: SafeContext<AlertContextValue> = desc[0];
-export const useAlert: UseSafeContext<AlertContextValue> = desc[1];
+export const AlertContext: SafeContext<AlertContextValue> = context;
+export const useAlert: UseSafeContext<AlertContextValue> = hook;

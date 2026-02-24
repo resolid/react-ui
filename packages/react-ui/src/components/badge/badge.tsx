@@ -40,7 +40,7 @@ export const Badge = (props: PolymorphicProps<"span", BadgeProps>): JSX.Element 
 
   return (
     <Polymorphic<"span">
-      as={"span"}
+      as="span"
       render={render}
       style={{ ...style, ...radiusStyle }}
       className={tx(badgeStyles({ color, variant }), radiusClass, className)}

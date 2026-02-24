@@ -49,7 +49,7 @@
   "dependencies": {
     "@floating-ui/react": "^0.27.18",
     "@formkit/tempo": "^1.0.0",
-    "@resolid/utils": "^1.2.6",
+    "@resolid/utils": "^1.2.7",
     "@tanstack/react-virtual": "^3.13.19",
     "tailwind-variants": "^3.2.2"
   },

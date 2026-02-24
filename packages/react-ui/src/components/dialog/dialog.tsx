@@ -14,9 +14,7 @@ export const Dialog: typeof DialogRoot = DialogRoot;
 
 export const DialogTrigger = (
   props: Omit<ComponentProps<typeof PopperTrigger>, "active">,
-): JSX.Element => {
-  return <PopperTrigger active={false} {...props} />;
-};
+): JSX.Element => <PopperTrigger active={false} {...props} />;
 
 export const DialogPortal: typeof PopperPortal = PopperPortal;
 

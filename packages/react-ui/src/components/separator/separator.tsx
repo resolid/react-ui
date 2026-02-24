@@ -52,7 +52,7 @@ export const Separator = (props: PrimitiveProps<"div", SeparatorProps, "role">):
 
   return (
     <div
-      role={"separator"}
+      role="separator"
       tabIndex={-1}
       aria-orientation={orientation}
       style={

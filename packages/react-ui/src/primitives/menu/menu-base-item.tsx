@@ -35,7 +35,7 @@ export const MenuBaseItem = (
 
   return (
     <Polymorphic<"div">
-      as={"div"}
+      as="div"
       render={render}
       ref={refs}
       role={role ?? "menuitem"}

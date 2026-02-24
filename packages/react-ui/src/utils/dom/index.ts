@@ -6,6 +6,5 @@ export const dataAttr = (condition: boolean | null | undefined) =>
 export const ariaAttr = (condition: boolean | null | undefined): true | undefined =>
   condition ? true : undefined;
 
-export const isInputEvent = (value: unknown): value is { target: HTMLInputElement } => {
-  return !!value && isObject(value) && isObject(value.target);
-};
+export const isInputEvent = (value: unknown): value is { target: HTMLInputElement } =>
+  !!value && isObject(value) && isObject(value.target);

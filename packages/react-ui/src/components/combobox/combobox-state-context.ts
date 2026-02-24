@@ -5,9 +5,9 @@ export type ComboboxStateContextValue = {
   invalid: boolean;
 };
 
-const desc = createSafeContext<ComboboxStateContextValue>({
+const [context, hook] = createSafeContext<ComboboxStateContextValue>({
   name: "ComboboxStateContext",
 });
 
-export const ComboboxStateContext: SafeContext<ComboboxStateContextValue> = desc[0];
-export const useComboboxState: UseSafeContext<ComboboxStateContextValue> = desc[1];
+export const ComboboxStateContext: SafeContext<ComboboxStateContextValue> = context;
+export const useComboboxState: UseSafeContext<ComboboxStateContextValue> = hook;

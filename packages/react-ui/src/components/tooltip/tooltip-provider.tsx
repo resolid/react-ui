@@ -17,24 +17,22 @@ export type TooltipProviderProps = {
 export const TooltipProvider = ({
   value,
   children,
-}: PropsWithChildren<TooltipProviderProps>): JSX.Element => {
-  return (
-    <PopperArrowContext value={value.arrowContext}>
-      <PopperStateContext value={value.stateContext}>
-        <PopperTriggerContext value={value.referenceContext}>
-          <PopperAnchorContext value={value.anchorContext}>
-            <TooltipRootContext value={value.tooltipRootContext}>
-              <PopperTransitionContext value={value.transitionContext}>
-                <PopperPositionerContext value={value.positionerContext}>
-                  <PopperFloatingContext value={value.floatingContext}>
-                    {children}
-                  </PopperFloatingContext>
-                </PopperPositionerContext>
-              </PopperTransitionContext>
-            </TooltipRootContext>
-          </PopperAnchorContext>
-        </PopperTriggerContext>
-      </PopperStateContext>
-    </PopperArrowContext>
-  );
-};
+}: PropsWithChildren<TooltipProviderProps>): JSX.Element => (
+  <PopperArrowContext value={value.arrowContext}>
+    <PopperStateContext value={value.stateContext}>
+      <PopperTriggerContext value={value.referenceContext}>
+        <PopperAnchorContext value={value.anchorContext}>
+          <TooltipRootContext value={value.tooltipRootContext}>
+            <PopperTransitionContext value={value.transitionContext}>
+              <PopperPositionerContext value={value.positionerContext}>
+                <PopperFloatingContext value={value.floatingContext}>
+                  {children}
+                </PopperFloatingContext>
+              </PopperPositionerContext>
+            </PopperTransitionContext>
+          </TooltipRootContext>
+        </PopperAnchorContext>
+      </PopperTriggerContext>
+    </PopperStateContext>
+  </PopperArrowContext>
+);

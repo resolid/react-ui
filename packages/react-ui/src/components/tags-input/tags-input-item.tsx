@@ -43,14 +43,14 @@ export const TagsInputItem = (
     >
       {value}
       <CloseButton
-        radius={"md"}
+        radius="md"
         disabled={disabled}
-        className={"pointer-events-auto h-full"}
+        className="pointer-events-auto h-full"
         onClick={handelDelete}
         tabIndex={-1}
         noPadding
         aria-label={t("tagsInput.deleteTag")}
-        size={"1em"}
+        size="1em"
       />
     </div>
   );

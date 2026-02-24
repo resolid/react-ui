@@ -8,9 +8,9 @@ export type PopoverRootContextValue = PopoverBaseProps & {
   context: FloatingRootContext;
 };
 
-const dest = createSafeContext<PopoverRootContextValue>({
+const [context, hook] = createSafeContext<PopoverRootContextValue>({
   name: "PopoverRootContext",
 });
 
-export const PopoverRootContext: SafeContext<PopoverRootContextValue> = dest[0];
-export const usePopoverRoot: UseSafeContext<PopoverRootContextValue> = dest[1];
+export const PopoverRootContext: SafeContext<PopoverRootContextValue> = context;
+export const usePopoverRoot: UseSafeContext<PopoverRootContextValue> = hook;

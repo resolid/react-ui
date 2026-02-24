@@ -12,7 +12,7 @@ export const MdxCode = (
 
   if (dataInline) {
     return (
-      <pre translate={"no"} className={className} {...rest}>
+      <pre translate="no" className={className} {...rest}>
         {children}
       </pre>
     );
@@ -25,10 +25,10 @@ export const MdxCode = (
   };
 
   return (
-    <div role={"figure"} dir="ltr" className={"relative"}>
+    <div role="figure" dir="ltr" className="relative">
       <pre
         ref={preRef}
-        translate={"no"}
+        translate="no"
         className={tx(
           !codeGroup && "scrollbar scrollbar-thin max-h-96 rounded-md border border-bd-normal p-3",
           !codeGroup &&
@@ -41,7 +41,7 @@ export const MdxCode = (
       >
         {children}
       </pre>
-      <div className={"z-base absolute inset-e-1.5 top-1.5 flex gap-1"}>
+      <div className="z-base absolute inset-e-1.5 top-1.5 flex gap-1">
         {online && <StackblitzButton name={online} code={content} />}
         <ClipboardButton content={content} />
       </div>

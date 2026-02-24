@@ -29,12 +29,12 @@ export type ToastComponentContextValue = ToastBaseProps & {
   remove: () => void;
 };
 
-const toastComponentDesc = createSafeContext<ToastComponentContextValue>({
+const [componentContext, componentHook] = createSafeContext<ToastComponentContextValue>({
   name: "ToastComponentContext",
 });
 
-export const ToastComponentContext: SafeContext<ToastComponentContextValue> = toastComponentDesc[0];
-export const useToastComponent: UseSafeContext<ToastComponentContextValue> = toastComponentDesc[1];
+export const ToastComponentContext: SafeContext<ToastComponentContextValue> = componentContext;
+export const useToastComponent: UseSafeContext<ToastComponentContextValue> = componentHook;
 
 export type ToastConfig = ToastBaseProps & {
   component: () => ReactElement;
@@ -60,9 +60,9 @@ export type ToastContextValue = {
   clear: (...args: ToastPlacement[]) => void;
 };
 
-const toastDesc = createSafeContext<ToastContextValue>({
+const [context, hook] = createSafeContext<ToastContextValue>({
   name: "ToastContext",
 });
 
-export const ToastContext: SafeContext<ToastContextValue> = toastDesc[0];
-export const useToast: UseSafeContext<ToastContextValue> = toastDesc[1];
+export const ToastContext: SafeContext<ToastContextValue> = context;
+export const useToast: UseSafeContext<ToastContextValue> = hook;

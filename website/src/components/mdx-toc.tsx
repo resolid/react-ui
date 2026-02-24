@@ -24,14 +24,14 @@ export const MdxToc = ({
 
     for (const heading of combinedHeadings) {
       if (window.scrollY + 112 > heading.offsetTop) {
-        setActiveHeading("#" + heading.id);
+        setActiveHeading(`#${heading.id}`);
         break;
       }
     }
   });
 
   return (
-    <ul className={"sticky top-16 p-4 text-sm"}>
+    <ul className="sticky top-16 p-4 text-sm">
       {toc.map(({ depth, slug, text }) => {
         const href = `#${slug}`;
 

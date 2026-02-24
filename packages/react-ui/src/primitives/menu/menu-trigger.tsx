@@ -10,7 +10,7 @@ export const MenuTrigger = (
 
   return (
     <PopperTrigger
-      active={true}
+      active
       {...props}
       onMouseEnter={() => {
         setHoverEnabled(true);

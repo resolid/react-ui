@@ -8,9 +8,9 @@ export type ListboxStateContextValue = {
   readOnly: boolean;
 };
 
-const dest = createSafeContext<ListboxStateContextValue>({
+const [context, hook] = createSafeContext<ListboxStateContextValue>({
   name: "ListboxStateContext",
 });
 
-export const ListboxStateContext: SafeContext<ListboxStateContextValue> = dest[0];
-export const useListboxState: UseSafeContext<ListboxStateContextValue> = dest[1];
+export const ListboxStateContext: SafeContext<ListboxStateContextValue> = context;
+export const useListboxState: UseSafeContext<ListboxStateContextValue> = hook;

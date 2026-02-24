@@ -84,8 +84,8 @@ export const NumberInput = (
     ...rest
   } = props;
 
-  const format = formatProp ?? ((value) => value);
-  const parse = parseProp ?? ((value) => value);
+  const format = formatProp ?? ((original) => original);
+  const parse = parseProp ?? ((original) => original);
 
   const uid = useId();
   const inputId = id ?? uid;
@@ -115,12 +115,12 @@ export const NumberInput = (
     setValueState(next);
   };
 
-  const handleChange = (value: string | number) => {
-    const parsed = parse(value.toString());
+  const handleChange = (changed: string | number) => {
+    const parsed = parse(changed.toString());
 
     setInputValue(parsed);
 
-    if (value == "" || value == "-") {
+    if (changed == "" || changed == "-") {
       update(undefined);
     } else {
       const number = Number.parseFloat(parsed);
@@ -136,10 +136,10 @@ export const NumberInput = (
       update(min ?? 0);
       setInputValue(min !== undefined ? min.toFixed(precisionValue) : "0");
     } else {
-      const value = clamp(valueState + incrementStep, minValue, maxValue).toFixed(precisionValue);
+      const fixed = clamp(valueState + incrementStep, minValue, maxValue).toFixed(precisionValue);
 
-      update(Number.parseFloat(value));
-      setInputValue(value);
+      update(Number.parseFloat(fixed));
+      setInputValue(fixed);
     }
   };
 
@@ -148,10 +148,10 @@ export const NumberInput = (
       update(min ?? 0);
       setInputValue(min !== undefined ? min.toFixed(precisionValue) : "0");
     } else {
-      const value = clamp(valueState - decrementStep, minValue, maxValue).toFixed(precisionValue);
+      const fixed = clamp(valueState - decrementStep, minValue, maxValue).toFixed(precisionValue);
 
-      update(Number.parseFloat(value));
-      setInputValue(value);
+      update(Number.parseFloat(fixed));
+      setInputValue(fixed);
     }
   };
 
@@ -224,14 +224,17 @@ export const NumberInput = (
       setInputValue("");
       update(undefined);
     } else {
-      const parsed = parse(
-        event.target.value[0] == "." ? `0${event.target.value}` : event.target.value,
+      const parsed = clamp(
+        Number.parseFloat(
+          parse(event.target.value[0] == "." ? `0${event.target.value}` : event.target.value),
+        ),
+        minValue,
+        maxValue,
       );
-      const value = clamp(Number.parseFloat(parsed), minValue, maxValue);
 
-      if (!Number.isNaN(value)) {
-        setInputValue(value.toFixed(precisionValue));
-        update(Number.parseFloat(value.toFixed(precisionValue)));
+      if (!Number.isNaN(parsed)) {
+        setInputValue(parsed.toFixed(precisionValue));
+        update(Number.parseFloat(parsed.toFixed(precisionValue)));
       } else {
         setInputValue(valueState !== undefined ? valueState.toFixed(precisionValue) : "");
       }
@@ -247,13 +250,13 @@ export const NumberInput = (
     <Input
       id={inputId}
       ref={refs}
-      type={"text"}
+      type="text"
       inputMode={inputMode}
-      role={"spinbutton"}
+      role="spinbutton"
       aria-valuemin={minValue}
       aria-valuemax={maxValue}
-      autoComplete={"off"}
-      autoCorrect={"off"}
+      autoComplete="off"
+      autoCorrect="off"
       spellCheck={false}
       aria-valuenow={valueState}
       aria-valuetext={formattedValue != "" ? formattedValue : undefined}
@@ -266,10 +269,10 @@ export const NumberInput = (
       onBlur={handleBlur}
       size={size}
       suffix={
-        <span className={"flex h-full w-[calc(var(--sw)-2px)] flex-col gap-px py-px ps-2"}>
+        <span className="flex h-full w-[calc(var(--sw)-2px)] flex-col gap-px py-px ps-2">
           <NumberInputControl
             size={size}
-            stepper={"increment"}
+            stepper="increment"
             inputId={inputId}
             onClick={(event) => {
               event.stopPropagation();
@@ -280,7 +283,7 @@ export const NumberInput = (
           />
           <NumberInputControl
             size={size}
-            stepper={"decrement"}
+            stepper="decrement"
             inputId={inputId}
             onClick={(event) => {
               event.stopPropagation();

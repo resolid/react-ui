@@ -12,9 +12,9 @@ export type ListboxFilterContextValue = {
   getNavigationProps: (userProps?: HTMLProps<HTMLElement> | undefined) => AnyObject;
 };
 
-const desc = createSafeContext<ListboxFilterContextValue>({
+const [context, hook] = createSafeContext<ListboxFilterContextValue>({
   name: "ListboxFilterContext",
 });
 
-export const ListboxFilterContext: SafeContext<ListboxFilterContextValue> = desc[0];
-export const useListboxFilter: UseSafeContext<ListboxFilterContextValue> = desc[1];
+export const ListboxFilterContext: SafeContext<ListboxFilterContextValue> = context;
+export const useListboxFilter: UseSafeContext<ListboxFilterContextValue> = hook;

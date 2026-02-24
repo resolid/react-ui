@@ -23,9 +23,9 @@ export type FileUploadContextValue = Required<FileUploadBaseProps> & {
   cancelUpload: (id: string) => boolean;
 };
 
-const fileUploadContextTuple = createSafeContext<FileUploadContextValue>({
+const [context, hook] = createSafeContext<FileUploadContextValue>({
   name: "FileUploadContext",
 });
 
-export const FileUploadContext: SafeContext<FileUploadContextValue> = fileUploadContextTuple[0];
-export const useFileUpload: UseSafeContext<FileUploadContextValue> = fileUploadContextTuple[1];
+export const FileUploadContext: SafeContext<FileUploadContextValue> = context;
+export const useFileUpload: UseSafeContext<FileUploadContextValue> = hook;

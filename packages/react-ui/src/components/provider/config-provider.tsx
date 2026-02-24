@@ -22,14 +22,12 @@ export const ConfigProvider = ({
   colorMode,
   toastConfig,
   children,
-}: PropsWithChildren<ConfigProviderProps>): JSX.Element => {
-  return (
-    <LocaleProvider locale={locale}>
-      <DirectionContext value={dir}>
-        <ColorModeProvider {...colorMode}>
-          <ToastProvider {...toastConfig}>{children}</ToastProvider>
-        </ColorModeProvider>
-      </DirectionContext>
-    </LocaleProvider>
-  );
-};
+}: PropsWithChildren<ConfigProviderProps>): JSX.Element => (
+  <LocaleProvider locale={locale}>
+    <DirectionContext value={dir}>
+      <ColorModeProvider {...colorMode}>
+        <ToastProvider {...toastConfig}>{children}</ToastProvider>
+      </ColorModeProvider>
+    </DirectionContext>
+  </LocaleProvider>
+);

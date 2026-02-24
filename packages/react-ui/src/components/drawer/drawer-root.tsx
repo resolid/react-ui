@@ -14,7 +14,7 @@ export const DrawerRoot = (props: PrimitiveProps<"div", DrawerRootProps, "role">
 
   return (
     <DrawerContext value={{ placement }}>
-      <DialogRoot role={"dialog"} scrollBehavior={"inside"} preventScroll {...rest}>
+      <DialogRoot role="dialog" scrollBehavior="inside" preventScroll {...rest}>
         {children}
       </DialogRoot>
     </DrawerContext>

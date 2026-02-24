@@ -14,9 +14,10 @@ type MediaQueryList = {
 type MediaQueryListener = (this: MediaQueryList, ev: MediaQueryListEvent) => void;
 
 class MatchMediaMock {
-  private mediaQueries: {
-    [key: string]: ((this: MediaQueryList, ev: MediaQueryListEvent) => void)[];
-  } = {};
+  private mediaQueries: Record<
+    string,
+    ((this: MediaQueryList, ev: MediaQueryListEvent) => void)[]
+  > = {};
 
   private mediaQueryList!: MediaQueryList;
 
@@ -32,12 +33,16 @@ class MatchMediaMock {
           media: query,
           onchange: null,
           addEventListener: (type, listener) => {
-            if (type !== "change") return;
+            if (type !== "change") {
+              return;
+            }
 
             this.addListener(query, listener);
           },
           removeEventListener: (type, listener) => {
-            if (type !== "change") return;
+            if (type !== "change") {
+              return;
+            }
 
             this.removeListener(query, listener);
           },
@@ -57,17 +62,23 @@ class MatchMediaMock {
     const query = this.mediaQueries[mediaQuery];
     const listenerIndex = query.indexOf(listener);
 
-    if (listenerIndex !== -1) return;
+    if (listenerIndex !== -1) {
+      return;
+    }
     query.push(listener);
   }
 
   private removeListener(mediaQuery: string, listener: MediaQueryListener): void {
-    if (!this.mediaQueries[mediaQuery]) return;
+    if (!this.mediaQueries[mediaQuery]) {
+      return;
+    }
 
     const query = this.mediaQueries[mediaQuery];
     const listenerIndex = query.indexOf(listener);
 
-    if (listenerIndex === -1) return;
+    if (listenerIndex === -1) {
+      return;
+    }
     query.splice(listenerIndex, 1);
   }
 

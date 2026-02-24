@@ -19,6 +19,7 @@ import {
 import { getPopperAnimationProps } from "../../primitives/popper/utils";
 import { tx } from "../../utils";
 import { Portal } from "../portal/portal";
+import { useLocale } from "../provider/locale-context";
 import { useComboboxPopup } from "./combobox-popup-context";
 import { useComboboxRoot } from "./combobox-root-context";
 
@@ -37,6 +38,8 @@ export const ComboboxPopup = (
 
   const { rootContext } = useComboboxRoot();
   const { duration, setFloating } = useComboboxPopup();
+
+  const { t } = useLocale();
 
   const { floatingStyles, context } = useFloating({
     rootContext,
@@ -91,7 +94,7 @@ export const ComboboxPopup = (
             context={rootContext}
             initialFocus={-1}
             returnFocus={false}
-            visuallyHiddenDismiss={"关闭"}
+            visuallyHiddenDismiss={t("closeButton.label")}
           >
             <>{children}</>
           </FloatingFocusManager>

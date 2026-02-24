@@ -9,9 +9,9 @@ export type BreadcrumbContextValue = {
   separator?: ReactNode;
 };
 
-const desc = createSafeContext<BreadcrumbContextValue>({
+const [context, hook] = createSafeContext<BreadcrumbContextValue>({
   name: "BreadcrumbContext",
 });
 
-export const BreadcrumbContext: SafeContext<BreadcrumbContextValue> = desc[0];
-export const useBreadcrumb: UseSafeContext<BreadcrumbContextValue> = desc[1];
+export const BreadcrumbContext: SafeContext<BreadcrumbContextValue> = context;
+export const useBreadcrumb: UseSafeContext<BreadcrumbContextValue> = hook;

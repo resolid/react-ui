@@ -7,8 +7,8 @@ export type ComboboxInputContextValue = {
   inputValue: string;
 };
 
-const desc = createSafeContext<ComboboxInputContextValue>({
+const [context, hook] = createSafeContext<ComboboxInputContextValue>({
   name: "ComboboxInputContext",
 });
-export const ComboboxInputContext: SafeContext<ComboboxInputContextValue> = desc[0];
-export const useComboboxInput: UseSafeContext<ComboboxInputContextValue> = desc[1];
+export const ComboboxInputContext: SafeContext<ComboboxInputContextValue> = context;
+export const useComboboxInput: UseSafeContext<ComboboxInputContextValue> = hook;

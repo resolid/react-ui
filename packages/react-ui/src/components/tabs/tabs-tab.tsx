@@ -89,7 +89,7 @@ export const TabsTab = (
 
   return (
     <Polymorphic<"button">
-      as={"button"}
+      as="button"
       render={render}
       ref={refs}
       {...buttonProps}

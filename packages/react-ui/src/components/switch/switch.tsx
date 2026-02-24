@@ -94,10 +94,10 @@ export const Switch = (
       className={tx(toggleLabelShareStyles, disabled && "opacity-60", className)}
     >
       <input
-        className={"peer sr-only"}
+        className="peer sr-only"
         value={value}
         type="checkbox"
-        role={"switch"}
+        role="switch"
         checked={checkedState}
         disabled={disabled}
         readOnly={readOnly}
@@ -106,7 +106,7 @@ export const Switch = (
         {...rest}
       />
       <span
-        aria-hidden={true}
+        aria-hidden="true"
         className={tx(
           "inline-flex shrink-0 justify-start rounded-full border-2",
           toggleControlShareStyles,

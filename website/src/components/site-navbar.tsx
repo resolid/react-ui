@@ -19,8 +19,8 @@ export const SiteNavbar = () => {
   const [opened, setOpened] = useState(false);
 
   return (
-    <nav className={"mx-auto flex h-16 items-center justify-between gap-4 px-4 xl:max-w-288"}>
-      <Link className={"md:w-39"} to={"/"} aria-label={"Resolid React UI"}>
+    <nav className="mx-auto flex h-16 items-center justify-between gap-4 px-4 xl:max-w-288">
+      <Link className="md:w-39" to="/" aria-label="Resolid React UI">
         <ResolidUiLogo />
       </Link>
       <SiteSearch />
@@ -41,48 +41,46 @@ export const SiteNavbar = () => {
             { name: "主页", href: "", end: true },
             { name: "文档", href: "docs" },
             { name: "关于", href: "about" },
-          ].map((menu) => {
-            return (
-              <li className={"p-2.5 md:px-4"} key={menu.name}>
-                <HistoryNavLink
-                  className={({ isActive }) =>
-                    tx("block hover:text-link-hovered", isActive && "text-link-pressed")
-                  }
-                  onClick={() => setOpened(false)}
-                  to={menu.href}
-                  end={menu.end}
-                >
-                  {menu.name}
-                </HistoryNavLink>
-              </li>
-            );
-          })}
-          <li className={"inline-flex justify-center p-5 md:hidden"}>
-            <a href={"https://www.resolid.tech"} target={"_blank"} rel={"noreferrer"}>
+          ].map((menu) => (
+            <li className="p-2.5 md:px-4" key={menu.name}>
+              <HistoryNavLink
+                className={({ isActive }) =>
+                  tx("block hover:text-link-hovered", isActive && "text-link-pressed")
+                }
+                onClick={() => setOpened(false)}
+                to={menu.href}
+                end={menu.end}
+              >
+                {menu.name}
+              </HistoryNavLink>
+            </li>
+          ))}
+          <li className="inline-flex justify-center p-5 md:hidden">
+            <a href="https://www.resolid.tech" target="_blank" rel="noreferrer">
               <ResolidLogo height={16} />
             </a>
           </li>
         </ul>
       </div>
-      <div className={"inline-flex items-center gap-1 text-fg-muted"}>
+      <div className="inline-flex items-center gap-1 text-fg-muted">
         <ColorModeToggle />
-        <Tooltip placement={"bottom"}>
+        <Tooltip placement="bottom">
           <TooltipTrigger
             render={(props) => (
               <Button
-                variant={"ghost"}
-                color={"neutral"}
-                size={"sm"}
+                variant="ghost"
+                color="neutral"
+                size="sm"
                 iconOnly
-                aria-label={"Github 上的 Resolid React UI"}
-                render={(props) => (
+                aria-label="Github 上的 Resolid React UI"
+                render={(renderProps) => (
                   <a
-                    href={"https://github.com/resolid/react-ui"}
-                    target={"_blank"}
-                    rel={"noreferrer"}
-                    {...props}
+                    href="https://github.com/resolid/react-ui"
+                    target="_blank"
+                    rel="noreferrer"
+                    {...renderProps}
                   >
-                    <SpriteIcon size={"1.325em"} name={"github"} />
+                    <SpriteIcon size="1.325em" name="github" />
                   </a>
                 )}
                 {...props}
@@ -96,28 +94,28 @@ export const SiteNavbar = () => {
         </Tooltip>
         <Button
           iconOnly
-          variant={"ghost"}
-          color={"neutral"}
-          aria-label={"导航菜单"}
-          className={"md:hidden"}
+          variant="ghost"
+          color="neutral"
+          aria-label="导航菜单"
+          className="md:hidden"
           onClick={() => setOpened((prev) => !prev)}
         >
           {opened ? (
-            <SpriteIcon size={"1.5em"} name={"close"} />
+            <SpriteIcon size="1.5em" name="close" />
           ) : (
-            <SpriteIcon size={"1.5em"} name={"menu"} />
+            <SpriteIcon size="1.5em" name="menu" />
           )}
         </Button>
-        <Tooltip placement={"bottom"}>
+        <Tooltip placement="bottom">
           <TooltipTrigger
             render={(props) => (
               <a
                 {...props}
-                className={"ms-3 hidden hover:text-fg-primary md:block"}
-                aria-label={"Resolid Tech"}
-                href={"https://www.resolid.tech"}
-                target={"_blank"}
-                rel={"noreferrer"}
+                className="ms-3 hidden hover:text-fg-primary md:block"
+                aria-label="Resolid Tech"
+                href="https://www.resolid.tech"
+                target="_blank"
+                rel="noreferrer"
               >
                 <ResolidLogo height={16} />
               </a>

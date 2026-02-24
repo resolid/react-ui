@@ -1,16 +1,14 @@
 import { mergeMeta } from "~/utils/react-router-meta";
 
-export const meta = mergeMeta(() => {
-  return [
-    {
-      title: "关于",
-    },
-  ];
-});
+export const meta = mergeMeta(() => [
+  {
+    title: "关于",
+  },
+]);
 
 export default function About() {
   return (
-    <div className={"mx-auto prose max-w-192 px-4 py-8 dark:prose-invert"}>
+    <div className="mx-auto prose max-w-192 px-4 py-8 dark:prose-invert">
       <h1 className="text-center">关于</h1>
       <p>
         Resolid React UI 是 React 的开源设计系统。使用 React 和 Tailwind CSS

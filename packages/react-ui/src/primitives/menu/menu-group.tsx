@@ -5,7 +5,7 @@ export const MenuGroup = (props: PrimitiveProps<"div">): JSX.Element => {
   const { children, ...rest } = props;
 
   return (
-    <div role={"group"} {...rest}>
+    <div role="group" {...rest}>
       {children}
     </div>
   );

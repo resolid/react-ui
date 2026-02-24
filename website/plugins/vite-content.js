@@ -1,5 +1,5 @@
 import { trimEnd } from "@resolid/utils";
-import chokidar from "chokidar";
+import { watch as chokidarWatch } from "chokidar";
 import glob from "fast-glob";
 import GithubSlugger from "github-slugger";
 import { fromMarkdown } from "mdast-util-from-markdown";
@@ -25,7 +25,7 @@ export default function viteContent() {
     name: "vite-content-plugin",
 
     config(config) {
-      root = config.root;
+      ({ root } = config);
     },
 
     configResolved(config) {
@@ -90,7 +90,7 @@ const contentBuild = async ({ root, contentDir, watch }) => {
 
       const resolvePath = relative(routesPath, file).split(sep).join("/");
 
-      const documentLink = new URL(resolvePath, githubRepo + "website/src/routes/").toString();
+      const documentLink = new URL(resolvePath, `${githubRepo}website/src/routes/`).toString();
 
       const urlPath = trimEnd(
         resolvePath.replace("/_mdx", "").replace("_index", "").replace(".mdx", ""),
@@ -104,11 +104,12 @@ const contentBuild = async ({ root, contentDir, watch }) => {
       const sourceLink =
         componentName && componentName !== "icon" && componentName !== "typography"
           ? new URL(
-              componentName + "/" + componentName + ".tsx",
-              githubRepo + "/packages/react-ui/src/components/",
+              `${componentName}/${componentName}.tsx`,
+              `${githubRepo}/packages/react-ui/src/components/`,
             ).toString()
           : null;
 
+      // oxlint-disable-next-line no-await-in-loop
       const doc = await readFile(file, { encoding: "utf-8" });
 
       const match = doc.match(MATTER_RE);
@@ -162,21 +163,19 @@ const contentBuild = async ({ root, contentDir, watch }) => {
   };
 
   if (watch) {
-    chokidar
-      .watch("src/routes/docs/_mdx", {
-        cwd: root,
-        awaitWriteFinish: { stabilityThreshold: 50, pollInterval: 10 },
-      })
-      .on("all", async (event, filename) => {
-        if (event === "addDir" || event === "unlinkDir") {
-          return;
-        }
-        if (filename == null || typeof filename !== "string") {
-          return;
-        }
+    chokidarWatch("src/routes/docs/_mdx", {
+      cwd: root,
+      awaitWriteFinish: { stabilityThreshold: 50, pollInterval: 10 },
+    }).on("all", async (event, filename) => {
+      if (event === "addDir" || event === "unlinkDir") {
+        return;
+      }
+      if (filename == null || typeof filename !== "string") {
+        return;
+      }
 
-        await build();
-      });
+      await build();
+    });
   } else {
     await build();
   }

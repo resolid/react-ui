@@ -60,7 +60,7 @@ describe("Drawer", () => {
   });
 
   it("should be fully controlled (true)", async () => {
-    render(<ComponentUnderTest open={true} />);
+    render(<ComponentUnderTest open />);
 
     expect(screen.queryByRole("button", { name: "Close" })).toBeVisible();
 

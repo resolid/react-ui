@@ -42,41 +42,36 @@ export type FilePickerActionContextValue = {
   removeFile: (id: string) => Promise<void>;
 };
 
-const actionContextTuple = createSafeContext<FilePickerActionContextValue>({
+const [actionContext, actionHook] = createSafeContext<FilePickerActionContextValue>({
   name: "FilePickerContext",
 });
 
-export const FilePickerActionContext: SafeContext<FilePickerActionContextValue> =
-  actionContextTuple[0];
-export const useFilePickerAction: UseSafeContext<FilePickerActionContextValue> =
-  actionContextTuple[1];
+export const FilePickerActionContext: SafeContext<FilePickerActionContextValue> = actionContext;
+export const useFilePickerAction: UseSafeContext<FilePickerActionContextValue> = actionHook;
 
 export type FilePickerStatusContextValue = {
   disabled: boolean;
   multiple: boolean;
 };
 
-const statusContextTuple = createSafeContext<FilePickerStatusContextValue>({
+const [statusContext, statusHook] = createSafeContext<FilePickerStatusContextValue>({
   name: "FilePickerStatusContext",
 });
 
-export const FilePickerStatusContext: SafeContext<FilePickerStatusContextValue> =
-  statusContextTuple[0];
-export const useFilePickerStatus: UseSafeContext<FilePickerStatusContextValue> =
-  statusContextTuple[1];
+export const FilePickerStatusContext: SafeContext<FilePickerStatusContextValue> = statusContext;
+export const useFilePickerStatus: UseSafeContext<FilePickerStatusContextValue> = statusHook;
 
-const filesContextTuple = createSafeContext<FileItem[]>({
+const [filesContext, filesHook] = createSafeContext<FileItem[]>({
   name: "FilePickerFilesContext",
 });
 
-export const FilePickerFilesContext: SafeContext<FileItem[]> = filesContextTuple[0];
-export const useFilePickerFiles: UseSafeContext<FileItem[]> = filesContextTuple[1];
+export const FilePickerFilesContext: SafeContext<FileItem[]> = filesContext;
+export const useFilePickerFiles: UseSafeContext<FileItem[]> = filesHook;
 
-const inputRefContextTuple = createSafeContext<RefObject<HTMLInputElement | null>>({
+const [inputContext, inputHook] = createSafeContext<RefObject<HTMLInputElement | null>>({
   name: "FilePickerInputRefContext",
 });
 
 export const FilePickerInputRefContext: SafeContext<RefObject<HTMLInputElement | null>> =
-  inputRefContextTuple[0];
-export const useFilePickerInputRef: UseSafeContext<RefObject<HTMLInputElement | null>> =
-  inputRefContextTuple[1];
+  inputContext;
+export const useFilePickerInputRef: UseSafeContext<RefObject<HTMLInputElement | null>> = inputHook;

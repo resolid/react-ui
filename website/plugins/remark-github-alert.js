@@ -2,7 +2,7 @@ import { visit } from "unist-util-visit";
 
 const GITHUB_ALERT_DECLARATION_REGEX = /^\s*\[!(?<type>\w+)]\s*$/;
 
-export default function () {
+export default function remarkGithubAlert() {
   return (tree) => {
     visit(tree, "blockquote", (node, index, parent) => {
       const [firstChild, ...blockQuoteChildren] = node.children;

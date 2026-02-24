@@ -25,7 +25,7 @@ export const TabsList = (props: PrimitiveProps<"div", EmptyObject, "role">): JSX
     <Composite
       ref={refs}
       rtl={direction == "rtl"}
-      role={"tablist"}
+      role="tablist"
       orientation={orientation}
       activeIndex={activeIndex}
       onNavigate={setActiveIndex}

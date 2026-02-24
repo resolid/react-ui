@@ -9,9 +9,9 @@ export type ListboxScrollContextValue = {
   scrollToRef: RefObject<VirtualScrollTo | null>;
 };
 
-const dest = createSafeContext<ListboxScrollContextValue>({
+const [context, hook] = createSafeContext<ListboxScrollContextValue>({
   name: "ListboxScrollContext",
 });
 
-export const ListboxScrollContext: SafeContext<ListboxScrollContextValue> = dest[0];
-export const useListboxScroll: UseSafeContext<ListboxScrollContextValue> = dest[1];
+export const ListboxScrollContext: SafeContext<ListboxScrollContextValue> = context;
+export const useListboxScroll: UseSafeContext<ListboxScrollContextValue> = hook;

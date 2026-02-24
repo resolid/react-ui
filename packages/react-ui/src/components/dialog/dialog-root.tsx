@@ -101,8 +101,8 @@ export const DialogRoot = (props: PropsWithChildren<DialogRootProps>): JSX.Eleme
   const context = useFloatingRootContext({
     elements: { reference, floating },
     open: openState,
-    onOpenChange: (open) => {
-      if (open) {
+    onOpenChange: (opened) => {
+      if (opened) {
         handleOpen();
       } else {
         handleClose();

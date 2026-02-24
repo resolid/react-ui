@@ -2,10 +2,7 @@ import { callAll } from "@resolid/utils";
 import { tx } from "../clsx";
 import { css } from "../css";
 
-interface Props {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [key: string | symbol]: any;
-}
+type Props = Record<string | symbol, any>;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type TupleTypes<T extends any[]> = T[number];
@@ -16,14 +13,18 @@ type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (
   : never;
 
 export const mergeProps = <T extends Props>(
-  ...args: Array<T | null | undefined>
+  ...args: (T | null | undefined)[]
 ): UnionToIntersection<TupleTypes<T[]>> => {
   const result: Props = { ...args[0] };
 
   for (let i = 1; i < args.length; i++) {
     const props = args[i];
 
-    for (const key in props) {
+    if (!props) {
+      continue;
+    }
+
+    for (const key of Object.keys(props)) {
       const a = result[key];
       const b = props[key];
 

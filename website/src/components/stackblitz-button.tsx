@@ -43,7 +43,9 @@ const openProject = async (name: string, code: string) => {
     createHiddenInput(
       "project[files][package.json]",
       sandbox["../assets/sandbox/package.txt"]
+        // oxlint-disable-next-line no-template-curly-in-string
         .replaceAll("${filename}", filename)
+        // oxlint-disable-next-line no-template-curly-in-string
         .replaceAll("${commitSha}", commitSha),
     ),
   );
@@ -59,6 +61,7 @@ const openProject = async (name: string, code: string) => {
   inputs.push(
     createHiddenInput(
       "project[files][index.html]",
+      // oxlint-disable-next-line no-template-curly-in-string
       sandbox["../assets/sandbox/index.txt"].replaceAll("${name}", name),
     ),
   );
@@ -106,13 +109,11 @@ export const StackblitzButton = ({ name, code }: StackblitzButtonProps) => {
     <Tooltip>
       <TooltipTrigger
         onClick={handleClick}
-        render={(props) => (
-          <Button variant={"soft"} color={"neutral"} size={"xs"} iconOnly {...props} />
-        )}
+        render={(props) => <Button variant="soft" color="neutral" size="xs" iconOnly {...props} />}
       >
-        <SpriteIcon size={15} className={"text-fg-primary"} name={"stackblitz"} />
+        <SpriteIcon size={15} className="text-fg-primary" name="stackblitz" />
       </TooltipTrigger>
-      <TooltipContent className={"text-sm"}>
+      <TooltipContent className="text-sm">
         <TooltipArrow />在 Stackblitz 打开
       </TooltipContent>
     </Tooltip>

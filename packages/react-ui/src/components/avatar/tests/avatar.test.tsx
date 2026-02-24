@@ -3,14 +3,12 @@ import { afterEach, describe, expect, it } from "vitest";
 import { axe } from "vitest-axe";
 import { Avatar, AvatarFallback, AvatarImage, type AvatarProps } from "../avatar";
 
-const ComponentUnderTest = (props: AvatarProps) => {
-  return (
-    <Avatar name={"avatar"} {...props}>
-      <AvatarImage src="https://file.resolid.tech/images%2Fa001.jpg" />
-      <AvatarFallback>PA</AvatarFallback>
-    </Avatar>
-  );
-};
+const ComponentUnderTest = (props: AvatarProps) => (
+  <Avatar name="avatar" {...props}>
+    <AvatarImage src="https://file.resolid.tech/images%2Fa001.jpg" />
+    <AvatarFallback>PA</AvatarFallback>
+  </Avatar>
+);
 
 describe("Avatar", () => {
   afterEach(() => {

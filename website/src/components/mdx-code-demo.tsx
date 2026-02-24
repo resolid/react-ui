@@ -32,12 +32,8 @@ export const MdxCodeDemo = (props: {
   const settingPropsKeys = Object.keys(props.settingProps);
 
   const validProps = props.componentProps
-    .filter((prop) => {
-      return prop.control && settingPropsKeys.includes(prop.name);
-    })
-    .sort((a, b) => {
-      return settingPropsKeys.indexOf(a.name) - settingPropsKeys.indexOf(b.name);
-    });
+    .filter((prop) => prop.control && settingPropsKeys.includes(prop.name))
+    .sort((a, b) => settingPropsKeys.indexOf(a.name) - settingPropsKeys.indexOf(b.name));
 
   const [state, setState] = useState<Dict<string | boolean | number | undefined>>(
     Object.fromEntries(
@@ -60,27 +56,27 @@ export const MdxCodeDemo = (props: {
   );
 
   return (
-    <div className={"relative"}>
-      <div className={"flex min-h-32 items-center justify-center-safe"}>
-        {props.children(state)}
-      </div>
-      <Popover placement={"top-end"}>
+    <div className="relative">
+      <div className="flex min-h-32 items-center justify-center-safe">{props.children(state)}</div>
+      <Popover placement="top-end">
         <PopoverTrigger
-          className={"absolute inset-s-0 bottom-0"}
-          render={(props) => <Button size={"xs"} variant={"soft"} color={"neutral"} {...props} />}
+          className="absolute inset-s-0 bottom-0"
+          render={(renderProps) => (
+            <Button size="xs" variant="soft" color="neutral" {...renderProps} />
+          )}
         >
           属性设置
         </PopoverTrigger>
-        <PopoverContent className={"flex flex-col gap-3 p-3 text-sm"}>
+        <PopoverContent className="flex flex-col gap-3 p-3 text-sm">
           <PopoverArrow />
           {validProps.map((prop) => {
             const propInputId = `prop-${prop.name}`;
 
             return (
-              <div className={"flex items-center justify-between gap-5"} key={propInputId}>
+              <div className="flex items-center justify-between gap-5" key={propInputId}>
                 {prop.control == "boolean" && (
                   <Switch
-                    size={"sm"}
+                    size="sm"
                     checked={Boolean(state[prop.name])}
                     onChange={(value) => {
                       setState((prev) => ({ ...prev, [prop.name]: value }));
@@ -94,9 +90,9 @@ export const MdxCodeDemo = (props: {
                     <label htmlFor={propInputId}>{prop.description}</label>
                     <Input
                       id={propInputId}
-                      size={"xs"}
-                      className={"w-1/2"}
-                      autoComplete={"off"}
+                      size="xs"
+                      className="w-1/2"
+                      autoComplete="off"
                       value={state[prop.name] as string}
                       onChange={(value) => {
                         setState((prev) => ({ ...prev, [prop.name]: value }));
@@ -109,8 +105,8 @@ export const MdxCodeDemo = (props: {
                     <label htmlFor={propInputId}>{prop.description}</label>
                     <NumberInput
                       id={propInputId}
-                      size={"xs"}
-                      className={"w-1/2"}
+                      size="xs"
+                      className="w-1/2"
                       value={state[prop.name] ? Number(state[prop.name]) : undefined}
                       onChange={(value) => {
                         setState((prev) => ({ ...prev, [prop.name]: value }));
@@ -122,7 +118,7 @@ export const MdxCodeDemo = (props: {
                   (prop.name == "color" ? (
                     <>
                       <span>{prop.description}</span>
-                      <div className={"inline-flex w-auto justify-between gap-1"}>
+                      <div className="inline-flex w-auto justify-between gap-1">
                         {prop.typeValues?.map((option) => {
                           const color = option.toString().slice(1, -1);
 
@@ -144,7 +140,7 @@ export const MdxCodeDemo = (props: {
                               }}
                             >
                               {state[prop.name] == color && (
-                                <SpriteIcon size={"1.25em"} name={"check"} />
+                                <SpriteIcon size="1.25em" name="check" />
                               )}
                             </button>
                           );
@@ -156,7 +152,7 @@ export const MdxCodeDemo = (props: {
                       <label htmlFor={propInputId}>{prop.description}</label>
                       <NativeSelect
                         id={propInputId}
-                        size={"xs"}
+                        size="xs"
                         value={String(state[prop.name])}
                         onChange={(e) => {
                           setState((prev) => ({

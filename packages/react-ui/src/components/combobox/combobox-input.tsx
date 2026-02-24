@@ -30,7 +30,7 @@ export const ComboboxInput = (
 
   return (
     <Polymorphic
-      as={"input"}
+      as="input"
       render={render}
       ref={refs}
       value={inputValue}

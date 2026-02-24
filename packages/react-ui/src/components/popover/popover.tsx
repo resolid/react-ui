@@ -21,9 +21,7 @@ export const Popover = (props: PropsWithChildren<PopoverProps>): JSX.Element => 
 
 export const PopoverTrigger = (
   props: Omit<ComponentProps<typeof PopperTrigger>, "active">,
-): JSX.Element => {
-  return <PopperTrigger active={true} {...props} />;
-};
+): JSX.Element => <PopperTrigger active {...props} />;
 
 export const PopoverArrow = (props: PopperArrowProps): JSX.Element => {
   const { width = 11, height = 6, ...rest } = props;

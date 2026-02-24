@@ -8,8 +8,8 @@ export const getNextValue = (
   step: number,
   precision: number,
   vertical: boolean,
-): number => {
-  return Number(
+): number =>
+  Number(
     (
       (value !== 0
         ? Math.round(vertical ? max - value : value / step) * step
@@ -18,7 +18,6 @@ export const getNextValue = (
           : 0) + min
     ).toFixed(precision),
   );
-};
 
 export const getStepValue = (
   value: ValueType,
@@ -46,23 +45,19 @@ export const getChangeValue = (
   min: number,
   max: number,
   thumbIndex?: number,
-): ValueType => {
-  return Array.isArray(value)
+): ValueType =>
+  Array.isArray(value)
     ? thumbIndex == 1
       ? [value[0], clamp(next, value[0], max)]
       : [clamp(next, min, value[1]), value[1]]
     : clamp(next, min, max);
-};
 
-export const getPosition = (value: number, min: number, max: number): number => {
-  return clamp((100 / (max - min)) * (value - min), 0, 100);
-};
+export const getPosition = (value: number, min: number, max: number): number =>
+  clamp((100 / (max - min)) * (value - min), 0, 100);
 
-export const linearScale = (
-  input: readonly [number, number],
-  output: readonly [number, number],
-) => {
-  return (value: number): number => {
+export const linearScale =
+  (input: readonly [number, number], output: readonly [number, number]) =>
+  (value: number): number => {
     if (input[0] === input[1] || output[0] === output[1]) {
       return output[0];
     }
@@ -71,8 +66,6 @@ export const linearScale = (
 
     return output[0] + ratio * (value - input[0]);
   };
-};
 
-export const getOffset = (half: number, offset: number, direction: number): number => {
-  return (half - offset * direction) * direction;
-};
+export const getOffset = (half: number, offset: number, direction: number): number =>
+  (half - offset * direction) * direction;

@@ -12,9 +12,9 @@ export type MenuRadioGroupContextValue = {
   onChange?: (value: string | number) => void;
 };
 
-const dest = createSafeContext<MenuRadioGroupContextValue>({
+const [context, hook] = createSafeContext<MenuRadioGroupContextValue>({
   name: "MenuRadioGroupContext",
 });
 
-export const MenuRadioGroupContext: SafeContext<MenuRadioGroupContextValue> = dest[0];
-export const useMenuRadioGroup: UseSafeContext<MenuRadioGroupContextValue> = dest[1];
+export const MenuRadioGroupContext: SafeContext<MenuRadioGroupContextValue> = context;
+export const useMenuRadioGroup: UseSafeContext<MenuRadioGroupContextValue> = hook;

@@ -49,10 +49,9 @@ export const Radio = (
   const color = colorProp ?? group.color ?? "primary";
   const disabled = disabledProp ?? group.disabled ?? false;
 
+  const { readOnly, required, invalid } = group;
+
   const checked = group.value == value;
-  const readOnly = group.readOnly;
-  const required = group.required;
-  const invalid = group.invalid;
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.stopPropagation();
@@ -76,9 +75,9 @@ export const Radio = (
     >
       <input
         name={group.name}
-        className={"peer sr-only"}
+        className="peer sr-only"
         value={value}
-        type={"radio"}
+        type="radio"
         checked={checked}
         disabled={disabled}
         readOnly={readOnly}
@@ -87,7 +86,7 @@ export const Radio = (
         {...rest}
       />
       <span
-        aria-hidden={true}
+        aria-hidden="true"
         className={tx(
           "items-center justify-center rounded-full",
           toggleControlShareStyles,

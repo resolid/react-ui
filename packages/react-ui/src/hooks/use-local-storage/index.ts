@@ -2,9 +2,7 @@ import { isFunction, runIf } from "@resolid/utils";
 import { type SetStateAction, useSyncExternalStore } from "react";
 import { useIsomorphicEffect } from "../use-isomorphic-effect";
 
-const getLocalStorageItem = (key: string) => {
-  return window.localStorage.getItem(key) ?? undefined;
-};
+const getLocalStorageItem = (key: string) => window.localStorage.getItem(key) ?? undefined;
 
 const setLocalStorageItem = (key: string, value: string | undefined) => {
   const oldValue = getLocalStorageItem(key);

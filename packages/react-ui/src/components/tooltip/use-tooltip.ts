@@ -146,7 +146,7 @@ export const useTooltip = ({
   };
 
   return {
-    setOpen: (open) => context.onOpenChange(open),
+    setOpen: (opened) => context.onOpenChange(opened),
     setPosition: refs.setPositionReference,
     floatingElement: context.elements.floating,
     stateContext,

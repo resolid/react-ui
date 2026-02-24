@@ -10,5 +10,5 @@ export const PopperAnchor = (props: PolymorphicProps<"div">): JSX.Element => {
 
   const refs = useMergeRefs(ref, setPositionReference);
 
-  return <Polymorphic as={"div"} render={render} ref={refs} {...rest} />;
+  return <Polymorphic as="div" render={render} ref={refs} {...rest} />;
 };

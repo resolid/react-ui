@@ -33,13 +33,13 @@ export const AccordionItem = (props: PrimitiveProps<"div", AccordionItemProps>):
   const handleOpenChange = (open: boolean) => {
     if (open) {
       if (Array.isArray(openedValue)) {
-        setOpenedValue((prev) => [value, ...(prev as Array<string | number>)]);
+        setOpenedValue((prev) => [value, ...(prev as (string | number)[])]);
       } else {
         setOpenedValue(value);
       }
     } else {
       if (Array.isArray(openedValue)) {
-        setOpenedValue((prev) => (prev as Array<string | number>).filter((p) => p != value));
+        setOpenedValue((prev) => (prev as (string | number)[]).filter((p) => p != value));
       } else {
         if (collapsible) {
           setOpenedValue(null);

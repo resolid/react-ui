@@ -127,7 +127,7 @@ export const Checkbox = (
       <input
         ref={refs}
         name={htmlName}
-        className={"peer sr-only"}
+        className="peer sr-only"
         value={value}
         type="checkbox"
         checked={checkedState}
@@ -139,7 +139,7 @@ export const Checkbox = (
         {...rest}
       />
       <span
-        aria-hidden={true}
+        aria-hidden="true"
         className={tx(
           "items-center justify-center rounded-md",
           toggleControlShareStyles,
@@ -155,8 +155,8 @@ export const Checkbox = (
           sizeStyle,
         )}
       >
-        {checkedState && !indeterminate && <CheckedIcon size={"80%"} />}
-        {indeterminate && <IndeterminateIcon size={"80%"} />}
+        {checkedState && !indeterminate && <CheckedIcon size="80%" />}
+        {indeterminate && <IndeterminateIcon size="80%" />}
       </span>
       {children && <div className={tx("select-none", labelSizeStyle)}>{children}</div>}
     </label>

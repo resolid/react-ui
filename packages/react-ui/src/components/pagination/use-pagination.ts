@@ -113,18 +113,18 @@ export const usePagination = (
           : []),
       ...endPages,
       ...[["next", Math.min(totalPages, currentPage + 1)]],
-    ].map((page) => {
-      return isNumber(page)
-        ? { page: page, pageType: "page" as PageType, disabled: disabled }
+    ].map((pn) =>
+      isNumber(pn)
+        ? { page: pn, pageType: "page" as PageType, disabled: disabled }
         : {
-            page: page[1] as number,
-            pageType: page[0] as PageType,
+            page: pn[1] as number,
+            pageType: pn[0] as PageType,
             disabled:
               disabled ||
-              (page[0] == "previous" && currentPage <= 1) ||
-              (page[0] == "next" && currentPage >= totalPages),
-          };
-    });
+              (pn[0] == "previous" && currentPage <= 1) ||
+              (pn[0] == "next" && currentPage >= totalPages),
+          },
+    );
   }, [currentPage, totalPages, boundaries, siblings, disabled]);
 
   return { pageItems, totalPages, currentPage, setCurrentPage };

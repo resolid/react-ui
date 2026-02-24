@@ -4,9 +4,9 @@ export type PopperStateContextValue = {
   open: boolean;
 };
 
-const dest = createSafeContext<PopperStateContextValue>({
+const [context, hook] = createSafeContext<PopperStateContextValue>({
   name: "PopperStateContext",
 });
 
-export const PopperStateContext: SafeContext<PopperStateContextValue> = dest[0];
-export const usePopperState: UseSafeContext<PopperStateContextValue> = dest[1];
+export const PopperStateContext: SafeContext<PopperStateContextValue> = context;
+export const usePopperState: UseSafeContext<PopperStateContextValue> = hook;

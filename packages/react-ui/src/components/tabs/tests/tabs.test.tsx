@@ -14,14 +14,14 @@ const ComponentUnderTest = (props: TabsProps) => {
   return (
     <Tabs {...props}>
       <TabsList>
-        {items.map((item, id) => (
-          <TabsTab key={id} value={item.value} disabled={item.disabled}>
+        {items.map((item) => (
+          <TabsTab key={item.value} value={item.value} disabled={item.disabled}>
             {item.value} Trigger
           </TabsTab>
         ))}
       </TabsList>
-      {items.map((item, id) => (
-        <TabsPanel key={id} value={item.value}>
+      {items.map((item) => (
+        <TabsPanel key={item.value} value={item.value}>
           {item.value} Content
         </TabsPanel>
       ))}
@@ -35,7 +35,7 @@ describe("Tabs", () => {
   });
 
   it("should have no a11y violations", async () => {
-    const { container } = render(<ComponentUnderTest defaultValue={"React"} />);
+    const { container } = render(<ComponentUnderTest defaultValue="React" />);
     const results = await axe(container);
 
     expect(results).toHaveNoViolations();
@@ -43,7 +43,7 @@ describe("Tabs", () => {
 
   it("should activate tab on click", async () => {
     const onChange = vi.fn();
-    render(<ComponentUnderTest defaultValue={"React"} onChange={onChange} />);
+    render(<ComponentUnderTest defaultValue="React" onChange={onChange} />);
 
     const tab = screen.getByText("Vue Trigger");
 
@@ -52,7 +52,7 @@ describe("Tabs", () => {
   });
 
   it("should not focus disabled tab", async () => {
-    render(<ComponentUnderTest defaultValue={"React"} />);
+    render(<ComponentUnderTest defaultValue="React" />);
 
     const disabledTab = screen.getByText("Svelte Trigger");
 
@@ -62,7 +62,7 @@ describe("Tabs", () => {
   });
 
   it("should show content when tab is activated", async () => {
-    render(<ComponentUnderTest defaultValue={"Vue"} />);
+    render(<ComponentUnderTest defaultValue="Vue" />);
 
     const firstTab = screen.getByText("React Trigger");
 
@@ -73,7 +73,7 @@ describe("Tabs", () => {
   });
 
   it("should loop focus", async () => {
-    render(<ComponentUnderTest defaultValue={"React"} />);
+    render(<ComponentUnderTest defaultValue="React" />);
 
     const firstTab = screen.getByText("React Trigger");
     const lastTab = screen.getByText("Vue Trigger");
@@ -86,7 +86,7 @@ describe("Tabs", () => {
   });
 
   it("should handle orientation", async () => {
-    render(<ComponentUnderTest defaultValue={"React"} orientation="vertical" />);
+    render(<ComponentUnderTest defaultValue="React" orientation="vertical" />);
 
     const firstTab = screen.getByText("React Trigger");
     const secondTab = screen.getByText("Solid Trigger");

@@ -52,7 +52,7 @@ export const CollapsibleContent = (
 
   return (
     <div
-      role={"presentation"}
+      role="presentation"
       style={
         {
           "--hv": size?.height ? `${size.height}px` : undefined,

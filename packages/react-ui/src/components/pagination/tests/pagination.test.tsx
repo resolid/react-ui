@@ -6,13 +6,11 @@ import zhCN from "../../../locales/zh-CN";
 import { LocaleProvider } from "../../provider/locale-provider";
 import { Pagination, type PaginationProps } from "../pagination";
 
-const ComponentUnderTest = (props: PaginationProps) => {
-  return (
-    <LocaleProvider locale={zhCN}>
-      <Pagination {...props} />
-    </LocaleProvider>
-  );
-};
+const ComponentUnderTest = (props: PaginationProps) => (
+  <LocaleProvider locale={zhCN}>
+    <Pagination {...props} />
+  </LocaleProvider>
+);
 
 describe("Pagination", () => {
   afterEach(() => {

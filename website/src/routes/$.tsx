@@ -7,13 +7,11 @@ export const loader = async () => {
 };
 
 // noinspection JSUnusedGlobalSymbols
-export const meta = mergeMeta(() => {
-  return [
-    {
-      title: "页面未找到",
-    },
-  ];
-});
+export const meta = mergeMeta(() => [
+  {
+    title: "页面未找到",
+  },
+]);
 
 // noinspection JSUnusedGlobalSymbols
 export default function Catchall() {

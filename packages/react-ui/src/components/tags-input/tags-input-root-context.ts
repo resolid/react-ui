@@ -34,9 +34,9 @@ export type TagsInputRootContextValue = TagsInputBaseProps & {
   onDelete: (index: number) => void;
 };
 
-const dest = createSafeContext<TagsInputRootContextValue>({
+const [context, hook] = createSafeContext<TagsInputRootContextValue>({
   name: "TagsInputRootContext",
 });
 
-export const TagsInputRootContext: SafeContext<TagsInputRootContextValue> = dest[0];
-export const useTagsInputRoot: UseSafeContext<TagsInputRootContextValue> = dest[1];
+export const TagsInputRootContext: SafeContext<TagsInputRootContextValue> = context;
+export const useTagsInputRoot: UseSafeContext<TagsInputRootContextValue> = hook;

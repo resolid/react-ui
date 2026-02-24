@@ -32,10 +32,10 @@ export const ListboxFilterBase = (
     ...rest
   } = props;
 
-  const handleChange = (value: string | number) => {
-    onChange?.(value);
+  const handleChange = (changed: string | number) => {
+    onChange?.(changed);
 
-    setFilterKeyword(value.toString());
+    setFilterKeyword(changed.toString());
   };
 
   const refs = useMergeRefs(ref, filterInputRef);
@@ -51,12 +51,12 @@ export const ListboxFilterBase = (
       suffix={<SearchIcon />}
       disabled={disabled}
       size={size}
-      type={"text"}
-      autoComplete={"off"}
-      autoCapitalize={"none"}
-      autoCorrect={"off"}
+      type="text"
+      autoComplete="off"
+      autoCapitalize="none"
+      autoCorrect="off"
       spellCheck={false}
-      aria-autocomplete={"list"}
+      aria-autocomplete="list"
       focusable={focusable}
       className={tx("w-full", className)}
       {...getNavigationProps(rest)}

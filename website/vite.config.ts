@@ -75,9 +75,7 @@ export default defineConfig(({ command }) => {
           babelrc: false,
           configFile: false,
         },
-        loader: (path) => {
-          return extname(path).substring(1) as "js" | "jsx";
-        },
+        loader: (path) => extname(path).substring(1) as "js" | "jsx",
         optimizeOnSSR: true,
       }),
       viteContent(),

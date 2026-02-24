@@ -34,7 +34,7 @@ export const FilePickerTrigger = (
   return (
     <>
       <Polymorphic<"button", FilePickerTriggerState>
-        as={"button"}
+        as="button"
         state={{ disabled }}
         render={render}
         onClick={handleClick}

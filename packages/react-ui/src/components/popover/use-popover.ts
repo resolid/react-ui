@@ -152,7 +152,7 @@ export const usePopover = ({
   };
 
   return {
-    setOpen: (open: boolean) => context.onOpenChange(open),
+    setOpen: (opened: boolean) => context.onOpenChange(opened),
     setPosition: refs.setPositionReference,
     floatingElement: context.elements.floating,
     ariaContext,

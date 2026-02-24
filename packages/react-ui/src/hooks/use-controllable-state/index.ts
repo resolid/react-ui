@@ -20,8 +20,8 @@ export const useControllableState = <T>(
   const controlled = value !== undefined;
   const currentValue = controlled ? value : uncontrolledState;
 
-  const setValue = (value: SetStateAction<T>) => {
-    const nextValue = runIf(value, currentValue);
+  const setValue = (next: SetStateAction<T>) => {
+    const nextValue = runIf(next, currentValue);
 
     if (!shouldUpdate(currentValue, nextValue)) {
       return;

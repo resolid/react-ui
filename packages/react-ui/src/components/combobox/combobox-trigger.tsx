@@ -37,7 +37,7 @@ export const ComboboxTrigger = (
 
   return (
     <Polymorphic<"button">
-      as={"button"}
+      as="button"
       render={render}
       ref={refs}
       className={tx(
@@ -52,7 +52,7 @@ export const ComboboxTrigger = (
       {...buttonProps}
       {...rest}
     >
-      {children ?? <AngleDownIcon className={"text-fg-subtle"} />}
+      {children ?? <AngleDownIcon className="text-fg-subtle" />}
     </Polymorphic>
   );
 };

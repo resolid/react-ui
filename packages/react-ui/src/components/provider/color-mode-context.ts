@@ -3,18 +3,18 @@ import { createSafeContext, type SafeContext, type UseSafeContext } from "../../
 
 export type ColorMode = "auto" | "light" | "dark";
 
-const colorModeDesc = createSafeContext<ColorMode>({
+const [context, hook] = createSafeContext<ColorMode>({
   name: "ColorModeStateContext",
 });
 
-export const ColorModeStateContext: SafeContext<ColorMode> = colorModeDesc[0];
-export const useColorModeState: UseSafeContext<ColorMode> = colorModeDesc[1];
+export const ColorModeStateContext: SafeContext<ColorMode> = context;
+export const useColorModeState: UseSafeContext<ColorMode> = hook;
 
-const colorModeDispatchDesc = createSafeContext<Dispatch<SetStateAction<ColorMode>>>({
+const [dispatchContext, dispatchHook] = createSafeContext<Dispatch<SetStateAction<ColorMode>>>({
   name: "ColorModeDispatchContext",
 });
 
 export const ColorModeDispatchContext: SafeContext<Dispatch<SetStateAction<ColorMode>>> =
-  colorModeDispatchDesc[0];
+  dispatchContext;
 export const useColorModeDispatch: UseSafeContext<Dispatch<SetStateAction<ColorMode>>> =
-  colorModeDispatchDesc[1];
+  dispatchHook;

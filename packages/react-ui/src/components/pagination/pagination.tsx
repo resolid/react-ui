@@ -60,13 +60,12 @@ export const Pagination = (props: PrimitiveProps<"nav", PaginationProps, "role">
 
   return (
     <nav
-      role={"navigation"}
-      aria-label={"Pagination"}
+      aria-label="Pagination"
       className={tx("flex w-auto items-center gap-2", className)}
       {...rest}
     >
       {renderTotal?.(total, totalPages)}
-      <ul className={"flex flex-nowrap gap-1"}>
+      <ul className="flex flex-nowrap gap-1">
         {pageItems.map((item) => (
           <li key={`${item.pageType}-${item.page}`}>
             {renderItem({

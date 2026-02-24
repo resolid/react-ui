@@ -1,6 +1,5 @@
-import type { PropsWithChildren } from "react";
 import type { JSX } from "react/jsx-runtime";
-import { useEffect } from "react";
+import { type PropsWithChildren, useEffect } from "react";
 import { useLocalStorage, useMediaQuery } from "../../hooks";
 import {
   type ColorMode,

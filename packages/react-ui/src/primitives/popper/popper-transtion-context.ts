@@ -7,9 +7,9 @@ export type PopperTransitionContextValue = {
   duration: number;
 };
 
-const dest = createSafeContext<PopperTransitionContextValue>({
+const [context, hook] = createSafeContext<PopperTransitionContextValue>({
   name: "PopperTransitionContext",
 });
 
-export const PopperTransitionContext: SafeContext<PopperTransitionContextValue> = dest[0];
-export const usePopperTransition: UseSafeContext<PopperTransitionContextValue> = dest[1];
+export const PopperTransitionContext: SafeContext<PopperTransitionContextValue> = context;
+export const usePopperTransition: UseSafeContext<PopperTransitionContextValue> = hook;

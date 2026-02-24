@@ -117,7 +117,7 @@ export const usePreventScroll = (options: UsePreventScrollOptions): void => {
     const preventScrollMobileSafari = /iP(hone|ad|od)|iOS/.test(getPlatform())
       ? () => {
           const stopTouchMove = (e: TouchEvent) => {
-            const target = e.target;
+            const { target } = e;
 
             if (target instanceof Element && checkOverflowScroll(target)) {
               return;

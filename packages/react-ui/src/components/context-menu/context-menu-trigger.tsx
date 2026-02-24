@@ -43,9 +43,7 @@ export const ContextMenuTrigger = (
     }
   }, []);
 
-  useEffect(() => {
-    return () => clearLongPress();
-  }, [clearLongPress]);
+  useEffect(() => () => clearLongPress(), [clearLongPress]);
 
   useEffect(() => {
     if (disabled) {
@@ -120,7 +118,7 @@ export const ContextMenuTrigger = (
 
   return (
     <Polymorphic<"div">
-      as={"div"}
+      as="div"
       render={render}
       data-active={dataAttr(open)}
       onContextMenu={handleContextMenu}

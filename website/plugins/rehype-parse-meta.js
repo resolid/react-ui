@@ -9,14 +9,13 @@ const metaValues = [
   },
 ];
 
-export const rehypeParseMeta = (meta) => {
-  return metaValues.reduce((map, { name, regex }) => {
+export const rehypeParseMeta = (meta) =>
+  metaValues.reduce((map, { name, regex }) => {
     const match = meta.match(regex);
 
     if (match) {
-      map[name] = match[1];
+      [, map[name]] = match;
     }
 
     return map;
   }, {});
-};

@@ -71,7 +71,7 @@ export const uploadthingTransport: UploadTransport = {
   },
   delete: async (id) => {
     try {
-      await fetch("/api/uploadthing?act=deleteFile&id=" + id, {
+      await fetch(`/api/uploadthing?act=deleteFile&id=${id}`, {
         method: "POST",
       });
 

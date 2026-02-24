@@ -56,20 +56,18 @@ export const ListboxList = ({ checkmark = true }: ListboxListProps): JSX.Element
 
     if (Array.isArray(children)) {
       return (
-        <div key={getItemLabel(item)} role={"group"}>
+        <div key={getItemLabel(item)} role="group">
           <ListboxGroupLabel group={item} size={size} />
-          {children.map((child) => {
-            return (
-              <ListboxItem
-                key={getItemValue(child)}
-                size={size}
-                disabled={disabled}
-                readOnly={readOnly}
-                checkmark={checkmark}
-                item={child}
-              />
-            );
-          })}
+          {children.map((child) => (
+            <ListboxItem
+              key={getItemValue(child)}
+              size={size}
+              disabled={disabled}
+              readOnly={readOnly}
+              checkmark={checkmark}
+              item={child}
+            />
+          ))}
         </div>
       );
     } else {

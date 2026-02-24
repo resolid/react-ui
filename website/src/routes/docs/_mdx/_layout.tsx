@@ -25,15 +25,15 @@ import type { Route } from "./+types/_layout";
 
 // noinspection JSUnusedGlobalSymbols
 const mdxComponents = {
-  h2: ({ className, ...rest }: PrimitiveProps<"h2">) => {
-    return <MdxHeading as={"h2"} className={tx("mt-8", className)} {...rest} />;
-  },
-  h3: ({ className, ...rest }: PrimitiveProps<"h3">) => {
-    return <MdxHeading as={"h3"} className={tx("mt-6", className)} {...rest} />;
-  },
-  h4: ({ className, ...rest }: PrimitiveProps<"h3">) => {
-    return <MdxHeading as={"h4"} className={tx("mt-6", className)} {...rest} />;
-  },
+  h2: ({ className, ...rest }: PrimitiveProps<"h2">) => (
+    <MdxHeading as="h2" className={tx("mt-8", className)} {...rest} />
+  ),
+  h3: ({ className, ...rest }: PrimitiveProps<"h3">) => (
+    <MdxHeading as="h3" className={tx("mt-6", className)} {...rest} />
+  ),
+  h4: ({ className, ...rest }: PrimitiveProps<"h3">) => (
+    <MdxHeading as="h4" className={tx("mt-6", className)} {...rest} />
+  ),
   pre: MdxCode,
   a: ({ children, href = "", className, ...rest }: ComponentProps<"a">) => {
     const external = startsWith(href, "http://") || startsWith(href, "https://");
@@ -49,7 +49,7 @@ const mdxComponents = {
         {...rest}
       >
         {children}
-        {external && <SpriteIcon size={"1em"} className={"ms-1"} name={"external-link"} />}
+        {external && <SpriteIcon size="1em" className="ms-1" name="external-link" />}
       </a>
     );
   },
@@ -68,17 +68,15 @@ const mdxComponents = {
       </MdxDetails>
     );
   },
-  Kbd: ({ className, ...rest }: PrimitiveProps<"kbd">) => {
-    return (
-      <kbd
-        className={tx(
-          "inline-block rounded-md border border-bd-normal border-b-bg-muted bg-bg-subtlest font-mono text-xs font-bold shadow-sm",
-          className,
-        )}
-        {...rest}
-      />
-    );
-  },
+  Kbd: ({ className, ...rest }: PrimitiveProps<"kbd">) => (
+    <kbd
+      className={tx(
+        "inline-block rounded-md border border-bd-normal border-b-bg-muted bg-bg-subtlest font-mono text-xs font-bold shadow-sm",
+        className,
+      )}
+      {...rest}
+    />
+  ),
   CodeDemo: (props: {
     children: [ReactNode, ReactNode];
     componentProps?: PropItem[];
@@ -87,12 +85,8 @@ const mdxComponents = {
     const { children, componentProps, settingProps } = props;
 
     return (
-      <div className={"is-demo group"}>
-        <div
-          className={
-            "not-prose scrollbar scrollbar-thin overflow-x-auto rounded-t-md border border-bd-normal p-3"
-          }
-        >
+      <div className="is-demo group">
+        <div className="not-prose scrollbar scrollbar-thin overflow-x-auto rounded-t-md border border-bd-normal p-3">
           {componentProps && settingProps ? (
             <MdxCodeDemo componentProps={componentProps} settingProps={settingProps}>
               {
@@ -102,7 +96,7 @@ const mdxComponents = {
               }
             </MdxCodeDemo>
           ) : (
-            <div className={"flex justify-center-safe"}>{children[1]}</div>
+            <div className="flex justify-center-safe">{children[1]}</div>
           )}
         </div>
         {children[0]}
@@ -114,13 +108,11 @@ const mdxComponents = {
 };
 
 // noinspection JSUnusedGlobalSymbols
-export const meta = mergeMeta(({ loaderData }: Route.MetaArgs) => {
-  return [
-    {
-      title: loaderData?.meta.title,
-    },
-  ];
-});
+export const meta = mergeMeta(({ loaderData }: Route.MetaArgs) => [
+  {
+    title: loaderData?.meta.title,
+  },
+]);
 
 // noinspection JSUnusedGlobalSymbols
 export const loader = async ({ request }: Route.LoaderArgs) => {
@@ -137,19 +129,12 @@ export default function Layout({ loaderData }: Route.ComponentProps) {
     <>
       <article
         ref={contentRef}
-        className={
-          "prose w-full max-w-none px-4 py-6 md:px-6 lg:max-w-[calc(100%-var(--spacing)*48)] dark:prose-invert"
-        }
+        className="prose w-full max-w-none px-4 py-6 md:px-6 lg:max-w-[calc(100%-var(--spacing)*48)] dark:prose-invert"
       >
-        <div className={"flex items-start justify-between"}>
-          <h1 className={"mb-0 text-[1.875rem]"}>{loaderData.meta.title}</h1>
+        <div className="flex items-start justify-between">
+          <h1 className="mb-0 text-[1.875rem]">{loaderData.meta.title}</h1>
           {loaderData.sourceLink && (
-            <a
-              className={"text-sm"}
-              href={loaderData.sourceLink}
-              target={"_blank"}
-              rel={"noreferrer"}
-            >
+            <a className="text-sm" href={loaderData.sourceLink} target="_blank" rel="noreferrer">
               查看源代码
             </a>
           )}
@@ -159,17 +144,12 @@ export default function Layout({ loaderData }: Route.ComponentProps) {
           <Outlet />
         </MDXProvider>
         <p>
-          <a
-            className={"text-sm"}
-            href={loaderData.documentLink}
-            target={"_blank"}
-            rel={"noreferrer"}
-          >
+          <a className="text-sm" href={loaderData.documentLink} target="_blank" rel="noreferrer">
             建议更改此页面
           </a>
         </p>
       </article>
-      <nav className={"hidden w-48 shrink-0 lg:block"}>
+      <nav className="hidden w-48 shrink-0 lg:block">
         <MdxToc contentRef={contentRef} toc={loaderData.toc} />
       </nav>
     </>

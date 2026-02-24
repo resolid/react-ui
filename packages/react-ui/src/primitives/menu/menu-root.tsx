@@ -117,8 +117,8 @@ const MenuTree = (props: PropsWithChildren<MenuRootProps>) => {
 
   const { floatingStyles, refs, context } = useFloating({
     open: openState,
-    onOpenChange: (open) => {
-      if (open) {
+    onOpenChange: (opened) => {
+      if (opened) {
         handleOpen();
       } else {
         handleClose();

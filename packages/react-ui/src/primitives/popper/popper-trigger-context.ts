@@ -7,9 +7,9 @@ export type PopperTriggerContextValue = {
   getReferenceProps: (userProps?: HTMLProps<Element> | undefined) => AnyObject;
 };
 
-const desc = createSafeContext<PopperTriggerContextValue>({
+const [context, hook] = createSafeContext<PopperTriggerContextValue>({
   name: "PopperTriggerContext",
 });
 
-export const PopperTriggerContext: SafeContext<PopperTriggerContextValue> = desc[0];
-export const usePopperTrigger: UseSafeContext<PopperTriggerContextValue> = desc[1];
+export const PopperTriggerContext: SafeContext<PopperTriggerContextValue> = context;
+export const usePopperTrigger: UseSafeContext<PopperTriggerContextValue> = hook;

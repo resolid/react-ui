@@ -65,7 +65,7 @@ export const getCaretCoordinates = (
   div.id = "textarea-caret-position-mirror-div";
   document.body.appendChild(div);
 
-  const style = div.style;
+  const { style } = div;
   const computed = window.getComputedStyle(element);
 
   style.whiteSpace = "pre-wrap";

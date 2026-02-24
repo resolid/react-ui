@@ -8,9 +8,9 @@ export type ListboxFieldsContextValue = Pick<
   childrenKey: string;
 };
 
-const desc = createSafeContext<ListboxFieldsContextValue>({
+const [context, hook] = createSafeContext<ListboxFieldsContextValue>({
   name: "ListboxFieldsContext",
 });
 
-export const ListboxFieldsContext: SafeContext<ListboxFieldsContextValue> = desc[0];
-export const useListboxFields: UseSafeContext<ListboxFieldsContextValue> = desc[1];
+export const ListboxFieldsContext: SafeContext<ListboxFieldsContextValue> = context;
+export const useListboxFields: UseSafeContext<ListboxFieldsContextValue> = hook;

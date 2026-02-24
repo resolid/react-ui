@@ -2,15 +2,16 @@ import type { MetaDescriptor } from "react-router";
 import { isString } from "@resolid/utils";
 
 type MetaArgs = {
-  matches: Array<
+  matches: (
     | { pathname: string; meta: MetaDescriptor[]; data: unknown; handle?: unknown; error?: unknown }
     | undefined
-  >;
+  )[];
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const mergeMeta = (metaFn: (arg: any) => MetaDescriptor[], titleJoin = " - ") => {
-  return (arg: MetaArgs) => {
+export const mergeMeta =
+  (metaFn: (arg: any) => MetaDescriptor[], titleJoin = " - ") =>
+  (arg: MetaArgs) => {
     const leafMeta = metaFn(arg);
 
     const mergedMeta = arg.matches.reduceRight((acc, match) => {
@@ -58,4 +59,3 @@ export const mergeMeta = (metaFn: (arg: any) => MetaDescriptor[], titleJoin = " 
 
     return result;
   };
-};

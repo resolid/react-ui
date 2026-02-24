@@ -29,7 +29,7 @@ export const CollapsibleTrigger = (
 
   return (
     <Polymorphic<"button">
-      as={"button"}
+      as="button"
       render={render}
       {...buttonProps}
       aria-expanded={open}

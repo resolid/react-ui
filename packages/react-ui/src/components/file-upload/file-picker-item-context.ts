@@ -1,9 +1,9 @@
 import type { FileItem } from "./file-picker-context";
 import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives";
 
-const contextTuple = createSafeContext<FileItem>({
+const [context, hook] = createSafeContext<FileItem>({
   name: "FilePickerItemContext",
 });
 
-export const FilePickerItemContext: SafeContext<FileItem> = contextTuple[0];
-export const useFilePickerItem: UseSafeContext<FileItem> = contextTuple[1];
+export const FilePickerItemContext: SafeContext<FileItem> = context;
+export const useFilePickerItem: UseSafeContext<FileItem> = hook;

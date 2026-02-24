@@ -7,19 +7,21 @@ export type AvatarContextValue = {
   radiusClass?: string;
 };
 
-const avatarDesc = createSafeContext<AvatarContextValue>({
+const [context, hook] = createSafeContext<AvatarContextValue>({
   name: "AvatarContext",
 });
-export const AvatarContext: SafeContext<AvatarContextValue> = avatarDesc[0];
-export const useAvatar: UseSafeContext<AvatarContextValue> = avatarDesc[1];
+
+export const AvatarContext: SafeContext<AvatarContextValue> = context;
+export const useAvatar: UseSafeContext<AvatarContextValue> = hook;
 
 export type AvatarStatusContextValue = {
   imageLoadStatus: ImageLoadStatus;
   setImageLoadStatus: Dispatch<SetStateAction<ImageLoadStatus>>;
 };
 
-const avatarStatusDesc = createSafeContext<AvatarStatusContextValue>({
+const [statusContext, statusHook] = createSafeContext<AvatarStatusContextValue>({
   name: "AvatarStatusContext",
 });
-export const AvatarStatusContext: SafeContext<AvatarStatusContextValue> = avatarStatusDesc[0];
-export const useAvatarStatus: UseSafeContext<AvatarStatusContextValue> = avatarStatusDesc[1];
+
+export const AvatarStatusContext: SafeContext<AvatarStatusContextValue> = statusContext;
+export const useAvatarStatus: UseSafeContext<AvatarStatusContextValue> = statusHook;

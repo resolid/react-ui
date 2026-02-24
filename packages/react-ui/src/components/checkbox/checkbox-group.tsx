@@ -76,7 +76,7 @@ export const CheckboxGroup = (
 
   return (
     <div
-      role={"group"}
+      role="group"
       className={tx(
         "inline-flex",
         orientation == "horizontal" ? "flex-row" : "flex-col",

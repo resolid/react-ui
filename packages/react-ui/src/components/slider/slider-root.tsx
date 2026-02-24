@@ -113,11 +113,11 @@ export const SliderRoot = (props: PrimitiveProps<"div", SliderRootProps>): JSX.E
 
   const controlContextValue: SliderControlContextValue = {
     value: valueState,
-    onChange: (value) => {
-      setValueState(value);
+    onChange: (changed) => {
+      setValueState(changed);
     },
-    onChangeEnd: (value) => {
-      onChangeEnd?.(value);
+    onChangeEnd: (changed) => {
+      onChangeEnd?.(changed);
     },
   };
 
@@ -137,10 +137,10 @@ export const SliderRoot = (props: PrimitiveProps<"div", SliderRootProps>): JSX.E
       vertical,
     );
 
-    const value: ValueType = getChangeValue(valueState, next, min, max, thumbIndex);
+    const changeValue: ValueType = getChangeValue(valueState, next, min, max, thumbIndex);
 
-    setValueState(value);
-    valueRef.current = value;
+    setValueState(changeValue);
+    valueRef.current = changeValue;
   };
 
   const handleScrubEnd = () => {
@@ -224,19 +224,19 @@ export const SliderRoot = (props: PrimitiveProps<"div", SliderRootProps>): JSX.E
     : [getOffset(thumbHalf, computeOffset(position), directionValue), 0];
 
   const thumbStarts = Array.isArray(position)
-    ? [position[0] + "%", position[1] + "%"]
-    : [position + "%", "0%"];
+    ? [`${position[0]}%`, `${position[1]}%`]
+    : [`${position}%`, "0%"];
 
   const style = {
     "--s-root-s": vertical ? sizeStyle.width : sizeStyle.heigh,
-    "--s-track-s": Array.isArray(position) ? position[0] + "%" : "0%",
-    "--s-track-e": Array.isArray(position) ? 100 - position[1] + "%" : 100 - position + "%",
-    "--s-thumb-w": resolvedThumbSize.width + "px",
-    "--s-thumb-h": resolvedThumbSize.height + "px",
+    "--s-track-s": Array.isArray(position) ? `${position[0]}%` : "0%",
+    "--s-track-e": Array.isArray(position) ? `${100 - position[1]}%` : `${100 - position}%`,
+    "--s-thumb-w": `${resolvedThumbSize.width}px`,
+    "--s-thumb-h": `${resolvedThumbSize.height}px`,
     "--s-thumb-s0": thumbStarts[0],
     "--s-thumb-s1": thumbStarts[1],
-    "--s-thumb-o0": thumbOffsets[0] + "px",
-    "--s-thumb-o1": thumbOffsets[1] + "px",
+    "--s-thumb-o0": `${thumbOffsets[0]}px`,
+    "--s-thumb-o1": `${thumbOffsets[1]}px`,
   };
 
   return (

@@ -10,7 +10,7 @@ describe("NumberInput", () => {
   });
 
   it("should have no a11y violations", async () => {
-    const { container } = render(<NumberInput aria-label={"Input"} />);
+    const { container } = render(<NumberInput aria-label="Input" />);
     const results = await axe(container);
 
     expect(results).toHaveNoViolations();

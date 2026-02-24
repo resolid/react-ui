@@ -12,7 +12,7 @@ export const PopperPositioner = (
   return (
     <div
       ref={setPositioner}
-      role={"presentation"}
+      role="presentation"
       style={{ ...positionerStyles, ...style }}
       className={className}
       {...rest}

@@ -76,7 +76,7 @@ describe("Slider", () => {
 
   it("should be possible to control it with the arrow keys in rtl mode", async () => {
     const { getAllByRole } = render(
-      <DirectionContext value={"rtl"}>
+      <DirectionContext value="rtl">
         <ComponentUnderTest />
       </DirectionContext>,
     );

@@ -103,7 +103,7 @@ export const ListboxRoot = <T extends ListboxItem>(
 
   return (
     <div
-      role={"presentation"}
+      role="presentation"
       className={tx(
         "rounded-md border",
         invalid ? "border-bd-invalid" : "border-bd-normal",
@@ -120,21 +120,21 @@ export const ListboxRoot = <T extends ListboxItem>(
           selectedIndex,
           selectedIndices,
           setFloating,
-          getFloatingProps: (props) =>
+          getFloatingProps: (floatingProps) =>
             getFloatingProps(
               getNavigationFloatingProps({
                 ...interactiveHandlers,
-                ...props,
+                ...floatingProps,
               }),
             ),
           renderItem,
           renderGroupLabel,
-          getNavigationProps: (props) =>
+          getNavigationProps: (navProps) =>
             getNavigationProps({
               onKeyDown: handleEnterKeydown,
-              ...props,
+              ...navProps,
             }),
-          getItemProps: (props) => getItemProps(getNavigationItemProps(props)),
+          getItemProps: (itemProps) => getItemProps(getNavigationItemProps(itemProps)),
           open: true,
           size,
           multiple,

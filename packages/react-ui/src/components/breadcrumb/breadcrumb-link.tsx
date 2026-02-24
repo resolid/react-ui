@@ -26,7 +26,7 @@ export const BreadcrumbLink = (props: PolymorphicProps<"a", BreadcrumbLinkProps>
 
   return (
     <Polymorphic<"a">
-      as={"a"}
+      as="a"
       render={render}
       href={href}
       className={tx("inline-flex cursor-pointer items-center hover:text-link-hovered", className)}

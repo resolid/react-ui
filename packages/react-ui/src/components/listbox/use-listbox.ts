@@ -154,31 +154,14 @@ export const useListbox = <T extends ListboxItem>(
 
   const direction = useDirection(true);
 
-  const getItemValue = useCallback(
-    (item: T) => {
-      return item[valueKey] as string | number;
-    },
-    [valueKey],
-  );
+  const getItemValue = useCallback((item: T) => item[valueKey] as string | number, [valueKey]);
 
-  const getItemLabel = useCallback(
-    (item: T) => {
-      return item[labelKey] as string;
-    },
-    [labelKey],
-  );
+  const getItemLabel = useCallback((item: T) => item[labelKey] as string, [labelKey]);
 
-  const getItemDisabled = useCallback(
-    (item: T) => {
-      return item[disabledKey] as boolean;
-    },
-    [disabledKey],
-  );
+  const getItemDisabled = useCallback((item: T) => item[disabledKey] as boolean, [disabledKey]);
 
   const getItemChildren = useCallback(
-    <E = T>(item: T) => {
-      return item[childrenKey] as E[] | undefined;
-    },
+    <E = T>(item: T) => item[childrenKey] as E[] | undefined,
     [childrenKey],
   );
 
@@ -190,10 +173,10 @@ export const useListbox = <T extends ListboxItem>(
   const deferredKeyword = useDeferredValue(filterKeyword);
 
   const { nodeItems, indexedItems, selectedItems, selectedIndices } = useMemo(() => {
-    const nodeItems: ListboxNodeItem[] = [];
-    const indexedItems: T[] = [];
-    const selectedItems: T[] = [];
-    const selectedIndices: number[] = [];
+    const nodes: ListboxNodeItem[] = [];
+    const indexes: T[] = [];
+    const selects: T[] = [];
+    const indices: number[] = [];
 
     let itemIndex = 0;
 
@@ -208,24 +191,26 @@ export const useListbox = <T extends ListboxItem>(
 
       return (
         searchFilter ||
-        ((keyword, item) =>
-          getItemValue(item).toString().toLowerCase().includes(keyword.toLowerCase()))
+        ((keyword, listItem) =>
+          getItemValue(listItem).toString().toLowerCase().includes(keyword.toLowerCase()))
       )(deferredKeyword, item);
     };
 
     const addItem = (item: T) => {
-      const value = getItemValue(item);
+      const itemValue = getItemValue(item);
 
-      const selected = Array.isArray(valueState) ? valueState.includes(value) : valueState == value;
+      const selected = Array.isArray(valueState)
+        ? valueState.includes(itemValue)
+        : valueState == itemValue;
 
       if (selected) {
-        selectedItems.push(item);
-        selectedIndices.push(itemIndex);
+        selects.push(item);
+        indices.push(itemIndex);
       }
 
       if (selected || checkFilter(item)) {
-        indexedItems.push(item);
-        labelsRef.current[itemIndex] = String(value);
+        indexes.push(item);
+        labelsRef.current[itemIndex] = String(itemValue);
 
         return true;
       }
@@ -247,17 +232,22 @@ export const useListbox = <T extends ListboxItem>(
         }
 
         if (childrenItems.length > 0) {
-          nodeItems.push({ ...item, [childrenKey]: childrenItems, __index: 0 });
+          nodes.push({ ...item, [childrenKey]: childrenItems, __index: 0 });
         }
       } else {
         if (addItem(item)) {
-          nodeItems.push({ ...item, __index: itemIndex });
+          nodes.push({ ...item, __index: itemIndex });
           itemIndex++;
         }
       }
     }
 
-    return { nodeItems, indexedItems, selectedItems, selectedIndices };
+    return {
+      nodeItems: nodes,
+      indexedItems: indexes,
+      selectedItems: selects,
+      selectedIndices: indices,
+    };
   }, [
     childrenKey,
     collection,
@@ -274,17 +264,17 @@ export const useListbox = <T extends ListboxItem>(
   const selectedIndex = selectedIndices[0] ?? null;
 
   const handleSelect = (item: T): void => {
-    const value = getItemValue(item);
+    const itemValue = getItemValue(item);
 
     if (Array.isArray(valueState)) {
-      if (valueState.includes(value)) {
-        setValueState(valueState.filter((p) => p != value));
+      if (valueState.includes(itemValue)) {
+        setValueState(valueState.filter((p) => p != itemValue));
       } else {
-        setValueState([...valueState, value]);
+        setValueState([...valueState, itemValue]);
       }
     } else {
-      if (value != valueState) {
-        setValueState(value);
+      if (itemValue != valueState) {
+        setValueState(itemValue);
       } else {
         setValueState(null);
       }

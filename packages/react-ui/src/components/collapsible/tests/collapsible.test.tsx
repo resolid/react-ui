@@ -41,7 +41,7 @@ describe("Collapsible", () => {
   });
 
   it("should be fully controlled (true)", async () => {
-    render(<ComponentUnderTest open={true} />);
+    render(<ComponentUnderTest open />);
 
     await userEvent.click(screen.getByRole("button", { name: "Toggle" }));
     expect(screen.getByText("Content")).toBeVisible();

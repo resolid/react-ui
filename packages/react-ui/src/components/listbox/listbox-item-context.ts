@@ -1,7 +1,11 @@
 import type { HTMLProps, RefObject } from "react";
-import type { AnyObject, SafeContext, UseSafeContext } from "../../primitives";
 import type { ListboxBaseProps, ListboxItem, UseListboxResult } from "./use-listbox";
-import { createSafeContext } from "../../primitives";
+import {
+  type AnyObject,
+  type SafeContext,
+  type UseSafeContext,
+  createSafeContext,
+} from "../../primitives";
 
 export type ListboxItemContextValue = {
   activeIndex: number | null;
@@ -14,9 +18,9 @@ export type ListboxItemContextValue = {
 } & Required<Pick<ListboxBaseProps<ListboxItem>, "renderItem">> &
   Required<Pick<UseListboxResult<ListboxItem>, "handleSelect">>;
 
-const dest = createSafeContext<ListboxItemContextValue>({
+const [context, hook] = createSafeContext<ListboxItemContextValue>({
   name: "ListboxItemContext",
 });
 
-export const ListboxItemContext: SafeContext<ListboxItemContextValue> = dest[0];
-export const useListboxItem: UseSafeContext<ListboxItemContextValue> = dest[1];
+export const ListboxItemContext: SafeContext<ListboxItemContextValue> = context;
+export const useListboxItem: UseSafeContext<ListboxItemContextValue> = hook;

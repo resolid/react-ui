@@ -23,7 +23,7 @@
     "@changesets/cli": "^2.29.8",
     "@commitlint/cli": "^20.4.2",
     "@commitlint/config-conventional": "^20.4.2",
-    "@resolid/config": "^5.0.0",
+    "@resolid/config": "^5.0.1",
     "@svitejs/changesets-changelog-github-compact": "^1.2.0",
     "@tailwindcss/language-server": "^0.14.29",
     "@types/node": "^24.10.13",

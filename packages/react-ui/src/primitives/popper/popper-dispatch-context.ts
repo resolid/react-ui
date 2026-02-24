@@ -5,9 +5,9 @@ export type PopperDispatchContextValue = {
   handleClose: () => void;
 };
 
-const dest = createSafeContext<PopperDispatchContextValue>({
+const [context, hook] = createSafeContext<PopperDispatchContextValue>({
   name: "PopperDispatchContext",
 });
 
-export const PopperDispatchContext: SafeContext<PopperDispatchContextValue> = dest[0];
-export const usePopperDispatch: UseSafeContext<PopperDispatchContextValue> = dest[1];
+export const PopperDispatchContext: SafeContext<PopperDispatchContextValue> = context;
+export const usePopperDispatch: UseSafeContext<PopperDispatchContextValue> = hook;

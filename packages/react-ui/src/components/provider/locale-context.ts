@@ -1,11 +1,11 @@
 import { get } from "@resolid/utils";
 import { createSafeContext, type Locale, type SafeContext } from "../../primitives";
 
-const desc = createSafeContext<Locale>({
+const [context, hook] = createSafeContext<Locale>({
   name: "LocaleContext",
 });
 
-export const LocaleContext: SafeContext<Locale> = desc[0];
+export const LocaleContext: SafeContext<Locale> = context;
 
 type Translator = (path: string, option?: Record<string, string | number>) => string;
 
@@ -14,7 +14,7 @@ export const useLocale = (): {
   code: string;
   t: Translator;
 } => {
-  const locale = desc[1]();
+  const locale = hook();
 
   return {
     name: locale.name,

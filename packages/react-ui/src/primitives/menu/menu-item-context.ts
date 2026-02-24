@@ -10,9 +10,9 @@ export type MenuItemContextValue = {
   typingRef: RefObject<boolean>;
 };
 
-const dest = createSafeContext<MenuItemContextValue>({
+const [context, hook] = createSafeContext<MenuItemContextValue>({
   name: "MenuItemContext",
 });
 
-export const MenuItemContext: SafeContext<MenuItemContextValue> = dest[0];
-export const useMenuItem: UseSafeContext<MenuItemContextValue> = dest[1];
+export const MenuItemContext: SafeContext<MenuItemContextValue> = context;
+export const useMenuItem: UseSafeContext<MenuItemContextValue> = hook;

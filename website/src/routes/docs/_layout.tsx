@@ -6,31 +6,25 @@ import { SpriteIcon } from "~/components/sprite-icon";
 import { mergeMeta } from "~/utils/react-router-meta";
 
 // noinspection JSUnusedGlobalSymbols
-export const meta = mergeMeta(() => {
-  return [
-    {
-      title: "文档",
-    },
-  ];
-});
+export const meta = mergeMeta(() => [
+  {
+    title: "文档",
+  },
+]);
 
 // noinspection JSUnusedGlobalSymbols
 export default function Layout() {
   const [opened, setOpened] = useState(false);
 
   return (
-    <div className={"mx-auto flex xl:max-w-288"}>
-      <div
-        className={
-          "fixed z-15 flex h-9 w-full items-center justify-between border-b border-b-bd-normal bg-bg-normal px-2 text-sm md:hidden"
-        }
-      >
+    <div className="mx-auto flex xl:max-w-288">
+      <div className="fixed z-15 flex h-9 w-full items-center justify-between border-b border-b-bd-normal bg-bg-normal px-2 text-sm md:hidden">
         <button
-          type={"button"}
+          type="button"
           onClick={() => setOpened(true)}
-          className={"inline-flex items-center gap-1"}
+          className="inline-flex items-center gap-1"
         >
-          <SpriteIcon name={"menu"} />
+          <SpriteIcon name="menu" />
           导航
         </button>
       </div>
@@ -42,16 +36,16 @@ export default function Layout() {
           opened ? "block" : "hidden",
         )}
       >
-        <nav className={"pb-28 text-sm md:pb-0"}>
+        <nav className="pb-28 text-sm md:pb-0">
           <CloseButton
-            size={"1.5em"}
+            size="1.5em"
             onClick={() => setOpened(false)}
-            className={"absolute inset-e-2 top-2 md:hidden"}
+            className="absolute inset-e-2 top-2 md:hidden"
           />
           <AsideLayoutMenu menus={menus} onClickMenu={() => setOpened(false)} />
         </nav>
       </aside>
-      <main className={"flex w-full grow pt-9 md:max-w-[calc(100%-var(--spacing)*48)] md:pt-0"}>
+      <main className="flex w-full grow pt-9 md:max-w-[calc(100%-var(--spacing)*48)] md:pt-0">
         <Outlet />
       </main>
     </div>

@@ -38,15 +38,15 @@ export const Indicator = (
         : itemElement.offsetLeft - parseFloat(listStyle.paddingLeft);
 
     return {
-      "--wv": itemElement.offsetWidth + "px",
-      "--hv": itemElement.offsetHeight + "px",
-      "--tv": offset + "px",
+      "--wv": `${itemElement.offsetWidth}px`,
+      "--hv": `${itemElement.offsetHeight}px`,
+      "--tv": `${offset}px`,
     } as CSSProperties;
   }, [direction, itemElement, listElement, vertical]);
 
   return (
     <span
-      role={"presentation"}
+      role="presentation"
       style={{
         ...style,
         ...indicatorStyle,

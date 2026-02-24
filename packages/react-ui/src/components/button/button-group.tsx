@@ -21,7 +21,7 @@ export const ButtonGroup = (
 
   return (
     <div
-      role={"group"}
+      role="group"
       className={tx(
         "inline-flex",
         orientation == "horizontal" ? "flex-row" : "flex-col",

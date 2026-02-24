@@ -35,8 +35,12 @@ export const useImageLoad = (options: UseImageLoadOptions): ImageLoadStatus => {
     image.onload = () => handleStatus("loaded");
     image.onerror = () => handleStatus("error");
 
-    if (crossOrigin) image.crossOrigin = crossOrigin;
-    if (referrerPolicy) image.referrerPolicy = referrerPolicy;
+    if (crossOrigin) {
+      image.crossOrigin = crossOrigin;
+    }
+    if (referrerPolicy) {
+      image.referrerPolicy = referrerPolicy;
+    }
 
     image.src = src;
 

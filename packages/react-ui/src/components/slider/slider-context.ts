@@ -49,12 +49,12 @@ export type SliderContextValue = {
   direction?: Direction;
 };
 
-const sliderDest = createSafeContext<SliderContextValue>({
+const [context, hook] = createSafeContext<SliderContextValue>({
   name: "SliderContext",
 });
 
-export const SliderContext: SafeContext<SliderContextValue> = sliderDest[0];
-export const useSlider: UseSafeContext<SliderContextValue> = sliderDest[1];
+export const SliderContext: SafeContext<SliderContextValue> = context;
+export const useSlider: UseSafeContext<SliderContextValue> = hook;
 
 export type ValueType = number | [number, number];
 
@@ -75,20 +75,20 @@ export type SliderControlContextValue = {
   onChangeEnd: (value: ValueType) => void;
 };
 
-const sliderControlDest = createSafeContext<SliderControlContextValue>({
+const [controlContext, controlHook] = createSafeContext<SliderControlContextValue>({
   name: "SliderControlContext",
 });
 
-export const SliderControlContext: SafeContext<SliderControlContextValue> = sliderControlDest[0];
-export const useSliderControl: UseSafeContext<SliderControlContextValue> = sliderControlDest[1];
+export const SliderControlContext: SafeContext<SliderControlContextValue> = controlContext;
+export const useSliderControl: UseSafeContext<SliderControlContextValue> = controlHook;
 
 export type SliderThumbContextValue = {
   dragging: boolean;
 };
 
-const sliderThumbDest = createSafeContext<SliderThumbContextValue>({
+const [thumbContext, thumbHook] = createSafeContext<SliderThumbContextValue>({
   name: "SliderThumbContext",
 });
 
-export const SliderThumbContext: SafeContext<SliderThumbContextValue> = sliderThumbDest[0];
-export const useSliderThumb: UseSafeContext<SliderThumbContextValue> = sliderThumbDest[1];
+export const SliderThumbContext: SafeContext<SliderThumbContextValue> = thumbContext;
+export const useSliderThumb: UseSafeContext<SliderThumbContextValue> = thumbHook;

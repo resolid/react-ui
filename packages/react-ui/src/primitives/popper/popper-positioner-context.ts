@@ -6,9 +6,9 @@ export type PopperPositionerContextValue = {
   positionerStyles: CSSProperties;
 };
 
-const dest = createSafeContext<PopperPositionerContextValue>({
+const [context, hook] = createSafeContext<PopperPositionerContextValue>({
   name: "PopperPositionerContext",
 });
 
-export const PopperPositionerContext: SafeContext<PopperPositionerContextValue> = dest[0];
-export const usePopperPositioner: UseSafeContext<PopperPositionerContextValue> = dest[1];
+export const PopperPositionerContext: SafeContext<PopperPositionerContextValue> = context;
+export const usePopperPositioner: UseSafeContext<PopperPositionerContextValue> = hook;

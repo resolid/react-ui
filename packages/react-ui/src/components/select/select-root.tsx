@@ -98,8 +98,8 @@ export const SelectRoot = <T extends ListboxItem>(
       offset(6),
       flip(),
       floatingSize({
-        apply({ availableWidth, elements, rects }) {
-          Object.assign(elements.floating.style, {
+        apply({ availableWidth, elements: applyElements, rects }) {
+          Object.assign(applyElements.floating.style, {
             maxWidth: `${availableWidth}px`,
             minWidth: `${rects.reference.width}px`,
           });
@@ -107,8 +107,8 @@ export const SelectRoot = <T extends ListboxItem>(
       }),
     ],
     open: openState,
-    onOpenChange: (open, _e, reason) => {
-      if (open) {
+    onOpenChange: (opened, _e, reason) => {
+      if (opened) {
         if (reason != "click") {
           setActiveIndex(selectedIndex ?? 0);
         }
@@ -220,10 +220,10 @@ export const SelectRoot = <T extends ListboxItem>(
       >
         {selectedItems.length > 0 ? (
           multiple ? (
-            <div className={"inline-flex gap-1"}>
+            <div className="inline-flex gap-1">
               {selectedItems.map((item) => (
                 <div
-                  className={"rounded-md bg-bg-subtlest px-1.5"}
+                  className="rounded-md bg-bg-subtlest px-1.5"
                   key={providerValue.getItemValue(item)}
                 >
                   {renderValueFn(item)}
@@ -264,21 +264,21 @@ export const SelectRoot = <T extends ListboxItem>(
                       selectedIndices,
                       filterInputRef,
                       setFloating: refs.setFloating,
-                      getFloatingProps: (props) =>
+                      getFloatingProps: (floatingProps) =>
                         getFloatingProps(
                           getNavigationFloatingProps({
                             ...interactiveHandlers,
-                            ...props,
+                            ...floatingProps,
                           }),
                         ),
                       renderItem,
                       renderGroupLabel,
-                      getNavigationProps: (props) =>
+                      getNavigationProps: (navProps) =>
                         getNavigationProps({
                           onKeyDown: handleEnterKeydown,
-                          ...props,
+                          ...navProps,
                         }),
-                      getItemProps: (props) => getItemProps(getNavigationItemProps(props)),
+                      getItemProps: (itemProps) => getItemProps(getNavigationItemProps(itemProps)),
 
                       open: openState,
                       size,

@@ -16,10 +16,12 @@ export const css = (
   b: Record<string, string> | string | undefined,
 ): Record<string, string> | string => {
   if (isString(a)) {
-    if (isString(b)) return `${a};${b}`;
+    if (isString(b)) {
+      return `${a};${b}`;
+    }
     a = serialize(a);
   } else if (isString(b)) {
     b = serialize(b);
   }
-  return Object.assign({}, a ?? {}, b ?? {});
+  return { ...(a ?? {}), ...(b ?? {}) };
 };

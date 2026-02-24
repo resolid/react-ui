@@ -17,9 +17,9 @@ export type AvatarBaseProps = {
 
 export type AvatarGroupContextValue = AvatarBaseProps;
 
-const desc = createSafeContext<AvatarGroupContextValue>({
+const [context, hook] = createSafeContext<AvatarGroupContextValue>({
   name: "AvatarGroupContext",
 });
 
-export const AvatarGroupContext: SafeContext<AvatarBaseProps> = desc[0];
-export const useAvatarGroup: UseSafeContext<AvatarBaseProps> = desc[1];
+export const AvatarGroupContext: SafeContext<AvatarBaseProps> = context;
+export const useAvatarGroup: UseSafeContext<AvatarBaseProps> = hook;

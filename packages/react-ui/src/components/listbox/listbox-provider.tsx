@@ -119,12 +119,12 @@ export const ListboxProvider = <T extends ListboxItem>(
 
   const prevActiveIndex = usePrevious<number | null>(activeIndex);
 
-  const scrollEvent = useEffectEvent((prevActiveIndex: number) => {
+  const scrollEvent = useEffectEvent((prev: number) => {
     if (scrollToRef.current) {
       const scrollIndex = activeIndex ?? selectedIndex;
 
       if (scrollIndex) {
-        scrollToRef.current(scrollIndex > prevActiveIndex ? scrollIndex + 1 : scrollIndex - 1, {
+        scrollToRef.current(scrollIndex > prev ? scrollIndex + 1 : scrollIndex - 1, {
           align: "auto",
         });
       }
@@ -140,7 +140,7 @@ export const ListboxProvider = <T extends ListboxItem>(
               : null;
 
         if (item) {
-          const offsetHeight = elementsRef.current[prevActiveIndex]?.offsetHeight || 0;
+          const offsetHeight = elementsRef.current[prev]?.offsetHeight || 0;
 
           const scrollHeight = floating.offsetHeight;
           const top = item.offsetTop - offsetHeight;

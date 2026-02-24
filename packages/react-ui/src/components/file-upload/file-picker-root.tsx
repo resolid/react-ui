@@ -197,10 +197,10 @@ export const FilePickerRoot = (
   const inputRef = useRef<HTMLInputElement>(null);
 
   const onChangeCallback = useCallback(
-    (value: FileItem[] | FileItem) => {
+    (changed: FileItem[] | FileItem) => {
       queueMicrotask(() => {
         if (inputRef.current) {
-          const files = convertToDataTransfer(Array.isArray(value) ? value : [value]);
+          const files = convertToDataTransfer(Array.isArray(changed) ? changed : [changed]);
 
           if (files) {
             inputRef.current.files = files;
@@ -208,7 +208,7 @@ export const FilePickerRoot = (
         }
       });
 
-      onChange?.(value);
+      onChange?.(changed);
     },
     [onChange],
   );
@@ -233,6 +233,7 @@ export const FilePickerRoot = (
 
       if (transformFile) {
         try {
+          // oxlint-disable-next-line no-await-in-loop
           transformed = await transformFile(file);
         } catch (e) {
           errors.push(
@@ -297,13 +298,14 @@ export const FilePickerRoot = (
       });
 
       if (upload && upload.autoUpload) {
-        const workers = Array.from({ length: upload.maxParallel }, async (_, workerIndex) => {
-          for (let i = workerIndex; i < validFiles.length; i += upload.maxParallel) {
-            await upload.uploadFile(validFiles[i], updateFile);
-          }
-        });
-
-        await Promise.all(workers);
+        await Promise.all(
+          Array.from({ length: upload.maxParallel }, async (_, workerIndex) => {
+            for (let i = workerIndex; i < validFiles.length; i += upload.maxParallel) {
+              // oxlint-disable-next-line no-await-in-loop
+              await upload.uploadFile(validFiles[i], updateFile);
+            }
+          }),
+        );
       }
     }
   };
@@ -375,7 +377,7 @@ export const FilePickerRoot = (
         multiple={multiple}
         accept={accept}
         onChange={handleChange}
-        className={"sr-only"}
+        className="sr-only"
         {...rest}
       />
       {upload && name && (

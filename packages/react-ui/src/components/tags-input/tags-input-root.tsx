@@ -69,13 +69,13 @@ export const TagsInputRoot = (props: PrimitiveProps<"div", TagsInputRootProps>):
 
   const [valueState, setValueState] = useControllableState({ value, defaultValue, onChange });
 
-  const addValue = (value: string | string[]) => {
-    if (Array.isArray(value)) {
-      if (value.length == 0) {
+  const addValue = (added: string | string[]) => {
+    if (Array.isArray(added)) {
+      if (added.length == 0) {
         return true;
       }
 
-      const appends = value
+      const appends = added
         .filter((v) => !valueState.includes(v))
         .slice(0, max - valueState.length);
 
@@ -85,22 +85,18 @@ export const TagsInputRoot = (props: PrimitiveProps<"div", TagsInputRootProps>):
 
       setValueState((prev) => [...prev, ...appends]);
 
-      setActiveIndex((idx) => {
-        return idx ? idx + appends.length : 1;
-      });
+      setActiveIndex((idx) => (idx ? idx + appends.length : 1));
 
       return true;
     }
 
-    if (valueState.length >= max || valueState.includes(value)) {
+    if (valueState.length >= max || valueState.includes(added)) {
       return false;
     }
 
-    setValueState((prev) => [...prev, value]);
+    setValueState((prev) => [...prev, added]);
 
-    setActiveIndex((idx) => {
-      return idx ? idx + 1 : 1;
-    });
+    setActiveIndex((idx) => (idx ? idx + 1 : 1));
 
     return true;
   };
@@ -135,7 +131,7 @@ export const TagsInputRoot = (props: PrimitiveProps<"div", TagsInputRootProps>):
     <>
       <Composite
         rtl={direction == "rtl"}
-        orientation={"horizontal"}
+        orientation="horizontal"
         activeIndex={activeIndex}
         onNavigate={setActiveIndex}
         loop={false}
@@ -155,14 +151,14 @@ export const TagsInputRoot = (props: PrimitiveProps<"div", TagsInputRootProps>):
         tabIndex={tabIndex}
         style={style}
         {...rest}
-        render={(props) => <div {...props} aria-orientation={undefined} />}
+        render={(renderProps) => <div {...renderProps} aria-orientation={undefined} />}
       >
         <TagsInputRootContext value={rootContext}>
           <CompositeContext value={context}>
-            {valueState.map((value) => (
+            {valueState.map((state) => (
               <TagsInputItem
-                key={value}
-                value={value}
+                key={state}
+                value={state}
                 className={tagsInputSizeStyle.item}
                 disabled={disabled || readOnly}
                 onDelete={deleteValue}

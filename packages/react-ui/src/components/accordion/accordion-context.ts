@@ -21,7 +21,7 @@ export type AccordionContextValue = Required<AccordionBaseProps> & {
   setOpenedValue: Dispatch<SetStateAction<string | number | null | (string | number)[]>>;
 };
 
-const desc = createSafeContext<AccordionContextValue>({ name: "AccordionContext" });
+const [context, hook] = createSafeContext<AccordionContextValue>({ name: "AccordionContext" });
 
-export const AccordionContext: SafeContext<AccordionContextValue> = desc[0];
-export const useAccordion: UseSafeContext<AccordionContextValue> = desc[1];
+export const AccordionContext: SafeContext<AccordionContextValue> = context;
+export const useAccordion: UseSafeContext<AccordionContextValue> = hook;

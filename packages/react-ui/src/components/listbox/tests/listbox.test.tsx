@@ -4,22 +4,20 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { axe } from "vitest-axe";
 import { Listbox, ListboxContent, ListboxList, type ListboxProps } from "../listbox";
 
-const ComponentUnderTest = (props: Omit<ListboxProps, "collection">) => {
-  return (
-    <Listbox
-      collection={[
-        { value: "1", label: "One", disabled: false },
-        { value: "2", label: "Two", disabled: false },
-        { value: "3", label: "Three", disabled: true },
-      ]}
-      {...props}
-    >
-      <ListboxContent aria-label={"Listbox"}>
-        <ListboxList />
-      </ListboxContent>
-    </Listbox>
-  );
-};
+const ComponentUnderTest = (props: Omit<ListboxProps, "collection">) => (
+  <Listbox
+    collection={[
+      { value: "1", label: "One", disabled: false },
+      { value: "2", label: "Two", disabled: false },
+      { value: "3", label: "Three", disabled: true },
+    ]}
+    {...props}
+  >
+    <ListboxContent aria-label="Listbox">
+      <ListboxList />
+    </ListboxContent>
+  </Listbox>
+);
 
 describe("Listbox", () => {
   afterEach(() => {

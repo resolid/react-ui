@@ -12,12 +12,10 @@ export type ProgressBaseContextValue = {
   radiusClass: string;
 };
 
-const progressBaseContextTuple = createSafeContext<ProgressBaseContextValue>({
+const [context, hook] = createSafeContext<ProgressBaseContextValue>({
   name: "ProgressBaseContext",
 });
 
-export const ProgressBaseContext: SafeContext<ProgressBaseContextValue> =
-  progressBaseContextTuple[0];
+export const ProgressBaseContext: SafeContext<ProgressBaseContextValue> = context;
 
-export const useProgressBase: UseSafeContext<ProgressBaseContextValue> =
-  progressBaseContextTuple[1];
+export const useProgressBase: UseSafeContext<ProgressBaseContextValue> = hook;

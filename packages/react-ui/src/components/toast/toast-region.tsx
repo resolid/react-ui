@@ -39,39 +39,37 @@ export const ToastRegion = ({
   visibleToasts,
   toasts,
   remove,
-}: ToastRegionProps): JSX.Element => {
-  return (
-    <div
-      role={"region"}
-      aria-live={"polite"}
-      style={{ "--sv": spacing } as CSSProperties}
-      className={tx(
-        "pointer-events-none fixed z-60 m-(--sv) flex flex-col gap-(--sv)",
-        getToastListStyles(placement),
-      )}
-    >
-      {toasts.slice(0, visibleToasts).map((toast) => {
-        const ToastComponent = toast.component;
+}: ToastRegionProps): JSX.Element => (
+  <div
+    role="region"
+    aria-live="polite"
+    style={{ "--sv": spacing } as CSSProperties}
+    className={tx(
+      "pointer-events-none fixed z-60 m-(--sv) flex flex-col gap-(--sv)",
+      getToastListStyles(placement),
+    )}
+  >
+    {toasts.slice(0, visibleToasts).map((toast) => {
+      const ToastComponent = toast.component;
 
-        return (
-          <ToastComponentContext
-            key={toast.id}
-            value={{
-              id: toast.id,
-              placement: placement,
-              duration: toast.duration,
-              dismiss: toast.dismiss,
-              update: toast.update,
-              remove: () => remove(toast.id),
-            }}
-          >
-            <ToastComponent />
-          </ToastComponentContext>
-        );
-      })}
-    </div>
-  );
-};
+      return (
+        <ToastComponentContext
+          key={toast.id}
+          value={{
+            id: toast.id,
+            placement: placement,
+            duration: toast.duration,
+            dismiss: toast.dismiss,
+            update: toast.update,
+            remove: () => remove(toast.id),
+          }}
+        >
+          <ToastComponent />
+        </ToastComponentContext>
+      );
+    })}
+  </div>
+);
 
 const getToastListStyles = (placement: ToastPlacement) => {
   const styles = [];

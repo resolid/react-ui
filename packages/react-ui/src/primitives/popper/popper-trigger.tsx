@@ -25,7 +25,7 @@ export const PopperTrigger = (
 
   return (
     <Polymorphic<"button">
-      as={"button"}
+      as="button"
       render={render}
       {...buttonProps}
       ref={refs}

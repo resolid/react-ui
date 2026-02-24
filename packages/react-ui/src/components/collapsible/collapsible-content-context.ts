@@ -6,9 +6,9 @@ export type CollapsibleContentContextValue = {
   duration: number;
 };
 
-const desc = createSafeContext<CollapsibleContentContextValue>({
+const [context, hook] = createSafeContext<CollapsibleContentContextValue>({
   name: "CollapsibleContentContext",
 });
 
-export const CollapsibleContentContext: SafeContext<CollapsibleContentContextValue> = desc[0];
-export const useCollapsibleContent: UseSafeContext<CollapsibleContentContextValue> = desc[1];
+export const CollapsibleContentContext: SafeContext<CollapsibleContentContextValue> = context;
+export const useCollapsibleContent: UseSafeContext<CollapsibleContentContextValue> = hook;

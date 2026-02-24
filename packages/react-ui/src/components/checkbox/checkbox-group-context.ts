@@ -28,9 +28,9 @@ export type CheckboxGroupContextValue = CheckboxGroupBaseProps & {
   onChange: (event: ChangeEvent<HTMLInputElement> | string | number) => void;
 };
 
-const desc = createSafeContext<CheckboxGroupContextValue>({
+const [context, hook] = createSafeContext<CheckboxGroupContextValue>({
   name: "CheckboxGroupContext",
 });
 
-export const CheckboxGroupContext: SafeContext<CheckboxGroupContextValue> = desc[0];
-export const useCheckboxGroup: UseSafeContext<CheckboxGroupContextValue> = desc[1];
+export const CheckboxGroupContext: SafeContext<CheckboxGroupContextValue> = context;
+export const useCheckboxGroup: UseSafeContext<CheckboxGroupContextValue> = hook;

@@ -108,8 +108,8 @@ export const useCombobox = <T extends ListboxItem>({
   const context = useFloatingRootContext({
     elements: { reference, floating },
     open: openState,
-    onOpenChange: (open, e, reason) => {
-      if (open) {
+    onOpenChange: (opened, e, reason) => {
+      if (opened) {
         if (reason != "click") {
           setActiveIndex(selectedIndex ?? 0);
         }
@@ -149,16 +149,16 @@ export const useCombobox = <T extends ListboxItem>({
     multiple,
     value,
     defaultValue,
-    onChange: (value) => {
-      if (value == null) {
+    onChange: (changed) => {
+      if (changed == null) {
         setInputValue("");
-      } else if (Array.isArray(value)) {
-        setInputValue(value.join(","));
+      } else if (Array.isArray(changed)) {
+        setInputValue(changed.join(","));
       } else {
-        setInputValue(String(value));
+        setInputValue(String(changed));
       }
 
-      onChange?.(value);
+      onChange?.(changed);
     },
     collection,
     valueKey,
@@ -232,7 +232,7 @@ export const useCombobox = <T extends ListboxItem>({
 
   return {
     open: openState,
-    setOpen: (open) => context.onOpenChange(open),
+    setOpen: (opened) => context.onOpenChange(opened),
     setPosition: context.refs.setPositionReference,
     floatingElement: context.elements.floating,
     rootContext: { rootContext: context },

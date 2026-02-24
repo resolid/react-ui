@@ -6,9 +6,9 @@ type MenuItemIndicatorContextValue = {
   checked: CheckedState;
 };
 
-const dest = createSafeContext<MenuItemIndicatorContextValue>({
+const [context, hook] = createSafeContext<MenuItemIndicatorContextValue>({
   name: "MenuItemIndicatorContext",
 });
 
-export const MenuItemIndicatorContext: SafeContext<MenuItemIndicatorContextValue> = dest[0];
-export const useMenuItemIndicator: UseSafeContext<MenuItemIndicatorContextValue> = dest[1];
+export const MenuItemIndicatorContext: SafeContext<MenuItemIndicatorContextValue> = context;
+export const useMenuItemIndicator: UseSafeContext<MenuItemIndicatorContextValue> = hook;

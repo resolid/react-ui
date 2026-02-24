@@ -5,9 +5,9 @@ export type PopperAriaContextValue = {
   descriptionId: string;
 };
 
-const dest = createSafeContext<PopperAriaContextValue>({
+const [context, hook] = createSafeContext<PopperAriaContextValue>({
   name: "PopperAriaContext",
 });
 
-export const PopperAriaContext: SafeContext<PopperAriaContextValue> = dest[0];
-export const usePopperAria: UseSafeContext<PopperAriaContextValue> = dest[1];
+export const PopperAriaContext: SafeContext<PopperAriaContextValue> = context;
+export const usePopperAria: UseSafeContext<PopperAriaContextValue> = hook;

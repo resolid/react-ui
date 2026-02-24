@@ -5,9 +5,9 @@ export type TooltipRootContextValue = {
   contentClassName?: string;
 };
 
-const dest = createSafeContext<TooltipRootContextValue>({
+const [context, hook] = createSafeContext<TooltipRootContextValue>({
   name: "TooltipRootContext",
 });
 
-export const TooltipRootContext: SafeContext<TooltipRootContextValue> = dest[0];
-export const useTooltipRoot: UseSafeContext<TooltipRootContextValue> = dest[1];
+export const TooltipRootContext: SafeContext<TooltipRootContextValue> = context;
+export const useTooltipRoot: UseSafeContext<TooltipRootContextValue> = hook;

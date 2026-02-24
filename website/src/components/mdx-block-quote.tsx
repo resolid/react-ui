@@ -17,12 +17,12 @@ export const MdxBlockQuote = (props: ComponentProps<"blockquote"> & { "data-type
     return (
       <Alert
         color={alertColors[dataType as keyof typeof alertColors] as AlertProps["color"]}
-        className={"not-prose my-5 flex flex-row gap-2"}
+        className="not-prose my-5 flex flex-row gap-2"
       >
-        <AlertIndicator className={"pt-1.75"}>
+        <AlertIndicator className="pt-1.75">
           <SpriteIcon name={`github-${dataType}`} />
         </AlertIndicator>
-        <AlertDescription className={"[&_code]:text-sm"}>{children}</AlertDescription>
+        <AlertDescription className="[&_code]:text-sm">{children}</AlertDescription>
       </Alert>
     );
   }

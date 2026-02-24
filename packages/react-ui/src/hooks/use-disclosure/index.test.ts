@@ -40,8 +40,8 @@ describe("useDisclosure", () => {
     expect(next).toBe(true);
 
     act(() => {
-      const [, { handleToggle }] = result.current;
-      handleToggle();
+      const [, { handleToggle: handleToggleAct }] = result.current;
+      handleToggleAct();
     });
 
     const [last] = result.current;

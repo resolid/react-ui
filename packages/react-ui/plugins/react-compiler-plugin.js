@@ -11,35 +11,33 @@ import { transformAsync } from "@babel/core";
  * @returns {import('rolldown').Plugin}
  *   A Rolldown plugin instance.
  */
-export const reactCompilerRolldownPlugin = ({ filter }) => {
-  return {
-    name: "rolldown-react-compiler-plugin",
-    transform: {
-      filter: {
-        id: filter,
-      },
-      async handler(code, id) {
-        const result = await transformAsync(code, {
-          filename: id,
-          plugins: [
-            [
-              "babel-plugin-react-compiler",
-              {
-                target: "19",
-              },
-            ],
-          ],
-          parserOpts: { sourceType: "module", plugins: ["jsx", "typescript"] },
-          ast: false,
-          cloneInputAst: false,
-          compact: false,
-          sourceMaps: false,
-          babelrc: false,
-          configFile: false,
-        });
-
-        return result.code;
-      },
+export const reactCompilerRolldownPlugin = ({ filter }) => ({
+  name: "rolldown-react-compiler-plugin",
+  transform: {
+    filter: {
+      id: filter,
     },
-  };
-};
+    async handler(code, id) {
+      const result = await transformAsync(code, {
+        filename: id,
+        plugins: [
+          [
+            "babel-plugin-react-compiler",
+            {
+              target: "19",
+            },
+          ],
+        ],
+        parserOpts: { sourceType: "module", plugins: ["jsx", "typescript"] },
+        ast: false,
+        cloneInputAst: false,
+        compact: false,
+        sourceMaps: false,
+        babelrc: false,
+        configFile: false,
+      });
+
+      return result.code;
+    },
+  },
+});

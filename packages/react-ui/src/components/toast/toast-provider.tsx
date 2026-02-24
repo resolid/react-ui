@@ -19,9 +19,7 @@ export type ToastProviderProps = {
   duration?: number | null;
 } & Partial<ToastRegionBaseProps>;
 
-type ToastState = {
-  [K in ToastPlacement]: ToastConfig[];
-};
+type ToastState = Record<ToastPlacement, ToastConfig[]>;
 
 type ToastAction =
   | { type: "ADD"; payload: { toast: ToastConfig } }
@@ -34,7 +32,7 @@ const reducer = (state: ToastState, action: ToastAction) => {
   switch (action.type) {
     case "ADD": {
       const { toast } = action.payload;
-      const placement = toast.placement;
+      const { placement } = toast;
 
       return {
         ...state,
@@ -210,15 +208,15 @@ export const ToastProvider = ({
     <ToastContext value={context}>
       {children}
       <PortalLite>
-        {Object.entries(state).map(([placement, toasts]) => {
+        {Object.entries(state).map(([place, toasts]) => {
           if (toasts.length == 0) {
             return null;
           }
 
           return (
             <ToastRegion
-              key={placement}
-              placement={placement as ToastPlacement}
+              key={place}
+              placement={place as ToastPlacement}
               spacing={spacing}
               visibleToasts={visibleToasts}
               toasts={toasts}

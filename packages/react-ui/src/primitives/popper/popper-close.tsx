@@ -25,7 +25,7 @@ export const PopperClose = (
 
   return (
     <Polymorphic<"button">
-      as={"button"}
+      as="button"
       render={render}
       {...buttonProps}
       onClick={handleClick}

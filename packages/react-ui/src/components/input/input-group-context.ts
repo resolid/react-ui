@@ -9,9 +9,9 @@ export type InputGroupContextValue = {
   size: InputSize;
 };
 
-const desc = createSafeContext<InputGroupContextValue>({
+const [context, hook] = createSafeContext<InputGroupContextValue>({
   name: "InputGroupContext",
 });
 
-export const InputGroupContext: SafeContext<InputGroupContextValue> = desc[0];
-export const useInputGroup: UseSafeContext<InputGroupContextValue> = desc[1];
+export const InputGroupContext: SafeContext<InputGroupContextValue> = context;
+export const useInputGroup: UseSafeContext<InputGroupContextValue> = hook;

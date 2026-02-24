@@ -96,7 +96,7 @@ export const AccordionRoot = (props: PrimitiveProps<"div", AccordionRootProps>):
       onNavigate={setActiveIndex}
       className={tx("flex", orientation == "horizontal" ? "flex-row" : "flex-col", className)}
       onKeyDown={handleKeyDown}
-      render={(props) => <div {...props} aria-orientation={undefined} />}
+      render={(renderProps) => <div {...renderProps} aria-orientation={undefined} />}
       {...rest}
     >
       <AccordionContext value={context}>
