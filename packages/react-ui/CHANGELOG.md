@@ -1,5 +1,17 @@
 # @resolid/react-ui
 
+## 0.1.7
+
+### Patch Changes
+
+- refactor: upgrade @resolid/utils ([`1a32d8e`](https://github.com/resolid/react-ui/commit/1a32d8eb71ca9087469e310f23bd7d239fffd498))
+
+- refactor: resolve React Compiler reorder warnings ([`86a93d2`](https://github.com/resolid/react-ui/commit/86a93d222c3e474d7116efb37b6a30024b809f87))
+
+- fix: rename use-lastest-ref to use-latest-ref ([`24918e7`](https://github.com/resolid/react-ui/commit/24918e724bfa2af5ec3479eb2234d137b2794eba))
+
+- refactor: replace index key with value key in item map ([`a7db5db`](https://github.com/resolid/react-ui/commit/a7db5db086a60d688e6a69adbfb48aa20814e524))
+
 ## 0.1.6
 
 ### Patch Changes
