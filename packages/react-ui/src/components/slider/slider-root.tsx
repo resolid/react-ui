@@ -92,8 +92,8 @@ export const SliderRoot = (props: PrimitiveProps<"div", SliderRootProps>): JSX.E
   const precision = step.toString().split(".")[1]?.length ?? 0;
 
   const [valueState, setValueState] = useControllableState({
-    value: isNumber(value) ? clamp(value, [min, max]) : value,
-    defaultValue: isNumber(defaultValue) ? clamp(defaultValue, [min, max]) : defaultValue,
+    value: isNumber(value) ? clamp(value, min, max) : value,
+    defaultValue: isNumber(defaultValue) ? clamp(defaultValue, min, max) : defaultValue,
     onChange,
   });
 
@@ -191,7 +191,7 @@ export const SliderRoot = (props: PrimitiveProps<"div", SliderRootProps>): JSX.E
 
     const clientSize = vertical ? rect.height : rect.width;
     const offset = clientPos - (vertical ? rect.top : rect.left);
-    const ratio = clamp(offset, [0, clientSize]) / clientSize;
+    const ratio = clamp(offset, 0, clientSize) / clientSize;
 
     const next = getNextValue(
       (!vertical && direction == "rtl" ? 1 - ratio : ratio) * (max - min),

@@ -8,8 +8,8 @@ export type UseMovePosition = {
 };
 
 export const clampUseMovePosition = (position: UseMovePosition): UseMovePosition => ({
-  x: clamp(position.x, [0, 1]),
-  y: clamp(position.y, [0, 1]),
+  x: clamp(position.x, 0, 1),
+  y: clamp(position.y, 0, 1),
 });
 
 export type UseMoveHandlers = {
@@ -75,10 +75,10 @@ export const useMove = <T extends HTMLElement = HTMLDivElement>(
             const rect = node.getBoundingClientRect();
 
             if (rect.width && rect.height) {
-              const _x = clamp((x - rect.left) / rect.width, [0, 1]);
+              const _x = clamp((x - rect.left) / rect.width, 0, 1);
               onChange({
                 x: direction == "rtl" ? 1 - _x : _x,
-                y: clamp((y - rect.top) / rect.height, [0, 1]),
+                y: clamp((y - rect.top) / rect.height, 0, 1),
               });
             }
           }

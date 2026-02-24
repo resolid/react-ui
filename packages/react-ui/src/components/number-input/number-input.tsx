@@ -136,7 +136,7 @@ export const NumberInput = (
       update(min ?? 0);
       setInputValue(min !== undefined ? min.toFixed(precisionValue) : "0");
     } else {
-      const value = clamp(valueState + incrementStep, [minValue, maxValue]).toFixed(precisionValue);
+      const value = clamp(valueState + incrementStep, minValue, maxValue).toFixed(precisionValue);
 
       update(Number.parseFloat(value));
       setInputValue(value);
@@ -148,7 +148,7 @@ export const NumberInput = (
       update(min ?? 0);
       setInputValue(min !== undefined ? min.toFixed(precisionValue) : "0");
     } else {
-      const value = clamp(valueState - decrementStep, [minValue, maxValue]).toFixed(precisionValue);
+      const value = clamp(valueState - decrementStep, minValue, maxValue).toFixed(precisionValue);
 
       update(Number.parseFloat(value));
       setInputValue(value);
@@ -227,7 +227,7 @@ export const NumberInput = (
       const parsed = parse(
         event.target.value[0] == "." ? `0${event.target.value}` : event.target.value,
       );
-      const value = clamp(Number.parseFloat(parsed), [minValue, maxValue]);
+      const value = clamp(Number.parseFloat(parsed), minValue, maxValue);
 
       if (!Number.isNaN(value)) {
         setInputValue(value.toFixed(precisionValue));

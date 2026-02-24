@@ -49,13 +49,13 @@ export const getChangeValue = (
 ): ValueType => {
   return Array.isArray(value)
     ? thumbIndex == 1
-      ? [value[0], clamp(next, [value[0], max])]
-      : [clamp(next, [min, value[1]]), value[1]]
-    : clamp(next, [min, max]);
+      ? [value[0], clamp(next, value[0], max)]
+      : [clamp(next, min, value[1]), value[1]]
+    : clamp(next, min, max);
 };
 
 export const getPosition = (value: number, min: number, max: number): number => {
-  return clamp((100 / (max - min)) * (value - min), [0, 100]);
+  return clamp((100 / (max - min)) * (value - min), 0, 100);
 };
 
 export const linearScale = (
