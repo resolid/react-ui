@@ -2,6 +2,7 @@ import { callAll } from "@resolid/utils";
 import { tx } from "../clsx";
 import { css } from "../css";
 
+// oxlint-disable-next-line typescript/no-explicit-any
 type Props = Record<string | symbol, any>;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

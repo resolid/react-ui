@@ -8,54 +8,54 @@ type MetaArgs = {
   )[];
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const mergeMeta =
+  // oxlint-disable-next-line typescript/no-explicit-any
   (metaFn: (arg: any) => MetaDescriptor[], titleJoin = " - ") =>
-  (arg: MetaArgs) => {
-    const leafMeta = metaFn(arg);
+    (arg: MetaArgs) => {
+      const leafMeta = metaFn(arg);
 
-    const mergedMeta = arg.matches.reduceRight((acc, match) => {
-      if (match) {
-        for (const parentMeta of match.meta) {
-          const index = acc.findIndex((meta) => {
-            if ("name" in meta && "name" in parentMeta) {
-              return meta.name === parentMeta.name;
+      const mergedMeta = arg.matches.reduceRight((acc, match) => {
+        if (match) {
+          for (const parentMeta of match.meta) {
+            const index = acc.findIndex((meta) => {
+              if ("name" in meta && "name" in parentMeta) {
+                return meta.name === parentMeta.name;
+              }
+
+              if ("property" in meta && "property" in parentMeta) {
+                return meta.property === parentMeta.property;
+              }
+
+              if ("title" in meta && "title" in parentMeta) {
+                return meta.title === parentMeta.title;
+              }
+
+              return false;
+            });
+
+            if (index == -1) {
+              acc.push(parentMeta);
             }
-
-            if ("property" in meta && "property" in parentMeta) {
-              return meta.property === parentMeta.property;
-            }
-
-            if ("title" in meta && "title" in parentMeta) {
-              return meta.title === parentMeta.title;
-            }
-
-            return false;
-          });
-
-          if (index == -1) {
-            acc.push(parentMeta);
           }
         }
-      }
 
-      return acc;
-    }, leafMeta);
+        return acc;
+      }, leafMeta);
 
-    const titles: string[] = [];
-    const result: MetaDescriptor[] = [];
+      const titles: string[] = [];
+      const result: MetaDescriptor[] = [];
 
-    for (const meta of mergedMeta) {
-      if ("title" in meta) {
-        if (isString(meta.title) && meta.title.length > 0) {
-          titles.push(...meta.title.split(titleJoin));
+      for (const meta of mergedMeta) {
+        if ("title" in meta) {
+          if (isString(meta.title) && meta.title.length > 0) {
+            titles.push(...meta.title.split(titleJoin));
+          }
+        } else {
+          result.push(meta);
         }
-      } else {
-        result.push(meta);
       }
-    }
 
-    result.unshift({ title: [...new Set(titles)].join(titleJoin) });
+      result.unshift({ title: [...new Set(titles)].join(titleJoin) });
 
-    return result;
-  };
+      return result;
+    };

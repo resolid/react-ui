@@ -1,3 +1,4 @@
+import type { ReactElement } from "react";
 import type { JSX } from "react/jsx-runtime";
 import {
   autoUpdate,
@@ -29,6 +30,8 @@ export type ComboboxPopupProps = {
    * @default "bottom"
    */
   placement?: Placement;
+
+  children: ReactElement;
 };
 
 export const ComboboxPopup = (
@@ -96,7 +99,7 @@ export const ComboboxPopup = (
             returnFocus={false}
             visuallyHiddenDismiss={t("closeButton.label")}
           >
-            <>{children}</>
+            {children}
           </FloatingFocusManager>
         </PopperPositioner>
       </PopperPositionerContext>

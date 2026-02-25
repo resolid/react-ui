@@ -32,17 +32,15 @@ export const FilePickerTrigger = (
   };
 
   return (
-    <>
-      <Polymorphic<"button", FilePickerTriggerState>
-        as="button"
-        state={{ disabled }}
-        render={render}
-        onClick={handleClick}
-        {...buttonProps}
-        {...rest}
-      >
-        {children}
-      </Polymorphic>
-    </>
+    <Polymorphic<"button", FilePickerTriggerState>
+      as="button"
+      state={{ disabled }}
+      render={render}
+      onClick={handleClick}
+      {...buttonProps}
+      {...rest}
+    >
+      {children}
+    </Polymorphic>
   );
 };
