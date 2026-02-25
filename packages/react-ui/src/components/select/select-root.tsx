@@ -79,7 +79,7 @@ export const SelectRoot = <T extends ListboxItem>(
     duration = 250,
     size = "md",
     placeholder,
-    closeOnSelect = true,
+    closeOnSelect = !multiple,
     renderValue,
     children,
     className,
@@ -122,6 +122,10 @@ export const SelectRoot = <T extends ListboxItem>(
             elements.domReference?.focus();
           });
         }
+
+        setTimeout(() => {
+          setFilterKeyword("");
+        }, duration);
       }
     },
     placement: "bottom",
@@ -137,6 +141,7 @@ export const SelectRoot = <T extends ListboxItem>(
     typeaheadInteraction,
     interactiveHandlers,
     handleEnterKeydown,
+    setFilterKeyword,
     filterInputRef,
     ...providerValue
   } = useListbox({
@@ -262,6 +267,7 @@ export const SelectRoot = <T extends ListboxItem>(
                       ...providerValue,
                       selectedIndex,
                       selectedIndices,
+                      setFilterKeyword,
                       filterInputRef,
                       setFloating: refs.setFloating,
                       getFloatingProps: (floatingProps) =>

@@ -31,5 +31,17 @@
     "README*": "LICENSE*, README.*, CODE_OF_CONDUCT*, CONTRIBUTING*, CHANGELOG*"
   },
   "prettier.enable": false,
-  "eslint.enable": false
+  "eslint.enable": false,
+  "reactCompilerMarker.excludedDirectories": [
+    "node_modules",
+    ".git",
+    "dist",
+    "build",
+    "out",
+    "coverage",
+    ".next",
+    ".turbo",
+    ".vercel",
+    ".resolid"
+  ]
 }
