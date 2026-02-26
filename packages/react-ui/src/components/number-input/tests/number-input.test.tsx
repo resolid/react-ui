@@ -1,7 +1,7 @@
 import { act, cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import { afterEach, describe, expect, it } from "vitest";
-import { axe } from "vitest-axe";
+import { axe } from "../../../../plugins/vitest-axe";
 import { NumberInput } from "../number-input";
 
 describe("NumberInput", () => {

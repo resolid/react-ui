@@ -1,6 +1,6 @@
 import { cleanup, render } from "@testing-library/react";
 import { afterEach, describe, expect, it } from "vitest";
-import { axe } from "vitest-axe";
+import { axe } from "../../../../plugins/vitest-axe";
 import { LocaleProvider } from "../../provider/locale-provider";
 import { Spinner, type SpinnerProps } from "../spinner";
 

@@ -1,7 +1,7 @@
 import { cleanup, render, screen, waitFor } from "@testing-library/react";
 import user from "@testing-library/user-event";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { axe } from "vitest-axe";
+import { axe } from "../../../../plugins/vitest-axe";
 import { LocaleProvider } from "../../provider/locale-provider";
 import { Select, SelectContent, SelectList, type SelectProps } from "../select";
 

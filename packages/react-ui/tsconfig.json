@@ -2,6 +2,7 @@
   "extends": "@resolid/config/tsconfig/react.json",
   "include": [
     "src/**/*",
+    "plugins/*",
     "tsdown.config.ts",
     "vitest.config.ts",
     "vitest.setup.ts",

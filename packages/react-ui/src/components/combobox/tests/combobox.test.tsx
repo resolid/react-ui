@@ -1,8 +1,8 @@
 import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { axe } from "vitest-axe";
 import type { ListboxItem } from "../../listbox/use-listbox";
 import type { ComboboxProps } from "../use-combobox";
+import { axe } from "../../../../plugins/vitest-axe";
 import { LocaleProvider } from "../../provider/locale-provider";
 import {
   Combobox,

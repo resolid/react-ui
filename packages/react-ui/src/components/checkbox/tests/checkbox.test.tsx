@@ -2,7 +2,7 @@ import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/re
 import { userEvent } from "@testing-library/user-event";
 import { useState } from "react";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { axe } from "vitest-axe";
+import { axe } from "../../../../plugins/vitest-axe";
 import { Checkbox, type CheckboxProps } from "../checkbox";
 
 const ComponentUnderTest = (props: CheckboxProps) => <Checkbox {...props}>Checkbox</Checkbox>;

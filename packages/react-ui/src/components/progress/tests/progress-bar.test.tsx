@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { axe } from "vitest-axe";
+import { axe } from "../../../../plugins/vitest-axe";
 import { ProgressBar, type ProgressBarProps } from "../progress-bar";
 
 const ProgressBarUnderTest = (props: ProgressBarProps) => <ProgressBar {...props} />;

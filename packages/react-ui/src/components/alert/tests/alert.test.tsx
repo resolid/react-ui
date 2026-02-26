@@ -1,6 +1,6 @@
 import { cleanup, render } from "@testing-library/react";
 import { afterEach, describe, expect, it } from "vitest";
-import { axe } from "vitest-axe";
+import { axe } from "../../../../plugins/vitest-axe";
 import { Alert, AlertContent, AlertDescription, type AlertProps, AlertTitle } from "../alert";
 
 const ComponentUnderTest = (props: AlertProps) => (
