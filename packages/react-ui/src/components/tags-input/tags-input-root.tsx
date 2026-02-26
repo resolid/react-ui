@@ -1,6 +1,6 @@
 import type { JSX } from "react/jsx-runtime";
 import { Composite } from "@floating-ui/react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import type { PrimitiveProps } from "../../primitives";
 import type { FormInputFieldProps, ValueProp } from "../../shared/types";
 import { useControllableState } from "../../hooks";
@@ -62,6 +62,7 @@ export const TagsInputRoot = (props: PrimitiveProps<"div", TagsInputRootProps>):
     tabIndex,
     style,
     children,
+    ref,
     ...rest
   } = props;
 
@@ -114,10 +115,13 @@ export const TagsInputRoot = (props: PrimitiveProps<"div", TagsInputRootProps>):
     setActiveIndex,
   };
 
+  const inputRef = useRef(null);
+
   const rootContext: TagsInputRootContextValue = {
     disabled,
     readOnly,
     inputClassname: tagsInputSizeStyle.input,
+    inputRef,
     addOnBlur,
     addOnPaste,
     delimiter,
@@ -151,18 +155,20 @@ export const TagsInputRoot = (props: PrimitiveProps<"div", TagsInputRootProps>):
         tabIndex={tabIndex}
         style={style}
         {...rest}
-        render={(renderProps) => <div {...renderProps} aria-orientation={undefined} />}
+        render={(renderProps) => <div {...renderProps} ref={ref} aria-orientation={undefined} />}
       >
         <TagsInputRootContext value={rootContext}>
           <CompositeContext value={context}>
             {valueState.map((state) => (
               <TagsInputItem
                 key={state}
-                value={state}
-                className={tagsInputSizeStyle.item}
+                size={size}
                 disabled={disabled || readOnly}
+                finalRef={inputRef}
                 onDelete={deleteValue}
-              />
+              >
+                {state}
+              </TagsInputItem>
             ))}
             {children}
           </CompositeContext>

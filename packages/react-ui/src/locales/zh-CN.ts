@@ -16,7 +16,7 @@ export default {
       next: "下一页",
       pageOf: "第 {page} 页",
     },
-    tagsInput: {
+    inputItem: {
       deleteTag: "删除",
     },
     fileUpload: {

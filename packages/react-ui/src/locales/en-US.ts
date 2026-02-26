@@ -14,7 +14,7 @@ export default {
       next: "Next Page",
       pageOf: "PageOf {page}",
     },
-    tagsInput: {
+    inputItem: {
       deleteTag: "Delete",
     },
     fileUpload: {

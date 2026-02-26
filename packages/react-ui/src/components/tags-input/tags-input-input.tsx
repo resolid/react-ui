@@ -49,6 +49,7 @@ export const TagsInputInput = (
     addOnBlur,
     addOnPaste,
     inputClassname,
+    inputRef,
     delimiter,
     placeholder,
     valueCount,
@@ -64,7 +65,7 @@ export const TagsInputInput = (
     onChange,
   });
 
-  const refs = useMergeRefs(ref, itemRef);
+  const refs = useMergeRefs(ref, inputRef, itemRef);
 
   const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
     onBlur?.(e);

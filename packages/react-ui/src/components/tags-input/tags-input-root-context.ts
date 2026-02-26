@@ -1,3 +1,4 @@
+import type { RefObject } from "react";
 import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives";
 
 export type TagsInputBaseProps = {
@@ -29,6 +30,7 @@ export type TagsInputRootContextValue = TagsInputBaseProps & {
   disabled: boolean;
   readOnly: boolean;
   inputClassname: string;
+  inputRef: RefObject<HTMLElement | null>;
   valueCount: number;
   onAdd: (value: string | string[]) => boolean;
   onDelete: (index: number) => void;

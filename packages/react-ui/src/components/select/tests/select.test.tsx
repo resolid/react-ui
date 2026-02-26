@@ -2,6 +2,7 @@ import { cleanup, render, screen, waitFor } from "@testing-library/react";
 import user from "@testing-library/user-event";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { axe } from "vitest-axe";
+import { LocaleProvider } from "../../provider/locale-provider";
 import { Select, SelectContent, SelectList, type SelectProps } from "../select";
 
 const ComponentUnderTest = (props: Omit<SelectProps, "collection">) => {
@@ -12,11 +13,13 @@ const ComponentUnderTest = (props: Omit<SelectProps, "collection">) => {
     { label: "Svelte", value: "svelte", disabled: true },
   ];
   return (
-    <Select aria-label="Framework" collection={items} {...props}>
-      <SelectContent>
-        <SelectList />
-      </SelectContent>
-    </Select>
+    <LocaleProvider>
+      <Select aria-label="Framework" collection={items} {...props}>
+        <SelectContent>
+          <SelectList />
+        </SelectContent>
+      </Select>
+    </LocaleProvider>
   );
 };
 

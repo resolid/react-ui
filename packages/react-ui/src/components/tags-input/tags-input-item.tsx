@@ -1,57 +1,37 @@
 import type { JSX } from "react/jsx-runtime";
 import { useListItem } from "@floating-ui/react";
 import type { PrimitiveProps } from "../../primitives";
+import { InputItem, type InputItemProps } from "../../primitives/common/input-item";
 import { useComposite } from "../../primitives/composite/composite-context";
 import { ariaAttr, tx } from "../../utils";
-import { CloseButton } from "../close-button/close-button";
-import { useLocale } from "../provider/locale-context";
 
-type TagsInputItemProps = {
-  value: string;
-  disabled: boolean;
+type TagsInputItemProps = Omit<InputItemProps, "onDelete"> & {
   onDelete: (index: number) => void;
 };
 
 export const TagsInputItem = (
-  props: PrimitiveProps<"div", TagsInputItemProps, "ref" | "children">,
+  props: PrimitiveProps<"div", TagsInputItemProps, "ref">,
 ): JSX.Element => {
-  const { value, disabled, onDelete, className, ...rest } = props;
+  const { onDelete, className, children, ...rest } = props;
 
   const { ref: itemRef, index } = useListItem();
   const { activeIndex } = useComposite();
 
   const selected = activeIndex === index;
 
-  const handelDelete = () => {
+  const handleDelete = () => {
     onDelete(index);
   };
 
-  const { t } = useLocale();
-
   return (
-    <div
+    <InputItem
       ref={itemRef}
-      aria-disabled={ariaAttr(disabled)}
       aria-selected={ariaAttr(selected)}
-      data-index={index}
-      className={tx(
-        "inline-flex items-center gap-1 rounded-md pe-1",
-        selected ? "bg-bg-subtle" : "bg-bg-subtlest",
-        className,
-      )}
+      className={tx(selected ? "bg-bg-subtle" : "bg-bg-subtlest", className)}
+      onDelete={handleDelete}
       {...rest}
     >
-      {value}
-      <CloseButton
-        radius="md"
-        disabled={disabled}
-        className="pointer-events-auto h-full"
-        onClick={handelDelete}
-        tabIndex={-1}
-        noPadding
-        aria-label={t("tagsInput.deleteTag")}
-        size="1em"
-      />
-    </div>
+      {children}
+    </InputItem>
   );
 };

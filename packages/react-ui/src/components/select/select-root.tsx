@@ -1,4 +1,3 @@
-import type { JSX, ReactNode } from "react";
 import {
   autoUpdate,
   flip,
@@ -12,10 +11,13 @@ import {
   useRole,
   useTransitionStatus,
 } from "@floating-ui/react";
+import { type JSX, type ReactNode, useRef } from "react";
 import type { PrimitiveProps } from "../../primitives";
 import type { DisclosureProps } from "../../shared/types";
 import type { ListboxRootProps } from "../listbox/listbox-root";
 import { useDisclosure, useMergeRefs } from "../../hooks";
+import { InputItem } from "../../primitives/common/input-item";
+import { inputItemSizeStyles } from "../../primitives/common/input-item.styles";
 import { OptionEmptyContext } from "../../primitives/common/option-empty-context";
 import { PopperPositioner } from "../../primitives/popper/popper-positioner";
 import {
@@ -143,6 +145,7 @@ export const SelectRoot = <T extends ListboxItem>(
     handleEnterKeydown,
     setFilterKeyword,
     filterInputRef,
+    handleSelect,
     ...providerValue
   } = useListbox({
     disabled,
@@ -183,7 +186,9 @@ export const SelectRoot = <T extends ListboxItem>(
     getItemProps: getNavigationItemProps,
   } = useInteractions([navigationInteraction]);
 
-  const referenceRefs = useMergeRefs(refs.setReference, ref);
+  const rootRef = useRef(null);
+
+  const referenceRefs = useMergeRefs(refs.setReference, rootRef, ref);
 
   const { isMounted, status } = useTransitionStatus(context, {
     duration,
@@ -227,19 +232,23 @@ export const SelectRoot = <T extends ListboxItem>(
           multiple ? (
             <div className="inline-flex gap-1">
               {selectedItems.map((item) => (
-                <div
-                  className="rounded-md bg-bg-subtlest px-1.5"
+                <InputItem
                   key={providerValue.getItemValue(item)}
+                  size={size}
+                  disabled={disabled}
+                  finalRef={rootRef}
+                  className="bg-bg-subtlest"
+                  onDelete={() => handleSelect(item)}
                 >
                   {renderValueFn(item)}
-                </div>
+                </InputItem>
               ))}
             </div>
           ) : (
-            <div className={sizeStyle.item}>{renderValueFn(selectedItems[0])}</div>
+            <div className={inputItemSizeStyles[size]}>{renderValueFn(selectedItems[0])}</div>
           )
         ) : (
-          <div className={tx("text-fg-placeholder", sizeStyle.item)}>{placeholder}</div>
+          <div className={tx("text-fg-placeholder", inputItemSizeStyles[size])}>{placeholder}</div>
         )}
         <SelectChevron className={sizeStyle.chevron} />
       </div>
@@ -268,6 +277,7 @@ export const SelectRoot = <T extends ListboxItem>(
                       selectedIndex,
                       selectedIndices,
                       setFilterKeyword,
+                      handleSelect,
                       filterInputRef,
                       setFloating: refs.setFloating,
                       getFloatingProps: (floatingProps) =>
