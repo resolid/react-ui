@@ -62,7 +62,6 @@ export const FilePickerDropzone = (props: PrimitiveProps<"div">): JSX.Element =>
     <div
       role="application"
       aria-disabled={dataAttr(disabled)}
-      tabIndex={disabled ? undefined : 0}
       className={tx(
         "flex p-6",
         "border-2 border-dashed bg-bg-normal transition-colors",

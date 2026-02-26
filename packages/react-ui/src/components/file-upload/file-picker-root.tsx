@@ -377,6 +377,7 @@ export const FilePickerRoot = (
         multiple={multiple}
         accept={accept}
         onChange={handleChange}
+        tabIndex={-1}
         className="sr-only"
         {...rest}
       />
