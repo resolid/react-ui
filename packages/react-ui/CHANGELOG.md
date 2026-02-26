@@ -1,5 +1,15 @@
 # @resolid/react-ui
 
+## 0.1.9
+
+### Patch Changes
+
+- fix: update Select close logic and reset filter keyword after selection ([`ce8a2f7`](https://github.com/resolid/react-ui/commit/ce8a2f76ab30f5ce45ed03dc24dbd9a908cb25c3))
+
+- feat: implement InputItem component and update TagsInputItem and SelectRoot to use it ([`d96a562`](https://github.com/resolid/react-ui/commit/d96a562bc55abc95cc276757b826e2de60b88b2c))
+
+- fix: remove tabIndex from FilePickerDropzone ([`477039a`](https://github.com/resolid/react-ui/commit/477039a14394b6f881232a6345b0f7f3f3bf58ac))
+
 ## 0.1.8
 
 ### Patch Changes
