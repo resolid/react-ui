@@ -4,6 +4,8 @@
 declare namespace NodeJS {
   export interface ProcessEnv {
     readonly SERVER_PORT: number | undefined;
+
+    readonly VERCEL: number;
   }
 }
 

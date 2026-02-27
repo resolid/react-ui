@@ -1,6 +1,5 @@
 import mdx from "@mdx-js/rollup";
-import { reactRouter } from "@react-router/dev/vite";
-import { reactRouterHonoServer } from "@resolid/react-router-hono/dev";
+import { resolidVite } from "@resolid/dev/vite";
 import rehypeShiki from "@shikijs/rehype";
 import tailwindcss from "@tailwindcss/vite";
 import { extname, join } from "node:path";
@@ -18,6 +17,7 @@ import remarkDocgen from "./plugins/remark-docgen";
 import remarkGithubAlert from "./plugins/remark-github-alert";
 import remarkRemove from "./plugins/remark-remove";
 import viteContent from "./plugins/vite-content";
+import { vitePluginOptions } from "./resolid.config";
 
 export default defineConfig(({ command }) => {
   const isBuild = command == "build";
@@ -51,12 +51,8 @@ export default defineConfig(({ command }) => {
           remarkRemove,
         ],
       }),
-      reactRouterHonoServer({
-        entryFile: "server.node.ts",
-        exclude: ["/.resolid/**/*"],
-      }),
+      resolidVite(vitePluginOptions),
       tailwindcss(),
-      reactRouter(),
       babel({
         filter: /\.[jt]sx?$/,
         babelConfig: {
