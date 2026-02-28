@@ -1,13 +1,14 @@
 import { useState } from "react";
 
 export const usePrevious = <T>(value: T): T | undefined => {
-  const [current, setCurrent] = useState<T>(value);
-  const [previous, setPrevious] = useState<T>();
+  const [state, setState] = useState<{ current: T; previous: T | undefined }>({
+    current: value,
+    previous: undefined,
+  });
 
-  if (value !== current) {
-    setPrevious(current);
-    setCurrent(value);
+  if (value !== state.current) {
+    setState({ current: value, previous: state.current });
   }
 
-  return previous;
+  return state.previous;
 };
