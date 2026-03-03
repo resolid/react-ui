@@ -1,5 +1,11 @@
 # @resolid/react-ui
 
+## 0.1.10
+
+### Patch Changes
+
+- refactor: merge usePrevious state into single object ([`b187fb8`](https://github.com/resolid/react-ui/commit/b187fb8073c7bac80aaecd5b3f9be34fe4c6973d))
+
 ## 0.1.9
 
 ### Patch Changes
