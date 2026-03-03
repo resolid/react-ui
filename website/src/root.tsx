@@ -1,21 +1,13 @@
 import type { PropsWithChildren } from "react";
 import { ConfigProvider } from "@resolid/react-ui";
 import zhCN from "@resolid/react-ui/locales/zh-CN";
-import { Links, type LinksFunction, Meta, Outlet, Scripts, ScrollRestoration } from "react-router";
+import { Meta, Outlet, Scripts, ScrollRestoration } from "react-router";
 import { ErrorComponent } from "~/components/error-component";
 import { RouteProcessBar } from "~/components/route-process-bar";
 import { SiteLayout } from "~/components/site-layout";
 import { VercelAnalytics } from "~/components/vercel-analytics";
 
-import styles from "~/root.css?url";
-
-// noinspection JSUnusedGlobalSymbols
-export const links: LinksFunction = () => [
-  {
-    rel: "stylesheet",
-    href: styles,
-  },
-];
+import style from "~/root.css?url";
 
 // noinspection JSUnusedGlobalSymbols
 export const meta = () => [
@@ -41,7 +33,7 @@ export const Layout = ({ children }: PropsWithChildren) => {
         <link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <Meta />
-        <Links />
+        <link rel="stylesheet" href={style} />
       </head>
       <body className="min-h-screen overflow-y-scroll">
         <RouteProcessBar />
@@ -50,7 +42,7 @@ export const Layout = ({ children }: PropsWithChildren) => {
         </ConfigProvider>
         <ScrollRestoration />
         <Scripts />
-        {!!import.meta.env.VITE_VERCEL_URL && (
+        {import.meta.env.RESOLID_PLATFORM == "vercel" && (
           <VercelAnalytics endpoint="/growth" scriptSrc="/growth/script.js" />
         )}
       </body>

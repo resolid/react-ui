@@ -12,7 +12,6 @@ import {
 } from "@resolid/react-ui";
 import { debounce } from "@resolid/utils";
 import { useState } from "react";
-import { useFetcher } from "react-router";
 import { HistoryLink } from "~/components/history-link";
 import { SpriteIcon } from "~/components/sprite-icon";
 
@@ -26,11 +25,13 @@ export const SiteSearch = () => {
     }
   });
 
-  const { data, load } = useFetcher<{ value: string; label: string; description: string }[]>();
+  const [data, setData] = useState<{ value: string; label: string; description: string }[]>();
 
   const handleChange = debounce(async (value) => {
     if (value != "") {
-      await load(`/api/search?q=${value}`);
+      const result = await fetch(`/api/search?q=${value}`);
+
+      setData(await result.json());
     }
   }, 500);
 

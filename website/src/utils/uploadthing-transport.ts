@@ -70,9 +70,13 @@ export const uploadthingTransport: UploadTransport = {
     });
   },
   delete: async (id) => {
+    const formData = new FormData();
+    formData.append("id", id);
+
     try {
-      await fetch(`/api/uploadthing?act=deleteFile&id=${id}`, {
+      await fetch(`/api/uploadthing?act=deleteFile`, {
         method: "POST",
+        body: formData,
       });
 
       return true;

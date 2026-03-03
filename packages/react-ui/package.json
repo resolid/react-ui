@@ -47,7 +47,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@floating-ui/react": "^0.27.18",
+    "@floating-ui/react": "^0.27.19",
     "@formkit/tempo": "^1.0.0",
     "@resolid/utils": "^1.2.7",
     "@tanstack/react-virtual": "^3.13.19",
