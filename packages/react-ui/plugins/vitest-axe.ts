@@ -45,7 +45,7 @@ const AXE_RULES_COLOR = getRules(["cat.color"]);
 function configureAxe(
   options: RunOptions & {
     globalOptions?: Spec;
-    impactLevels?: Array<ImpactValue>;
+    impactLevels?: ImpactValue[];
   } = {},
 ): (html: Element | string, additionalOptions?: RunOptions) => Promise<AxeResults> {
   const { globalOptions = {}, ...runnerOptions } = options;
@@ -73,7 +73,9 @@ function configureAxe(
     return new Promise<AxeResults>((resolve) => {
       run(element, options, (err, results) => {
         restore();
-        if (err) throw err;
+        if (err) {
+          throw err;
+        }
         resolve(results);
       });
     });
@@ -146,7 +148,7 @@ function replaceTrailingSpaces(text: string): string {
   return text.replace(/\s+$/gm, (spaces) => SPACE_SYMBOL.repeat(spaces.length));
 }
 
-function filterViolations(violations: Result[], impactLevels: Array<ImpactValue>) {
+function filterViolations(violations: Result[], impactLevels: ImpactValue[]) {
   if (impactLevels && impactLevels.length > 0) {
     return violations.filter((v) => impactLevels.includes(v.impact!));
   }
