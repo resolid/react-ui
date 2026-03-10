@@ -9,7 +9,7 @@
   },
   "tailwindCSS.classFunctions": ["tv", "tx"],
   "tailwindCSS.experimental.configFile": "./website/src/root.css",
-  "typescript.tsdk": "node_modules/typescript/lib",
+  "js/ts.tsdk.path": "node_modules/typescript/lib",
   "npm.enableRunFromFolder": true,
   "npm.exclude": ["**/build/**", "**/.vercel/**"],
   "files.watcherExclude": {
