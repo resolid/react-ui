@@ -98,7 +98,7 @@ export const usePagination = (
     );
 
     return [
-      ...[["previous", Math.max(1, currentPage - 1)]],
+      ["previous", Math.max(1, currentPage - 1)],
       ...startPages,
       ...(siblingsStart > boundaries + 2
         ? [["start-ellipsis", Math.max(1, siblingsStart - 1)]]
@@ -112,7 +112,7 @@ export const usePagination = (
           ? [totalPages - boundaries]
           : []),
       ...endPages,
-      ...[["next", Math.min(totalPages, currentPage + 1)]],
+      ["next", Math.min(totalPages, currentPage + 1)],
     ].map((pn) =>
       isNumber(pn)
         ? { page: pn, pageType: "page" as PageType, disabled: disabled }

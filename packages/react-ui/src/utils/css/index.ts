@@ -23,5 +23,6 @@ export const css = (
   } else if (isString(b)) {
     b = serialize(b);
   }
-  return { ...(a ?? {}), ...(b ?? {}) };
+
+  return { ...a, ...b };
 };
