@@ -3,35 +3,35 @@ import type { JSX, ReactNode } from "react";
 export type AnyObject = Record<string, unknown>;
 export type EmptyObject = Record<never, never>;
 export type Dict<V> = Record<string, V>;
+export type ElementTag = keyof JSX.IntrinsicElements;
+export type ElementProps<T extends ElementTag> = JSX.IntrinsicElements[T];
 
 export type PrimitiveProps<
-  T extends keyof JSX.IntrinsicElements,
+  T extends ElementTag,
   P extends AnyObject = EmptyObject,
-  O extends keyof JSX.IntrinsicElements[T] = never,
-> = P & Omit<JSX.IntrinsicElements[T], keyof P | O>;
+  O extends keyof ElementProps<T> = never,
+> = P & Omit<ElementProps<T>, keyof P | O>;
 
 type StateProp<S> = S extends undefined ? { state?: undefined } : { state: S };
 
-type RenderProps<S = undefined> = {
-  render?: S extends undefined
-    ? (props: AnyObject) => ReactNode
-    : (props: AnyObject, state: S) => ReactNode;
+type RenderProps<P, S = undefined> = {
+  render?: S extends undefined ? (props: P) => ReactNode : (props: P, state: S) => ReactNode;
 };
 
 export type PolymorphicProps<
-  T extends keyof JSX.IntrinsicElements,
+  T extends ElementTag,
   P extends AnyObject = EmptyObject,
-  O extends keyof JSX.IntrinsicElements[T] = never,
+  O extends keyof ElementProps<T> = never,
   S = undefined,
-> = RenderProps<S> & PrimitiveProps<T, P, O>;
+> = RenderProps<Omit<ElementProps<T>, keyof P | O>, S> & PrimitiveProps<T, P, O>;
 
-export const Polymorphic = <T extends keyof JSX.IntrinsicElements, S = undefined>(
-  props: { as: string } & RenderProps<S> & StateProp<S> & JSX.IntrinsicElements[T],
+export const Polymorphic = <T extends ElementTag, S = undefined>(
+  props: { as: string } & RenderProps<ElementProps<T>, S> & StateProp<S> & ElementProps<T>,
 ): ReactNode => {
   const { render, as: Tag, state, ...rest } = props;
 
   if (render) {
-    return render(rest, state as S);
+    return render(rest as unknown as ElementProps<T>, state as S);
   }
 
   return <Tag {...rest} />;

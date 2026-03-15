@@ -155,7 +155,7 @@ export const TagsInputRoot = (props: PrimitiveProps<"div", TagsInputRootProps>):
         tabIndex={tabIndex}
         style={style}
         {...rest}
-        render={(renderProps) => <div {...renderProps} ref={ref} aria-orientation={undefined} />}
+        render={(htmlProps) => <div {...htmlProps} ref={ref} aria-orientation={undefined} />}
       >
         <TagsInputRootContext value={rootContext}>
           <CompositeContext value={context}>
