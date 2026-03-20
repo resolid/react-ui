@@ -6,6 +6,7 @@
     "src/**/*",
     "env.d.ts",
     "react-router.config.ts",
+    "resolid.config.ts",
     "vite.config.ts",
     "oxlint.config.ts"
   ],
