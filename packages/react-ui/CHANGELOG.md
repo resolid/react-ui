@@ -1,5 +1,13 @@
 # @resolid/react-ui
 
+## 0.1.11
+
+### Patch Changes
+
+- refactor: tighten Polymorphic component type definitions ([`ed7d281`](https://github.com/resolid/react-ui/commit/ed7d281eb0cf6315f95495806acfad1f8eed16f7))
+
+- refactor: optimize useMove and useControllableState ([`ed8f5f6`](https://github.com/resolid/react-ui/commit/ed8f5f6bbe8377ffd94d8751f41b25ebbb43e418))
+
 ## 0.1.10
 
 ### Patch Changes
