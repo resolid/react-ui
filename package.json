@@ -12,6 +12,7 @@
     "build:packages": "pnpm run --filter @resolid/* build",
     "build:vercel": "VERCEL=1 pnpm run --filter website... build",
     "dev": "pnpm run --filter website dev",
+    "changeset": "changeset",
     "format": "oxfmt",
     "preinstall": "npx only-allow pnpm",
     "lint": "pnpm run -r --if-present lint",

@@ -25,7 +25,6 @@ export const useMove = <T extends HTMLElement = HTMLDivElement>(
   const frame = useRef(0);
   const mounted = useRef(false);
   const sliding = useRef(false);
-  const cleanup = useRef<(() => void) | null>(null);
 
   const [active, setActive] = useState(false);
 
@@ -37,15 +36,6 @@ export const useMove = <T extends HTMLElement = HTMLDivElement>(
 
   const ref = useCallback(
     (node: T | null) => {
-      if (cleanup.current) {
-        cleanup.current();
-        cleanup.current = null;
-      }
-
-      if (!node) {
-        return;
-      }
-
       const startScrubbing = () => {
         if (!sliding.current && mounted.current) {
           sliding.current = true;
@@ -125,12 +115,14 @@ export const useMove = <T extends HTMLElement = HTMLDivElement>(
         document.removeEventListener("touchend", stopScrubbing);
       };
 
-      node.addEventListener("mousedown", handleMouseDown);
-      node.addEventListener("touchstart", handleTouchStart, { passive: false });
+      node?.addEventListener("mousedown", handleMouseDown);
+      node?.addEventListener("touchstart", handleTouchStart, { passive: false });
 
-      cleanup.current = () => {
-        node.removeEventListener("mousedown", handleMouseDown);
-        node.removeEventListener("touchstart", handleTouchStart);
+      return () => {
+        if (node) {
+          node.removeEventListener("mousedown", handleMouseDown);
+          node.removeEventListener("touchstart", handleTouchStart);
+        }
       };
     },
     [direction, onChange, onScrubEnd, onScrubStart],

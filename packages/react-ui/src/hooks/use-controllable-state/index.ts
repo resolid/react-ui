@@ -15,7 +15,7 @@ export const useControllableState = <T>(
 ): readonly [T, (value: SetStateAction<T>) => void] => {
   const { value, defaultValue, onChange, shouldUpdate = defaultShouldUpdate } = options;
 
-  const [uncontrolledState, setUncontrolledState] = useState(defaultValue as T);
+  const [uncontrolledState, setUncontrolledState] = useState(() => defaultValue as T);
 
   const controlled = value !== undefined;
   const currentValue = controlled ? value : uncontrolledState;
