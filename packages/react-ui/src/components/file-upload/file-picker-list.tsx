@@ -8,7 +8,7 @@ import { FilePickerItemContext } from "./file-picker-item-context";
 export type FilePickerListProps = {
   /**
    * 方向
-   * @default "horizontal"
+   * @default "vertical"
    */
   orientation?: Orientation;
 };
@@ -25,7 +25,10 @@ export const FilePickerList = (
   }
 
   return (
-    <ul className={tx("flex gap-2", orientation ? "flex-col" : "flex-row", className)} {...rest}>
+    <ul
+      className={tx("flex gap-2", orientation == "vertical" ? "flex-col" : "flex-row", className)}
+      {...rest}
+    >
       {files.map((file) => (
         <FilePickerItemContext key={file.id} value={file}>
           {children}
