@@ -1,5 +1,13 @@
 # @resolid/react-ui
 
+## 0.1.12
+
+### Patch Changes
+
+- fix: fix FilePickerList component orientation ([`04aa104`](https://github.com/resolid/react-ui/commit/04aa104518c8b2d9140579d11e81da209d5d2133))
+
+- style: fix oxlint warnings ([`9e4b5c2`](https://github.com/resolid/react-ui/commit/9e4b5c21475acac4ab3b9eeec6714fb165036567))
+
 ## 0.1.11
 
 ### Patch Changes
