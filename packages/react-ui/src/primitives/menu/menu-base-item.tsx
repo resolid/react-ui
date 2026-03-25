@@ -29,7 +29,7 @@ export const MenuBaseItem = (
     label: label ?? (isString(children) ? children : null),
   });
 
-  const active = index !== null && index === activeIndex;
+  const active = activeIndex !== null && index === activeIndex;
 
   const refs = useMergeRefs(ref, itemRef);
 

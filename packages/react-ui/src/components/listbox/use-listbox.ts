@@ -126,13 +126,13 @@ export const useListbox = <T extends ListboxItem>(
   options: UseListboxOptions<T>,
 ): UseListboxResult<T> => {
   const {
-    disabled = false,
-    readOnly = false,
+    disabled,
+    readOnly,
     multiple = false,
     value,
     defaultValue = multiple ? [] : null,
     onChange,
-    collection = [],
+    collection,
     valueKey = "value",
     labelKey = "label",
     disabledKey = "disabled",
@@ -190,7 +190,7 @@ export const useListbox = <T extends ListboxItem>(
       }
 
       return (
-        searchFilter ||
+        searchFilter ??
         ((keyword, listItem) =>
           getItemValue(listItem).toString().toLowerCase().includes(keyword.toLowerCase()))
       )(deferredKeyword, item);
@@ -317,7 +317,7 @@ export const useListbox = <T extends ListboxItem>(
 
   const handleEnterKeydown = (e: KeyboardEvent<HTMLElement>): void => {
     if (activeIndex != null && e.key == "Enter") {
-      handleSelect(indexedItems[activeIndex]);
+      handleSelect(indexedItems[activeIndex]!);
     }
   };
 
@@ -337,7 +337,7 @@ export const useListbox = <T extends ListboxItem>(
     },
     onKeyUp: (e: KeyboardEvent<HTMLElement>): void => {
       if (activeIndex != null && e.key == " " && !typingRef.current) {
-        handleSelect(indexedItems[activeIndex]);
+        handleSelect(indexedItems[activeIndex]!);
       }
     },
   };

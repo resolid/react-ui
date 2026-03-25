@@ -1,7 +1,7 @@
 import { defineConfig, type UserConfig } from "tsdown";
 import { reactCompilerRolldownPlugin } from "./plugins/react-compiler-plugin.js";
 
-export default defineConfig({
+const config: UserConfig = defineConfig({
   entry: {
     index: "src/index.ts",
     "locales/*": ["src/locales/*.ts", "!src/locales/en-US.ts"],
@@ -14,4 +14,6 @@ export default defineConfig({
   clean: true,
   minify: "dce-only",
   plugins: [reactCompilerRolldownPlugin({ filter: /\.[jt]sx?$/ })],
-}) as UserConfig;
+});
+
+export default config;

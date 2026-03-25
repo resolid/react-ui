@@ -46,14 +46,14 @@ describe("Slider", () => {
 
     const [leftThumb, rightThumb] = getAllByRole("slider");
 
-    leftThumb.focus();
+    leftThumb!.focus();
     await user.keyboard("[ArrowRight]");
     expect(leftThumb).toHaveAttribute("aria-valuenow", "-19");
 
     await user.keyboard("[ArrowLeft]");
     expect(leftThumb).toHaveAttribute("aria-valuenow", "-20");
 
-    rightThumb.focus();
+    rightThumb!.focus();
     await user.keyboard("[ArrowRight]");
     expect(rightThumb).toHaveAttribute("aria-valuenow", "21");
 
@@ -66,7 +66,7 @@ describe("Slider", () => {
 
     const [leftThumb] = getAllByRole("slider");
 
-    leftThumb.focus();
+    leftThumb!.focus();
     await user.keyboard("[End]");
     await waitFor(() => expect(leftThumb).toHaveAttribute("aria-valuenow", "20"));
 
@@ -83,14 +83,14 @@ describe("Slider", () => {
 
     const [leftThumb, rightThumb] = getAllByRole("slider");
 
-    leftThumb.focus();
+    leftThumb!.focus();
     await user.keyboard("[ArrowRight]");
     expect(leftThumb).toHaveAttribute("aria-valuenow", "-21");
 
     await user.keyboard("[ArrowLeft]");
     expect(leftThumb).toHaveAttribute("aria-valuenow", "-20");
 
-    rightThumb.focus();
+    rightThumb!.focus();
     await user.keyboard("[ArrowRight]");
     expect(rightThumb).toHaveAttribute("aria-valuenow", "19");
 
@@ -103,14 +103,14 @@ describe("Slider", () => {
 
     const [leftThumb, rightThumb] = getAllByRole("slider");
 
-    leftThumb.focus();
+    leftThumb!.focus();
     await user.keyboard("[ArrowUp]");
     expect(leftThumb).toHaveAttribute("aria-valuenow", "-19");
 
     await user.keyboard("[ArrowDown]");
     expect(leftThumb).toHaveAttribute("aria-valuenow", "-20");
 
-    rightThumb.focus();
+    rightThumb!.focus();
     await user.keyboard("[ArrowUp]");
     expect(rightThumb).toHaveAttribute("aria-valuenow", "21");
 
@@ -134,7 +134,7 @@ describe("Slider", () => {
 
     const [leftThumb] = getAllByRole("slider");
 
-    leftThumb.focus();
+    leftThumb!.focus();
     await user.keyboard("[ArrowRight]");
 
     await waitFor(() => expect(onChange).toHaveBeenCalledTimes(1));

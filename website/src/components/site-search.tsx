@@ -27,7 +27,7 @@ export const SiteSearch = () => {
 
   const [data, setData] = useState<{ value: string; label: string; description: string }[]>();
 
-  const handleChange = debounce(async (value) => {
+  const handleChange = debounce(async (value: string | number) => {
     if (value != "") {
       const result = await fetch(`/api/search?q=${value}`);
 

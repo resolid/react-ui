@@ -89,7 +89,7 @@ export const ToastRoot = (
   };
 
   const translateStyle =
-    placementTranslateStyles[placement?.split("-")[0] as keyof typeof placementTranslateStyles];
+    placementTranslateStyles[placement.split("-")[0] as keyof typeof placementTranslateStyles];
 
   const animationProps = getPopperAnimationProps({
     status,

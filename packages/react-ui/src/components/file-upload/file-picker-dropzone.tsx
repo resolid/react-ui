@@ -22,8 +22,8 @@ export const FilePickerDropzone = (props: PrimitiveProps<"div">): JSX.Element =>
       return;
     }
 
-    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-      await addFiles(multiple ? e.dataTransfer.files : [e.dataTransfer.files[0]]);
+    if (e.dataTransfer.files.length > 0) {
+      await addFiles(multiple ? e.dataTransfer.files : [e.dataTransfer.files[0]!]);
     }
   };
 

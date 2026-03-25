@@ -4,7 +4,7 @@ import { type AnyObject, createSafeContext, type SafeContext, type UseSafeContex
 
 export type PopperTriggerContextValue = {
   setReference: (node: ReferenceType | null) => void;
-  getReferenceProps: (userProps?: HTMLProps<Element> | undefined) => AnyObject;
+  getReferenceProps: (userProps?: HTMLProps<Element>) => AnyObject;
 };
 
 const [context, hook] = createSafeContext<PopperTriggerContextValue>({

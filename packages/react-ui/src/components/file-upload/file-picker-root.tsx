@@ -65,7 +65,7 @@ export type FilePickerRootProps = FormFieldProps & {
 
 type PickerReducerBaseAction = {
   multiple: boolean;
-  onChange: (value: FileItem[] | FileItem) => void;
+  onChange: (value: FileItem[] | FileItem | null) => void;
 };
 
 type PickerReducerAction =
@@ -91,7 +91,7 @@ const reducer = (state: FileItem[], action: PickerReducerAction): FileItem[] => 
         ? [...state, ...action.payload.files]
         : action.payload.files;
 
-      action.payload.onChange?.(action.payload.multiple ? next : (next[0] ?? null));
+      action.payload.onChange(action.payload.multiple ? next : (next[0] ?? null));
 
       return next;
     }
@@ -101,7 +101,7 @@ const reducer = (state: FileItem[], action: PickerReducerAction): FileItem[] => 
       if (index > -1) {
         const next = [...state.slice(0, index), action.payload.file, ...state.slice(index + 1)];
 
-        action.payload.onChange?.(action.payload.multiple ? next : (next[0] ?? null));
+        action.payload.onChange(action.payload.multiple ? next : (next[0] ?? null));
 
         return next;
       }
@@ -118,7 +118,7 @@ const reducer = (state: FileItem[], action: PickerReducerAction): FileItem[] => 
 
         const next = [...state.slice(0, index), ...state.slice(index + 1)];
 
-        action.payload.onChange?.(action.payload.multiple ? next : (next[0] ?? null));
+        action.payload.onChange(action.payload.multiple ? next : (next[0] ?? null));
 
         return next;
       }
@@ -197,10 +197,12 @@ export const FilePickerRoot = (
   const inputRef = useRef<HTMLInputElement>(null);
 
   const onChangeCallback = useCallback(
-    (changed: FileItem[] | FileItem) => {
+    (changed: FileItem[] | FileItem | null) => {
       queueMicrotask(() => {
         if (inputRef.current) {
-          const files = convertToDataTransfer(Array.isArray(changed) ? changed : [changed]);
+          const files = convertToDataTransfer(
+            Array.isArray(changed) ? changed : changed ? [changed] : [],
+          );
 
           if (files) {
             inputRef.current.files = files;
@@ -214,7 +216,7 @@ export const FilePickerRoot = (
   );
 
   const addFiles = async (files: File[] | FileList) => {
-    if (!files || files.length === 0) {
+    if (files.length === 0) {
       return;
     }
 
@@ -229,7 +231,7 @@ export const FilePickerRoot = (
     const validFiles: LocalFileItem[] = [];
 
     for (const file of newFiles) {
-      let transformed;
+      let transformed: File;
 
       if (transformFile) {
         try {
@@ -297,12 +299,12 @@ export const FilePickerRoot = (
         },
       });
 
-      if (upload && upload.autoUpload) {
+      if (upload?.autoUpload) {
         await Promise.all(
           Array.from({ length: upload.maxParallel }, async (_, workerIndex) => {
             for (let i = workerIndex; i < validFiles.length; i += upload.maxParallel) {
               // oxlint-disable-next-line no-await-in-loop
-              await upload.uploadFile(validFiles[i], updateFile);
+              await upload.uploadFile(validFiles[i]!, updateFile);
             }
           }),
         );
@@ -335,7 +337,7 @@ export const FilePickerRoot = (
     if (upload) {
       const file = state.find((item) => item.id === id);
 
-      if (file && file.kind == "remote") {
+      if (file?.kind == "remote") {
         await upload.deleteFile(file.id);
       }
     }

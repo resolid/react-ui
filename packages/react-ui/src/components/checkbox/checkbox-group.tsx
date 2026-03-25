@@ -48,10 +48,6 @@ export const CheckboxGroup = (
   });
 
   const handleChange = (eventOrValue: ChangeEvent<HTMLInputElement> | string | number) => {
-    if (!valueState) {
-      return;
-    }
-
     const inputEvent = isInputEvent(eventOrValue);
 
     const checked = inputEvent ? eventOrValue.target.checked : !valueState.includes(eventOrValue);

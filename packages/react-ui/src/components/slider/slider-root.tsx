@@ -186,8 +186,8 @@ export const SliderRoot = (props: PrimitiveProps<"div", SliderRootProps>): JSX.E
           ? (e as MouseEvent).nativeEvent.clientY
           : (e as MouseEvent).nativeEvent.clientX
         : vertical
-          ? (e as TouchEvent).nativeEvent.touches[0].clientY
-          : (e as TouchEvent).nativeEvent.touches[0].clientX;
+          ? (e as TouchEvent).nativeEvent.touches[0]!.clientY
+          : (e as TouchEvent).nativeEvent.touches[0]!.clientX;
 
     const clientSize = vertical ? rect.height : rect.width;
     const offset = clientPos - (vertical ? rect.top : rect.left);
@@ -218,8 +218,8 @@ export const SliderRoot = (props: PrimitiveProps<"div", SliderRootProps>): JSX.E
 
   const thumbOffsets = Array.isArray(position)
     ? [
-        getOffset(thumbHalf, computeOffset(position[0]), directionValue),
-        getOffset(thumbHalf, computeOffset(position[1]), directionValue),
+        getOffset(thumbHalf, computeOffset(position[0]!), directionValue),
+        getOffset(thumbHalf, computeOffset(position[1]!), directionValue),
       ]
     : [getOffset(thumbHalf, computeOffset(position), directionValue), 0];
 
@@ -229,8 +229,8 @@ export const SliderRoot = (props: PrimitiveProps<"div", SliderRootProps>): JSX.E
 
   const style = {
     "--s-root-s": vertical ? sizeStyle.width : sizeStyle.heigh,
-    "--s-track-s": Array.isArray(position) ? `${position[0]}%` : "0%",
-    "--s-track-e": Array.isArray(position) ? `${100 - position[1]}%` : `${100 - position}%`,
+    "--s-track-s": Array.isArray(position) ? `${position[0]!}%` : "0%",
+    "--s-track-e": Array.isArray(position) ? `${100 - position[1]!}%` : `${100 - position}%`,
     "--s-thumb-w": `${resolvedThumbSize.width}px`,
     "--s-thumb-h": `${resolvedThumbSize.height}px`,
     "--s-thumb-s0": thumbStarts[0],

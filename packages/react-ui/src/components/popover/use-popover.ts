@@ -118,7 +118,7 @@ export const usePopover = ({
   };
 
   const anchorContext: PopperAnchorContextValue = {
-    setPositionReference: refs.setPositionReference,
+    setPositionReference: (node) => refs.setPositionReference(node),
   };
 
   const floatingContext: PopperFloatingContextValue = {
@@ -153,7 +153,7 @@ export const usePopover = ({
 
   return {
     setOpen: (opened: boolean) => context.onOpenChange(opened),
-    setPosition: refs.setPositionReference,
+    setPosition: (node) => refs.setPositionReference(node),
     floatingElement: context.elements.floating,
     ariaContext,
     arrowContext,

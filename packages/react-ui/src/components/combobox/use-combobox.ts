@@ -205,7 +205,6 @@ export const useCombobox = <T extends ListboxItem>({
     getReferenceProps: (props) => {
       const { onKeyDown, onInput, ...rest } = props as HTMLProps<HTMLElement | HTMLInputElement>;
 
-      // noinspection JSUnusedGlobalSymbols
       return getReferenceProps(
         getNavigationProps({
           onKeyDown: (e: KeyboardEvent<HTMLElement>) => {
@@ -233,7 +232,7 @@ export const useCombobox = <T extends ListboxItem>({
   return {
     open: openState,
     setOpen: (opened) => context.onOpenChange(opened),
-    setPosition: context.refs.setPositionReference,
+    setPosition: (node) => context.refs.setPositionReference(node),
     floatingElement: context.elements.floating,
     rootContext: { rootContext: context },
     stateContext: { required, invalid },
@@ -242,7 +241,9 @@ export const useCombobox = <T extends ListboxItem>({
     inputContext: { inputRef, inputValue, name },
     popperStateContext: { open: openState },
     popperTriggerContext: referenceContext,
-    popperAnchorContext: { setPositionReference: context.refs.setPositionReference },
+    popperAnchorContext: {
+      setPositionReference: (node) => context.refs.setPositionReference(node),
+    },
     listboxProviderValue: {
       selectedIndices,
       selectedIndex,

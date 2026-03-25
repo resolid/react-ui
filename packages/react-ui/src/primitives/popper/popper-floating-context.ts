@@ -3,7 +3,7 @@ import { type AnyObject, createSafeContext, type SafeContext, type UseSafeContex
 
 export type PopperFloatingContextValue = {
   setFloating?: (node: HTMLElement | null) => void;
-  getFloatingProps: (userProps?: HTMLProps<HTMLElement> | undefined) => AnyObject;
+  getFloatingProps: (userProps?: HTMLProps<HTMLElement>) => AnyObject;
 };
 
 const [context, hook] = createSafeContext<PopperFloatingContextValue>({

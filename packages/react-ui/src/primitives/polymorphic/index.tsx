@@ -14,8 +14,10 @@ export type PrimitiveProps<
 
 type StateProp<S> = S extends undefined ? { state?: undefined } : { state: S };
 
-type RenderProps<P, S = undefined> = {
-  render?: S extends undefined ? (props: P) => ReactNode : (props: P, state: S) => ReactNode;
+type RenderProps<S = undefined> = {
+  render?: S extends undefined
+    ? (props: AnyObject) => ReactNode
+    : (props: AnyObject, state: S) => ReactNode;
 };
 
 export type PolymorphicProps<
@@ -23,15 +25,15 @@ export type PolymorphicProps<
   P extends AnyObject = EmptyObject,
   O extends keyof ElementProps<T> = never,
   S = undefined,
-> = RenderProps<Omit<ElementProps<T>, keyof P | O>, S> & PrimitiveProps<T, P, O>;
+> = RenderProps<S> & PrimitiveProps<T, P, O>;
 
 export const Polymorphic = <T extends ElementTag, S = undefined>(
-  props: { as: string } & RenderProps<ElementProps<T>, S> & StateProp<S> & ElementProps<T>,
+  props: { as: string } & RenderProps<S> & StateProp<S> & ElementProps<T>,
 ): ReactNode => {
   const { render, as: Tag, state, ...rest } = props;
 
   if (render) {
-    return render(rest as unknown as ElementProps<T>, state as S);
+    return render(rest, state as S);
   }
 
   return <Tag {...rest} />;

@@ -38,9 +38,9 @@ export const MdxCodeDemo = (props: {
   const [state, setState] = useState<Dict<string | boolean | number | undefined>>(
     Object.fromEntries(
       validProps.map(({ name, defaultValue }) => {
-        const value = props.settingProps[name]
-          ? props.settingProps[name]
-          : defaultValue && /^[+-]?(\d+\.?\d*|\.\d+)([eE][+-]?\d+)?$/.test(defaultValue)
+        const value =
+          props.settingProps[name] ??
+          (defaultValue && /^[+-]?(\d+\.?\d*|\.\d+)([eE][+-]?\d+)?$/.test(defaultValue)
             ? defaultValue
             : defaultValue == "Number.MIN_SAFE_INTEGER" || defaultValue == "Number.MAX_SAFE_INTEGER"
               ? undefined
@@ -48,7 +48,7 @@ export const MdxCodeDemo = (props: {
                 ? defaultValue == "true"
                 : defaultValue
                   ? defaultValue.slice(1, -1)
-                  : undefined;
+                  : undefined);
 
         return [name, value];
       }),

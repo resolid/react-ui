@@ -98,7 +98,7 @@ export const MdxPropsTable = ({ componentProps }: { componentProps: PropItem[] }
               <span className="me-3 inline-block w-15 bg-bg-subtle p-2 text-sm font-bold md:hidden">
                 默认值
               </span>
-              <span>{prop.defaultValue || "-"}</span>
+              <span>{prop.defaultValue ?? "-"}</span>
             </td>
             <td className="block w-full whitespace-nowrap md:table-cell md:w-auto md:p-2 md:text-center">
               <span className="me-3 inline-block w-15 bg-bg-subtle p-2 text-sm font-bold md:hidden">

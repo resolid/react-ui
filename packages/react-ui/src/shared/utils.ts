@@ -1,9 +1,7 @@
 import type { CSSProperties, KeyboardEvent, MouseEvent, RefObject } from "react";
 import { isNumber } from "@resolid/utils";
 
-export type Radius = number | keyof typeof RadiusStyles;
-
-const RadiusStyles = {
+const radiusStyles = {
   none: "",
   xs: "rounded-xs",
   sm: "rounded-sm",
@@ -11,7 +9,9 @@ const RadiusStyles = {
   lg: "rounded-lg",
   xl: "rounded-xl",
   full: "rounded-full",
-};
+} as const;
+
+export type Radius = number | keyof typeof radiusStyles;
 
 export const getRadiusStyleAndClass = (
   radius: Radius,
@@ -23,7 +23,7 @@ export const getRadiusStyleAndClass = (
     isNumber(radius) && radius > 0 ? ({ "--rv": `${radius}px` } as CSSProperties) : undefined;
   const radiusClass = radiusStyle
     ? "rounded-(--rv)"
-    : (RadiusStyles[radius as keyof typeof RadiusStyles] ?? "");
+    : radiusStyles[radius as keyof typeof radiusStyles];
 
   return { radiusStyle, radiusClass };
 };

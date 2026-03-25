@@ -6,7 +6,7 @@ export type MenuItemContextValue = {
   menuEvents: FloatingEvents;
   closeOnSelect: boolean;
   activeIndex: number | null;
-  getItemProps: (userProps?: HTMLProps<HTMLElement> | undefined) => AnyObject;
+  getItemProps: (userProps?: HTMLProps<HTMLElement>) => AnyObject;
   typingRef: RefObject<boolean>;
 };
 

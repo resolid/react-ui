@@ -73,9 +73,12 @@ function configureAxe(
     return new Promise<AxeResults>((resolve) => {
       run(element, options, (err, results) => {
         restore();
+
+        // oxlint-disable-next-line typescript/no-unnecessary-condition
         if (err) {
           throw err;
         }
+
         resolve(results);
       });
     });
@@ -149,7 +152,7 @@ function replaceTrailingSpaces(text: string): string {
 }
 
 function filterViolations(violations: Result[], impactLevels: ImpactValue[]) {
-  if (impactLevels && impactLevels.length > 0) {
+  if (impactLevels.length > 0) {
     return violations.filter((v) => impactLevels.includes(v.impact!));
   }
 
@@ -232,9 +235,8 @@ function toHaveNoViolations(results: AxeResults): NoViolationsMatcherResult {
 
   const violations = filterViolations(
     results.violations,
-    // oxlint-disable-next-line typescript/ban-ts-comment
-    // @ts-expect-error
-    results.toolOptions?.impactLevels ?? [],
+    // @ts-expect-error impactLevels
+    results.toolOptions.impactLevels ?? [],
   );
 
   function reporter(violations: Result[]) {
@@ -281,7 +283,7 @@ function toHaveNoViolations(results: AxeResults): NoViolationsMatcherResult {
 
     return `${matcherHint(".toHaveNoViolations")}
 
-${formatedViolations}`;
+${formatedViolations as string}`;
   }
 
   return { actual: violations, message, pass };

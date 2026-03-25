@@ -58,7 +58,7 @@ export default function remarkDocgen({ sourceRoot }) {
         let code = node.value;
 
         const demoId = `_${pageName}_${demoIndex++}`;
-        const demoName = `D_${demoId.replace("-", "_")}`;
+        const demoName = `D_${demoId.replaceAll("-", "_")}`;
         const virtualModulePath = join(componentDemosDir, `${demoId}.tsx`);
 
         demoMdx.push({
@@ -80,7 +80,7 @@ export default function remarkDocgen({ sourceRoot }) {
                   source: {
                     type: "Literal",
                     value: virtualModulePath,
-                    raw: `${JSON.stringify(virtualModulePath)}`,
+                    raw: JSON.stringify(virtualModulePath),
                   },
                 },
               ],
@@ -251,7 +251,7 @@ export default function remarkDocgen({ sourceRoot }) {
       }
 
       if (node.type === "leafDirective") {
-        const componentFile = node.attributes["file"];
+        const componentFile = node.attributes.file;
 
         if (!componentFile) {
           return;
@@ -356,7 +356,7 @@ const componentPropsSorts = [
 
 const getComponentPropsData = (componentFile, sourceRoot, virtualDir) => {
   const sourceFile = join(sourceRoot, componentFile);
-  const componentName = (parse(componentFile).name.match(/[a-zA-Z0-9]+/g) || [])
+  const componentName = (parse(componentFile).name.match(/[a-zA-Z0-9]+/g) ?? [])
     .map((w) => `${w.charAt(0).toUpperCase()}${w.slice(1)}`)
     .join("");
 
@@ -401,7 +401,7 @@ const getComponentPropsData = (componentFile, sourceRoot, virtualDir) => {
               source: {
                 type: "Literal",
                 value: componentPropsFile,
-                raw: `${JSON.stringify(componentPropsFile)}`,
+                raw: JSON.stringify(componentPropsFile),
               },
             },
           ],

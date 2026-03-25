@@ -1,8 +1,8 @@
 import type { Plugin } from "rolldown";
 
-export interface ReactCompilerRolldownPluginOptions {
+export type ReactCompilerRolldownPluginOptions = {
   filter: RegExp | RegExp[];
-}
+};
 
 export declare function reactCompilerRolldownPlugin(
   options: ReactCompilerRolldownPluginOptions,

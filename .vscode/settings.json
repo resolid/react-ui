@@ -1,6 +1,8 @@
 {
   "editor.defaultFormatter": "oxc.oxc-vscode",
   "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
+  "oxc.typeAware": true,
   "files.associations": {
     "*.css": "tailwindcss"
   },
@@ -43,5 +45,7 @@
     ".turbo",
     ".vercel",
     ".resolid"
-  ]
+  ],
+  "js/ts.implicitProjectConfig.target": "ES2022",
+  "js/ts.tsdk.promptToUseWorkspaceVersion": true
 }

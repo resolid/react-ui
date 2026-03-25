@@ -70,7 +70,7 @@ const checkOverflowScroll = (element: Element): boolean => {
     return true;
   }
 
-  const parent = element.parentNode as Element;
+  const parent = element.parentNode as Element | null;
 
   if (!parent || parent.tagName === "BODY") {
     return false;
@@ -127,7 +127,7 @@ export const usePreventScroll = (options: UsePreventScrollOptions): void => {
               return;
             }
 
-            if (e.preventDefault && e.cancelable) {
+            if (e.cancelable) {
               e.preventDefault();
             }
           };

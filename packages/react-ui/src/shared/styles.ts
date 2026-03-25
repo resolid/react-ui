@@ -134,7 +134,6 @@ export type AlertAndBadgeShareStyles = TvReturnType<
   undefined,
   undefined,
   AlertAndBadgeVariants,
-  undefined,
   undefined
 >;
 

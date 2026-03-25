@@ -36,7 +36,7 @@ describe("Listbox", () => {
 
     const options = getAllByRole("option");
 
-    await userEvent.click(options[0]);
+    await userEvent.click(options[0]!);
 
     expect(document.activeElement).toBe(options[0]);
 
@@ -55,7 +55,7 @@ describe("Listbox", () => {
 
     const options = getAllByRole("option");
 
-    await userEvent.click(options[1]);
+    await userEvent.click(options[1]!);
 
     expect(handleChange).toHaveBeenCalledWith("2");
   });
@@ -66,7 +66,7 @@ describe("Listbox", () => {
 
     const options = getAllByRole("option");
 
-    await userEvent.click(options[2]);
+    await userEvent.click(options[2]!);
 
     expect(handleChange).not.toHaveBeenCalled();
   });

@@ -31,7 +31,7 @@ export const Indicator = (
       ? itemElement.offsetTop - parseFloat(listStyle.paddingTop)
       : direction == "rtl"
         ? -1 *
-            ((itemElement.offsetParent as HTMLElement)?.offsetWidth -
+            ((itemElement.offsetParent as HTMLElement).offsetWidth -
               itemElement.offsetWidth -
               itemElement.offsetLeft) +
           parseFloat(listStyle.paddingLeft)

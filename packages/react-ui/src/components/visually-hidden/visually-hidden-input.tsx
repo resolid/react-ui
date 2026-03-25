@@ -3,7 +3,7 @@ import type { PrimitiveProps } from "../../primitives";
 
 export type VisuallyHiddenInputProps<T> = {
   name: string;
-  value: T | T[] | null;
+  value: T | T[] | undefined | null;
   getValue?: (value: T) => string | number;
   checked?: boolean;
   required?: boolean;

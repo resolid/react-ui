@@ -32,7 +32,7 @@ export const useMove = <T extends HTMLElement = HTMLDivElement>(
     mounted.current = true;
   }, []);
 
-  const { onScrubStart, onScrubEnd } = handlers || {};
+  const { onScrubStart, onScrubEnd } = handlers ?? {};
 
   const ref = useCallback(
     (node: T | null) => {
@@ -89,7 +89,7 @@ export const useMove = <T extends HTMLElement = HTMLDivElement>(
           event.preventDefault();
         }
 
-        handleScrub({ x: event.changedTouches[0].clientX, y: event.changedTouches[0].clientY });
+        handleScrub({ x: event.changedTouches[0]!.clientX, y: event.changedTouches[0]!.clientY });
       };
 
       const handleTouchStart = (event: TouchEvent) => {

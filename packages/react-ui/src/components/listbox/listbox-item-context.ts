@@ -10,7 +10,7 @@ import {
 export type ListboxItemContextValue = {
   activeIndex: number | null;
   selectedIndices: number[];
-  getItemProps: (userProps?: HTMLProps<HTMLElement> | undefined) => AnyObject;
+  getItemProps: (userProps?: HTMLProps<HTMLElement>) => AnyObject;
   elementsRef: RefObject<(HTMLDivElement | null)[]>;
   typingRef: RefObject<boolean>;
   focusItemOnOpen?: boolean;

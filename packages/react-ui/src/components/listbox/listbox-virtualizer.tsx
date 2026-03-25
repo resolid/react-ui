@@ -84,7 +84,7 @@ export const ListboxVirtualizer = ({
 
   const { flatItems, groupLabelIndices, groupIndices } = useMemo(() => {
     const items: ListboxFlatItem[] = [];
-    const labelIndices = new Set<number>();
+    const labelIndices: Set<number> = new Set();
     const indices: number[] = [];
 
     let itemIndex = 0;

@@ -6,8 +6,8 @@ type MediaQueryList = {
   readonly matches: boolean;
   readonly media: string;
   onchange: MediaQueryListener | null;
-  addEventListener: (type: "change", listener: MediaQueryListener) => void;
-  removeEventListener: (type: "change", listener: MediaQueryListener) => void;
+  addEventListener: (type: string, listener: MediaQueryListener) => void;
+  removeEventListener: (type: string, listener: MediaQueryListener) => void;
   dispatchEvent: (event: Event) => boolean;
 };
 
@@ -55,16 +55,16 @@ class MatchMediaMock {
   }
 
   private addListener(mediaQuery: string, listener: MediaQueryListener): void {
-    if (!this.mediaQueries[mediaQuery]) {
-      this.mediaQueries[mediaQuery] = [];
-    }
+    this.mediaQueries[mediaQuery] ??= [];
 
     const query = this.mediaQueries[mediaQuery];
+
     const listenerIndex = query.indexOf(listener);
 
     if (listenerIndex !== -1) {
       return;
     }
+
     query.push(listener);
   }
 
@@ -74,11 +74,13 @@ class MatchMediaMock {
     }
 
     const query = this.mediaQueries[mediaQuery];
+
     const listenerIndex = query.indexOf(listener);
 
     if (listenerIndex === -1) {
       return;
     }
+
     query.splice(listenerIndex, 1);
   }
 
@@ -99,12 +101,10 @@ class MatchMediaMock {
     }
   }
 
-  // noinspection JSUnusedGlobalSymbols
   public getMediaQueries(): string[] {
     return Object.keys(this.mediaQueries);
   }
 
-  // noinspection JSUnusedGlobalSymbols
   public getListeners(mediaQuery: string): MediaQueryListener[] {
     if (!this.mediaQueries[mediaQuery]) {
       return [];
@@ -117,7 +117,6 @@ class MatchMediaMock {
     this.mediaQueries = {};
   }
 
-  // noinspection JSUnusedGlobalSymbols
   public destroy(): void {
     this.clear();
     // @ts-expect-error type

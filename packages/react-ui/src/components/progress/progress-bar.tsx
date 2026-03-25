@@ -17,7 +17,7 @@ export const ProgressBar = (
   props: PrimitiveProps<"div", ProgressBarProps, "children">,
 ): JSX.Element => {
   const {
-    percent = 0,
+    percent,
     size = "md",
     color = "primary",
     radius = "full",

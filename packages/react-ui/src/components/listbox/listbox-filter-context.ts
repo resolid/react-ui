@@ -9,7 +9,7 @@ import {
 export type ListboxFilterContextValue = {
   filterInputRef: RefObject<HTMLInputElement | null>;
   setFilterKeyword: Dispatch<SetStateAction<string | undefined>>;
-  getNavigationProps: (userProps?: HTMLProps<HTMLElement> | undefined) => AnyObject;
+  getNavigationProps: (userProps?: HTMLProps<HTMLElement>) => AnyObject;
 };
 
 const [context, hook] = createSafeContext<ListboxFilterContextValue>({

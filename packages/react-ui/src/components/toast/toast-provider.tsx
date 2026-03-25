@@ -57,7 +57,7 @@ const reducer = (state: ToastState, action: ToastAction) => {
           ...state[placement].slice(0, index),
           {
             id,
-            duration: duration !== undefined ? duration : state[placement][index].duration,
+            duration: duration ?? state[placement][index]!.duration,
             component: () => component,
             update: true,
             dismiss: false,

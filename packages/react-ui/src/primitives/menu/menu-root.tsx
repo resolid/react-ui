@@ -203,7 +203,7 @@ const MenuTree = (props: PropsWithChildren<MenuRootProps>) => {
   };
 
   const anchorContext: PopperAnchorContextValue = {
-    setPositionReference: refs.setPositionReference,
+    setPositionReference: (node) => refs.setPositionReference(node),
   };
 
   const menuEvents = useFloatingTree()!.events;

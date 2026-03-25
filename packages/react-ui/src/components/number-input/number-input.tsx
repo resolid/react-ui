@@ -31,8 +31,7 @@ export type NumberInputProps = Omit<
     step?: number;
 
     /**
-     * 小数精度
-     * @default 0
+     * 小数精度, 默认跟随 step 小数精度
      */
     precision?: number;
 
@@ -93,7 +92,7 @@ export const NumberInput = (
   const minValue = isNumber(min) ? min : Number.MIN_SAFE_INTEGER;
   const maxValue = isNumber(max) ? max : Number.MAX_SAFE_INTEGER;
   const stepValue = Number.parseFloat(step.toString());
-  const precisionValue = precision ?? step.toString().split(".")[1]?.length ?? 0;
+  const precisionValue = precision ?? getDecimalPrecisionLength(step);
 
   const [valueState, setValueState] = useControllableState<number | undefined>({
     value,
@@ -161,7 +160,6 @@ export const NumberInput = (
     }
 
     if (
-      event.key != null &&
       event.key.length == 1 &&
       !(event.ctrlKey || event.altKey || event.metaKey) &&
       !/^[Ee0-9+\-.]$/.test(event.key)
@@ -298,3 +296,9 @@ export const NumberInput = (
     />
   );
 };
+
+function getDecimalPrecisionLength(n: number) {
+  const split = n.toString().split(".");
+
+  return split[1] ? split[1].length : 0;
+}

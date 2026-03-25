@@ -170,7 +170,7 @@ const contentBuild = async ({ root, contentDir, watch }) => {
       if (event === "addDir" || event === "unlinkDir") {
         return;
       }
-      if (filename == null || typeof filename !== "string") {
+      if (typeof filename !== "string") {
         return;
       }
 

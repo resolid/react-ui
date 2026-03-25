@@ -1,3 +1,3 @@
 export * from "./context";
-export * from "./locale";
+export type * from "./locale";
 export * from "./polymorphic";

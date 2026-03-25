@@ -10,13 +10,7 @@ export const MdxCodeGroup = ({
   const tabs = useMemo(
     () =>
       Children.map(children, (child) => {
-        if (
-          !isValidElement(child) ||
-          !child.props ||
-          !child.props.children ||
-          !child.props.children.props ||
-          !child.props.children.props.codeGroup
-        ) {
+        if (!isValidElement(child) || !child.props.children.props.codeGroup) {
           return false;
         }
 
@@ -24,11 +18,11 @@ export const MdxCodeGroup = ({
           name: child.props.children.props.codeGroup,
           node: child,
         };
-      })?.filter(Boolean),
+      }).filter(Boolean),
     [children],
   );
 
-  if (!tabs || tabs.length == 0) {
+  if (tabs.length == 0) {
     return children;
   }
 

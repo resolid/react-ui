@@ -245,7 +245,7 @@ export const SelectRoot = <T extends ListboxItem>(
               ))}
             </div>
           ) : (
-            <div className={inputItemSizeStyles[size]}>{renderValueFn(selectedItems[0])}</div>
+            <div className={inputItemSizeStyles[size]}>{renderValueFn(selectedItems[0]!)}</div>
           )
         ) : (
           <div className={tx("text-fg-placeholder", inputItemSizeStyles[size])}>{placeholder}</div>

@@ -24,8 +24,8 @@ export const ListboxItem = (
     item,
     size,
     disabled: disabledProps,
-    readOnly = false,
-    checkmark = true,
+    readOnly,
+    checkmark,
     ref,
     className,
     ...rest

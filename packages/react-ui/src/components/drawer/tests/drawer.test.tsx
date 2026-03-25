@@ -59,7 +59,7 @@ describe("Drawer", () => {
     expect(onOpenChange).toHaveBeenCalledTimes(1);
   });
 
-  it("should be fully controlled (true)", async () => {
+  it("should be fully controlled drawer (true)", async () => {
     render(<ComponentUnderTest open />);
 
     expect(screen.queryByRole("button", { name: "Close" })).toBeVisible();
@@ -68,7 +68,7 @@ describe("Drawer", () => {
     expect(screen.queryByRole("button", { name: "Close" })).toBeVisible();
   });
 
-  it("should be fully controlled (false)", async () => {
+  it("should be fully controlled drawer (false)", async () => {
     render(<ComponentUnderTest open={false} />);
 
     expect(screen.queryByRole("button", { name: "Close" })).not.toBeInTheDocument();

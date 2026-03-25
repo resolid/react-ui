@@ -18,7 +18,7 @@ export const MdxCode = (
     );
   }
 
-  const preRef = (node: HTMLPreElement) => {
+  const preRef = (node: HTMLPreElement | null) => {
     if (node) {
       setContent(node.innerText);
     }

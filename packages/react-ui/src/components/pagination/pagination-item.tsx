@@ -78,17 +78,16 @@ export const PaginationItem = (
       onClick={handleClick}
       {...rest}
     >
-      {children ? (
-        children
-      ) : pageType == "previous" ? (
-        <AngleLeftIcon />
-      ) : pageType == "next" ? (
-        <AngleRightIcon />
-      ) : pageType == "end-ellipsis" || pageType == "start-ellipsis" ? (
-        "..."
-      ) : (
-        page
-      )}
+      {children ??
+        (pageType == "previous" ? (
+          <AngleLeftIcon />
+        ) : pageType == "next" ? (
+          <AngleRightIcon />
+        ) : pageType == "end-ellipsis" || pageType == "start-ellipsis" ? (
+          "..."
+        ) : (
+          page
+        ))}
     </Polymorphic>
   );
 };

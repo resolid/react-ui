@@ -42,32 +42,33 @@ const openProject = async (name: string, code: string) => {
   inputs.push(
     createHiddenInput(
       "project[files][package.json]",
-      sandbox["../assets/sandbox/package.txt"]
+      // oxlint-disable-next-line no-template-curly-in-string
+      sandbox["../assets/sandbox/package.txt"]!.replaceAll("${filename}", filename).replaceAll(
         // oxlint-disable-next-line no-template-curly-in-string
-        .replaceAll("${filename}", filename)
-        // oxlint-disable-next-line no-template-curly-in-string
-        .replaceAll("${commitSha}", commitSha),
+        "${commitSha}",
+        commitSha,
+      ),
     ),
   );
 
   inputs.push(
-    createHiddenInput("project[files][tsconfig.json]", sandbox["../assets/sandbox/tsconfig.txt"]),
+    createHiddenInput("project[files][tsconfig.json]", sandbox["../assets/sandbox/tsconfig.txt"]!),
   );
 
   inputs.push(
-    createHiddenInput("project[files][vite.config.ts]", sandbox["../assets/sandbox/vite.txt"]),
+    createHiddenInput("project[files][vite.config.ts]", sandbox["../assets/sandbox/vite.txt"]!),
   );
 
   inputs.push(
     createHiddenInput(
       "project[files][index.html]",
       // oxlint-disable-next-line no-template-curly-in-string
-      sandbox["../assets/sandbox/index.txt"].replaceAll("${name}", name),
+      sandbox["../assets/sandbox/index.txt"]!.replaceAll("${name}", name),
     ),
   );
 
   inputs.push(
-    createHiddenInput("project[files][src/root.tsx]", sandbox["../assets/sandbox/root.txt"]),
+    createHiddenInput("project[files][src/root.tsx]", sandbox["../assets/sandbox/root.txt"]!),
   );
 
   inputs.push(createHiddenInput("project[files][src/app.tsx]", code));
@@ -75,14 +76,14 @@ const openProject = async (name: string, code: string) => {
   inputs.push(
     createHiddenInput(
       "project[files][src/assets/icons/sprite.svg]",
-      sandbox["../assets/icons/sprite.svg"],
+      sandbox["../assets/icons/sprite.svg"]!,
     ),
   );
 
   inputs.push(
     createHiddenInput(
       "project[files][src/components/sprite-icon.tsx]",
-      sandbox["./sprite-icon.tsx"],
+      sandbox["./sprite-icon.tsx"]!,
     ),
   );
 

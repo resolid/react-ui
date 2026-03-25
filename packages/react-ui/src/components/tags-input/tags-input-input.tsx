@@ -91,10 +91,6 @@ export const TagsInputInput = (
 
     e.preventDefault();
 
-    if (!e.clipboardData) {
-      return;
-    }
-
     const text = e.clipboardData.getData("text").trim();
 
     if (!text) {

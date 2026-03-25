@@ -1,5 +1,5 @@
 {
-  "extends": "@resolid/config/tsconfig/react.json",
+  "extends": ["@resolid/config/tsconfig/react.json", "@resolid/config/tsconfig/lib.json"],
   "include": [
     "src/**/*",
     "plugins/*",
@@ -7,10 +7,5 @@
     "vitest.config.ts",
     "vitest.setup.ts",
     "oxlint.config.ts"
-  ],
-  "compilerOptions": {
-    "allowJs": false,
-    "declaration": true,
-    "isolatedDeclarations": true
-  }
+  ]
 }

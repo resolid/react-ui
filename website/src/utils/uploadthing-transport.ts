@@ -41,14 +41,12 @@ export const uploadthingTransport: UploadTransport = {
       const xhr = new XMLHttpRequest();
       xhr.open("PUT", signUrl);
 
-      if (xhr.upload && onProgress) {
-        xhr.upload.onprogress = (event) => {
-          if (event.lengthComputable) {
-            const percent = (event.loaded / event.total) * 100;
-            onProgress(percent);
-          }
-        };
-      }
+      xhr.upload.onprogress = (event) => {
+        if (event.lengthComputable) {
+          const percent = (event.loaded / event.total) * 100;
+          onProgress(percent);
+        }
+      };
 
       xhr.onload = () => {
         if (xhr.status >= 200 && xhr.status < 300) {

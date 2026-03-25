@@ -29,9 +29,9 @@ export const TabsPanel = (
     <div
       id={panelId}
       role="tabpanel"
-      tabIndex={tabIndex ?? (selected ? 0 : -1)}
+      tabIndex={tabIndex ?? 0}
       aria-labelledby={tabId}
-      className={tx(selected ? "block" : "hidden", className)}
+      className={tx("block", className)}
       {...rest}
     >
       {children}

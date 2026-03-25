@@ -118,7 +118,7 @@ export const useTooltip = ({
   };
 
   const anchorContext: PopperAnchorContextValue = {
-    setPositionReference: refs.setPositionReference,
+    setPositionReference: (node) => refs.setPositionReference(node),
   };
 
   const floatingContext: PopperFloatingContextValue = {
@@ -147,7 +147,7 @@ export const useTooltip = ({
 
   return {
     setOpen: (opened) => context.onOpenChange(opened),
-    setPosition: refs.setPositionReference,
+    setPosition: (node) => refs.setPositionReference(node),
     floatingElement: context.elements.floating,
     stateContext,
     arrowContext,

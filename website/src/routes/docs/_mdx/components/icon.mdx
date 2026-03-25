@@ -12,7 +12,7 @@ description: 在 React 中管理图标的“最佳”方法
 1. 图像 + SVG
 
 ```html
-<img src="icon.svg" />
+<img src="icon.svg" alt="Icon" />
 ```
 
 2. 内联 SVG
@@ -69,7 +69,7 @@ const Icon = (
 
 ```html
 <!-- sprite.svg -->
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg xmlns="http://www.w3.org/2000/svg">
   <defs>
     <symbol viewBox="0 0 24 24" id="icon-1">
       <path
@@ -88,7 +88,7 @@ const Icon = (
 您可以继续将所有图标定义为该文件中的符号（尽管要注意文件大小，即保持在 125kb 以下）。接下来，我们将创建一个引用我们的精灵的 React 组件。
 
 ```jsx
-import { render } from "react-dom";
+import { createRoot } from "react-dom/client";
 
 // keep a list of the icon ids we put in the symbol
 const icons = ["icon-1", "icon-2"];
@@ -113,8 +113,8 @@ function App() {
   );
 }
 
-const rootElement = document.getElementById("root");
-render(<App />, rootElement);
+const root = createRoot(document.getElementById("app"));
+root.render(<App />);
 ```
 
 ### 使用元素
@@ -129,7 +129,7 @@ render(<App />, rootElement);
 
 ```html
 <head>
-  <link rel="preload" as="image/svg+xml" href="sprite.svg" />
+  <link rel="preload" as="image" href="sprite.svg" />
 </head>
 ```
 

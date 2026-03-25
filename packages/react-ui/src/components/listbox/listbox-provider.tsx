@@ -36,8 +36,8 @@ export type ListboxProviderProps<T extends ListboxItem> = {
     PopperFloatingContextValue & {
       renderItem?: ListboxBaseProps<T>["renderItem"];
       renderGroupLabel?: ListboxBaseProps<T>["renderGroupLabel"];
-      getItemProps: (userProps?: HTMLProps<HTMLElement> | undefined) => AnyObject;
-      getNavigationProps: (userProps?: HTMLProps<HTMLElement> | undefined) => AnyObject;
+      getItemProps: (userProps?: HTMLProps<HTMLElement>) => AnyObject;
+      getNavigationProps: (userProps?: HTMLProps<HTMLElement>) => AnyObject;
       virtual?: boolean;
       focusItemOnOpen?: boolean;
       open: boolean;
@@ -140,8 +140,7 @@ export const ListboxProvider = <T extends ListboxItem>(
               : null;
 
         if (item) {
-          const offsetHeight = elementsRef.current[prev]?.offsetHeight || 0;
-
+          const offsetHeight = elementsRef.current[prev]?.offsetHeight ?? 0;
           const scrollHeight = floating.offsetHeight;
           const top = item.offsetTop - offsetHeight;
           const bottom = top + offsetHeight * 3;

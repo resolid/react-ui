@@ -1,8 +1,10 @@
 import { defineConfig, type ViteUserConfig } from "vitest/config";
 
-export default defineConfig({
+const config: ViteUserConfig = defineConfig({
   test: {
     environment: "jsdom",
     setupFiles: "./vitest.setup.ts",
   },
-}) as ViteUserConfig;
+});
+
+export default config;

@@ -146,7 +146,7 @@ describe("Menu", () => {
     const [firstItem, ...otherItems] = screen.getAllByRole("menuitem");
 
     await waitFor(() => {
-      expect(firstItem.tabIndex).to.equal(0);
+      expect(firstItem!.tabIndex).to.equal(0);
     });
 
     otherItems.forEach((item) => {

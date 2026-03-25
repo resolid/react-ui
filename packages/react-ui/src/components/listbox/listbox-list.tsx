@@ -23,7 +23,7 @@ export const ListboxList = ({ checkmark = true }: ListboxListProps): JSX.Element
     const setSize = virtual.flatItems.length;
 
     return virtual.virtualItems.map((row) => {
-      const item = virtual.flatItems[row.index];
+      const item = virtual.flatItems[row.index]!;
 
       const style = {
         position: "absolute",

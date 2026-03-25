@@ -1,3 +1,4 @@
 @variant active (&:is(:active, [data-active]));
 @variant disabled (&:is(:disabled, [aria-disabled="true"]));
 @variant open (&:is([open], :popover-open, :open, [data-open]));
+@variant selected (&[aria-selected="true"]);

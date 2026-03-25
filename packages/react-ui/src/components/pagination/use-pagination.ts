@@ -78,7 +78,7 @@ export const usePagination = (
 
   const [currentPage, setCurrentPage] = useControllableState<number>({
     value: page,
-    defaultValue: isString(defaultPage) ? parseInt(defaultPage) : defaultPage || 1,
+    defaultValue: isString(defaultPage) ? parseInt(defaultPage) : (defaultPage ?? 1),
     onChange,
   });
 
@@ -94,7 +94,7 @@ export const usePagination = (
 
     const siblingsEnd = Math.min(
       Math.max(currentPage + siblings, boundaries + siblings * 2 + 2),
-      endPages.length > 0 ? endPages[0] - 2 : totalPages - 1,
+      endPages.length > 0 ? endPages[0]! - 2 : totalPages - 1,
     );
 
     return [

@@ -125,7 +125,7 @@ export const Button = (props: PolymorphicProps<"button", ButtonProps, "role">): 
           <ButtonSpinner label={loadingText} size={size}>
             {spinner}
           </ButtonSpinner>
-          {loadingText || <span className="opacity-0">{children}</span>}
+          {loadingText ?? <span className="opacity-0">{children}</span>}
         </span>
       ) : (
         children
