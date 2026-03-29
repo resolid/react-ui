@@ -2,5 +2,9 @@
 <project version="4">
   <component name="OxcSettings">
     <option name="configPath" value="oxlint.config.ts" />
+    <flags>
+      <entry key="disable_nested_config" value="false" />
+    </flags>
+    <option name="typeAware" value="true" />
   </component>
 </project>
