@@ -13,7 +13,7 @@ import { ComboboxStateContext } from "./combobox-state-context";
 import { ComboboxTriggerContext } from "./combobox-trigger-context";
 
 export type ComboboxProviderProps<T extends ListboxItem> = {
-  value: UserComboboxReturnType<T>;
+  value: Omit<UserComboboxReturnType<T>, "open" | "setOpen" | "setPosition" | "floatingElement">;
 };
 
 export const ComboboxProvider = <T extends ListboxItem>({
