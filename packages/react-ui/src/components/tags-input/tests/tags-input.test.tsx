@@ -7,8 +7,8 @@ import { TagsInput, TagsInputInput, type TagsInputProps } from "../tags-input";
 
 const ComponentUnderTest = (props: TagsInputProps) => (
   <LocaleProvider>
-    <TagsInput placeholder="Add tag" defaultValue={["react", "solid", "vue"]} {...props}>
-      <TagsInputInput aria-label="Input" />
+    <TagsInput defaultValue={["react", "solid", "vue"]} {...props}>
+      <TagsInputInput aria-label="Input" placeholder="Add tag" />
     </TagsInput>
   </LocaleProvider>
 );

@@ -3,11 +3,6 @@ import { createSafeContext, type SafeContext, type UseSafeContext } from "../../
 
 export type TagsInputBaseProps = {
   /**
-   * 占位符文本
-   */
-  placeholder?: string;
-
-  /**
    * 触发新标签添加的字符或者正则
    * @default ","
    */

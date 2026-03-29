@@ -10,6 +10,11 @@ import { useTagsInputRoot } from "./tags-input-root-context";
 
 export type TagsInputInputProps = ValueProp<string> & {
   /**
+   * 占位符文本
+   */
+  placeholder?: string;
+
+  /**
    * 允许的最大字符数
    */
   maxLength?: number;
@@ -19,16 +24,11 @@ export const TagsInputInput = (
   props: PrimitiveProps<
     "input",
     TagsInputInputProps,
-    | "type"
-    | "tabIndex"
-    | "placeholder"
-    | "maxLength"
-    | "autoComplete"
-    | "autoCorrect"
-    | "autoCapitalize"
+    "type" | "tabIndex" | "autoComplete" | "autoCorrect" | "autoCapitalize"
   >,
 ): JSX.Element => {
   const {
+    placeholder,
     maxLength,
     className,
     onKeyDown,
@@ -51,7 +51,6 @@ export const TagsInputInput = (
     inputClassname,
     inputRef,
     delimiter,
-    placeholder,
     valueCount,
     onAdd,
     onDelete,

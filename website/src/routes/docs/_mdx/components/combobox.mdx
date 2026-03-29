@@ -332,21 +332,12 @@ export default function App() {
   return (
     <Combobox multiple value={value} onChange={handleChange} collection={collection}>
       <ComboboxAnchor
-        render={(props) => (
-          <TagsInput
-            placeholder={"搜索"}
-            delimiter=""
-            onChange={setValue}
-            value={value}
-            {...props}
-          />
-        )}
+        render={(props) => <TagsInput delimiter="" onChange={setValue} value={value} {...props} />}
       >
         <ComboboxInput
           value={query}
-          onChange={setQuery}
           render={(props) => {
-            return <TagsInputInput {...props} />;
+            return <TagsInputInput placeholder={"搜索"} onChange={setQuery} {...props} />;
           }}
         />
         <ComboboxTrigger />
@@ -426,7 +417,7 @@ export default function App() {
       setOpen(false);
     }
 
-    if (open && e.key == "Enter") {
+    if (open && e.key === "Enter") {
       e.preventDefault();
     }
   };
@@ -484,8 +475,8 @@ export default function App() {
           return <Textarea cols={39} rows={3} placeholder="输入 @, # 或者 :" {...props} />;
         }}
       />
-      <ComboboxPopup placement={"bottom-start"}>
-        <ComboboxContent className={"p-1"}>
+      <ComboboxPopup placement="bottom-start">
+        <ComboboxContent className="p-1">
           <ComboboxList />
         </ComboboxContent>
       </ComboboxPopup>
