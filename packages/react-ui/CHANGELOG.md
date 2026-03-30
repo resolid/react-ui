@@ -1,5 +1,13 @@
 # @resolid/react-ui
 
+## 0.1.13
+
+### Patch Changes
+
+- refactor: move placeholder prop to TagsInputInput ([`3392075`](https://github.com/resolid/react-ui/commit/3392075ecbb6801f4ea8fbef77321ba23e292b8f))
+
+- fix: update ComboboxProviderProps value type ([`39af18f`](https://github.com/resolid/react-ui/commit/39af18f579cf1d74290a22f97045fd460dc0c845))
+
 ## 0.1.12
 
 ### Patch Changes
