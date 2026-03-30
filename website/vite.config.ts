@@ -99,6 +99,7 @@ export default defineConfig(({ command }) => {
             }
 
             if (
+              id.includes("/node_modules/@resolid/dev") ||
               id.includes("src/components/history-link.tsx") ||
               id.includes("src/components/error-component.tsx") ||
               id.includes("src/components/route-process-bar.tsx") ||
