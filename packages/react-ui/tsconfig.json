@@ -1,11 +1,4 @@
 {
   "extends": ["@resolid/config/tsconfig/react.json", "@resolid/config/tsconfig/lib.json"],
-  "include": [
-    "src/**/*",
-    "plugins/*",
-    "tsdown.config.ts",
-    "vitest.config.ts",
-    "vitest.setup.ts",
-    "oxlint.config.ts"
-  ]
+  "include": ["src/**/*", "plugins/*", "*.config.ts", "vitest.setup.ts"]
 }
