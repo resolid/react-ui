@@ -45,9 +45,7 @@ export type SwitchProps = CheckedValueProps &
     spacing?: string | number;
   };
 
-export const Switch = (
-  props: PrimitiveProps<"input", SwitchProps, "role" | "type">,
-): JSX.Element => {
+export function Switch(props: PrimitiveProps<"input", SwitchProps, "role" | "type">): JSX.Element {
   const {
     color = "primary",
     size = "md",
@@ -126,4 +124,4 @@ export const Switch = (
       {children && <div className={tx("select-none", labelSizeStyle)}>{children}</div>}
     </label>
   );
-};
+}

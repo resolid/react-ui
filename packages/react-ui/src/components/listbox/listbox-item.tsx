@@ -17,9 +17,9 @@ type ListboxItemProps = {
   checkmark: boolean;
 };
 
-export const ListboxItem = (
+export function ListboxItem(
   props: PrimitiveProps<"div", ListboxItemProps, "tabIndex" | "children">,
-): JSX.Element => {
+): JSX.Element {
   const {
     item,
     size,
@@ -104,4 +104,4 @@ export const ListboxItem = (
       {checkmark && selected && <CheckIcon />}
     </div>
   );
-};
+}

@@ -75,7 +75,7 @@ export type MenuRootProps = DisclosureProps & {
   placement?: Placement;
 };
 
-export const MenuRoot = (props: PropsWithChildren<MenuRootProps>): JSX.Element => {
+export function MenuRoot(props: PropsWithChildren<MenuRootProps>): JSX.Element {
   const parentId = useFloatingParentNodeId();
 
   if (parentId == null) {
@@ -87,9 +87,9 @@ export const MenuRoot = (props: PropsWithChildren<MenuRootProps>): JSX.Element =
   }
 
   return <MenuTree {...props} />;
-};
+}
 
-const MenuTree = (props: PropsWithChildren<MenuRootProps>) => {
+function MenuTree(props: PropsWithChildren<MenuRootProps>) {
   const {
     open,
     defaultOpen = false,
@@ -304,4 +304,4 @@ const MenuTree = (props: PropsWithChildren<MenuRootProps>) => {
       </PopperStateContext>
     </PopperArrowContext>
   );
-};
+}

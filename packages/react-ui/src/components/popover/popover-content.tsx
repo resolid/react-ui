@@ -11,7 +11,7 @@ import { tx } from "../../utils";
 import { Portal } from "../portal/portal";
 import { usePopoverRoot } from "./popover-root-context";
 
-export const PopoverContent = (props: PrimitiveProps<"div">): JSX.Element | null => {
+export function PopoverContent(props: PrimitiveProps<"div">): JSX.Element | null {
   const { children, style, className, ...rest } = props;
 
   const { context, initialFocus, finalFocus } = usePopoverRoot();
@@ -55,4 +55,4 @@ export const PopoverContent = (props: PrimitiveProps<"div">): JSX.Element | null
       </PopperPositioner>
     </Portal>
   );
-};
+}

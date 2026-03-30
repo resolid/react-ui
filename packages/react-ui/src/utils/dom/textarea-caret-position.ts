@@ -46,13 +46,11 @@ const CARET_PROPERTIES: (keyof CSSStyleDeclaration | "MozTabSize")[] = [
   "MozTabSize",
 ];
 
-const isFirefox = isBrowser && window.navigator.userAgent.toLowerCase().includes("firefox");
-
-export const getCaretCoordinates = (
+export function getCaretCoordinates(
   element: HTMLTextAreaElement,
   position: number,
   options?: CaretOptions,
-): CaretCoordinates => {
+): CaretCoordinates {
   if (!isBrowser) {
     throw new Error(
       "textarea-caret-position#getCaretCoordinates should only be called in a browser",
@@ -88,7 +86,7 @@ export const getCaretCoordinates = (
     ),
   );
 
-  if (isFirefox) {
+  if (window.navigator.userAgent.toLowerCase().includes("firefox")) {
     if (element.scrollHeight > parseInt(computed.height)) {
       style.overflowY = "scroll";
     }
@@ -115,4 +113,4 @@ export const getCaretCoordinates = (
   }
 
   return coordinates;
-};
+}

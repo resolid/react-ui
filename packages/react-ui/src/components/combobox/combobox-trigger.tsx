@@ -9,9 +9,9 @@ import { useComboboxInput } from "./combobox-input-context";
 import { useComboboxRoot } from "./combobox-root-context";
 import { useComboboxTrigger } from "./combobox-trigger-context";
 
-export const ComboboxTrigger = (
+export function ComboboxTrigger(
   props: PolymorphicProps<"button", EmptyObject, "type" | "tabIndex" | "disabled">,
-): JSX.Element => {
+): JSX.Element {
   const { render, children, ref, ...rest } = props;
 
   const { inputRef } = useComboboxInput();
@@ -55,4 +55,4 @@ export const ComboboxTrigger = (
       {children ?? <AngleDownIcon className="text-fg-subtle" />}
     </Polymorphic>
   );
-};
+}

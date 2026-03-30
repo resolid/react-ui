@@ -5,13 +5,13 @@ import { AngleDownIcon, AngleUpIcon } from "../../shared/icons";
 import { inputTextShareStyles } from "../../shared/styles";
 import { tx } from "../../utils";
 
-export const NumberInputControl = (
+export function NumberInputControl(
   props: PrimitiveProps<
     "button",
     { stepper: "increment" | "decrement"; size: InputSize; inputId: string },
     "type" | "children"
   >,
-): JSX.Element => {
+): JSX.Element {
   const { className, disabled, stepper, size, inputId, ...rest } = props;
 
   return (
@@ -35,4 +35,4 @@ export const NumberInputControl = (
       {stepper == "decrement" && <AngleDownIcon size="0.875em" />}
     </button>
   );
-};
+}

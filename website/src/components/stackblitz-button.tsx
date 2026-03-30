@@ -19,16 +19,36 @@ const commitSha = import.meta.env.VITE_VERCEL_GIT_COMMIT_SHA
   ? import.meta.env.VITE_VERCEL_GIT_COMMIT_SHA.slice(0, 8)
   : import.meta.env.VITE_GIT_COMMIT_SHA.slice(0, 8);
 
-const createHiddenInput = (name: string, value: string) => {
+export function StackblitzButton({ name, code }: StackblitzButtonProps) {
+  const handleClick = async () => {
+    await openProject(name, code);
+  };
+
+  return (
+    <Tooltip>
+      <TooltipTrigger
+        onClick={handleClick}
+        render={(props) => <Button variant="soft" color="neutral" size="xs" iconOnly {...props} />}
+      >
+        <SpriteIcon size={15} className="text-fg-primary" name="stackblitz" />
+      </TooltipTrigger>
+      <TooltipContent className="text-sm">
+        <TooltipArrow />在 Stackblitz 打开
+      </TooltipContent>
+    </Tooltip>
+  );
+}
+
+function createHiddenInput(name: string, value: string) {
   const input = document.createElement("input");
   input.type = "hidden";
   input.name = name;
   input.value = value;
 
   return input;
-};
+}
 
-const openProject = async (name: string, code: string) => {
+async function openProject(name: string, code: string) {
   const inputs: HTMLInputElement[] = [];
 
   const filename = name
@@ -99,24 +119,4 @@ const openProject = async (name: string, code: string) => {
   document.body.appendChild(form);
   form.submit();
   document.body.removeChild(form);
-};
-
-export const StackblitzButton = ({ name, code }: StackblitzButtonProps) => {
-  const handleClick = async () => {
-    await openProject(name, code);
-  };
-
-  return (
-    <Tooltip>
-      <TooltipTrigger
-        onClick={handleClick}
-        render={(props) => <Button variant="soft" color="neutral" size="xs" iconOnly {...props} />}
-      >
-        <SpriteIcon size={15} className="text-fg-primary" name="stackblitz" />
-      </TooltipTrigger>
-      <TooltipContent className="text-sm">
-        <TooltipArrow />在 Stackblitz 打开
-      </TooltipContent>
-    </Tooltip>
-  );
-};
+}

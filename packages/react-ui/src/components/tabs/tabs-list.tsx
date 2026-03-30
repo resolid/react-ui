@@ -9,7 +9,7 @@ import { IndicatorContext } from "../../primitives/indicator/indicator-context";
 import { tx } from "../../utils";
 import { useDirection } from "../provider/direction-context";
 
-export const TabsList = (props: PrimitiveProps<"div", EmptyObject, "role">): JSX.Element => {
+export function TabsList(props: PrimitiveProps<"div", EmptyObject, "role">): JSX.Element {
   const { children, className, ref, ...rest } = props;
 
   const orientation = useOrientation();
@@ -43,4 +43,4 @@ export const TabsList = (props: PrimitiveProps<"div", EmptyObject, "role">): JSX
       </IndicatorContext>
     </Composite>
   );
-};
+}

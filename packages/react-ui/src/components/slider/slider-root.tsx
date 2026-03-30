@@ -63,7 +63,7 @@ export type SliderRootProps = Partial<SliderControlContextValue> &
     thumbSize?: { width: number; height: number };
   };
 
-export const SliderRoot = (props: PrimitiveProps<"div", SliderRootProps>): JSX.Element => {
+export function SliderRoot(props: PrimitiveProps<"div", SliderRootProps>): JSX.Element {
   const {
     className,
     children,
@@ -291,4 +291,4 @@ export const SliderRoot = (props: PrimitiveProps<"div", SliderRootProps>): JSX.E
       </SliderControlContext>
     </SliderContext>
   );
-};
+}

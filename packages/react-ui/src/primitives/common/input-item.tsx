@@ -14,7 +14,7 @@ export type InputItemProps = {
   onDelete: () => void;
 };
 
-export const InputItem = (props: PrimitiveProps<"div", InputItemProps>): JSX.Element => {
+export function InputItem(props: PrimitiveProps<"div", InputItemProps>): JSX.Element {
   const { size, disabled, finalRef, onDelete, className, children, ...rest } = props;
 
   const { t } = useLocale();
@@ -48,4 +48,4 @@ export const InputItem = (props: PrimitiveProps<"div", InputItemProps>): JSX.Ele
       />
     </div>
   );
-};
+}

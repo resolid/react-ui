@@ -4,7 +4,7 @@ import { useMergeRefs } from "../../hooks";
 import { tx } from "../../utils";
 import { usePopperFloating } from "./popper-floating-context";
 
-export const PopperFloating = (props: PrimitiveProps<"div">): JSX.Element => {
+export function PopperFloating(props: PrimitiveProps<"div">): JSX.Element {
   const { className, children, ref, ...rest } = props;
 
   const { setFloating, getFloatingProps } = usePopperFloating();
@@ -20,4 +20,4 @@ export const PopperFloating = (props: PrimitiveProps<"div">): JSX.Element => {
       {children}
     </div>
   );
-};
+}

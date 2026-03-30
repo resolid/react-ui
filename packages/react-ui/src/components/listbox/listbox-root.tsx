@@ -8,7 +8,7 @@ import { VisuallyHiddenInput } from "../visually-hidden/visually-hidden-input";
 import { ListboxProvider } from "./listbox-provider";
 import { type ListboxBaseProps, type ListboxItem, useListbox } from "./use-listbox";
 
-export type ListboxRootProps<T extends ListboxItem> = FormFieldProps & {
+export type ListboxRootProps<T extends ListboxItem = ListboxItem> = FormFieldProps & {
   /**
    * 是否无效
    * @default false
@@ -16,9 +16,9 @@ export type ListboxRootProps<T extends ListboxItem> = FormFieldProps & {
   invalid?: boolean;
 } & ListboxBaseProps<T>;
 
-export const ListboxRoot = <T extends ListboxItem>(
+export function ListboxRoot<T extends ListboxItem>(
   props: PrimitiveProps<"div", ListboxRootProps<T>>,
-): JSX.Element => {
+): JSX.Element {
   const {
     multiple = false,
     value,
@@ -156,4 +156,4 @@ export const ListboxRoot = <T extends ListboxItem>(
       )}
     </div>
   );
-};
+}

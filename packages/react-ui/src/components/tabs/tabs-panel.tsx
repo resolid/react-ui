@@ -10,9 +10,9 @@ export type TabsPanelProps = {
   value: string;
 };
 
-export const TabsPanel = (
+export function TabsPanel(
   props: PrimitiveProps<"div", TabsPanelProps, "id" | "role" | "aria-labelledby">,
-): JSX.Element | null => {
+): JSX.Element | null {
   const { children, className, tabIndex, value, ...rest } = props;
 
   const { baseId, selectedValue } = useTabs();
@@ -37,4 +37,4 @@ export const TabsPanel = (
       {children}
     </div>
   );
-};
+}

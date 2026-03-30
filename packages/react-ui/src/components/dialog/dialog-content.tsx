@@ -9,7 +9,7 @@ import { hasBackgroundBaseClass } from "../../shared/utils";
 import { tx } from "../../utils";
 import { useDialog } from "./dialog-context";
 
-export const DialogContent = (props: PrimitiveProps<"div">): JSX.Element | null => {
+export function DialogContent(props: PrimitiveProps<"div">): JSX.Element | null {
   const { children, className, style, ...rest } = props;
 
   const { context, initialFocus, finalFocus, scrollBehavior, placement } = useDialog();
@@ -56,4 +56,4 @@ export const DialogContent = (props: PrimitiveProps<"div">): JSX.Element | null 
       </FloatingFocusManager>
     </div>
   );
-};
+}

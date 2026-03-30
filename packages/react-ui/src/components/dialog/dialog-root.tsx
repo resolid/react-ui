@@ -61,7 +61,7 @@ export type DialogRootProps = DisclosureProps &
     role?: "dialog" | "alertdialog";
   };
 
-export const DialogRoot = (props: PropsWithChildren<DialogRootProps>): JSX.Element => {
+export function DialogRoot(props: PropsWithChildren<DialogRootProps>): JSX.Element {
   const {
     open,
     defaultOpen,
@@ -175,4 +175,4 @@ export const DialogRoot = (props: PropsWithChildren<DialogRootProps>): JSX.Eleme
       </PopperStateContext>
     </PopperAriaContext>
   );
-};
+}

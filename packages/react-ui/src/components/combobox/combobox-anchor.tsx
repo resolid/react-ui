@@ -7,7 +7,7 @@ import { inputStyles } from "../input/input.styles";
 import { useListboxState } from "../listbox/listbox-state-context";
 import { useComboboxState } from "./combobox-state-context";
 
-export const ComboboxAnchor = (props: PolymorphicProps<"div">): JSX.Element => {
+export function ComboboxAnchor(props: PolymorphicProps<"div">): JSX.Element {
   const { render, children, className, ...rest } = props;
 
   const { open } = usePopperState();
@@ -28,4 +28,4 @@ export const ComboboxAnchor = (props: PolymorphicProps<"div">): JSX.Element => {
       {children}
     </PopperAnchor>
   );
-};
+}

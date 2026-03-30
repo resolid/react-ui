@@ -6,9 +6,9 @@ import { useOrientation } from "../../primitives/composite/orientation-context";
 import { tx } from "../../utils";
 import { useCollapsibleContent } from "./collapsible-content-context";
 
-export const CollapsibleContent = (
+export function CollapsibleContent(
   props: PrimitiveProps<"div", EmptyObject, "id">,
-): JSX.Element | null => {
+): JSX.Element | null {
   const { children, ref, ...rest } = props;
 
   const orientation = useOrientation(true);
@@ -79,4 +79,4 @@ export const CollapsibleContent = (
       </div>
     </div>
   );
-};
+}

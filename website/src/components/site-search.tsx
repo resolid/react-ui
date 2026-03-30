@@ -15,7 +15,7 @@ import { useState } from "react";
 import { HistoryLink } from "~/components/history-link";
 import { SpriteIcon } from "~/components/sprite-icon";
 
-export const SiteSearch = () => {
+export function SiteSearch() {
   const [open, setOpen] = useState(false);
 
   useEventListener("keydown", (event) => {
@@ -81,4 +81,4 @@ export const SiteSearch = () => {
       </DialogPortal>
     </Dialog>
   );
-};
+}

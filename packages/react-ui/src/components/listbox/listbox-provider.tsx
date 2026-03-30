@@ -48,9 +48,9 @@ export type ListboxProviderProps<T extends ListboxItem> = {
     };
 };
 
-export const ListboxProvider = <T extends ListboxItem>(
+export function ListboxProvider<T extends ListboxItem>(
   props: PropsWithChildren<ListboxProviderProps<T>>,
-): JSX.Element => {
+): JSX.Element {
   const {
     value: {
       getItemValue,
@@ -212,4 +212,4 @@ export const ListboxProvider = <T extends ListboxItem>(
       </ListboxFilterContext>
     </ListboxStateContext>
   );
-};
+}

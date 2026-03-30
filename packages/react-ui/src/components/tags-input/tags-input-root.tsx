@@ -42,7 +42,7 @@ export type TagsInputRootProps = Omit<FormInputFieldProps, "placeholder"> &
     max?: number;
   };
 
-export const TagsInputRoot = (props: PrimitiveProps<"div", TagsInputRootProps>): JSX.Element => {
+export function TagsInputRoot(props: PrimitiveProps<"div", TagsInputRootProps>): JSX.Element {
   const {
     value,
     defaultValue = [],
@@ -182,4 +182,4 @@ export const TagsInputRoot = (props: PrimitiveProps<"div", TagsInputRootProps>):
       )}
     </>
   );
-};
+}

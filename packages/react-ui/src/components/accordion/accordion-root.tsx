@@ -31,7 +31,7 @@ export type AccordionRootProps = MultipleValueProps<string | number> & {
   orientation?: Orientation;
 } & AccordionBaseProps;
 
-export const AccordionRoot = (props: PrimitiveProps<"div", AccordionRootProps>): JSX.Element => {
+export function AccordionRoot(props: PrimitiveProps<"div", AccordionRootProps>): JSX.Element {
   const {
     value,
     multiple = true,
@@ -106,4 +106,4 @@ export const AccordionRoot = (props: PrimitiveProps<"div", AccordionRootProps>):
       </AccordionContext>
     </Composite>
   );
-};
+}

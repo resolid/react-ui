@@ -1,27 +1,19 @@
 import type { ComponentProps } from "react";
 import type { JSX } from "react/jsx-runtime";
-import { PopperBackdrop } from "../../primitives/popper/popper-backdrop";
-import { PopperClose } from "../../primitives/popper/popper-close";
-import { PopperDescription } from "../../primitives/popper/popper-description";
-import { PopperPortal } from "../../primitives/popper/popper-portal";
-import { PopperTitle } from "../../primitives/popper/popper-title";
 import { PopperTrigger } from "../../primitives/popper/popper-trigger";
-import { DrawerRoot, type DrawerRootProps } from "./drawer-root";
 
-export type DrawerProps = DrawerRootProps;
+export { DrawerRoot as Drawer, type DrawerRootProps as DrawerProps } from "./drawer-root";
 
-export const Drawer: typeof DrawerRoot = DrawerRoot;
-
-export const DrawerTrigger = (
+export function DrawerTrigger(
   props: Omit<ComponentProps<typeof PopperTrigger>, "active">,
-): JSX.Element => <PopperTrigger active={false} {...props} />;
-
-export const DrawerPortal: typeof PopperPortal = PopperPortal;
-
-export const DrawerBackdrop: typeof PopperBackdrop = PopperBackdrop;
+): JSX.Element {
+  return <PopperTrigger active={false} {...props} />;
+}
 
 export { DrawerContent } from "./drawer-content";
 
-export const DrawerTitle: typeof PopperTitle = PopperTitle;
-export const DrawerDescription: typeof PopperDescription = PopperDescription;
-export const DrawerClose: typeof PopperClose = PopperClose;
+export { PopperBackdrop as DrawerBackdrop } from "../../primitives/popper/popper-backdrop";
+export { PopperClose as DrawerClose } from "../../primitives/popper/popper-close";
+export { PopperDescription as DrawerDescription } from "../../primitives/popper/popper-description";
+export { PopperPortal as DrawerPortal } from "../../primitives/popper/popper-portal";
+export { PopperTitle as DrawerTitle } from "../../primitives/popper/popper-title";

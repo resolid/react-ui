@@ -21,9 +21,9 @@ type TabsTabProps = {
   disabled?: boolean;
 };
 
-export const TabsTab = (
+export function TabsTab(
   props: PolymorphicProps<"button", TabsTabProps, "type" | "role" | "id" | "tabIndex">,
-): JSX.Element => {
+): JSX.Element {
   const {
     render,
     value,
@@ -109,4 +109,4 @@ export const TabsTab = (
       {children}
     </Polymorphic>
   );
-};
+}

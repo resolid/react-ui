@@ -15,7 +15,7 @@ export type AvatarRootProps = {
   name?: string;
 } & AvatarBaseProps;
 
-export const AvatarRoot = (props: PrimitiveProps<"div", AvatarRootProps>): JSX.Element => {
+export function AvatarRoot(props: PrimitiveProps<"div", AvatarRootProps>): JSX.Element {
   const group = useAvatarGroup(true);
 
   const { name, size: sizeProp, radius: radiusProp, className, style, children, ...rest } = props;
@@ -47,4 +47,4 @@ export const AvatarRoot = (props: PrimitiveProps<"div", AvatarRootProps>): JSX.E
       </AvatarContext>
     </div>
   );
-};
+}

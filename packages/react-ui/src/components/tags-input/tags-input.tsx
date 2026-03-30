@@ -1,7 +1,6 @@
-import { TagsInputRoot, type TagsInputRootProps } from "./tags-input-root";
-
-export type TagsInputProps = TagsInputRootProps;
-
-export const TagsInput: typeof TagsInputRoot = TagsInputRoot;
+export {
+  TagsInputRoot as TagsInput,
+  type TagsInputRootProps as TagsInputProps,
+} from "./tags-input-root";
 
 export { TagsInputInput } from "./tags-input-input";

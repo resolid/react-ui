@@ -1,5 +1,4 @@
-import { MenuRadioItem, type MenuRadioItemProps } from "../../primitives/menu/menu-radio-item";
-
-export type ContextMenuRadioItemProps = MenuRadioItemProps;
-
-export const ContextMenuRadioItem: typeof MenuRadioItem = MenuRadioItem;
+export {
+  MenuRadioItem as ContextMenuRadioItem,
+  type MenuRadioItemProps as ContextMenuRadioItemProps,
+} from "../../primitives/menu/menu-radio-item";

@@ -6,7 +6,7 @@ import {
 import { useState, type Dispatch, type SetStateAction } from "react";
 import type { TransitionStatus } from "../../shared/types";
 
-export const useElementTransitionStatus = <E extends HTMLElement = HTMLElement>(
+export function useElementTransitionStatus<E extends HTMLElement = HTMLElement>(
   open: boolean,
   props?: UseTransitionStatusProps,
 ): {
@@ -14,7 +14,7 @@ export const useElementTransitionStatus = <E extends HTMLElement = HTMLElement>(
   status: TransitionStatus;
   element: E | null;
   setElement: Dispatch<SetStateAction<E | null>>;
-} => {
+} {
   const [element, setElement] = useState<E | null>(null);
 
   const { isMounted, status } = useTransitionStatus(
@@ -26,4 +26,4 @@ export const useElementTransitionStatus = <E extends HTMLElement = HTMLElement>(
   );
 
   return { isMounted, status, element, setElement };
-};
+}

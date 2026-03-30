@@ -38,7 +38,7 @@ export type PopoverProps = DisclosureProps &
     closeOnOutsideClick?: boolean;
   } & PopperWithInlineProps;
 
-export const usePopover = ({
+export function usePopover({
   open,
   defaultOpen,
   onOpenChange,
@@ -66,7 +66,7 @@ export const usePopover = ({
   referenceContext: PopperTriggerContextValue;
   positionerContext: PopperPositionerContextValue;
   anchorContext: PopperAnchorContextValue;
-} => {
+} {
   const [openState, { handleOpen, handleClose }] = useDisclosure({
     open,
     defaultOpen,
@@ -166,4 +166,4 @@ export const usePopover = ({
     positionerContext,
     anchorContext,
   };
-};
+}

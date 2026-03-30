@@ -9,7 +9,7 @@ export type BreadcrumbLinkProps = {
   current?: boolean;
 };
 
-export const BreadcrumbLink = (props: PolymorphicProps<"a", BreadcrumbLinkProps>): JSX.Element => {
+export function BreadcrumbLink(props: PolymorphicProps<"a", BreadcrumbLinkProps>): JSX.Element {
   const { render, children, className, href, current, ...rest } = props;
 
   if (current) {
@@ -35,4 +35,4 @@ export const BreadcrumbLink = (props: PolymorphicProps<"a", BreadcrumbLinkProps>
       {children}
     </Polymorphic>
   );
-};
+}

@@ -6,7 +6,7 @@ import { tx } from "../../utils";
 import { useInputGroup } from "./input-group-context";
 import { inputGroupStyles, inputPxStyles } from "./input.styles";
 
-export const InputAddon = (props: PrimitiveProps<"div">): JSX.Element => {
+export function InputAddon(props: PrimitiveProps<"div">): JSX.Element {
   const { className, children, ...rest } = props;
 
   const group = useInputGroup();
@@ -26,4 +26,4 @@ export const InputAddon = (props: PrimitiveProps<"div">): JSX.Element => {
       {children}
     </div>
   );
-};
+}

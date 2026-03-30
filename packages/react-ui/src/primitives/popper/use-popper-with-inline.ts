@@ -32,7 +32,7 @@ export type UsePopperWithInlineProps = PopperWithInlineProps & {
   handleClose: () => void;
 };
 
-export const usePopperWithInline = ({
+export function usePopperWithInline({
   placement,
   inlineMiddleware,
   openState,
@@ -43,7 +43,7 @@ export const usePopperWithInline = ({
   floatingStyles: CSSProperties;
   refs: ReturnType<typeof useFloating>["refs"];
   context: FloatingContext;
-} => {
+} {
   const [arrowElem, setArrowElem] = useState<SVGSVGElement | null>(null);
 
   const { floatingStyles, refs, context } = useFloating({
@@ -70,4 +70,4 @@ export const usePopperWithInline = ({
   });
 
   return { setArrowElem, floatingStyles, refs, context };
-};
+}

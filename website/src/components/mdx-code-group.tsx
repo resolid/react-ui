@@ -2,11 +2,11 @@ import { Tabs, TabsIndicator, TabsList, TabsPanel, TabsTab } from "@resolid/reac
 import { Children, isValidElement, type ReactElement, useMemo } from "react";
 import { PackageIcon } from "~/components/package-icon";
 
-export const MdxCodeGroup = ({
+export function MdxCodeGroup({
   children,
 }: {
   children: ReactElement<{ children: ReactElement<{ codeGroup: string }> }>[];
-}) => {
+}) {
   const tabs = useMemo(
     () =>
       Children.map(children, (child) => {
@@ -44,4 +44,4 @@ export const MdxCodeGroup = ({
       ))}
     </Tabs>
   );
-};
+}

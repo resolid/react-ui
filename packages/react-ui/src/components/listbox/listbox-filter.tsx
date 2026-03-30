@@ -4,6 +4,8 @@ import { ListboxFilterBase, type ListboxFilterBaseProps } from "./listbox-filter
 
 export type ListboxFilterProps = Omit<ListboxFilterBaseProps, "focusable">;
 
-export const ListboxFilter = (
+export function ListboxFilter(
   props: PrimitiveProps<"input", ListboxFilterProps, "children" | "type" | "disabled">,
-): JSX.Element => <ListboxFilterBase {...props} />;
+): JSX.Element {
+  return <ListboxFilterBase {...props} />;
+}

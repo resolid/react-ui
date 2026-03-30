@@ -13,9 +13,9 @@ export type FilePickerListProps = {
   orientation?: Orientation;
 };
 
-export const FilePickerList = (
+export function FilePickerList(
   props: PrimitiveProps<"ul", FilePickerListProps>,
-): JSX.Element | null => {
+): JSX.Element | null {
   const { orientation = "vertical", className, children, ...rest } = props;
 
   const files = useFilePickerFiles();
@@ -36,4 +36,4 @@ export const FilePickerList = (
       ))}
     </ul>
   );
-};
+}

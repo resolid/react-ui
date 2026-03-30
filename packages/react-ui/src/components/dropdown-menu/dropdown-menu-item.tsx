@@ -1,5 +1,4 @@
-import { MenuItem, type MenuItemProps } from "../../primitives/menu/menu-item";
-
-export type DropdownMenuItemProps = MenuItemProps;
-
-export const DropdownMenuItem: typeof MenuItem = MenuItem;
+export {
+  MenuItem as DropdownMenuItem,
+  type MenuItemProps as DropdownMenuItemProps,
+} from "../../primitives/menu/menu-item";

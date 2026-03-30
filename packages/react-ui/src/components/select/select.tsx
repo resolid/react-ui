@@ -1,18 +1,14 @@
-import type { ListboxItem } from "../listbox/use-listbox";
-import { OptionEmpty } from "../../primitives/common/option-empty";
-import { ListboxContent, ListboxList, type ListboxFilter } from "../listbox/listbox";
+import type { JSX } from "react/jsx-runtime";
+import type { ListboxFilterProps } from "../listbox/listbox-filter";
 import { ListboxFilterBase } from "../listbox/listbox-filter-base";
-import { SelectRoot, type SelectRootProps } from "./select-root";
 
-export type SelectProps<T extends ListboxItem = ListboxItem> = SelectRootProps<T>;
+export { SelectRoot as Select, type SelectRootProps as SelectProps } from "./select-root";
 
-export const Select: typeof SelectRoot = SelectRoot;
+export function SelectFilter(props: ListboxFilterProps): JSX.Element {
+  return <ListboxFilterBase focusable={false} {...props} />;
+}
 
-export const SelectFilter: typeof ListboxFilter = (props) => (
-  <ListboxFilterBase focusable={false} {...props} />
-);
-export const SelectContent: typeof ListboxContent = ListboxContent;
-export const SelectEmpty: typeof OptionEmpty = OptionEmpty;
-export const SelectList: typeof ListboxList = ListboxList;
+export { OptionEmpty as SelectEmpty } from "../../primitives/common/option-empty";
+export { ListboxContent as SelectContent, ListboxList as SelectList } from "../listbox/listbox";
 
 export { SelectVirtualizer } from "./select-virtualizer";

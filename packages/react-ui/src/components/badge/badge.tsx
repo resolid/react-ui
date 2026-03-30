@@ -24,7 +24,7 @@ export type BadgeProps = {
   radius?: Radius;
 };
 
-export const Badge = (props: PolymorphicProps<"span", BadgeProps>): JSX.Element => {
+export function Badge(props: PolymorphicProps<"span", BadgeProps>): JSX.Element {
   const {
     render,
     color = "primary",
@@ -49,4 +49,4 @@ export const Badge = (props: PolymorphicProps<"span", BadgeProps>): JSX.Element 
       {children}
     </Polymorphic>
   );
-};
+}

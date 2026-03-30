@@ -11,9 +11,7 @@ export type AvatarIndicatorProps = {
   position?: "top" | "bottom";
 };
 
-export const AvatarIndicator = (
-  props: PrimitiveProps<"div", AvatarIndicatorProps>,
-): JSX.Element => {
+export function AvatarIndicator(props: PrimitiveProps<"div", AvatarIndicatorProps>): JSX.Element {
   const { position = "top", className, children, ...rest } = props;
 
   const direction = useDirection(true);
@@ -31,4 +29,4 @@ export const AvatarIndicator = (
       {children}
     </div>
   );
-};
+}

@@ -1,8 +1,4 @@
-import {
-  MenuCheckboxItem,
-  type MenuCheckboxItemProps,
+export {
+  MenuCheckboxItem as DropdownMenuCheckboxItem,
+  type MenuCheckboxItemProps as DropdownMenuCheckboxItemProps,
 } from "../../primitives/menu/menu-checkbox-item";
-
-export type DropdownMenuCheckboxItemProps = MenuCheckboxItemProps;
-
-export const DropdownMenuCheckboxItem: typeof MenuCheckboxItem = MenuCheckboxItem;

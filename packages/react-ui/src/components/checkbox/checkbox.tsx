@@ -40,9 +40,9 @@ export type CheckboxProps = CheckedValueProps &
     spacing?: string | number;
   };
 
-export const Checkbox = (
+export function Checkbox(
   props: PrimitiveProps<"input", CheckboxProps, "role" | "type">,
-): JSX.Element => {
+): JSX.Element {
   const group = useCheckboxGroup(true);
 
   const {
@@ -161,4 +161,4 @@ export const Checkbox = (
       {children && <div className={tx("select-none", labelSizeStyle)}>{children}</div>}
     </label>
   );
-};
+}

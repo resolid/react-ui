@@ -12,9 +12,9 @@ export type ListboxFilterBaseProps = Omit<
   "type" | "name" | "required" | "readOnly" | "invalid" | "suffix" | "suffixWidth"
 >;
 
-export const ListboxFilterBase = (
+export function ListboxFilterBase(
   props: PrimitiveProps<"input", ListboxFilterBaseProps, "children" | "type" | "disabled">,
-): JSX.Element => {
+): JSX.Element {
   const { size: listboxSize, disabled } = useListboxState();
 
   const { getNavigationProps, filterInputRef, setFilterKeyword } = useListboxFilter();
@@ -62,4 +62,4 @@ export const ListboxFilterBase = (
       {...getNavigationProps(rest)}
     />
   );
-};
+}

@@ -1,5 +1,4 @@
-import { MenuRadioItem, type MenuRadioItemProps } from "../../primitives/menu/menu-radio-item";
-
-export type DropdownMenuRadioItemProps = MenuRadioItemProps;
-
-export const DropdownMenuRadioItem: typeof MenuRadioItem = MenuRadioItem;
+export {
+  MenuRadioItem as DropdownMenuRadioItem,
+  type MenuRadioItemProps as DropdownMenuRadioItemProps,
+} from "../../primitives/menu/menu-radio-item";

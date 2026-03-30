@@ -20,13 +20,13 @@ export type TagsInputInputProps = ValueProp<string> & {
   maxLength?: number;
 };
 
-export const TagsInputInput = (
+export function TagsInputInput(
   props: PrimitiveProps<
     "input",
     TagsInputInputProps,
     "type" | "tabIndex" | "autoComplete" | "autoCorrect" | "autoCapitalize"
   >,
-): JSX.Element => {
+): JSX.Element {
   const {
     placeholder,
     maxLength,
@@ -226,4 +226,4 @@ export const TagsInputInput = (
       {...rest}
     />
   );
-};
+}

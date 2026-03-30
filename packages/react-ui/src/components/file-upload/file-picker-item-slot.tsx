@@ -7,8 +7,8 @@ export type FilePickerItemSlotProps = {
   children: (file: FileItem) => ReactNode;
 };
 
-export const FilePickerItemSlot = ({ children }: FilePickerItemSlotProps): JSX.Element => {
+export function FilePickerItemSlot({ children }: FilePickerItemSlotProps): JSX.Element {
   const file = useFilePickerItem();
 
   return <>{children(file)}</>;
-};
+}

@@ -22,12 +22,10 @@ export type PopperAnimationProps = {
   defaultClassName?: string | string[];
 };
 
-export const getPopperAnimationProps = (
-  props: PopperAnimationProps,
-): {
+export function getPopperAnimationProps(props: PopperAnimationProps): {
   style: CSSProperties;
   className: string | undefined;
-} => {
+} {
   const {
     status,
     duration,
@@ -46,4 +44,4 @@ export const getPopperAnimationProps = (
       status == "open" ? openClassName : defaultClassName,
     ),
   };
-};
+}

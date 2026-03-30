@@ -11,14 +11,14 @@ type FileHiddenInputProps = {
   files: FileItem[];
 };
 
-export const FileHiddenInput = ({
+export function FileHiddenInput({
   name,
   required,
   disabled,
   multiple,
   files,
   ...rest
-}: PrimitiveProps<"input", FileHiddenInputProps, "value">): JSX.Element => {
+}: PrimitiveProps<"input", FileHiddenInputProps, "value">): JSX.Element {
   const value = files
     .filter((file) => file.kind == "remote")
     .map((file) => JSON.stringify({ id: file.id, ...file.file }));
@@ -32,4 +32,4 @@ export const FileHiddenInput = ({
       {...rest}
     />
   );
-};
+}

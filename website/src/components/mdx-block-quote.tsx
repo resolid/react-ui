@@ -2,7 +2,7 @@ import type { ComponentProps } from "react";
 import { Alert, AlertDescription, AlertIndicator, type AlertProps } from "@resolid/react-ui";
 import { SpriteIcon } from "~/components/sprite-icon";
 
-export const MdxBlockQuote = (props: ComponentProps<"blockquote"> & { "data-type"?: string }) => {
+export function MdxBlockQuote(props: ComponentProps<"blockquote"> & { "data-type"?: string }) {
   const { children, "data-type": dataType, ...rest } = props;
 
   if (dataType) {
@@ -28,4 +28,4 @@ export const MdxBlockQuote = (props: ComponentProps<"blockquote"> & { "data-type
   }
 
   return <blockquote {...rest}>{children}</blockquote>;
-};
+}

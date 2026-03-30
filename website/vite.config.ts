@@ -78,19 +78,6 @@ export default defineConfig(({ command }) => {
       !isBuild && tsconfigPaths(),
       !isBuild && viteInspect(),
     ].filter(Boolean),
-    environments: {
-      ssr: {
-        build: {
-          target: "node22",
-          rollupOptions: {
-            output: {
-              hoistTransitiveImports: false,
-              manualChunks: undefined,
-            },
-          },
-        },
-      },
-    },
     build: {
       rollupOptions: {
         output: {
@@ -112,7 +99,6 @@ export default defineConfig(({ command }) => {
             }
 
             if (
-              id.includes("react-router-meta.ts") ||
               id.includes("src/components/history-link.tsx") ||
               id.includes("src/components/error-component.tsx") ||
               id.includes("src/components/route-process-bar.tsx") ||

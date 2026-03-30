@@ -50,7 +50,7 @@ export type TooltipProps = DisclosureProps & {
   interactive?: boolean;
 } & PopperWithInlineProps;
 
-export const useTooltip = ({
+export function useTooltip({
   open,
   defaultOpen = false,
   onOpenChange,
@@ -73,7 +73,7 @@ export const useTooltip = ({
   floatingContext: PopperFloatingContextValue;
   transitionContext: PopperTransitionContextValue;
   tooltipRootContext: TooltipRootContextValue;
-} => {
+} {
   const [openState, { handleOpen, handleClose }] = useDisclosure({
     open,
     defaultOpen,
@@ -158,4 +158,4 @@ export const useTooltip = ({
     transitionContext,
     tooltipRootContext,
   };
-};
+}

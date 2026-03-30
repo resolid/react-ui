@@ -8,11 +8,9 @@ export type UseControllableStateOptions<T> = {
   shouldUpdate?: (prev: T, next: T) => boolean;
 };
 
-const defaultShouldUpdate = <T>(prev: T, next: T) => prev !== next;
-
-export const useControllableState = <T>(
+export function useControllableState<T>(
   options: UseControllableStateOptions<T>,
-): readonly [T, (value: SetStateAction<T>) => void] => {
+): readonly [T, (value: SetStateAction<T>) => void] {
   const { value, defaultValue, onChange, shouldUpdate = defaultShouldUpdate } = options;
 
   const [uncontrolledState, setUncontrolledState] = useState(() => defaultValue as T);
@@ -35,4 +33,8 @@ export const useControllableState = <T>(
   };
 
   return [currentValue, setValue] as const;
-};
+}
+
+function defaultShouldUpdate<T>(prev: T, next: T) {
+  return prev !== next;
+}

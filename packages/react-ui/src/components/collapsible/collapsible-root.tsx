@@ -21,9 +21,7 @@ export type CollapsibleRootProps = DisclosureProps & {
   disabled?: boolean;
 };
 
-export const CollapsibleRoot = (
-  props: PrimitiveProps<"div", CollapsibleRootProps>,
-): JSX.Element => {
+export function CollapsibleRoot(props: PrimitiveProps<"div", CollapsibleRootProps>): JSX.Element {
   const {
     open,
     defaultOpen = false,
@@ -64,4 +62,4 @@ export const CollapsibleRoot = (
       </CollapsibleTriggerContext>
     </div>
   );
-};
+}

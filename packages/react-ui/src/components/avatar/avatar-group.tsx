@@ -12,7 +12,7 @@ export type AvatarGroupProps = AvatarGroupContextValue & {
   spacing?: string;
 };
 
-export const AvatarGroup = (props: PrimitiveProps<"div", AvatarGroupProps>): JSX.Element => {
+export function AvatarGroup(props: PrimitiveProps<"div", AvatarGroupProps>): JSX.Element {
   const { size, radius, spacing = "-1rem", children, className, style, ...rest } = props;
 
   const context = {
@@ -30,4 +30,4 @@ export const AvatarGroup = (props: PrimitiveProps<"div", AvatarGroupProps>): JSX
       <AvatarGroupContext value={context}>{children}</AvatarGroupContext>
     </div>
   );
-};
+}

@@ -2,11 +2,11 @@ import { isBrowser } from "@resolid/utils";
 import { type RefObject, useEffectEvent } from "react";
 import { useIsomorphicEffect } from "../use-isomorphic-effect";
 
-export const useResizeObserver = <T extends Element>(
+export function useResizeObserver<T extends Element>(
   target: RefObject<T | null> | T | null,
   callback: (entry: ResizeObserverEntry) => void,
   options?: ResizeObserverOptions,
-): void => {
+): void {
   const callbackEvent = useEffectEvent(callback);
 
   useIsomorphicEffect(() => {
@@ -32,4 +32,4 @@ export const useResizeObserver = <T extends Element>(
       observer.disconnect();
     };
   }, [target, options]);
-};
+}

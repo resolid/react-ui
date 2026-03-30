@@ -21,9 +21,7 @@ export type ProgressBarRootProps = Partial<
   orientation?: Orientation;
 };
 
-export const ProgressBarRoot = (
-  props: PrimitiveProps<"div", ProgressBarRootProps>,
-): JSX.Element => {
+export function ProgressBarRoot(props: PrimitiveProps<"div", ProgressBarRootProps>): JSX.Element {
   const {
     size = "md",
     radius = "full",
@@ -58,4 +56,4 @@ export const ProgressBarRoot = (
       <ProgressBaseContext value={baseContextValue}>{children}</ProgressBaseContext>
     </div>
   );
-};
+}

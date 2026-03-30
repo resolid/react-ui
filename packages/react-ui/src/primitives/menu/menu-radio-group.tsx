@@ -5,7 +5,7 @@ import { MenuRadioGroupContext, type MenuRadioGroupContextValue } from "./menu-r
 
 export type MenuRadioGroupProps = MenuRadioGroupContextValue;
 
-export const MenuRadioGroup = (props: PrimitiveProps<"div", MenuRadioGroupProps>): JSX.Element => {
+export function MenuRadioGroup(props: PrimitiveProps<"div", MenuRadioGroupProps>): JSX.Element {
   const { value, onChange, ...rest } = props;
 
   const contextValue: MenuRadioGroupContextValue = {
@@ -18,4 +18,4 @@ export const MenuRadioGroup = (props: PrimitiveProps<"div", MenuRadioGroupProps>
       <MenuGroup {...rest} />
     </MenuRadioGroupContext>
   );
-};
+}

@@ -1,7 +1,7 @@
 import { type RefObject, useRef } from "react";
 import { useIsomorphicEffect } from "../use-isomorphic-effect";
 
-export const useLatestRef = <T>(value: T): RefObject<T> => {
+export function useLatestRef<T>(value: T): RefObject<T> {
   const ref = useRef(value);
 
   useIsomorphicEffect(() => {
@@ -9,4 +9,4 @@ export const useLatestRef = <T>(value: T): RefObject<T> => {
   }, [value]);
 
   return ref;
-};
+}

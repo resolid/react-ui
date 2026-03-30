@@ -25,7 +25,7 @@ export type SpinnerProps = {
   label?: string;
 };
 
-export const Spinner = (props: PrimitiveProps<"span", SpinnerProps>): JSX.Element => {
+export function Spinner(props: PrimitiveProps<"span", SpinnerProps>): JSX.Element {
   const { t } = useLocale();
 
   const {
@@ -41,4 +41,4 @@ export const Spinner = (props: PrimitiveProps<"span", SpinnerProps>): JSX.Elemen
       {label && <VisuallyHidden>{label}</VisuallyHidden>}
     </span>
   );
-};
+}

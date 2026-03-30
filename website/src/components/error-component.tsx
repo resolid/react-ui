@@ -3,7 +3,7 @@ import { HistoryBack } from "~/components/history-link";
 
 export type ErrorComponentProps = { error: unknown };
 
-export const ErrorComponent = ({ error }: ErrorComponentProps) => {
+export function ErrorComponent({ error }: ErrorComponentProps) {
   if (isRouteErrorResponse(error) && error.status == 404) {
     return (
       <div className="relative mx-auto flex max-w-144 justify-center px-4 py-8">
@@ -51,4 +51,4 @@ export const ErrorComponent = ({ error }: ErrorComponentProps) => {
       </div>
     </div>
   );
-};
+}

@@ -4,7 +4,7 @@ import { tx } from "../../utils";
 import { useSlider } from "./slider-context";
 import { sliderColorStyles } from "./slider.styles";
 
-export const SliderTrack = (props: PrimitiveProps<"div">): JSX.Element => {
+export function SliderTrack(props: PrimitiveProps<"div">): JSX.Element {
   const { className, ...rest } = props;
 
   const { color, disabled, vertical, inverted } = useSlider();
@@ -33,4 +33,4 @@ export const SliderTrack = (props: PrimitiveProps<"div">): JSX.Element => {
       />
     </div>
   );
-};
+}

@@ -4,9 +4,9 @@ import { useButtonProps } from "../../hooks";
 import { type EmptyObject, Polymorphic, type PolymorphicProps } from "../../primitives";
 import { useCollapsibleTrigger } from "./collapsible-trigger-context";
 
-export const CollapsibleTrigger = (
+export function CollapsibleTrigger(
   props: PolymorphicProps<"button", EmptyObject, "type" | "disabled">,
-): JSX.Element => {
+): JSX.Element {
   const { render, tabIndex, children, onClick, ...rest } = props;
 
   const { id, open, disabled, toggle } = useCollapsibleTrigger();
@@ -40,4 +40,4 @@ export const CollapsibleTrigger = (
       {children}
     </Polymorphic>
   );
-};
+}

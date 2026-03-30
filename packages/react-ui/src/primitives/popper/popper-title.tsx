@@ -3,7 +3,7 @@ import type { EmptyObject, PrimitiveProps } from "../polymorphic";
 import { tx } from "../../utils";
 import { usePopperAria } from "./popper-aria-context";
 
-export const PopperTitle = (props: PrimitiveProps<"h2", EmptyObject, "id">): JSX.Element => {
+export function PopperTitle(props: PrimitiveProps<"h2", EmptyObject, "id">): JSX.Element {
   const { className, children, ...rest } = props;
 
   const { labelId } = usePopperAria();
@@ -13,4 +13,4 @@ export const PopperTitle = (props: PrimitiveProps<"h2", EmptyObject, "id">): JSX
       {children}
     </h2>
   );
-};
+}

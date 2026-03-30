@@ -51,9 +51,7 @@ export type UsePaginationOptions = {
 
 export type PageType = "page" | "next" | "previous" | "start-ellipsis" | "end-ellipsis";
 
-export const usePagination = (
-  options: UsePaginationOptions,
-): {
+export function usePagination(options: UsePaginationOptions): {
   pageItems: {
     page: number;
     pageType: PageType;
@@ -62,7 +60,7 @@ export const usePagination = (
   totalPages: number;
   currentPage: number;
   setCurrentPage: (value: SetStateAction<number>) => void;
-} => {
+} {
   const {
     page,
     defaultPage,
@@ -128,4 +126,4 @@ export const usePagination = (
   }, [currentPage, totalPages, boundaries, siblings, disabled]);
 
   return { pageItems, totalPages, currentPage, setCurrentPage };
-};
+}

@@ -2,7 +2,6 @@ import { Button } from "@resolid/react-ui";
 import { HistoryLink } from "~/components/history-link";
 import { SpriteIcon } from "~/components/sprite-icon";
 
-// noinspection JSUnusedGlobalSymbols
 export default function Index() {
   return (
     <div className="max-w-3xl mx-auto prose px-4 py-8 dark:prose-invert">

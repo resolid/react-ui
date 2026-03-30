@@ -15,7 +15,7 @@ export type TabsRootProps = ValueProp<string> & {
   orientation?: Orientation;
 };
 
-export const TabsRoot = (props: PrimitiveProps<"div", TabsRootProps, "id">): JSX.Element => {
+export function TabsRoot(props: PrimitiveProps<"div", TabsRootProps, "id">): JSX.Element {
   const {
     children,
     className,
@@ -46,4 +46,4 @@ export const TabsRoot = (props: PrimitiveProps<"div", TabsRootProps, "id">): JSX
       </OrientationContext>
     </div>
   );
-};
+}

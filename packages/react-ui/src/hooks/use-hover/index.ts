@@ -1,7 +1,7 @@
 import { type RefObject, useRef, useState } from "react";
 import { useEventListener } from "../use-event-listener";
 
-export const useHover = <T extends HTMLElement>(): [RefObject<T | null>, boolean] => {
+export function useHover<T extends HTMLElement>(): [RefObject<T | null>, boolean] {
   const ref = useRef<T>(null);
   const [hover, setHover] = useState(false);
 
@@ -21,4 +21,4 @@ export const useHover = <T extends HTMLElement>(): [RefObject<T | null>, boolean
   );
 
   return [ref, hover];
-};
+}

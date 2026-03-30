@@ -13,12 +13,10 @@ const radiusStyles = {
 
 export type Radius = number | keyof typeof radiusStyles;
 
-export const getRadiusStyleAndClass = (
-  radius: Radius,
-): {
+export function getRadiusStyleAndClass(radius: Radius): {
   radiusStyle: CSSProperties | undefined;
   radiusClass: string;
-} => {
+} {
   const radiusStyle =
     isNumber(radius) && radius > 0 ? ({ "--rv": `${radius}px` } as CSSProperties) : undefined;
   const radiusClass = radiusStyle
@@ -26,18 +24,21 @@ export const getRadiusStyleAndClass = (
     : radiusStyles[radius as keyof typeof radiusStyles];
 
   return { radiusStyle, radiusClass };
-};
+}
 
-export const hasBackgroundBaseClass = (className?: string): boolean =>
-  !!className && /(?:^|\s)bg-\S+/.test(className);
+export function hasBackgroundBaseClass(className?: string): boolean {
+  return !!className && /(?:^|\s)bg-\S+/.test(className);
+}
 
-export const hasSizeBaseClass = (className?: string): boolean =>
-  !!className && /(?:^|\s)(?:[wh]|size)-\S+/.test(className);
+export function hasSizeBaseClass(className?: string): boolean {
+  return !!className && /(?:^|\s)(?:[wh]|size)-\S+/.test(className);
+}
 
-export const hasRoundedBaseClass = (className?: string): boolean =>
-  !!className && /(?:^|\s)rounded-\S+/.test(className);
+export function hasRoundedBaseClass(className?: string): boolean {
+  return !!className && /(?:^|\s)rounded-\S+/.test(className);
+}
 
-export const getInteractiveHandlers = <E extends HTMLElement = HTMLDivElement>({
+export function getInteractiveHandlers<E extends HTMLElement = HTMLDivElement>({
   disabled,
   typingRef,
   onClick,
@@ -49,7 +50,7 @@ export const getInteractiveHandlers = <E extends HTMLElement = HTMLDivElement>({
   handleClick: (e: MouseEvent<E>) => void;
   handleKeyDown: (e: KeyboardEvent) => void;
   handleKeyUp: (e: KeyboardEvent) => void;
-} => {
+} {
   const handleClick = (e: MouseEvent<E>): void => {
     if (disabled) {
       e.preventDefault();
@@ -76,4 +77,4 @@ export const getInteractiveHandlers = <E extends HTMLElement = HTMLDivElement>({
   };
 
   return { handleClick, handleKeyDown, handleKeyUp };
-};
+}

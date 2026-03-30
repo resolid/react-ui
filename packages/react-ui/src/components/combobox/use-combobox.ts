@@ -58,7 +58,7 @@ export type UserComboboxReturnType<T extends ListboxItem> = {
   listboxProviderValue: ListboxProviderProps<T>["value"];
 };
 
-export const useCombobox = <T extends ListboxItem>({
+export function useCombobox<T extends ListboxItem>({
   open,
   defaultOpen,
   onOpenChange,
@@ -84,7 +84,7 @@ export const useCombobox = <T extends ListboxItem>({
   closeOnSelect = true,
   openOnChange = true,
   openOnArrowKeyDown = true,
-}: ComboboxProps<T>): UserComboboxReturnType<T> => {
+}: ComboboxProps<T>): UserComboboxReturnType<T> {
   const [openState, { handleOpen, handleClose }] = useDisclosure({
     open,
     defaultOpen,
@@ -271,4 +271,4 @@ export const useCombobox = <T extends ListboxItem>({
       readOnly,
     },
   };
-};
+}

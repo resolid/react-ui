@@ -1,13 +1,13 @@
 import { useEffect, useEffectEvent, useRef } from "react";
 import { useLatestRef } from "../use-latest-ref";
 
-export const useTimeout = (
+export function useTimeout(
   callback: () => void,
   delay: number | null,
 ): {
   clear: () => void;
   reset: () => void;
-} => {
+} {
   const ref = useLatestRef(callback);
   const timer = useRef<ReturnType<typeof setTimeout>>(null);
 
@@ -35,4 +35,4 @@ export const useTimeout = (
   }, []);
 
   return { clear, reset };
-};
+}

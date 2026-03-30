@@ -5,9 +5,9 @@ import { useLocale } from "../provider/locale-context";
 import { useFilePickerAction, useFilePickerStatus } from "./file-picker-context";
 import { useFilePickerItem } from "./file-picker-item-context";
 
-export const FilePickerItemDelete = (
+export function FilePickerItemDelete(
   props: PrimitiveProps<"button", CloseButtonProps, "onClick" | "disabled">,
-): JSX.Element => {
+): JSX.Element {
   const { t } = useLocale();
   const { disabled } = useFilePickerStatus();
   const { removeFile } = useFilePickerAction();
@@ -26,4 +26,4 @@ export const FilePickerItemDelete = (
       {...props}
     />
   );
-};
+}

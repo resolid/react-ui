@@ -3,15 +3,20 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { cwd } from "node:process";
 
-export const getMdxMeta = async (pathname: string) => {
+export async function getMdxMeta(pathname: string): Promise<{
+  meta: { title: string; description?: string };
+  documentLink: string;
+  sourceLink: string | null;
+  toc: { depth: number; text: string; slug: string }[];
+} | null> {
   const filePath = join(cwd(), ".resolid/content/markdown.json");
 
   const markdownMeta = JSON.parse(await readFile(filePath, { encoding: "utf-8" }));
 
   return markdownMeta[pathname] ?? null;
-};
+}
 
-export const getSearchData = async (q: string) => {
+export async function getSearchData(q: string) {
   const filePath = join(cwd(), ".resolid/content/search.json");
 
   const searchData = JSON.parse(await readFile(filePath, { encoding: "utf-8" }));
@@ -25,4 +30,4 @@ export const getSearchData = async (q: string) => {
   miniSearch.addAll(searchData);
 
   return miniSearch.search(q);
-};
+}

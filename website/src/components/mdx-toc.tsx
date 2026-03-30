@@ -1,13 +1,13 @@
 import { tx, useEventListener } from "@resolid/react-ui";
 import { type RefObject, useState } from "react";
 
-export const MdxToc = ({
+export function MdxToc({
   toc,
   contentRef,
 }: {
   toc: { depth: number; text: string; slug: string }[];
   contentRef: RefObject<HTMLDivElement | null>;
-}) => {
+}) {
   const [activeHeading, setActiveHeading] = useState("");
 
   useEventListener("scroll", () => {
@@ -54,4 +54,4 @@ export const MdxToc = ({
       })}
     </ul>
   );
-};
+}

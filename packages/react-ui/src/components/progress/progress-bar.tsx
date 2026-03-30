@@ -13,9 +13,9 @@ export type ProgressBarProps = Omit<ProgressBarRootProps, "size"> &
     size?: keyof typeof progressBarSizeStyles;
   };
 
-export const ProgressBar = (
+export function ProgressBar(
   props: PrimitiveProps<"div", ProgressBarProps, "children">,
-): JSX.Element => {
+): JSX.Element {
   const {
     percent,
     size = "md",
@@ -32,11 +32,4 @@ export const ProgressBar = (
       <ProgressBarSection percent={percent} color={color} striped={striped} animated={animated} />
     </ProgressBarRoot>
   );
-};
-
-export {
-  ProgressBarRoot,
-  ProgressBarSection,
-  type ProgressBarRootProps,
-  type ProgressBarSectionProps,
-};
+}

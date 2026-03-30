@@ -12,9 +12,9 @@ export type AvatarImageProps = {
   src?: string;
 };
 
-export const AvatarImage = (
+export function AvatarImage(
   props: PrimitiveProps<"img", AvatarImageProps, "alt" | "draggable">,
-): JSX.Element | null => {
+): JSX.Element | null {
   const { src, crossOrigin, referrerPolicy, className, ...rest } = props;
 
   const { name, radiusClass } = useAvatar();
@@ -48,4 +48,4 @@ export const AvatarImage = (
       {...rest}
     />
   );
-};
+}

@@ -15,9 +15,9 @@ export type NativeSelectProps = FormInputFieldProps & {
   size?: SelectSize;
 };
 
-export const NativeSelect = (
+export function NativeSelect(
   props: PrimitiveProps<"select", NativeSelectProps, "multiple">,
-): JSX.Element => {
+): JSX.Element {
   const { size = "md", disabled = false, invalid = false, children, className, ...rest } = props;
 
   const sizeStyle = selectSizeStyles[size];
@@ -42,4 +42,4 @@ export const NativeSelect = (
       <SelectChevron className={sizeStyle.chevron} />
     </div>
   );
-};
+}

@@ -16,9 +16,7 @@ export type MenuItemProps = MenuBaseItemProps & {
   onSelect?: () => void;
 };
 
-export const MenuItem = (
-  props: PolymorphicProps<"div", MenuItemProps, "tabIndex">,
-): JSX.Element => {
+export function MenuItem(props: PolymorphicProps<"div", MenuItemProps, "tabIndex">): JSX.Element {
   const { menuEvents, closeOnSelect: menuCloseOnSelect, typingRef } = useMenuItem();
 
   const {
@@ -56,4 +54,4 @@ export const MenuItem = (
       {children}
     </MenuBaseItem>
   );
-};
+}

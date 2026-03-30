@@ -9,70 +9,13 @@ import { useSlider, useSliderControl, useSliderThumb, type ValueType } from "./s
 import { sliderColorStyles, sliderSizeStyles } from "./slider.styles";
 import { getStepValue } from "./utils";
 
-type SliderThumbButtonProps = {
-  value: number;
-  index?: number;
-};
-
-const SliderThumbButton = (props: PrimitiveProps<"div", SliderThumbButtonProps>) => {
-  const { className, children, value, index, ref, ...rest } = props;
-
-  const { max, min, size, color, disabled, vertical } = useSlider();
-  const { dragging } = useSliderThumb();
-
-  const [hoverRef, hovered] = useHover();
-  const [focusRef, focused] = useFocus();
-
-  const borderStyle = sliderSizeStyles[size].border;
-  const colorStyle = sliderColorStyles[color].thumb;
-
-  const refs = useMergeRefs(ref, hoverRef, focusRef);
-
-  return (
-    <Tooltip open={dragging || hovered || focused} placement={vertical ? "right" : "top"}>
-      <TooltipTrigger
-        ref={refs}
-        role="slider"
-        disabled={disabled}
-        aria-valuemax={max}
-        aria-valuemin={min}
-        aria-valuenow={value}
-        aria-orientation={vertical ? "vertical" : "horizontal"}
-        render={(triggerProps) => (
-          <div
-            className={tx(
-              "absolute z-10 touch-none appearance-none rounded-full bg-bg-normal select-none",
-              "h-(--s-thumb-h) w-(--s-thumb-w)",
-              vertical ? "translate-y-1/2" : "-translate-x-1/2",
-              disabled
-                ? "cursor-not-allowed grayscale-75"
-                : "cursor-pointer focus-visible:outline-2",
-              disabled ? colorStyle.disable : colorStyle.enable,
-              !children && borderStyle,
-              className,
-            )}
-            {...triggerProps}
-            {...rest}
-          >
-            {runIf(children, index, disabled)}
-          </div>
-        )}
-      />
-      <TooltipContent className="capitalize">
-        <TooltipArrow />
-        {value}
-      </TooltipContent>
-    </Tooltip>
-  );
-};
-
 export type SliderThumbProps = {
   size?: { width: number; height: number };
 };
 
-export const SliderThumb = (
+export function SliderThumb(
   props: PrimitiveProps<"div", SliderThumbProps, "onKeyDown">,
-): JSX.Element => {
+): JSX.Element {
   const { className, ...rest } = props;
   const { max, min, step, vertical, direction } = useSlider();
 
@@ -186,4 +129,61 @@ export const SliderThumb = (
       {...rest}
     />
   );
+}
+
+type SliderThumbButtonProps = {
+  value: number;
+  index?: number;
 };
+
+function SliderThumbButton(props: PrimitiveProps<"div", SliderThumbButtonProps>) {
+  const { className, children, value, index, ref, ...rest } = props;
+
+  const { max, min, size, color, disabled, vertical } = useSlider();
+  const { dragging } = useSliderThumb();
+
+  const [hoverRef, hovered] = useHover();
+  const [focusRef, focused] = useFocus();
+
+  const borderStyle = sliderSizeStyles[size].border;
+  const colorStyle = sliderColorStyles[color].thumb;
+
+  const refs = useMergeRefs(ref, hoverRef, focusRef);
+
+  return (
+    <Tooltip open={dragging || hovered || focused} placement={vertical ? "right" : "top"}>
+      <TooltipTrigger
+        ref={refs}
+        role="slider"
+        disabled={disabled}
+        aria-valuemax={max}
+        aria-valuemin={min}
+        aria-valuenow={value}
+        aria-orientation={vertical ? "vertical" : "horizontal"}
+        render={(triggerProps) => (
+          <div
+            className={tx(
+              "absolute z-10 touch-none appearance-none rounded-full bg-bg-normal select-none",
+              "h-(--s-thumb-h) w-(--s-thumb-w)",
+              vertical ? "translate-y-1/2" : "-translate-x-1/2",
+              disabled
+                ? "cursor-not-allowed grayscale-75"
+                : "cursor-pointer focus-visible:outline-2",
+              disabled ? colorStyle.disable : colorStyle.enable,
+              !children && borderStyle,
+              className,
+            )}
+            {...triggerProps}
+            {...rest}
+          >
+            {runIf(children, index, disabled)}
+          </div>
+        )}
+      />
+      <TooltipContent className="capitalize">
+        <TooltipArrow />
+        {value}
+      </TooltipContent>
+    </Tooltip>
+  );
+}

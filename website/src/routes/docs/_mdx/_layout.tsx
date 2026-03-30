@@ -1,4 +1,6 @@
 import { MDXProvider } from "@mdx-js/react";
+import { httpNotFound } from "@resolid/dev/http.server";
+import { mergeMeta } from "@resolid/dev/router";
 import { type Dict, type PrimitiveProps, tx } from "@resolid/react-ui";
 import { startsWith, trimStart } from "@resolid/utils";
 import {
@@ -20,10 +22,26 @@ import { MdxPropsTable } from "~/components/mdx-props-table";
 import { MdxToc } from "~/components/mdx-toc";
 import { SpriteIcon } from "~/components/sprite-icon";
 import { getMdxMeta } from "~/utils/mdx-utils.server";
-import { mergeMeta } from "~/utils/react-router-meta";
 import type { Route } from "./+types/_layout";
 
-// noinspection JSUnusedGlobalSymbols
+export const meta: Route.MetaFunction = mergeMeta(({ loaderData }) => [
+  {
+    title: loaderData.meta.title,
+  },
+]);
+
+export const loader = async ({ request }: Route.LoaderArgs) => {
+  const { pathname } = new URL(request.url);
+
+  const meta = await getMdxMeta(trimStart(pathname, "/"));
+
+  if (meta == null) {
+    httpNotFound();
+  }
+
+  return meta;
+};
+
 const mdxComponents = {
   h2: ({ className, ...rest }: PrimitiveProps<"h2">) => (
     <MdxHeading as="h2" className={tx("mt-8", className)} {...rest} />
@@ -107,21 +125,6 @@ const mdxComponents = {
   CodeGroup: MdxCodeGroup,
 };
 
-// noinspection JSUnusedGlobalSymbols
-export const meta = mergeMeta(({ loaderData }: Route.MetaArgs) => [
-  {
-    title: loaderData?.meta.title,
-  },
-]);
-
-// noinspection JSUnusedGlobalSymbols
-export const loader = async ({ request }: Route.LoaderArgs) => {
-  const { pathname } = new URL(request.url);
-
-  return await getMdxMeta(trimStart(pathname, "/"));
-};
-
-// noinspection JSUnusedGlobalSymbols
 export default function Layout({ loaderData }: Route.ComponentProps) {
   const contentRef = useRef<HTMLDivElement>(null);
 

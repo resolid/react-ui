@@ -16,9 +16,9 @@ export type MenuCheckboxItemProps = MenuItemProps & {
   onChange?: (checked: CheckedState) => void;
 };
 
-export const MenuCheckboxItem = (
+export function MenuCheckboxItem(
   props: PolymorphicProps<"div", MenuCheckboxItemProps, "role" | "tabIndex">,
-): JSX.Element => {
+): JSX.Element {
   const { checked = false, className, onChange, onSelect, children, ...rest } = props;
 
   const handleSelect = () => {
@@ -39,4 +39,4 @@ export const MenuCheckboxItem = (
       </MenuItem>
     </MenuItemIndicatorContext>
   );
-};
+}

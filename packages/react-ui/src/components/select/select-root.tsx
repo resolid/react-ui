@@ -35,7 +35,7 @@ import { VisuallyHiddenInput } from "../visually-hidden/visually-hidden-input";
 import { SelectChevron } from "./select-chevron";
 import { selectSizeStyles } from "./select.styles";
 
-export type SelectRootProps<T extends ListboxItem> = DisclosureProps &
+export type SelectRootProps<T extends ListboxItem = ListboxItem> = DisclosureProps &
   ListboxRootProps<T> & {
     /**
      * 自定义值渲染
@@ -54,9 +54,9 @@ export type SelectRootProps<T extends ListboxItem> = DisclosureProps &
     closeOnSelect?: boolean;
   };
 
-export const SelectRoot = <T extends ListboxItem>(
+export function SelectRoot<T extends ListboxItem>(
   props: PrimitiveProps<"div", SelectRootProps<T>>,
-): JSX.Element => {
+): JSX.Element {
   const {
     open,
     defaultOpen,
@@ -322,4 +322,4 @@ export const SelectRoot = <T extends ListboxItem>(
       )}
     </>
   );
-};
+}

@@ -12,7 +12,7 @@ import { useMenu } from "./menu-context";
 import { useMenuHover } from "./menu-hover-context";
 import { MenuItemContext, type MenuItemContextValue } from "./menu-item-context";
 
-export const MenuContent = (props: PrimitiveProps<"div">): JSX.Element | null => {
+export function MenuContent(props: PrimitiveProps<"div">): JSX.Element | null {
   const { children, className, style, ref, ...rest } = props;
 
   const {
@@ -76,4 +76,4 @@ export const MenuContent = (props: PrimitiveProps<"div">): JSX.Element | null =>
       </FloatingFocusManager>
     </Portal>
   );
-};
+}

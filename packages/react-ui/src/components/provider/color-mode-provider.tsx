@@ -15,11 +15,11 @@ export type ColorModeProviderProps = {
   disableTransition?: boolean;
 };
 
-export const ColorModeProvider = ({
+export function ColorModeProvider({
   children,
   nonce,
   disableTransition = true,
-}: PropsWithChildren<ColorModeProviderProps>): JSX.Element => {
+}: PropsWithChildren<ColorModeProviderProps>): JSX.Element {
   const osDark = useMediaQuery(COLOR_SCHEME_QUERY);
 
   const [value, setValue] = useLocalStorage<ColorMode>(COLOR_MODE_STORAGE_KEY, "auto");
@@ -77,4 +77,4 @@ export const ColorModeProvider = ({
       </ColorModeStateContext>
     </ColorModeDispatchContext>
   );
-};
+}

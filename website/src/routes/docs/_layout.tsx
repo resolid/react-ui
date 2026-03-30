@@ -1,11 +1,10 @@
+import { mergeMeta } from "@resolid/dev/router";
 import { CloseButton, tx } from "@resolid/react-ui";
 import { useState } from "react";
 import { Outlet } from "react-router";
 import { AsideLayoutMenu, type Menu } from "~/components/aside-menu";
 import { SpriteIcon } from "~/components/sprite-icon";
-import { mergeMeta } from "~/utils/react-router-meta";
 
-// noinspection JSUnusedGlobalSymbols
 export const meta = mergeMeta(() => [
   {
     title: "文档",

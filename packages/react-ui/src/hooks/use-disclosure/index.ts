@@ -18,16 +18,14 @@ export type UseDisclosureOptions = {
   onOpenChange?: (open: boolean) => void;
 };
 
-export const useDisclosure = (
-  options: UseDisclosureOptions,
-): readonly [
+export function useDisclosure(options: UseDisclosureOptions): readonly [
   boolean,
   {
     readonly handleOpen: () => void;
     readonly handleClose: () => void;
     readonly handleToggle: () => void;
   },
-] => {
+] {
   const { open, defaultOpen = false, onOpenChange } = options;
 
   const [openState, setOpenState] = useControllableState({
@@ -41,4 +39,4 @@ export const useDisclosure = (
   const handleToggle = () => setOpenState((prev) => !prev);
 
   return [openState, { handleOpen, handleClose, handleToggle }] as const;
-};
+}

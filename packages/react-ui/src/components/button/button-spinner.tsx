@@ -17,7 +17,7 @@ const SpinnerSizes: Dict<ButtonSpinnerProps["size"]> = {
   xl: "lg",
 };
 
-export const ButtonSpinner = (props: PrimitiveProps<"span", ButtonSpinnerProps>): JSX.Element => {
+export function ButtonSpinner(props: PrimitiveProps<"span", ButtonSpinnerProps>): JSX.Element {
   const { label, size, className, children: childrenProp, ...rest } = props;
 
   const children = childrenProp ?? <Spinner size={SpinnerSizes[size]} />;
@@ -30,4 +30,4 @@ export const ButtonSpinner = (props: PrimitiveProps<"span", ButtonSpinnerProps>)
       {children}
     </span>
   );
-};
+}

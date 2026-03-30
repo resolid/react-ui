@@ -63,92 +63,9 @@ export type FilePickerRootProps = FormFieldProps & {
     transformFile?: (file: File) => Promise<File>;
   };
 
-type PickerReducerBaseAction = {
-  multiple: boolean;
-  onChange: (value: FileItem[] | FileItem | null) => void;
-};
-
-type PickerReducerAction =
-  | {
-      type: "ADD_FILES";
-      payload: {
-        files: FileItem[];
-      } & PickerReducerBaseAction;
-    }
-  | {
-      type: "UPDATE_FILE";
-      payload: { file: FileItem } & PickerReducerBaseAction;
-    }
-  | {
-      type: "REMOVE_FILE";
-      payload: { id: string; cancelUpload?: (id: string) => void } & PickerReducerBaseAction;
-    };
-
-const reducer = (state: FileItem[], action: PickerReducerAction): FileItem[] => {
-  switch (action.type) {
-    case "ADD_FILES": {
-      const next = action.payload.multiple
-        ? [...state, ...action.payload.files]
-        : action.payload.files;
-
-      action.payload.onChange(action.payload.multiple ? next : (next[0] ?? null));
-
-      return next;
-    }
-    case "UPDATE_FILE": {
-      const index = state.findIndex((item) => item.id === action.payload.file.id);
-
-      if (index > -1) {
-        const next = [...state.slice(0, index), action.payload.file, ...state.slice(index + 1)];
-
-        action.payload.onChange(action.payload.multiple ? next : (next[0] ?? null));
-
-        return next;
-      }
-
-      return state;
-    }
-    case "REMOVE_FILE": {
-      const index = state.findIndex((item) => item.id === action.payload.id);
-
-      if (index > -1) {
-        if (action.payload.cancelUpload) {
-          action.payload.cancelUpload(action.payload.id);
-        }
-
-        const next = [...state.slice(0, index), ...state.slice(index + 1)];
-
-        action.payload.onChange(action.payload.multiple ? next : (next[0] ?? null));
-
-        return next;
-      }
-
-      return state;
-    }
-    default:
-      return state;
-  }
-};
-
-const convertToDataTransfer = (files: FileItem[]) => {
-  try {
-    const dataTransfer = new DataTransfer();
-
-    for (const file of files) {
-      if (file.kind === "local") {
-        dataTransfer.items.add(file.file);
-      }
-    }
-
-    return dataTransfer.files;
-  } catch {
-    return null;
-  }
-};
-
-export const FilePickerRoot = (
+export function FilePickerRoot(
   props: PrimitiveProps<"input", FilePickerRootProps, "type">,
-): JSX.Element => {
+): JSX.Element {
   const {
     name,
     disabled = false,
@@ -395,4 +312,87 @@ export const FilePickerRoot = (
       )}
     </div>
   );
+}
+
+type PickerReducerBaseAction = {
+  multiple: boolean;
+  onChange: (value: FileItem[] | FileItem | null) => void;
 };
+
+type PickerReducerAction =
+  | {
+      type: "ADD_FILES";
+      payload: {
+        files: FileItem[];
+      } & PickerReducerBaseAction;
+    }
+  | {
+      type: "UPDATE_FILE";
+      payload: { file: FileItem } & PickerReducerBaseAction;
+    }
+  | {
+      type: "REMOVE_FILE";
+      payload: { id: string; cancelUpload?: (id: string) => void } & PickerReducerBaseAction;
+    };
+
+function reducer(state: FileItem[], action: PickerReducerAction): FileItem[] {
+  switch (action.type) {
+    case "ADD_FILES": {
+      const next = action.payload.multiple
+        ? [...state, ...action.payload.files]
+        : action.payload.files;
+
+      action.payload.onChange(action.payload.multiple ? next : (next[0] ?? null));
+
+      return next;
+    }
+    case "UPDATE_FILE": {
+      const index = state.findIndex((item) => item.id === action.payload.file.id);
+
+      if (index > -1) {
+        const next = [...state.slice(0, index), action.payload.file, ...state.slice(index + 1)];
+
+        action.payload.onChange(action.payload.multiple ? next : (next[0] ?? null));
+
+        return next;
+      }
+
+      return state;
+    }
+    case "REMOVE_FILE": {
+      const index = state.findIndex((item) => item.id === action.payload.id);
+
+      if (index > -1) {
+        if (action.payload.cancelUpload) {
+          action.payload.cancelUpload(action.payload.id);
+        }
+
+        const next = [...state.slice(0, index), ...state.slice(index + 1)];
+
+        action.payload.onChange(action.payload.multiple ? next : (next[0] ?? null));
+
+        return next;
+      }
+
+      return state;
+    }
+    default:
+      return state;
+  }
+}
+
+function convertToDataTransfer(files: FileItem[]) {
+  try {
+    const dataTransfer = new DataTransfer();
+
+    for (const file of files) {
+      if (file.kind === "local") {
+        dataTransfer.items.add(file.file);
+      }
+    }
+
+    return dataTransfer.files;
+  } catch {
+    return null;
+  }
+}

@@ -7,9 +7,9 @@ import { usePopperTrigger } from "./popper-trigger-context";
 
 type PopperTriggerProps = { active?: boolean };
 
-export const PopperTrigger = (
+export function PopperTrigger(
   props: PolymorphicProps<"button", PopperTriggerProps, "type">,
-): JSX.Element => {
+): JSX.Element {
   const { render, active, disabled, tabIndex, children, ref, ...rest } = props;
 
   const { open } = usePopperState();
@@ -35,4 +35,4 @@ export const PopperTrigger = (
       {children}
     </Polymorphic>
   );
-};
+}

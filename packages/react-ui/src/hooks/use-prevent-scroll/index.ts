@@ -9,77 +9,7 @@ export type UsePreventScrollOptions = {
 
 const LOCK_ATTRIBUTE = "data-prevent-scroll";
 
-const assignStyle = (
-  element: HTMLElement | null | undefined,
-  style: Partial<CSSStyleDeclaration>,
-) => {
-  if (!element) {
-    return;
-  }
-
-  const current = Object.keys(style).reduce((acc, key) => {
-    acc[key] = element.style.getPropertyValue(key);
-    return acc;
-  }, {} as Dict<string>);
-
-  Object.assign(element.style, style);
-
-  return () => {
-    Object.assign(element.style, current);
-  };
-};
-
-const getPaddingProperty = (documentElement: HTMLElement) => {
-  const documentLeft = documentElement.getBoundingClientRect().left;
-  const scrollbarX = Math.round(documentLeft) + documentElement.scrollLeft;
-
-  return scrollbarX ? "paddingLeft" : "paddingRight";
-};
-
-const setCSSProperty = (
-  element: HTMLElement | null | undefined,
-  property: string,
-  value: string,
-) => {
-  if (!element) {
-    return;
-  }
-
-  const current = element.style.getPropertyValue(property);
-
-  element.style.setProperty(property, value);
-
-  return () => {
-    if (current) {
-      element.style.setProperty(property, current);
-    } else {
-      element.style.removeProperty(property);
-    }
-  };
-};
-
-const checkOverflowScroll = (element: Element): boolean => {
-  const style = window.getComputedStyle(element);
-
-  if (
-    style.overflowX === "scroll" ||
-    style.overflowY === "scroll" ||
-    (style.overflowX === "auto" && element.clientWidth < element.scrollWidth) ||
-    (style.overflowY === "auto" && element.clientHeight < element.scrollHeight)
-  ) {
-    return true;
-  }
-
-  const parent = element.parentNode as Element | null;
-
-  if (!parent || parent.tagName === "BODY") {
-    return false;
-  }
-
-  return checkOverflowScroll(parent);
-};
-
-export const usePreventScroll = (options: UsePreventScrollOptions): void => {
+export function usePreventScroll(options: UsePreventScrollOptions): void {
   const { enabled, contentElement } = options;
 
   useEffect(() => {
@@ -150,4 +80,67 @@ export const usePreventScroll = (options: UsePreventScrollOptions): void => {
       body.removeAttribute(LOCK_ATTRIBUTE);
     };
   }, [contentElement, enabled]);
-};
+}
+
+function assignStyle(element: HTMLElement | null | undefined, style: Partial<CSSStyleDeclaration>) {
+  if (!element) {
+    return;
+  }
+
+  const current = Object.keys(style).reduce((acc, key) => {
+    acc[key] = element.style.getPropertyValue(key);
+    return acc;
+  }, {} as Dict<string>);
+
+  Object.assign(element.style, style);
+
+  return () => {
+    Object.assign(element.style, current);
+  };
+}
+
+function getPaddingProperty(documentElement: HTMLElement) {
+  const documentLeft = documentElement.getBoundingClientRect().left;
+  const scrollbarX = Math.round(documentLeft) + documentElement.scrollLeft;
+
+  return scrollbarX ? "paddingLeft" : "paddingRight";
+}
+
+function setCSSProperty(element: HTMLElement | null | undefined, property: string, value: string) {
+  if (!element) {
+    return;
+  }
+
+  const current = element.style.getPropertyValue(property);
+
+  element.style.setProperty(property, value);
+
+  return () => {
+    if (current) {
+      element.style.setProperty(property, current);
+    } else {
+      element.style.removeProperty(property);
+    }
+  };
+}
+
+function checkOverflowScroll(element: Element): boolean {
+  const style = window.getComputedStyle(element);
+
+  if (
+    style.overflowX === "scroll" ||
+    style.overflowY === "scroll" ||
+    (style.overflowX === "auto" && element.clientWidth < element.scrollWidth) ||
+    (style.overflowY === "auto" && element.clientHeight < element.scrollHeight)
+  ) {
+    return true;
+  }
+
+  const parent = element.parentNode as Element | null;
+
+  if (!parent || parent.tagName === "BODY") {
+    return false;
+  }
+
+  return checkOverflowScroll(parent);
+}

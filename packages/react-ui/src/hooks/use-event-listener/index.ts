@@ -18,7 +18,7 @@ type ExtractEvent<Target, EventName extends ExtractEventName<Target>> = ExtractE
   ExtractTargetElement<Target>
 >[EventName];
 
-export const useEventListener = <
+export function useEventListener<
   TargetEventName extends ExtractEventName<Target>,
   TargetEvent extends ExtractEvent<Target, TargetEventName>,
   Target extends UseEventListenerTarget = Window,
@@ -27,7 +27,7 @@ export const useEventListener = <
   handler: (event: TargetEvent) => void,
   target?: Target,
   options?: boolean | AddEventListenerOptions,
-): void => {
+): void {
   const handlerEvent = useEffectEvent(handler);
 
   useEffect(() => {
@@ -54,4 +54,4 @@ export const useEventListener = <
       targetElement.removeEventListener(eventName, eventListener);
     };
   }, [target, eventName, options]);
-};
+}

@@ -1,7 +1,7 @@
 import { type RefObject, useRef, useState } from "react";
 import { useEventListener } from "../use-event-listener";
 
-export const useFocus = <T extends HTMLElement>(): [RefObject<T | null>, boolean] => {
+export function useFocus<T extends HTMLElement>(): [RefObject<T | null>, boolean] {
   const ref = useRef<T>(null);
   const [focus, setFocus] = useState(false);
 
@@ -9,4 +9,4 @@ export const useFocus = <T extends HTMLElement>(): [RefObject<T | null>, boolean
   useEventListener("blur", () => setFocus(false), ref);
 
   return [ref, focus];
-};
+}

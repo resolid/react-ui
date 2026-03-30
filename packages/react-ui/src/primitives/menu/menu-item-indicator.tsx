@@ -3,7 +3,7 @@ import type { PrimitiveProps } from "../polymorphic";
 import { tx } from "../../utils";
 import { useMenuItemIndicator } from "./menu-item-indicator-context";
 
-export const MenuItemIndicator = (props: PrimitiveProps<"span">): JSX.Element | null => {
+export function MenuItemIndicator(props: PrimitiveProps<"span">): JSX.Element | null {
   const { className, children, ...rest } = props;
 
   const context = useMenuItemIndicator();
@@ -16,4 +16,4 @@ export const MenuItemIndicator = (props: PrimitiveProps<"span">): JSX.Element | 
       {children}
     </span>
   ) : null;
-};
+}

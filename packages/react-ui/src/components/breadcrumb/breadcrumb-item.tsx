@@ -2,7 +2,7 @@ import type { JSX } from "react/jsx-runtime";
 import type { PrimitiveProps } from "../../primitives";
 import { tx } from "../../utils";
 
-export const BreadcrumbItem = (props: PrimitiveProps<"li">): JSX.Element => {
+export function BreadcrumbItem(props: PrimitiveProps<"li">): JSX.Element {
   const { className, children, ...rest } = props;
 
   return (
@@ -10,4 +10,4 @@ export const BreadcrumbItem = (props: PrimitiveProps<"li">): JSX.Element => {
       {children}
     </li>
   );
-};
+}

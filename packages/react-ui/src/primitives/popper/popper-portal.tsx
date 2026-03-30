@@ -3,7 +3,7 @@ import type { JSX } from "react/jsx-runtime";
 import { Portal } from "../../components/portal/portal";
 import { usePopperTransition } from "./popper-transtion-context";
 
-export const PopperPortal = ({ children }: PropsWithChildren): JSX.Element | null => {
+export function PopperPortal({ children }: PropsWithChildren): JSX.Element | null {
   const { mounted } = usePopperTransition();
 
   if (!mounted) {
@@ -11,4 +11,4 @@ export const PopperPortal = ({ children }: PropsWithChildren): JSX.Element | nul
   }
 
   return <Portal>{children}</Portal>;
-};
+}

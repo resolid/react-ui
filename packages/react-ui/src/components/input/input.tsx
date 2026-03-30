@@ -4,6 +4,6 @@ import { InputBase, type InputBaseProps } from "./input-base";
 
 export type InputProps = Omit<InputBaseProps, "focusable">;
 
-export const Input = (props: PrimitiveProps<"input", InputProps, "children">): JSX.Element => (
-  <InputBase {...props} />
-);
+export function Input(props: PrimitiveProps<"input", InputProps, "children">): JSX.Element {
+  return <InputBase {...props} />;
+}

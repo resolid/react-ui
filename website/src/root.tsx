@@ -9,7 +9,6 @@ import { VercelAnalytics } from "~/components/vercel-analytics";
 
 import style from "~/root.css?url";
 
-// noinspection JSUnusedGlobalSymbols
 export const meta = () => [
   { title: "Resolid UI" },
   {
@@ -18,11 +17,9 @@ export const meta = () => [
   },
 ];
 
-// noinspection JSUnusedGlobalSymbols
-export const Layout = ({ children }: PropsWithChildren) => {
+export function Layout({ children }: PropsWithChildren) {
   const defaultLocale = "zh-CN";
 
-  // noinspection HtmlRequiredTitleElement
   return (
     <html lang={defaultLocale} suppressHydrationWarning>
       <head>
@@ -48,12 +45,10 @@ export const Layout = ({ children }: PropsWithChildren) => {
       </body>
     </html>
   );
-};
+}
 
-// noinspection JSUnusedGlobalSymbols
 export default function Root() {
   return <Outlet />;
 }
 
-// noinspection JSUnusedGlobalSymbols
 export const ErrorBoundary = ErrorComponent;

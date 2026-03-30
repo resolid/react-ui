@@ -27,9 +27,9 @@ export type ToastRootProps = AlertProps & {
   onDismiss?: () => void;
 };
 
-export const ToastRoot = (
+export function ToastRoot(
   props: PrimitiveProps<"div", ToastRootProps, "role" | "id">,
-): JSX.Element | null => {
+): JSX.Element | null {
   const {
     priority = "high",
     onDismiss,
@@ -134,7 +134,7 @@ export const ToastRoot = (
       </Alert>
     </div>
   );
-};
+}
 
 const placementTranslateStyles = {
   top: {

@@ -1,8 +1,5 @@
-import {
-  MenuCheckboxItem,
-  type MenuCheckboxItemProps,
-} from "../../primitives/menu/menu-checkbox-item";
+import type { MenuCheckboxItemProps } from "../../primitives/menu/menu-checkbox-item";
 
 export type ContextMenuCheckboxItemProps = MenuCheckboxItemProps;
 
-export const ContextMenuCheckboxItem: typeof MenuCheckboxItem = MenuCheckboxItem;
+export { MenuCheckboxItem as ContextMenuCheckboxItem } from "../../primitives/menu/menu-checkbox-item";

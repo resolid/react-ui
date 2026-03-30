@@ -10,9 +10,9 @@ export type IndicatorProps = {
   orientation: Orientation;
 };
 
-export const Indicator = (
+export function Indicator(
   props: PrimitiveProps<"span", IndicatorProps, "role" | "children">,
-): JSX.Element => {
+): JSX.Element {
   const { orientation, className, style, ...rest } = props;
 
   const direction = useDirection(true);
@@ -59,4 +59,4 @@ export const Indicator = (
       {...rest}
     />
   );
-};
+}

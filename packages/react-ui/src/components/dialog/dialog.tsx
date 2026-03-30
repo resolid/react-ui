@@ -1,28 +1,19 @@
 import type { ComponentProps } from "react";
 import type { JSX } from "react/jsx-runtime";
-import { PopperBackdrop } from "../../primitives/popper/popper-backdrop";
-import { PopperClose } from "../../primitives/popper/popper-close";
-import { PopperDescription } from "../../primitives/popper/popper-description";
-import { PopperPortal } from "../../primitives/popper/popper-portal";
-import { PopperTitle } from "../../primitives/popper/popper-title";
 import { PopperTrigger } from "../../primitives/popper/popper-trigger";
-import { DialogRoot, type DialogRootProps } from "./dialog-root";
 
-export type DialogProps = DialogRootProps;
+export { DialogRoot as Dialog, type DialogRootProps as DialogProps } from "./dialog-root";
 
-export const Dialog: typeof DialogRoot = DialogRoot;
-
-export const DialogTrigger = (
+export function DialogTrigger(
   props: Omit<ComponentProps<typeof PopperTrigger>, "active">,
-): JSX.Element => <PopperTrigger active={false} {...props} />;
-
-export const DialogPortal: typeof PopperPortal = PopperPortal;
-
-export const DialogBackdrop: typeof PopperBackdrop = PopperBackdrop;
+): JSX.Element {
+  return <PopperTrigger active={false} {...props} />;
+}
 
 export { DialogContent } from "./dialog-content";
 
-export const DialogTitle: typeof PopperTitle = PopperTitle;
-export const DialogDescription: typeof PopperDescription = PopperDescription;
-
-export const DialogClose: typeof PopperClose = PopperClose;
+export { PopperPortal as DialogPortal } from "../../primitives/popper/popper-portal";
+export { PopperBackdrop as DialogBackdrop } from "../../primitives/popper/popper-backdrop";
+export { PopperTitle as DialogTitle } from "../../primitives/popper/popper-title";
+export { PopperClose as DialogClose } from "../../primitives/popper/popper-close";
+export { PopperDescription as DialogDescription } from "../../primitives/popper/popper-description";

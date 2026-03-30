@@ -39,9 +39,9 @@ export type CloseButtonProps = {
   noPadding?: boolean;
 };
 
-export const CloseButton = (
+export function CloseButton(
   props: PrimitiveProps<"button", CloseButtonProps, "type">,
-): JSX.Element => {
+): JSX.Element {
   const { t } = useLocale();
 
   const {
@@ -73,4 +73,4 @@ export const CloseButton = (
       {children ?? <CloseIcon className="-mb-[.1em]" size={size} />}
     </Button>
   );
-};
+}

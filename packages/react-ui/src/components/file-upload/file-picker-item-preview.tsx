@@ -20,9 +20,9 @@ export type FilePickerItemPreviewProps = {
   rules?: { type: string; render: ReactNode }[];
 };
 
-export const FilePickerItemPreview = (
+export function FilePickerItemPreview(
   props: PrimitiveProps<"div", FilePickerItemPreviewProps, "children">,
-): JSX.Element => {
+): JSX.Element {
   const { rules = [], className, ...rest } = props;
 
   const file = useFilePickerItem();
@@ -58,4 +58,4 @@ export const FilePickerItemPreview = (
       )}
     </div>
   );
-};
+}

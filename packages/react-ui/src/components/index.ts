@@ -34,6 +34,8 @@ export * from "./popover/popover";
 export * from "./popover/popover-provider";
 export * from "./popover/use-popover";
 export * from "./progress/progress-bar";
+export * from "./progress/progress-bar-root";
+export * from "./progress/progress-bar-section";
 export * from "./provider/config-provider";
 export * from "./provider/use-color-mode";
 export * from "./radio/radio";

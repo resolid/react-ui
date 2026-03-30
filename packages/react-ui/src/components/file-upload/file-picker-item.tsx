@@ -3,7 +3,7 @@ import type { PrimitiveProps } from "../../primitives";
 import { hasRoundedBaseClass } from "../../shared/utils";
 import { tx } from "../../utils";
 
-export const FilePickerItem = (props: PrimitiveProps<"li">): JSX.Element => {
+export function FilePickerItem(props: PrimitiveProps<"li">): JSX.Element {
   const { className, children, ...rest } = props;
 
   return (
@@ -14,4 +14,4 @@ export const FilePickerItem = (props: PrimitiveProps<"li">): JSX.Element => {
       {children}
     </li>
   );
-};
+}

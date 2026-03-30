@@ -23,7 +23,7 @@ export type RadioGroupProps = RadioGroupBaseProps & {
   orientation?: Orientation;
 };
 
-export const RadioGroup = (props: PrimitiveProps<"div", RadioGroupProps, "role">): JSX.Element => {
+export function RadioGroup(props: PrimitiveProps<"div", RadioGroupProps, "role">): JSX.Element {
   const {
     color = "primary",
     size = "md",
@@ -85,4 +85,4 @@ export const RadioGroup = (props: PrimitiveProps<"div", RadioGroupProps, "role">
       <RadioGroupContext value={groupContext}>{children}</RadioGroupContext>
     </div>
   );
-};
+}

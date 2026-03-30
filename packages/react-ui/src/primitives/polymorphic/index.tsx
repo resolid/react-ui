@@ -27,9 +27,9 @@ export type PolymorphicProps<
   S = undefined,
 > = RenderProps<S> & PrimitiveProps<T, P, O>;
 
-export const Polymorphic = <T extends ElementTag, S = undefined>(
+export function Polymorphic<T extends ElementTag, S = undefined>(
   props: { as: string } & RenderProps<S> & StateProp<S> & ElementProps<T>,
-): ReactNode => {
+): ReactNode {
   const { render, as: Tag, state, ...rest } = props;
 
   if (render) {
@@ -37,4 +37,4 @@ export const Polymorphic = <T extends ElementTag, S = undefined>(
   }
 
   return <Tag {...rest} />;
-};
+}

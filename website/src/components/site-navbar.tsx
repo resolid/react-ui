@@ -15,7 +15,7 @@ import { ResolidUiLogo } from "~/components/resolid-ui-logo";
 import { SiteSearch } from "~/components/site-search";
 import { SpriteIcon } from "~/components/sprite-icon";
 
-export const SiteNavbar = () => {
+export function SiteNavbar() {
   const [opened, setOpened] = useState(false);
 
   return (
@@ -129,4 +129,4 @@ export const SiteNavbar = () => {
       </div>
     </nav>
   );
-};
+}

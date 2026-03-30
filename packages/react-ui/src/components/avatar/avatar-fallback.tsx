@@ -12,28 +12,9 @@ export type AvatarFallbackProps = {
   delay?: number;
 };
 
-const stringToColor = (str: string): { color: string; light: boolean } => {
-  let hash = 0;
-
-  for (let i = 0; i < str.length; i++) {
-    hash = (hash * 31 + str.charCodeAt(i)) >>> 0;
-  }
-
-  const r = (hash & 0xff0000) >> 16;
-  const g = (hash & 0x00ff00) >> 8;
-  const b = hash & 0x0000ff;
-
-  const brightness = (r * 299 + g * 587 + b * 114) / 1000;
-
-  return {
-    color: `rgb(${r},${g},${b})`,
-    light: brightness > 127,
-  };
-};
-
-export const AvatarFallback = (
+export function AvatarFallback(
   props: PrimitiveProps<"div", AvatarFallbackProps, "role" | "translate">,
-): JSX.Element | null => {
+): JSX.Element | null {
   const { delay = 200, className, style, children, ...rest } = props;
 
   const { name, radiusClass } = useAvatar();
@@ -95,4 +76,23 @@ export const AvatarFallback = (
       )}
     </div>
   );
-};
+}
+
+function stringToColor(str: string): { color: string; light: boolean } {
+  let hash = 0;
+
+  for (let i = 0; i < str.length; i++) {
+    hash = (hash * 31 + str.charCodeAt(i)) >>> 0;
+  }
+
+  const r = (hash & 0xff0000) >> 16;
+  const g = (hash & 0x00ff00) >> 8;
+  const b = hash & 0x0000ff;
+
+  const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+
+  return {
+    color: `rgb(${r},${g},${b})`,
+    light: brightness > 127,
+  };
+}

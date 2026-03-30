@@ -51,7 +51,7 @@ export type ButtonProps = ButtonBaseProps & {
   spinnerPlacement?: "start" | "end";
 };
 
-export const Button = (props: PolymorphicProps<"button", ButtonProps, "role">): JSX.Element => {
+export function Button(props: PolymorphicProps<"button", ButtonProps, "role">): JSX.Element {
   const group = useButtonGroup(true);
 
   const {
@@ -132,4 +132,4 @@ export const Button = (props: PolymorphicProps<"button", ButtonProps, "role">): 
       )}
     </Polymorphic>
   );
-};
+}

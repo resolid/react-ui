@@ -9,7 +9,7 @@ export type DrawerRootProps = Omit<
 > &
   Partial<DrawerContextValue>;
 
-export const DrawerRoot = (props: PrimitiveProps<"div", DrawerRootProps, "role">): JSX.Element => {
+export function DrawerRoot(props: PrimitiveProps<"div", DrawerRootProps, "role">): JSX.Element {
   const { placement = "end", children, ...rest } = props;
 
   return (
@@ -19,4 +19,4 @@ export const DrawerRoot = (props: PrimitiveProps<"div", DrawerRootProps, "role">
       </DialogRoot>
     </DrawerContext>
   );
-};
+}

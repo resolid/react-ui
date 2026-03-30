@@ -13,9 +13,9 @@ type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (
   ? I
   : never;
 
-export const mergeProps = <T extends Props>(
+export function mergeProps<T extends Props>(
   ...args: (T | null | undefined)[]
-): UnionToIntersection<TupleTypes<T[]>> => {
+): UnionToIntersection<TupleTypes<T[]>> {
   const result: Props = { ...args[0] };
 
   for (let i = 1; i < args.length; i++) {
@@ -56,4 +56,4 @@ export const mergeProps = <T extends Props>(
   }
 
   return result as UnionToIntersection<TupleTypes<T[]>>;
-};
+}

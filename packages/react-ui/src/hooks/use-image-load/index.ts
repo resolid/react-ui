@@ -13,7 +13,7 @@ export type UseImageLoadOptions = {
 
 export type ImageLoadStatus = "idle" | "loading" | "loaded" | "error";
 
-export const useImageLoad = (options: UseImageLoadOptions): ImageLoadStatus => {
+export function useImageLoad(options: UseImageLoadOptions): ImageLoadStatus {
   const { src, crossOrigin, referrerPolicy } = options;
 
   const [loadStatus, setLoadStatus] = useState<ImageLoadStatus>("idle");
@@ -51,4 +51,4 @@ export const useImageLoad = (options: UseImageLoadOptions): ImageLoadStatus => {
   }, [src, crossOrigin, referrerPolicy]);
 
   return loadStatus;
-};
+}

@@ -5,14 +5,14 @@ import { useFilePickerInputRef, useFilePickerStatus } from "./file-picker-contex
 
 type FilePickerTriggerState = { disabled: boolean };
 
-export const FilePickerTrigger = (
+export function FilePickerTrigger(
   props: PolymorphicProps<
     "button",
     EmptyObject,
     "type" | "disabled" | "onClick",
     FilePickerTriggerState
   >,
-): JSX.Element => {
+): JSX.Element {
   const { render, tabIndex, children, ...rest } = props;
 
   const { disabled } = useFilePickerStatus();
@@ -43,4 +43,4 @@ export const FilePickerTrigger = (
       {children}
     </Polymorphic>
   );
-};
+}

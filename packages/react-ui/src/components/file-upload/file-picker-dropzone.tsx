@@ -5,7 +5,7 @@ import { hasRoundedBaseClass, hasSizeBaseClass } from "../../shared/utils";
 import { dataAttr, tx } from "../../utils";
 import { useFilePickerAction, useFilePickerStatus } from "./file-picker-context";
 
-export const FilePickerDropzone = (props: PrimitiveProps<"div">): JSX.Element => {
+export function FilePickerDropzone(props: PrimitiveProps<"div">): JSX.Element {
   const { className, children, ...rest } = props;
 
   const { disabled, multiple } = useFilePickerStatus();
@@ -80,4 +80,4 @@ export const FilePickerDropzone = (props: PrimitiveProps<"div">): JSX.Element =>
       {children}
     </div>
   );
-};
+}

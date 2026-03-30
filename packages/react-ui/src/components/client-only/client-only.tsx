@@ -7,5 +7,6 @@ export type ClientOnlyProps = {
   fallback?: ReactNode;
 };
 
-export const ClientOnly = ({ children, fallback }: ClientOnlyProps): ReactNode =>
-  useHydrated() ? runIf(children) : fallback;
+export function ClientOnly({ children, fallback }: ClientOnlyProps): ReactNode {
+  return useHydrated() ? runIf(children) : fallback;
+}

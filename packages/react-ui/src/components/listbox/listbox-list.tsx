@@ -12,7 +12,7 @@ export type ListboxListProps = {
   checkmark?: boolean;
 };
 
-export const ListboxList = ({ checkmark = true }: ListboxListProps): JSX.Element[] => {
+export function ListboxList({ checkmark = true }: ListboxListProps): JSX.Element[] {
   const { size, disabled, readOnly } = useListboxState();
   const { nodeItems } = useListboxCollection();
   const { getItemValue, getItemLabel, getItemChildren } = useListboxFields();
@@ -83,4 +83,4 @@ export const ListboxList = ({ checkmark = true }: ListboxListProps): JSX.Element
       );
     }
   });
-};
+}

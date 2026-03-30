@@ -6,7 +6,7 @@ import { BreadcrumbContext, type BreadcrumbContextValue } from "./breadcrumb-con
 
 export type BreadcrumbRootProps = BreadcrumbContextValue;
 
-export const BreadcrumbRoot = (props: PrimitiveProps<"nav", BreadcrumbRootProps>): JSX.Element => {
+export function BreadcrumbRoot(props: PrimitiveProps<"nav", BreadcrumbRootProps>): JSX.Element {
   const { children, className, separator: separatorProp, ...rest } = props;
 
   const separator = separatorProp ?? <AngleRightIcon />;
@@ -18,4 +18,4 @@ export const BreadcrumbRoot = (props: PrimitiveProps<"nav", BreadcrumbRootProps>
       </BreadcrumbContext>
     </nav>
   );
-};
+}

@@ -4,9 +4,9 @@ import type { EmptyObject, PrimitiveProps } from "../../primitives";
 import { tx } from "../../utils";
 import { useFilePickerItem } from "./file-picker-item-context";
 
-export const FilePickerImagePreview = (
+export function FilePickerImagePreview(
   props: PrimitiveProps<"img", EmptyObject, "src" | "srcSet" | "onLoad">,
-): JSX.Element => {
+): JSX.Element {
   const { className, ...rest } = props;
 
   const file = useFilePickerItem();
@@ -32,4 +32,4 @@ export const FilePickerImagePreview = (
       {...rest}
     />
   );
-};
+}

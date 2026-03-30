@@ -9,7 +9,7 @@ import { tx } from "../../utils";
 import { PortalLite } from "../portal/portal-lite";
 import { useTooltipRoot } from "./tooltip-root-context";
 
-export const TooltipContent = (props: PrimitiveProps<"div">): JSX.Element | null => {
+export function TooltipContent(props: PrimitiveProps<"div">): JSX.Element | null {
   const { children, className, style, ref, ...rest } = props;
 
   const { interactive, contentClassName } = useTooltipRoot();
@@ -42,4 +42,4 @@ export const TooltipContent = (props: PrimitiveProps<"div">): JSX.Element | null
       </PopperFloating>
     </PortalLite>
   );
-};
+}

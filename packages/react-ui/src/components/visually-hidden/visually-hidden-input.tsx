@@ -10,14 +10,14 @@ export type VisuallyHiddenInputProps<T> = {
   disabled?: boolean;
 };
 
-export const VisuallyHiddenInput = <T,>({
+export function VisuallyHiddenInput<T>({
   name,
   value,
   getValue,
   required,
   disabled,
   ...rest
-}: PrimitiveProps<"input", VisuallyHiddenInputProps<T>>): JSX.Element | JSX.Element[] => {
+}: PrimitiveProps<"input", VisuallyHiddenInputProps<T>>): JSX.Element | JSX.Element[] {
   if (Array.isArray(value)) {
     if (value.length == 0 && required) {
       return (
@@ -62,4 +62,4 @@ export const VisuallyHiddenInput = <T,>({
       {...rest}
     />
   );
-};
+}

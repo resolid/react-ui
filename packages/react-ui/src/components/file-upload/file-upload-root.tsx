@@ -25,7 +25,7 @@ export type FileUploadRootProps = FileUploadBaseProps & {
   transport: UploadTransport;
 };
 
-export const FileUploadRoot = (props: PropsWithChildren<FileUploadRootProps>): JSX.Element => {
+export function FileUploadRoot(props: PropsWithChildren<FileUploadRootProps>): JSX.Element {
   const { autoUpload = true, maxParallel = 3, transport, children } = props;
 
   const { t } = useLocale();
@@ -95,4 +95,4 @@ export const FileUploadRoot = (props: PropsWithChildren<FileUploadRootProps>): J
   };
 
   return <FileUploadContext value={contextValue}>{children}</FileUploadContext>;
-};
+}

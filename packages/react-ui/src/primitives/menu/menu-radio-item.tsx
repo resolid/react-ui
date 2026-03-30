@@ -12,9 +12,9 @@ export type MenuRadioItemProps = MenuItemProps & {
   value: string | number;
 };
 
-export const MenuRadioItem = (
+export function MenuRadioItem(
   props: PolymorphicProps<"div", MenuRadioItemProps, "role" | "tabIndex">,
-): JSX.Element => {
+): JSX.Element {
   const { value, onSelect, children, className, ...rest } = props;
 
   const group = useMenuRadioGroup();
@@ -39,4 +39,4 @@ export const MenuRadioItem = (
       </MenuItem>
     </MenuItemIndicatorContext>
   );
-};
+}

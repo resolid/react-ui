@@ -4,9 +4,7 @@ import { useButtonProps } from "../../hooks";
 import { type EmptyObject, Polymorphic, type PolymorphicProps } from "../polymorphic";
 import { usePopperDispatch } from "./popper-dispatch-context";
 
-export const PopperClose = (
-  props: PolymorphicProps<"button", EmptyObject, "type">,
-): JSX.Element => {
+export function PopperClose(props: PolymorphicProps<"button", EmptyObject, "type">): JSX.Element {
   const { render, children, tabIndex, disabled = false, onClick, ...rest } = props;
 
   const { handleClose } = usePopperDispatch();
@@ -34,4 +32,4 @@ export const PopperClose = (
       {children}
     </Polymorphic>
   );
-};
+}

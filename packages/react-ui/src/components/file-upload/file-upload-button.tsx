@@ -6,9 +6,9 @@ import { useFilePickerAction } from "./file-picker-context";
 import { useFilePickerItem } from "./file-picker-item-context";
 import { useFileUpload } from "./file-upload-context";
 
-export const FileUploadButton = (
+export function FileUploadButton(
   props: PrimitiveProps<"button", EmptyObject, "type" | "onClick" | "children">,
-): JSX.Element | null => {
+): JSX.Element | null {
   const { className, ...rest } = props;
 
   const { t } = useLocale();
@@ -49,4 +49,4 @@ export const FileUploadButton = (
       {label}
     </button>
   );
-};
+}

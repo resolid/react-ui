@@ -17,9 +17,9 @@ export type PaginationItemProps = {
   setCurrentPage: (page: number) => void;
 };
 
-export const PaginationItem = (
+export function PaginationItem(
   props: PolymorphicProps<"button", PaginationItemProps, "type" | "role">,
-): JSX.Element => {
+): JSX.Element {
   const {
     render,
     color,
@@ -90,4 +90,4 @@ export const PaginationItem = (
         ))}
     </Polymorphic>
   );
-};
+}

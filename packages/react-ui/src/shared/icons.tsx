@@ -6,7 +6,7 @@ type IconProps = Omit<
   "viewBox" | "stroke" | "strokeWidth" | "strokeLinejoin" | "strokeLinecap" | "fill" | "style"
 > & { size?: string };
 
-export const CloseIcon = (props: IconProps): JSX.Element => {
+export function CloseIcon(props: IconProps): JSX.Element {
   const { size = "1em", ...rest } = props;
 
   return (
@@ -23,9 +23,9 @@ export const CloseIcon = (props: IconProps): JSX.Element => {
       <path d="M6 18L18 6M6 6l12 12" />
     </svg>
   );
-};
+}
 
-export const AngleLeftIcon = (props: IconProps): JSX.Element => {
+export function AngleLeftIcon(props: IconProps): JSX.Element {
   const { size = "1em", ...rest } = props;
 
   return (
@@ -40,9 +40,9 @@ export const AngleLeftIcon = (props: IconProps): JSX.Element => {
       <path d="M15 19l-7-7 7-7" />
     </svg>
   );
-};
+}
 
-export const AngleRightIcon = (props: IconProps): JSX.Element => {
+export function AngleRightIcon(props: IconProps): JSX.Element {
   const { size = "1em", ...rest } = props;
 
   return (
@@ -57,7 +57,7 @@ export const AngleRightIcon = (props: IconProps): JSX.Element => {
       <path d="M9 5l7 7-7 7" />
     </svg>
   );
-};
+}
 
 export const AngleUpIcon = (props: IconProps): JSX.Element => {
   const { size = "1em", ...rest } = props;
@@ -78,7 +78,7 @@ export const AngleUpIcon = (props: IconProps): JSX.Element => {
   );
 };
 
-export const AngleDownIcon = (props: IconProps): JSX.Element => {
+export function AngleDownIcon(props: IconProps): JSX.Element {
   const { size = "1em", ...rest } = props;
 
   return (
@@ -95,9 +95,9 @@ export const AngleDownIcon = (props: IconProps): JSX.Element => {
       <path d="m6 9 6 6 6-6" />
     </svg>
   );
-};
+}
 
-export const CheckIcon = (props: IconProps): JSX.Element => {
+export function CheckIcon(props: IconProps): JSX.Element {
   const { size = "1em", ...rest } = props;
 
   return (
@@ -114,9 +114,9 @@ export const CheckIcon = (props: IconProps): JSX.Element => {
       <path d="M20 6 9 17l-5-5" />
     </svg>
   );
-};
+}
 
-export const CheckedIcon = (props: IconProps): JSX.Element => {
+export function CheckedIcon(props: IconProps): JSX.Element {
   const { size = "1em", ...rest } = props;
 
   return (
@@ -133,9 +133,9 @@ export const CheckedIcon = (props: IconProps): JSX.Element => {
       <polyline points="1.5 6 4.5 9 10.5 1" />
     </svg>
   );
-};
+}
 
-export const IndeterminateIcon = (props: IconProps): JSX.Element => {
+export function IndeterminateIcon(props: IconProps): JSX.Element {
   const { size = "1em", ...rest } = props;
 
   return (
@@ -149,9 +149,9 @@ export const IndeterminateIcon = (props: IconProps): JSX.Element => {
       <line x1="21" x2="3" y1="12" y2="12" />
     </svg>
   );
-};
+}
 
-export const SearchIcon = (props: IconProps): JSX.Element => {
+export function SearchIcon(props: IconProps): JSX.Element {
   const { size = "1em", ...rest } = props;
 
   return (
@@ -162,4 +162,4 @@ export const SearchIcon = (props: IconProps): JSX.Element => {
       />
     </svg>
   );
-};
+}

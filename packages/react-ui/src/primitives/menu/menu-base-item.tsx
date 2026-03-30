@@ -19,9 +19,9 @@ export type MenuBaseItemProps = {
   disabled?: boolean;
 };
 
-export const MenuBaseItem = (
+export function MenuBaseItem(
   props: PolymorphicProps<"div", MenuBaseItemProps, "tabIndex">,
-): JSX.Element => {
+): JSX.Element {
   const { render, className, ref, children, label, role, disabled = false, ...rest } = props;
 
   const { getItemProps, activeIndex } = useMenuItem();
@@ -52,4 +52,4 @@ export const MenuBaseItem = (
       {children}
     </Polymorphic>
   );
-};
+}

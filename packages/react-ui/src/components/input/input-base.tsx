@@ -48,9 +48,7 @@ export type InputBaseProps = Partial<InputGroupContextValue> &
     focusable?: boolean;
   };
 
-export const InputBase = (
-  props: PrimitiveProps<"input", InputBaseProps, "children">,
-): JSX.Element => {
+export function InputBase(props: PrimitiveProps<"input", InputBaseProps, "children">): JSX.Element {
   const group = useInputGroup(true);
 
   const {
@@ -138,4 +136,4 @@ export const InputBase = (
       {suffix && <InputAffix className="inset-e-0 w-(--sw)">{suffix}</InputAffix>}
     </div>
   );
-};
+}

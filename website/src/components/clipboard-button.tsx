@@ -1,7 +1,7 @@
 import { Button, useClipboard } from "@resolid/react-ui";
 import { SpriteIcon } from "~/components/sprite-icon";
 
-export const ClipboardButton = ({ content }: { content: string }) => {
+export function ClipboardButton({ content }: { content: string }) {
   const [copied, copy] = useClipboard();
 
   return (
@@ -20,4 +20,4 @@ export const ClipboardButton = ({ content }: { content: string }) => {
       )}
     </Button>
   );
-};
+}

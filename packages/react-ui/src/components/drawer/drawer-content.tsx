@@ -33,7 +33,7 @@ const placementStyles = {
   },
 };
 
-export const DrawerContent = (props: PrimitiveProps<"div">): JSX.Element | null => {
+export function DrawerContent(props: PrimitiveProps<"div">): JSX.Element | null {
   const { children, className, style, ...rest } = props;
 
   const { placement } = useDrawer();
@@ -80,4 +80,4 @@ export const DrawerContent = (props: PrimitiveProps<"div">): JSX.Element | null 
       </FloatingFocusManager>
     </div>
   );
-};
+}

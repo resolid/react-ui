@@ -7,21 +7,23 @@ export type UseMovePosition = {
   y: number;
 };
 
-export const clampUseMovePosition = (position: UseMovePosition): UseMovePosition => ({
-  x: clamp(position.x, 0, 1),
-  y: clamp(position.y, 0, 1),
-});
+export function clampUseMovePosition(position: UseMovePosition): UseMovePosition {
+  return {
+    x: clamp(position.x, 0, 1),
+    y: clamp(position.y, 0, 1),
+  };
+}
 
 export type UseMoveHandlers = {
   onScrubStart?: () => void;
   onScrubEnd?: () => void;
 };
 
-export const useMove = <T extends HTMLElement = HTMLDivElement>(
+export function useMove<T extends HTMLElement = HTMLDivElement>(
   onChange: (value: UseMovePosition) => void,
   handlers?: UseMoveHandlers,
   direction?: Direction,
-): [(node: T | null) => void, boolean] => {
+): [(node: T | null) => void, boolean] {
   const frame = useRef(0);
   const mounted = useRef(false);
   const sliding = useRef(false);
@@ -129,4 +131,4 @@ export const useMove = <T extends HTMLElement = HTMLDivElement>(
   );
 
   return [ref, active];
-};
+}

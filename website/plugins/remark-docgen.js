@@ -2,6 +2,7 @@ import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from "no
 import { join, parse } from "node:path";
 import { cwd } from "node:process";
 import { withCustomConfig } from "react-docgen-typescript";
+import { isExportDeclaration, isNamedExports } from "typescript";
 import { visit } from "unist-util-visit";
 
 export default function remarkDocgen({ sourceRoot }) {
@@ -321,6 +322,28 @@ const tsParser = withCustomConfig("tsconfig.json", {
     }
 
     return true;
+  },
+  componentNameResolver: (exp, source) => {
+    const originalName = exp.getName();
+
+    for (const statement of source.statements) {
+      if (!isExportDeclaration(statement) || !statement.exportClause) {
+        continue;
+      }
+      if (!isNamedExports(statement.exportClause)) {
+        continue;
+      }
+
+      for (const specifier of statement.exportClause.elements) {
+        const localName = specifier.propertyName?.text ?? specifier.name.text;
+
+        if (localName === originalName) {
+          return specifier.name.text;
+        }
+      }
+    }
+
+    return originalName;
   },
 });
 

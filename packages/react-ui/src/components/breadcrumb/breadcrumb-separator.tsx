@@ -2,9 +2,9 @@ import type { JSX } from "react/jsx-runtime";
 import type { EmptyObject, PrimitiveProps } from "../../primitives";
 import { useBreadcrumb } from "./breadcrumb-context";
 
-export const BreadcrumbSeparator = (
+export function BreadcrumbSeparator(
   props: PrimitiveProps<"span", EmptyObject, "role">,
-): JSX.Element => {
+): JSX.Element {
   const { separator } = useBreadcrumb();
 
   return (
@@ -17,4 +17,4 @@ export const BreadcrumbSeparator = (
       {separator}
     </span>
   );
-};
+}

@@ -3,9 +3,9 @@ import type { JSX } from "react/jsx-runtime";
 import { PopperTrigger } from "../popper/popper-trigger";
 import { useMenuHover } from "./menu-hover-context";
 
-export const MenuTrigger = (
+export function MenuTrigger(
   props: Omit<ComponentProps<typeof PopperTrigger>, "active">,
-): JSX.Element => {
+): JSX.Element {
   const { setHoverEnabled } = useMenuHover();
 
   return (
@@ -17,4 +17,4 @@ export const MenuTrigger = (
       }}
     />
   );
-};
+}

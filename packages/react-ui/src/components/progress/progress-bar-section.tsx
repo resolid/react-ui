@@ -32,9 +32,9 @@ export type ProgressBarSectionProps = {
   animated?: boolean;
 };
 
-export const ProgressBarSection = (
+export function ProgressBarSection(
   props: PrimitiveProps<"div", ProgressBarSectionProps>,
-): JSX.Element => {
+): JSX.Element {
   const {
     percent,
     color = "primary",
@@ -90,4 +90,4 @@ export const ProgressBarSection = (
       {children}
     </div>
   );
-};
+}

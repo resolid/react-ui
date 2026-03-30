@@ -36,7 +36,7 @@ export type SeparatorProps = {
   position?: "left" | "right" | "center";
 };
 
-export const Separator = (props: PrimitiveProps<"div", SeparatorProps, "role">): JSX.Element => {
+export function Separator(props: PrimitiveProps<"div", SeparatorProps, "role">): JSX.Element {
   const {
     color = "neutral",
     orientation = "horizontal",
@@ -69,4 +69,4 @@ export const Separator = (props: PrimitiveProps<"div", SeparatorProps, "role">):
       {hasLabel && children}
     </div>
   );
-};
+}

@@ -5,7 +5,7 @@ import { tx } from "../../utils";
 import { usePopperTransition } from "./popper-transtion-context";
 import { getPopperAnimationProps } from "./utils";
 
-export const PopperBackdrop = (props: PrimitiveProps<"div">): JSX.Element | null => {
+export function PopperBackdrop(props: PrimitiveProps<"div">): JSX.Element | null {
   const { className, children, style, ...rest } = props;
 
   const { status, mounted, duration } = usePopperTransition();
@@ -30,4 +30,4 @@ export const PopperBackdrop = (props: PrimitiveProps<"div">): JSX.Element | null
       {children}
     </div>
   );
-};
+}

@@ -17,5 +17,4 @@ const [context, hook] = createSafeContext<ProgressBaseContextValue>({
 });
 
 export const ProgressBaseContext: SafeContext<ProgressBaseContextValue> = context;
-
 export const useProgressBase: UseSafeContext<ProgressBaseContextValue> = hook;

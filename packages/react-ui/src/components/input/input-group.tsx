@@ -5,7 +5,7 @@ import { InputGroupContext, type InputGroupContextValue } from "./input-group-co
 
 export type InputGroupProps = Partial<InputGroupContextValue>;
 
-export const InputGroup = (props: PrimitiveProps<"div", InputGroupProps>): JSX.Element => {
+export function InputGroup(props: PrimitiveProps<"div", InputGroupProps>): JSX.Element {
   const { children, className, size = "md", ...rest } = props;
 
   return (
@@ -13,4 +13,4 @@ export const InputGroup = (props: PrimitiveProps<"div", InputGroupProps>): JSX.E
       <InputGroupContext value={{ size }}>{children}</InputGroupContext>
     </div>
   );
-};
+}

@@ -7,7 +7,7 @@ type SpriteIconProps = {
   className?: string;
 };
 
-export const BrowserIcon = (props: SpriteIconProps) => {
+export function BrowserIcon(props: SpriteIconProps) {
   const { name, size = "1em", className } = props;
 
   return (
@@ -15,4 +15,4 @@ export const BrowserIcon = (props: SpriteIconProps) => {
       <use href={`${browserIcons}#${name}`} />
     </svg>
   );
-};
+}

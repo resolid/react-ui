@@ -11,9 +11,9 @@ import { useMenuHover } from "./menu-hover-context";
 
 export type MenuSubTriggerProps = MenuBaseItemProps;
 
-export const MenuSubTrigger = (
+export function MenuSubTrigger(
   props: PolymorphicProps<"div", MenuSubTriggerProps, "role" | "tabIndex">,
-): JSX.Element => {
+): JSX.Element {
   const { render, children, ref, className, disabled, ...rest } = props;
 
   const { open } = usePopperState();
@@ -41,4 +41,4 @@ export const MenuSubTrigger = (
       </span>
     </MenuBaseItem>
   );
-};
+}

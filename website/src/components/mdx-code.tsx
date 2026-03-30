@@ -3,9 +3,9 @@ import { useState } from "react";
 import { ClipboardButton } from "~/components/clipboard-button";
 import { StackblitzButton } from "~/components/stackblitz-button";
 
-export const MdxCode = (
+export function MdxCode(
   props: PrimitiveProps<"pre", { "data-inline"?: boolean; codeGroup?: string; online?: string }>,
-) => {
+) {
   const { children, className, "data-inline": dataInline, codeGroup, online, ...rest } = props;
 
   const [content, setContent] = useState("");
@@ -47,4 +47,4 @@ export const MdxCode = (
       </div>
     </div>
   );
-};
+}

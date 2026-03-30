@@ -34,9 +34,9 @@ export type ComboboxPopupProps = {
   children: ReactElement;
 };
 
-export const ComboboxPopup = (
+export function ComboboxPopup(
   props: PrimitiveProps<"div", ComboboxPopupProps>,
-): JSX.Element | null => {
+): JSX.Element | null {
   const { children, style, className, placement = "bottom", ref, ...rest } = props;
 
   const { rootContext } = useComboboxRoot();
@@ -105,4 +105,4 @@ export const ComboboxPopup = (
       </PopperPositionerContext>
     </Portal>
   );
-};
+}

@@ -58,9 +58,9 @@ export type NumberInputProps = Omit<
     changeOnWheel?: boolean;
   };
 
-export const NumberInput = (
+export function NumberInput(
   props: PrimitiveProps<"input", NumberInputProps, "type" | "role">,
-): JSX.Element => {
+): JSX.Element {
   const {
     id,
     value,
@@ -295,7 +295,7 @@ export const NumberInput = (
       {...rest}
     />
   );
-};
+}
 
 function getDecimalPrecisionLength(n: number) {
   const split = n.toString().split(".");

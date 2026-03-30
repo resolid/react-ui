@@ -24,13 +24,13 @@ export type RadioProps = RadioBaseProps & {
   spacing?: string | number;
 };
 
-export const Radio = (
+export function Radio(
   props: PrimitiveProps<
     "input",
     RadioProps,
     "name" | "role" | "type" | "checked" | "defaultChecked" | "onChange" | "readOnly" | "required"
   >,
-): JSX.Element => {
+): JSX.Element {
   const group = useRadioGroup();
 
   const {
@@ -101,4 +101,4 @@ export const Radio = (
       {children && <div className={tx("select-none", labelSizeStyle)}>{children}</div>}
     </label>
   );
-};
+}

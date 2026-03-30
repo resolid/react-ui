@@ -24,11 +24,11 @@ export type PropItem = {
   defaultValue?: string;
 };
 
-export const MdxCodeDemo = (props: {
+export function MdxCodeDemo(props: {
   children: (props: Dict<string | boolean | number | undefined>) => ReactNode;
   componentProps: PropItem[];
   settingProps: Record<string, string | undefined>;
-}) => {
+}) {
   const settingPropsKeys = Object.keys(props.settingProps);
 
   const validProps = props.componentProps
@@ -184,4 +184,4 @@ export const MdxCodeDemo = (props: {
       </Popover>
     </div>
   );
-};
+}

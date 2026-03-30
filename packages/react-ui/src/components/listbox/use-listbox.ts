@@ -122,9 +122,9 @@ export type UseListboxResult<T extends ListboxItem> = {
   setFilterKeyword: Dispatch<SetStateAction<string | undefined>>;
 };
 
-export const useListbox = <T extends ListboxItem>(
+export function useListbox<T extends ListboxItem>(
   options: UseListboxOptions<T>,
-): UseListboxResult<T> => {
+): UseListboxResult<T> {
   const {
     disabled,
     readOnly,
@@ -366,4 +366,4 @@ export const useListbox = <T extends ListboxItem>(
     setFilterKeyword,
     virtual,
   };
-};
+}

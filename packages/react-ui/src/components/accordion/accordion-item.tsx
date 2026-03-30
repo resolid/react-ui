@@ -17,7 +17,7 @@ export type AccordionItemProps = {
   disabled?: boolean;
 };
 
-export const AccordionItem = (props: PrimitiveProps<"div", AccordionItemProps>): JSX.Element => {
+export function AccordionItem(props: PrimitiveProps<"div", AccordionItemProps>): JSX.Element {
   const {
     disabled: accordionDisabled,
     duration,
@@ -60,4 +60,4 @@ export const AccordionItem = (props: PrimitiveProps<"div", AccordionItemProps>):
       {children}
     </CollapsibleRoot>
   );
-};
+}

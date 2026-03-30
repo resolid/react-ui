@@ -5,9 +5,9 @@ export type UseClipboardOptions = {
   onError?: (error: Error) => void;
 };
 
-export const useClipboard = (
+export function useClipboard(
   options?: UseClipboardOptions,
-): readonly [boolean, (source: string) => Promise<void>] => {
+): readonly [boolean, (source: string) => Promise<void>] {
   const { duration = 2000, onError } = options ?? {};
 
   const [copied, setCopied] = useState(false);
@@ -33,4 +33,4 @@ export const useClipboard = (
   };
 
   return [copied, copy] as const;
-};
+}

@@ -24,9 +24,9 @@ export type CheckboxGroupProps = {
   orientation?: Orientation;
 } & CheckboxGroupBaseProps;
 
-export const CheckboxGroup = (
+export function CheckboxGroup(
   props: PrimitiveProps<"div", CheckboxGroupProps, "role">,
-): JSX.Element => {
+): JSX.Element {
   const {
     color = "primary",
     size = "md",
@@ -83,4 +83,4 @@ export const CheckboxGroup = (
       <CheckboxGroupContext value={context}>{children}</CheckboxGroupContext>
     </div>
   );
-};
+}

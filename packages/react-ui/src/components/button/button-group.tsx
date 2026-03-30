@@ -5,9 +5,7 @@ import { ButtonGroupContext, type ButtonGroupContextValue } from "./button-group
 
 export type ButtonGroupProps = ButtonGroupContextValue;
 
-export const ButtonGroup = (
-  props: PrimitiveProps<"div", ButtonGroupProps, "role">,
-): JSX.Element => {
+export function ButtonGroup(props: PrimitiveProps<"div", ButtonGroupProps, "role">): JSX.Element {
   const {
     children,
     orientation = "horizontal",
@@ -34,4 +32,4 @@ export const ButtonGroup = (
       </ButtonGroupContext>
     </div>
   );
-};
+}

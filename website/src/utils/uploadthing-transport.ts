@@ -1,29 +1,5 @@
 import type { UploadTransport } from "@resolid/react-ui";
 
-const getPrepareUrl = async (
-  fileId: string,
-  fileName: string,
-  fileSize: number,
-  fileType: string,
-  abortSignal: AbortSignal,
-) => {
-  const formData = new FormData();
-  formData.append("fileId", fileId);
-  formData.append("fileName", fileName);
-  formData.append("fileSize", String(fileSize));
-  formData.append("fileType", fileType);
-
-  const response = await fetch("/api/uploadthing?act=getPrepareUrl", {
-    method: "POST",
-    body: formData,
-    signal: abortSignal,
-  });
-
-  const result = await response.json();
-
-  return result.url;
-};
-
 export const uploadthingTransport: UploadTransport = {
   upload: async (file, signal, onProgress) => {
     const signUrl = await getPrepareUrl(
@@ -83,3 +59,27 @@ export const uploadthingTransport: UploadTransport = {
     }
   },
 };
+
+async function getPrepareUrl(
+  fileId: string,
+  fileName: string,
+  fileSize: number,
+  fileType: string,
+  abortSignal: AbortSignal,
+) {
+  const formData = new FormData();
+  formData.append("fileId", fileId);
+  formData.append("fileName", fileName);
+  formData.append("fileSize", String(fileSize));
+  formData.append("fileType", fileType);
+
+  const response = await fetch("/api/uploadthing?act=getPrepareUrl", {
+    method: "POST",
+    body: formData,
+    signal: abortSignal,
+  });
+
+  const result = await response.json();
+
+  return result.url;
+}

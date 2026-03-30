@@ -9,11 +9,11 @@ export const LocaleContext: SafeContext<Locale> = context;
 
 type Translator = (path: string, option?: Record<string, string | number>) => string;
 
-export const useLocale = (): {
+export function useLocale(): {
   name: string;
   code: string;
   t: Translator;
-} => {
+} {
   const locale = hook();
 
   return {
@@ -25,4 +25,4 @@ export const useLocale = (): {
       return prop.replace(/\{(\w+)}/g, (_, key) => `${option?.[key] ?? `{${key}}`}`);
     },
   };
-};
+}

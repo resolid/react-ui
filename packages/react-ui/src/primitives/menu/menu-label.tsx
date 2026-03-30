@@ -2,7 +2,7 @@ import type { JSX } from "react/jsx-runtime";
 import type { PrimitiveProps } from "../polymorphic";
 import { tx } from "../../utils";
 
-export const MenuLabel = (props: PrimitiveProps<"div">): JSX.Element => {
+export function MenuLabel(props: PrimitiveProps<"div">): JSX.Element {
   const { children, className, ...rest } = props;
 
   return (
@@ -13,4 +13,4 @@ export const MenuLabel = (props: PrimitiveProps<"div">): JSX.Element => {
       {children}
     </div>
   );
-};
+}

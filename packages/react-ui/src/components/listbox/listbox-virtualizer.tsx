@@ -64,7 +64,7 @@ export type ListboxVirtualizerProps = {
   useAnimationFrameWithResizeObserver?: boolean;
 };
 
-export const ListboxVirtualizer = ({
+export function ListboxVirtualizer({
   itemHeight,
   groupLabelHeight,
   overscan = 3,
@@ -75,7 +75,7 @@ export const ListboxVirtualizer = ({
   gap,
   useAnimationFrameWithResizeObserver = false,
   children,
-}: PropsWithChildren<ListboxVirtualizerProps>): JSX.Element => {
+}: PropsWithChildren<ListboxVirtualizerProps>): JSX.Element {
   const { size } = useListboxState();
   const { getFloatingProps } = usePopperFloating();
   const { nodeItems } = useListboxCollection();
@@ -155,7 +155,7 @@ export const ListboxVirtualizer = ({
       </ListboxVirtualizerContext>
     </div>
   );
-};
+}
 
 const useListboxVirtualizer = (options: Parameters<typeof useVirtualizer>[0]) => {
   "use no memo";

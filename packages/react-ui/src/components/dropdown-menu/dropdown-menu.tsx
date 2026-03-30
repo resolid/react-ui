@@ -1,27 +1,18 @@
-import { MenuContent } from "../../primitives/menu/menu-content";
-import { MenuGroup } from "../../primitives/menu/menu-group";
-import { MenuItemIndicator } from "../../primitives/menu/menu-item-indicator";
-import { MenuLabel } from "../../primitives/menu/menu-label";
-import { MenuRoot, type MenuRootProps } from "../../primitives/menu/menu-root";
-import { MenuSeparator } from "../../primitives/menu/menu-separator";
-import { MenuSubTrigger } from "../../primitives/menu/menu-sub-trigger";
-import { MenuTrigger } from "../../primitives/menu/menu-trigger";
-import { PopperArrow } from "../../primitives/popper/popper-arrow";
-
-export type DropdownMenuProps = MenuRootProps;
-
-export const DropdownMenu: typeof MenuRoot = MenuRoot;
+export {
+  MenuRoot as DropdownMenu,
+  type MenuRootProps as DropdownMenuProps,
+} from "../../primitives/menu/menu-root";
 
 export { DropdownMenuCheckboxItem } from "./dropdown-menu-checkbox-item";
 export { DropdownMenuItem } from "./dropdown-menu-item";
 export { DropdownMenuRadioGroup } from "./dropdown-menu-radio-group";
 export { DropdownMenuRadioItem } from "./dropdown-menu-radio-item";
 
-export const DropdownMenuTrigger: typeof MenuTrigger = MenuTrigger;
-export const DropdownMenuContent: typeof MenuContent = MenuContent;
-export const DropdownMenuArrow: typeof PopperArrow = PopperArrow;
-export const DropdownMenuSeparator: typeof MenuSeparator = MenuSeparator;
-export const DropdownMenuGroup: typeof MenuGroup = MenuGroup;
-export const DropdownMenuLabel: typeof MenuLabel = MenuLabel;
-export const DropdownMenuItemIndicator: typeof MenuItemIndicator = MenuItemIndicator;
-export const DropdownMenuSubTrigger: typeof MenuSubTrigger = MenuSubTrigger;
+export { MenuContent as DropdownMenuContent } from "../../primitives/menu/menu-content";
+export { MenuGroup as DropdownMenuGroup } from "../../primitives/menu/menu-group";
+export { MenuItemIndicator as DropdownMenuItemIndicator } from "../../primitives/menu/menu-item-indicator";
+export { MenuLabel as DropdownMenuLabel } from "../../primitives/menu/menu-label";
+export { MenuSeparator as DropdownMenuSeparator } from "../../primitives/menu/menu-separator";
+export { MenuSubTrigger as DropdownMenuSubTrigger } from "../../primitives/menu/menu-sub-trigger";
+export { MenuTrigger as DropdownMenuTrigger } from "../../primitives/menu/menu-trigger";
+export { PopperArrow as DropdownMenuArrow } from "../../primitives/popper/popper-arrow";

@@ -14,9 +14,9 @@ type ContextMenuTriggerProps = {
   disabled?: boolean;
 };
 
-export const ContextMenuTrigger = (
+export function ContextMenuTrigger(
   props: PolymorphicProps<"div", ContextMenuTriggerProps>,
-): JSX.Element => {
+): JSX.Element {
   const {
     render,
     disabled = false,
@@ -132,4 +132,4 @@ export const ContextMenuTrigger = (
       {children}
     </Polymorphic>
   );
-};
+}

@@ -1,4 +1,4 @@
-import { mergeMeta } from "~/utils/react-router-meta";
+import { mergeMeta } from "@resolid/dev/router";
 
 export const meta = mergeMeta(() => [
   {

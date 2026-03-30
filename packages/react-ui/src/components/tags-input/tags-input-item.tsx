@@ -9,9 +9,9 @@ type TagsInputItemProps = Omit<InputItemProps, "onDelete"> & {
   onDelete: (index: number) => void;
 };
 
-export const TagsInputItem = (
+export function TagsInputItem(
   props: PrimitiveProps<"div", TagsInputItemProps, "ref">,
-): JSX.Element => {
+): JSX.Element {
   const { onDelete, className, children, ...rest } = props;
 
   const { ref: itemRef, index } = useListItem();
@@ -34,4 +34,4 @@ export const TagsInputItem = (
       {children}
     </InputItem>
   );
-};
+}
