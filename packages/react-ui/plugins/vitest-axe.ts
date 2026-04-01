@@ -12,7 +12,6 @@ import {
 import { styleText } from "node:util";
 
 function mount(html: Element | string): [HTMLElement, () => void] {
-  // noinspection SuspiciousTypeOfGuard
   if (!!html && typeof html === "object" && typeof html.tagName === "string") {
     if (document.body.contains(html)) {
       return [html as HTMLElement, () => undefined];

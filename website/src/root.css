@@ -6,14 +6,12 @@
 @source "../src";
 @source "../.resolid/component-demos";
 
-/*noinspection CssUnresolvedCustomProperty*/
 .shiki,
 .shiki span {
   color: var(--shiki-light);
   background-color: var(--shiki-light-bg);
 }
 
-/*noinspection CssUnresolvedCustomProperty*/
 .dark-mode .shiki,
 .dark-mode .shiki span {
   color: var(--shiki-dark);
