@@ -1,5 +1,5 @@
 import { runIf } from "@resolid/utils";
-import { type SetStateAction, useState } from "react";
+import { type Dispatch, type SetStateAction, useState } from "react";
 
 export type UseControllableStateOptions<T> = {
   value?: T;
@@ -10,7 +10,7 @@ export type UseControllableStateOptions<T> = {
 
 export function useControllableState<T>(
   options: UseControllableStateOptions<T>,
-): readonly [T, (value: SetStateAction<T>) => void] {
+): readonly [T, Dispatch<SetStateAction<T>>] {
   const { value, defaultValue, onChange, shouldUpdate = defaultShouldUpdate } = options;
 
   const [uncontrolledState, setUncontrolledState] = useState(() => defaultValue as T);

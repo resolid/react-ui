@@ -1,4 +1,3 @@
-import type { ReactElement } from "react";
 import type { JSX } from "react/jsx-runtime";
 import {
   autoUpdate,
@@ -19,25 +18,24 @@ import {
 } from "../../primitives/popper/popper-positioner-context";
 import { getPopperAnimationProps } from "../../primitives/popper/utils";
 import { tx } from "../../utils";
+import { ListboxContent } from "../listbox/listbox";
 import { Portal } from "../portal/portal";
 import { useLocale } from "../provider/locale-context";
 import { useComboboxPopup } from "./combobox-popup-context";
 import { useComboboxRoot } from "./combobox-root-context";
 
-export type ComboboxPopupProps = {
+export type ComboboxContentProps = {
   /**
    * 放置位置
    * @default "bottom"
    */
   placement?: Placement;
-
-  children: ReactElement;
 };
 
-export function ComboboxPopup(
-  props: PrimitiveProps<"div", ComboboxPopupProps>,
+export function ComboboxContent(
+  props: PrimitiveProps<"div", ComboboxContentProps>,
 ): JSX.Element | null {
-  const { children, style, className, placement = "bottom", ref, ...rest } = props;
+  const { children, className, placement = "bottom", ref, ...rest } = props;
 
   const { rootContext } = useComboboxRoot();
   const { duration, setFloating } = useComboboxPopup();
@@ -83,14 +81,12 @@ export function ComboboxPopup(
     <Portal>
       <PopperPositionerContext value={positionerContext}>
         <PopperPositioner
-          style={{ ...style, ...animationProps.style }}
+          style={animationProps.style}
           className={tx(
             "rounded-md border border-bd-normal bg-bg-normal shadow-sm",
             animationProps.className,
-            className,
           )}
           tabIndex={-1}
-          {...rest}
         >
           <FloatingFocusManager
             disabled={!rootContext.open}
@@ -99,7 +95,9 @@ export function ComboboxPopup(
             returnFocus={false}
             visuallyHiddenDismiss={t("closeButton.label")}
           >
-            {children}
+            <ListboxContent className={className} {...rest}>
+              {children}
+            </ListboxContent>
           </FloatingFocusManager>
         </PopperPositioner>
       </PopperPositionerContext>

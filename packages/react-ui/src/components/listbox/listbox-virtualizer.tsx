@@ -157,11 +157,11 @@ export function ListboxVirtualizer({
   );
 }
 
-const useListboxVirtualizer = (options: Parameters<typeof useVirtualizer>[0]) => {
+function useListboxVirtualizer(options: Parameters<typeof useVirtualizer>[0]) {
   "use no memo";
 
   // oxlint-disable-next-line react-hooks-js/incompatible-library
   const { getVirtualItems, getTotalSize, scrollToIndex } = useVirtualizer(options);
 
   return { virtualItems: getVirtualItems(), totalSize: getTotalSize(), scrollToIndex };
-};
+}

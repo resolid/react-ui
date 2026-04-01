@@ -298,7 +298,6 @@ export function useListbox<T extends ListboxItem>(
     rtl: direction == "rtl",
   });
 
-  // noinspection JSUnusedGlobalSymbols
   const typeaheadInteraction = useTypeahead(context, {
     enabled: !disabled && !readOnly && typeahead,
     listRef: labelsRef,
@@ -321,7 +320,6 @@ export function useListbox<T extends ListboxItem>(
     }
   };
 
-  // noinspection JSUnusedGlobalSymbols
   const interactiveHandlers = {
     onPointerMove: (): void => {
       setPointer(true);

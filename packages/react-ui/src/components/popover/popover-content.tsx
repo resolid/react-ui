@@ -12,7 +12,7 @@ import { Portal } from "../portal/portal";
 import { usePopoverRoot } from "./popover-root-context";
 
 export function PopoverContent(props: PrimitiveProps<"div">): JSX.Element | null {
-  const { children, style, className, ...rest } = props;
+  const { children, className, ...rest } = props;
 
   const { context, initialFocus, finalFocus } = usePopoverRoot();
   const { status, mounted, duration } = usePopperTransition();
@@ -27,10 +27,7 @@ export function PopoverContent(props: PrimitiveProps<"div">): JSX.Element | null
 
   return (
     <Portal>
-      <PopperPositioner
-        style={{ ...style, ...animationProps.style }}
-        className={animationProps.className}
-      >
+      <PopperPositioner style={animationProps.style} className={animationProps.className}>
         <FloatingFocusManager
           disabled={!context.open}
           context={context}

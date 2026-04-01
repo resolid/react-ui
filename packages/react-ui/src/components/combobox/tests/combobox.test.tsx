@@ -7,10 +7,9 @@ import { LocaleProvider } from "../../provider/locale-provider";
 import {
   Combobox,
   ComboboxAnchor,
-  ComboboxContent,
   ComboboxInput,
   ComboboxList,
-  ComboboxPopup,
+  ComboboxContent,
   ComboboxTrigger,
 } from "../combobox";
 
@@ -29,11 +28,9 @@ const ComponentUnderTest = (props: Omit<ComboboxProps<ListboxItem>, "collection"
           <ComboboxInput placeholder="搜索" />
           <ComboboxTrigger>Open</ComboboxTrigger>
         </ComboboxAnchor>
-        <ComboboxPopup>
-          <ComboboxContent>
-            <ComboboxList />
-          </ComboboxContent>
-        </ComboboxPopup>
+        <ComboboxContent>
+          <ComboboxList />
+        </ComboboxContent>
       </Combobox>
     </LocaleProvider>
   );

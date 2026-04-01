@@ -10,5 +10,4 @@ export function SelectFilter(props: ListboxFilterProps): JSX.Element {
 
 export { OptionEmpty as SelectEmpty } from "../../primitives/common/option-empty";
 export { ListboxContent as SelectContent, ListboxList as SelectList } from "../listbox/listbox";
-
 export { SelectVirtualizer } from "./select-virtualizer";

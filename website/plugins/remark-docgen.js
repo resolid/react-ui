@@ -357,12 +357,51 @@ const componentPropsSorts = [
   "checked",
   "defaultChecked",
 
+  "page",
+  "defaultPage",
+
   "onChange",
   "onChangeEnd",
+
+  "min",
+  "max",
+  "step",
+  "precision",
+
+  "minValue",
+  "maxValue",
+
+  "date",
+  "onDateChange",
+  "minDate",
+  "maxDate",
 
   "open",
   "defaultOpen",
   "onOpenChange",
+
+  "view",
+  "defaultView",
+  "onViewChange",
+  "minView",
+  "maxView",
+
+  "focusedValue",
+  "defaultFocusedValue",
+  "onFocusedValueChange",
+
+  "format",
+  "separator",
+
+  "valueKey",
+  "labelKey",
+  "childrenKey",
+  "disabledKey",
+
+  "pageSize",
+  "total",
+  "siblings",
+  "boundaries",
 
   "size",
   "color",
@@ -371,6 +410,7 @@ const componentPropsSorts = [
   "orientation",
   "duration",
 
+  "display",
   "disabled",
   "required",
   "readOnly",
@@ -394,7 +434,24 @@ const getComponentPropsData = (componentFile, sourceRoot, virtualDir) => {
     const props = componentDoc
       ? Object.entries(componentDoc.props)
           .map(([key, value]) => parsePropsType(key, value))
-          .sort((a, b) => componentPropsSorts.indexOf(a.name) - componentPropsSorts.indexOf(b.name))
+          .sort((a, b) => {
+            const ai = componentPropsSorts.indexOf(a.name);
+            const bi = componentPropsSorts.indexOf(b.name);
+
+            if (ai !== -1 && bi !== -1) {
+              return ai - bi;
+            }
+
+            if (ai !== -1) {
+              return -1;
+            }
+
+            if (bi !== -1) {
+              return 1;
+            }
+
+            return a.name.localeCompare(b.name);
+          })
       : null;
 
     writeFileSync(componentPropsFile, JSON.stringify(props, null, 2), "utf8");

@@ -15,12 +15,10 @@ export function Combobox<T extends ListboxItem>(
   return <ComboboxProvider<T> value={combobox}>{children}</ComboboxProvider>;
 }
 
-export { OptionEmpty as ComboboxEmpty } from "../../primitives/common/option-empty";
-export { ListboxContent as ComboboxContent } from "../listbox/listbox-content";
-export { ListboxList as ComboboxList } from "../listbox/listbox-list";
-
 export { ComboboxAnchor } from "./combobox-anchor";
-export { ComboboxInput } from "./combobox-input";
-export { ComboboxPopup } from "./combobox-popup";
 export { ComboboxTrigger } from "./combobox-trigger";
+export { ComboboxInput } from "./combobox-input";
+export { ComboboxContent } from "./combobox-content";
 export { ComboboxVirtualizer } from "./combobox-virtualizer";
+export { ListboxList as ComboboxList } from "../listbox/listbox-list";
+export { OptionEmpty as ComboboxEmpty } from "../../primitives/common/option-empty";

@@ -11,7 +11,6 @@ import {
   ComboboxAnchor,
   ComboboxInput,
   ComboboxTrigger,
-  ComboboxPopup,
   ComboboxContent,
   ComboboxEmpty,
   ComboboxList,
@@ -32,12 +31,10 @@ export default function App() {
         <ComboboxInput placeholder={"搜索"} />
         <ComboboxTrigger />
       </ComboboxAnchor>
-      <ComboboxPopup>
-        <ComboboxContent className={"p-1"}>
-          <ComboboxEmpty />
-          <ComboboxList />
-        </ComboboxContent>
-      </ComboboxPopup>
+      <ComboboxContent className={"p-1"}>
+        <ComboboxEmpty />
+        <ComboboxList />
+      </ComboboxContent>
     </Combobox>
   );
 }
@@ -51,7 +48,6 @@ import {
   ComboboxAnchor,
   ComboboxInput,
   ComboboxTrigger,
-  ComboboxPopup,
   ComboboxContent,
   ComboboxEmpty,
   ComboboxVirtualizer,
@@ -63,7 +59,6 @@ import {
 - `ComboboxAnchor`: 组合框定位锚。
 - `ComboboxInput`: 组合框输入框。
 - `ComboboxTrigger`: 打开组合框的按钮。
-- `ComboboxPopup`: 当组合框打开时，将其子项传送到 body 中。
 - `ComboboxContent`: 组合框要渲染的内容。
 - `ComboboxEmpty`: 组合框搜索结果为空时显示。
 - `ComboboxVirtualizer`: 组合框列表虚拟化。
@@ -76,10 +71,8 @@ import {
     <ComboboxTrigger />
   </ComboboxAnchor>
   <ComboboxPopup>
-    <ComboboxContent>
-      <ComboboxEmpty />
-      <ComboboxListbox />
-    </ComboboxContent>
+    <ComboboxEmpty />
+    <ComboboxListbox />
   </ComboboxPopup>
 </Combobox>
 ```
@@ -104,7 +97,6 @@ import {
   ComboboxAnchor,
   ComboboxInput,
   ComboboxTrigger,
-  ComboboxPopup,
   ComboboxContent,
   ComboboxEmpty,
   ComboboxList,
@@ -125,12 +117,10 @@ export default function App() {
         <ComboboxInput placeholder={"搜索"} />
         <ComboboxTrigger />
       </ComboboxAnchor>
-      <ComboboxPopup>
-        <ComboboxContent className={"p-1"}>
-          <ComboboxEmpty />
-          <ComboboxList />
-        </ComboboxContent>
-      </ComboboxPopup>
+      <ComboboxContent className={"p-1"}>
+        <ComboboxEmpty />
+        <ComboboxList />
+      </ComboboxContent>
     </Combobox>
   );
 }
@@ -144,7 +134,6 @@ import {
   ComboboxAnchor,
   ComboboxInput,
   ComboboxTrigger,
-  ComboboxPopup,
   ComboboxContent,
   ComboboxEmpty,
   ComboboxList,
@@ -165,12 +154,10 @@ export default function App() {
         <ComboboxInput placeholder={"搜索"} />
         <ComboboxTrigger />
       </ComboboxAnchor>
-      <ComboboxPopup>
-        <ComboboxContent className={"p-1"}>
-          <ComboboxEmpty />
-          <ComboboxList />
-        </ComboboxContent>
-      </ComboboxPopup>
+      <ComboboxContent className={"p-1"}>
+        <ComboboxEmpty />
+        <ComboboxList />
+      </ComboboxContent>
     </Combobox>
   );
 }
@@ -186,7 +173,6 @@ import {
   ComboboxAnchor,
   ComboboxInput,
   ComboboxTrigger,
-  ComboboxPopup,
   ComboboxContent,
   ComboboxEmpty,
   ComboboxVirtualizer,
@@ -204,14 +190,12 @@ export default function App() {
         <ComboboxInput placeholder={"搜索"} />
         <ComboboxTrigger />
       </ComboboxAnchor>
-      <ComboboxPopup>
-        <ComboboxContent className={"max-h-60 px-1"}>
-          <ComboboxEmpty className={"pt-4"} />
-          <ComboboxVirtualizer>
-            <ComboboxList />
-          </ComboboxVirtualizer>
-        </ComboboxContent>
-      </ComboboxPopup>
+      <ComboboxContent className={"max-h-60 px-1"}>
+        <ComboboxEmpty className={"pt-4"} />
+        <ComboboxVirtualizer>
+          <ComboboxList />
+        </ComboboxVirtualizer>
+      </ComboboxContent>
     </Combobox>
   );
 }
@@ -225,7 +209,6 @@ import {
   ComboboxAnchor,
   ComboboxInput,
   ComboboxTrigger,
-  ComboboxPopup,
   ComboboxContent,
   ComboboxEmpty,
   ComboboxList,
@@ -284,12 +267,10 @@ export default function App() {
         <ComboboxInput placeholder={"搜索"} />
         <ComboboxTrigger />
       </ComboboxAnchor>
-      <ComboboxPopup>
-        <ComboboxContent className={"max-w-90 p-1"}>
-          <ComboboxEmpty>没有找到浏览器</ComboboxEmpty>
-          <ComboboxList />
-        </ComboboxContent>
-      </ComboboxPopup>
+      <ComboboxContent className={"max-w-90 p-1"}>
+        <ComboboxEmpty>没有找到浏览器</ComboboxEmpty>
+        <ComboboxList />
+      </ComboboxContent>
     </Combobox>
   );
 }
@@ -302,10 +283,9 @@ import {
   Combobox,
   ComboboxAnchor,
   ComboboxEmpty,
-  ComboboxContent,
   ComboboxInput,
   ComboboxList,
-  ComboboxPopup,
+  ComboboxContent,
   ComboboxTrigger,
   TagsInput,
   TagsInputInput,
@@ -342,12 +322,10 @@ export default function App() {
         />
         <ComboboxTrigger />
       </ComboboxAnchor>
-      <ComboboxPopup>
-        <ComboboxContent className={"p-1"}>
-          <ComboboxEmpty />
-          <ComboboxList />
-        </ComboboxContent>
-      </ComboboxPopup>
+      <ComboboxContent className={"p-1"}>
+        <ComboboxEmpty />
+        <ComboboxList />
+      </ComboboxContent>
     </Combobox>
   );
 }
@@ -357,10 +335,9 @@ export default function App() {
 
 ```jsx demo
 import {
-  ComboboxContent,
   ComboboxInput,
   ComboboxList,
-  ComboboxPopup,
+  ComboboxContent,
   ComboboxProvider,
   useCombobox,
   Textarea,
@@ -377,15 +354,15 @@ export default function App() {
   const [caretOffset, setCaretOffset] = useState(null);
   const [comboboxValue, setComboboxValue] = useState(null);
 
-  const deferedSearchValue = useDeferredValue(searchValue);
+  const deferredSearchValue = useDeferredValue(searchValue);
 
   const collection = useMemo(() => {
     return getList(trigger)
       .filter(
-        (v) => !deferedSearchValue || v.toLowerCase().includes(deferedSearchValue.toLowerCase()),
+        (v) => !deferredSearchValue || v.toLowerCase().includes(deferredSearchValue.toLowerCase()),
       )
       .map((v) => ({ value: v }));
-  }, [trigger, deferedSearchValue]);
+  }, [trigger, deferredSearchValue]);
 
   const handleInput = (e) => {
     const _trigger = getTrigger(e.currentTarget);
@@ -475,11 +452,9 @@ export default function App() {
           return <Textarea cols={39} rows={3} placeholder="输入 @, # 或者 :" {...props} />;
         }}
       />
-      <ComboboxPopup placement="bottom-start">
-        <ComboboxContent className="p-1">
-          <ComboboxList />
-        </ComboboxContent>
-      </ComboboxPopup>
+      <ComboboxContent placement="bottom-start" className="p-1">
+        <ComboboxList />
+      </ComboboxContent>
     </ComboboxProvider>
   );
 }
