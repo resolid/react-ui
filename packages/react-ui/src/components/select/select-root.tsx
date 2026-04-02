@@ -2,8 +2,8 @@ import {
   autoUpdate,
   flip,
   FloatingFocusManager,
-  size as floatingSize,
   offset,
+  size as floatingSize,
   useClick,
   useDismiss,
   useFloating,
@@ -18,6 +18,7 @@ import type { ListboxRootProps } from "../listbox/listbox-root";
 import { useDisclosure, useMergeRefs } from "../../hooks";
 import { InputItem } from "../../primitives/common/input-item";
 import { inputItemSizeStyles } from "../../primitives/common/input-item.styles";
+import { InputTrigger } from "../../primitives/common/input-trigger";
 import { OptionEmptyContext } from "../../primitives/common/option-empty-context";
 import { PopperPositioner } from "../../primitives/popper/popper-positioner";
 import {
@@ -25,9 +26,7 @@ import {
   type PopperPositionerContextValue,
 } from "../../primitives/popper/popper-positioner-context";
 import { getPopperAnimationProps } from "../../primitives/popper/utils";
-import { inputTextShareStyles } from "../../shared/styles";
-import { ariaAttr, dataAttr, tx } from "../../utils";
-import { inputPyStyles, inputStyles, selectHeightStyles } from "../input/input.styles";
+import { tx } from "../../utils";
 import { ListboxProvider } from "../listbox/listbox-provider";
 import { type ListboxItem, useListbox } from "../listbox/use-listbox";
 import { Portal } from "../portal/portal";
@@ -84,7 +83,6 @@ export function SelectRoot<T extends ListboxItem>(
     closeOnSelect = !multiple,
     renderValue,
     children,
-    className,
     ref,
     ...rest
   } = props;
@@ -207,25 +205,14 @@ export function SelectRoot<T extends ListboxItem>(
 
   return (
     <>
-      <div
+      <InputTrigger
         ref={referenceRefs}
-        tabIndex={disabled ? -1 : 0}
-        data-active={dataAttr(openState)}
-        aria-disabled={ariaAttr(disabled)}
-        aria-required={ariaAttr(required)}
-        className={tx(
-          "bg-bg-normal select-none",
-          inputStyles({ disabled, invalid, active: openState, focusable: true }),
-          inputPyStyles[size],
-          selectHeightStyles[size],
-          inputTextShareStyles[size],
-          sizeStyle.select,
-          sizeStyle.root,
-          disabled
-            ? "opacity-60"
-            : "active:border-bg-primary-emphasis active:outline-bg-primary-emphasis/70",
-          className,
-        )}
+        active={openState}
+        disabled={disabled}
+        required={required}
+        invalid={invalid}
+        size={size}
+        sizeStyle={sizeStyle}
         {...getReferenceProps(getNavigationProps(rest))}
       >
         {selectedItems.length > 0 ? (
@@ -251,7 +238,7 @@ export function SelectRoot<T extends ListboxItem>(
           <div className={tx("text-fg-placeholder", inputItemSizeStyles[size])}>{placeholder}</div>
         )}
         <SelectChevron className={sizeStyle.chevron} />
-      </div>
+      </InputTrigger>
       {isMounted && (
         <Portal>
           <PopperPositionerContext value={positionerContext}>

@@ -9,11 +9,11 @@ export const inputPxStyles = {
 };
 
 export const inputPyStyles = {
-  xs: "py-[5px]",
-  sm: "py-[5px]",
-  md: "py-[5px]",
-  lg: "py-[7px]",
-  xl: "py-[7px]",
+  xs: "py-1.25",
+  sm: "py-1.25",
+  md: "py-1.25",
+  lg: "py-1.75",
+  xl: "py-1.75",
 };
 
 export const inputHeightStyles = {

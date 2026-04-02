@@ -1,13 +1,9 @@
 import type { FloatingRootContext } from "@floating-ui/react";
-import type { InputSize } from "../input/input.styles";
+import type { InputTriggerBaseProps } from "../../primitives/common/input-trigger";
 import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives";
 
-export type PickerStatusContextValue = {
+export type PickerStatusContextValue = InputTriggerBaseProps & {
   placeholder?: string;
-  disabled: boolean;
-  required: boolean;
-  invalid: boolean;
-  size: InputSize;
 };
 
 const [statusContext, statusHook] = createSafeContext<PickerStatusContextValue>({

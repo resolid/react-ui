@@ -16,68 +16,35 @@ import {
   useRef,
   useState,
 } from "react";
-import type { AnyObject } from "../../primitives";
+import type { CollectionItem, CollectionProps } from "../../primitives/collection/types";
 import type { MultipleValueProps } from "../../shared/types";
 import type { InputSize } from "../input/input.styles";
 import { useControllableState } from "../../hooks";
 import { useDirection } from "../provider/direction-context";
 
 export type ListboxValue = (string | number)[] | string | number | null;
-export type ListboxItem = AnyObject;
+export type ListboxItem = CollectionItem;
 export type ListboxNodeItem = ListboxItem & { __index: number };
 export type ListboxFlatItem = ListboxNodeItem & { __group?: boolean };
 
-export type ListboxBaseProps<T extends ListboxItem> = MultipleValueProps<string | number> & {
-  /**
-   * 项目的集合
-   */
-  collection: T[];
+export type ListboxBaseProps<T extends ListboxItem> = MultipleValueProps<string | number> &
+  CollectionProps<T> & {
+    /**
+     * 自定义项目渲染
+     */
+    renderItem?: (item: T, status: { active: boolean; selected: boolean }) => ReactNode;
 
-  /**
-   * 自定义 `value` 字段名
-   * @default "value"
-   */
-  valueKey?: string;
+    /**
+     * 自定义组标签渲染
+     */
+    renderGroupLabel?: (group: T) => ReactNode;
 
-  /**
-   * 自定义 `label` 字段名
-   * @default "label"
-   */
-  labelKey?: string;
-
-  /**
-   * 自定义 `disabled` 字段名
-   * @default "disabled"
-   */
-  disabledKey?: string;
-
-  /**
-   * 自定义 `children` 字段名
-   * @default "children"
-   */
-  childrenKey?: string;
-
-  /**
-   * 自定义过滤函数
-   */
-  searchFilter?: (keyword: string, item: T) => boolean;
-
-  /**
-   * 自定义项目渲染
-   */
-  renderItem?: (item: T, status: { active: boolean; selected: boolean }) => ReactNode;
-
-  /**
-   * 自定义组标签渲染
-   */
-  renderGroupLabel?: (group: T) => ReactNode;
-
-  /**
-   * 大小
-   * @default "md"
-   */
-  size?: InputSize;
-};
+    /**
+     * 大小
+     * @default "md"
+     */
+    size?: InputSize;
+  };
 
 export type UseListboxOptions<T extends ListboxItem> = Omit<
   ListboxBaseProps<T>,

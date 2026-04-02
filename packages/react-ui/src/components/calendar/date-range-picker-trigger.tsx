@@ -3,12 +3,11 @@ import { useRef } from "react";
 import type { EmptyObject, PrimitiveProps } from "../../primitives";
 import { useMergeRefs } from "../../hooks";
 import { inputItemSizeStyles } from "../../primitives/common/input-item.styles";
+import { InputTrigger } from "../../primitives/common/input-trigger";
 import { usePopperTrigger } from "../../primitives/popper/popper-trigger-context";
 import { CalendarRangeIcon } from "../../shared/icons";
-import { inputTextShareStyles } from "../../shared/styles";
-import { ariaAttr, dataAttr, tx } from "../../utils";
-import { inputPyStyles, inputStyles, selectHeightStyles } from "../input/input.styles";
-import { selectSizeStyles } from "../select/select.styles";
+import { tx } from "../../utils";
+import { selectChevronStyle, selectSizeStyles } from "../select/select.styles";
 import { useDateRangePickerState } from "./date-range-picker-context";
 import { usePickerRoot, usePickerStatus } from "./picker-context";
 
@@ -29,25 +28,15 @@ export function DateRangePickerTrigger(
   const sizeStyle = selectSizeStyles[size];
 
   return (
-    <div
+    <InputTrigger
       ref={refs}
-      tabIndex={disabled ? -1 : 0}
-      data-active={dataAttr(context.open)}
-      aria-disabled={ariaAttr(disabled)}
-      aria-required={ariaAttr(required)}
-      className={tx(
-        "inline-flex bg-bg-normal select-none",
-        inputStyles({ disabled, invalid, active: context.open, focusable: true }),
-        inputPyStyles[size],
-        selectHeightStyles[size],
-        inputTextShareStyles[size],
-        sizeStyle.select,
-        sizeStyle.root,
-        disabled
-          ? "opacity-60"
-          : "active:border-bg-primary-emphasis active:outline-bg-primary-emphasis/70",
-        className,
-      )}
+      active={context.open}
+      disabled={disabled}
+      required={required}
+      invalid={invalid}
+      size={size}
+      sizeStyle={sizeStyle}
+      className={tx("inline-flex", className)}
       {...getReferenceProps(rest)}
     >
       {value.length > 0 ? (
@@ -55,14 +44,9 @@ export function DateRangePickerTrigger(
       ) : (
         <div className={tx("text-fg-placeholder", inputItemSizeStyles[size])}>{placeholder}</div>
       )}
-      <span
-        className={tx(
-          "pointer-events-none absolute inset-e-0 top-0 bottom-0 flex items-center justify-center",
-          sizeStyle.chevron,
-        )}
-      >
+      <span className={tx(selectChevronStyle, sizeStyle.chevron)}>
         {children ?? <CalendarRangeIcon className="text-fg-subtle" />}
       </span>
-    </div>
+    </InputTrigger>
   );
 }

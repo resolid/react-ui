@@ -31,4 +31,7 @@ export const selectSizeStyles = {
   },
 };
 
+export const selectChevronStyle =
+  "pointer-events-none absolute inset-e-0 top-0 bottom-0 flex items-center justify-center";
+
 export type SelectSize = keyof typeof selectSizeStyles;
