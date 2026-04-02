@@ -10,6 +10,7 @@ import { Slider, type SliderProps, SliderThumb, SliderTrack } from "../slider";
 const ComponentUnderTest = (props: SliderProps): JSX.Element => {
   const { onChange, ...rest } = props;
 
+  // oxlint-disable-next-line typescript/no-unnecessary-type-arguments
   const [value, setValue] = useState<[number, number]>([-20, 20]);
 
   return (

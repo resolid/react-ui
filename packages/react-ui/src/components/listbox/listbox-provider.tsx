@@ -117,7 +117,7 @@ export function ListboxProvider<T extends ListboxItem>(
   // 虚拟滚动
   const scrollToRef = useRef<VirtualScrollTo | null>(null);
 
-  const prevActiveIndex = usePrevious<number | null>(activeIndex);
+  const prevActiveIndex = usePrevious(activeIndex);
 
   const scrollEvent = useEffectEvent((prev: number) => {
     if (scrollToRef.current) {

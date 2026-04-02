@@ -5,6 +5,7 @@ import { InputGroupContext, type InputGroupContextValue } from "./input-group-co
 
 export type InputGroupProps = Partial<InputGroupContextValue>;
 
+// oxlint-disable-next-line typescript/no-unnecessary-type-arguments
 export function InputGroup(props: PrimitiveProps<"div", InputGroupProps>): JSX.Element {
   const { children, className, size = "md", ...rest } = props;
 

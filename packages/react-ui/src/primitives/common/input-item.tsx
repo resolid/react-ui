@@ -29,7 +29,7 @@ export function InputItem(props: PrimitiveProps<"div", InputItemProps>): JSX.Ele
     <div
       aria-disabled={ariaAttr(disabled)}
       className={tx(
-        "inline-flex items-center gap-1 rounded-md pe-1",
+        "inline-flex items-center gap-1 rounded-md pe-1 text-nowrap",
         inputItemSizeStyles[size],
         className,
       )}

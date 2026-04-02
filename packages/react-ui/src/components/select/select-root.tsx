@@ -230,7 +230,7 @@ export function SelectRoot<T extends ListboxItem>(
       >
         {selectedItems.length > 0 ? (
           multiple ? (
-            <div className="inline-flex gap-1">
+            <div className="inline-flex flex-wrap gap-1">
               {selectedItems.map((item) => (
                 <InputItem
                   key={providerValue.getItemValue(item)}

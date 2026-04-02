@@ -17,7 +17,7 @@ export function ListboxContent(
   const { scrollToRef, scrollRef } = useListboxScroll();
   const { setFloating, getFloatingProps } = usePopperFloating();
 
-  const [hasScrollTo, setHasScrollTo] = useState<boolean>(false);
+  const [hasScrollTo, setHasScrollTo] = useState(false);
 
   useLayoutEffect(() => {
     setHasScrollTo(!!scrollToRef.current);

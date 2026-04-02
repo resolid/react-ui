@@ -94,7 +94,7 @@ export function useCombobox<T extends ListboxItem>({
   const [reference, setReference] = useState<HTMLElement | null>(null);
   const [floating, setFloating] = useState<HTMLElement | null>(null);
 
-  const [inputValue, setInputValue] = useState<string>(
+  const [inputValue, setInputValue] = useState(
     defaultValue === null
       ? ""
       : Array.isArray(defaultValue)
