@@ -1,5 +1,15 @@
 # @resolid/react-ui
 
+## 0.2.0
+
+### Minor Changes
+
+- feat: add calendar component suite ([`d573024`](https://github.com/resolid/react-ui/commit/d573024d87e81f4c5276c9cc3400f32a80ead8b9))
+
+### Patch Changes
+
+- refactor: simplify combobox component structure ([`bae2bce`](https://github.com/resolid/react-ui/commit/bae2bce2ea79f0048f9acc11dc2d44484aa61f88))
+
 ## 0.1.13
 
 ### Patch Changes
