@@ -11,7 +11,6 @@ export const meta = mergeMeta(() => [
   },
 ]);
 
-// noinspection JSUnusedGlobalSymbols
 export default function Layout() {
   const [opened, setOpened] = useState(false);
 
@@ -165,6 +164,31 @@ const menus: Menu[] = [
       {
         label: "文件上传",
         path: "components/file-upload",
+      },
+    ],
+  },
+  {
+    label: "日期时间",
+    children: [
+      {
+        label: "日历",
+        path: "components/calendar",
+      },
+      {
+        label: "日期选择",
+        path: "components/date-calendar",
+      },
+      {
+        label: "日期选择器",
+        path: "components/date-picker",
+      },
+      {
+        label: "日期范围选择",
+        path: "components/date-range-calendar",
+      },
+      {
+        label: "日期范围选择器",
+        path: "components/date-range-picker",
       },
     ],
   },

@@ -17,6 +17,23 @@ export default {
     inputItem: {
       deleteTag: "Delete",
     },
+    calendar: {
+      weekNumber: "Week Number",
+      switchView: {
+        year: "Switch to year view",
+        decade: "Switch to decade view",
+      },
+      previous: {
+        month: "Previous month",
+        year: "Previous year",
+        decade: "Previous decade",
+      },
+      next: {
+        month: "Next month",
+        year: "Next year",
+        decade: "Next decade",
+      },
+    },
     fileUpload: {
       maxFiles: "You can only upload a maximum of {maxFiles} files.",
       maxSize: "File {fileName} exceeds the maximum size of {maxSize}.",

@@ -1,0 +1,267 @@
+---
+title: 日期选择器
+description: 用于日期选择的组件，支持单个和多个日期选择。
+---
+
+## 演示
+
+```jsx demo online=DatePicker componentProps=calendar/date-picker.tsx|size,readOnly,disabled
+import {
+  DatePicker,
+  CalendarPrev,
+  CalendarNext,
+  CalendarTitle,
+  CalendarGrid,
+  DatePickerCalendar,
+  DatePickerTrigger,
+} from "@resolid/react-ui";
+
+export default function App() {
+  return (
+    <DatePicker placeholder="选择日期">
+      <DatePickerTrigger className="w-50" />
+      <DatePickerCalendar>
+        <div className="flex gap-1">
+          <CalendarPrev />
+          <CalendarTitle />
+          <CalendarNext />
+        </div>
+        <CalendarGrid />
+      </DatePickerCalendar>
+    </DatePicker>
+  );
+}
+```
+
+## 用法
+
+```js
+import {
+  DatePicker,
+  DatePickerTrigger,
+  DatePickerCalendar,
+  CalendarTitle,
+  CalendarPrev,
+  CalendarNext,
+  CalendarGrid,
+} from "@resolid/react-ui";
+```
+
+- `DatePicker`: 包含日期选择器的所有部分。
+- `DatePickerTrigger`: 日期选择器的触发部分。
+- `DatePickerCalendar`: 日期选择器的日历部分。
+- `CalendarPrev`: 日历导航按钮。它根据当前日历视图，导航一个月/一年/十年前的日历。
+- `CalendarNext`: 日历导航按钮。它根据当前日历视图，导航一个月/年/十年后的日历。
+- `CalendarTitle`: 日历的当前日期标题部分。
+- `CalendarGrid`: 日历的网格部分。
+
+```jsx
+<DatePicker>
+  <DatePickerTrigger />
+  <DatePickerCalendar>
+    <div className="flex">
+      <CalendarPrev />
+      <CalendarTitle />
+      <CalendarNext />
+    </div>
+    <CalendarGrid />
+  </DatePickerCalendar>
+</DatePicker>
+```
+
+## 特点
+
+- 完整的键盘导航
+- 可控值与默认值
+- 完整焦点管理
+- 本地化支持
+- 高度可组合性
+
+## 举例
+
+### 可控值
+
+```jsx demo
+import {
+  DatePicker,
+  DatePickerTrigger,
+  DatePickerCalendar,
+  CalendarPrev,
+  CalendarNext,
+  CalendarTitle,
+  CalendarGrid,
+} from "@resolid/react-ui";
+import { useState } from "react";
+
+export default function App() {
+  const [value, setValue] = useState("2026-03-15");
+
+  return (
+    <div className="flex flex-col gap-2">
+      <p className="text-sm">你选择了日期：{value}</p>
+      <DatePicker value={value} onChange={setValue} placeholder="选择日期">
+        <DatePickerTrigger className="min-w-50" />
+        <DatePickerCalendar>
+          <div className="flex gap-1">
+            <CalendarPrev />
+            <CalendarTitle />
+            <CalendarNext />
+          </div>
+          <CalendarGrid />
+        </DatePickerCalendar>
+      </DatePicker>
+    </div>
+  );
+}
+```
+
+### 多选
+
+```jsx demo
+import {
+  DatePicker,
+  DatePickerTrigger,
+  DatePickerCalendar,
+  CalendarPrev,
+  CalendarNext,
+  CalendarTitle,
+  CalendarGrid,
+} from "@resolid/react-ui";
+
+export default function App() {
+  return (
+    <DatePicker name="dateCalendarField" multiple placeholder="选择日期">
+      <DatePickerTrigger className="min-w-50" />
+      <DatePickerCalendar>
+        <div className="flex gap-1">
+          <CalendarPrev />
+          <CalendarTitle />
+          <CalendarNext />
+        </div>
+        <CalendarGrid />
+      </DatePickerCalendar>
+    </DatePicker>
+  );
+}
+```
+
+### 月选择
+
+```jsx demo
+import {
+  DatePicker,
+  DatePickerTrigger,
+  DatePickerCalendar,
+  CalendarPrev,
+  CalendarNext,
+  CalendarTitle,
+  CalendarGrid,
+} from "@resolid/react-ui";
+
+export default function App() {
+  return (
+    <div className="flex gap-5">
+      <DatePicker minView="year" format="YYYY-MM" placeholder="选择月份">
+        <DatePickerTrigger className="min-w-50" />
+        <DatePickerCalendar>
+          <div className="flex gap-1">
+            <CalendarPrev />
+            <CalendarTitle />
+            <CalendarNext />
+          </div>
+          <CalendarGrid />
+        </DatePickerCalendar>
+      </DatePicker>
+      <DatePicker minView="year" format="YYYY-MM" multiple placeholder="选择月份">
+        <DatePickerTrigger className="min-w-50" />
+        <DatePickerCalendar>
+          <div className="flex gap-1">
+            <CalendarPrev />
+            <CalendarTitle />
+            <CalendarNext />
+          </div>
+          <CalendarGrid />
+        </DatePickerCalendar>
+      </DatePicker>
+    </div>
+  );
+}
+```
+
+### 年选择
+
+```jsx demo
+import {
+  DatePicker,
+  DatePickerTrigger,
+  DatePickerCalendar,
+  CalendarPrev,
+  CalendarNext,
+  CalendarTitle,
+  CalendarGrid,
+} from "@resolid/react-ui";
+
+export default function App() {
+  return (
+    <div className="flex gap-5">
+      <DatePicker minView="decade" format="YYYY" placeholder="选择年份">
+        <DatePickerTrigger className="min-w-50" />
+        <DatePickerCalendar>
+          <div className="flex gap-1">
+            <CalendarPrev />
+            <CalendarTitle />
+            <CalendarNext />
+          </div>
+          <CalendarGrid />
+        </DatePickerCalendar>
+      </DatePicker>
+      <DatePicker minView="decade" format="YYYY" multiple placeholder="选择年份">
+        <DatePickerTrigger className="min-w-50" />
+        <DatePickerCalendar>
+          <div className="flex gap-1">
+            <CalendarPrev />
+            <CalendarTitle />
+            <CalendarNext />
+          </div>
+          <CalendarGrid />
+        </DatePickerCalendar>
+      </DatePicker>
+    </div>
+  );
+}
+```
+
+### 无效日期
+
+```jsx demo
+import {
+  DatePicker,
+  DatePickerTrigger,
+  DatePickerCalendar,
+  CalendarPrev,
+  CalendarNext,
+  CalendarTitle,
+  CalendarGrid,
+} from "@resolid/react-ui";
+import { isWeekend } from "@resolid/utils/date";
+
+export default function App() {
+  return (
+    <DatePicker isDateUnavailable={(d) => isWeekend(d)} placeholder="选择日期">
+      <DatePickerTrigger className="min-w-50" />
+      <DatePickerCalendar>
+        <div className="flex gap-1">
+          <CalendarPrev />
+          <CalendarTitle />
+          <CalendarNext />
+        </div>
+        <CalendarGrid />
+      </DatePickerCalendar>
+    </DatePicker>
+  );
+}
+```
+
+## 属性
+
+::PropsTable{file=calendar/date-picker.tsx}

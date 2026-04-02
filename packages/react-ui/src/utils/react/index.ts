@@ -57,3 +57,22 @@ export function mergeProps<T extends Props>(
 
   return result as UnionToIntersection<TupleTypes<T[]>>;
 }
+
+export function splitProps<T extends Record<string, unknown>, K extends keyof T>(
+  props: T,
+  keys: K[],
+): [Pick<T, K>, Omit<T, K>] {
+  const picked = {} as Pick<T, K>;
+  const rest = {} as Omit<T, K>;
+  const keySet: Set<string> = new Set(keys as string[]);
+
+  for (const [key, value] of Object.entries(props)) {
+    if (keySet.has(key)) {
+      (picked as Record<string, unknown>)[key] = value;
+    } else {
+      (rest as Record<string, unknown>)[key] = value;
+    }
+  }
+
+  return [picked, rest];
+}

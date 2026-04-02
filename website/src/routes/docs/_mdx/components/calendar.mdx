@@ -1,0 +1,185 @@
+---
+title: 日历
+description: 显示日期和星期几，便于与日期相关的互动。
+---
+
+## 演示
+
+```jsx demo online=Calendar componentProps=calendar/calendar.tsx|color,size,display,disabled,showWeekNumbers
+import {
+  Calendar,
+  CalendarPrev,
+  CalendarNext,
+  CalendarTitle,
+  CalendarGrid,
+} from "@resolid/react-ui";
+
+export default function App() {
+  return (
+    <Calendar>
+      <div className="flex gap-1">
+        <CalendarPrev />
+        <CalendarTitle />
+        <CalendarNext />
+      </div>
+      <CalendarGrid />
+    </Calendar>
+  );
+}
+```
+
+## 用法
+
+```js
+import {
+  Calendar,
+  CalendarTitle,
+  CalendarPrev,
+  CalendarNext,
+  CalendarGrid,
+} from "@resolid/react-ui";
+```
+
+- `Calendar`: 包含日历的所有部分。
+- `CalendarPrev`: 日历导航按钮。它根据当前日历视图，导航一个月/一年/十年前的日历。
+- `CalendarNext`: 日历导航按钮。它根据当前日历视图，导航一个月/年/十年后的日历。
+- `CalendarTitle`: 日历的当前日期标题部分。
+- `CalendarGrid`: 日历的网格部分。
+
+```jsx
+
+```
+
+## 特点
+
+- 完整的键盘导航
+- 完整焦点管理
+- 本地化支持
+- 高度可组合性
+
+## 举例
+
+### 日期限制
+
+```jsx demo
+import {
+  Calendar,
+  CalendarPrev,
+  CalendarNext,
+  CalendarTitle,
+  CalendarGrid,
+} from "@resolid/react-ui";
+import { setDay } from "@resolid/utils/date";
+
+export default function App() {
+  return (
+    <Calendar minDate={setDay(null, 6)} maxDate={setDay(null, 22)}>
+      <div className="flex gap-1">
+        <CalendarPrev />
+        <CalendarTitle />
+        <CalendarNext />
+      </div>
+      <CalendarGrid />
+    </Calendar>
+  );
+}
+```
+
+### 禁用日期
+
+```jsx demo
+import {
+  Calendar,
+  CalendarPrev,
+  CalendarNext,
+  CalendarTitle,
+  CalendarGrid,
+} from "@resolid/react-ui";
+
+export default function App() {
+  return (
+    <Calendar isDateDisabled={(date) => date.getDate() === 12}>
+      <div className="flex gap-1">
+        <CalendarPrev />
+        <CalendarTitle />
+        <CalendarNext />
+      </div>
+      <CalendarGrid />
+    </Calendar>
+  );
+}
+```
+
+### 默认视图
+
+```jsx demo
+import {
+  Calendar,
+  CalendarPrev,
+  CalendarNext,
+  CalendarTitle,
+  CalendarGrid,
+} from "@resolid/react-ui";
+
+export default function App() {
+  return (
+    <div className="flex gap-3">
+      <Calendar defaultView="year">
+        <div className="flex gap-1">
+          <CalendarPrev />
+          <CalendarTitle />
+          <CalendarNext />
+        </div>
+        <CalendarGrid />
+      </Calendar>
+      <Calendar defaultView="decade">
+        <div className="flex gap-1">
+          <CalendarPrev />
+          <CalendarTitle />
+          <CalendarNext />
+        </div>
+        <CalendarGrid />
+      </Calendar>
+    </div>
+  );
+}
+```
+
+### 视图限制
+
+```jsx demo
+import {
+  Calendar,
+  CalendarPrev,
+  CalendarNext,
+  CalendarTitle,
+  CalendarGrid,
+} from "@resolid/react-ui";
+
+export default function App() {
+  return (
+    <div className="flex gap-3">
+      <Calendar minView="year">
+        <div className="flex gap-1">
+          <CalendarPrev />
+          <CalendarTitle />
+          <CalendarNext />
+        </div>
+        <CalendarGrid />
+      </Calendar>
+      <Calendar maxView="year">
+        <div className="flex gap-1">
+          <CalendarPrev />
+          <CalendarTitle />
+          <CalendarNext />
+        </div>
+        <CalendarGrid />
+      </Calendar>
+    </div>
+  );
+}
+```
+
+## 属性
+
+::PropsTable{file=calendar/calendar.tsx}

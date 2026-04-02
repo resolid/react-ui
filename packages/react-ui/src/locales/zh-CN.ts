@@ -19,6 +19,23 @@ export default {
     inputItem: {
       deleteTag: "删除",
     },
+    calendar: {
+      weekNumber: "周数",
+      switchView: {
+        year: "切换到年视图",
+        decade: "切换到年代视图",
+      },
+      previous: {
+        month: "上个月",
+        year: "上一年",
+        decade: "上个年代",
+      },
+      next: {
+        month: "下个月",
+        year: "下一年",
+        decade: "下个年代",
+      },
+    },
     fileUpload: {
       maxFiles: "只允许上传 {maxFiles} 个文件.",
       maxSize: "文件 {fileName} 大小超过 {maxSize}.",
