@@ -1,16 +1,15 @@
 import mdx from "@mdx-js/rollup";
 import { resolidVite } from "@resolid/dev/vite";
+import rolldownBabel from "@rolldown/plugin-babel";
 import rehypeShiki from "@shikijs/rehype";
 import tailwindcss from "@tailwindcss/vite";
-import { extname, join } from "node:path";
+import { reactCompilerPreset } from "@vitejs/plugin-react";
+import { join } from "node:path";
 import rehypeSlug from "rehype-slug";
 import remarkDirective from "remark-directive";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkGfm from "remark-gfm";
 import { type AliasOptions, defineConfig, type UserConfig } from "vite";
-import babel from "vite-plugin-babel";
-import viteInspect from "vite-plugin-inspect";
-import tsconfigPaths from "vite-tsconfig-paths";
 import { rehypeParseMeta } from "./plugins/rehype-parse-meta";
 import remarkDetails from "./plugins/remark-details";
 import remarkDocgen from "./plugins/remark-docgen";
@@ -53,67 +52,34 @@ export default defineConfig(({ command }) => {
       }),
       resolidVite(vitePluginOptions),
       tailwindcss(),
-      babel({
-        filter: /\.[jt]sx?$/,
-        babelConfig: {
-          presets: ["@babel/preset-typescript"],
-          plugins: [
-            [
-              "babel-plugin-react-compiler",
+      rolldownBabel({ presets: [reactCompilerPreset()] }),
+      viteContent(),
+    ],
+    build: {
+      rolldownOptions: {
+        checks: { pluginTimings: false },
+        output: {
+          codeSplitting: {
+            groups: [
               {
-                target: "19",
+                name: "react",
+                test: /node_modules[\\/](react|react-dom|react-is|scheduler)[\\/]/,
+              },
+              {
+                name: "react-router",
+                test: /node_modules[\\/](@react-router|react-router)[\\/]/,
+              },
+              {
+                name: "components",
+                test: /node_modules[\\/]@resolid[\\/]dev|src[\\/]components[\\/](?:history-link|error-component|route-process-bar|color-mode-toggle|sprite-icon)\.tsx/,
               },
             ],
-          ],
-          cloneInputAst: false,
-          compact: false,
-          sourceMaps: false,
-          babelrc: false,
-          configFile: false,
-        },
-        loader: (path) => extname(path).substring(1) as "js" | "jsx",
-        optimizeOnSSR: true,
-      }),
-      viteContent(),
-      !isBuild && tsconfigPaths(),
-      !isBuild && viteInspect(),
-    ].filter(Boolean),
-    build: {
-      rollupOptions: {
-        output: {
-          manualChunks: (id) => {
-            if (
-              id.includes("/node_modules/react/") ||
-              id.includes("/node_modules/react-dom/") ||
-              id.includes("/node_modules/react-is/") ||
-              id.includes("/node_modules/scheduler/")
-            ) {
-              return "react";
-            }
-
-            if (
-              id.includes("/node_modules/@react-router/") ||
-              id.includes("/node_modules/react-router/")
-            ) {
-              return "react-router";
-            }
-
-            if (
-              id.includes("/node_modules/@resolid/dev") ||
-              id.includes("src/components/history-link.tsx") ||
-              id.includes("src/components/error-component.tsx") ||
-              id.includes("src/components/route-process-bar.tsx") ||
-              id.includes("src/components/color-mode-toggle.tsx") ||
-              id.includes("src/components/sprite-icon.tsx")
-            ) {
-              return "components";
-            }
           },
         },
       },
     },
-    esbuild: { legalComments: "none" },
     resolve: {
+      tsconfigPaths: !isBuild,
       alias: [isBuild && { find: "~", replacement: join(__dirname, "./src") }].filter(
         Boolean,
       ) as AliasOptions,

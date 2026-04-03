@@ -1,5 +1,6 @@
+import rolldownBabel from "@rolldown/plugin-babel";
+import { reactCompilerPreset } from "@vitejs/plugin-react";
 import { defineConfig, type UserConfig } from "tsdown";
-import { reactCompilerRolldownPlugin } from "./plugins/react-compiler-plugin.js";
 
 const config: UserConfig = defineConfig({
   entry: {
@@ -13,7 +14,7 @@ const config: UserConfig = defineConfig({
   treeshake: true,
   clean: true,
   minify: "dce-only",
-  plugins: [reactCompilerRolldownPlugin({ filter: /\.[jt]sx?$/ })],
+  plugins: [rolldownBabel({ presets: [reactCompilerPreset()] })],
 });
 
 export default config;
