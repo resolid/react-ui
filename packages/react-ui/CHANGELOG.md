@@ -1,5 +1,13 @@
 # @resolid/react-ui
 
+## 0.2.1
+
+### Patch Changes
+
+- refactor: extract pickerTrigger as shared component ([`752d064`](https://github.com/resolid/react-ui/commit/752d0644b55376d347596a67988018822db1a646))
+
+- chore: update dependencies ([`3a4d4fd`](https://github.com/resolid/react-ui/commit/3a4d4fda6c7eecb518e5ef878269367f65f54474))
+
 ## 0.2.0
 
 ### Minor Changes
