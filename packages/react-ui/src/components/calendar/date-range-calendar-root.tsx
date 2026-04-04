@@ -40,6 +40,7 @@ export type DateRangeCalendarRootProps = {
   setValue: Dispatch<SetStateAction<RangeDate>>;
   disabled: boolean;
   readOnly: boolean;
+  dualPanel?: boolean;
   onRangeSelect?: () => void;
 } & Required<CalendarFormatProps> &
   CalendarBaseProps;
@@ -62,6 +63,7 @@ export function DateRangeCalendarRoot(
     isDateDisabled = returnFalse,
     isDateUnavailable = returnFalse,
     color = "primary",
+    dualPanel = false,
     onRangeSelect = noop,
     children,
     ...rest
@@ -216,9 +218,9 @@ export function DateRangeCalendarRoot(
     },
   };
 
-  const isGap = dateRange.getIsGap(leftFocused, rightFocused);
-  const leftMax = dateRange.endOf(dateRange.addUnit(rightFocused, -1));
-  const rightMin = dateRange.startOf(dateRange.addUnit(leftFocused, 1));
+  const isGap = dualPanel ? dateRange.getIsGap(leftFocused, rightFocused) : false;
+  const leftMax = dualPanel ? dateRange.endOf(dateRange.addUnit(rightFocused, -1)) : maxDate;
+  const rightMin = dualPanel ? dateRange.startOf(dateRange.addUnit(leftFocused, 1)) : null;
 
   const viewContextValue: CalendarViewControlContextValue = {
     setView: noop,
@@ -247,43 +249,47 @@ export function DateRangeCalendarRoot(
       >
         <CalendarViewControlContext value={viewContextValue}>
           <CalendarGridContext value={gridContextValue}>
-            <CalendarButtonContext value={{ hideDisabledNext: true }}>
+            <CalendarButtonContext value={{ hideDisabledNext: dualPanel }}>
               {children}
             </CalendarButtonContext>
           </CalendarGridContext>
         </CalendarViewControlContext>
       </CalendarRoot>
-      <Separator
-        className={tx("mt-9 mb-1", !isGap && "invisible")}
-        orientation="vertical"
-        variant="dotted"
-        size={2}
-      />
-      <CalendarRoot
-        view={view}
-        minDate={rightMin}
-        maxDate={maxDate}
-        date={rightFocused}
-        onDateChange={(d) => {
-          setRightFocused(d);
-          setHoverDate(d);
-        }}
-        onCellClick={handleCellClick}
-        cellRender={cellRender}
-        color={color}
-        isDateDisabled={isDateDisabled}
-        disabled={disabled}
-        display={readOnly}
-        {...rest}
-      >
-        <CalendarViewControlContext value={viewContextValue}>
-          <CalendarGridContext value={gridContextValue}>
-            <CalendarButtonContext value={{ hideDisabledPrev: true }}>
-              {children}
-            </CalendarButtonContext>
-          </CalendarGridContext>
-        </CalendarViewControlContext>
-      </CalendarRoot>
+      {dualPanel && (
+        <>
+          <Separator
+            className={tx("mt-9 mb-1", !isGap && "invisible")}
+            orientation="vertical"
+            variant="dotted"
+            size={2}
+          />
+          <CalendarRoot
+            view={view}
+            minDate={rightMin}
+            maxDate={maxDate}
+            date={rightFocused}
+            onDateChange={(d) => {
+              setRightFocused(d);
+              setHoverDate(d);
+            }}
+            onCellClick={handleCellClick}
+            cellRender={cellRender}
+            color={color}
+            isDateDisabled={isDateDisabled}
+            disabled={disabled}
+            display={readOnly}
+            {...rest}
+          >
+            <CalendarViewControlContext value={viewContextValue}>
+              <CalendarGridContext value={gridContextValue}>
+                <CalendarButtonContext value={{ hideDisabledPrev: true }}>
+                  {children}
+                </CalendarButtonContext>
+              </CalendarGridContext>
+            </CalendarViewControlContext>
+          </CalendarRoot>
+        </>
+      )}
     </div>
   );
 }

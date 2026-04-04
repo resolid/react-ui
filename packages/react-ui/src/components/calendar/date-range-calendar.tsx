@@ -19,6 +19,12 @@ export type DateRangeCalendarProps = ValueProp<string | null, string> & {
    * @default "month"
    */
   view?: CalendarView;
+
+  /**
+   * 是否双面板
+   * @default false
+   */
+  dualPanel?: boolean;
 } & CalendarFormatProps &
   FormFieldProps &
   CalendarBaseProps;
