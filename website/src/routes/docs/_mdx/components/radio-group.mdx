@@ -10,12 +10,12 @@ import { Radio, RadioGroup } from "@resolid/react-ui";
 
 export default function App() {
   return (
-    <RadioGroup name={"frameworksRadioGroup"} className={"gap-5"}>
-      <Radio value={"React"}>React</Radio>
-      <Radio value={"Angular"}>Angular</Radio>
-      <Radio value={"Vue"}>Vue</Radio>
-      <Radio value={"SolidJS"}>SolidJS</Radio>
-      <Radio value={"Svelte"}>Svelte</Radio>
+    <RadioGroup name="frameworksRadioGroup" className="gap-5">
+      <Radio value="React">React</Radio>
+      <Radio value="Angular">Angular</Radio>
+      <Radio value="Vue">Vue</Radio>
+      <Radio value="SolidJS">SolidJS</Radio>
+      <Radio value="Svelte">Svelte</Radio>
     </RadioGroup>
   );
 }
@@ -49,12 +49,12 @@ import { Radio, RadioGroup } from "@resolid/react-ui";
 
 export default function App() {
   return (
-    <RadioGroup name={"frameworksRadioGroup"} defaultValue={"React"} className={"gap-5"}>
-      <Radio value={"React"}>React</Radio>
-      <Radio value={"Angular"}>Angular</Radio>
-      <Radio value={"Vue"}>Vue</Radio>
-      <Radio value={"SolidJS"}>SolidJS</Radio>
-      <Radio value={"Svelte"}>Svelte</Radio>
+    <RadioGroup name="frameworksRadioGroup" defaultValue="React" className="gap-5">
+      <Radio value="React">React</Radio>
+      <Radio value="Angular">Angular</Radio>
+      <Radio value="Vue">Vue</Radio>
+      <Radio value="SolidJS">SolidJS</Radio>
+      <Radio value="Svelte">Svelte</Radio>
     </RadioGroup>
   );
 }
@@ -72,19 +72,14 @@ export default function App() {
   const [value, setValue] = useState("");
 
   return (
-    <div className={"flex flex-col gap-2"}>
+    <div className="flex flex-col gap-2">
       <p>你选择的框架是: {value}</p>
-      <RadioGroup
-        name={"frameworksRadioGroup"}
-        value={value}
-        onChange={setValue}
-        className={"gap-5"}
-      >
-        <Radio value={"React"}>React</Radio>
-        <Radio value={"Angular"}>Angular</Radio>
-        <Radio value={"Vue"}>Vue</Radio>
-        <Radio value={"SolidJS"}>SolidJS</Radio>
-        <Radio value={"Svelte"}>Svelte</Radio>
+      <RadioGroup name="frameworksRadioGroup" value={value} onChange={setValue} className="gap-5">
+        <Radio value="React">React</Radio>
+        <Radio value="Angular">Angular</Radio>
+        <Radio value="Vue">Vue</Radio>
+        <Radio value="SolidJS">SolidJS</Radio>
+        <Radio value="Svelte">Svelte</Radio>
       </RadioGroup>
     </div>
   );
@@ -100,12 +95,12 @@ import { Radio, RadioGroup } from "@resolid/react-ui";
 
 export default function App() {
   return (
-    <RadioGroup name={"frameworksRadioGroup"} orientation={"vertical"} className={"gap-3"}>
-      <Radio value={"React"}>React</Radio>
-      <Radio value={"Angular"}>Angular</Radio>
-      <Radio value={"Vue"}>Vue</Radio>
-      <Radio value={"SolidJS"}>SolidJS</Radio>
-      <Radio value={"Svelte"}>Svelte</Radio>
+    <RadioGroup name="frameworksRadioGroup" orientation="vertical" className="gap-3">
+      <Radio value="React">React</Radio>
+      <Radio value="Angular">Angular</Radio>
+      <Radio value="Vue">Vue</Radio>
+      <Radio value="SolidJS">SolidJS</Radio>
+      <Radio value="Svelte">Svelte</Radio>
     </RadioGroup>
   );
 }

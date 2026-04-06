@@ -17,34 +17,34 @@ import {
 
 export default function App() {
   return (
-    <div className={"flex flex-row gap-3"}>
+    <div className="flex flex-row gap-3">
       <DropdownMenu>
         <DropdownMenuTrigger
-          render={(props) => <Button color={"neutral"} variant={"outline"} {...props} />}
+          render={(props) => <Button color="neutral" variant="outline" {...props} />}
         >
           下拉菜单
         </DropdownMenuTrigger>
-        <DropdownMenuContent className={"text-sm"}>
+        <DropdownMenuContent className="text-sm">
           <DropdownMenuItem>
             新标签页
-            <span className={"ms-auto ps-5 text-xs tracking-widest text-fg-subtle"}>⌘+T</span>
+            <span className="ms-auto ps-5 text-xs tracking-widest text-fg-subtle">⌘+T</span>
           </DropdownMenuItem>
           <DropdownMenuItem>
             打开新窗口
-            <span className={"ms-auto ps-5 text-xs tracking-widest text-fg-subtle"}>⌘+N</span>
+            <span className="ms-auto ps-5 text-xs tracking-widest text-fg-subtle">⌘+N</span>
           </DropdownMenuItem>
           <DropdownMenuItem disabled>
             打开新的无痕式窗口
-            <span className={"ms-auto ps-5 text-xs tracking-widest"}>⇧+⌘+N</span>
+            <span className="ms-auto ps-5 text-xs tracking-widest">⇧+⌘+N</span>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem>
             关闭窗口
-            <span className={"ms-auto ps-5 text-xs tracking-widest text-fg-subtle"}>⇧+⌘+W</span>
+            <span className="ms-auto ps-5 text-xs tracking-widest text-fg-subtle">⇧+⌘+W</span>
           </DropdownMenuItem>
           <DropdownMenuItem>
             关闭标签页
-            <span className={"ms-auto ps-5 text-xs tracking-widest text-fg-subtle"}>⌘+W</span>
+            <span className="ms-auto ps-5 text-xs tracking-widest text-fg-subtle">⌘+W</span>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
@@ -148,27 +148,27 @@ export default function App() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
-        render={(props) => <Button color={"neutral"} variant={"outline"} {...props} />}
+        render={(props) => <Button color="neutral" variant="outline" {...props} />}
       >
         多级菜单
       </DropdownMenuTrigger>
-      <DropdownMenuContent className={"text-sm"}>
+      <DropdownMenuContent className="text-sm">
         <DropdownMenuArrow />
-        <DropdownMenuItem label={"New Tab"}>新建标签页</DropdownMenuItem>
-        <DropdownMenuItem label={"New Window"}>打开新窗口</DropdownMenuItem>
+        <DropdownMenuItem label="New Tab">新建标签页</DropdownMenuItem>
+        <DropdownMenuItem label="New Window">打开新窗口</DropdownMenuItem>
         <DropdownMenuItem>打开新的无痕式窗口</DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenu>
-          <DropdownMenuSubTrigger label={"Share"}>分享</DropdownMenuSubTrigger>
-          <DropdownMenuContent className={"text-sm"}>
-            <DropdownMenuItem label={"Email"}>邮件</DropdownMenuItem>
-            <DropdownMenuItem label={"SMS"}>短信</DropdownMenuItem>
+          <DropdownMenuSubTrigger label="Share">分享</DropdownMenuSubTrigger>
+          <DropdownMenuContent className="text-sm">
+            <DropdownMenuItem label="Email">邮件</DropdownMenuItem>
+            <DropdownMenuItem label="SMS">短信</DropdownMenuItem>
             <DropdownMenu>
               <DropdownMenuSubTrigger>社交媒体</DropdownMenuSubTrigger>
-              <DropdownMenuContent className={"text-sm"}>
+              <DropdownMenuContent className="text-sm">
                 <DropdownMenu>
                   <DropdownMenuSubTrigger>微信</DropdownMenuSubTrigger>
-                  <DropdownMenuContent className={"text-sm"}>
+                  <DropdownMenuContent className="text-sm">
                     <DropdownMenuItem>聊天</DropdownMenuItem>
                     <DropdownMenuItem>朋友圈</DropdownMenuItem>
                   </DropdownMenuContent>
@@ -182,8 +182,8 @@ export default function App() {
         </DropdownMenu>
         <DropdownMenuSeparator />
         <DropdownMenu>
-          <DropdownMenuSubTrigger label={"Tools"}>更多工具</DropdownMenuSubTrigger>
-          <DropdownMenuContent className={"text-sm"}>
+          <DropdownMenuSubTrigger label="Tools">更多工具</DropdownMenuSubTrigger>
+          <DropdownMenuContent className="text-sm">
             <DropdownMenuItem>保存页面为...</DropdownMenuItem>
             <DropdownMenuItem>创建快捷方式</DropdownMenuItem>
             <DropdownMenuSeparator />
@@ -217,11 +217,11 @@ export default function App() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
-        render={(props) => <Button color={"neutral"} variant={"outline"} {...props} />}
+        render={(props) => <Button color="neutral" variant="outline" {...props} />}
       >
         View
       </DropdownMenuTrigger>
-      <DropdownMenuContent className={"text-sm"}>
+      <DropdownMenuContent className="text-sm">
         <DropdownMenuArrow />
         <DropdownMenuGroup>
           <DropdownMenuLabel>Sort</DropdownMenuLabel>
@@ -260,15 +260,15 @@ export default function App() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
-        render={(props) => <Button color={"neutral"} variant={"outline"} {...props} />}
+        render={(props) => <Button color="neutral" variant="outline" {...props} />}
       >
         Favourite
       </DropdownMenuTrigger>
-      <DropdownMenuContent className={"text-sm"}>
+      <DropdownMenuContent className="text-sm">
         <DropdownMenuArrow />
         <DropdownMenuItem
           render={(props) => (
-            <a target={"_blank"} rel="noreferrer" href={"https://www.github.com"} {...props}>
+            <a target="_blank" rel="noreferrer" href="https://www.github.com" {...props}>
               Github
             </a>
           )}
@@ -276,21 +276,21 @@ export default function App() {
         <DropdownMenuItem
           disabled
           render={(props) => (
-            <a target={"_blank"} rel="noreferrer" href={"https://www.github.com"} {...props}>
+            <a target="_blank" rel="noreferrer" href="https://www.github.com" {...props}>
               Disabled
             </a>
           )}
         />
         <DropdownMenuItem
           render={(props) => (
-            <a target={"_blank"} rel="noreferrer" href={"https://www.vercel.com"} {...props}>
+            <a target="_blank" rel="noreferrer" href="https://www.vercel.com" {...props}>
               Vercel
             </a>
           )}
         />
         <DropdownMenuItem
           render={(props) => (
-            <a target={"_blank"} rel="noreferrer" href={"https://www.resolid.tech"} {...props}>
+            <a target="_blank" rel="noreferrer" href="https://www.resolid.tech" {...props}>
               Resolid
             </a>
           )}
@@ -325,28 +325,28 @@ export default function App() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
-        render={(props) => <Button color={"neutral"} variant={"outline"} {...props} />}
+        render={(props) => <Button color="neutral" variant="outline" {...props} />}
       >
         Sort
       </DropdownMenuTrigger>
-      <DropdownMenuContent className={"text-sm"}>
+      <DropdownMenuContent className="text-sm">
         <DropdownMenuArrow />
         <DropdownMenuRadioGroup value={value} onChange={setValue}>
-          <DropdownMenuRadioItem value={"date"}>
+          <DropdownMenuRadioItem value="date">
             <DropdownMenuItemIndicator>
-              <SpriteIcon size={"1rem"} name={"dot"} />
+              <SpriteIcon size="1rem" name="dot" />
             </DropdownMenuItemIndicator>
             Date
           </DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value={"name"}>
+          <DropdownMenuRadioItem value="name">
             <DropdownMenuItemIndicator>
-              <SpriteIcon size={"1rem"} name={"dot"} />
+              <SpriteIcon size="1rem" name="dot" />
             </DropdownMenuItemIndicator>
             Name
           </DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value={"type"}>
+          <DropdownMenuRadioItem value="type">
             <DropdownMenuItemIndicator>
-              <SpriteIcon size={"1rem"} name={"dot"} />
+              <SpriteIcon size="1rem" name="dot" />
             </DropdownMenuItemIndicator>
             Type
           </DropdownMenuRadioItem>
@@ -382,27 +382,27 @@ export default function App() {
   return (
     <DropdownMenu closeOnSelect={false}>
       <DropdownMenuTrigger
-        render={(props) => <Button color={"neutral"} variant={"outline"} {...props} />}
+        render={(props) => <Button color="neutral" variant="outline" {...props} />}
       >
         Workspace
       </DropdownMenuTrigger>
-      <DropdownMenuContent className={"text-sm"}>
+      <DropdownMenuContent className="text-sm">
         <DropdownMenuArrow />
-        <DropdownMenuCheckboxItem label={"Minimap"} checked={showMinimap} onChange={setShowMinimap}>
+        <DropdownMenuCheckboxItem label="Minimap" checked={showMinimap} onChange={setShowMinimap}>
           <DropdownMenuItemIndicator>
-            <SpriteIcon size={"1rem"} name={"check"} />
+            <SpriteIcon size="1rem" name="check" />
           </DropdownMenuItemIndicator>
           Minimap
         </DropdownMenuCheckboxItem>
-        <DropdownMenuCheckboxItem label={"Search"} checked={showSearch} onChange={setShowSearch}>
+        <DropdownMenuCheckboxItem label="Search" checked={showSearch} onChange={setShowSearch}>
           <DropdownMenuItemIndicator>
-            <SpriteIcon size={"1rem"} name={"check"} />
+            <SpriteIcon size="1rem" name="check" />
           </DropdownMenuItemIndicator>
           Search
         </DropdownMenuCheckboxItem>
-        <DropdownMenuCheckboxItem label={"Sidebar"} checked={showSidebar} onChange={setShowSidebar}>
+        <DropdownMenuCheckboxItem label="Sidebar" checked={showSidebar} onChange={setShowSidebar}>
           <DropdownMenuItemIndicator>
-            <SpriteIcon size={"1rem"} name={"check"} />
+            <SpriteIcon size="1rem" name="check" />
           </DropdownMenuItemIndicator>
           Sidebar
         </DropdownMenuCheckboxItem>

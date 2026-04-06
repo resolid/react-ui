@@ -25,14 +25,14 @@ export default function App() {
   const setColorMode = useColorModeDispatch();
 
   return (
-    <div className={"flex justify-center"}>
+    <div className="flex justify-center">
       <Button
-        variant={"soft"}
-        color={"neutral"}
+        variant="soft"
+        color="neutral"
         iconOnly
         onClick={() => setColorMode(colorMode === "dark" ? "light" : "dark")}
       >
-        <SpriteIcon size={"1.5em"} name={colorMode === "dark" ? "sun" : "moon"} />
+        <SpriteIcon size="1.5em" name={colorMode === "dark" ? "sun" : "moon"} />
       </Button>
     </div>
   );

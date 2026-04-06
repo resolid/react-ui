@@ -27,20 +27,18 @@ export default function App() {
         <DialogBackdrop />
         <DialogContent className="my-20 max-w-[calc(100vw-6rem)] md:max-w-128">
           <DialogClose
-            className={"absolute inset-e-2 top-2 p-1"}
+            className="absolute inset-e-2 top-2 p-1"
             render={(props) => <CloseButton {...props} />}
           />
-          <DialogTitle className={"p-4"}>对话框标题</DialogTitle>
-          <DialogDescription className={"p-4 pt-1"}>
+          <DialogTitle className="p-4">对话框标题</DialogTitle>
+          <DialogDescription className="p-4 pt-1">
             这是一个对话框示例，你可以在这里放置相关的提示信息、确认内容或者操作说明。内容可以根据需求进行修改，以适应不同的业务场景。
           </DialogDescription>
-          <div className={"flex justify-end gap-4 p-4 pt-1"}>
-            <DialogClose
-              render={(props) => <Button color={"neutral"} variant={"soft"} {...props} />}
-            >
+          <div className="flex justify-end gap-4 p-4 pt-1">
+            <DialogClose render={(props) => <Button color="neutral" variant="soft" {...props} />}>
               取消
             </DialogClose>
-            <Button color={"neutral"}>确定</Button>
+            <Button color="neutral">确定</Button>
           </div>
         </DialogContent>
       </DialogPortal>
@@ -126,7 +124,7 @@ export default function App() {
   ];
 
   return (
-    <div className={"flex flex-row gap-3"}>
+    <div className="flex flex-row gap-3">
       {placements.map((placement) => {
         return (
           <Dialog key={placement.value} placement={placement.value}>
@@ -137,20 +135,20 @@ export default function App() {
               <DialogBackdrop />
               <DialogContent className="my-20 max-w-[calc(100vw-6rem)] md:max-w-128">
                 <DialogClose
-                  className={"absolute inset-e-2 top-2 p-1"}
+                  className="absolute inset-e-2 top-2 p-1"
                   render={(props) => <CloseButton {...props} />}
                 />
-                <DialogTitle className={"p-4"}>对话框标题</DialogTitle>
-                <DialogDescription className={"p-4 pt-1"}>
+                <DialogTitle className="p-4">对话框标题</DialogTitle>
+                <DialogDescription className="p-4 pt-1">
                   这是一个对话框示例，你可以在这里放置相关的提示信息、确认内容或者操作说明。内容可以根据需求进行修改，以适应不同的业务场景。
                 </DialogDescription>
-                <div className={"flex justify-end gap-4 p-4 pt-1"}>
+                <div className="flex justify-end gap-4 p-4 pt-1">
                   <DialogClose
-                    render={(props) => <Button color={"neutral"} variant={"soft"} {...props} />}
+                    render={(props) => <Button color="neutral" variant="soft" {...props} />}
                   >
                     取消
                   </DialogClose>
-                  <Button color={"neutral"}>确定</Button>
+                  <Button color="neutral">确定</Button>
                 </div>
               </DialogContent>
             </DialogPortal>
@@ -188,41 +186,39 @@ export default function App() {
         <DialogBackdrop />
         <DialogContent className="my-25 max-w-[calc(100vw-6rem)] md:max-w-128">
           <DialogClose
-            className={"absolute inset-e-2 top-2 p-1"}
+            className="absolute inset-e-2 top-2 p-1"
             render={(props) => <CloseButton {...props} />}
           />
-          <DialogTitle className={"p-4"}>对话框标题</DialogTitle>
-          <DialogDescription className={"p-4 pt-1"}>
+          <DialogTitle className="p-4">对话框标题</DialogTitle>
+          <DialogDescription className="p-4 pt-1">
             你正在进行一项操作，这可能会影响当前的设置或数据。请确认是否继续？如果不确定，可以先查看相关文档，或者咨询管理员获取更多信息。
           </DialogDescription>
-          <div className={"flex justify-end gap-4 p-4 pt-1"}>
-            <DialogClose
-              render={(props) => <Button color={"neutral"} variant={"soft"} {...props} />}
-            >
+          <div className="flex justify-end gap-4 p-4 pt-1">
+            <DialogClose render={(props) => <Button color="neutral" variant="soft" {...props} />}>
               取消
             </DialogClose>
             <Dialog>
-              <DialogTrigger render={(props) => <Button color={"danger"} {...props} />}>
+              <DialogTrigger render={(props) => <Button color="danger" {...props} />}>
                 删除
               </DialogTrigger>
               <DialogPortal>
                 <DialogBackdrop />
                 <DialogContent className="my-20 max-w-[calc(100vw-6rem)] md:max-w-86">
                   <DialogClose
-                    className={"absolute inset-e-2 top-2 p-1"}
+                    className="absolute inset-e-2 top-2 p-1"
                     render={(props) => <CloseButton {...props} />}
                   />
-                  <DialogTitle className={"p-4"}>操作确认</DialogTitle>
-                  <DialogDescription className={"p-4 pt-1"}>
+                  <DialogTitle className="p-4">操作确认</DialogTitle>
+                  <DialogDescription className="p-4 pt-1">
                     你正在进行一项操作，这可能会影响当前的设置或数据。请确认是否继续？如果不确定，可以先查看相关文档，或者咨询管理员获取更多信息。
                   </DialogDescription>
-                  <div className={"flex justify-end gap-4 p-4 pt-1"}>
+                  <div className="flex justify-end gap-4 p-4 pt-1">
                     <DialogClose
-                      render={(props) => <Button color={"neutral"} variant={"soft"} {...props} />}
+                      render={(props) => <Button color="neutral" variant="soft" {...props} />}
                     >
                       取消
                     </DialogClose>
-                    <Button color={"danger"}>确认</Button>
+                    <Button color="danger">确认</Button>
                   </div>
                 </DialogContent>
               </DialogPortal>
@@ -260,9 +256,9 @@ export default function App() {
   const [scrollBehavior, setScrollBehavior] = useState("inside");
 
   return (
-    <div className={"flex flex-row items-center gap-5"}>
+    <div className="flex flex-row items-center gap-5">
       <RadioGroup value={scrollBehavior} onChange={setScrollBehavior}>
-        <div className={"flex flex-row gap-5"}>
+        <div className="flex flex-row gap-5">
           <Radio value="inside">内部</Radio>
           <Radio value="outside">外部</Radio>
         </div>
@@ -273,10 +269,10 @@ export default function App() {
           <DialogBackdrop />
           <DialogContent className="my-20 flex max-w-[calc(100vw-6rem)] flex-col md:max-w-160">
             <DialogClose
-              className={"absolute inset-e-2 top-2 p-1"}
+              className="absolute inset-e-2 top-2 p-1"
               render={(props) => <CloseButton {...props} />}
             />
-            <DialogTitle className={"p-4"}>对话框标题</DialogTitle>
+            <DialogTitle className="p-4">对话框标题</DialogTitle>
             <div
               className={
                 scrollBehavior === "inside"
@@ -284,12 +280,12 @@ export default function App() {
                   : ""
               }
             >
-              <DialogDescription className={"p-4 pt-1"}>
+              <DialogDescription className="p-4 pt-1">
                 这是一个对话框示例，你可以在这里放置相关的提示信息、确认内容或者操作说明。内容可以根据需求进行修改，以适应不同的业务场景。
               </DialogDescription>
-              <article className={"p-4 py-1"}>
+              <article className="p-4 py-1">
                 {Array.from({ length: 16 }, (x, i) => i + 1).map((i) => (
-                  <p key={i} className={"mb-4"}>
+                  <p key={i} className="mb-4">
                     这是一个演示文本，用于填充内容，以便展示排版效果。你可以根据需要替换为实际内容。
                   </p>
                 ))}
@@ -323,26 +319,24 @@ import {
 
 export default function App() {
   return (
-    <Dialog role={"alertdialog"}>
+    <Dialog role="alertdialog">
       <DialogTrigger render={(props) => <Button {...props} />}>打开对话框</DialogTrigger>
       <DialogPortal>
         <DialogBackdrop />
         <DialogContent className="my-20 max-w-[calc(100vw-6rem)] md:max-w-128">
           <DialogClose
-            className={"absolute inset-e-2 top-2 p-1"}
+            className="absolute inset-e-2 top-2 p-1"
             render={(props) => <CloseButton {...props} />}
           />
-          <DialogTitle className={"p-4"}>对话框标题</DialogTitle>
-          <DialogDescription className={"p-4 pt-1"}>
+          <DialogTitle className="p-4">对话框标题</DialogTitle>
+          <DialogDescription className="p-4 pt-1">
             你正在进行一项操作，这可能会影响当前的设置或数据。请确认是否继续？如果不确定，可以先查看相关文档，或者咨询管理员获取更多信息。
           </DialogDescription>
-          <div className={"flex justify-end gap-4 p-4 pt-1"}>
-            <DialogClose
-              render={(props) => <Button color={"neutral"} variant={"soft"} {...props} />}
-            >
+          <div className="flex justify-end gap-4 p-4 pt-1">
+            <DialogClose render={(props) => <Button color="neutral" variant="soft" {...props} />}>
               取消
             </DialogClose>
-            <Button color={"danger"}>确认</Button>
+            <Button color="danger">确认</Button>
           </div>
         </DialogContent>
       </DialogPortal>
@@ -374,36 +368,34 @@ export default function App() {
   const finalRef = useRef(null);
 
   return (
-    <div className={"flex flex-row gap-3"}>
+    <div className="flex flex-row gap-3">
       <Dialog initialFocus={initialRef} finalFocus={finalRef}>
         <DialogTrigger render={(props) => <Button {...props} />}>打开对话框</DialogTrigger>
 
         <DialogPortal>
           <DialogBackdrop />
           <DialogContent className="my-20 max-w-[calc(100vw-6rem)] md:max-w-128">
-            <DialogTitle className={"p-4"}>对话框标题</DialogTitle>
-            <div className={"flex flex-col gap-4 p-4 pt-1"}>
-              <div className={"flex flex-col gap-1"}>
-                <label htmlFor={"username"}>姓名</label>
-                <Input id={"username"} />
+            <DialogTitle className="p-4">对话框标题</DialogTitle>
+            <div className="flex flex-col gap-4 p-4 pt-1">
+              <div className="flex flex-col gap-1">
+                <label htmlFor="username">姓名</label>
+                <Input id="username" />
               </div>
-              <div className={"flex flex-col gap-1"}>
-                <label htmlFor={"email"}>邮件</label>
-                <Input ref={initialRef} id={"email"} />
+              <div className="flex flex-col gap-1">
+                <label htmlFor="email">邮件</label>
+                <Input ref={initialRef} id="email" />
               </div>
             </div>
-            <div className={"flex justify-end gap-4 p-4 pt-1"}>
-              <DialogClose
-                render={(props) => <Button color={"neutral"} variant={"soft"} {...props} />}
-              >
+            <div className="flex justify-end gap-4 p-4 pt-1">
+              <DialogClose render={(props) => <Button color="neutral" variant="soft" {...props} />}>
                 取消
               </DialogClose>
-              <Button color={"neutral"}>保存</Button>
+              <Button color="neutral">保存</Button>
             </div>
           </DialogContent>
         </DialogPortal>
       </Dialog>
-      <Button color={"neutral"} ref={finalRef}>
+      <Button color="neutral" ref={finalRef}>
         键盘关闭对话框后获得焦点
       </Button>
     </div>
@@ -453,9 +445,9 @@ export default function App() {
         <DialogPortal>
           <DialogBackdrop />
           <DialogContent className="my-25 w-96">
-            <DialogTitle className={"p-4"}>新推文</DialogTitle>
+            <DialogTitle className="p-4">新推文</DialogTitle>
             <form
-              className={"p-4 pt-1"}
+              className="p-4 pt-1"
               onSubmit={(event) => {
                 event.preventDefault();
                 setDialogOpen(false);
@@ -464,17 +456,17 @@ export default function App() {
               <textarea
                 rows={6}
                 required
-                className={"w-full rounded-md border border-bd-normal px-3 py-2"}
-                placeholder={"有什么新想法吗?"}
+                className="w-full rounded-md border border-bd-normal px-3 py-2"
+                placeholder="有什么新想法吗?"
                 onChange={(e) => setTextareaValue(e.target.value)}
               />
-              <div className={"flex justify-end gap-4"}>
+              <div className="flex justify-end gap-4">
                 <DialogClose
-                  render={(props) => <Button color={"neutral"} variant={"soft"} {...props} />}
+                  render={(props) => <Button color="neutral" variant="soft" {...props} />}
                 >
                   取消
                 </DialogClose>
-                <Button type={"submit"} color={"neutral"}>
+                <Button type="submit" color="neutral">
                   发布
                 </Button>
               </div>
@@ -486,16 +478,14 @@ export default function App() {
         <DialogPortal>
           <DialogBackdrop />
           <DialogContent className="my-30 w-96">
-            <DialogTitle className={"p-4"}>丢弃推文？</DialogTitle>
-            <DialogDescription className={"p-4 pt-1"}>您的推文将丢失。</DialogDescription>
-            <div className={"flex justify-end gap-4 p-4 pt-1"}>
-              <DialogClose
-                render={(props) => <Button color={"neutral"} variant={"soft"} {...props} />}
-              >
+            <DialogTitle className="p-4">丢弃推文？</DialogTitle>
+            <DialogDescription className="p-4 pt-1">您的推文将丢失。</DialogDescription>
+            <div className="flex justify-end gap-4 p-4 pt-1">
+              <DialogClose render={(props) => <Button color="neutral" variant="soft" {...props} />}>
                 返回
               </DialogClose>
               <Button
-                color={"danger"}
+                color="danger"
                 onClick={() => {
                   setConfirmOpen(false);
                   setDialogOpen(false);

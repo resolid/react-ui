@@ -25,17 +25,17 @@ export default function App() {
     <Button
       onClick={() => {
         show(
-          <Toast className={"flex gap-2"}>
-            <ToastIndicator className={"pt-1"}>
-              <SpriteIcon name={"github-NOTE"} />
+          <Toast className="flex gap-2">
+            <ToastIndicator className="pt-1">
+              <SpriteIcon name="github-NOTE" />
             </ToastIndicator>
-            <ToastContent className={"flex flex-col gap-1"}>
+            <ToastContent className="flex flex-col gap-1">
               <ToastTitle>通知提醒</ToastTitle>
-              <ToastDescription className={"text-sm"}>
+              <ToastDescription className="text-sm">
                 全局展示通知提醒，将信息及时有效的传达给用户。
               </ToastDescription>
             </ToastContent>
-            <ToastCloseButton className={"absolute inset-e-2 top-2"} />
+            <ToastCloseButton className="absolute inset-e-2 top-2" />
           </Toast>,
         );
       }}
@@ -111,21 +111,21 @@ export default function App() {
   const toastId = useRef("");
 
   return (
-    <div className={"flex gap-3"}>
+    <div className="flex gap-3">
       <Button
         onClick={() => {
           toastId.current = show(
-            <Toast className={"flex gap-2"}>
-              <ToastIndicator className={"pt-1"}>
-                <SpriteIcon name={"github-NOTE"} />
+            <Toast className="flex gap-2">
+              <ToastIndicator className="pt-1">
+                <SpriteIcon name="github-NOTE" />
               </ToastIndicator>
-              <ToastContent className={"flex flex-col gap-1"}>
+              <ToastContent className="flex flex-col gap-1">
                 <ToastTitle>通知提醒</ToastTitle>
-                <ToastDescription className={"text-sm"}>
+                <ToastDescription className="text-sm">
                   全局展示通知提醒，将信息及时有效的传达给用户。
                 </ToastDescription>
               </ToastContent>
-              <ToastCloseButton className={"absolute inset-e-2 top-2"} />
+              <ToastCloseButton className="absolute inset-e-2 top-2" />
             </Toast>,
           );
         }}
@@ -133,19 +133,19 @@ export default function App() {
         显示通知提醒
       </Button>
       <Button
-        color={"neutral"}
+        color="neutral"
         onClick={() => {
           update(
             toastId.current,
-            <Toast color={"success"} className={"flex gap-2"}>
-              <ToastIndicator className={"pt-1"}>
-                <SpriteIcon name={"github-NOTE"} />
+            <Toast color="success" className="flex gap-2">
+              <ToastIndicator className="pt-1">
+                <SpriteIcon name="github-NOTE" />
               </ToastIndicator>
-              <ToastContent className={"flex flex-col gap-1"}>
+              <ToastContent className="flex flex-col gap-1">
                 <ToastTitle>通知提醒</ToastTitle>
-                <ToastDescription className={"text-sm"}>更新通知提醒内容。</ToastDescription>
+                <ToastDescription className="text-sm">更新通知提醒内容。</ToastDescription>
               </ToastContent>
-              <ToastCloseButton className={"absolute inset-e-2 top-2"} />
+              <ToastCloseButton className="absolute inset-e-2 top-2" />
             </Toast>,
           );
         }}
@@ -153,7 +153,7 @@ export default function App() {
         更新通知提醒
       </Button>
       <Button
-        color={"warning"}
+        color="warning"
         onClick={() => {
           dismiss(toastId.current);
         }}
@@ -184,22 +184,22 @@ export default function App() {
   const { show } = useToast();
 
   const ToastDemo = (
-    <Toast className={"flex gap-2"}>
-      <ToastIndicator className={"pt-1"}>
-        <SpriteIcon name={"github-NOTE"} />
+    <Toast className="flex gap-2">
+      <ToastIndicator className="pt-1">
+        <SpriteIcon name="github-NOTE" />
       </ToastIndicator>
-      <ToastContent className={"flex flex-col gap-1"}>
+      <ToastContent className="flex flex-col gap-1">
         <ToastTitle>通知提醒</ToastTitle>
-        <ToastDescription className={"text-sm"}>
+        <ToastDescription className="text-sm">
           全局展示通知提醒，将信息及时有效的传达给用户。
         </ToastDescription>
       </ToastContent>
-      <ToastCloseButton className={"absolute inset-e-2 top-2"} />
+      <ToastCloseButton className="absolute inset-e-2 top-2" />
     </Toast>
   );
 
   return (
-    <div className={"flex gap-3"}>
+    <div className="flex gap-3">
       <Button
         onClick={() => {
           show(ToastDemo, { duration: 10000 });
@@ -241,17 +241,17 @@ export default function App() {
     <Button
       onClick={() => {
         show(
-          <Toast onDismiss={() => alert("通知提醒关闭回调")} className={"flex gap-2"}>
-            <ToastIndicator className={"pt-1"}>
-              <SpriteIcon name={"github-NOTE"} />
+          <Toast onDismiss={() => alert("通知提醒关闭回调")} className="flex gap-2">
+            <ToastIndicator className="pt-1">
+              <SpriteIcon name="github-NOTE" />
             </ToastIndicator>
-            <ToastContent className={"flex flex-col gap-1"}>
+            <ToastContent className="flex flex-col gap-1">
               <ToastTitle>通知提醒</ToastTitle>
-              <ToastDescription className={"text-sm"}>
+              <ToastDescription className="text-sm">
                 全局展示通知提醒，将信息及时有效的传达给用户。
               </ToastDescription>
             </ToastContent>
-            <ToastCloseButton className={"absolute inset-e-2 top-2"} />
+            <ToastCloseButton className="absolute inset-e-2 top-2" />
           </Toast>,
         );
       }}
@@ -290,23 +290,23 @@ export default function App() {
   const PromiseToast = ({ state, data, error }) => {
     return (
       <Toast
-        className={"flex gap-2"}
+        className="flex gap-2"
         color={state === "success" ? "success" : state === "failure" ? "danger" : undefined}
       >
-        <ToastIndicator className={"w-5 pt-1"}>
-          {state === "success" && <SpriteIcon size={"1.375em"} name={"check"} />}
-          {state === "failure" && <SpriteIcon size={"1.375em"} name={"info"} />}
+        <ToastIndicator className="w-5 pt-1">
+          {state === "success" && <SpriteIcon size="1.375em" name="check" />}
+          {state === "failure" && <SpriteIcon size="1.375em" name="info" />}
           {state === "pending" && <Spinner />}
         </ToastIndicator>
-        <ToastContent className={"flex flex-col gap-1"}>
+        <ToastContent className="flex flex-col gap-1">
           <ToastTitle>通知提醒</ToastTitle>
-          <ToastDescription className={"text-sm"}>
+          <ToastDescription className="text-sm">
             {state === "success" && data?.message}
             {state === "failure" && error}
             {state === "pending" && "开始处理承诺..."}
           </ToastDescription>
         </ToastContent>
-        {state !== "pending" && <ToastCloseButton className={"absolute inset-e-2 top-2"} />}
+        {state !== "pending" && <ToastCloseButton className="absolute inset-e-2 top-2" />}
       </Toast>
     );
   };
@@ -316,11 +316,11 @@ export default function App() {
   };
 
   return (
-    <div className={"flex gap-3"}>
-      <Button color={"success"} onClick={() => handleClick("success")}>
+    <div className="flex gap-3">
+      <Button color="success" onClick={() => handleClick("success")}>
         处理承诺成功
       </Button>
-      <Button color={"danger"} onClick={() => handleClick("failure")}>
+      <Button color="danger" onClick={() => handleClick("failure")}>
         处理承诺失败
       </Button>
     </div>
@@ -352,17 +352,17 @@ export default function App() {
 
   const handleClick = (color, variant) => {
     show(
-      <Toast color={color} variant={variant} className={"flex gap-2"}>
-        <ToastIndicator className={"pt-1"}>
-          <SpriteIcon size={"1.5em"} name={"info"} />
+      <Toast color={color} variant={variant} className="flex gap-2">
+        <ToastIndicator className="pt-1">
+          <SpriteIcon size="1.5em" name="info" />
         </ToastIndicator>
-        <ToastContent className={"flex flex-col gap-1"}>
+        <ToastContent className="flex flex-col gap-1">
           <ToastTitle>通知提醒</ToastTitle>
-          <ToastDescription className={"text-sm"}>
+          <ToastDescription className="text-sm">
             全局展示通知提醒，将信息及时有效的传达给用户。
           </ToastDescription>
         </ToastContent>
-        <ToastCloseButton className={"absolute inset-e-2 top-2"} />
+        <ToastCloseButton className="absolute inset-e-2 top-2" />
       </Toast>,
     );
   };
@@ -371,10 +371,10 @@ export default function App() {
   const variants = ["solid", "outline", "subtle", "soft"];
 
   return (
-    <div className={"flex flex-col gap-3"}>
+    <div className="flex flex-col gap-3">
       {colors.map((color) => {
         return (
-          <div key={color} className={"flex gap-3"}>
+          <div key={color} className="flex gap-3">
             {variants.map((variant) => {
               return (
                 <Button
@@ -417,7 +417,7 @@ export default function App() {
 
   return (
     <div
-      className={"mx-auto grid w-fit gap-2"}
+      className="mx-auto grid w-fit gap-2"
       style={{
         gridTemplateAreas:
           '"top-start     top         top-end"' +
@@ -437,24 +437,24 @@ export default function App() {
         return (
           <Button
             key={placement}
-            color={"neutral"}
-            variant={"soft"}
+            color="neutral"
+            variant="soft"
             style={{ gridArea: placement }}
             onClick={() => {
               placement === "center"
                 ? clear()
                 : show(
-                    <Toast className={"flex gap-2"}>
-                      <ToastIndicator className={"pt-1"}>
-                        <SpriteIcon size={"1.5em"} name={"info"} />
+                    <Toast className="flex gap-2">
+                      <ToastIndicator className="pt-1">
+                        <SpriteIcon size="1.5em" name="info" />
                       </ToastIndicator>
-                      <ToastContent className={"flex flex-col gap-1"}>
+                      <ToastContent className="flex flex-col gap-1">
                         <ToastTitle>通知提醒</ToastTitle>
-                        <ToastDescription className={"text-sm"}>
+                        <ToastDescription className="text-sm">
                           全局展示通知提醒，将信息及时有效的传达给用户。
                         </ToastDescription>
                       </ToastContent>
-                      <ToastCloseButton className={"absolute inset-e-2 top-2"} />
+                      <ToastCloseButton className="absolute inset-e-2 top-2" />
                     </Toast>,
                     {
                       placement: placement,

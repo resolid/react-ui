@@ -35,10 +35,10 @@ import { Separator } from "@resolid/react-ui";
 
 export default function App() {
   return (
-    <div className={"flex w-full flex-col gap-3"}>
-      <Separator variant={"solid"} />
-      <Separator variant={"dotted"} />
-      <Separator variant={"dashed"} />
+    <div className="flex w-full flex-col gap-3">
+      <Separator variant="solid" />
+      <Separator variant="dotted" />
+      <Separator variant="dashed" />
     </div>
   );
 }
@@ -53,13 +53,13 @@ import { Separator } from "@resolid/react-ui";
 
 export default function App() {
   return (
-    <div className={"flex w-full flex-col gap-3"}>
-      <Separator color={"primary"} />
-      <Separator color={"secondary"} />
-      <Separator color={"success"} />
-      <Separator color={"warning"} />
-      <Separator color={"danger"} />
-      <Separator color={"neutral"} />
+    <div className="flex w-full flex-col gap-3">
+      <Separator color="primary" />
+      <Separator color="secondary" />
+      <Separator color="success" />
+      <Separator color="warning" />
+      <Separator color="danger" />
+      <Separator color="neutral" />
     </div>
   );
 }
@@ -74,7 +74,7 @@ import { Separator } from "@resolid/react-ui";
 
 export default function App() {
   return (
-    <div className={"flex w-full flex-col gap-3"}>
+    <div className="flex w-full flex-col gap-3">
       <Separator size={2} />
       <Separator size={3} />
       <Separator size={5} />
@@ -92,19 +92,19 @@ import { Separator } from "@resolid/react-ui";
 
 export default function App() {
   return (
-    <div className={"flex flex-row gap-5 px-5"}>
+    <div className="flex flex-row gap-5 px-5">
       <span>Label</span>
-      <Separator orientation={"vertical"} />
+      <Separator orientation="vertical" />
       <span>Label</span>
-      <Separator orientation={"vertical"} variant="dashed" />
+      <Separator orientation="vertical" variant="dashed" />
       <span>Label</span>
-      <Separator orientation={"vertical"} variant="dotted" />
+      <Separator orientation="vertical" variant="dotted" />
       <span>Label</span>
-      <Separator orientation={"vertical"} color={"primary"} />
+      <Separator orientation="vertical" color="primary" />
       <span>Label</span>
-      <Separator orientation={"vertical"} size={3} color={"success"} variant="dotted" />
+      <Separator orientation="vertical" size={3} color="success" variant="dotted" />
       <span>Label</span>
-      <Separator orientation={"vertical"} size={2} color={"danger"} variant="dashed" />
+      <Separator orientation="vertical" size={2} color="danger" variant="dashed" />
       <span>Label</span>
     </div>
   );
@@ -121,15 +121,15 @@ import { SpriteIcon } from "~/components/sprite-icon";
 
 export default function App() {
   return (
-    <div className={"flex w-full flex-col gap-3"}>
+    <div className="flex w-full flex-col gap-3">
       <Separator>Label in the center</Separator>
-      <Separator position={"left"}>Label on the left</Separator>
-      <Separator position={"right"}>Label on the right</Separator>
+      <Separator position="left">Label on the left</Separator>
+      <Separator position="right">Label on the right</Separator>
       <Separator>
-        <SpriteIcon size={"1em"} className={"me-1"} name={"search"} /> Search results
+        <SpriteIcon size="1em" className="me-1" name="search" /> Search results
       </Separator>
       <Separator>
-        <a href={"#文本标签"} className={"text-link hover:text-link-hovered hover:underline"}>
+        <a href="#文本标签" className="text-link hover:text-link-hovered hover:underline">
           Link label
         </a>
       </Separator>

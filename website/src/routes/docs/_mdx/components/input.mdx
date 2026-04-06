@@ -9,7 +9,7 @@ description: 基本表单组件，并在原生控件基础上进行了功能扩�
 import { Input } from "@resolid/react-ui";
 
 export default function App() {
-  return <Input placeholder={"输入框"} />;
+  return <Input placeholder="输入框" />;
 }
 ```
 
@@ -44,7 +44,7 @@ import { Input, InputAddon, InputGroup } from "@resolid/react-ui";
 import { Input } from "@resolid/react-ui";
 
 export default function App() {
-  return <Input defaultValue={"Resolid UI"} placeholder="输入框" />;
+  return <Input defaultValue="Resolid UI" placeholder="输入框" />;
 }
 ```
 
@@ -60,7 +60,7 @@ export default function App() {
   const [value, setValue] = useState("");
 
   return (
-    <div className={"flex flex-col gap-2"}>
+    <div className="flex flex-col gap-2">
       <p>你输入的是: {value}</p>
       <Input value={value} onChange={(value) => setValue(value)} placeholder="输入框" />
     </div>
@@ -78,27 +78,27 @@ import { SpriteIcon } from "~/components/sprite-icon";
 
 export default function App() {
   return (
-    <div className={"flex flex-col gap-3"}>
-      <Input placeholder={"邮箱地址"} prefix={<SpriteIcon size={"1.125em"} name={"email"} />} />
-      <Input placeholder={"金额"} suffix={"RMB"} suffixWidth={50} />
+    <div className="flex flex-col gap-3">
+      <Input placeholder="邮箱地址" prefix={<SpriteIcon size="1.125em" name="email" />} />
+      <Input placeholder="金额" suffix="RMB" suffixWidth={50} />
       <Input
-        placeholder={"搜索..."}
+        placeholder="搜索..."
         suffix={
           <Button
-            className={"pointer-events-auto"}
-            variant={"ghost"}
-            color={"neutral"}
-            size={"xs"}
+            className="pointer-events-auto"
+            variant="ghost"
+            color="neutral"
+            size="xs"
             iconOnly
           >
-            <SpriteIcon size={"1.125em"} name={"search"} />
+            <SpriteIcon size="1.125em" name="search" />
           </Button>
         }
       />
       <Input
-        placeholder={"邮件地址"}
+        placeholder="邮件地址"
         suffix={
-          <Button className={"pointer-events-auto"} size={"xs"}>
+          <Button className="pointer-events-auto" size="xs">
             订阅
           </Button>
         }
@@ -118,29 +118,29 @@ import { Input, InputGroup, InputAddon } from "@resolid/react-ui";
 
 export default function App() {
   return (
-    <div className={"flex flex-col gap-3"}>
+    <div className="flex flex-col gap-3">
       <InputGroup>
         <InputAddon>@</InputAddon>
-        <Input placeholder={"用户名"} />
+        <Input placeholder="用户名" />
       </InputGroup>
       <InputGroup>
-        <Input placeholder={"收件人的用户名"} />
-        <InputAddon className={"bg-bg-normal"}>@example.com</InputAddon>
+        <Input placeholder="收件人的用户名" />
+        <InputAddon className="bg-bg-normal">@example.com</InputAddon>
       </InputGroup>
       <InputGroup>
         <InputAddon>姓名</InputAddon>
-        <Input placeholder={"姓"} />
-        <Input placeholder={"名"} />
+        <Input placeholder="姓" />
+        <Input placeholder="名" />
       </InputGroup>
-      <InputGroup size={"sm"}>
+      <InputGroup size="sm">
         <InputAddon>¥</InputAddon>
-        <Input suffix={"RMB"} suffixWidth={50} placeholder={"金额"} />
+        <Input suffix="RMB" suffixWidth={50} placeholder="金额" />
         <InputAddon>.00</InputAddon>
       </InputGroup>
       <InputGroup>
-        <Input placeholder={"用户名"} />
+        <Input placeholder="用户名" />
         <InputAddon>@</InputAddon>
-        <Input placeholder={"服务器"} />
+        <Input placeholder="服务器" />
       </InputGroup>
     </div>
   );

@@ -49,7 +49,7 @@ export default function App() {
   const [value, setValue] = useState(["React", "Vue"]);
 
   return (
-    <div className={"flex flex-col gap-2"}>
+    <div className="flex flex-col gap-2">
       <p>你输入了标签: {value.join(", ")}</p>
       <TagsInput name="tagsTest" className="max-w-80" value={value} onChange={setValue}>
         <TagsInputInput placeholder="请输入标签" />

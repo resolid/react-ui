@@ -17,9 +17,9 @@ import { SpriteIcon } from "~/components/sprite-icon";
 
 export default function App() {
   return (
-    <Alert className={"flex flex-row gap-2"}>
-      <AlertIndicator className={"pt-1.75"}>
-        <SpriteIcon name={"github-NOTE"} />
+    <Alert className="flex flex-row gap-2">
+      <AlertIndicator className="pt-1.75">
+        <SpriteIcon name="github-NOTE" />
       </AlertIndicator>
       <AlertContent>
         <AlertTitle>警告提示</AlertTitle>
@@ -97,18 +97,18 @@ export default function App() {
   const variants = ["solid", "outline", "subtle", "soft"];
 
   return (
-    <div className={"flex w-full flex-col gap-3"}>
+    <div className="flex w-full flex-col gap-3">
       {colors.map((color) => (
-        <div key={color} className={"flex flex-row gap-3"}>
+        <div key={color} className="flex flex-row gap-3">
           {variants.map((variant) => (
             <Alert
               key={`${color}-${variant}`}
               color={color}
               variant={variant}
-              className={"flex grow flex-row gap-2"}
+              className="flex grow flex-row gap-2"
             >
               {alertIcons[color] ? (
-                <AlertIndicator className={"pt-1.75"}>
+                <AlertIndicator className="pt-1.75">
                   <SpriteIcon name={alertIcons[color]} />
                 </AlertIndicator>
               ) : null}
@@ -140,15 +140,15 @@ import { SpriteIcon } from "~/components/sprite-icon";
 
 export default function App() {
   return (
-    <Alert className={"flex flex-row gap-2"}>
-      <AlertIndicator className={"pt-1.75"}>
-        <SpriteIcon name={"github-NOTE"} />
+    <Alert className="flex flex-row gap-2">
+      <AlertIndicator className="pt-1.75">
+        <SpriteIcon name="github-NOTE" />
       </AlertIndicator>
       <AlertContent>
         <AlertTitle>警告提示</AlertTitle>
         <AlertDescription>以吸引用户注意力的方式显示简短重要信息。</AlertDescription>
       </AlertContent>
-      <AlertCloseButton className={"absolute inset-e-2 top-2"} />
+      <AlertCloseButton className="absolute inset-e-2 top-2" />
     </Alert>
   );
 }

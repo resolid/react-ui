@@ -41,7 +41,7 @@ export default function App() {
   const colors = ["primary", "secondary", "success", "warning", "danger", "neutral"];
 
   return (
-    <div className={"flex flex-col gap-3"}>
+    <div className="flex flex-col gap-3">
       {colors.map((color) => (
         <Pagination key={color} color={color} total={512} />
       ))}
@@ -74,7 +74,7 @@ export default function App() {
     <Pagination
       total={512}
       renderTotal={(total) => (
-        <span className={"inline-flex h-8 items-center rounded-md bg-bg-subtle px-2"}>
+        <span className="inline-flex h-8 items-center rounded-md bg-bg-subtle px-2">
           总计: {total}
         </span>
       )}
@@ -119,9 +119,9 @@ export default function App() {
               {itemProps.pageType.includes("ellipsis") ? (
                 "..."
               ) : itemProps.pageType === "previous" ? (
-                <SpriteIcon size={"1rem"} name={"angle-left"} />
+                <SpriteIcon size="1rem" name="angle-left" />
               ) : itemProps.pageType === "next" ? (
-                <SpriteIcon size={"1rem"} name={"angle-right"} />
+                <SpriteIcon size="1rem" name="angle-right" />
               ) : (
                 itemProps.page
               )}

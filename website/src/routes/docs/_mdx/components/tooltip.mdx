@@ -63,16 +63,16 @@ export default function App() {
   const colors = ["primary", "secondary", "success", "warning", "danger", "neutral"];
 
   return (
-    <div className={"flex flex-row justify-center gap-3"}>
+    <div className="flex flex-row justify-center gap-3">
       {colors.map((color) => (
-        <Tooltip placement={"bottom"} key={color} color={color}>
+        <Tooltip placement="bottom" key={color} color={color}>
           <TooltipTrigger
-            render={(props) => <Button color={color} variant={"soft"} {...props} />}
-            className={"capitalize"}
+            render={(props) => <Button color={color} variant="soft" {...props} />}
+            className="capitalize"
           >
             {color}
           </TooltipTrigger>
-          <TooltipContent className={"capitalize"}>
+          <TooltipContent className="capitalize">
             <TooltipArrow />
             {color} tooltip
           </TooltipContent>
@@ -251,7 +251,7 @@ export default function App() {
 
   return (
     <>
-      <div ref={ref} className={"w-80"}>
+      <div ref={ref} className="w-80">
         Resolid React UI 是 React 的开源设计系统。使用 React 和 Tailwind CSS
         构建。它提供了一组即用型组件，用于构建具有一致外观的 Web 应用程序。
       </div>
@@ -276,7 +276,7 @@ import { Tooltip, TooltipArrow, TooltipContent, TooltipTrigger } from "@resolid/
 export default function App() {
   return (
     <div
-      className={"mx-auto grid w-fit gap-2"}
+      className="mx-auto grid w-fit gap-2"
       style={{
         gridTemplateAreas:
           '".           top-start     top         top-end       .            "' +
@@ -307,9 +307,7 @@ export default function App() {
             style={{
               gridArea: placement === "auto" ? "center" : placement,
             }}
-            className={
-              "flex h-12 w-12 cursor-default items-center justify-center rounded-md bg-bg-muted text-center text-sm leading-tight"
-            }
+            className="flex h-12 w-12 cursor-default items-center justify-center rounded-md bg-bg-muted text-center text-sm leading-tight"
           >
             {name}
           </TooltipTrigger>

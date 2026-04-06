@@ -31,14 +31,14 @@ export default function App() {
 
   const handleError = (e) => {
     show(
-      <Toast color="warning" className={"flex gap-2"}>
-        <ToastContent className={"flex flex-col gap-1"}>
+      <Toast color="warning" className="flex gap-2">
+        <ToastContent className="flex flex-col gap-1">
           <ToastTitle>文件选择错误</ToastTitle>
-          <ToastDescription className={"text-sm"}>
+          <ToastDescription className="text-sm">
             {Array.isArray(e) ? e.join("<br>") : e}
           </ToastDescription>
         </ToastContent>
-        <ToastCloseButton className={"absolute inset-e-2 top-2"} />
+        <ToastCloseButton className="absolute inset-e-2 top-2" />
       </Toast>,
       {
         placement: "top",
@@ -54,17 +54,17 @@ export default function App() {
       className="w-full flex-col pb-9 md:w-1/2"
     >
       <FilePickerDropzone className="flex-col gap-2">
-        <div className={"rounded-full border border-bd-subtle p-2 text-fg-subtle"}>
-          <SpriteIcon size={"1.75rem"} name="upload" />
+        <div className="rounded-full border border-bd-subtle p-2 text-fg-subtle">
+          <SpriteIcon size="1.75rem" name="upload" />
         </div>
         <div className="text-sm">
-          <div className={"font-medium"}>拖动文件到这里</div>
-          <div className={"text-fg-subtlest"}>文件最大限制 2MB</div>
+          <div className="font-medium">拖动文件到这里</div>
+          <div className="text-fg-subtlest">文件最大限制 2MB</div>
         </div>
         <FilePickerTrigger
-          variant={"soft"}
-          size={"sm"}
-          color={"neutral"}
+          variant="soft"
+          size="sm"
+          color="neutral"
           render={(props, { disabled }) => <Button {...props} disabled={disabled} />}
         >
           浏览文件
@@ -192,17 +192,17 @@ export default function App() {
         className="w-full flex-col md:w-1/2"
       >
         <FilePickerDropzone className="flex-col gap-2">
-          <div className={"rounded-full border border-bd-subtle p-2 text-fg-subtle"}>
-            <SpriteIcon size={"1.75rem"} name="upload" />
+          <div className="rounded-full border border-bd-subtle p-2 text-fg-subtle">
+            <SpriteIcon size="1.75rem" name="upload" />
           </div>
           <div className="text-sm">
-            <div className={"font-medium"}>拖动文件到这里</div>
-            <div className={"text-fg-subtlest"}>仅支持图片和PDF文件, 最大限制 5MB</div>
+            <div className="font-medium">拖动文件到这里</div>
+            <div className="text-fg-subtlest">仅支持图片和PDF文件, 最大限制 5MB</div>
           </div>
           <FilePickerTrigger
-            variant={"soft"}
-            size={"sm"}
-            color={"neutral"}
+            variant="soft"
+            size="sm"
+            color="neutral"
             render={(props, { disabled }) => <Button {...props} disabled={disabled} />}
           >
             浏览文件
@@ -216,7 +216,7 @@ export default function App() {
                 {
                   type: "application/pdf",
                   render: (
-                    <SpriteIcon className={"size-2/3 text-fg-subtle"} size={null} name="file-pdf" />
+                    <SpriteIcon className="size-2/3 text-fg-subtle" size={null} name="file-pdf" />
                   ),
                 },
               ]}
@@ -230,8 +230,8 @@ export default function App() {
                       {formatBytes(file.file.size)}
                       {file.kind == "remote" && (
                         <SpriteIcon
-                          size={"1rem"}
-                          className={"ms-1 -mt-px inline-block text-fg-success"}
+                          size="1rem"
+                          className="ms-1 -mt-px inline-block text-fg-success"
                           name="cloud-done"
                         />
                       )}
@@ -260,7 +260,6 @@ export default function App() {
 
 ```jsx demo
 import {
-  Button,
   FilePicker,
   FilePickerList,
   FilePickerItem,
@@ -273,7 +272,6 @@ import {
   ProgressBar,
   FileUploadButton,
 } from "@resolid/react-ui";
-import { formatBytes } from "@resolid/utils";
 import { SpriteIcon } from "~/components/sprite-icon";
 import { uploadthingTransport } from "~/utils/uploadthing-transport";
 
@@ -295,13 +293,13 @@ export default function App() {
               {(file) => (
                 <>
                   {file.kind == "remote" && (
-                    <span className={"absolute inset-s-1 top-1 rounded-md bg-bg-neutral/60 p-px"}>
-                      <SpriteIcon size={"1rem"} className={"text-fg-success"} name="cloud-done" />
+                    <span className="absolute inset-s-1 top-1 rounded-md bg-bg-neutral/60 p-px">
+                      <SpriteIcon size="1rem" className="text-fg-success" name="cloud-done" />
                     </span>
                   )}
                   {file.status == "uploading" && (
-                    <div className={"absolute inset-s-0 bottom-0 w-full"}>
-                      <ProgressBar radius={"none"} size="xs" percent={file.progress} />
+                    <div className="absolute inset-s-0 bottom-0 w-full">
+                      <ProgressBar radius="none" size="xs" percent={file.progress} />
                     </div>
                   )}
                   {file.status == "error" && (
@@ -312,23 +310,19 @@ export default function App() {
                 </>
               )}
             </FilePickerItemSlot>
-            <FileUploadButton className={"absolute bottom-6 opacity-80"} />
+            <FileUploadButton className="absolute bottom-6 opacity-80" />
             <FilePickerItemDelete
-              size={"1rem"}
-              radius={"md"}
-              variant={"soft"}
+              size="1rem"
+              radius="md"
+              variant="soft"
               noPadding={true}
               className="absolute inset-e-1 top-1 size-5 opacity-60"
             />
           </FilePickerItem>
         </FilePickerList>
         <FilePickerDropzone className="relative size-25">
-          <FilePickerTrigger
-            className={
-              "absolute inset-0 flex justify-center enabled:hover:cursor-pointer enabled:hover:bg-bg-subtlest"
-            }
-          >
-            <SpriteIcon size={"1.5rem"} name="upload" />
+          <FilePickerTrigger className="absolute inset-0 flex justify-center enabled:hover:cursor-pointer enabled:hover:bg-bg-subtlest">
+            <SpriteIcon size="1.5rem" name="upload" />
           </FilePickerTrigger>
         </FilePickerDropzone>
       </FilePicker>
@@ -341,7 +335,6 @@ export default function App() {
 
 ```jsx demo
 import {
-  Button,
   FilePicker,
   FilePickerList,
   FilePickerItem,
@@ -354,7 +347,6 @@ import {
   ProgressBar,
   FileUploadButton,
 } from "@resolid/react-ui";
-import { formatBytes } from "@resolid/utils";
 import { SpriteIcon } from "~/components/sprite-icon";
 import { uploadthingTransport } from "~/utils/uploadthing-transport";
 
@@ -368,20 +360,20 @@ export default function App() {
         onError={(e) => console.log(e)}
         className=""
       >
-        <FilePickerList className={"absolute inset-0 z-10"}>
+        <FilePickerList className="absolute inset-0 z-10">
           <FilePickerItem className="flex size-25 justify-center border border-bd-normal">
             <FilePickerItemPreview className="size-full" />
             <FilePickerItemSlot>
               {(file) => (
                 <>
                   {file.kind == "remote" && (
-                    <span className={"absolute inset-s-1 top-1 rounded-md bg-bg-neutral/60 p-px"}>
-                      <SpriteIcon size={"1rem"} className={"text-fg-success"} name="cloud-done" />
+                    <span className="absolute inset-s-1 top-1 rounded-md bg-bg-neutral/60 p-px">
+                      <SpriteIcon size="1rem" className="text-fg-success" name="cloud-done" />
                     </span>
                   )}
                   {file.status == "uploading" && (
-                    <div className={"absolute inset-s-0 bottom-0 w-full"}>
-                      <ProgressBar radius={"none"} size="xs" percent={file.progress} />
+                    <div className="absolute inset-s-0 bottom-0 w-full">
+                      <ProgressBar radius="none" size="xs" percent={file.progress} />
                     </div>
                   )}
                   {file.status == "error" && (
@@ -392,23 +384,19 @@ export default function App() {
                 </>
               )}
             </FilePickerItemSlot>
-            <FileUploadButton className={"absolute bottom-6 opacity-80"} />
+            <FileUploadButton className="absolute bottom-6 opacity-80" />
             <FilePickerItemDelete
-              size={"1rem"}
-              radius={"md"}
-              variant={"soft"}
+              size="1rem"
+              radius="md"
+              variant="soft"
               noPadding={true}
               className="absolute inset-e-1 top-1 size-5 opacity-60"
             />
           </FilePickerItem>
         </FilePickerList>
         <FilePickerDropzone className="relative size-25">
-          <FilePickerTrigger
-            className={
-              "absolute inset-0 flex justify-center text-fg-subtlest enabled:hover:cursor-pointer enabled:hover:bg-bg-subtlest"
-            }
-          >
-            <SpriteIcon size={"3.5rem"} name="user" />
+          <FilePickerTrigger className="absolute inset-0 flex justify-center text-fg-subtlest enabled:hover:cursor-pointer enabled:hover:bg-bg-subtlest">
+            <SpriteIcon size="3.5rem" name="user" />
           </FilePickerTrigger>
         </FilePickerDropzone>
       </FilePicker>

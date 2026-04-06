@@ -32,7 +32,7 @@ export default function App() {
   const colors = ["primary", "secondary", "success", "warning", "danger", "neutral"];
 
   return (
-    <div className={"flex flex-row gap-3"}>
+    <div className="flex flex-row gap-3">
       {colors.map((color) => (
         <Spinner key={color} color={color} />
       ))}
@@ -50,12 +50,12 @@ import { Spinner } from "@resolid/react-ui";
 
 export default function App() {
   return (
-    <div className={"flex flex-row items-center gap-3"}>
-      <Spinner size={"xs"} />
-      <Spinner size={"sm"} />
-      <Spinner size={"md"} />
-      <Spinner size={"lg"} />
-      <Spinner size={"xl"} />
+    <div className="flex flex-row items-center gap-3">
+      <Spinner size="xs" />
+      <Spinner size="sm" />
+      <Spinner size="md" />
+      <Spinner size="lg" />
+      <Spinner size="xl" />
     </div>
   );
 }

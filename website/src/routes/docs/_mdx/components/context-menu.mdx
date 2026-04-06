@@ -19,34 +19,30 @@ import {
 export default function App() {
   return (
     <ContextMenu>
-      <ContextMenuTrigger
-        className={
-          "flex h-32 items-center rounded-md border border-dashed border-bd-normal p-6 select-none"
-        }
-      >
+      <ContextMenuTrigger className="flex h-32 items-center rounded-md border border-dashed border-bd-normal p-6 select-none">
         右键点击显示菜单
       </ContextMenuTrigger>
-      <ContextMenuContent className={"text-sm"}>
+      <ContextMenuContent className="text-sm">
         <ContextMenuItem>
           新标签页
-          <span className={"ms-auto ps-5 text-xs tracking-widest text-fg-subtle"}>⌘+T</span>
+          <span className="ms-auto ps-5 text-xs tracking-widest text-fg-subtle">⌘+T</span>
         </ContextMenuItem>
         <ContextMenuItem>
           打开新窗口
-          <span className={"ms-auto ps-5 text-xs tracking-widest text-fg-subtle"}>⌘+N</span>
+          <span className="ms-auto ps-5 text-xs tracking-widest text-fg-subtle">⌘+N</span>
         </ContextMenuItem>
         <ContextMenuItem disabled>
           打开新的无痕式窗口
-          <span className={"ms-auto ps-5 text-xs tracking-widest"}>⇧+⌘+N</span>
+          <span className="ms-auto ps-5 text-xs tracking-widest">⇧+⌘+N</span>
         </ContextMenuItem>
         <ContextMenuSeparator />
         <ContextMenuItem>
           关闭窗口
-          <span className={"ms-auto ps-5 text-xs tracking-widest text-fg-subtle"}>⇧+⌘+W</span>
+          <span className="ms-auto ps-5 text-xs tracking-widest text-fg-subtle">⇧+⌘+W</span>
         </ContextMenuItem>
         <ContextMenuItem>
           关闭标签页
-          <span className={"ms-auto ps-5 text-xs tracking-widest text-fg-subtle"}>⌘+W</span>
+          <span className="ms-auto ps-5 text-xs tracking-widest text-fg-subtle">⌘+W</span>
         </ContextMenuItem>
       </ContextMenuContent>
     </ContextMenu>
@@ -142,29 +138,25 @@ import {
 export default function App() {
   return (
     <ContextMenu>
-      <ContextMenuTrigger
-        className={
-          "flex h-32 items-center rounded-md border border-dashed border-bd-normal p-6 select-none"
-        }
-      >
+      <ContextMenuTrigger className="flex h-32 items-center rounded-md border border-dashed border-bd-normal p-6 select-none">
         右键点击显示菜单
       </ContextMenuTrigger>
-      <ContextMenuContent className={"text-sm"}>
-        <ContextMenuItem label={"New Tab"}>新建标签页</ContextMenuItem>
-        <ContextMenuItem label={"New Window"}>打开新窗口</ContextMenuItem>
+      <ContextMenuContent className="text-sm">
+        <ContextMenuItem label="New Tab">新建标签页</ContextMenuItem>
+        <ContextMenuItem label="New Window">打开新窗口</ContextMenuItem>
         <ContextMenuItem>打开新的无痕式窗口</ContextMenuItem>
         <ContextMenuSeparator />
         <ContextMenu>
-          <ContextMenuSubTrigger label={"Share"}>分享</ContextMenuSubTrigger>
-          <ContextMenuContent className={"text-sm"}>
-            <ContextMenuItem label={"Email"}>邮件</ContextMenuItem>
-            <ContextMenuItem label={"SMS"}>短信</ContextMenuItem>
+          <ContextMenuSubTrigger label="Share">分享</ContextMenuSubTrigger>
+          <ContextMenuContent className="text-sm">
+            <ContextMenuItem label="Email">邮件</ContextMenuItem>
+            <ContextMenuItem label="SMS">短信</ContextMenuItem>
             <ContextMenu>
               <ContextMenuSubTrigger>社交媒体</ContextMenuSubTrigger>
-              <ContextMenuContent className={"text-sm"}>
+              <ContextMenuContent className="text-sm">
                 <ContextMenu>
                   <ContextMenuSubTrigger>微信</ContextMenuSubTrigger>
-                  <ContextMenuContent className={"text-sm"}>
+                  <ContextMenuContent className="text-sm">
                     <ContextMenuItem>聊天</ContextMenuItem>
                     <ContextMenuItem>朋友圈</ContextMenuItem>
                   </ContextMenuContent>
@@ -178,8 +170,8 @@ export default function App() {
         </ContextMenu>
         <ContextMenuSeparator />
         <ContextMenu>
-          <ContextMenuSubTrigger label={"Tools"}>更多工具</ContextMenuSubTrigger>
-          <ContextMenuContent className={"text-sm"}>
+          <ContextMenuSubTrigger label="Tools">更多工具</ContextMenuSubTrigger>
+          <ContextMenuContent className="text-sm">
             <ContextMenuItem>保存页面为...</ContextMenuItem>
             <ContextMenuItem>创建快捷方式</ContextMenuItem>
             <ContextMenuSeparator />
@@ -217,7 +209,7 @@ export default function App() {
       >
         右键点击显示菜单
       </ContextMenuTrigger>
-      <ContextMenuContent className={"text-sm"}>
+      <ContextMenuContent className="text-sm">
         <ContextMenuGroup>
           <ContextMenuLabel>Sort</ContextMenuLabel>
           <ContextMenuItem>Date</ContextMenuItem>
@@ -263,43 +255,39 @@ export default function App() {
 
   return (
     <ContextMenu>
-      <ContextMenuTrigger
-        className={
-          "flex h-32 items-center rounded-md border border-dashed border-bd-normal p-6 select-none"
-        }
-      >
+      <ContextMenuTrigger className="flex h-32 items-center rounded-md border border-dashed border-bd-normal p-6 select-none">
         右键点击显示菜单
       </ContextMenuTrigger>
-      <ContextMenuContent className={"text-sm"}>
+      <ContextMenuContent className="text-sm">
         <ContextMenuItem>
           新标签页
-          <span className={"ms-auto ps-5 text-xs tracking-widest text-fg-subtle"}>⌘+T</span>
+          <span className="ms-auto ps-5 text-xs tracking-widest text-fg-subtle">⌘+T</span>
         </ContextMenuItem>
         <ContextMenuItem>
           打开新窗口
-          <span className={"ms-auto ps-5 text-xs tracking-widest text-fg-subtle"}>⌘+N</span>
+          <span className="ms-auto ps-5 text-xs tracking-widest text-fg-subtle">⌘+N</span>
         </ContextMenuItem>
         <ContextMenuItem disabled>
           打开新的无痕式窗口
-          <span className={"ms-auto ps-5 text-xs tracking-widest"}>⇧+⌘+N</span>
+          <span className="ms-auto ps-5 text-xs tracking-widest">⇧+⌘+N</span>
         </ContextMenuItem>
         <ContextMenuSeparator />
         <ContextMenuItem>
           关闭窗口
-          <span className={"ms-auto ps-5 text-xs tracking-widest text-fg-subtle"}>⇧+⌘+W</span>
+          <span className="ms-auto ps-5 text-xs tracking-widest text-fg-subtle">⇧+⌘+W</span>
         </ContextMenuItem>
         <ContextMenuItem>
           关闭标签页
-          <span className={"ms-auto ps-5 text-xs tracking-widest text-fg-subtle"}>⌘+W</span>
+          <span className="ms-auto ps-5 text-xs tracking-widest text-fg-subtle">⌘+W</span>
         </ContextMenuItem>
         <ContextMenuItem>
           页面存储为...
-          <span className={"ms-auto ps-5 text-xs tracking-widest text-fg-subtle"}>⌘+S</span>
+          <span className="ms-auto ps-5 text-xs tracking-widest text-fg-subtle">⌘+S</span>
         </ContextMenuItem>
         <ContextMenuSeparator />
         <ContextMenu>
           <ContextMenuSubTrigger>分享</ContextMenuSubTrigger>
-          <ContextMenuContent className={"text-sm"}>
+          <ContextMenuContent className="text-sm">
             <ContextMenuItem>电子邮件</ContextMenuItem>
             <ContextMenuItem>手机短信</ContextMenuItem>
             <ContextMenuItem>隔空投送</ContextMenuItem>
@@ -313,29 +301,29 @@ export default function App() {
         <ContextMenuSeparator />
         <ContextMenuCheckboxItem checked={bookmarksChecked} onChange={setBookmarksChecked}>
           <ContextMenuItemIndicator>
-            <SpriteIcon size={"1rem"} name={"check"} />
+            <SpriteIcon size="1rem" name="check" />
           </ContextMenuItemIndicator>
           显示书签栏
           <div className="ms-auto ps-5 text-xs tracking-widest text-fg-subtle">⌘+B</div>
         </ContextMenuCheckboxItem>
         <ContextMenuCheckboxItem checked={urlsChecked} onChange={setUrlsChecked}>
           <ContextMenuItemIndicator>
-            <SpriteIcon size={"1rem"} name={"check"} />
+            <SpriteIcon size="1rem" name="check" />
           </ContextMenuItemIndicator>
           显示路径
         </ContextMenuCheckboxItem>
         <ContextMenuSeparator />
         <ContextMenuRadioGroup value={account} onChange={setAccount}>
           <ContextMenuLabel>账号</ContextMenuLabel>
-          <ContextMenuRadioItem value={"张三"}>
+          <ContextMenuRadioItem value="张三">
             <ContextMenuItemIndicator>
-              <SpriteIcon size={"1rem"} name={"dot"} />
+              <SpriteIcon size="1rem" name="dot" />
             </ContextMenuItemIndicator>
             张三
           </ContextMenuRadioItem>
-          <ContextMenuRadioItem value={"李四"}>
+          <ContextMenuRadioItem value="李四">
             <ContextMenuItemIndicator>
-              <SpriteIcon size={"1rem"} name={"dot"} />
+              <SpriteIcon size="1rem" name="dot" />
             </ContextMenuItemIndicator>
             李四
           </ContextMenuRadioItem>

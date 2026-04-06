@@ -9,7 +9,7 @@ description: 仅允许输入数字格式的输入框。
 import { NumberInput } from "@resolid/react-ui";
 
 export default function App() {
-  return <NumberInput placeholder={"数字输入框"} />;
+  return <NumberInput placeholder="数字输入框" />;
 }
 ```
 
@@ -55,7 +55,7 @@ export default function App() {
   const [value, setValue] = useState(10);
 
   return (
-    <div className={"flex flex-col items-start gap-2"}>
+    <div className="flex flex-col items-start gap-2">
       <p>当前值: {value}</p>
       <NumberInput value={value} onChange={setValue} />
     </div>
@@ -72,7 +72,7 @@ import { NumberInput } from "@resolid/react-ui";
 
 export default function App() {
   return (
-    <div className={"flex flex-row items-center gap-3"}>
+    <div className="flex flex-row items-center gap-3">
       <NumberInput max={10} />
       <NumberInput min={10} />
       <NumberInput min={10} max={20} />
@@ -112,8 +112,8 @@ export default function App() {
   return (
     <NumberInput
       min={0}
-      prefix={<SpriteIcon size={"1.125em"} name={"github"} />}
-      placeholder={"仓库数量"}
+      prefix={<SpriteIcon size="1.125em" name="github" />}
+      placeholder="仓库数量"
     />
   );
 }

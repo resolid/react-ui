@@ -28,10 +28,10 @@ export default function App() {
   return (
     <Combobox collection={collection}>
       <ComboboxAnchor>
-        <ComboboxInput placeholder={"搜索"} />
+        <ComboboxInput placeholder="搜索" />
         <ComboboxTrigger />
       </ComboboxAnchor>
-      <ComboboxContent className={"p-1"}>
+      <ComboboxContent className="p-1">
         <ComboboxEmpty />
         <ComboboxList />
       </ComboboxContent>
@@ -112,12 +112,12 @@ export default function App() {
   ];
 
   return (
-    <Combobox defaultValue={"Banana"} collection={collection}>
+    <Combobox defaultValue="Banana" collection={collection}>
       <ComboboxAnchor>
-        <ComboboxInput placeholder={"搜索"} />
+        <ComboboxInput placeholder="搜索" />
         <ComboboxTrigger />
       </ComboboxAnchor>
-      <ComboboxContent className={"p-1"}>
+      <ComboboxContent className="p-1">
         <ComboboxEmpty />
         <ComboboxList />
       </ComboboxContent>
@@ -151,10 +151,10 @@ export default function App() {
   return (
     <Combobox multiple collection={collection}>
       <ComboboxAnchor>
-        <ComboboxInput placeholder={"搜索"} />
+        <ComboboxInput placeholder="搜索" />
         <ComboboxTrigger />
       </ComboboxAnchor>
-      <ComboboxContent className={"p-1"}>
+      <ComboboxContent className="p-1">
         <ComboboxEmpty />
         <ComboboxList />
       </ComboboxContent>
@@ -187,11 +187,11 @@ export default function App() {
   return (
     <Combobox collection={collection}>
       <ComboboxAnchor>
-        <ComboboxInput placeholder={"搜索"} />
+        <ComboboxInput placeholder="搜索" />
         <ComboboxTrigger />
       </ComboboxAnchor>
-      <ComboboxContent className={"max-h-60 px-1"}>
-        <ComboboxEmpty className={"pt-4"} />
+      <ComboboxContent className="max-h-60 px-1">
+        <ComboboxEmpty className="pt-4" />
         <ComboboxVirtualizer>
           <ComboboxList />
         </ComboboxVirtualizer>
@@ -249,11 +249,11 @@ export default function App() {
       collection={collection}
       renderItem={(item, { selected }) => {
         return (
-          <div className={"flex items-center gap-2"}>
-            <div className={"w-12 flex-1"}>
-              <BrowserIcon size={"2em"} name={item.value} />
+          <div className="flex items-center gap-2">
+            <div className="w-12 flex-1">
+              <BrowserIcon size="2em" name={item.value} />
             </div>
-            <div className={"flex flex-col gap-1"}>
+            <div className="flex flex-col gap-1">
               <div>{item.label}</div>
               <div className={`text-sm ${!selected ? "text-fg-subtle" : ""}`}>
                 {item.description}
@@ -264,10 +264,10 @@ export default function App() {
       }}
     >
       <ComboboxAnchor>
-        <ComboboxInput placeholder={"搜索"} />
+        <ComboboxInput placeholder="搜索" />
         <ComboboxTrigger />
       </ComboboxAnchor>
-      <ComboboxContent className={"max-w-90 p-1"}>
+      <ComboboxContent className="max-w-90 p-1">
         <ComboboxEmpty>没有找到浏览器</ComboboxEmpty>
         <ComboboxList />
       </ComboboxContent>

@@ -52,9 +52,9 @@ export default function App() {
   const [checked, setChecked] = useState(false);
 
   return (
-    <div className={"flex flex-col gap-2"}>
-      <p>{checked ? <span className={"text-fg-success"}>你已成功订阅</span> : "你取消了订阅"}</p>
-      <Checkbox value={"on"} checked={checked} onChange={setChecked}>
+    <div className="flex flex-col gap-2">
+      <p>{checked ? <span className="text-fg-success">你已成功订阅</span> : "你取消了订阅"}</p>
+      <Checkbox value="on" checked={checked} onChange={setChecked}>
         订阅更新
       </Checkbox>
     </div>
@@ -74,14 +74,14 @@ export default function App() {
   const [value, setValue] = useState(["React"]);
 
   return (
-    <div className={"flex flex-col gap-2"}>
+    <div className="flex flex-col gap-2">
       <p>你选择了框架: {value.join(", ")}</p>
-      <CheckboxGroup value={value} onChange={setValue} className={"gap-5"}>
-        <Checkbox value={"React"}>React</Checkbox>
-        <Checkbox value={"Angular"}>Angular</Checkbox>
-        <Checkbox value={"Vue"}>Vue</Checkbox>
-        <Checkbox value={"SolidJS"}>SolidJS</Checkbox>
-        <Checkbox value={"Svelte"}>Svelte</Checkbox>
+      <CheckboxGroup value={value} onChange={setValue} className="gap-5">
+        <Checkbox value="React">React</Checkbox>
+        <Checkbox value="Angular">Angular</Checkbox>
+        <Checkbox value="Vue">Vue</Checkbox>
+        <Checkbox value="SolidJS">SolidJS</Checkbox>
+        <Checkbox value="Svelte">Svelte</Checkbox>
       </CheckboxGroup>
     </div>
   );
@@ -103,7 +103,7 @@ export default function App() {
   const isIndeterminate = values.some(Boolean) && !allChecked;
 
   return (
-    <div className={"flex flex-col gap-2"}>
+    <div className="flex flex-col gap-2">
       <Checkbox
         checked={allChecked}
         indeterminate={isIndeterminate}
@@ -111,7 +111,7 @@ export default function App() {
       >
         工作日
       </Checkbox>
-      <div className={"inline-flex flex-row gap-5"}>
+      <div className="inline-flex flex-row gap-5">
         {["周一", "周二", "周三", "周四", "周五"].map((day, index) => (
           <Checkbox
             key={day}

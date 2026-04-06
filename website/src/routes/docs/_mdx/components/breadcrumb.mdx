@@ -21,20 +21,20 @@ import { SpriteIcon } from "~/components/sprite-icon";
 
 export default function App() {
   return (
-    <Breadcrumb className={"gap-1"}>
-      <BreadcrumbItem className={"gap-1"}>
-        <BreadcrumbLink className={"gap-0.5"} render={(props) => <Link to={"/"} {...props} />}>
-          <SpriteIcon size={"1.125rem"} name={"home"} />
+    <Breadcrumb className="gap-1">
+      <BreadcrumbItem className="gap-1">
+        <BreadcrumbLink className="gap-0.5" render={(props) => <Link to="/" {...props} />}>
+          <SpriteIcon size="1.125rem" name="home" />
           主页
         </BreadcrumbLink>
         <BreadcrumbSeparator />
       </BreadcrumbItem>
-      <BreadcrumbItem className={"gap-1"}>
+      <BreadcrumbItem className="gap-1">
         <DropdownMenu>
           <DropdownMenuTrigger>
-            <SpriteIcon size={"1.125rem"} name={"ellipsis"} />
+            <SpriteIcon size="1.125rem" name="ellipsis" />
           </DropdownMenuTrigger>
-          <DropdownMenuContent className={"text-sm"}>
+          <DropdownMenuContent className="text-sm">
             <DropdownMenuItem>介绍</DropdownMenuItem>
             <DropdownMenuItem>入门指南</DropdownMenuItem>
             <DropdownMenuItem disabled>主题设置</DropdownMenuItem>
@@ -42,11 +42,11 @@ export default function App() {
         </DropdownMenu>
         <BreadcrumbSeparator />
       </BreadcrumbItem>
-      <BreadcrumbItem className={"gap-1"}>
-        <BreadcrumbLink href={"#"}>组件</BreadcrumbLink>
+      <BreadcrumbItem className="gap-1">
+        <BreadcrumbLink href="#">组件</BreadcrumbLink>
         <BreadcrumbSeparator />
       </BreadcrumbItem>
-      <BreadcrumbItem className={"gap-1"}>
+      <BreadcrumbItem className="gap-1">
         <BreadcrumbLink current>面包屑</BreadcrumbLink>
       </BreadcrumbItem>
     </Breadcrumb>
@@ -97,24 +97,22 @@ import { SpriteIcon } from "~/components/sprite-icon";
 export default function App() {
   return (
     <Breadcrumb
-      className={"gap-1"}
-      separator={
-        <span className={"inline-flex h-4 w-4 items-center justify-center text-sm"}>/</span>
-      }
+      className="gap-1"
+      separator={<span className="inline-flex h-4 w-4 items-center justify-center text-sm">/</span>}
     >
-      <BreadcrumbItem className={"gap-1"}>
-        <BreadcrumbLink className={"gap-0.5"} render={(props) => <Link to={"/"} {...props} />}>
-          <SpriteIcon size={"1.125rem"} name={"home"} />
+      <BreadcrumbItem className="gap-1">
+        <BreadcrumbLink className="gap-0.5" render={(props) => <Link to="/" {...props} />}>
+          <SpriteIcon size="1.125rem" name="home" />
           主页
         </BreadcrumbLink>
         <BreadcrumbSeparator />
       </BreadcrumbItem>
-      <BreadcrumbItem className={"gap-1"}>
+      <BreadcrumbItem className="gap-1">
         <DropdownMenu>
           <DropdownMenuTrigger>
-            <SpriteIcon size={"1.125rem"} name={"ellipsis"} />
+            <SpriteIcon size="1.125rem" name="ellipsis" />
           </DropdownMenuTrigger>
-          <DropdownMenuContent className={"text-sm"}>
+          <DropdownMenuContent className="text-sm">
             <DropdownMenuItem>介绍</DropdownMenuItem>
             <DropdownMenuItem>入门指南</DropdownMenuItem>
             <DropdownMenuItem disabled>主题设置</DropdownMenuItem>
@@ -122,11 +120,11 @@ export default function App() {
         </DropdownMenu>
         <BreadcrumbSeparator />
       </BreadcrumbItem>
-      <BreadcrumbItem className={"gap-1"}>
-        <BreadcrumbLink href={"#"}>组件</BreadcrumbLink>
+      <BreadcrumbItem className="gap-1">
+        <BreadcrumbLink href="#">组件</BreadcrumbLink>
         <BreadcrumbSeparator />
       </BreadcrumbItem>
-      <BreadcrumbItem className={"gap-1"}>
+      <BreadcrumbItem className="gap-1">
         <BreadcrumbLink current>面包屑</BreadcrumbLink>
       </BreadcrumbItem>
     </Breadcrumb>

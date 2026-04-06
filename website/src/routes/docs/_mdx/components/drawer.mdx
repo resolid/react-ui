@@ -27,20 +27,18 @@ export default function App() {
         <DrawerBackdrop />
         <DrawerContent className="w-11/12 md:w-3/5 lg:w-1/3">
           <DrawerClose
-            className={"absolute inset-e-2 top-2 p-1"}
+            className="absolute inset-e-2 top-2 p-1"
             render={(props) => <CloseButton {...props} />}
           />
-          <DrawerTitle className={"p-4"}>抽屉标题</DrawerTitle>
-          <DrawerDescription className={"grow p-4 pt-1"}>
+          <DrawerTitle className="p-4">抽屉标题</DrawerTitle>
+          <DrawerDescription className="grow p-4 pt-1">
             这是一个抽屉示例，你可以在这里放置相关的提示信息、确认内容或者操作说明。内容可以根据需求进行修改，以适应不同的业务场景。
           </DrawerDescription>
-          <div className={"flex justify-end gap-4 p-4 pt-1"}>
-            <DrawerClose
-              render={(props) => <Button color={"neutral"} variant={"soft"} {...props} />}
-            >
+          <div className="flex justify-end gap-4 p-4 pt-1">
+            <DrawerClose render={(props) => <Button color="neutral" variant="soft" {...props} />}>
               取消
             </DrawerClose>
-            <Button color={"neutral"}>确定</Button>
+            <Button color="neutral">确定</Button>
           </div>
         </DrawerContent>
       </DrawerPortal>
@@ -125,7 +123,7 @@ export default function App() {
   ];
 
   return (
-    <div className={"flex flex-row gap-3"}>
+    <div className="flex flex-row gap-3">
       {placements.map((placement) => {
         return (
           <Drawer key={placement.value} placement={placement.value}>
@@ -142,20 +140,20 @@ export default function App() {
                 }
               >
                 <DrawerClose
-                  className={"absolute inset-e-2 top-2 p-1"}
+                  className="absolute inset-e-2 top-2 p-1"
                   render={(props) => <CloseButton {...props} />}
                 />
-                <DrawerTitle className={"p-4"}>抽屉标题</DrawerTitle>
-                <DrawerDescription className={"grow p-4 pt-1"}>
+                <DrawerTitle className="p-4">抽屉标题</DrawerTitle>
+                <DrawerDescription className="grow p-4 pt-1">
                   这是一个抽屉示例，你可以在这里放置相关的提示信息、确认内容或者操作说明。内容可以根据需求进行修改，以适应不同的业务场景。
                 </DrawerDescription>
-                <div className={"flex justify-end gap-4 p-4 pt-1"}>
+                <div className="flex justify-end gap-4 p-4 pt-1">
                   <DrawerClose
-                    render={(props) => <Button color={"neutral"} variant={"soft"} {...props} />}
+                    render={(props) => <Button color="neutral" variant="soft" {...props} />}
                   >
                     取消
                   </DrawerClose>
-                  <Button color={"neutral"}>确定</Button>
+                  <Button color="neutral">确定</Button>
                 </div>
               </DrawerContent>
             </DrawerPortal>
@@ -193,17 +191,17 @@ export default function App() {
         <DrawerBackdrop />
         <DrawerContent className="w-11/12 md:w-3/5 lg:w-1/3">
           <DrawerClose
-            className={"absolute inset-e-2 top-2 p-1"}
+            className="absolute inset-e-2 top-2 p-1"
             render={(props) => <CloseButton {...props} />}
           />
-          <DrawerTitle className={"p-4"}>抽屉标题</DrawerTitle>
-          <div className={"scrollbar scrollbar-thin flex-1 overflow-y-auto overscroll-contain"}>
-            <DrawerDescription className={"p-4 pt-1"}>
+          <DrawerTitle className="p-4">抽屉标题</DrawerTitle>
+          <div className="scrollbar scrollbar-thin flex-1 overflow-y-auto overscroll-contain">
+            <DrawerDescription className="p-4 pt-1">
               这是一个抽屉示例，你可以在这里放置相关的提示信息、确认内容或者操作说明。内容可以根据需求进行修改，以适应不同的业务场景。
             </DrawerDescription>
-            <article className={"p-4 py-1"}>
+            <article className="p-4 py-1">
               {Array.from({ length: 16 }, (x, i) => i + 1).map((i) => (
-                <p key={i} className={"mb-4"}>
+                <p key={i} className="mb-4">
                   这是一个演示文本，用于填充内容，以便展示排版效果。你可以根据需要替换为实际内容。
                 </p>
               ))}
@@ -239,35 +237,33 @@ export default function App() {
   const finalRef = useRef(null);
 
   return (
-    <div className={"flex flex-row gap-3"}>
+    <div className="flex flex-row gap-3">
       <Drawer initialFocus={initialRef} finalFocus={finalRef}>
         <DrawerTrigger render={(props) => <Button {...props} />}>打开抽屉</DrawerTrigger>
         <DrawerPortal>
           <DrawerBackdrop />
           <DrawerContent className="w-11/12 md:w-3/5 lg:w-1/3">
-            <DrawerTitle className={"p-4"}>抽屉标题</DrawerTitle>
-            <div className={"flex grow flex-col gap-4 p-4 pt-1"}>
-              <div className={"flex flex-col gap-1"}>
-                <label htmlFor={"username"}>姓名</label>
-                <Input id={"username"} />
+            <DrawerTitle className="p-4">抽屉标题</DrawerTitle>
+            <div className="flex grow flex-col gap-4 p-4 pt-1">
+              <div className="flex flex-col gap-1">
+                <label htmlFor="username">姓名</label>
+                <Input id="username" />
               </div>
-              <div className={"flex flex-col gap-1"}>
-                <label htmlFor={"email"}>邮件</label>
-                <Input ref={initialRef} id={"email"} />
+              <div className="flex flex-col gap-1">
+                <label htmlFor="email">邮件</label>
+                <Input ref={initialRef} id="email" />
               </div>
             </div>
-            <div className={"flex justify-end gap-4 p-4 pt-1"}>
-              <DrawerClose
-                render={(props) => <Button color={"neutral"} variant={"soft"} {...props} />}
-              >
+            <div className="flex justify-end gap-4 p-4 pt-1">
+              <DrawerClose render={(props) => <Button color="neutral" variant="soft" {...props} />}>
                 取消
               </DrawerClose>
-              <Button color={"neutral"}>保存</Button>
+              <Button color="neutral">保存</Button>
             </div>
           </DrawerContent>
         </DrawerPortal>
       </Drawer>
-      <Button color={"neutral"} ref={finalRef}>
+      <Button color="neutral" ref={finalRef}>
         键盘关闭抽屉后获得焦点
       </Button>
     </div>

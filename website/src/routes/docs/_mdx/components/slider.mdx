@@ -10,7 +10,7 @@ import { Slider, SliderTrack, SliderThumb } from "@resolid/react-ui";
 
 export default function App() {
   return (
-    <Slider className={"w-full md:w-1/2"} defaultValue={20}>
+    <Slider className="w-full md:w-1/2" defaultValue={20}>
       <SliderTrack />
       <SliderThumb />
     </Slider>
@@ -93,7 +93,7 @@ import { Slider, SliderTrack, SliderThumb } from "@resolid/react-ui";
 
 export default function App() {
   return (
-    <Slider className={"w-full md:w-1/2"} defaultValue={[15, 60]}>
+    <Slider className="w-full md:w-1/2" defaultValue={[15, 60]}>
       <SliderTrack />
       <SliderThumb />
     </Slider>
@@ -106,7 +106,7 @@ export default function App() {
 用 `marks` 属性在滑块上显示标记。
 
 ```jsx demo
-import { Slider, SliderTrack, SliderThumb, DirectionContext } from "@resolid/react-ui";
+import { Slider, SliderTrack, SliderThumb } from "@resolid/react-ui";
 
 export default function App() {
   const marks = [
@@ -123,7 +123,7 @@ export default function App() {
         <SliderTrack />
         <SliderThumb />
       </Slider>
-      <Slider marks={marks} className={"mb-5"} defaultValue={[25, 75]}>
+      <Slider marks={marks} className="mb-5" defaultValue={[25, 75]}>
         <SliderTrack />
         <SliderThumb />
       </Slider>
@@ -184,7 +184,7 @@ import { Slider, SliderTrack, SliderThumb } from "@resolid/react-ui";
 export default function App() {
   return (
     <div className="flex flex-row gap-6">
-      <Slider orientation="vertical" className={"h-60"} defaultValue={20}>
+      <Slider orientation="vertical" className="h-60" defaultValue={20}>
         <SliderTrack />
         <SliderThumb />
       </Slider>
@@ -197,21 +197,21 @@ export default function App() {
           { value: 100, label: "100KM" },
         ]}
         orientation="vertical"
-        className={"me-10 h-60"}
+        className="me-10 h-60"
         defaultValue={35}
       >
         <SliderTrack />
         <SliderThumb />
       </Slider>
-      <Slider orientation="vertical" className={"h-60"} defaultValue={[25, 65]}>
+      <Slider orientation="vertical" className="h-60" defaultValue={[25, 65]}>
         <SliderTrack />
         <SliderThumb />
       </Slider>
-      <Slider orientation="vertical" inverted className={"h-60"} defaultValue={35}>
+      <Slider orientation="vertical" inverted className="h-60" defaultValue={35}>
         <SliderTrack />
         <SliderThumb />
       </Slider>
-      <Slider orientation="vertical" inverted className={"h-60"} defaultValue={[25, 65]}>
+      <Slider orientation="vertical" inverted className="h-60" defaultValue={[25, 65]}>
         <SliderTrack />
         <SliderThumb />
       </Slider>
@@ -237,7 +237,7 @@ export default function App() {
   const [endRangeValue, setEndRangeValue] = useState([25, 75]);
 
   return (
-    <div className={"flex w-full flex-col gap-3 md:w-1/2"}>
+    <div className="flex w-full flex-col gap-3 md:w-1/2">
       <div>
         <p>
           onChange value: <strong>{value}</strong>
@@ -272,28 +272,25 @@ export default function App() {
 
 ```jsx demo
 import { Slider, SliderTrack, SliderThumb } from "@resolid/react-ui";
-import { useState } from "react";
 import { SpriteIcon } from "~/components/sprite-icon";
 
 export default function App() {
-  const [checked, setChecked] = useState(false);
-
   return (
-    <div className={"flex w-full flex-col gap-3 md:w-1/2"}>
+    <div className="flex w-full flex-col gap-3 md:w-1/2">
       <Slider defaultValue={35} thumbSize={{ width: 26, height: 26 }}>
         <SliderTrack />
-        <SliderThumb className={"flex items-center justify-center border"}>
-          <SpriteIcon size={"1.25em"} name="heart" />
+        <SliderThumb className="flex items-center justify-center border">
+          <SpriteIcon size="1.25em" name="heart" />
         </SliderThumb>
       </Slider>
       <Slider defaultValue={[20, 75]} thumbSize={{ width: 26, height: 26 }}>
         <SliderTrack />
-        <SliderThumb className={"flex items-center justify-center border"}>
+        <SliderThumb className="flex items-center justify-center border">
           {(index) =>
             index == 1 ? (
-              <SpriteIcon size={"1.25em"} name="heart-broken" />
+              <SpriteIcon size="1.25em" name="heart-broken" />
             ) : (
-              <SpriteIcon size={"1.25em"} name="heart" />
+              <SpriteIcon size="1.25em" name="heart" />
             )
           }
         </SliderThumb>

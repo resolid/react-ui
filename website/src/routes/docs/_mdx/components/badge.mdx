@@ -35,9 +35,9 @@ export default function App() {
   const variants = ["solid", "outline", "subtle", "soft"];
 
   return (
-    <div className={"flex flex-col gap-3"}>
+    <div className="flex flex-col gap-3">
       {colors.map((color) => (
-        <div key={color} className={"flex flex-row items-center gap-3"}>
+        <div key={color} className="flex flex-row items-center gap-3">
           {variants.map((variant) => (
             <Badge key={`${color}-${variant}`} color={color} variant={variant}>
               徽标
@@ -59,12 +59,12 @@ import { Badge } from "@resolid/react-ui";
 
 export default function App() {
   return (
-    <div className={"flex flex-row gap-3"}>
-      <Badge radius={"none"}>徽标</Badge>
+    <div className="flex flex-row gap-3">
+      <Badge radius="none">徽标</Badge>
       <Badge radius={2}>徽标</Badge>
       <Badge>徽标</Badge>
-      <Badge radius={"lg"}>徽标</Badge>
-      <Badge radius={"full"}>徽标</Badge>
+      <Badge radius="lg">徽标</Badge>
+      <Badge radius="full">徽标</Badge>
     </div>
   );
 }

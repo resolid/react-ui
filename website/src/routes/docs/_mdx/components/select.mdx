@@ -18,8 +18,8 @@ export default function App() {
   ];
 
   return (
-    <Select placeholder={"选择器"} className={"w-50"} collection={collection}>
-      <SelectContent className={"p-1"}>
+    <Select placeholder="选择器" className="w-50" collection={collection}>
+      <SelectContent className="p-1">
         <SelectEmpty />
         <SelectList />
       </SelectContent>
@@ -90,16 +90,16 @@ export default function App() {
   ];
 
   return (
-    <div className={"flex flex-col gap-2"}>
+    <div className="flex flex-col gap-2">
       <p>你选择了水果: {value}</p>
       <Select
-        placeholder={"选择器"}
-        className={"w-50"}
+        placeholder="选择器"
+        className="w-50"
         value={value}
         onChange={setValue}
         collection={collection}
       >
-        <SelectContent className={"p-1"}>
+        <SelectContent className="p-1">
           <SelectList />
         </SelectContent>
       </Select>
@@ -123,25 +123,25 @@ export default function App() {
   ];
 
   return (
-    <div className={"flex gap-3"}>
+    <div className="flex gap-3">
       <Select
-        placeholder={"选择器"}
-        defaultValue={"blueberry"}
-        className={"w-50"}
+        placeholder="选择器"
+        defaultValue="blueberry"
+        className="w-50"
         collection={collection}
       >
-        <SelectContent className={"p-1"}>
+        <SelectContent className="p-1">
           <SelectList />
         </SelectContent>
       </Select>
       <Select
-        placeholder={"选择器"}
+        placeholder="选择器"
         multiple
         defaultValue={["apple", "pineapple"]}
-        className={"min-w-50"}
+        className="min-w-50"
         collection={collection}
       >
-        <SelectContent className={"p-1"}>
+        <SelectContent className="p-1">
           <SelectList />
         </SelectContent>
       </Select>
@@ -165,8 +165,8 @@ export default function App() {
   ];
 
   return (
-    <Select placeholder={"选择器"} className={"min-w-50"} multiple collection={collection}>
-      <SelectContent className={"p-1"}>
+    <Select placeholder="选择器" className="min-w-50" multiple collection={collection}>
+      <SelectContent className="p-1">
         <SelectList />
       </SelectContent>
     </Select>
@@ -189,11 +189,11 @@ export default function App() {
   ];
 
   return (
-    <Select placeholder={"选择器"} className={"min-w-50"} collection={collection}>
-      <div className={"p-1 pb-0"}>
-        <SelectFilter size={"sm"} />
+    <Select placeholder="选择器" className="min-w-50" collection={collection}>
+      <div className="p-1 pb-0">
+        <SelectFilter size="sm" />
       </div>
-      <SelectContent className={"p-1"}>
+      <SelectContent className="p-1">
         <SelectEmpty />
         <SelectList />
       </SelectContent>
@@ -227,21 +227,16 @@ export default function App() {
   }));
 
   return (
-    <div className={"flex gap-3"}>
-      <Select placeholder={"选择器"} className={"w-50"} collection={collection}>
-        <SelectContent className={"max-h-60 px-1"}>
+    <div className="flex gap-3">
+      <Select placeholder="选择器" className="w-50" collection={collection}>
+        <SelectContent className="max-h-60 px-1">
           <SelectVirtualizer>
             <SelectList />
           </SelectVirtualizer>
         </SelectContent>
       </Select>
-      <Select
-        placeholder={"选择器"}
-        className={"w-50"}
-        defaultValue={55}
-        collection={groupCollection}
-      >
-        <SelectContent className={"max-h-60 px-1"}>
+      <Select placeholder="选择器" className="w-50" defaultValue={55} collection={groupCollection}>
+        <SelectContent className="max-h-60 px-1">
           <SelectVirtualizer>
             <SelectList />
           </SelectVirtualizer>
@@ -255,7 +250,7 @@ export default function App() {
 ### 自定义渲染
 
 ```jsx demo
-import { Select, SelectFilter, SelectContent, SelectList } from "@resolid/react-ui";
+import { Select, SelectContent, SelectList } from "@resolid/react-ui";
 import { BrowserIcon } from "~/components/browser-icon";
 
 export default function App() {
@@ -289,24 +284,24 @@ export default function App() {
 
   return (
     <Select
-      placeholder={"选择器"}
-      className={"w-50"}
+      placeholder="选择器"
+      className="w-50"
       collection={collection}
       renderValue={(item) => {
         return (
-          <div className={"flex items-center gap-1"}>
-            <BrowserIcon size={"1em"} name={item.value} />
+          <div className="flex items-center gap-1">
+            <BrowserIcon size="1em" name={item.value} />
             <span>{item.label}</span>
           </div>
         );
       }}
       renderItem={(item, { selected }) => {
         return (
-          <div className={"flex items-center gap-2"}>
-            <div className={"w-12 flex-1"}>
-              <BrowserIcon size={"2em"} name={item.value} />
+          <div className="flex items-center gap-2">
+            <div className="w-12 flex-1">
+              <BrowserIcon size="2em" name={item.value} />
             </div>
-            <div className={"flex flex-col gap-1"}>
+            <div className="flex flex-col gap-1">
               <div>{item.label}</div>
               <div className={`text-sm ${!selected ? "text-fg-subtle" : ""}`}>
                 {item.description}
@@ -316,7 +311,7 @@ export default function App() {
         );
       }}
     >
-      <SelectContent className={"max-w-90 p-1"}>
+      <SelectContent className="max-w-90 p-1">
         <SelectList />
       </SelectContent>
     </Select>
@@ -339,9 +334,9 @@ export default function App() {
   ];
 
   return (
-    <div className={"flex items-center gap-2"}>
+    <div className="flex items-center gap-2">
       {["xs", "sm", "md", "lg", "xl"].map((size) => (
-        <NativeSelect key={size} placeholder={"选择器"} size={size}>
+        <NativeSelect key={size} placeholder="选择器" size={size}>
           {collection.map((item) => (
             <option key={item.value} value={item.value} disabled={item.disabled}>
               {item.label}
