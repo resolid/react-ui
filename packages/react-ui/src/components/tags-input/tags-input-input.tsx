@@ -53,7 +53,7 @@ export function TagsInputInput(
     delimiter,
     valueCount,
     onAdd,
-    onDelete,
+    onRemove,
   } = useTagsInputRoot();
 
   const { ref: itemRef, index } = useListItem();
@@ -186,7 +186,7 @@ export function TagsInputInput(
       }
 
       if (activeIndex != undefined && activeIndex < index) {
-        onDelete(activeIndex);
+        onRemove(activeIndex);
       }
 
       if (e.key == "Backspace") {

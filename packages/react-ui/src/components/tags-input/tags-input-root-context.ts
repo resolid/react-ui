@@ -28,7 +28,7 @@ export type TagsInputRootContextValue = TagsInputBaseProps & {
   inputRef: RefObject<HTMLElement | null>;
   valueCount: number;
   onAdd: (value: string | string[]) => boolean;
-  onDelete: (index: number) => void;
+  onRemove: (index: number) => void;
 };
 
 const [context, hook] = createSafeContext<TagsInputRootContextValue>({

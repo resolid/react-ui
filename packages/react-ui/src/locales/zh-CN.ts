@@ -8,6 +8,10 @@ export default {
     closeButton: {
       label: "关闭",
     },
+    input: {
+      remote: "移除",
+      clear: "清除",
+    },
     spinner: {
       loading: "加载中",
     },
@@ -15,9 +19,6 @@ export default {
       previous: "上一页",
       next: "下一页",
       pageOf: "第 {page} 页",
-    },
-    inputItem: {
-      deleteTag: "删除",
     },
     calendar: {
       weekNumber: "周数",

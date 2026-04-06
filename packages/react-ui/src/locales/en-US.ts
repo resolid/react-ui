@@ -6,6 +6,10 @@ export default {
     closeButton: {
       label: "Close",
     },
+    input: {
+      remote: "Remove",
+      clear: "Clear",
+    },
     spinner: {
       loading: "Loading",
     },
@@ -13,9 +17,6 @@ export default {
       previous: "Previous Page",
       next: "Next Page",
       pageOf: "PageOf {page}",
-    },
-    inputItem: {
-      deleteTag: "Delete",
     },
     calendar: {
       weekNumber: "Week Number",

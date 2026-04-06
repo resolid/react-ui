@@ -6,12 +6,13 @@ description: 允许用户向输入字段添加标签的组件。
 ## 演示
 
 ```jsx demo online=TagsInput componentProps=tags-input/tags-input.tsx|size,disabled,readOnly,invalid
-import { TagsInput, TagsInputInput } from "@resolid/react-ui";
+import { TagsInput, TagsInputInput, TagsInputClear } from "@resolid/react-ui";
 
 export default function App() {
   return (
     <TagsInput className="max-w-80" defaultValue={["React", "Vue"]}>
       <TagsInputInput placeholder="请输入标签" />
+      <TagsInputClear />
     </TagsInput>
   );
 }
@@ -20,11 +21,12 @@ export default function App() {
 ## 用法
 
 ```jsx
-import { TagsInput, TagsInputInput } from "@resolid/react-ui";
+import { TagsInput, TagsInputInput, TagsInputClear } from "@resolid/react-ui";
 ```
 
 - `TagsInput`: 标签输入的根容器。
 - `TagsInputInput`: 标签输入的输入框。
+- `TagsInputClear`: 标签输入的清除按钮。
 
 ## 特点
 

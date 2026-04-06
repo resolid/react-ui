@@ -17,7 +17,7 @@ export function DatePickerTrigger(
 ): JSX.Element {
   const { className, children, ref, ...rest } = props;
 
-  const triggerRef = useRef(null);
+  const triggerRef = useRef<HTMLElement>(null);
 
   const { context } = usePickerRoot();
   const { setReference, getReferenceProps } = usePopperTrigger();
@@ -27,6 +27,11 @@ export function DatePickerTrigger(
   const refs = useMergeRefs(ref, triggerRef, setReference);
 
   const sizeStyle = selectSizeStyles[size];
+
+  const handleRemove = (v: string) => {
+    remove(v);
+    triggerRef.current?.focus();
+  };
 
   return (
     <InputTrigger
@@ -47,10 +52,9 @@ export function DatePickerTrigger(
               <InputItem
                 key={v}
                 size={size}
-                finalRef={triggerRef}
                 disabled={disabled}
-                onDelete={() => {
-                  remove(v);
+                onRemove={() => {
+                  handleRemove(v);
                 }}
                 className="bg-bg-subtlest"
               >

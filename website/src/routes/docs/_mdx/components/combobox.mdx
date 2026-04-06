@@ -316,13 +316,14 @@ export default function App() {
       >
         <ComboboxInput
           value={query}
+          className="pe-6"
           render={(props) => {
-            return <TagsInputInput placeholder={"搜索"} onChange={setQuery} {...props} />;
+            return <TagsInputInput placeholder="搜索" onChange={setQuery} {...props} />;
           }}
         />
         <ComboboxTrigger />
       </ComboboxAnchor>
-      <ComboboxContent className={"p-1"}>
+      <ComboboxContent className="p-1">
         <ComboboxEmpty />
         <ComboboxList />
       </ComboboxContent>

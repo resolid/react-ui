@@ -1,4 +1,4 @@
-import type { MouseEvent, RefObject } from "react";
+import type { MouseEvent } from "react";
 import type { JSX } from "react/jsx-runtime";
 import type { InputSize } from "../../components/input/input.styles";
 import type { PrimitiveProps } from "../polymorphic";
@@ -10,19 +10,17 @@ import { inputItemSizeStyles } from "./input-item.styles";
 export type InputItemProps = {
   size: InputSize;
   disabled: boolean;
-  finalRef: RefObject<HTMLElement | null>;
-  onDelete: () => void;
+  onRemove: () => void;
 };
 
 export function InputItem(props: PrimitiveProps<"div", InputItemProps>): JSX.Element {
-  const { size, disabled, finalRef, onDelete, className, children, ...rest } = props;
+  const { size, disabled, onRemove, className, children, ...rest } = props;
 
   const { t } = useLocale();
 
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-    onDelete();
-    finalRef.current?.focus();
+    onRemove();
   };
 
   return (
@@ -43,7 +41,7 @@ export function InputItem(props: PrimitiveProps<"div", InputItemProps>): JSX.Ele
         onClick={handleClick}
         tabIndex={-1}
         noPadding
-        aria-label={t("inputItem.deleteTag")}
+        aria-label={t("input.remove")}
         size="1em"
       />
     </div>

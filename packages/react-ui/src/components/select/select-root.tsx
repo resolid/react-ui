@@ -184,7 +184,7 @@ export function SelectRoot<T extends ListboxItem>(
     getItemProps: getNavigationItemProps,
   } = useInteractions([navigationInteraction]);
 
-  const rootRef = useRef(null);
+  const rootRef = useRef<HTMLElement>(null);
 
   const referenceRefs = useMergeRefs(refs.setReference, rootRef, ref);
 
@@ -202,6 +202,11 @@ export function SelectRoot<T extends ListboxItem>(
   const sizeStyle = selectSizeStyles[size];
 
   const renderValueFn = renderValue ?? providerValue.getItemLabel;
+
+  const handleRemove = (item: T) => {
+    handleSelect(item);
+    rootRef.current?.focus();
+  };
 
   return (
     <>
@@ -223,9 +228,8 @@ export function SelectRoot<T extends ListboxItem>(
                   key={providerValue.getItemValue(item)}
                   size={size}
                   disabled={disabled}
-                  finalRef={rootRef}
                   className="bg-bg-subtlest"
-                  onDelete={() => handleSelect(item)}
+                  onRemove={() => handleRemove(item)}
                 >
                   {renderValueFn(item)}
                 </InputItem>

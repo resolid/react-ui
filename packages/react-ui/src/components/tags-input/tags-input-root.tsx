@@ -5,6 +5,10 @@ import type { PrimitiveProps } from "../../primitives";
 import type { FormInputFieldProps, ValueProp } from "../../shared/types";
 import { useControllableState } from "../../hooks";
 import {
+  InputClearContext,
+  type InputClearContextValue,
+} from "../../primitives/common/input-clear-context";
+import {
   CompositeContext,
   type CompositeContextValue,
 } from "../../primitives/composite/composite-context";
@@ -101,7 +105,7 @@ export function TagsInputRoot(props: PrimitiveProps<"div", TagsInputRootProps>):
     return true;
   };
 
-  const deleteValue = (idx: number) => {
+  const removeValue = (idx: number) => {
     setValueState((prev) => [...prev.slice(0, idx), ...prev.slice(idx + 1)]);
   };
 
@@ -114,7 +118,7 @@ export function TagsInputRoot(props: PrimitiveProps<"div", TagsInputRootProps>):
     setActiveIndex,
   };
 
-  const inputRef = useRef(null);
+  const inputRef = useRef<HTMLElement>(null);
 
   const rootContext: TagsInputRootContextValue = {
     disabled,
@@ -126,7 +130,21 @@ export function TagsInputRoot(props: PrimitiveProps<"div", TagsInputRootProps>):
     delimiter,
     valueCount: valueState.length,
     onAdd: addValue,
-    onDelete: deleteValue,
+    onRemove: removeValue,
+  };
+
+  const clearContext: InputClearContextValue = {
+    visible: valueState.length > 0,
+    disabled,
+    onClear: () => {
+      setValueState([]);
+      inputRef.current?.focus();
+    },
+  };
+
+  const handleRemove = (index: number) => {
+    removeValue(index);
+    inputRef.current?.focus();
   };
 
   return (
@@ -156,20 +174,21 @@ export function TagsInputRoot(props: PrimitiveProps<"div", TagsInputRootProps>):
         render={(htmlProps) => <div {...htmlProps} ref={ref} aria-orientation={undefined} />}
       >
         <TagsInputRootContext value={rootContext}>
-          <CompositeContext value={context}>
-            {valueState.map((state) => (
-              <TagsInputItem
-                key={state}
-                size={size}
-                disabled={disabled || readOnly}
-                finalRef={inputRef}
-                onDelete={deleteValue}
-              >
-                {state}
-              </TagsInputItem>
-            ))}
-            {children}
-          </CompositeContext>
+          <InputClearContext value={clearContext}>
+            <CompositeContext value={context}>
+              {valueState.map((state) => (
+                <TagsInputItem
+                  key={state}
+                  size={size}
+                  disabled={disabled || readOnly}
+                  onRemove={handleRemove}
+                >
+                  {state}
+                </TagsInputItem>
+              ))}
+              {children}
+            </CompositeContext>
+          </InputClearContext>
         </TagsInputRootContext>
       </Composite>
       {name && (
