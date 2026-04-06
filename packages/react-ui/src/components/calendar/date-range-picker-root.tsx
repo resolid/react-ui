@@ -11,7 +11,7 @@ import {
   type DateRangePickerStateContextValue,
 } from "./date-range-picker-context";
 import { PickerProvider } from "./picker-provider";
-import { useControllableValueRange } from "./use-controllable-value-range";
+import { useControllableDateRange } from "./use-controllable-date-range";
 import { usePicker } from "./use-picker";
 import { formatRangeDate, inputToCalendarSize } from "./utils";
 
@@ -79,7 +79,7 @@ export function DateRangePickerRoot(
     size,
   });
 
-  const [valueState, setValue] = useControllableValueRange({
+  const [valueState, setValue] = useControllableDateRange({
     value,
     defaultValue,
     onChange,

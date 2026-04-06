@@ -4,14 +4,14 @@ import type { MultipleValueProps } from "../../shared/types";
 import { useControllableState } from "../../hooks";
 import { type CalendarFormatProps, formatBaseDate, parseBaseDateValue } from "./utils";
 
-type UseControllableValueOptions = Omit<MultipleValueProps<string>, "multiple"> & {
+type UseControllableDateOptions = Omit<MultipleValueProps<string>, "multiple"> & {
   multiple: boolean;
 } & Required<CalendarFormatProps>;
 
-export function useControllableValue(
-  options: UseControllableValueOptions,
+export function useControllableDate(
+  options: UseControllableDateOptions,
 ): readonly [Date | Date[] | null, Dispatch<SetStateAction<Date | Date[] | null>>] {
-  const { value, defaultValue, multiple, format, onChange } = options;
+  const { value, defaultValue, onChange, multiple, format } = options;
 
   return useControllableState<Date | Date[] | null>({
     value: isDefined(value) ? parseBaseDateValue(value, format, multiple) : undefined,

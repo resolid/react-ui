@@ -4,7 +4,7 @@ import type { CalendarView } from "../../primitives/calendar/utils";
 import type { FormFieldProps, ValueProp } from "../../shared/types";
 import { VisuallyHiddenInput } from "../visually-hidden/visually-hidden-input";
 import { DateRangeCalendarRoot } from "./date-range-calendar-root";
-import { useControllableValueRange } from "./use-controllable-value-range";
+import { useControllableDateRange } from "./use-controllable-date-range";
 import { type CalendarBaseProps, type CalendarFormatProps, formatRangeDate } from "./utils";
 
 export type DateRangeCalendarProps = ValueProp<string | null, string> & {
@@ -45,7 +45,7 @@ export function DateRangeCalendar(
     ...rest
   } = props;
 
-  const [valueState, setValue] = useControllableValueRange({
+  const [valueState, setValue] = useControllableDateRange({
     value,
     defaultValue,
     onChange,

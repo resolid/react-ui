@@ -11,7 +11,7 @@ import {
   type DatePickerStateContextValue,
 } from "./date-picker-context";
 import { PickerProvider } from "./picker-provider";
-import { useControllableValue } from "./use-controllable-value";
+import { useControllableDate } from "./use-controllable-date";
 import { usePicker } from "./use-picker";
 import { formatBaseDate, inputToCalendarSize } from "./utils";
 
@@ -78,7 +78,7 @@ export function DatePickerRoot(props: PropsWithChildren<DatePickerRootProps>): J
     size,
   });
 
-  const [valueState, setValue] = useControllableValue({
+  const [valueState, setValue] = useControllableDate({
     value,
     defaultValue,
     onChange,

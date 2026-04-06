@@ -4,7 +4,7 @@ import type { FormFieldProps, MultipleValueProps } from "../../shared/types";
 import type { UseControllableViewOptions } from "./use-controllable-view";
 import { VisuallyHiddenInput } from "../visually-hidden/visually-hidden-input";
 import { DateCalendarRoot } from "./date-calendar-root";
-import { useControllableValue } from "./use-controllable-value";
+import { useControllableDate } from "./use-controllable-date";
 import { type CalendarBaseProps, type CalendarFormatProps, formatBaseDate } from "./utils";
 
 export type DateCalendarProps = MultipleValueProps<string> &
@@ -27,7 +27,7 @@ export function DateCalendar(props: PrimitiveProps<"div", DateCalendarProps>): J
     ...rest
   } = props;
 
-  const [valueState, setValue] = useControllableValue({
+  const [valueState, setValue] = useControllableDate({
     value,
     defaultValue,
     onChange,

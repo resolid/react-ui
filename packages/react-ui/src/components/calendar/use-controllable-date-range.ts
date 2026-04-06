@@ -9,12 +9,12 @@ import {
   type RangeDate,
 } from "./utils";
 
-export type UseControllableValueRangeOptions = ValueProp<string | null, string> & {
+export type UseControllableDateRangeOptions = ValueProp<string | null, string> & {
   separator: string;
 } & Required<CalendarFormatProps>;
 
-export function useControllableValueRange(
-  options: UseControllableValueRangeOptions,
+export function useControllableDateRange(
+  options: UseControllableDateRangeOptions,
 ): readonly [RangeDate, Dispatch<SetStateAction<RangeDate>>] {
   const { value, defaultValue, onChange, format, separator } = options;
 
