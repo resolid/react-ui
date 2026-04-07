@@ -1,5 +1,15 @@
 # @resolid/react-ui
 
+## 0.2.2
+
+### Patch Changes
+
+- refactor: rename to useControllableDate ([`a82c64d`](https://github.com/resolid/react-ui/commit/a82c64d1e50b1a3b7ce443c4099e3bbdcba06926))
+
+- feat: add support for single or dual panel display in range calendar ([`c00f1b6`](https://github.com/resolid/react-ui/commit/c00f1b69b06b2b68040c61d6fd0ad478406e3559))
+
+- feat: add InputClear component ([`074a1cf`](https://github.com/resolid/react-ui/commit/074a1cf65da625a6cde24cceb60018f0447943aa))
+
 ## 0.2.1
 
 ### Patch Changes
