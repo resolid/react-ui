@@ -1,5 +1,11 @@
 # @resolid/react-ui
 
+## 0.2.3
+
+### Patch Changes
+
+- fix: use stable setPositionReference ref to prevent infinite render loop ([`64ba0fd`](https://github.com/resolid/react-ui/commit/64ba0fdbb4e6ec05b6a370733abb4fa6527e1a7c))
+
 ## 0.2.2
 
 ### Patch Changes
