@@ -48,7 +48,7 @@
     "remark-gfm": "^4.0.1",
     "remove-markdown": "^0.6.3",
     "unist-util-visit": "^5.1.0",
-    "vite": "^8.0.6",
+    "vite": "^8.0.7",
     "yaml": "^2.8.3"
   },
   "engines": {

@@ -7,6 +7,7 @@ import {
   useRole,
   useTransitionStatus,
   type FloatingContext,
+  type ReferenceType,
 } from "@floating-ui/react";
 import { useId, useState, type PropsWithChildren } from "react";
 import type { DisclosureProps } from "../../shared/types";
@@ -144,9 +145,7 @@ export function DialogRoot(props: PropsWithChildren<DialogRootProps>): JSX.Eleme
   };
 
   const referenceContext: PopperTriggerContextValue = {
-    setReference: (node) => {
-      setReference(node as HTMLElement);
-    },
+    setReference: setReference as (node: ReferenceType | null) => void,
     getReferenceProps,
   };
 

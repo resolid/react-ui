@@ -1,29 +1,21 @@
 import {
+  type ReferenceType,
   useClick,
   useDismiss,
   useInteractions,
   useRole,
-  useTransitionStatus,
-  type ReferenceType,
 } from "@floating-ui/react";
 import { useId } from "react";
-import type { PopperAnchorContextValue } from "../../primitives/popper/popper-anchor-context";
-import type { PopperArrowContextValue } from "../../primitives/popper/popper-arrow-context";
-import type { PopperDispatchContextValue } from "../../primitives/popper/popper-dispatch-context";
 import type { PopperFloatingContextValue } from "../../primitives/popper/popper-floating-context";
-import type { PopperPositionerContextValue } from "../../primitives/popper/popper-positioner-context";
-import type { PopperStateContextValue } from "../../primitives/popper/popper-state-context";
-import type { PopperTransitionContextValue } from "../../primitives/popper/popper-transtion-context";
 import type { PopperTriggerContextValue } from "../../primitives/popper/popper-trigger-context";
-import type { DisclosureProps } from "../../shared/types";
 import type { PopoverBaseProps, PopoverRootContextValue } from "./popover-root-context";
-import { useDisclosure } from "../../hooks";
 import {
-  usePopperWithInline,
-  type PopperWithInlineProps,
-} from "../../primitives/popper/use-popper-with-inline";
+  usePopper,
+  type UsePopperProps,
+  type UsePopperReturnContexts,
+} from "../../primitives/popper/use-popper";
 
-export type PopoverProps = DisclosureProps &
+export type PopoverProps = UsePopperProps &
   PopoverBaseProps & {
     /**
      * 按下 Esc 键时关闭
@@ -36,7 +28,17 @@ export type PopoverProps = DisclosureProps &
      * @default true
      */
     closeOnOutsideClick?: boolean;
-  } & PopperWithInlineProps;
+  };
+
+export type UsePopoverReturnContexts = {
+  ariaContext: {
+    labelId: string;
+    descriptionId: string;
+  };
+  referenceContext: PopperTriggerContextValue;
+  floatingContext: PopperFloatingContextValue;
+  popoverRootContext: PopoverRootContextValue;
+} & UsePopperReturnContexts;
 
 export function usePopover({
   open,
@@ -53,26 +55,7 @@ export function usePopover({
   setOpen: (open: boolean) => void;
   setPosition: (node: ReferenceType | null) => void;
   floatingElement: HTMLElement | null;
-  ariaContext: {
-    labelId: string;
-    descriptionId: string;
-  };
-  arrowContext: PopperArrowContextValue;
-  stateContext: PopperStateContextValue;
-  transitionContext: PopperTransitionContextValue;
-  popoverRootContext: PopoverRootContextValue;
-  dispatchContext: PopperDispatchContextValue;
-  floatingContext: PopperFloatingContextValue;
-  referenceContext: PopperTriggerContextValue;
-  positionerContext: PopperPositionerContextValue;
-  anchorContext: PopperAnchorContextValue;
-} {
-  const [openState, { handleOpen, handleClose }] = useDisclosure({
-    open,
-    defaultOpen,
-    onOpenChange,
-  });
-
+} & UsePopoverReturnContexts {
   const id = useId();
   const labelId = `${id}-label`;
   const descriptionId = `${id}-description`;
@@ -82,19 +65,15 @@ export function usePopover({
     descriptionId,
   };
 
-  const { setArrowElem, floatingStyles, refs, context } = usePopperWithInline({
-    inlineMiddleware,
+  const { context, setReference, anchorContext, ...restContext } = usePopper({
+    open,
+    defaultOpen,
+    onOpenChange,
+    duration,
     placement,
-    openState,
-    handleOpen,
-    handleClose,
-  });
-
-  const arrowContext: PopperArrowContextValue = {
-    context,
-    setArrow: setArrowElem,
+    inlineMiddleware,
     arrowClassName: "fill-bg-normal [&>path:first-of-type]:stroke-bd-normal",
-  };
+  });
 
   const { getFloatingProps, getReferenceProps } = useInteractions([
     useRole(context),
@@ -108,17 +87,9 @@ export function usePopover({
     }),
   ]);
 
-  const stateContext: PopperStateContextValue = {
-    open: openState,
-  };
-
   const referenceContext: PopperTriggerContextValue = {
-    setReference: refs.setReference,
+    setReference,
     getReferenceProps,
-  };
-
-  const anchorContext: PopperAnchorContextValue = {
-    setPositionReference: (node) => refs.setPositionReference(node),
   };
 
   const floatingContext: PopperFloatingContextValue = {
@@ -131,39 +102,16 @@ export function usePopover({
     finalFocus,
   };
 
-  const dispatchContext: PopperDispatchContextValue = {
-    handleOpen,
-    handleClose,
-  };
-
-  const { isMounted, status } = useTransitionStatus(context, {
-    duration,
-  });
-
-  const transitionContext: PopperTransitionContextValue = {
-    status,
-    mounted: isMounted,
-    duration,
-  };
-
-  const positionerContext: PopperPositionerContextValue = {
-    setPositioner: refs.setFloating,
-    positionerStyles: floatingStyles,
-  };
-
   return {
-    setOpen: (opened: boolean) => context.onOpenChange(opened),
-    setPosition: (node) => refs.setPositionReference(node),
+    // oxlint-disable-next-line typescript/unbound-method
+    setOpen: context.onOpenChange,
+    setPosition: anchorContext.setPositionReference,
     floatingElement: context.elements.floating,
     ariaContext,
-    arrowContext,
-    stateContext,
-    transitionContext,
     popoverRootContext,
-    dispatchContext,
     floatingContext,
     referenceContext,
-    positionerContext,
     anchorContext,
+    ...restContext,
   };
 }

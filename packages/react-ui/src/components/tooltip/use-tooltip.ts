@@ -5,26 +5,19 @@ import {
   useHover,
   useInteractions,
   useRole,
-  useTransitionStatus,
   type ReferenceType,
 } from "@floating-ui/react";
-import type { PopperAnchorContextValue } from "../../primitives/popper/popper-anchor-context";
-import type { PopperArrowContextValue } from "../../primitives/popper/popper-arrow-context";
 import type { PopperFloatingContextValue } from "../../primitives/popper/popper-floating-context";
-import type { PopperPositionerContextValue } from "../../primitives/popper/popper-positioner-context";
-import type { PopperStateContextValue } from "../../primitives/popper/popper-state-context";
-import type { PopperTransitionContextValue } from "../../primitives/popper/popper-transtion-context";
 import type { PopperTriggerContextValue } from "../../primitives/popper/popper-trigger-context";
-import type { DisclosureProps } from "../../shared/types";
 import type { TooltipRootContextValue } from "./tooltip-root-context";
-import { useDisclosure } from "../../hooks";
 import {
-  usePopperWithInline,
-  type PopperWithInlineProps,
-} from "../../primitives/popper/use-popper-with-inline";
+  usePopper,
+  type UsePopperProps,
+  type UsePopperReturnContexts,
+} from "../../primitives/popper/use-popper";
 import { tooltipColorStyles } from "./tooltip.styles";
 
-export type TooltipProps = DisclosureProps & {
+export type TooltipProps = UsePopperProps & {
   /**
    * 颜色
    * @default "neutral"
@@ -48,7 +41,13 @@ export type TooltipProps = DisclosureProps & {
    * @default false
    */
   interactive?: boolean;
-} & PopperWithInlineProps;
+};
+
+export type UseToolTipReturnContexts = {
+  referenceContext: PopperTriggerContextValue;
+  floatingContext: PopperFloatingContextValue;
+  tooltipRootContext: TooltipRootContextValue;
+} & UsePopperReturnContexts;
 
 export function useTooltip({
   open,
@@ -65,36 +64,18 @@ export function useTooltip({
   setOpen: (open: boolean) => void;
   setPosition: (node: ReferenceType | null) => void;
   floatingElement: HTMLElement | null;
-  stateContext: PopperStateContextValue;
-  arrowContext: PopperArrowContextValue;
-  anchorContext: PopperAnchorContextValue;
-  referenceContext: PopperTriggerContextValue;
-  positionerContext: PopperPositionerContextValue;
-  floatingContext: PopperFloatingContextValue;
-  transitionContext: PopperTransitionContextValue;
-  tooltipRootContext: TooltipRootContextValue;
-} {
-  const [openState, { handleOpen, handleClose }] = useDisclosure({
+} & UseToolTipReturnContexts {
+  const tooltipColorStyle = tooltipColorStyles[color];
+
+  const { context, setReference, anchorContext, ...restContext } = usePopper({
     open,
     defaultOpen,
     onOpenChange,
-  });
-
-  const { setArrowElem, floatingStyles, refs, context } = usePopperWithInline({
-    inlineMiddleware,
+    duration,
     placement,
-    openState,
-    handleOpen,
-    handleClose,
-  });
-
-  const tooltipColorStyle = tooltipColorStyles[color];
-
-  const arrowContext: PopperArrowContextValue = {
-    context,
-    setArrow: setArrowElem,
+    inlineMiddleware,
     arrowClassName: tooltipColorStyle.arrow,
-  };
+  });
 
   const { getFloatingProps, getReferenceProps } = useInteractions([
     useRole(context, { role: "tooltip" }),
@@ -108,17 +89,9 @@ export function useTooltip({
     useDismiss(context, { referencePress: true }),
   ]);
 
-  const stateContext: PopperStateContextValue = {
-    open: openState,
-  };
-
   const referenceContext: PopperTriggerContextValue = {
-    setReference: refs.setReference,
-    getReferenceProps: getReferenceProps,
-  };
-
-  const anchorContext: PopperAnchorContextValue = {
-    setPositionReference: (node) => refs.setPositionReference(node),
+    setReference,
+    getReferenceProps,
   };
 
   const floatingContext: PopperFloatingContextValue = {
@@ -130,32 +103,15 @@ export function useTooltip({
     contentClassName: tooltipColorStyle.content,
   };
 
-  const { isMounted, status } = useTransitionStatus(context, {
-    duration,
-  });
-
-  const transitionContext: PopperTransitionContextValue = {
-    status,
-    mounted: isMounted,
-    duration,
-  };
-
-  const positionerContext: PopperPositionerContextValue = {
-    setPositioner: refs.setFloating,
-    positionerStyles: floatingStyles,
-  };
-
   return {
-    setOpen: (opened) => context.onOpenChange(opened),
-    setPosition: (node) => refs.setPositionReference(node),
+    // oxlint-disable-next-line typescript/unbound-method
+    setOpen: context.onOpenChange,
+    setPosition: anchorContext.setPositionReference,
     floatingElement: context.elements.floating,
-    stateContext,
-    arrowContext,
-    anchorContext,
     referenceContext,
-    positionerContext,
     floatingContext,
-    transitionContext,
     tooltipRootContext,
+    anchorContext,
+    ...restContext,
   };
 }

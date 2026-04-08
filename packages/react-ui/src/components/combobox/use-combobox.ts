@@ -199,9 +199,7 @@ export function useCombobox<T extends ListboxItem>({
   } = useInteractions([navigationInteraction]);
 
   const referenceContext: PopperTriggerContextValue = {
-    setReference: (node) => {
-      setReference(node as HTMLElement);
-    },
+    setReference: setReference as (node: ReferenceType | null) => void,
     getReferenceProps: (props) => {
       const { onKeyDown, onInput, ...rest } = props as HTMLProps<HTMLElement | HTMLInputElement>;
 
@@ -229,10 +227,15 @@ export function useCombobox<T extends ListboxItem>({
     },
   };
 
+  const popperAnchorContext = {
+    // oxlint-disable-next-line typescript/unbound-method
+    setPositionReference: context.refs.setPositionReference,
+  };
+
   return {
     open: openState,
-    setOpen: (opened) => context.onOpenChange(opened),
-    setPosition: (node) => context.refs.setPositionReference(node),
+    setOpen: context.onOpenChange,
+    setPosition: popperAnchorContext.setPositionReference,
     floatingElement: context.elements.floating,
     rootContext: { rootContext: context },
     stateContext: { required, invalid },
@@ -241,9 +244,7 @@ export function useCombobox<T extends ListboxItem>({
     inputContext: { inputRef, inputValue, name },
     popperStateContext: { open: openState },
     popperTriggerContext: referenceContext,
-    popperAnchorContext: {
-      setPositionReference: (node) => context.refs.setPositionReference(node),
-    },
+    popperAnchorContext,
     listboxProviderValue: {
       selectedIndices,
       selectedIndex,

@@ -199,11 +199,12 @@ function MenuTree(props: PropsWithChildren<MenuRootProps>) {
 
   const referenceContext: PopperTriggerContextValue = {
     setReference: refs.setReference,
-    getReferenceProps: getReferenceProps,
+    getReferenceProps,
   };
 
   const anchorContext: PopperAnchorContextValue = {
-    setPositionReference: (node) => refs.setPositionReference(node),
+    // oxlint-disable-next-line typescript/unbound-method
+    setPositionReference: refs.setPositionReference,
   };
 
   const menuEvents = useFloatingTree()!.events;
