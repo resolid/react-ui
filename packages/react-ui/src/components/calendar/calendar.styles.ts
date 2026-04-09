@@ -1,4 +1,4 @@
-export const calendarColorStyles = {
+export const calendarStatusColorStyles = {
   primary: {
     selected: "bg-bg-primary-emphasis",
     ranged: "bg-bg-primary-hovered",
@@ -23,4 +23,10 @@ export const calendarColorStyles = {
     selected: "bg-bg-neutral-emphasis",
     ranged: "bg-bg-neutral-hovered",
   },
+};
+
+export const timePanelSizeStyles = {
+  sm: { height: 24 },
+  md: { height: 28 },
+  lg: { height: 36 },
 };

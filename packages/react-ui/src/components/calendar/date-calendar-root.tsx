@@ -12,7 +12,7 @@ import { CalendarRoot } from "../../primitives/calendar/calendar-root";
 import { calendarIsSameStrategy, returnFalse } from "../../primitives/calendar/utils";
 import { tx } from "../../utils/clsx";
 import { ariaAttr } from "../../utils/dom";
-import { calendarColorStyles } from "./calendar.styles";
+import { calendarStatusColorStyles } from "./calendar.styles";
 import { useControllableView, type UseControllableViewOptions } from "./use-controllable-view";
 import { getBaseFocusedValue, type CalendarBaseProps, type CalendarFormatProps } from "./utils";
 
@@ -78,7 +78,7 @@ export function DateCalendarRoot(props: PrimitiveProps<"div", DateCalendarRootPr
     return value ? isSame(d, value as Date) : false;
   };
 
-  const colorStyle = calendarColorStyles[color];
+  const colorStyle = calendarStatusColorStyles[color];
 
   const handleCellClick = (d: Date) => {
     if (isDateUnavailable(d, viewState)) {

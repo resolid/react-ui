@@ -24,7 +24,7 @@ import {
 import { tx } from "../../utils/clsx";
 import { ariaAttr } from "../../utils/dom";
 import { Separator } from "../separator/separator";
-import { calendarColorStyles } from "./calendar.styles";
+import { calendarStatusColorStyles } from "./calendar.styles";
 import {
   getRangeFocusedValue,
   type CalendarBaseProps,
@@ -134,7 +134,7 @@ export function DateRangeCalendarRoot(
     return false;
   };
 
-  const colorStyle = calendarColorStyles[color];
+  const colorStyle = calendarStatusColorStyles[color];
 
   const handleCellMouseEnter = (state: CalendarCellRenderState) => {
     if (!state.disabled && !isDateUnavailable(state.date, view)) {
