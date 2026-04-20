@@ -1,5 +1,15 @@
 # @resolid/react-ui
 
+## 0.2.4
+
+### Patch Changes
+
+- refactor: rename to calendarStatusColorStyles ([`598f659`](https://github.com/resolid/react-ui/commit/598f659ebc01b04879d2aabdbf0949c2baad75a3))
+
+- fix: correct ref callback cleanup and avoid ref access during render ([`ae7fd3b`](https://github.com/resolid/react-ui/commit/ae7fd3ba875e25d58e3eb7e54ea2be2801018109))
+
+- refactor: extract shared PickerContent components ([`22a2444`](https://github.com/resolid/react-ui/commit/22a24443f32869be5a116ab1668c9b81d47aae6c))
+
 ## 0.2.3
 
 ### Patch Changes
