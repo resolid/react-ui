@@ -3,6 +3,7 @@ import type { InputTriggerBaseProps } from "../../primitives/common/input-trigge
 import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives";
 
 export type PickerStatusContextValue = InputTriggerBaseProps & {
+  readOnly?: boolean;
   placeholder?: string;
 };
 

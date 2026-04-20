@@ -82,10 +82,34 @@ export type CalendarBaseProps = {
 
 export function formatBaseDate(date: Date | Date[] | null, format: string): string | string[] {
   if (Array.isArray(date)) {
-    return date.map((d) => formatDate(d, format));
+    return date.map((d) => tryFormatDate(d, format));
   }
 
-  return isDefined(date) ? formatDate(date, format) : "";
+  return tryFormatDate(date, format);
+}
+
+function tryFormatDate(date: Date | null, format: string): string {
+  if (!isDefined(date)) {
+    return "";
+  }
+
+  try {
+    return formatDate(date, format);
+  } catch {
+    return "";
+  }
+}
+
+export function tryParseDate(value: string | undefined, format: string): Date | null {
+  if (!value || value.length == 0) {
+    return null;
+  }
+
+  try {
+    return parseDate(value, format);
+  } catch {
+    return null;
+  }
 }
 
 export function parseBaseDateValue(
@@ -97,7 +121,7 @@ export function parseBaseDateValue(
 
   if (multiple) {
     if (isArray) {
-      return value.map((v) => parseDate(v, format));
+      return value.map((v) => tryParseDate(v, format)).filter((d) => d != null);
     }
 
     throw new Error("Calendar: `value` must be an array when `multiple` is true.");
@@ -107,7 +131,7 @@ export function parseBaseDateValue(
     throw new Error("Calendar: `value` not be an array when `multiple` is false.");
   }
 
-  return value.length > 0 ? parseDate(value, format) : null;
+  return tryParseDate(value, format);
 }
 
 export type RangeDate = {
@@ -116,10 +140,7 @@ export type RangeDate = {
 };
 
 export function formatRangeDate(range: RangeDate, format: string, separator: string): string {
-  return [
-    range.start ? formatDate(range.start, format) : "",
-    range.end ? formatDate(range.end, format) : "",
-  ]
+  return [tryFormatDate(range.start, format), tryFormatDate(range.end, format)]
     .filter((s) => s.length > 0)
     .join(separator);
 }
@@ -136,8 +157,8 @@ export function parseRangeDateValue(
   const [start, end] = value.split(separator);
 
   return {
-    start: start ? parseDate(start, format) : null,
-    end: end ? parseDate(end, format) : null,
+    start: tryParseDate(start, format),
+    end: tryParseDate(end, format),
   };
 }
 

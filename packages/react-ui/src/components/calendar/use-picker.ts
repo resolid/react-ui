@@ -110,6 +110,7 @@ export function usePicker(options: UsePickerOptions): {
 
   const statusContextValue: PickerStatusContextValue = {
     disabled,
+    readOnly,
     invalid,
     required,
     placeholder,

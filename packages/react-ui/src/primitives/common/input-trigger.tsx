@@ -19,14 +19,15 @@ export type InputTriggerBaseProps = {
 export function InputTrigger(
   props: PrimitiveProps<
     "div",
-    InputTriggerBaseProps & { active: boolean; sizeStyle: { select: string; root: string } },
-    "tabIndex"
+    InputTriggerBaseProps & { active: boolean; sizeStyle: { select: string; root: string } }
   >,
 ): JSX.Element {
-  const { disabled, required, invalid, active, size, sizeStyle, className, ...rest } = props;
+  const { disabled, required, invalid, active, size, sizeStyle, className, tabIndex, ...rest } =
+    props;
+
   return (
     <div
-      tabIndex={disabled ? -1 : 0}
+      tabIndex={tabIndex ?? (disabled ? -1 : 0)}
       data-active={dataAttr(active)}
       aria-disabled={ariaAttr(disabled)}
       aria-required={ariaAttr(required)}
