@@ -84,8 +84,10 @@ export type UseListboxResult<T extends ListboxItem> = {
   };
   handleEnterKeydown: (e: KeyboardEvent<HTMLElement>) => void;
   elementsRef: RefObject<(HTMLDivElement | null)[]>;
+  labelsRef: RefObject<(string | null)[]>;
   typingRef: RefObject<boolean>;
   filterInputRef: RefObject<HTMLInputElement | null>;
+  setHasFilter: Dispatch<SetStateAction<boolean>>;
   setFilterKeyword: Dispatch<SetStateAction<string | undefined>>;
 };
 
@@ -136,6 +138,7 @@ export function useListbox<T extends ListboxItem>(
   const filterInputRef = useRef<HTMLInputElement | null>(null);
   const labelsRef = useRef<(string | null)[]>([]);
   const typingRef = useRef(false);
+  const [hasFilter, setHasFilter] = useState(false);
   const [filterKeyword, setFilterKeyword] = useState<string>();
   const deferredKeyword = useDeferredValue(filterKeyword);
 
@@ -177,7 +180,6 @@ export function useListbox<T extends ListboxItem>(
 
       if (selected || checkFilter(item)) {
         indexes.push(item);
-        labelsRef.current[itemIndex] = String(itemValue);
 
         return true;
       }
@@ -250,7 +252,7 @@ export function useListbox<T extends ListboxItem>(
     onSelect?.();
   };
 
-  const virtual = !!context.elements.reference || !!filterInputRef.current;
+  const virtual = !!context.elements.reference || hasFilter;
 
   const navigationInteraction = useListNavigation(context, {
     enabled: !disabled && !readOnly,
@@ -326,8 +328,10 @@ export function useListbox<T extends ListboxItem>(
     interactiveHandlers,
     handleEnterKeydown,
     elementsRef,
+    labelsRef,
     typingRef,
     filterInputRef,
+    setHasFilter,
     setFilterKeyword,
     virtual,
   };

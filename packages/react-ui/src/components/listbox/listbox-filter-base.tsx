@@ -17,7 +17,7 @@ export function ListboxFilterBase(
 ): JSX.Element {
   const { size: listboxSize, disabled } = useListboxState();
 
-  const { getNavigationProps, filterInputRef, setFilterKeyword } = useListboxFilter();
+  const { getNavigationProps, filterInputRef, setHasFilter, setFilterKeyword } = useListboxFilter();
 
   const {
     size = listboxSize,
@@ -38,7 +38,13 @@ export function ListboxFilterBase(
     setFilterKeyword(changed.toString());
   };
 
-  const refs = useMergeRefs(ref, filterInputRef);
+  const refs = useMergeRefs(ref, filterInputRef, () => {
+    setHasFilter(true);
+
+    return () => {
+      setHasFilter(false);
+    };
+  });
 
   return (
     <InputBase

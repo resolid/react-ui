@@ -36,17 +36,27 @@ export function ListboxItem(
     handleSelect,
     selectedIndices,
     getItemProps,
+    getItemValue,
     typingRef,
     focusItemOnOpen,
     virtual,
     renderItem,
     elementsRef,
+    labelsRef,
   } = useListboxItem();
 
   const { getItemDisabled } = useListboxFields();
 
   const refs = useMergeRefs(ref, (node) => {
-    elementsRef.current[item.__index] = node;
+    if (node) {
+      elementsRef.current[item.__index] = node;
+      labelsRef.current[item.__index] = String(getItemValue(item));
+    }
+
+    return () => {
+      elementsRef.current[item.__index] = null;
+      labelsRef.current[item.__index] = null;
+    };
   });
 
   const active = item.__index === activeIndex;

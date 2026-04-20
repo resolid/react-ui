@@ -42,7 +42,15 @@ export function CollapsibleContent(
     }
   }, [element, isMounted]);
 
-  const refs = useMergeRefs(ref, setElement);
+  const refs = useMergeRefs(ref, (node) => {
+    if (node) {
+      setElement(node);
+    }
+
+    return () => {
+      setElement(null);
+    };
+  });
 
   if (!isMounted) {
     return null;

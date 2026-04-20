@@ -8,6 +8,7 @@ import {
 
 export type ListboxFilterContextValue = {
   filterInputRef: RefObject<HTMLInputElement | null>;
+  setHasFilter: Dispatch<SetStateAction<boolean>>;
   setFilterKeyword: Dispatch<SetStateAction<string | undefined>>;
   getNavigationProps: (userProps?: HTMLProps<HTMLElement>) => AnyObject;
 };

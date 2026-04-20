@@ -11,7 +11,9 @@ export type ListboxItemContextValue = {
   activeIndex: number | null;
   selectedIndices: number[];
   getItemProps: (userProps?: HTMLProps<HTMLElement>) => AnyObject;
+  getItemValue: (item: ListboxItem) => string | number;
   elementsRef: RefObject<(HTMLDivElement | null)[]>;
+  labelsRef: RefObject<(string | null)[]>;
   typingRef: RefObject<boolean>;
   focusItemOnOpen?: boolean;
   virtual?: boolean;

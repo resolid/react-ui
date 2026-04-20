@@ -63,6 +63,7 @@ export function ListboxProvider<T extends ListboxItem>(
       selectedIndex,
       selectedIndices,
       elementsRef,
+      labelsRef,
       typingRef,
       handleSelect,
       pointer,
@@ -73,6 +74,7 @@ export function ListboxProvider<T extends ListboxItem>(
       getItemProps,
       getNavigationProps,
       filterInputRef,
+      setHasFilter,
       setFilterKeyword,
       open,
       size,
@@ -93,8 +95,10 @@ export function ListboxProvider<T extends ListboxItem>(
     selectedIndices,
     handleSelect,
     getItemProps,
+    getItemValue,
     renderItem,
     elementsRef,
+    labelsRef,
     typingRef,
     focusItemOnOpen,
     virtual,
@@ -197,7 +201,9 @@ export function ListboxProvider<T extends ListboxItem>(
 
   return (
     <ListboxStateContext value={{ size, multiple, disabled, readOnly }}>
-      <ListboxFilterContext value={{ getNavigationProps, filterInputRef, setFilterKeyword }}>
+      <ListboxFilterContext
+        value={{ getNavigationProps, filterInputRef, setHasFilter, setFilterKeyword }}
+      >
         <ListboxScrollContext value={{ scrollToRef, scrollRef }}>
           <PopperFloatingContext value={{ setFloating, getFloatingProps }}>
             <ListboxFieldsContext value={fieldContext}>

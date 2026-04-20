@@ -19,7 +19,15 @@ export function TabsList(props: PrimitiveProps<"div", EmptyObject, "role">): JSX
   const [itemElement, setActiveElement] = useState<HTMLElement | null>(null);
   const [activeIndex, setActiveIndex] = useState<number | undefined>(0);
 
-  const refs = useMergeRefs(ref, setListElement);
+  const refs = useMergeRefs(ref, (node) => {
+    if (node) {
+      setListElement(node);
+    }
+
+    return () => {
+      setListElement(null);
+    };
+  });
 
   return (
     <Composite
