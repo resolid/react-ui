@@ -59,7 +59,7 @@ export function AngleRightIcon(props: IconProps): JSX.Element {
   );
 }
 
-export const AngleUpIcon = (props: IconProps): JSX.Element => {
+export function AngleUpIcon(props: IconProps): JSX.Element {
   const { size = "1em", ...rest } = props;
 
   return (
@@ -76,7 +76,7 @@ export const AngleUpIcon = (props: IconProps): JSX.Element => {
       <path d="m18 15-6-6-6 6" />
     </svg>
   );
-};
+}
 
 export function AngleDownIcon(props: IconProps): JSX.Element {
   const { size = "1em", ...rest } = props;
