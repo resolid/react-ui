@@ -1,5 +1,5 @@
-import type { PropsWithChildren } from "react";
 import type { JSX } from "react/jsx-runtime";
+import { type Dispatch, type PropsWithChildren, type SetStateAction, useRef } from "react";
 import type { DisclosureProps } from "../../shared/types";
 import type { InputSize } from "../input/input.styles";
 import type { DateCalendarProps } from "./date-calendar";
@@ -86,10 +86,26 @@ export function DatePickerRoot(props: PropsWithChildren<DatePickerRootProps>): J
     format,
   });
 
+  const setFocusedValueRef = useRef<Dispatch<SetStateAction<Date>> | null>(null);
+
   const formatedValue = formatBaseDate(valueState, format);
 
   const stateContextValue: DatePickerStateContextValue = {
     value: formatedValue,
+    format: format,
+    update: (d) => {
+      if (setFocusedValueRef.current) {
+        setFocusedValueRef.current(d);
+      }
+
+      setValue((prev) => {
+        if (Array.isArray(prev)) {
+          return [...prev.filter((p) => formatBaseDate(p, format) != formatBaseDate(d, format)), d];
+        } else {
+          return d;
+        }
+      });
+    },
     remove: (v) => {
       setValue((prev) => {
         if (Array.isArray(prev)) {
@@ -116,6 +132,7 @@ export function DatePickerRoot(props: PropsWithChildren<DatePickerRootProps>): J
         pickProviderValue.rootContextValue.context.onOpenChange(false);
       }
     },
+    setFocusedValueRef,
     ...rest,
   };
 

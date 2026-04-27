@@ -1,5 +1,5 @@
 import type { JSX } from "react/jsx-runtime";
-import { useRef } from "react";
+import { useRef, type ClipboardEvent } from "react";
 import type { EmptyObject, PrimitiveProps } from "../../primitives";
 import { useMergeRefs } from "../../hooks";
 import { InputItem } from "../../primitives/common/input-item";
@@ -11,6 +11,7 @@ import { tx } from "../../utils";
 import { selectChevronStyle, selectSizeStyles } from "../select/select.styles";
 import { useDatePickerState } from "./date-picker-context";
 import { usePickerRoot, usePickerStatus } from "./picker-context";
+import { tryParseDate } from "./utils";
 
 export function DatePickerTrigger(
   props: PrimitiveProps<"div", EmptyObject, "tabIndex">,
@@ -21,7 +22,7 @@ export function DatePickerTrigger(
 
   const { context } = usePickerRoot();
   const { setReference, getReferenceProps } = usePopperTrigger();
-  const { value, remove } = useDatePickerState();
+  const { value, format, update, remove } = useDatePickerState();
   const { disabled, required, invalid, placeholder, size } = usePickerStatus();
 
   const refs = useMergeRefs(ref, triggerRef, setReference);
@@ -33,6 +34,16 @@ export function DatePickerTrigger(
     triggerRef.current?.focus();
   };
 
+  const handleParse = (e: ClipboardEvent) => {
+    const text = e.clipboardData.getData("text").trim();
+
+    const d = tryParseDate(text, format);
+
+    if (d) {
+      update(d);
+    }
+  };
+
   return (
     <InputTrigger
       ref={refs}
@@ -42,6 +53,7 @@ export function DatePickerTrigger(
       invalid={invalid}
       size={size}
       sizeStyle={sizeStyle}
+      onPaste={handleParse}
       className={tx("inline-flex", className)}
       {...getReferenceProps(rest)}
     >

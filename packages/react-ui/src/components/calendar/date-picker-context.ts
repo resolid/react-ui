@@ -3,6 +3,8 @@ import { createSafeContext, type SafeContext, type UseSafeContext } from "../../
 
 export type DatePickerStateContextValue = {
   value: string | string[];
+  format: string;
+  update: (date: Date) => void;
   remove: (value: string) => void;
 };
 

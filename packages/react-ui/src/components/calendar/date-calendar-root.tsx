@@ -1,8 +1,9 @@
-import type { Dispatch, SetStateAction } from "react";
+import type { Dispatch, RefObject, SetStateAction } from "react";
 import type { JSX } from "react/jsx-runtime";
 import { noop } from "@resolid/utils";
 import { formatDate, parseDate } from "@resolid/utils/date";
 import type { PrimitiveProps } from "../../primitives";
+import { useMergeRefs } from "../../hooks";
 import { useControllableState } from "../../hooks/use-controllable-state";
 import {
   CalendarViewControlContext,
@@ -23,6 +24,7 @@ export type DateCalendarRootProps = {
   disabled: boolean;
   readOnly: boolean;
   onDateSelect?: () => void;
+  setFocusedValueRef?: RefObject<Dispatch<SetStateAction<Date>> | null>;
 } & Required<CalendarFormatProps> &
   CalendarBaseProps &
   Partial<UseControllableViewOptions>;
@@ -48,7 +50,9 @@ export function DateCalendarRoot(props: PrimitiveProps<"div", DateCalendarRootPr
     isDateUnavailable = returnFalse,
     color = "primary",
     onDateSelect = noop,
+    setFocusedValueRef,
     children,
+    ref,
     ...rest
   } = props;
 
@@ -130,8 +134,21 @@ export function DateCalendarRoot(props: PrimitiveProps<"div", DateCalendarRootPr
   const minDate = minValue ? parseDate(minValue, format) : null;
   const maxDate = maxValue ? parseDate(maxValue, format) : null;
 
+  const refs = useMergeRefs(ref, () => {
+    if (setFocusedValueRef) {
+      setFocusedValueRef.current = setFocusedValue;
+    }
+
+    return () => {
+      if (setFocusedValueRef) {
+        setFocusedValueRef.current = null;
+      }
+    };
+  });
+
   return (
     <CalendarRoot
+      ref={refs}
       view={viewState}
       date={focusedValueState}
       onDateChange={setFocusedValue}
