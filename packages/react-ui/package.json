@@ -67,13 +67,13 @@
     "jsdom": "^29.0.2",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
-    "tsdown": "^0.21.9",
+    "tsdown": "^0.21.10",
     "vitest": "^4.1.5"
   },
   "peerDependencies": {
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
-    "tailwindcss": "^4.2.2"
+    "tailwindcss": "^4.2.4"
   },
   "reactDoctor": {
     "ignore": {

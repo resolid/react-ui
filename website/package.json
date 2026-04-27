@@ -27,7 +27,7 @@
   "devDependencies": {
     "@mdx-js/rollup": "^3.1.1",
     "@react-router/dev": "^7.14.2",
-    "@resolid/config": "^5.3.10",
+    "@resolid/config": "^5.3.11",
     "@resolid/dev": "^0.4.1",
     "@rolldown/plugin-babel": "^0.2.3",
     "@shikijs/rehype": "^4.0.2",
@@ -48,7 +48,7 @@
     "remark-gfm": "^4.0.1",
     "remove-markdown": "^0.6.3",
     "unist-util-visit": "^5.1.0",
-    "vite": "^8.0.9",
+    "vite": "^8.0.10",
     "yaml": "^2.8.3"
   },
   "engines": {
