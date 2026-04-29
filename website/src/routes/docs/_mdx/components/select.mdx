@@ -319,6 +319,68 @@ export default function App() {
 }
 ```
 
+### 动态加载
+
+```jsx demo
+import { Select, SelectContent, SelectList } from "@resolid/react-ui";
+import { useState } from "react";
+
+function loadData() {
+  return new Promise((resolve) => {
+    setTimeout(
+      () =>
+        resolve([
+          { value: "apple", label: "Apple" },
+          { value: "banana", label: "Banana" },
+          { value: "blueberry", label: "Blueberry" },
+          { value: "grapes", label: "Grapes", disabled: true },
+          { value: "pineapple", label: "Pineapple" },
+        ]),
+      1000,
+    );
+  });
+}
+
+export default function App() {
+  const [collection, setCollection] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  function handleOpen(open) {
+    if (open && collection.length === 0) {
+      setLoading(true);
+      setError(null);
+
+      loadData()
+        .then((data) => {
+          setCollection(data);
+        })
+        .catch((err) => setError(err))
+        .finally(() => setLoading(false));
+    }
+  }
+
+  return (
+    <Select
+      placeholder="选择器"
+      className="min-w-50"
+      collection={collection}
+      onOpenChange={handleOpen}
+    >
+      <SelectContent className="p-1">
+        {loading ? (
+          <div className="p-2 text-fg-muted">正在加载...</div>
+        ) : error ? (
+          <div className="p-2 text-fg-danger">{error.message}</div>
+        ) : (
+          <SelectList />
+        )}
+      </SelectContent>
+    </Select>
+  );
+}
+```
+
 ### 原生选择器
 
 ```jsx demo
