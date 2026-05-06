@@ -30,10 +30,8 @@ export const meta: Route.MetaFunction = mergeMeta(({ loaderData }) => [
   },
 ]);
 
-export const loader = async ({ request }: Route.LoaderArgs) => {
-  const { pathname } = new URL(request.url);
-
-  const meta = await getMdxMeta(trimStart(pathname, "/"));
+export const loader = async ({ url }: Route.LoaderArgs) => {
+  const meta = await getMdxMeta(trimStart(url.pathname, "/"));
 
   if (meta == null) {
     httpNotFound();
