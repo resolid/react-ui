@@ -1,5 +1,11 @@
 # @resolid/react-ui
 
+## 0.2.5
+
+### Patch Changes
+
+- feat: add paste support for valid date in DatePicker ([`3cb1716`](https://github.com/resolid/react-ui/commit/3cb171633452fa8aad6ae4ddc22be567aac7c61f))
+
 ## 0.2.4
 
 ### Patch Changes
