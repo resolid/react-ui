@@ -1,11 +1,11 @@
 import type { CSSProperties } from "react";
 import type { JSX } from "react/jsx-runtime";
 import type { ListboxNodeItem } from "./use-listbox";
+import { useCollectionState } from "../../primitives/collection/collection-state-context";
 import { useListboxCollection } from "./listbox-collection-context";
 import { useListboxFields } from "./listbox-field-context";
 import { ListboxGroupLabel } from "./listbox-group-label";
 import { ListboxItem } from "./listbox-item";
-import { useListboxState } from "./listbox-state-context";
 import { useListboxVirtualizer } from "./listbox-virtualizer-context";
 
 export type ListboxListProps = {
@@ -13,7 +13,7 @@ export type ListboxListProps = {
 };
 
 export function ListboxList({ checkmark = true }: ListboxListProps): JSX.Element[] {
-  const { size, disabled, readOnly } = useListboxState();
+  const { size, disabled, readOnly } = useCollectionState();
   const { nodeItems } = useListboxCollection();
   const { getItemValue, getItemLabel, getItemChildren } = useListboxFields();
 

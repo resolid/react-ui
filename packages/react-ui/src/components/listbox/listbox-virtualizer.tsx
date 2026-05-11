@@ -3,11 +3,11 @@ import { omit } from "@resolid/utils";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { type PropsWithChildren, useLayoutEffect, useMemo } from "react";
 import type { ListboxFlatItem, ListboxNodeItem } from "./use-listbox";
+import { useCollectionState } from "../../primitives/collection/collection-state-context";
 import { usePopperFloating } from "../../primitives/popper/popper-floating-context";
 import { useListboxCollection } from "./listbox-collection-context";
 import { useListboxFields } from "./listbox-field-context";
 import { useListboxScroll } from "./listbox-scroll-context";
-import { useListboxState } from "./listbox-state-context";
 import { ListboxVirtualizerContext } from "./listbox-virtualizer-context";
 import { listboxGroupLabelHeights, listboxItemHeights } from "./listbox.styles";
 
@@ -76,7 +76,7 @@ export function ListboxVirtualizer({
   useAnimationFrameWithResizeObserver = false,
   children,
 }: PropsWithChildren<ListboxVirtualizerProps>): JSX.Element {
-  const { size } = useListboxState();
+  const { size } = useCollectionState();
   const { getFloatingProps } = usePopperFloating();
   const { nodeItems } = useListboxCollection();
   const { getItemChildren, childrenKey } = useListboxFields();

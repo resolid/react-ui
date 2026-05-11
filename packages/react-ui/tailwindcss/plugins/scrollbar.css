@@ -10,7 +10,7 @@
   height: 11px;
 }
 
-.scrollbar-thin::-webkit-scrollbar {
+.scrollbar-lite::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }

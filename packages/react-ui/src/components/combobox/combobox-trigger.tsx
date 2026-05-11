@@ -1,9 +1,9 @@
 import type { JSX } from "react/jsx-runtime";
 import { useButtonProps, useMergeRefs } from "../../hooks";
 import { type EmptyObject, Polymorphic, type PolymorphicProps } from "../../primitives";
+import { useCollectionState } from "../../primitives/collection/collection-state-context";
 import { AngleDownIcon } from "../../shared/icons";
 import { ariaAttr, tx } from "../../utils";
-import { useListboxState } from "../listbox/listbox-state-context";
 import { selectSizeStyles } from "../select/select.styles";
 import { useComboboxInput } from "./combobox-input-context";
 import { useComboboxRoot } from "./combobox-root-context";
@@ -17,7 +17,7 @@ export function ComboboxTrigger(
   const { inputRef } = useComboboxInput();
   const { triggerRef } = useComboboxTrigger();
   const { rootContext } = useComboboxRoot();
-  const { size, disabled } = useListboxState();
+  const { size, disabled } = useCollectionState();
 
   const buttonProps = useButtonProps({
     hasRender: !!render,

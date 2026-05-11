@@ -102,7 +102,7 @@ const mdxComponents = {
 
     return (
       <div className="is-demo group">
-        <div className="not-prose scrollbar scrollbar-thin overflow-x-auto rounded-t-md border border-bd-normal p-3">
+        <div className="not-prose scrollbar scrollbar-lite overflow-x-auto rounded-t-md border border-bd-normal p-3">
           {componentProps && settingProps ? (
             <MdxCodeDemo componentProps={componentProps} settingProps={settingProps}>
               {

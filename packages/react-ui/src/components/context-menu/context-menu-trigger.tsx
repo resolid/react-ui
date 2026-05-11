@@ -45,12 +45,6 @@ export function ContextMenuTrigger(
 
   useEffect(() => () => clearLongPress(), [clearLongPress]);
 
-  useEffect(() => {
-    if (disabled) {
-      clearLongPress();
-    }
-  }, [disabled, clearLongPress]);
-
   const openMenu = ({ clientX, clientY }: { clientX: number; clientY: number }) => {
     setPositionReference({
       getBoundingClientRect() {

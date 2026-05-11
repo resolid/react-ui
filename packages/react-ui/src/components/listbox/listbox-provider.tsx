@@ -10,6 +10,7 @@ import type { AnyObject } from "../../primitives";
 import type { InputSize } from "../input/input.styles";
 import type { ListboxBaseProps, ListboxItem, UseListboxResult } from "./use-listbox";
 import { useIsomorphicEffect, usePrevious } from "../../hooks";
+import { CollectionStateContext } from "../../primitives/collection/collection-state-context";
 import {
   PopperFloatingContext,
   type PopperFloatingContextValue,
@@ -20,7 +21,6 @@ import { ListboxFilterContext } from "./listbox-filter-context";
 import { ListboxGroupContext, type ListboxGroupContextValue } from "./listbox-group-context";
 import { ListboxItemContext, type ListboxItemContextValue } from "./listbox-item-context";
 import { ListboxScrollContext, type VirtualScrollTo } from "./listbox-scroll-context";
-import { ListboxStateContext } from "./listbox-state-context";
 
 export type ListboxProviderProps<T extends ListboxItem> = {
   value: Omit<
@@ -200,7 +200,7 @@ export function ListboxProvider<T extends ListboxItem>(
   }, [open]);
 
   return (
-    <ListboxStateContext value={{ size, multiple, disabled, readOnly }}>
+    <CollectionStateContext value={{ size, multiple, disabled, readOnly }}>
       <ListboxFilterContext
         value={{ getNavigationProps, filterInputRef, setHasFilter, setFilterKeyword }}
       >
@@ -216,6 +216,6 @@ export function ListboxProvider<T extends ListboxItem>(
           </PopperFloatingContext>
         </ListboxScrollContext>
       </ListboxFilterContext>
-    </ListboxStateContext>
+    </CollectionStateContext>
   );
 }

@@ -1,11 +1,11 @@
 import type { JSX } from "react/jsx-runtime";
 import type { PrimitiveProps } from "../../primitives";
 import { useMergeRefs } from "../../hooks";
+import { useCollectionState } from "../../primitives/collection/collection-state-context";
 import { SearchIcon } from "../../shared/icons";
 import { tx } from "../../utils";
 import { InputBase, type InputBaseProps } from "../input/input-base";
 import { useListboxFilter } from "./listbox-filter-context";
-import { useListboxState } from "./listbox-state-context";
 
 export type ListboxFilterBaseProps = Omit<
   InputBaseProps,
@@ -15,7 +15,7 @@ export type ListboxFilterBaseProps = Omit<
 export function ListboxFilterBase(
   props: PrimitiveProps<"input", ListboxFilterBaseProps, "children" | "type" | "disabled">,
 ): JSX.Element {
-  const { size: listboxSize, disabled } = useListboxState();
+  const { size: listboxSize, disabled } = useCollectionState();
 
   const { getNavigationProps, filterInputRef, setHasFilter, setFilterKeyword } = useListboxFilter();
 

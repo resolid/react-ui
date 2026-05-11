@@ -1,10 +1,10 @@
 import type { JSX } from "react/jsx-runtime";
 import type { PolymorphicProps } from "../../primitives";
+import { useCollectionState } from "../../primitives/collection/collection-state-context";
 import { PopperAnchor } from "../../primitives/popper/popper-anchor";
 import { usePopperState } from "../../primitives/popper/popper-state-context";
 import { dataAttr, tx } from "../../utils";
 import { inputStyles } from "../input/input.styles";
-import { useListboxState } from "../listbox/listbox-state-context";
 import { useComboboxState } from "./combobox-state-context";
 
 export function ComboboxAnchor(props: PolymorphicProps<"div">): JSX.Element {
@@ -12,7 +12,7 @@ export function ComboboxAnchor(props: PolymorphicProps<"div">): JSX.Element {
 
   const { open } = usePopperState();
   const { invalid } = useComboboxState();
-  const { disabled } = useListboxState();
+  const { disabled } = useCollectionState();
 
   return (
     <PopperAnchor
