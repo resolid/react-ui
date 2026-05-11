@@ -1,5 +1,15 @@
 # @resolid/react-ui
 
+## 0.3.0
+
+### Minor Changes
+
+- refactor: rename scrollbar-thin to scrollbar-lite ([`67f228e`](https://github.com/resolid/react-ui/commit/67f228e66e0c622b2552682b3e1dac14003616ac))
+
+### Patch Changes
+
+- feat: add paste support for valid date in DatePicker ([`3cb1716`](https://github.com/resolid/react-ui/commit/3cb171633452fa8aad6ae4ddc22be567aac7c61f))
+
 ## 0.2.4
 
 ### Patch Changes
