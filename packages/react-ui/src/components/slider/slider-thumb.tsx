@@ -154,7 +154,6 @@ function SliderThumbButton(props: PrimitiveProps<"div", SliderThumbButtonProps>)
     <Tooltip open={dragging || hovered || focused} placement={vertical ? "right" : "top"}>
       <TooltipTrigger
         ref={refs}
-        // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role
         role="slider"
         disabled={disabled}
         aria-valuemax={max}

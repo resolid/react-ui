@@ -42,7 +42,6 @@ export function ToastRegion({
 }: ToastRegionProps): JSX.Element {
   return (
     <div
-      // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role
       role="region"
       aria-live="polite"
       style={{ "--sv": spacing } as CSSProperties}

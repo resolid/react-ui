@@ -25,7 +25,7 @@ export function MdxCode(
   };
 
   return (
-    <div role="figure" dir="ltr" className="relative">
+    <div dir="ltr" className="relative">
       <pre
         ref={preRef}
         translate="no"

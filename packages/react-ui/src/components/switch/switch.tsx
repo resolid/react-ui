@@ -101,6 +101,7 @@ export function Switch(props: PrimitiveProps<"input", SwitchProps, "role" | "typ
         readOnly={readOnly}
         onChange={handleChange}
         aria-invalid={ariaAttr(invalid)}
+        aria-checked={ariaAttr(checkedState)}
         {...rest}
       />
       <span
