@@ -24,9 +24,3 @@ export const calendarStatusColorStyles = {
     ranged: "bg-bg-neutral-hovered",
   },
 };
-
-export const timePanelSizeStyles = {
-  sm: { height: 24 },
-  md: { height: 28 },
-  lg: { height: 36 },
-};

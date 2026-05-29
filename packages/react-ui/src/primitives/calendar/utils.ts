@@ -55,13 +55,6 @@ export function getPreviousView(
   return clampView(VIEWS[VIEWS.indexOf(view) - 1]!, minView, maxView);
 }
 
-export function getMonthRange(date: Date): DateRange {
-  return {
-    start: startOfMonth(date),
-    end: endOfMonth(date),
-  };
-}
-
 export function getMonthDates(monthRange: DateRange, weekStartsOn: WeekStartsOn): Date[] {
   const dates: Date[] = [];
 
@@ -178,7 +171,10 @@ export const calendarViewStrategy: Record<CalendarView, CalenderViewStrategy> = 
   month: {
     cols: 7,
     getGrid: (date, weekStartsOn) => {
-      const range = getMonthRange(date);
+      const range = {
+        start: startOfMonth(date),
+        end: endOfMonth(date),
+      };
       const dates = getMonthDates(range, weekStartsOn);
 
       return {
