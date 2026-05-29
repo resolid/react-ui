@@ -1,5 +1,13 @@
 # @resolid/react-ui
 
+## 0.3.1
+
+### Patch Changes
+
+- [`98835da`](https://github.com/resolid/react-ui/commit/98835daa67b9e20405ce8223d12bacf6c12b601c) - chore: update dependencies
+
+- [`d4af67e`](https://github.com/resolid/react-ui/commit/d4af67ef6fd0badf3acb9ada66114be1be406d79) - style: fix oxlint warnings
+
 ## 0.3.0
 
 ### Minor Changes
