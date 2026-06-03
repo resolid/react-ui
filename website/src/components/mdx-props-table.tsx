@@ -15,12 +15,11 @@ export function MdxPropsTable({ componentProps }: { componentProps: PropItem[] }
       </thead>
       <tbody>
         {componentProps.map((prop, i) => {
-          const key = `${prop.name}-${i}`;
-
           return (
             <tr
+              aria-label={prop.name}
               className="md:flex-no-wrap mb-px flex flex-row flex-wrap border-b border-b-bg-subtle pb-px last:mb-0 last:border-none last:pb-0 md:mb-0 md:table-row md:border-none"
-              key={key}
+              key={`${prop.name}-${i}`}
             >
               <td className="block w-full font-bold md:table-cell md:w-auto md:p-2">
                 <div className="me-3 inline-block w-15 bg-bg-subtle p-2 text-sm font-bold md:hidden">
