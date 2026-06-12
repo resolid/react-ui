@@ -13,6 +13,6 @@ allowBuilds:
   esbuild: true
   lefthook: true
 minimumReleaseAgeExclude:
-  - '@resolid/dev'
-  - '@resolid/config'
-  - '@resolid/utils'
+  - "@resolid/dev"
+  - "@resolid/config"
+  - "@resolid/utils"
