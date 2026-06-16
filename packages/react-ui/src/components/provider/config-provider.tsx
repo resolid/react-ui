@@ -1,6 +1,5 @@
-import type { PropsWithChildren } from "react";
-import type { JSX } from "react/jsx-runtime";
-import type { Locale } from "../../primitives";
+import type { PropsWithChildren, ReactNode } from "react";
+import type { Locale } from "../../primitives/locale";
 import type { Direction } from "../../shared/types";
 import { ToastProvider, type ToastProviderProps } from "../toast/toast-provider";
 import { ColorModeProvider, type ColorModeProviderProps } from "./color-mode-provider";
@@ -22,7 +21,7 @@ export function ConfigProvider({
   colorMode,
   toastConfig,
   children,
-}: PropsWithChildren<ConfigProviderProps>): JSX.Element {
+}: PropsWithChildren<ConfigProviderProps>): ReactNode {
   return (
     <LocaleProvider locale={locale}>
       <DirectionContext value={dir}>

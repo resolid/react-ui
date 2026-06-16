@@ -1,13 +1,14 @@
-import type { JSX } from "react/jsx-runtime";
-import type { PolymorphicProps } from "../../primitives";
+import type { ReactNode } from "react";
+import type { PolymorphicProps } from "../../primitives/polymorphic";
 import { useCollectionState } from "../../primitives/collection/collection-state-context";
 import { PopperAnchor } from "../../primitives/popper/popper-anchor";
 import { usePopperState } from "../../primitives/popper/popper-state-context";
-import { dataAttr, tx } from "../../utils";
+import { tx } from "../../utils/clsx";
+import { dataAttr } from "../../utils/dom";
 import { inputStyles } from "../input/input.styles";
 import { useComboboxState } from "./combobox-state-context";
 
-export function ComboboxAnchor(props: PolymorphicProps<"div">): JSX.Element {
+export function ComboboxAnchor(props: PolymorphicProps<"div">): ReactNode {
   const { render, children, className, ...rest } = props;
 
   const { open } = usePopperState();

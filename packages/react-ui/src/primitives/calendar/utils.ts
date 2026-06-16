@@ -1,29 +1,29 @@
 import { chunk, clamp } from "@resolid/utils";
 import {
   addDays,
-  endOfMonth,
-  startOfMonth,
-  startOfWeek,
-  toDate,
+  addMonths,
+  addYears,
   type DateInput,
   type DateRange,
-  type WeekStartsOn,
+  endOfDay,
+  endOfMonth,
+  endOfYear,
+  type FirstWeekContains,
+  formatDate,
+  isAfter,
+  isBefore,
   isDateInRange,
   isSameDay,
   isSameMonth,
   isSameYear,
-  startOfYear,
-  formatDate,
-  addMonths,
-  addYears,
-  endOfDay,
-  startOfDay,
-  endOfYear,
-  weekOfYear,
   type MaybeDateInput,
-  isBefore,
-  isAfter,
-  type FirstWeekContains,
+  startOfDay,
+  startOfMonth,
+  startOfWeek,
+  startOfYear,
+  toDate,
+  weekOfYear,
+  type WeekStartsOn,
 } from "@resolid/utils/date";
 import type { EmptyObject, PrimitiveProps } from "../polymorphic";
 
@@ -55,7 +55,7 @@ export function getPreviousView(
   return clampView(VIEWS[VIEWS.indexOf(view) - 1]!, minView, maxView);
 }
 
-export function getMonthDates(monthRange: DateRange, weekStartsOn: WeekStartsOn): Date[] {
+function getMonthDates(monthRange: DateRange, weekStartsOn: WeekStartsOn): Date[] {
   const dates: Date[] = [];
 
   let current = startOfWeek(monthRange.start, weekStartsOn);
@@ -68,7 +68,7 @@ export function getMonthDates(monthRange: DateRange, weekStartsOn: WeekStartsOn)
   return dates;
 }
 
-export function getYearMonths(input: DateInput): Date[] {
+function getYearMonths(input: DateInput): Date[] {
   const year = toDate(input).getFullYear();
 
   return Array.from({ length: 12 }, (_, i) => new Date(year, i, 1));
@@ -88,7 +88,7 @@ export function getDecadeRange(input: DateInput): DecadeRange {
   };
 }
 
-export function getDecadeYears(range: DecadeRange): Date[] {
+function getDecadeYears(range: DecadeRange): Date[] {
   return Array.from({ length: 12 }, (_, i) => new Date(range.start - 1 + i, 0, 1));
 }
 

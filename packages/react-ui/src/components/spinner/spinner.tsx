@@ -1,6 +1,6 @@
-import type { JSX } from "react/jsx-runtime";
-import type { PrimitiveProps } from "../../primitives";
-import { tx } from "../../utils";
+import type { ReactNode } from "react";
+import type { PrimitiveProps } from "../../primitives/polymorphic";
+import { tx } from "../../utils/clsx";
 import { useLocale } from "../provider/locale-context";
 import { VisuallyHidden } from "../visually-hidden/visually-hidden";
 import { type SpinnerStyleProps, spinnerStyles } from "./spinner.styles";
@@ -25,7 +25,7 @@ export type SpinnerProps = {
   label?: string;
 };
 
-export function Spinner(props: PrimitiveProps<"span", SpinnerProps>): JSX.Element {
+export function Spinner(props: PrimitiveProps<"span", SpinnerProps>): ReactNode {
   const { t } = useLocale();
 
   const {

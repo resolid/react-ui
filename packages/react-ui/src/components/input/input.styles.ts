@@ -1,4 +1,4 @@
-import { tv, type TvReturnType } from "../../utils";
+import { tv, type TvReturnType } from "../../utils/clsx";
 
 export const inputPxStyles = {
   xs: "px-2.5",

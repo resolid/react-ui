@@ -1,6 +1,6 @@
-import type { JSX } from "react/jsx-runtime";
-import { Separator } from "../../components";
+import type { ReactNode } from "react";
+import { Separator } from "../../components/separator/separator";
 
-export function MenuSeparator(): JSX.Element {
+export function MenuSeparator(): ReactNode {
   return <Separator className="my-1.5" />;
 }

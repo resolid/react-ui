@@ -1,8 +1,9 @@
-import type { JSX } from "react/jsx-runtime";
+import type { ReactNode } from "react";
 import { useListItem } from "@floating-ui/react";
 import { isString } from "@resolid/utils";
-import { useMergeRefs } from "../../hooks";
-import { ariaAttr, dataAttr, tx } from "../../utils";
+import { useMergeRefs } from "../../hooks/use-merge-refs";
+import { tx } from "../../utils/clsx";
+import { ariaAttr, dataAttr } from "../../utils/dom";
 import { Polymorphic, type PolymorphicProps } from "../polymorphic";
 import { useMenuItem } from "./menu-item-context";
 
@@ -21,7 +22,7 @@ export type MenuBaseItemProps = {
 
 export function MenuBaseItem(
   props: PolymorphicProps<"div", MenuBaseItemProps, "tabIndex">,
-): JSX.Element {
+): ReactNode {
   const { render, className, ref, children, label, role, disabled = false, ...rest } = props;
 
   const { getItemProps, activeIndex } = useMenuItem();

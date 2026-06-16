@@ -1,15 +1,15 @@
-import type { JSX } from "react/jsx-runtime";
-import type { PrimitiveProps } from "../../primitives";
-import { useMergeRefs } from "../../hooks";
+import type { ReactNode } from "react";
+import type { PrimitiveProps } from "../../primitives/polymorphic";
+import { useMergeRefs } from "../../hooks/use-merge-refs";
 import { PopperFloating } from "../../primitives/popper/popper-floating";
 import { usePopperPositioner } from "../../primitives/popper/popper-positioner-context";
 import { usePopperTransition } from "../../primitives/popper/popper-transtion-context";
 import { getPopperAnimationProps } from "../../primitives/popper/utils";
-import { tx } from "../../utils";
+import { tx } from "../../utils/clsx";
 import { PortalLite } from "../portal/portal-lite";
 import { useTooltipRoot } from "./tooltip-root-context";
 
-export function TooltipContent(props: PrimitiveProps<"div">): JSX.Element | null {
+export function TooltipContent(props: PrimitiveProps<"div">): ReactNode {
   const { children, className, style, ref, ...rest } = props;
 
   const { interactive, contentClassName } = useTooltipRoot();

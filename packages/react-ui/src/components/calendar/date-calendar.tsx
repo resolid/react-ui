@@ -1,4 +1,4 @@
-import type { JSX } from "react/jsx-runtime";
+import type { ReactNode } from "react";
 import type { PrimitiveProps } from "../../primitives";
 import type { FormFieldProps, MultipleValueProps } from "../../shared/types";
 import type { UseControllableViewOptions } from "./use-controllable-view";
@@ -13,7 +13,7 @@ export type DateCalendarProps = MultipleValueProps<string> &
   CalendarBaseProps &
   Partial<UseControllableViewOptions>;
 
-export function DateCalendar(props: PrimitiveProps<"div", DateCalendarProps>): JSX.Element {
+export function DateCalendar(props: PrimitiveProps<"div", DateCalendarProps>): ReactNode {
   const {
     name,
     value,

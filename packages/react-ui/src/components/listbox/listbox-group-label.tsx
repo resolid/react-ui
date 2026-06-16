@@ -1,8 +1,8 @@
-import type { JSX } from "react/jsx-runtime";
-import type { PrimitiveProps } from "../../primitives";
+import type { ReactNode } from "react";
+import type { PrimitiveProps } from "../../primitives/polymorphic";
 import type { InputSize } from "../input/input.styles";
 import type { ListboxItem } from "./use-listbox";
-import { tx } from "../../utils";
+import { tx } from "../../utils/clsx";
 import { useListboxGroup } from "./listbox-group-context";
 import { listboxGroupLabelStyles } from "./listbox.styles";
 
@@ -13,7 +13,7 @@ type ListboxGroupLabelProps = {
 
 export function ListboxGroupLabel(
   props: PrimitiveProps<"div", ListboxGroupLabelProps, "children">,
-): JSX.Element {
+): ReactNode {
   const { group, size, className, ...rest } = props;
 
   const { renderGroupLabel } = useListboxGroup();
@@ -27,7 +27,10 @@ export function ListboxGroupLabel(
       )}
       {...rest}
     >
-      {renderGroupLabel(group)}
+      {
+        // react-doctor-disable-next-line react-doctor/no-render-in-render
+        renderGroupLabel(group)
+      }
     </div>
   );
 }

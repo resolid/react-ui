@@ -1,7 +1,6 @@
-import type { JSX } from "react/jsx-runtime";
 import { omit } from "@resolid/utils";
 import { useVirtualizer } from "@tanstack/react-virtual";
-import { type PropsWithChildren, useLayoutEffect, useMemo } from "react";
+import { type PropsWithChildren, type ReactNode, useLayoutEffect, useMemo } from "react";
 import type { ListboxFlatItem, ListboxNodeItem } from "./use-listbox";
 import { useCollectionState } from "../../primitives/collection/collection-state-context";
 import { usePopperFloating } from "../../primitives/popper/popper-floating-context";
@@ -75,7 +74,7 @@ export function ListboxVirtualizer({
   gap,
   useAnimationFrameWithResizeObserver = false,
   children,
-}: PropsWithChildren<ListboxVirtualizerProps>): JSX.Element {
+}: PropsWithChildren<ListboxVirtualizerProps>): ReactNode {
   const { size } = useCollectionState();
   const { getFloatingProps } = usePopperFloating();
   const { nodeItems } = useListboxCollection();

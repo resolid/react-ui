@@ -1,11 +1,13 @@
-import type { JSX } from "react/jsx-runtime";
 import { useListItem } from "@floating-ui/react";
-import { type FocusEvent, type MouseEvent, useEffectEvent, useRef } from "react";
-import { useButtonProps, useIsomorphicEffect, useMergeRefs } from "../../hooks";
-import { Polymorphic, type PolymorphicProps } from "../../primitives";
+import { type FocusEvent, type MouseEvent, type ReactNode, useEffectEvent, useRef } from "react";
+import { useButtonProps } from "../../hooks/use-button-props";
+import { useIsomorphicEffect } from "../../hooks/use-isomorphic-effect";
+import { useMergeRefs } from "../../hooks/use-merge-refs";
 import { useComposite } from "../../primitives/composite/composite-context";
 import { useOrientation } from "../../primitives/composite/orientation-context";
-import { ariaAttr, dataAttr, tx } from "../../utils";
+import { Polymorphic, type PolymorphicProps } from "../../primitives/polymorphic";
+import { tx } from "../../utils/clsx";
+import { ariaAttr, dataAttr } from "../../utils/dom";
 import { getPanelId, getTabId, useTabs } from "./tabs-context";
 
 type TabsTabProps = {
@@ -23,7 +25,7 @@ type TabsTabProps = {
 
 export function TabsTab(
   props: PolymorphicProps<"button", TabsTabProps, "type" | "role" | "id" | "tabIndex">,
-): JSX.Element {
+): ReactNode {
   const {
     render,
     value,
@@ -55,6 +57,7 @@ export function TabsTab(
       setActiveElement?.(elementRef.current);
 
       if (index > -1 && index != activeIndex) {
+        // react-doctor-disable-next-line react-doctor/rules-of-hooks
         setActive(index);
       }
     }

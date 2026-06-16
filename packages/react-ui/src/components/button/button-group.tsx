@@ -1,11 +1,11 @@
-import type { JSX } from "react/jsx-runtime";
+import type { ReactNode } from "react";
 import type { PrimitiveProps } from "../../primitives";
-import { tx } from "../../utils";
+import { tx } from "../../utils/clsx";
 import { ButtonGroupContext, type ButtonGroupContextValue } from "./button-group-context";
 
 export type ButtonGroupProps = ButtonGroupContextValue;
 
-export function ButtonGroup(props: PrimitiveProps<"div", ButtonGroupProps, "role">): JSX.Element {
+export function ButtonGroup(props: PrimitiveProps<"div", ButtonGroupProps, "role">): ReactNode {
   const {
     children,
     orientation = "horizontal",
@@ -19,6 +19,7 @@ export function ButtonGroup(props: PrimitiveProps<"div", ButtonGroupProps, "role
 
   return (
     <div
+      // react-doctor-disable-next-line react-doctor/prefer-tag-over-role
       role="group"
       className={tx(
         "inline-flex",

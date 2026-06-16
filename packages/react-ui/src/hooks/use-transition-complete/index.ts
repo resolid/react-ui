@@ -11,7 +11,6 @@ export function useTransitionComplete({
   status,
   onCloseComplete,
 }: UseTransitionCompleteOptions): void {
-  // oxlint-disable-next-line react-you-might-not-need-an-effect-js/no-event-handler
   const prevStatus = usePrevious(status);
 
   const onCloseCompleteEvent = useEffectEvent(onCloseComplete);

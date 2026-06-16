@@ -46,7 +46,10 @@ export default defineConfig(({ command }) => {
           remarkGfm,
           remarkGithubAlert,
           remarkDetails,
-          [remarkDocgen, { sourceRoot: join(__dirname, "../packages/react-ui/src/components") }],
+          [
+            remarkDocgen,
+            { sourceRoot: join(import.meta.dirname, "../packages/react-ui/src/components") },
+          ],
           remarkRemove,
         ],
       }),
@@ -63,10 +66,12 @@ export default defineConfig(({ command }) => {
             groups: [
               {
                 name: "react",
+                // oxlint-disable-next-line prefer-named-capture-group
                 test: /node_modules[\\/](react|react-dom|react-is|scheduler)[\\/]/,
               },
               {
                 name: "react-router",
+                // oxlint-disable-next-line prefer-named-capture-group
                 test: /node_modules[\\/](@react-router|react-router)[\\/]/,
               },
               {
@@ -80,7 +85,7 @@ export default defineConfig(({ command }) => {
     },
     resolve: {
       tsconfigPaths: !isBuild,
-      alias: [isBuild && { find: "~", replacement: join(__dirname, "./src") }].filter(
+      alias: [isBuild && { find: "~", replacement: join(import.meta.dirname, "./src") }].filter(
         Boolean,
       ) as AliasOptions,
     },

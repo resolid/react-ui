@@ -1,5 +1,5 @@
 import type { Dispatch, SetStateAction } from "react";
-import { createSafeContext, type SafeContext, type UseSafeContext } from "../index";
+import { createSafeContext, type SafeContext, type UseSafeContext } from "../context";
 
 export type MenuHoverContextValue = { setHoverEnabled: Dispatch<SetStateAction<boolean>> };
 

@@ -1,4 +1,3 @@
-import type { JSX } from "react/jsx-runtime";
 import {
   arrow,
   autoUpdate,
@@ -22,10 +21,19 @@ import {
   useTransitionStatus,
   useTypeahead,
 } from "@floating-ui/react";
-import { type PropsWithChildren, useEffect, useEffectEvent, useRef, useState } from "react";
+import {
+  type PropsWithChildren,
+  type ReactNode,
+  useEffect,
+  useEffectEvent,
+  useRef,
+  useState,
+} from "react";
 import type { DisclosureProps } from "../../shared/types";
 import { useDirection } from "../../components/provider/direction-context";
-import { useDisclosure, usePreventScroll, useTransitionComplete } from "../../hooks";
+import { useDisclosure } from "../../hooks/use-disclosure";
+import { usePreventScroll } from "../../hooks/use-prevent-scroll";
+import { useTransitionComplete } from "../../hooks/use-transition-complete";
 import {
   PopperAnchorContext,
   type PopperAnchorContextValue,
@@ -75,7 +83,7 @@ export type MenuRootProps = DisclosureProps & {
   placement?: Placement;
 };
 
-export function MenuRoot(props: PropsWithChildren<MenuRootProps>): JSX.Element {
+export function MenuRoot(props: PropsWithChildren<MenuRootProps>): ReactNode {
   const parentId = useFloatingParentNodeId();
 
   if (parentId == null) {

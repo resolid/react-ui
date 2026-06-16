@@ -1,6 +1,6 @@
 import type { CSSProperties, RefObject } from "react";
 import type { TransitionStatus } from "../../shared/types";
-import { tx } from "../../utils";
+import { tx } from "../../utils/clsx";
 
 export type PopperFocusProps = {
   /**

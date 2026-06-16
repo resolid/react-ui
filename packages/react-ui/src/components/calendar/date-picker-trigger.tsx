@@ -1,13 +1,12 @@
-import type { JSX } from "react/jsx-runtime";
-import { useRef, type ClipboardEvent } from "react";
-import type { EmptyObject, PrimitiveProps } from "../../primitives";
-import { useMergeRefs } from "../../hooks";
+import { type ClipboardEvent, type ReactNode, useRef } from "react";
+import type { EmptyObject, PrimitiveProps } from "../../primitives/polymorphic";
+import { useMergeRefs } from "../../hooks/use-merge-refs";
 import { InputItem } from "../../primitives/common/input-item";
 import { inputItemSizeStyles } from "../../primitives/common/input-item.styles";
 import { InputTrigger } from "../../primitives/common/input-trigger";
 import { usePopperTrigger } from "../../primitives/popper/popper-trigger-context";
 import { CalendarIcon } from "../../shared/icons";
-import { tx } from "../../utils";
+import { tx } from "../../utils/clsx";
 import { selectChevronStyle, selectSizeStyles } from "../select/select.styles";
 import { useDatePickerState } from "./date-picker-context";
 import { usePickerRoot, usePickerStatus } from "./picker-context";
@@ -15,7 +14,7 @@ import { tryParseDate } from "./utils";
 
 export function DatePickerTrigger(
   props: PrimitiveProps<"div", EmptyObject, "tabIndex">,
-): JSX.Element {
+): ReactNode {
   const { className, children, ref, ...rest } = props;
 
   const triggerRef = useRef<HTMLElement>(null);

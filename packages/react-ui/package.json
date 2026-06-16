@@ -48,7 +48,7 @@
   },
   "dependencies": {
     "@floating-ui/react": "^0.27.19",
-    "@resolid/utils": "^1.6.0",
+    "@resolid/utils": "^1.6.1",
     "@tanstack/react-virtual": "^3.14.2",
     "tailwind-variants": "^3.2.2"
   },
@@ -61,19 +61,19 @@
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.2",
-    "@vitest/pretty-format": "^4.1.8",
+    "@vitest/pretty-format": "^4.1.9",
     "axe-core": "^4.12.1",
     "babel-plugin-react-compiler": "^1.0.0",
     "jsdom": "^29.1.1",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "tsdown": "^0.22.2",
-    "vitest": "^4.1.8"
+    "vitest": "^4.1.9"
   },
   "peerDependencies": {
-    "react": "^19.2.6",
-    "react-dom": "^19.2.6",
-    "tailwindcss": "^4.3.0"
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "tailwindcss": "^4.3.1"
   },
   "reactDoctor": {
     "ignore": {

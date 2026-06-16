@@ -1,6 +1,6 @@
 import type { Dispatch, SetStateAction } from "react";
-import type { ImageLoadStatus } from "../../hooks";
-import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives";
+import type { ImageLoadStatus } from "../../hooks/use-image-load";
+import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives/context";
 
 export type AvatarContextValue = {
   name?: string;

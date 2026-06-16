@@ -1,6 +1,5 @@
-import type { CSSProperties, ChangeEvent } from "react";
-import type { JSX } from "react/jsx-runtime";
-import type { PrimitiveProps } from "../../primitives";
+import type { ChangeEvent, CSSProperties, ReactNode } from "react";
+import type { PrimitiveProps } from "../../primitives/polymorphic";
 import {
   binaryColorShareStyles,
   binarySizeShareStyles,
@@ -8,7 +7,7 @@ import {
   toggleControlShareStyles,
   toggleLabelShareStyles,
 } from "../../shared/styles";
-import { tx } from "../../utils";
+import { tx } from "../../utils/clsx";
 import { type RadioBaseProps, useRadioGroup } from "./radio-group-context";
 
 export type RadioProps = RadioBaseProps & {
@@ -30,7 +29,7 @@ export function Radio(
     RadioProps,
     "name" | "role" | "type" | "checked" | "defaultChecked" | "onChange" | "readOnly" | "required"
   >,
-): JSX.Element {
+): ReactNode {
   const group = useRadioGroup();
 
   const {

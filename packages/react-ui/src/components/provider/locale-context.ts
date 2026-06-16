@@ -1,5 +1,6 @@
 import { get } from "@resolid/utils";
-import { createSafeContext, type Locale, type SafeContext } from "../../primitives";
+import type { Locale } from "../../primitives/locale";
+import { createSafeContext, type SafeContext } from "../../primitives/context";
 
 const [context, hook] = createSafeContext<Locale>({
   name: "LocaleContext",
@@ -22,6 +23,7 @@ export function useLocale(): {
     t: (path, option) => {
       const prop = get(locale, `messages.${path}`, path);
 
+      // oxlint-disable-next-line prefer-named-capture-group
       return prop.replace(/\{(\w+)}/g, (_, key) => `${option?.[key] ?? `{${key}}`}`);
     },
   };

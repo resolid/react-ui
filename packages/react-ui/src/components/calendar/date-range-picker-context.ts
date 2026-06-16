@@ -1,5 +1,5 @@
 import type { DateRangeCalendarRootProps } from "./date-range-calendar-root";
-import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives";
+import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives/context";
 
 export type DateRangePickerStateContextValue = {
   value: string;

@@ -1,14 +1,13 @@
-import type { JSX } from "react/jsx-runtime";
-import { type CSSProperties, useEffect, useState } from "react";
-import type { EmptyObject, PrimitiveProps } from "../../primitives";
-import { useElementTransitionStatus, useIsomorphicEffect, useMergeRefs } from "../../hooks";
+import { type CSSProperties, type ReactNode, useEffect, useState } from "react";
+import type { EmptyObject, PrimitiveProps } from "../../primitives/polymorphic";
+import { useElementTransitionStatus } from "../../hooks/use-element-transition-status";
+import { useIsomorphicEffect } from "../../hooks/use-isomorphic-effect";
+import { useMergeRefs } from "../../hooks/use-merge-refs";
 import { useOrientation } from "../../primitives/composite/orientation-context";
-import { tx } from "../../utils";
+import { tx } from "../../utils/clsx";
 import { useCollapsibleContent } from "./collapsible-content-context";
 
-export function CollapsibleContent(
-  props: PrimitiveProps<"div", EmptyObject, "id">,
-): JSX.Element | null {
+export function CollapsibleContent(props: PrimitiveProps<"div", EmptyObject, "id">): ReactNode {
   const { children, ref, ...rest } = props;
 
   const orientation = useOrientation(true);

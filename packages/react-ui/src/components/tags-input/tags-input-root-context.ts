@@ -1,5 +1,5 @@
 import type { RefObject } from "react";
-import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives";
+import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives/context";
 
 export type TagsInputBaseProps = {
   /**
@@ -36,4 +36,5 @@ const [context, hook] = createSafeContext<TagsInputRootContextValue>({
 });
 
 export const TagsInputRootContext: SafeContext<TagsInputRootContextValue> = context;
+// react-doctor-disable-next-line deslop/unused-export
 export const useTagsInputRoot: UseSafeContext<TagsInputRootContextValue> = hook;

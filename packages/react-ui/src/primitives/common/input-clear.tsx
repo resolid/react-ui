@@ -1,14 +1,13 @@
-import type { MouseEvent } from "react";
-import type { JSX } from "react/jsx-runtime";
+import type { MouseEvent, ReactNode } from "react";
 import type { EmptyObject, PrimitiveProps } from "../polymorphic";
 import { useLocale } from "../../components/provider/locale-context";
 import { CloseIcon } from "../../shared/icons";
-import { tx } from "../../utils";
+import { tx } from "../../utils/clsx";
 import { useInputClear } from "./input-clear-context";
 
 export function InputClear(
   props: PrimitiveProps<"button", EmptyObject, "disabled" | "children">,
-): JSX.Element | null {
+): ReactNode {
   const { className, ...rest } = props;
 
   const { t } = useLocale();

@@ -1,9 +1,9 @@
-import type { JSX } from "react/jsx-runtime";
+import type { ReactNode } from "react";
 import { FloatingFocusManager, FloatingList } from "@floating-ui/react";
 import type { PrimitiveProps } from "../polymorphic";
 import { Portal } from "../../components/portal/portal";
-import { useMergeRefs } from "../../hooks";
-import { tx } from "../../utils";
+import { useMergeRefs } from "../../hooks/use-merge-refs";
+import { tx } from "../../utils/clsx";
 import { PopperFloating } from "../popper/popper-floating";
 import { usePopperPositioner } from "../popper/popper-positioner-context";
 import { usePopperTransition } from "../popper/popper-transtion-context";
@@ -12,7 +12,7 @@ import { useMenu } from "./menu-context";
 import { useMenuHover } from "./menu-hover-context";
 import { MenuItemContext, type MenuItemContextValue } from "./menu-item-context";
 
-export function MenuContent(props: PrimitiveProps<"div">): JSX.Element | null {
+export function MenuContent(props: PrimitiveProps<"div">): ReactNode {
   const { children, className, style, ref, ...rest } = props;
 
   const {

@@ -1,5 +1,5 @@
 import type { DateCalendarRootProps } from "./date-calendar-root";
-import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives";
+import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives/context";
 
 export type DatePickerStateContextValue = {
   value: string | string[];

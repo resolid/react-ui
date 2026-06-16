@@ -1,10 +1,10 @@
-import type { JSX } from "react/jsx-runtime";
+import type { ReactNode } from "react";
 import type { PrimitiveProps } from "../polymorphic";
-import { useMergeRefs } from "../../hooks";
-import { tx } from "../../utils";
+import { useMergeRefs } from "../../hooks/use-merge-refs";
+import { tx } from "../../utils/clsx";
 import { usePopperFloating } from "./popper-floating-context";
 
-export function PopperFloating(props: PrimitiveProps<"div">): JSX.Element {
+export function PopperFloating(props: PrimitiveProps<"div">): ReactNode {
   const { className, children, ref, ...rest } = props;
 
   const { setFloating, getFloatingProps } = usePopperFloating();

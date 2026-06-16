@@ -1,10 +1,17 @@
-import type { JSX } from "react/jsx-runtime";
-import { type MouseEvent, type PointerEvent, useCallback, useEffect, useRef } from "react";
-import { Polymorphic, type PolymorphicProps } from "../../primitives";
+import {
+  type MouseEvent,
+  type PointerEvent,
+  type ReactNode,
+  useEffect,
+  useEffectEvent,
+  useRef,
+} from "react";
+import { Polymorphic, type PolymorphicProps } from "../../primitives/polymorphic";
 import { usePopperAnchor } from "../../primitives/popper/popper-anchor-context";
 import { usePopperDispatch } from "../../primitives/popper/popper-dispatch-context";
 import { usePopperState } from "../../primitives/popper/popper-state-context";
-import { dataAttr, tx } from "../../utils";
+import { tx } from "../../utils/clsx";
+import { dataAttr } from "../../utils/dom";
 
 type ContextMenuTriggerProps = {
   /**
@@ -16,7 +23,7 @@ type ContextMenuTriggerProps = {
 
 export function ContextMenuTrigger(
   props: PolymorphicProps<"div", ContextMenuTriggerProps>,
-): JSX.Element {
+): ReactNode {
   const {
     render,
     disabled = false,
@@ -36,14 +43,18 @@ export function ContextMenuTrigger(
 
   const longPressTimerRef = useRef<number | null>(null);
 
-  const clearLongPress = useCallback(() => {
+  const clearLongPress = () => {
     if (longPressTimerRef.current) {
       window.clearTimeout(longPressTimerRef.current);
       longPressTimerRef.current = null;
     }
-  }, []);
+  };
 
-  useEffect(() => () => clearLongPress(), [clearLongPress]);
+  const clearLongPressEffect = useEffectEvent(() => {
+    clearLongPress();
+  });
+
+  useEffect(() => () => clearLongPressEffect(), []);
 
   const openMenu = ({ clientX, clientY }: { clientX: number; clientY: number }) => {
     setPositionReference({

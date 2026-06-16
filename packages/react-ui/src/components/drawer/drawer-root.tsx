@@ -1,4 +1,4 @@
-import type { JSX } from "react/jsx-runtime";
+import type { ReactNode } from "react";
 import type { PrimitiveProps } from "../../primitives";
 import { DialogRoot, type DialogRootProps } from "../dialog/dialog-root";
 import { DrawerContext, type DrawerContextValue } from "./drawer-context";
@@ -9,7 +9,7 @@ export type DrawerRootProps = Omit<
 > &
   Partial<DrawerContextValue>;
 
-export function DrawerRoot(props: PrimitiveProps<"div", DrawerRootProps, "role">): JSX.Element {
+export function DrawerRoot(props: PrimitiveProps<"div", DrawerRootProps, "role">): ReactNode {
   const { placement = "end", children, ...rest } = props;
 
   return (

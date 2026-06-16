@@ -72,6 +72,7 @@ function isEnabled(config) {
   return false;
 }
 
+// oxlint-disable-next-line prefer-named-capture-group
 const MATTER_RE = /^---(?:\r?\n|\r)(?:([\s\S]*?)(?:\r?\n|\r))?---(?:\r?\n|\r|$)/;
 
 async function contentBuild({ root, contentDir, watch }) {
@@ -127,7 +128,7 @@ async function contentBuild({ root, contentDir, watch }) {
 
           toc.push({
             depth: node.depth,
-            text: text,
+            text,
             slug: slugs.slug(text),
           });
         }

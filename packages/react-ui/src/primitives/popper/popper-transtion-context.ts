@@ -1,5 +1,5 @@
 import type { TransitionStatus } from "../../shared/types";
-import { createSafeContext, type SafeContext, type UseSafeContext } from "../index";
+import { createSafeContext, type SafeContext, type UseSafeContext } from "../context";
 
 export type PopperTransitionContextValue = {
   status: TransitionStatus;

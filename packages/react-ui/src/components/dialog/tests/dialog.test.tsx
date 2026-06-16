@@ -9,9 +9,9 @@ import {
   DialogContent,
   DialogDescription,
   DialogPortal,
+  type DialogProps,
   DialogTitle,
   DialogTrigger,
-  type DialogProps,
 } from "../dialog";
 
 const ComponentUnderTest = (props: DialogProps) => (

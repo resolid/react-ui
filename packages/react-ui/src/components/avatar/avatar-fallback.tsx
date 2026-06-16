@@ -1,7 +1,6 @@
-import type { JSX } from "react/jsx-runtime";
-import { type CSSProperties, useEffect, useState } from "react";
-import type { PrimitiveProps } from "../../primitives";
-import { tx } from "../../utils";
+import { type CSSProperties, type ReactNode, useEffect, useState } from "react";
+import type { PrimitiveProps } from "../../primitives/polymorphic";
+import { tx } from "../../utils/clsx";
 import { useAvatar, useAvatarStatus } from "./avatar-context";
 
 export type AvatarFallbackProps = {
@@ -14,7 +13,7 @@ export type AvatarFallbackProps = {
 
 export function AvatarFallback(
   props: PrimitiveProps<"div", AvatarFallbackProps, "role" | "translate">,
-): JSX.Element | null {
+): ReactNode {
   const { delay = 200, className, style, children, ...rest } = props;
 
   const { name, radiusClass } = useAvatar();
@@ -51,6 +50,7 @@ export function AvatarFallback(
 
   return (
     <div
+      // react-doctor-disable-next-line react-doctor/prefer-tag-over-role
       role="img"
       translate="no"
       aria-label={name}

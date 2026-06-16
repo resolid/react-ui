@@ -2,7 +2,7 @@ import { createSafeContext, type SafeContext, type UseSafeContext } from "../con
 
 export type IndicatorContextValue = {
   listElement: HTMLElement | null;
-  itemElement: HTMLElement | null;
+  activeElement: HTMLElement | null;
 };
 
 const [context, hook] = createSafeContext<IndicatorContextValue>({

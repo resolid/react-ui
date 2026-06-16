@@ -1,4 +1,4 @@
-import { createSafeContext, type SafeContext, type UseSafeContext } from "../index";
+import { createSafeContext, type SafeContext, type UseSafeContext } from "../context";
 
 export type MenuRadioGroupContextValue = {
   /**

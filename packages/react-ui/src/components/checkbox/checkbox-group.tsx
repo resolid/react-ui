@@ -1,9 +1,9 @@
-import type { ChangeEvent } from "react";
-import type { JSX } from "react/jsx-runtime";
-import type { PrimitiveProps } from "../../primitives";
+import type { ChangeEvent, ReactNode } from "react";
+import type { PrimitiveProps } from "../../primitives/polymorphic";
 import type { Orientation } from "../../shared/types";
-import { useControllableState } from "../../hooks";
-import { isInputEvent, tx } from "../../utils";
+import { useControllableState } from "../../hooks/use-controllable-state";
+import { tx } from "../../utils/clsx";
+import { isInputEvent } from "../../utils/dom";
 import { type CheckboxGroupBaseProps, CheckboxGroupContext } from "./checkbox-group-context";
 
 export type CheckboxGroupProps = {
@@ -24,9 +24,7 @@ export type CheckboxGroupProps = {
   orientation?: Orientation;
 } & CheckboxGroupBaseProps;
 
-export function CheckboxGroup(
-  props: PrimitiveProps<"div", CheckboxGroupProps, "role">,
-): JSX.Element {
+export function CheckboxGroup(props: PrimitiveProps<"div", CheckboxGroupProps, "role">): ReactNode {
   const {
     color = "primary",
     size = "md",
@@ -71,6 +69,7 @@ export function CheckboxGroup(
   };
 
   return (
+    // react-doctor-disable-next-line prefer-tag-over-role, react-doctor/prefer-tag-over-role
     <div
       role="group"
       className={tx(

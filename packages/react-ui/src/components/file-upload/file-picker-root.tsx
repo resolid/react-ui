@@ -1,10 +1,9 @@
-import type { JSX } from "react/jsx-runtime";
 import { formatBytes, isNullish, matchesAccept, omit, random } from "@resolid/utils";
-import { type ChangeEvent, useCallback, useReducer, useRef } from "react";
+import { type ChangeEvent, type ReactNode, useReducer, useRef } from "react";
 import type { PrimitiveProps } from "../../primitives";
 import type { FormFieldProps, MultipleValueProps } from "../../shared/types";
-import { useMergeRefs } from "../../hooks";
-import { tx } from "../../utils";
+import { useMergeRefs } from "../../hooks/use-merge-refs";
+import { tx } from "../../utils/clsx";
 import { useLocale } from "../provider/locale-context";
 import { FileHiddenInput } from "./file-hidden-input";
 import {
@@ -65,7 +64,7 @@ export type FilePickerRootProps = FormFieldProps & {
 
 export function FilePickerRoot(
   props: PrimitiveProps<"input", FilePickerRootProps, "type">,
-): JSX.Element {
+): ReactNode {
   const {
     name,
     disabled = false,
@@ -113,24 +112,21 @@ export function FilePickerRoot(
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const onChangeCallback = useCallback(
-    (changed: FileItem[] | FileItem | null) => {
-      queueMicrotask(() => {
-        if (inputRef.current) {
-          const files = convertToDataTransfer(
-            Array.isArray(changed) ? changed : changed ? [changed] : [],
-          );
+  const onChangeCallback = (changed: FileItem[] | FileItem | null) => {
+    queueMicrotask(() => {
+      if (inputRef.current) {
+        const files = convertToDataTransfer(
+          Array.isArray(changed) ? changed : changed ? [changed] : [],
+        );
 
-          if (files) {
-            inputRef.current.files = files;
-          }
+        if (files) {
+          inputRef.current.files = files;
         }
-      });
+      }
+    });
 
-      onChange?.(changed);
-    },
-    [onChange],
-  );
+    onChange?.(changed);
+  };
 
   const addFiles = async (files: File[] | FileList) => {
     if (files.length === 0) {
@@ -152,7 +148,7 @@ export function FilePickerRoot(
 
       if (transformFile) {
         try {
-          // oxlint-disable-next-line no-await-in-loop
+          // oxlint-disable-next-line no-await-in-loop, react-doctor/async-await-in-loop
           transformed = await transformFile(file);
         } catch (e) {
           errors.push(
@@ -220,7 +216,7 @@ export function FilePickerRoot(
         await Promise.all(
           Array.from({ length: upload.maxParallel }, async (_, workerIndex) => {
             for (let i = workerIndex; i < validFiles.length; i += upload.maxParallel) {
-              // oxlint-disable-next-line no-await-in-loop
+              // oxlint-disable-next-line no-await-in-loop, react-doctor/async-await-in-loop
               await upload.uploadFile(validFiles[i]!, updateFile);
             }
           }),

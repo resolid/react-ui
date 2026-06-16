@@ -1,6 +1,6 @@
-import type { JSX } from "react/jsx-runtime";
+import type { ReactNode } from "react";
 import type { PrimitiveProps } from "../../primitives";
-import { dataAttr } from "../../utils";
+import { dataAttr } from "../../utils/dom";
 import { CollapsibleRoot } from "../collapsible/collapsible-root";
 import { useAccordion } from "./accordion-context";
 
@@ -17,7 +17,7 @@ export type AccordionItemProps = {
   disabled?: boolean;
 };
 
-export function AccordionItem(props: PrimitiveProps<"div", AccordionItemProps>): JSX.Element {
+export function AccordionItem(props: PrimitiveProps<"div", AccordionItemProps>): ReactNode {
   const {
     disabled: accordionDisabled,
     duration,

@@ -1,17 +1,17 @@
-import type { JSX } from "react/jsx-runtime";
 import {
+  type FloatingContext,
+  type ReferenceType,
   useClick,
   useDismiss,
   useFloatingRootContext,
   useInteractions,
   useRole,
   useTransitionStatus,
-  type FloatingContext,
-  type ReferenceType,
 } from "@floating-ui/react";
-import { useId, useState, type PropsWithChildren } from "react";
+import { type PropsWithChildren, type ReactNode, useId, useState } from "react";
 import type { DisclosureProps } from "../../shared/types";
-import { useDisclosure, usePreventScroll } from "../../hooks";
+import { useDisclosure } from "../../hooks/use-disclosure";
+import { usePreventScroll } from "../../hooks/use-prevent-scroll";
 import { PopperAriaContext } from "../../primitives/popper/popper-aria-context";
 import {
   PopperDispatchContext,
@@ -33,7 +33,7 @@ import {
   PopperTriggerContext,
   type PopperTriggerContextValue,
 } from "../../primitives/popper/popper-trigger-context";
-import { DialogContext, type DialogBaseProps, type DialogContextValue } from "./dialog-context";
+import { type DialogBaseProps, DialogContext, type DialogContextValue } from "./dialog-context";
 
 export type DialogRootProps = DisclosureProps &
   DialogBaseProps & {
@@ -62,7 +62,7 @@ export type DialogRootProps = DisclosureProps &
     role?: "dialog" | "alertdialog";
   };
 
-export function DialogRoot(props: PropsWithChildren<DialogRootProps>): JSX.Element {
+export function DialogRoot(props: PropsWithChildren<DialogRootProps>): ReactNode {
   const {
     open,
     defaultOpen,

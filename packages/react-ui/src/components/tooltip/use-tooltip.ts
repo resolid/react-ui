@@ -1,11 +1,11 @@
 import {
+  type ReferenceType,
   safePolygon,
   useDismiss,
   useFocus,
   useHover,
   useInteractions,
   useRole,
-  type ReferenceType,
 } from "@floating-ui/react";
 import type { PopperFloatingContextValue } from "../../primitives/popper/popper-floating-context";
 import type { PopperTriggerContextValue } from "../../primitives/popper/popper-trigger-context";

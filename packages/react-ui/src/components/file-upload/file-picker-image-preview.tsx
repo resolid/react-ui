@@ -1,12 +1,11 @@
-import type { SyntheticEvent } from "react";
-import type { JSX } from "react/jsx-runtime";
-import type { EmptyObject, PrimitiveProps } from "../../primitives";
-import { tx } from "../../utils";
+import type { ReactNode, SyntheticEvent } from "react";
+import type { EmptyObject, PrimitiveProps } from "../../primitives/polymorphic";
+import { tx } from "../../utils/clsx";
 import { useFilePickerItem } from "./file-picker-item-context";
 
 export function FilePickerImagePreview(
   props: PrimitiveProps<"img", EmptyObject, "src" | "srcSet" | "onLoad">,
-): JSX.Element {
+): ReactNode {
   const { className, ...rest } = props;
 
   const file = useFilePickerItem();

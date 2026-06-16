@@ -1,9 +1,9 @@
-import type { JSX } from "react/jsx-runtime";
-import type { PrimitiveProps } from "../../primitives";
+import type { ReactNode } from "react";
+import type { PrimitiveProps } from "../../primitives/polymorphic";
 import type { InputSize } from "../input/input.styles";
 import { AngleDownIcon, AngleUpIcon } from "../../shared/icons";
 import { inputTextShareStyles } from "../../shared/styles";
-import { tx } from "../../utils";
+import { tx } from "../../utils/clsx";
 
 export function NumberInputControl(
   props: PrimitiveProps<
@@ -11,7 +11,7 @@ export function NumberInputControl(
     { stepper: "increment" | "decrement"; size: InputSize; inputId: string },
     "type" | "children"
   >,
-): JSX.Element {
+): ReactNode {
   const { className, disabled, stepper, size, inputId, ...rest } = props;
 
   return (

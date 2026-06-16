@@ -1,14 +1,13 @@
-import type { ReactElement } from "react";
-import type { JSX } from "react/jsx-runtime";
+import type { ReactElement, ReactNode } from "react";
 import { FloatingFocusManager } from "@floating-ui/react";
 import { PopperPositioner } from "../../primitives/popper/popper-positioner";
 import { usePopperTransition } from "../../primitives/popper/popper-transtion-context";
 import { getPopperAnimationProps } from "../../primitives/popper/utils";
-import { tx } from "../../utils";
+import { tx } from "../../utils/clsx";
 import { Portal } from "../portal/portal";
 import { usePickerRoot } from "./picker-context";
 
-export function PickerContent({ children }: { children: ReactElement }): JSX.Element | null {
+export function PickerContent({ children }: { children: ReactElement }): ReactNode {
   const { context } = usePickerRoot();
   const { status, mounted, duration } = usePopperTransition();
 

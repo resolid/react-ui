@@ -1,21 +1,21 @@
-import type { JSX } from "react/jsx-runtime";
 import { tokenValues } from "@resolid/utils/date";
-import { type KeyboardEvent, useRef } from "react";
+import { type KeyboardEvent, type ReactNode, useRef } from "react";
 import { useDirection } from "../../components/provider/direction-context";
 import { useLocale } from "../../components/provider/locale-context";
-import { ariaAttr, tx } from "../../utils";
+import { tx } from "../../utils/clsx";
+import { ariaAttr } from "../../utils/dom";
 import { type EmptyObject, Polymorphic, type PrimitiveProps } from "../polymorphic";
 import {
   type CalendarCellRenderState,
   type CalenderCellRender,
   useCalendar,
+  useCalendarCell,
   useCalendarDate,
   useCalendarDateControl,
-  useCalendarCell,
+  useCalendarGrid,
   useCalendarView,
   useCalendarViewControl,
   useCalendarWeek,
-  useCalendarGrid,
 } from "./calendar-context";
 import {
   calendarBaseStyles,
@@ -24,21 +24,21 @@ import {
   calendarSizeStyles,
 } from "./calendar.styles";
 import {
+  calendarAddPageStrategy,
+  calendarAddUnitStrategy,
   calendarInBoundStrategy,
+  calendarIsSamePanelStrategy,
   calendarIsSameStrategy,
   type CalendarView,
   calendarViewStrategy,
-  returnFalse,
   getActiveIndex,
   getPreviousView,
-  calendarIsSamePanelStrategy,
-  calendarAddUnitStrategy,
-  calendarAddPageStrategy,
+  returnFalse,
 } from "./utils";
 
 export function CalendarGrid(
   props: PrimitiveProps<"table", EmptyObject, "children" | "role" | "color">,
-): JSX.Element {
+): ReactNode {
   const { className, ...rest } = props;
 
   const { t, code } = useLocale();
@@ -213,8 +213,9 @@ export function CalendarGrid(
 
   return (
     <table
-      dir={direction}
+      // react-doctor-disable-next-line react-doctor/no-noninteractive-element-to-interactive-role
       role="grid"
+      dir={direction}
       tabIndex={-1}
       className={tx(sizeStyle.textSize, className)}
       onKeyDown={handleKeyDown}
@@ -233,6 +234,7 @@ export function CalendarGrid(
       )}
       <tbody>
         {grid.map((row, idx) => (
+          // oxlint-disable-next-line react/no-array-index-key, react-doctor/no-array-index-as-key
           <tr key={idx}>
             {showWeekNumbers && getWeekNumbers && (
               <td className="p-px">

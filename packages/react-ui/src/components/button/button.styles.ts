@@ -1,5 +1,4 @@
-import type { TVReturnType } from "tailwind-variants";
-import { tv, type VP } from "../../utils";
+import { tv, type TvReturnType, type VP } from "../../utils/clsx";
 
 type ButtonVariants = {
   variant: {
@@ -39,7 +38,7 @@ type ButtonVariants = {
   };
 };
 
-export const buttonStyles: TVReturnType<
+export const buttonStyles: TvReturnType<
   ButtonVariants,
   undefined,
   string[],

@@ -1,18 +1,18 @@
-import type { JSX } from "react/jsx-runtime";
-import { type DateInput, toDate, clampDate } from "@resolid/utils/date";
+import type { ReactNode } from "react";
+import { clampDate, type DateInput, toDate } from "@resolid/utils/date";
 import type { PrimitiveProps } from "../polymorphic";
 import type { CalendarView } from "./utils";
-import { useControllableState } from "../../hooks";
-import { ariaAttr } from "../../utils";
+import { useControllableState } from "../../hooks/use-controllable-state";
+import { ariaAttr } from "../../utils/dom";
 import {
+  CalendarCellContext,
+  type CalendarCellContextValue,
   CalendarContext,
   type CalendarContextValue,
   CalendarDateContext,
   type CalendarDateContextValue,
   CalendarDateControlContext,
   type CalendarDateControlContextValue,
-  CalendarCellContext,
-  type CalendarCellContextValue,
   CalendarViewContext,
   CalendarWeekContext,
   type CalendarWeekContextValue,
@@ -39,7 +39,7 @@ export type CalendarRootProps = {
   Partial<CalenderDateBound> &
   CalendarCellContextValue;
 
-export function CalendarRoot(props: PrimitiveProps<"div", CalendarRootProps>): JSX.Element {
+export function CalendarRoot(props: PrimitiveProps<"div", CalendarRootProps>): ReactNode {
   const {
     size = "md",
     color = "primary",

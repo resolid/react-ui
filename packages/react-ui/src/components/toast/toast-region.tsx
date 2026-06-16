@@ -1,6 +1,5 @@
-import type { CSSProperties } from "react";
-import type { JSX } from "react/jsx-runtime";
-import { tx } from "../../utils";
+import type { CSSProperties, ReactNode } from "react";
+import { tx } from "../../utils/clsx";
 import {
   ToastComponentContext,
   type ToastConfig,
@@ -39,9 +38,10 @@ export function ToastRegion({
   visibleToasts,
   toasts,
   remove,
-}: ToastRegionProps): JSX.Element {
+}: ToastRegionProps): ReactNode {
   return (
     <div
+      // react-doctor-disable-next-line react-doctor/prefer-tag-over-role
       role="region"
       aria-live="polite"
       style={{ "--sv": spacing } as CSSProperties}
@@ -58,7 +58,7 @@ export function ToastRegion({
             key={toast.id}
             value={{
               id: toast.id,
-              placement: placement,
+              placement,
               duration: toast.duration,
               dismiss: toast.dismiss,
               update: toast.update,

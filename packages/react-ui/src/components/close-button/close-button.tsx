@@ -1,9 +1,9 @@
-import type { JSX } from "react/jsx-runtime";
-import type { PrimitiveProps } from "../../primitives";
+import type { ReactNode } from "react";
+import type { PrimitiveProps } from "../../primitives/polymorphic";
 import type { Radius } from "../../shared/utils";
 import type { ButtonStyleProps } from "../button/button.styles";
 import { CloseIcon } from "../../shared/icons";
-import { tx } from "../../utils";
+import { tx } from "../../utils/clsx";
 import { Button } from "../button/button";
 import { useLocale } from "../provider/locale-context";
 
@@ -39,9 +39,7 @@ export type CloseButtonProps = {
   noPadding?: boolean;
 };
 
-export function CloseButton(
-  props: PrimitiveProps<"button", CloseButtonProps, "type">,
-): JSX.Element {
+export function CloseButton(props: PrimitiveProps<"button", CloseButtonProps, "type">): ReactNode {
   const { t } = useLocale();
 
   const {

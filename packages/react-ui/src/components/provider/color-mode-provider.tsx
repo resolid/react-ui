@@ -1,6 +1,6 @@
-import type { JSX } from "react/jsx-runtime";
-import { type PropsWithChildren, useEffect } from "react";
-import { useLocalStorage, useMediaQuery } from "../../hooks";
+import { type PropsWithChildren, type ReactNode, useEffect } from "react";
+import { useLocalStorage } from "../../hooks/use-local-storage";
+import { useMediaQuery } from "../../hooks/use-media-query";
 import {
   type ColorMode,
   ColorModeDispatchContext,
@@ -19,7 +19,7 @@ export function ColorModeProvider({
   children,
   nonce,
   disableTransition = true,
-}: PropsWithChildren<ColorModeProviderProps>): JSX.Element {
+}: PropsWithChildren<ColorModeProviderProps>): ReactNode {
   const osDark = useMediaQuery(COLOR_SCHEME_QUERY);
 
   const [value, setValue] = useLocalStorage<ColorMode>(COLOR_MODE_STORAGE_KEY, "auto");
@@ -71,6 +71,7 @@ export function ColorModeProvider({
       <ColorModeStateContext value={value}>
         <script
           nonce={nonce}
+          // react-doctor-disable-next-line react-doctor/dangerous-html-sink
           dangerouslySetInnerHTML={{
             __html: `try{var dark=localStorage.getItem("${COLOR_MODE_STORAGE_KEY}");(dark?'"dark"'==dark:matchMedia("${COLOR_SCHEME_QUERY}").matches)&&document.documentElement.classList.add("dark-mode")}catch(a){}`,
           }}

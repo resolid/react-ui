@@ -1,5 +1,4 @@
-import type { PropsWithChildren } from "react";
-import type { JSX } from "react/jsx-runtime";
+import type { PropsWithChildren, ReactNode } from "react";
 import type { UsePopoverReturnContexts } from "./use-popover";
 import { PopperAriaContext } from "../../primitives/popper/popper-aria-context";
 import { PopperFloatingContext } from "../../primitives/popper/popper-floating-context";
@@ -14,7 +13,7 @@ export type PopoverProviderProps = {
 export function PopoverProvider({
   value,
   children,
-}: PropsWithChildren<PopoverProviderProps>): JSX.Element {
+}: PropsWithChildren<PopoverProviderProps>): ReactNode {
   const { referenceContext, floatingContext, popoverRootContext, ariaContext, ...popperContexts } =
     value;
 

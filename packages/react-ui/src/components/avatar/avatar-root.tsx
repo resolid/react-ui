@@ -1,10 +1,9 @@
-import type { JSX } from "react/jsx-runtime";
 import { isNumber } from "@resolid/utils";
-import { type CSSProperties, useState } from "react";
-import type { ImageLoadStatus } from "../../hooks";
-import type { PrimitiveProps } from "../../primitives";
+import { type CSSProperties, type ReactNode, useState } from "react";
+import type { ImageLoadStatus } from "../../hooks/use-image-load";
+import type { PrimitiveProps } from "../../primitives/polymorphic";
 import { getRadiusStyleAndClass, hasBackgroundBaseClass } from "../../shared/utils";
-import { tx } from "../../utils";
+import { tx } from "../../utils/clsx";
 import { AvatarContext, AvatarStatusContext } from "./avatar-context";
 import { type AvatarBaseProps, useAvatarGroup } from "./avatar-group-context";
 
@@ -15,7 +14,7 @@ export type AvatarRootProps = {
   name?: string;
 } & AvatarBaseProps;
 
-export function AvatarRoot(props: PrimitiveProps<"div", AvatarRootProps>): JSX.Element {
+export function AvatarRoot(props: PrimitiveProps<"div", AvatarRootProps>): ReactNode {
   const group = useAvatarGroup(true);
 
   const { name, size: sizeProp, radius: radiusProp, className, style, children, ...rest } = props;

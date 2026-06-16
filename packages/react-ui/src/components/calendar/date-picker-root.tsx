@@ -1,5 +1,11 @@
-import type { JSX } from "react/jsx-runtime";
-import { type Dispatch, type PropsWithChildren, type SetStateAction, useRef } from "react";
+import { isArray } from "@resolid/utils";
+import {
+  type Dispatch,
+  type PropsWithChildren,
+  type ReactNode,
+  type SetStateAction,
+  useRef,
+} from "react";
 import type { DisclosureProps } from "../../shared/types";
 import type { InputSize } from "../input/input.styles";
 import type { DateCalendarProps } from "./date-calendar";
@@ -40,7 +46,7 @@ export type DatePickerRootProps = DisclosureProps & {
   size?: InputSize;
 } & Omit<DateCalendarProps, "color" | "size">;
 
-export function DatePickerRoot(props: PropsWithChildren<DatePickerRootProps>): JSX.Element {
+export function DatePickerRoot(props: PropsWithChildren<DatePickerRootProps>): ReactNode {
   const {
     open,
     defaultOpen,
@@ -92,18 +98,16 @@ export function DatePickerRoot(props: PropsWithChildren<DatePickerRootProps>): J
 
   const stateContextValue: DatePickerStateContextValue = {
     value: formatedValue,
-    format: format,
+    format,
     update: (d) => {
       if (setFocusedValueRef.current) {
         setFocusedValueRef.current(d);
       }
 
       setValue((prev) => {
-        if (Array.isArray(prev)) {
-          return [...prev.filter((p) => formatBaseDate(p, format) != formatBaseDate(d, format)), d];
-        } else {
-          return d;
-        }
+        return isArray(prev)
+          ? [...prev.filter((p) => formatBaseDate(p, format) != formatBaseDate(d, format)), d]
+          : d;
       });
     },
     remove: (v) => {

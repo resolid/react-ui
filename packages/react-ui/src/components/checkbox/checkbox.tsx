@@ -1,8 +1,9 @@
-import type { JSX } from "react/jsx-runtime";
-import { type ChangeEvent, type CSSProperties, useRef } from "react";
-import type { PrimitiveProps } from "../../primitives";
+import { type ChangeEvent, type CSSProperties, type ReactNode, useRef } from "react";
+import type { PrimitiveProps } from "../../primitives/polymorphic";
 import type { CheckedValueProps } from "../../shared/types";
-import { useControllableState, useIsomorphicEffect, useMergeRefs } from "../../hooks";
+import { useControllableState } from "../../hooks/use-controllable-state";
+import { useIsomorphicEffect } from "../../hooks/use-isomorphic-effect";
+import { useMergeRefs } from "../../hooks/use-merge-refs";
 import { CheckedIcon, IndeterminateIcon } from "../../shared/icons";
 import {
   binaryColorShareStyles,
@@ -11,7 +12,8 @@ import {
   toggleControlShareStyles,
   toggleLabelShareStyles,
 } from "../../shared/styles";
-import { ariaAttr, tx } from "../../utils";
+import { tx } from "../../utils/clsx";
+import { ariaAttr } from "../../utils/dom";
 import { type CheckboxBaseProps, useCheckboxGroup } from "./checkbox-group-context";
 
 export type CheckboxProps = CheckedValueProps &
@@ -42,7 +44,7 @@ export type CheckboxProps = CheckedValueProps &
 
 export function Checkbox(
   props: PrimitiveProps<"input", CheckboxProps, "role" | "type">,
-): JSX.Element {
+): ReactNode {
   const group = useCheckboxGroup(true);
 
   const {

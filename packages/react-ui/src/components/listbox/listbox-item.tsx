@@ -1,10 +1,11 @@
-import type { JSX } from "react/jsx-runtime";
-import type { AnyObject, PrimitiveProps } from "../../primitives";
-import { useMergeRefs } from "../../hooks";
+import type { ReactNode } from "react";
+import type { AnyObject, PrimitiveProps } from "../../primitives/polymorphic";
+import { useMergeRefs } from "../../hooks/use-merge-refs";
 import { CheckIcon } from "../../shared/icons";
 import { getInteractiveHandlers } from "../../shared/utils";
-import { ariaAttr, dataAttr, tx } from "../../utils";
-import { type InputSize, inputPxStyles } from "../input/input.styles";
+import { tx } from "../../utils/clsx";
+import { ariaAttr, dataAttr } from "../../utils/dom";
+import { inputPxStyles, type InputSize } from "../input/input.styles";
 import { useListboxFields } from "./listbox-field-context";
 import { useListboxItem } from "./listbox-item-context";
 import { listboxItemStyles } from "./listbox.styles";
@@ -19,7 +20,7 @@ type ListboxItemProps = {
 
 export function ListboxItem(
   props: PrimitiveProps<"div", ListboxItemProps, "tabIndex" | "children">,
-): JSX.Element {
+): ReactNode {
   const {
     item,
     size,
@@ -90,6 +91,7 @@ export function ListboxItem(
   return (
     <div
       ref={refs}
+      // react-doctor-disable-next-line react-doctor/prefer-tag-over-role
       role="option"
       data-active={dataAttr(active)}
       aria-selected={ariaAttr(selected)}
@@ -104,13 +106,16 @@ export function ListboxItem(
       )}
       {...getItemProps({
         ...rest,
-        tabIndex: tabIndex,
+        tabIndex,
         onClick: handleClick,
         onKeyDown: handleKeyDown,
         onKeyUp: handleKeyUp,
       })}
     >
-      {renderItem(item, { active, selected })}
+      {
+        // react-doctor-disable-next-line react-doctor/no-render-in-render
+        renderItem(item, { active, selected })
+      }
       {checkmark && selected && <CheckIcon />}
     </div>
   );

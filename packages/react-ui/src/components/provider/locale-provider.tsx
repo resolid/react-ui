@@ -1,6 +1,5 @@
-import type { PropsWithChildren } from "react";
-import type { JSX } from "react/jsx-runtime";
-import type { Locale } from "../../primitives";
+import type { PropsWithChildren, ReactNode } from "react";
+import type { Locale } from "../../primitives/locale";
 import enUS from "../../locales/en-US";
 import { LocaleContext } from "./locale-context";
 
@@ -11,6 +10,6 @@ export type LocaleProviderProps = {
 export function LocaleProvider({
   locale = enUS,
   children,
-}: PropsWithChildren<LocaleProviderProps>): JSX.Element {
+}: PropsWithChildren<LocaleProviderProps>): ReactNode {
   return <LocaleContext value={locale}>{children}</LocaleContext>;
 }

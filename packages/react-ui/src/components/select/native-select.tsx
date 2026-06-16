@@ -1,8 +1,8 @@
-import type { JSX } from "react/jsx-runtime";
-import type { PrimitiveProps } from "../../primitives";
+import type { ReactNode } from "react";
+import type { PrimitiveProps } from "../../primitives/polymorphic";
 import type { FormInputFieldProps } from "../../shared/types";
 import { inputTextShareStyles } from "../../shared/styles";
-import { tx } from "../../utils";
+import { tx } from "../../utils/clsx";
 import { inputPyStyles, inputStyles, selectHeightStyles } from "../input/input.styles";
 import { SelectChevron } from "./select-chevron";
 import { type SelectSize, selectSizeStyles } from "./select.styles";
@@ -17,7 +17,7 @@ export type NativeSelectProps = FormInputFieldProps & {
 
 export function NativeSelect(
   props: PrimitiveProps<"select", NativeSelectProps, "multiple">,
-): JSX.Element {
+): ReactNode {
   const { size = "md", disabled = false, invalid = false, children, className, ...rest } = props;
 
   const sizeStyle = selectSizeStyles[size];

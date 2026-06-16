@@ -1,10 +1,8 @@
-import type { JSX } from "react/jsx-runtime";
+import type { ReactNode } from "react";
 import type { EmptyObject, PrimitiveProps } from "../../primitives";
 import { useBreadcrumb } from "./breadcrumb-context";
 
-export function BreadcrumbSeparator(
-  props: PrimitiveProps<"span", EmptyObject, "role">,
-): JSX.Element {
+export function BreadcrumbSeparator(props: PrimitiveProps<"span", EmptyObject, "role">): ReactNode {
   const { separator } = useBreadcrumb();
 
   return (

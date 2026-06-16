@@ -1,6 +1,6 @@
-import type { JSX } from "react/jsx-runtime";
-import type { EmptyObject, PrimitiveProps } from "../../primitives";
-import { tx } from "../../utils";
+import type { ReactNode } from "react";
+import type { EmptyObject, PrimitiveProps } from "../../primitives/polymorphic";
+import { tx } from "../../utils/clsx";
 import { useLocale } from "../provider/locale-context";
 import { useFilePickerAction } from "./file-picker-context";
 import { useFilePickerItem } from "./file-picker-item-context";
@@ -8,7 +8,7 @@ import { useFileUpload } from "./file-upload-context";
 
 export function FileUploadButton(
   props: PrimitiveProps<"button", EmptyObject, "type" | "onClick" | "children">,
-): JSX.Element | null {
+): ReactNode {
   const { className, ...rest } = props;
 
   const { t } = useLocale();

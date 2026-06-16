@@ -18,22 +18,26 @@ export function useImageLoad(options: UseImageLoadOptions): ImageLoadStatus {
 
   const [loadStatus, setLoadStatus] = useState<ImageLoadStatus>("idle");
 
-  const handleStatus = useEffectEvent((status: ImageLoadStatus) => {
+  const setLoadStatusEffect = useEffectEvent((status: ImageLoadStatus) => {
     setLoadStatus(status);
   });
 
   useIsomorphicEffect(() => {
     if (!src || !isBrowser) {
-      handleStatus("error");
+      // react-doctor-disable-next-line react-doctor/rules-of-hooks
+      setLoadStatusEffect("error");
       return;
     }
 
     const image = new window.Image();
 
-    handleStatus("loading");
+    // react-doctor-disable-next-line react-doctor/rules-of-hooks
+    setLoadStatusEffect("loading");
 
-    image.onload = () => handleStatus("loaded");
-    image.onerror = () => handleStatus("error");
+    // react-doctor-disable-next-line react-doctor/rules-of-hooks
+    image.onload = () => setLoadStatusEffect("loaded");
+    // react-doctor-disable-next-line react-doctor/rules-of-hooks
+    image.onerror = () => setLoadStatusEffect("error");
 
     if (crossOrigin) {
       image.crossOrigin = crossOrigin;

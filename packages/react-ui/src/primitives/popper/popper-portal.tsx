@@ -1,9 +1,8 @@
-import type { PropsWithChildren } from "react";
-import type { JSX } from "react/jsx-runtime";
+import type { PropsWithChildren, ReactNode } from "react";
 import { Portal } from "../../components/portal/portal";
 import { usePopperTransition } from "./popper-transtion-context";
 
-export function PopperPortal({ children }: PropsWithChildren): JSX.Element | null {
+export function PopperPortal({ children }: PropsWithChildren): ReactNode {
   const { mounted } = usePopperTransition();
 
   if (!mounted) {

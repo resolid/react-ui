@@ -16,6 +16,7 @@ export function css(
   return { ...a, ...b };
 }
 
+// oxlint-disable-next-line prefer-named-capture-group
 const CSS_REGEX = /((?:--)?(?:\w+-?)+)\s*:\s*([^;]*)/g;
 
 function serialize(style: string): Record<string, string> {

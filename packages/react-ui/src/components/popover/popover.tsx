@@ -1,5 +1,4 @@
-import type { ComponentProps, PropsWithChildren } from "react";
-import type { JSX } from "react/jsx-runtime";
+import type { ComponentProps, PropsWithChildren, ReactNode } from "react";
 import { PopperArrow, type PopperArrowProps } from "../../primitives/popper/popper-arrow";
 import { PopperTrigger } from "../../primitives/popper/popper-trigger";
 import { PopoverProvider } from "./popover-provider";
@@ -7,7 +6,7 @@ import { type PopoverProps, usePopover } from "./use-popover";
 
 export type { PopoverProps };
 
-export function Popover(props: PropsWithChildren<PopoverProps>): JSX.Element {
+export function Popover(props: PropsWithChildren<PopoverProps>): ReactNode {
   const { children, ...rest } = props;
 
   const popover = usePopover(rest);
@@ -17,11 +16,11 @@ export function Popover(props: PropsWithChildren<PopoverProps>): JSX.Element {
 
 export function PopoverTrigger(
   props: Omit<ComponentProps<typeof PopperTrigger>, "active">,
-): JSX.Element {
+): ReactNode {
   return <PopperTrigger active {...props} />;
 }
 
-export function PopoverArrow(props: PopperArrowProps): JSX.Element {
+export function PopoverArrow(props: PopperArrowProps): ReactNode {
   const { width = 11, height = 6, ...rest } = props;
 
   return <PopperArrow width={width} height={height} {...rest} />;

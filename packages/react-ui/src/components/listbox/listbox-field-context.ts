@@ -1,5 +1,5 @@
 import type { ListboxItem, UseListboxResult } from "./use-listbox";
-import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives";
+import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives/context";
 
 export type ListboxFieldsContextValue = Pick<
   UseListboxResult<ListboxItem>,

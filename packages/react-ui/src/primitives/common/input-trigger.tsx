@@ -1,4 +1,4 @@
-import type { JSX } from "react/jsx-runtime";
+import type { ReactNode } from "react";
 import type { PrimitiveProps } from "../polymorphic";
 import {
   inputPyStyles,
@@ -7,7 +7,8 @@ import {
   selectHeightStyles,
 } from "../../components/input/input.styles";
 import { inputTextShareStyles } from "../../shared/styles";
-import { ariaAttr, dataAttr, tx } from "../../utils";
+import { tx } from "../../utils/clsx";
+import { ariaAttr, dataAttr } from "../../utils/dom";
 
 export type InputTriggerBaseProps = {
   disabled: boolean;
@@ -21,7 +22,7 @@ export function InputTrigger(
     "div",
     InputTriggerBaseProps & { active: boolean; sizeStyle: { select: string; root: string } }
   >,
-): JSX.Element {
+): ReactNode {
   const { disabled, required, invalid, active, size, sizeStyle, className, tabIndex, ...rest } =
     props;
 

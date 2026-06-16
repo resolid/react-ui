@@ -1,6 +1,6 @@
 import type { Direction } from "../../shared/types";
 import type { SliderColor, SliderSize } from "./slider.styles";
-import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives";
+import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives/context";
 
 export type SliderContextValue = {
   /**

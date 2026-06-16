@@ -11,11 +11,12 @@ import {
   useRole,
   useTransitionStatus,
 } from "@floating-ui/react";
-import { type JSX, type ReactNode, useRef } from "react";
-import type { PrimitiveProps } from "../../primitives";
+import { type ReactNode, useRef } from "react";
+import type { PrimitiveProps } from "../../primitives/polymorphic";
 import type { DisclosureProps } from "../../shared/types";
 import type { ListboxRootProps } from "../listbox/listbox-root";
-import { useDisclosure, useMergeRefs } from "../../hooks";
+import { useDisclosure } from "../../hooks/use-disclosure";
+import { useMergeRefs } from "../../hooks/use-merge-refs";
 import { InputItem } from "../../primitives/common/input-item";
 import { inputItemSizeStyles } from "../../primitives/common/input-item.styles";
 import { InputTrigger } from "../../primitives/common/input-trigger";
@@ -26,7 +27,7 @@ import {
   type PopperPositionerContextValue,
 } from "../../primitives/popper/popper-positioner-context";
 import { getPopperAnimationProps } from "../../primitives/popper/utils";
-import { tx } from "../../utils";
+import { tx } from "../../utils/clsx";
 import { ListboxProvider } from "../listbox/listbox-provider";
 import { type ListboxItem, useListbox } from "../listbox/use-listbox";
 import { Portal } from "../portal/portal";
@@ -55,7 +56,7 @@ export type SelectRootProps<T extends ListboxItem = ListboxItem> = DisclosurePro
 
 export function SelectRoot<T extends ListboxItem>(
   props: PrimitiveProps<"div", SelectRootProps<T>>,
-): JSX.Element {
+): ReactNode {
   const {
     open,
     defaultOpen,
@@ -231,12 +232,20 @@ export function SelectRoot<T extends ListboxItem>(
                   className="bg-bg-subtlest"
                   onRemove={() => handleRemove(item)}
                 >
-                  {renderValueFn(item)}
+                  {
+                    // react-doctor-disable-next-line react-doctor/no-render-in-render
+                    renderValueFn(item)
+                  }
                 </InputItem>
               ))}
             </div>
           ) : (
-            <div className={inputItemSizeStyles[size]}>{renderValueFn(selectedItems[0]!)}</div>
+            <div className={inputItemSizeStyles[size]}>
+              {
+                // react-doctor-disable-next-line react-doctor/no-render-in-render
+                renderValueFn(selectedItems[0]!)
+              }
+            </div>
           )
         ) : (
           <div className={tx("text-fg-placeholder", inputItemSizeStyles[size])}>{placeholder}</div>

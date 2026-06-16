@@ -1,4 +1,4 @@
-import type { JSX } from "react";
+import type { ReactNode } from "react";
 import type { PrimitiveProps } from "../../primitives";
 
 export type VisuallyHiddenInputProps<T> = {
@@ -17,7 +17,7 @@ export function VisuallyHiddenInput<T>({
   required,
   disabled,
   ...rest
-}: PrimitiveProps<"input", VisuallyHiddenInputProps<T>>): JSX.Element | JSX.Element[] {
+}: PrimitiveProps<"input", VisuallyHiddenInputProps<T>>): ReactNode | ReactNode[] {
   if (Array.isArray(value)) {
     if (value.length == 0 && required) {
       return (

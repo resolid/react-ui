@@ -3,7 +3,7 @@ import {
   alertAndBadgeShareStyles,
   type AlertAndBadgeVariants,
 } from "../../shared/styles";
-import { tv, type TvReturnType, type VP } from "../../utils";
+import { tv, type TvReturnType, type VP } from "../../utils/clsx";
 
 export const alertStyles: TvReturnType<
   AlertAndBadgeVariants,

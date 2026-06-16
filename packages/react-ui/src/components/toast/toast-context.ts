@@ -1,6 +1,6 @@
 import type { Alignment } from "@floating-ui/react";
 import type { ReactElement } from "react";
-import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives";
+import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives/context";
 
 export type ToastId = string | number;
 

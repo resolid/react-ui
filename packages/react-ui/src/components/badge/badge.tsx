@@ -1,7 +1,7 @@
-import type { JSX } from "react/jsx-runtime";
-import { Polymorphic, type PolymorphicProps } from "../../primitives";
+import type { ReactNode } from "react";
+import { Polymorphic, type PolymorphicProps } from "../../primitives/polymorphic";
 import { getRadiusStyleAndClass, type Radius } from "../../shared/utils";
-import { tx } from "../../utils";
+import { tx } from "../../utils/clsx";
 import { type BadgeStyleProps, badgeStyles } from "./badge.styles";
 
 export type BadgeProps = {
@@ -24,7 +24,7 @@ export type BadgeProps = {
   radius?: Radius;
 };
 
-export function Badge(props: PolymorphicProps<"span", BadgeProps>): JSX.Element {
+export function Badge(props: PolymorphicProps<"span", BadgeProps>): ReactNode {
   const {
     render,
     color = "primary",

@@ -1,6 +1,7 @@
-import type { JSX } from "react/jsx-runtime";
+import type { ReactNode } from "react";
 import type { PolymorphicProps } from "../polymorphic";
-import { ariaAttr, tx } from "../../utils";
+import { tx } from "../../utils/clsx";
+import { ariaAttr } from "../../utils/dom";
 import { MenuItem, type MenuItemProps } from "./menu-item";
 import { type CheckedState, MenuItemIndicatorContext } from "./menu-item-indicator-context";
 
@@ -18,7 +19,7 @@ export type MenuCheckboxItemProps = MenuItemProps & {
 
 export function MenuCheckboxItem(
   props: PolymorphicProps<"div", MenuCheckboxItemProps, "role" | "tabIndex">,
-): JSX.Element {
+): ReactNode {
   const { checked = false, className, onChange, onSelect, children, ...rest } = props;
 
   const handleSelect = () => {

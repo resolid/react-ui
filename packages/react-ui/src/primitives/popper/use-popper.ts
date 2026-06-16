@@ -20,7 +20,7 @@ import type { PopperDispatchContextValue } from "./popper-dispatch-context";
 import type { PopperPositionerContextValue } from "./popper-positioner-context";
 import type { PopperStateContextValue } from "./popper-state-context";
 import type { PopperTransitionContextValue } from "./popper-transtion-context";
-import { useDisclosure } from "../../hooks";
+import { useDisclosure } from "../../hooks/use-disclosure";
 
 export type UsePopperProps = DisclosureProps & {
   /**

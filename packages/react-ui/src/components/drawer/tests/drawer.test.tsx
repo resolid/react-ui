@@ -9,9 +9,9 @@ import {
   DrawerContent,
   DrawerDescription,
   DrawerPortal,
+  type DrawerProps,
   DrawerTitle,
   DrawerTrigger,
-  type DrawerProps,
 } from "../drawer";
 
 const ComponentUnderTest = (props: DrawerProps) => (

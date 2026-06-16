@@ -1,5 +1,4 @@
-import type { PropsWithChildren } from "react";
-import type { JSX } from "react/jsx-runtime";
+import type { PropsWithChildren, ReactNode } from "react";
 import type { DisclosureProps } from "../../shared/types";
 import type { InputSize } from "../input/input.styles";
 import type { DateRangeCalendarProps } from "./date-range-calendar";
@@ -40,9 +39,7 @@ export type DateRangePickerRootProps = DisclosureProps & {
   size?: InputSize;
 } & Omit<DateRangeCalendarProps, "color" | "size">;
 
-export function DateRangePickerRoot(
-  props: PropsWithChildren<DateRangePickerRootProps>,
-): JSX.Element {
+export function DateRangePickerRoot(props: PropsWithChildren<DateRangePickerRootProps>): ReactNode {
   const {
     open,
     defaultOpen,

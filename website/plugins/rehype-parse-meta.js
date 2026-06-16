@@ -1,10 +1,12 @@
 const metaValues = [
   {
     name: "online",
+    // oxlint-disable-next-line prefer-named-capture-group
     regex: /online=["']?([a-zA-Z]+)["']?/,
   },
   {
     name: "codeGroup",
+    // oxlint-disable-next-line prefer-named-capture-group
     regex: /\[([^\]]+)]/,
   },
 ];

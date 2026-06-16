@@ -1,16 +1,13 @@
-import type { JSX } from "react/jsx-runtime";
-import { useEffect, useState } from "react";
-import type { PrimitiveProps } from "../../primitives";
-import {
-  useElementTransitionStatus,
-  useEventListener,
-  useTimeout,
-  useTransitionComplete,
-} from "../../hooks";
+import { type ReactNode, useEffect, useState } from "react";
+import type { PrimitiveProps } from "../../primitives/polymorphic";
+import { useElementTransitionStatus } from "../../hooks/use-element-transition-status";
+import { useEventListener } from "../../hooks/use-event-listener";
+import { useTimeout } from "../../hooks/use-timeout";
+import { useTransitionComplete } from "../../hooks/use-transition-complete";
 import { PopperAriaContext } from "../../primitives/popper/popper-aria-context";
 import { PopperDispatchContext } from "../../primitives/popper/popper-dispatch-context";
 import { getPopperAnimationProps } from "../../primitives/popper/utils";
-import { tx } from "../../utils";
+import { tx } from "../../utils/clsx";
 import { Alert, type AlertProps } from "../alert/alert";
 import { useToastComponent } from "./toast-context";
 
@@ -27,9 +24,7 @@ export type ToastRootProps = AlertProps & {
   onDismiss?: () => void;
 };
 
-export function ToastRoot(
-  props: PrimitiveProps<"div", ToastRootProps, "role" | "id">,
-): JSX.Element | null {
+export function ToastRoot(props: PrimitiveProps<"div", ToastRootProps, "role" | "id">): ReactNode {
   const {
     priority = "high",
     onDismiss,
@@ -101,6 +96,7 @@ export function ToastRoot(
 
   return (
     <div
+      // react-doctor-disable-next-line react-doctor/prefer-tag-over-role
       role="status"
       aria-live={priority == "high" ? "assertive" : "polite"}
       aria-atomic="true"

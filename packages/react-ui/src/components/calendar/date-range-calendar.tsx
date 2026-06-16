@@ -1,4 +1,4 @@
-import type { JSX } from "react/jsx-runtime";
+import type { ReactNode } from "react";
 import type { PrimitiveProps } from "../../primitives";
 import type { CalendarView } from "../../primitives/calendar/utils";
 import type { FormFieldProps, ValueProp } from "../../shared/types";
@@ -29,9 +29,7 @@ export type DateRangeCalendarProps = ValueProp<string | null, string> & {
   FormFieldProps &
   CalendarBaseProps;
 
-export function DateRangeCalendar(
-  props: PrimitiveProps<"div", DateRangeCalendarProps>,
-): JSX.Element {
+export function DateRangeCalendar(props: PrimitiveProps<"div", DateRangeCalendarProps>): ReactNode {
   const {
     name,
     required = false,

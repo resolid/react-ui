@@ -18,14 +18,15 @@
     "lint": "pnpm run -r --if-present lint",
     "start": "pnpm run --filter website start",
     "test:packages": "pnpm run --filter @resolid/* test",
-    "typecheck": "pnpm run -r --if-present typecheck"
+    "typecheck": "pnpm run -r --if-present typecheck",
+    "doctor": "npx react-doctor@latest packages/react-ui --verbose -y"
   },
   "devDependencies": {
     "@changesets/changelog-github": "^0.7.0",
     "@changesets/cli": "^2.31.0",
     "@commitlint/cli": "^20.5.3",
     "@commitlint/config-conventional": "^20.5.3",
-    "@resolid/config": "^5.3.23",
+    "@resolid/config": "^5.3.24",
     "@tailwindcss/language-server": "^0.14.29",
     "@types/node": "^24.13.2",
     "eslint-plugin-react-hooks": "^7.1.1",
@@ -39,5 +40,5 @@
   "engines": {
     "node": "^22.13.0 || >=24"
   },
-  "packageManager": "pnpm@11.6.0"
+  "packageManager": "pnpm@11.7.0"
 }

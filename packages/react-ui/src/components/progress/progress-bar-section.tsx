@@ -1,9 +1,8 @@
-import type { CSSProperties } from "react";
-import type { JSX } from "react/jsx-runtime";
+import type { CSSProperties, ReactNode } from "react";
 import { isNumber } from "@resolid/utils";
-import type { PrimitiveProps } from "../../primitives";
+import type { PrimitiveProps } from "../../primitives/polymorphic";
 import { hasBackgroundBaseClass } from "../../shared/utils";
-import { tx } from "../../utils";
+import { tx } from "../../utils/clsx";
 import { progressBarSizeStyles, progressColorStyles } from "./progress-bar.styles";
 import { useProgressBase } from "./progress-context";
 
@@ -34,7 +33,7 @@ export type ProgressBarSectionProps = {
 
 export function ProgressBarSection(
   props: PrimitiveProps<"div", ProgressBarSectionProps>,
-): JSX.Element {
+): ReactNode {
   const {
     percent,
     color = "primary",
@@ -62,6 +61,7 @@ export function ProgressBarSection(
 
   return (
     <div
+      // react-doctor-disable-next-line react-doctor/prefer-tag-over-role
       role="progressbar"
       aria-valuemin={0}
       aria-valuemax={100}

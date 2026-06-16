@@ -1,11 +1,10 @@
-import type { ComponentProps } from "react";
-import type { JSX } from "react/jsx-runtime";
+import type { ComponentProps, ReactNode } from "react";
 import { PopperTrigger } from "../popper/popper-trigger";
 import { useMenuHover } from "./menu-hover-context";
 
 export function MenuTrigger(
   props: Omit<ComponentProps<typeof PopperTrigger>, "active">,
-): JSX.Element {
+): ReactNode {
   const { setHoverEnabled } = useMenuHover();
 
   return (

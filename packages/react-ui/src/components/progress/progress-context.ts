@@ -1,5 +1,5 @@
 import type { progressBarSizeStyles } from "./progress-bar.styles";
-import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives";
+import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives/context";
 
 export type ProgressBaseContextValue = {
   /**

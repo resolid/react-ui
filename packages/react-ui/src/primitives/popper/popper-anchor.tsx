@@ -1,9 +1,9 @@
-import type { JSX } from "react/jsx-runtime";
-import { useMergeRefs } from "../../hooks";
+import type { ReactNode } from "react";
+import { useMergeRefs } from "../../hooks/use-merge-refs";
 import { Polymorphic, type PolymorphicProps } from "../polymorphic";
 import { usePopperAnchor } from "./popper-anchor-context";
 
-export function PopperAnchor(props: PolymorphicProps<"div">): JSX.Element {
+export function PopperAnchor(props: PolymorphicProps<"div">): ReactNode {
   const { render, ref, ...rest } = props;
 
   const { setPositionReference } = usePopperAnchor();

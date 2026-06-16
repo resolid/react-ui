@@ -1,11 +1,18 @@
-import type { ChangeEvent, ClipboardEvent, FocusEvent, InputEvent, KeyboardEvent } from "react";
-import type { JSX } from "react/jsx-runtime";
+import type {
+  ChangeEvent,
+  ClipboardEvent,
+  FocusEvent,
+  InputEvent,
+  KeyboardEvent,
+  ReactNode,
+} from "react";
 import { useListItem } from "@floating-ui/react";
-import type { PrimitiveProps } from "../../primitives";
+import type { PrimitiveProps } from "../../primitives/polymorphic";
 import type { ValueProp } from "../../shared/types";
-import { useControllableState, useMergeRefs } from "../../hooks";
+import { useControllableState } from "../../hooks/use-controllable-state";
+import { useMergeRefs } from "../../hooks/use-merge-refs";
 import { useComposite } from "../../primitives/composite/composite-context";
-import { tx } from "../../utils";
+import { tx } from "../../utils/clsx";
 import { useTagsInputRoot } from "./tags-input-root-context";
 
 export type TagsInputInputProps = ValueProp<string> & {
@@ -26,7 +33,7 @@ export function TagsInputInput(
     TagsInputInputProps,
     "type" | "tabIndex" | "autoComplete" | "autoCorrect" | "autoCapitalize"
   >,
-): JSX.Element {
+): ReactNode {
   const {
     placeholder,
     maxLength,
@@ -97,12 +104,17 @@ export function TagsInputInput(
     }
 
     if (delimiter) {
-      onAdd(
-        text
-          .split(delimiter)
-          .map((v) => v.trim())
-          .filter(Boolean),
-      );
+      const texts = [];
+
+      for (const v of text.split(delimiter)) {
+        const vt = v.trim();
+
+        if (vt && vt.length > 0) {
+          texts.push(vt);
+        }
+      }
+
+      onAdd(texts);
     } else {
       onAdd(text);
     }

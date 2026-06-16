@@ -1,9 +1,10 @@
-import type { KeyboardEvent } from "react";
-import type { JSX } from "react/jsx-runtime";
+import type { KeyboardEvent, ReactNode } from "react";
 import { runIf } from "@resolid/utils";
-import type { PrimitiveProps } from "../../primitives";
-import { useFocus, useHover, useMergeRefs } from "../../hooks";
-import { tx } from "../../utils";
+import type { PrimitiveProps } from "../../primitives/polymorphic";
+import { useFocus } from "../../hooks/use-focus";
+import { useHover } from "../../hooks/use-hover";
+import { useMergeRefs } from "../../hooks/use-merge-refs";
+import { tx } from "../../utils/clsx";
 import { Tooltip, TooltipArrow, TooltipContent, TooltipTrigger } from "../tooltip/tooltip";
 import { useSlider, useSliderControl, useSliderThumb, type ValueType } from "./slider-context";
 import { sliderColorStyles, sliderSizeStyles } from "./slider.styles";
@@ -15,7 +16,7 @@ export type SliderThumbProps = {
 
 export function SliderThumb(
   props: PrimitiveProps<"div", SliderThumbProps, "onKeyDown">,
-): JSX.Element {
+): ReactNode {
   const { className, ...rest } = props;
   const { max, min, step, vertical, direction } = useSlider();
 

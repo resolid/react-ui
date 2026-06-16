@@ -1,6 +1,6 @@
-import type { JSX } from "react/jsx-runtime";
-import { useButtonProps } from "../../hooks";
-import { Polymorphic, type EmptyObject, type PolymorphicProps } from "../../primitives";
+import type { ReactNode } from "react";
+import { useButtonProps } from "../../hooks/use-button-props";
+import { type EmptyObject, Polymorphic, type PolymorphicProps } from "../../primitives/polymorphic";
 import { useFilePickerInputRef, useFilePickerStatus } from "./file-picker-context";
 
 type FilePickerTriggerState = { disabled: boolean };
@@ -12,7 +12,7 @@ export function FilePickerTrigger(
     "type" | "disabled" | "onClick",
     FilePickerTriggerState
   >,
-): JSX.Element {
+): ReactNode {
   const { render, tabIndex, children, ...rest } = props;
 
   const { disabled } = useFilePickerStatus();

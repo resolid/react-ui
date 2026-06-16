@@ -1,12 +1,11 @@
-import type { MouseEvent } from "react";
-import type { JSX } from "react/jsx-runtime";
-import { useButtonProps } from "../../hooks";
-import { type EmptyObject, Polymorphic, type PolymorphicProps } from "../../primitives";
+import type { MouseEvent, ReactNode } from "react";
+import { useButtonProps } from "../../hooks/use-button-props";
+import { type EmptyObject, Polymorphic, type PolymorphicProps } from "../../primitives/polymorphic";
 import { useCollapsibleTrigger } from "./collapsible-trigger-context";
 
 export function CollapsibleTrigger(
   props: PolymorphicProps<"button", EmptyObject, "type" | "disabled">,
-): JSX.Element {
+): ReactNode {
   const { render, tabIndex, children, onClick, ...rest } = props;
 
   const { id, open, disabled, toggle } = useCollapsibleTrigger();

@@ -1,5 +1,4 @@
-import type { JSX } from "react/jsx-runtime";
-import { type PropsWithChildren, useState } from "react";
+import { type PropsWithChildren, type ReactNode, useState } from "react";
 import type { LocalFile, UploadedFile } from "./file-picker-context";
 import { useLocale } from "../provider/locale-context";
 import {
@@ -25,7 +24,7 @@ export type FileUploadRootProps = FileUploadBaseProps & {
   transport: UploadTransport;
 };
 
-export function FileUploadRoot(props: PropsWithChildren<FileUploadRootProps>): JSX.Element {
+export function FileUploadRoot(props: PropsWithChildren<FileUploadRootProps>): ReactNode {
   const { autoUpload = true, maxParallel = 3, transport, children } = props;
 
   const { t } = useLocale();

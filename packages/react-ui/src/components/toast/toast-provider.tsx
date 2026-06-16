@@ -1,6 +1,5 @@
-import type { JSX } from "react/jsx-runtime";
 import { runIf } from "@resolid/utils";
-import { type PropsWithChildren, type ReactElement, useReducer } from "react";
+import { type PropsWithChildren, type ReactElement, type ReactNode, useReducer } from "react";
 import { PortalLite } from "../portal/portal-lite";
 import {
   type ToastConfig,
@@ -25,7 +24,7 @@ export function ToastProvider({
   spacing = "0.75rem",
   visibleToasts = 5,
   children,
-}: PropsWithChildren<ToastProviderProps>): JSX.Element {
+}: PropsWithChildren<ToastProviderProps>): ReactNode {
   const [state, dispatch] = useReducer(reducer, {
     "top-start": [],
     top: [],
@@ -234,10 +233,10 @@ function getPlacementAndIndexById(
   id: ToastId,
 ): [ToastPlacement | undefined, number | undefined] {
   for (const [placement, toasts] of Object.entries(state)) {
-    const index = toasts.findIndex((toast) => toast.id == id);
-
-    if (index > -1) {
-      return [placement as ToastPlacement, index];
+    for (let index = 0; index < toasts.length; index++) {
+      if (toasts[index]?.id === id) {
+        return [placement as ToastPlacement, index];
+      }
     }
   }
 

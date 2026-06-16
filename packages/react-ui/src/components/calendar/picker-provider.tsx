@@ -1,5 +1,4 @@
-import type { PropsWithChildren } from "react";
-import type { JSX } from "react/jsx-runtime";
+import type { PropsWithChildren, ReactNode } from "react";
 import type { usePicker } from "./use-picker";
 import { PopperFloatingContext } from "../../primitives/popper/popper-floating-context";
 import { PopperPositionerContext } from "../../primitives/popper/popper-positioner-context";
@@ -14,7 +13,7 @@ export type PickerProviderProps = {
 export function PickerProvider({
   value,
   children,
-}: PropsWithChildren<PickerProviderProps>): JSX.Element {
+}: PropsWithChildren<PickerProviderProps>): ReactNode {
   return (
     <PickerRootContext value={value.rootContextValue}>
       <PickerStatusContext value={value.statusContextValue}>

@@ -1,12 +1,11 @@
-import type { ComponentProps } from "react";
-import type { JSX } from "react/jsx-runtime";
+import type { ComponentProps, ReactNode } from "react";
 import { PopperTrigger } from "../../primitives/popper/popper-trigger";
 
 export { DrawerRoot as Drawer, type DrawerRootProps as DrawerProps } from "./drawer-root";
 
 export function DrawerTrigger(
   props: Omit<ComponentProps<typeof PopperTrigger>, "active">,
-): JSX.Element {
+): ReactNode {
   return <PopperTrigger active={false} {...props} />;
 }
 

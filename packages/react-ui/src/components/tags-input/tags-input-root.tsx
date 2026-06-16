@@ -1,9 +1,8 @@
-import type { JSX } from "react/jsx-runtime";
 import { Composite } from "@floating-ui/react";
-import { useRef, useState } from "react";
-import type { PrimitiveProps } from "../../primitives";
+import { type ReactNode, useRef, useState } from "react";
+import type { PrimitiveProps } from "../../primitives/polymorphic";
 import type { FormInputFieldProps, ValueProp } from "../../shared/types";
-import { useControllableState } from "../../hooks";
+import { useControllableState } from "../../hooks/use-controllable-state";
 import {
   InputClearContext,
   type InputClearContextValue,
@@ -13,7 +12,8 @@ import {
   type CompositeContextValue,
 } from "../../primitives/composite/composite-context";
 import { inputTextShareStyles } from "../../shared/styles";
-import { ariaAttr, tx } from "../../utils";
+import { tx } from "../../utils/clsx";
+import { ariaAttr } from "../../utils/dom";
 import {
   inputHeightStyles,
   inputPyStyles,
@@ -46,7 +46,7 @@ export type TagsInputRootProps = Omit<FormInputFieldProps, "placeholder"> &
     max?: number;
   };
 
-export function TagsInputRoot(props: PrimitiveProps<"div", TagsInputRootProps>): JSX.Element {
+export function TagsInputRoot(props: PrimitiveProps<"div", TagsInputRootProps>): ReactNode {
   const {
     value,
     defaultValue = [],

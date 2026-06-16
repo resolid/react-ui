@@ -1,4 +1,4 @@
-import type { JSX } from "react/jsx-runtime";
+import type { ReactNode } from "react";
 import {
   addMonths,
   addYears,
@@ -10,7 +10,7 @@ import {
 import type { CalendarButtonProps } from "./utils";
 import { useLocale } from "../../components/provider/locale-context";
 import { AngleRightIcon } from "../../shared/icons";
-import { tx } from "../../utils";
+import { tx } from "../../utils/clsx";
 import {
   useCalendar,
   useCalendarButton,
@@ -20,7 +20,7 @@ import {
 } from "./calendar-context";
 import { CalendarNavButton } from "./calendar-nav-button";
 
-export function CalendarNext(props: CalendarButtonProps): JSX.Element {
+export function CalendarNext(props: CalendarButtonProps): ReactNode {
   const { className, ...rest } = props;
 
   const { t } = useLocale();

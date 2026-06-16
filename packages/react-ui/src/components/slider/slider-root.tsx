@@ -1,4 +1,3 @@
-import type { JSX } from "react/jsx-runtime";
 import { clamp, isNumber } from "@resolid/utils";
 import {
   type CSSProperties,
@@ -10,9 +9,11 @@ import {
 } from "react";
 import type { PrimitiveProps } from "../../primitives";
 import type { Orientation } from "../../shared/types";
-import { useControllableState, useMergeRefs, useMove, type UseMovePosition } from "../../hooks";
+import { useControllableState } from "../../hooks/use-controllable-state";
+import { useMergeRefs } from "../../hooks/use-merge-refs";
+import { useMove, type UseMovePosition } from "../../hooks/use-move";
 import { hasSizeBaseClass } from "../../shared/utils";
-import { tx } from "../../utils";
+import { tx } from "../../utils/clsx";
 import { useDirection } from "../provider/direction-context";
 import { VisuallyHiddenInput } from "../visually-hidden/visually-hidden-input";
 import {
@@ -63,7 +64,7 @@ export type SliderRootProps = Partial<SliderControlContextValue> &
     thumbSize?: { width: number; height: number };
   };
 
-export function SliderRoot(props: PrimitiveProps<"div", SliderRootProps>): JSX.Element {
+export function SliderRoot(props: PrimitiveProps<"div", SliderRootProps>): ReactNode {
   const {
     className,
     children,

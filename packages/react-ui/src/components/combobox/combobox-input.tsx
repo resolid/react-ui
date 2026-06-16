@@ -1,10 +1,10 @@
-import type { JSX } from "react/jsx-runtime";
-import { useMergeRefs } from "../../hooks";
-import { type EmptyObject, Polymorphic, type PolymorphicProps } from "../../primitives";
+import type { ReactNode } from "react";
+import { useMergeRefs } from "../../hooks/use-merge-refs";
 import { useCollectionState } from "../../primitives/collection/collection-state-context";
+import { type EmptyObject, Polymorphic, type PolymorphicProps } from "../../primitives/polymorphic";
 import { usePopperTrigger } from "../../primitives/popper/popper-trigger-context";
 import { inputTextShareStyles } from "../../shared/styles";
-import { tx } from "../../utils";
+import { tx } from "../../utils/clsx";
 import { inputHeightStyles, inputPxStyles, inputPyStyles } from "../input/input.styles";
 import { useComboboxInput } from "./combobox-input-context";
 
@@ -18,7 +18,7 @@ const comboboxInputSizes = {
 
 export function ComboboxInput(
   props: PolymorphicProps<"input", EmptyObject, "name" | "disabled">,
-): JSX.Element {
+): ReactNode {
   const { render, className, ref, ...rest } = props;
 
   const { size, disabled, readOnly } = useCollectionState();

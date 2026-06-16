@@ -1,4 +1,4 @@
-import type { JSX } from "react/jsx-runtime";
+import type { ReactNode } from "react";
 import { FloatingFocusManager } from "@floating-ui/react";
 import type { PrimitiveProps } from "../../primitives";
 import { usePopperAria } from "../../primitives/popper/popper-aria-context";
@@ -6,7 +6,7 @@ import { PopperFloating } from "../../primitives/popper/popper-floating";
 import { usePopperTransition } from "../../primitives/popper/popper-transtion-context";
 import { getPopperAnimationProps } from "../../primitives/popper/utils";
 import { hasBackgroundBaseClass } from "../../shared/utils";
-import { tx } from "../../utils";
+import { tx } from "../../utils/clsx";
 import { useDialog } from "../dialog/dialog-context";
 import { useDrawer } from "./drawer-context";
 
@@ -33,7 +33,7 @@ const placementStyles = {
   },
 };
 
-export function DrawerContent(props: PrimitiveProps<"div">): JSX.Element | null {
+export function DrawerContent(props: PrimitiveProps<"div">): ReactNode {
   const { children, className, style, ...rest } = props;
 
   const { placement } = useDrawer();

@@ -1,6 +1,6 @@
 import type { ScrollToOptions } from "@tanstack/react-virtual";
 import type { RefObject } from "react";
-import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives";
+import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives/context";
 
 export type VirtualScrollTo = (index: number, options?: ScrollToOptions) => void;
 

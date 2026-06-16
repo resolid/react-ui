@@ -19,7 +19,7 @@ import {
 import type { CollectionItem, CollectionProps } from "../../primitives/collection/types";
 import type { MultipleValueProps } from "../../shared/types";
 import type { InputSize } from "../input/input.styles";
-import { useControllableState } from "../../hooks";
+import { useControllableState } from "../../hooks/use-controllable-state";
 import { useDirection } from "../provider/direction-context";
 
 export type ListboxValue = (string | number)[] | string | number | null;
@@ -124,11 +124,8 @@ export function useListbox<T extends ListboxItem>(
   const direction = useDirection(true);
 
   const getItemValue = useCallback((item: T) => item[valueKey] as string | number, [valueKey]);
-
   const getItemLabel = useCallback((item: T) => item[labelKey] as string, [labelKey]);
-
   const getItemDisabled = useCallback((item: T) => item[disabledKey] as boolean, [disabledKey]);
-
   const getItemChildren = useCallback(
     <E = T>(item: T) => item[childrenKey] as E[] | undefined,
     [childrenKey],

@@ -1,12 +1,11 @@
-import type { ComponentProps, PropsWithChildren } from "react";
-import type { JSX } from "react/jsx-runtime";
+import type { ComponentProps, PropsWithChildren, ReactNode } from "react";
 import { PopperTrigger } from "../../primitives/popper/popper-trigger";
 import { TooltipProvider } from "./tooltip-provider";
 import { type TooltipProps, useTooltip } from "./use-tooltip";
 
 export type { TooltipProps };
 
-export function Tooltip(props: PropsWithChildren<TooltipProps>): JSX.Element {
+export function Tooltip(props: PropsWithChildren<TooltipProps>): ReactNode {
   const { children, ...rest } = props;
 
   const tooltip = useTooltip(rest);
@@ -16,7 +15,7 @@ export function Tooltip(props: PropsWithChildren<TooltipProps>): JSX.Element {
 
 export function TooltipTrigger(
   props: Omit<ComponentProps<typeof PopperTrigger>, "active">,
-): JSX.Element {
+): ReactNode {
   return <PopperTrigger active={false} {...props} />;
 }
 

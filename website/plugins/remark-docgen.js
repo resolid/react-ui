@@ -492,6 +492,7 @@ const getComponentPropsData = (componentFile, sourceRoot, virtualDir) => {
 };
 
 const getComponentDemoPropsMeta = (meta) => {
+  // oxlint-disable-next-line prefer-named-capture-group
   const matches = meta.match(/componentProps=(["']?)([^"'\s]+)\1/);
 
   if (!matches) {

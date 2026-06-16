@@ -1,9 +1,9 @@
 import type { AriaRole, CSSProperties, ReactNode } from "react";
-import type { JSX } from "react/jsx-runtime";
-import { useButtonProps } from "../../hooks";
-import { Polymorphic, type PolymorphicProps } from "../../primitives";
+import { useButtonProps } from "../../hooks/use-button-props";
+import { Polymorphic, type PolymorphicProps } from "../../primitives/polymorphic";
 import { getRadiusStyleAndClass } from "../../shared/utils";
-import { dataAttr, tx } from "../../utils";
+import { tx } from "../../utils/clsx";
+import { dataAttr } from "../../utils/dom";
 import { type ButtonBaseProps, useButtonGroup } from "./button-group-context";
 import { ButtonSpinner } from "./button-spinner";
 import { buttonStyles } from "./button.styles";
@@ -51,7 +51,7 @@ export type ButtonProps = ButtonBaseProps & {
   spinnerPlacement?: "start" | "end";
 };
 
-export function Button(props: PolymorphicProps<"button", ButtonProps, "role">): JSX.Element {
+export function Button(props: PolymorphicProps<"button", ButtonProps, "role">): ReactNode {
   const group = useButtonGroup(true);
 
   const {

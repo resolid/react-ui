@@ -1,4 +1,3 @@
-import type { JSX } from "react/jsx-runtime";
 import {
   type HTMLProps,
   type PropsWithChildren,
@@ -6,10 +5,11 @@ import {
   useEffectEvent,
   useRef,
 } from "react";
-import type { AnyObject } from "../../primitives";
+import type { AnyObject } from "../../primitives/polymorphic";
 import type { InputSize } from "../input/input.styles";
 import type { ListboxBaseProps, ListboxItem, UseListboxResult } from "./use-listbox";
-import { useIsomorphicEffect, usePrevious } from "../../hooks";
+import { useIsomorphicEffect } from "../../hooks/use-isomorphic-effect";
+import { usePrevious } from "../../hooks/use-previous";
 import { CollectionStateContext } from "../../primitives/collection/collection-state-context";
 import {
   PopperFloatingContext,
@@ -50,7 +50,7 @@ export type ListboxProviderProps<T extends ListboxItem> = {
 
 export function ListboxProvider<T extends ListboxItem>(
   props: PropsWithChildren<ListboxProviderProps<T>>,
-): JSX.Element {
+): ReactNode {
   const {
     value: {
       getItemValue,
@@ -160,14 +160,11 @@ export function ListboxProvider<T extends ListboxItem>(
   });
 
   useIsomorphicEffect(() => {
-    if (!open || pointer) {
+    if (!open || pointer || prevActiveIndex == null) {
       return;
     }
 
-    if (prevActiveIndex == null) {
-      return;
-    }
-
+    // react-doctor-disable-next-line react-doctor/rules-of-hooks
     scrollEvent(prevActiveIndex);
   }, [open, pointer, prevActiveIndex]);
 
@@ -196,6 +193,7 @@ export function ListboxProvider<T extends ListboxItem>(
       return;
     }
 
+    // react-doctor-disable-next-line react-doctor/rules-of-hooks
     initScrollEvent();
   }, [open]);
 

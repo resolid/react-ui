@@ -1,8 +1,7 @@
-import type { ReactElement } from "react";
-import type { JSX } from "react/jsx-runtime";
-import type { PrimitiveProps } from "../../primitives";
+import type { ReactElement, ReactNode } from "react";
+import type { PrimitiveProps } from "../../primitives/polymorphic";
 import type { PageColor } from "./pagination.styles";
-import { tx } from "../../utils";
+import { tx } from "../../utils/clsx";
 import { PaginationItem, type PaginationItemProps } from "./pagination-item";
 import { usePagination, type UsePaginationOptions } from "./use-pagination";
 
@@ -24,7 +23,7 @@ export type PaginationProps = UsePaginationOptions & {
   renderTotal?: (total: number, totalPages: number) => ReactElement;
 };
 
-export function Pagination(props: PrimitiveProps<"nav", PaginationProps, "role">): JSX.Element {
+export function Pagination(props: PrimitiveProps<"nav", PaginationProps, "role">): ReactNode {
   const {
     page,
     defaultPage,
@@ -64,12 +63,15 @@ export function Pagination(props: PrimitiveProps<"nav", PaginationProps, "role">
       <ul className="flex flex-nowrap gap-1">
         {pageItems.map((item) => (
           <li key={`${item.pageType}-${item.page}`}>
-            {renderItem({
-              ...item,
-              color,
-              currentPage,
-              setCurrentPage,
-            })}
+            {
+              // react-doctor-disable-next-line react-doctor/no-render-in-render
+              renderItem({
+                ...item,
+                color,
+                currentPage,
+                setCurrentPage,
+              })
+            }
           </li>
         ))}
       </ul>

@@ -1,8 +1,7 @@
-import type { JSX } from "react/jsx-runtime";
-import { useLayoutEffect } from "react";
-import type { PrimitiveProps } from "../../primitives";
-import { useImageLoad } from "../../hooks";
-import { tx } from "../../utils";
+import { type ReactNode, useLayoutEffect } from "react";
+import type { PrimitiveProps } from "../../primitives/polymorphic";
+import { useImageLoad } from "../../hooks/use-image-load";
+import { tx } from "../../utils/clsx";
 import { useAvatar, useAvatarStatus } from "./avatar-context";
 
 export type AvatarImageProps = {
@@ -14,7 +13,7 @@ export type AvatarImageProps = {
 
 export function AvatarImage(
   props: PrimitiveProps<"img", AvatarImageProps, "alt" | "draggable">,
-): JSX.Element | null {
+): ReactNode {
   const { src, crossOrigin, referrerPolicy, className, ...rest } = props;
 
   const { name, radiusClass } = useAvatar();

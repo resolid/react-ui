@@ -1,4 +1,4 @@
-import type { JSX } from "react/jsx-runtime";
+import type { ReactNode } from "react";
 import {
   autoUpdate,
   flip,
@@ -9,15 +9,15 @@ import {
   useFloating,
   useTransitionStatus,
 } from "@floating-ui/react";
-import type { PrimitiveProps } from "../../primitives";
-import { useMergeRefs } from "../../hooks";
+import type { PrimitiveProps } from "../../primitives/polymorphic";
+import { useMergeRefs } from "../../hooks/use-merge-refs";
 import { PopperPositioner } from "../../primitives/popper/popper-positioner";
 import {
   PopperPositionerContext,
   type PopperPositionerContextValue,
 } from "../../primitives/popper/popper-positioner-context";
 import { getPopperAnimationProps } from "../../primitives/popper/utils";
-import { tx } from "../../utils";
+import { tx } from "../../utils/clsx";
 import { ListboxContent } from "../listbox/listbox";
 import { Portal } from "../portal/portal";
 import { useLocale } from "../provider/locale-context";
@@ -32,9 +32,7 @@ export type ComboboxContentProps = {
   placement?: Placement;
 };
 
-export function ComboboxContent(
-  props: PrimitiveProps<"div", ComboboxContentProps>,
-): JSX.Element | null {
+export function ComboboxContent(props: PrimitiveProps<"div", ComboboxContentProps>): ReactNode {
   const { children, className, placement = "bottom", ref, ...rest } = props;
 
   const { rootContext } = useComboboxRoot();

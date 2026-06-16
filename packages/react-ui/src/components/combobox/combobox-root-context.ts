@@ -1,5 +1,5 @@
 import type { FloatingRootContext } from "@floating-ui/react";
-import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives";
+import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives/context";
 
 export type ComboboxRootContextValue = {
   rootContext: FloatingRootContext;

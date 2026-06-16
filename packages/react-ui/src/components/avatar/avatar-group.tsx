@@ -1,7 +1,6 @@
-import type { CSSProperties } from "react";
-import type { JSX } from "react/jsx-runtime";
-import type { PrimitiveProps } from "../../primitives";
-import { tx } from "../../utils";
+import type { CSSProperties, ReactNode } from "react";
+import type { PrimitiveProps } from "../../primitives/polymorphic";
+import { tx } from "../../utils/clsx";
 import { AvatarGroupContext, type AvatarGroupContextValue } from "./avatar-group-context";
 
 export type AvatarGroupProps = AvatarGroupContextValue & {
@@ -12,7 +11,7 @@ export type AvatarGroupProps = AvatarGroupContextValue & {
   spacing?: string;
 };
 
-export function AvatarGroup(props: PrimitiveProps<"div", AvatarGroupProps>): JSX.Element {
+export function AvatarGroup(props: PrimitiveProps<"div", AvatarGroupProps>): ReactNode {
   const { size, radius, spacing = "-1rem", children, className, style, ...rest } = props;
 
   const context = {
@@ -21,6 +20,7 @@ export function AvatarGroup(props: PrimitiveProps<"div", AvatarGroupProps>): JSX
   };
 
   return (
+    // react-doctor-disable-next-line react-doctor/prefer-tag-over-role
     <div
       role="group"
       style={{ ...style, "--pv": spacing } as CSSProperties}

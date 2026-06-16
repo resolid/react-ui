@@ -19,6 +19,7 @@ export function MdxPropsTable({ componentProps }: { componentProps: PropItem[] }
             <tr
               aria-label={prop.name}
               className="md:flex-no-wrap mb-px flex flex-row flex-wrap border-b border-b-bg-subtle pb-px last:mb-0 last:border-none last:pb-0 md:mb-0 md:table-row md:border-none"
+              // oxlint-disable-next-line react/no-array-index-key
               key={`${prop.name}-${i}`}
             >
               <td className="block w-full font-bold md:table-cell md:w-auto md:p-2">

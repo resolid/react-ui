@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives";
+import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives/context";
 
 export type BreadcrumbContextValue = {
   /**

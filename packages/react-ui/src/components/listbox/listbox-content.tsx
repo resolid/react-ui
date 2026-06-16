@@ -1,16 +1,16 @@
-import type { JSX } from "react/jsx-runtime";
-import { useLayoutEffect, useState } from "react";
-import type { EmptyObject, PrimitiveProps } from "../../primitives";
-import { useMergeRefs } from "../../hooks";
+import { type ReactNode, useLayoutEffect, useState } from "react";
+import type { EmptyObject, PrimitiveProps } from "../../primitives/polymorphic";
+import { useMergeRefs } from "../../hooks/use-merge-refs";
 import { useCollectionState } from "../../primitives/collection/collection-state-context";
 import { usePopperFloating } from "../../primitives/popper/popper-floating-context";
 import { inputTextShareStyles } from "../../shared/styles";
-import { ariaAttr, tx } from "../../utils";
+import { tx } from "../../utils/clsx";
+import { ariaAttr } from "../../utils/dom";
 import { useListboxScroll } from "./listbox-scroll-context";
 
 export function ListboxContent(
   props: PrimitiveProps<"div", EmptyObject, "role" | "tabIndex">,
-): JSX.Element {
+): ReactNode {
   const { children, className, ref, ...rest } = props;
 
   const { size, multiple } = useCollectionState();
@@ -19,6 +19,7 @@ export function ListboxContent(
 
   const [hasScrollTo, setHasScrollTo] = useState(false);
 
+  // react-doctor-disable-next-line react-doctor/no-derived-state-effect
   useLayoutEffect(() => {
     setHasScrollTo(!!scrollToRef.current);
   }, [scrollToRef, setHasScrollTo]);

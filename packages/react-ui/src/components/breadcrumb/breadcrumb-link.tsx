@@ -1,6 +1,6 @@
-import type { JSX } from "react/jsx-runtime";
-import { Polymorphic, type PolymorphicProps } from "../../primitives";
-import { tx } from "../../utils";
+import type { ReactNode } from "react";
+import { Polymorphic, type PolymorphicProps } from "../../primitives/polymorphic";
+import { tx } from "../../utils/clsx";
 
 export type BreadcrumbLinkProps = {
   /**
@@ -9,7 +9,7 @@ export type BreadcrumbLinkProps = {
   current?: boolean;
 };
 
-export function BreadcrumbLink(props: PolymorphicProps<"a", BreadcrumbLinkProps>): JSX.Element {
+export function BreadcrumbLink(props: PolymorphicProps<"a", BreadcrumbLinkProps>): ReactNode {
   const { render, children, className, href, current, ...rest } = props;
 
   if (current) {

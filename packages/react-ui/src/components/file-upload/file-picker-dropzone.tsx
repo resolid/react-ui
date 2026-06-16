@@ -1,11 +1,11 @@
-import type { JSX } from "react/jsx-runtime";
-import { useState, type DragEvent } from "react";
-import type { PrimitiveProps } from "../../primitives";
+import { type DragEvent, type ReactNode, useState } from "react";
+import type { PrimitiveProps } from "../../primitives/polymorphic";
 import { hasRoundedBaseClass, hasSizeBaseClass } from "../../shared/utils";
-import { dataAttr, tx } from "../../utils";
+import { tx } from "../../utils/clsx";
+import { dataAttr, stopEvent } from "../../utils/dom";
 import { useFilePickerAction, useFilePickerStatus } from "./file-picker-context";
 
-export function FilePickerDropzone(props: PrimitiveProps<"div">): JSX.Element {
+export function FilePickerDropzone(props: PrimitiveProps<"div">): ReactNode {
   const { className, children, ...rest } = props;
 
   const { disabled, multiple } = useFilePickerStatus();
@@ -53,11 +53,6 @@ export function FilePickerDropzone(props: PrimitiveProps<"div">): JSX.Element {
     setDragging(false);
   };
 
-  const handleDragOver = (e: DragEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    e.stopPropagation();
-  };
-
   return (
     <div
       role="application"
@@ -73,7 +68,7 @@ export function FilePickerDropzone(props: PrimitiveProps<"div">): JSX.Element {
       )}
       onDragEnter={handleDragEnter}
       onDragLeave={handleDragLeave}
-      onDragOver={handleDragOver}
+      onDragOver={stopEvent}
       onDrop={handleDrop}
       {...rest}
     >

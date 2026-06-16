@@ -1,6 +1,6 @@
 import type { FloatingRootContext } from "@floating-ui/react";
 import type { PopperFocusProps } from "../../primitives/popper/utils";
-import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives";
+import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives/context";
 
 export type DialogBaseProps = PopperFocusProps & {
   /**

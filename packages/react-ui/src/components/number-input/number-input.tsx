@@ -1,9 +1,17 @@
-import type { JSX } from "react/jsx-runtime";
 import { clamp, isNumber } from "@resolid/utils";
-import { type FocusEvent, type KeyboardEvent, useId, useRef, useState } from "react";
-import type { PrimitiveProps } from "../../primitives";
+import {
+  type FocusEvent,
+  type KeyboardEvent,
+  type ReactNode,
+  useId,
+  useRef,
+  useState,
+} from "react";
+import type { PrimitiveProps } from "../../primitives/polymorphic";
 import type { ValueProp } from "../../shared/types";
-import { useControllableState, useEventListener, useMergeRefs } from "../../hooks";
+import { useControllableState } from "../../hooks/use-controllable-state";
+import { useEventListener } from "../../hooks/use-event-listener";
+import { useMergeRefs } from "../../hooks/use-merge-refs";
 import { Input, type InputProps } from "../input/input";
 import { NumberInputControl } from "./number-input-control";
 
@@ -60,7 +68,7 @@ export type NumberInputProps = Omit<
 
 export function NumberInput(
   props: PrimitiveProps<"input", NumberInputProps, "type" | "role">,
-): JSX.Element {
+): ReactNode {
   const {
     id,
     value,
@@ -189,12 +197,12 @@ export function NumberInput(
   };
 
   const inputRef = useRef<HTMLInputElement>(null);
-  const [focusState, setFocusState] = useState(false);
+  const focusRef = useRef(false);
 
   useEventListener(
     "wheel",
     (event) => {
-      if (!changeOnWheel || !focusState || readOnly) {
+      if (!changeOnWheel || !focusRef.current || readOnly) {
         return;
       }
 
@@ -213,7 +221,7 @@ export function NumberInput(
   );
 
   const handleFocus = (event: FocusEvent<HTMLInputElement>) => {
-    setFocusState(true);
+    focusRef.current = true;
     onFocus?.(event);
   };
 
@@ -238,7 +246,7 @@ export function NumberInput(
       }
     }
 
-    setFocusState(false);
+    focusRef.current = false;
     onBlur?.(event);
   };
 

@@ -1,14 +1,10 @@
-import type { JSX } from "react";
+import type { ReactNode } from "react";
 import type { PrimitiveProps } from "../polymorphic";
 import { useLocale } from "../../components/provider/locale-context";
-import { tx } from "../../utils";
+import { tx } from "../../utils/clsx";
 import { useOptionEmpty } from "./option-empty-context";
 
-export function OptionEmpty({
-  className,
-  children,
-  ...rest
-}: PrimitiveProps<"div">): JSX.Element | null {
+export function OptionEmpty({ className, children, ...rest }: PrimitiveProps<"div">): ReactNode {
   const { t } = useLocale();
   const empty = useOptionEmpty();
 

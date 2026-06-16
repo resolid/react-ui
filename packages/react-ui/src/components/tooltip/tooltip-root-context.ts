@@ -1,4 +1,4 @@
-import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives";
+import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives/context";
 
 export type TooltipRootContextValue = {
   interactive: boolean;

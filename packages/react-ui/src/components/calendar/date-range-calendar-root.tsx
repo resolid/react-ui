@@ -1,37 +1,36 @@
-import type { JSX } from "react/jsx-runtime";
 import { noop } from "@resolid/utils";
 import { formatDate, isAfter, isBefore, parseDate } from "@resolid/utils/date";
-import { type Dispatch, type SetStateAction, useState } from "react";
+import { type Dispatch, type ReactNode, type SetStateAction, useState } from "react";
 import type { PrimitiveProps } from "../../primitives";
 import { useControllableState } from "../../hooks/use-controllable-state";
 import {
   CalendarButtonContext,
+  type CalendarCellRenderState,
   CalendarGridContext,
+  type CalendarGridContextValue,
   CalendarViewControlContext,
   type CalendarViewControlContextValue,
-  type CalendarCellRenderState,
-  type CalendarGridContextValue,
   type CalenderCellRender,
 } from "../../primitives/calendar/calendar-context";
 import { CalendarRoot } from "../../primitives/calendar/calendar-root";
 import {
   calendarInBoundStrategy,
-  calendarIsSameStrategy,
-  returnFalse,
-  type CalendarView,
   calendarIsSamePanelStrategy,
+  calendarIsSameStrategy,
+  type CalendarView,
+  returnFalse,
 } from "../../primitives/calendar/utils";
 import { tx } from "../../utils/clsx";
 import { ariaAttr } from "../../utils/dom";
 import { Separator } from "../separator/separator";
 import { calendarStatusColorStyles } from "./calendar.styles";
 import {
-  getRangeFocusedValue,
   type CalendarBaseProps,
-  dateRangeStrategy,
-  type RangeDate,
-  getValidRangeDate,
   type CalendarFormatProps,
+  dateRangeStrategy,
+  getRangeFocusedValue,
+  getValidRangeDate,
+  type RangeDate,
 } from "./utils";
 
 export type DateRangeCalendarRootProps = {
@@ -47,7 +46,7 @@ export type DateRangeCalendarRootProps = {
 
 export function DateRangeCalendarRoot(
   props: PrimitiveProps<"div", DateRangeCalendarRootProps>,
-): JSX.Element {
+): ReactNode {
   const {
     value,
     setValue,

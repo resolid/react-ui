@@ -1,8 +1,8 @@
-import type { JSX } from "react/jsx-runtime";
-import type { PrimitiveProps } from "../../primitives";
+import type { ReactNode } from "react";
+import type { PrimitiveProps } from "../../primitives/polymorphic";
 import type { Orientation } from "../../shared/types";
 import { getRadiusStyleAndClass, hasSizeBaseClass, type Radius } from "../../shared/utils";
-import { tx } from "../../utils";
+import { tx } from "../../utils/clsx";
 import { ProgressBaseContext, type ProgressBaseContextValue } from "./progress-context";
 
 export type ProgressBarRootProps = Partial<
@@ -21,7 +21,7 @@ export type ProgressBarRootProps = Partial<
   orientation?: Orientation;
 };
 
-export function ProgressBarRoot(props: PrimitiveProps<"div", ProgressBarRootProps>): JSX.Element {
+export function ProgressBarRoot(props: PrimitiveProps<"div", ProgressBarRootProps>): ReactNode {
   const {
     size = "md",
     radius = "full",

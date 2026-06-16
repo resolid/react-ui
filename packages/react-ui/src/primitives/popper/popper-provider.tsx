@@ -1,5 +1,4 @@
-import type { PropsWithChildren } from "react";
-import type { JSX } from "react/jsx-runtime";
+import type { PropsWithChildren, ReactNode } from "react";
 import type { UsePopperReturnContexts } from "./use-popper";
 import { PopperAnchorContext } from "./popper-anchor-context";
 import { PopperArrowContext } from "./popper-arrow-context";
@@ -15,7 +14,7 @@ export type PopperProviderProps = {
 export function PopperProvider({
   value,
   children,
-}: PropsWithChildren<PopperProviderProps>): JSX.Element {
+}: PropsWithChildren<PopperProviderProps>): ReactNode {
   return (
     <PopperArrowContext value={value.arrowContext}>
       <PopperStateContext value={value.stateContext}>

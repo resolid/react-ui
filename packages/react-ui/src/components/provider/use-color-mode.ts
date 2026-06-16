@@ -1,8 +1,8 @@
 import type { Dispatch, SetStateAction } from "react";
 import {
+  type ColorMode,
   useColorModeDispatch as useColorModeContextDispatch,
   useColorModeState as useColorModeContextState,
-  type ColorMode,
 } from "./color-mode-context";
 
 export type { ColorMode } from "./color-mode-context";

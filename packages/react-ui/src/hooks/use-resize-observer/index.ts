@@ -22,6 +22,7 @@ export function useResizeObserver<T extends Element>(
 
     const observer = new ResizeObserver((entries) => {
       if (entries[0]) {
+        // react-doctor-disable-next-line react-doctor/rules-of-hooks
         callbackEvent(entries[0]);
       }
     });

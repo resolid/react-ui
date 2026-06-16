@@ -1,22 +1,21 @@
-import type { JSX } from "react/jsx-runtime";
 import { Composite } from "@floating-ui/react";
-import { useState } from "react";
-import type { EmptyObject, PrimitiveProps } from "../../primitives";
-import { useMergeRefs } from "../../hooks";
+import { type ReactNode, useState } from "react";
+import type { EmptyObject, PrimitiveProps } from "../../primitives/polymorphic";
+import { useMergeRefs } from "../../hooks/use-merge-refs";
 import { CompositeContext } from "../../primitives/composite/composite-context";
 import { useOrientation } from "../../primitives/composite/orientation-context";
 import { IndicatorContext } from "../../primitives/indicator/indicator-context";
-import { tx } from "../../utils";
+import { tx } from "../../utils/clsx";
 import { useDirection } from "../provider/direction-context";
 
-export function TabsList(props: PrimitiveProps<"div", EmptyObject, "role">): JSX.Element {
+export function TabsList(props: PrimitiveProps<"div", EmptyObject, "role">): ReactNode {
   const { children, className, ref, ...rest } = props;
 
   const orientation = useOrientation();
   const direction = useDirection(true);
 
   const [listElement, setListElement] = useState<HTMLElement | null>(null);
-  const [itemElement, setActiveElement] = useState<HTMLElement | null>(null);
+  const [activeElement, setActiveElement] = useState<HTMLElement | null>(null);
   const [activeIndex, setActiveIndex] = useState<number | undefined>(0);
 
   const refs = useMergeRefs(ref, (node) => {
@@ -44,7 +43,7 @@ export function TabsList(props: PrimitiveProps<"div", EmptyObject, "role">): JSX
       )}
       {...rest}
     >
-      <IndicatorContext value={{ listElement, itemElement }}>
+      <IndicatorContext value={{ listElement, activeElement }}>
         <CompositeContext value={{ activeIndex, setActiveIndex, setActiveElement }}>
           {children}
         </CompositeContext>

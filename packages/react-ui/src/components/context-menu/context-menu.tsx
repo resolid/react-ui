@@ -1,9 +1,9 @@
-import type { JSX } from "react/jsx-runtime";
+import type { ReactNode } from "react";
 import { MenuRoot, type MenuRootProps } from "../../primitives/menu/menu-root";
 
 export type ContextMenuProps = Omit<MenuRootProps, "placement" | "preventScroll">;
 
-export function ContextMenu(props: ContextMenuProps): JSX.Element {
+export function ContextMenu(props: ContextMenuProps): ReactNode {
   return <MenuRoot preventScroll {...props} />;
 }
 

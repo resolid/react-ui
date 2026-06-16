@@ -1,5 +1,5 @@
-import type { CSSProperties } from "react";
-import type { JSX } from "react/jsx-runtime";
+import type { CSSProperties, ReactNode } from "react";
+import { isArray } from "@resolid/utils";
 import type { ListboxNodeItem } from "./use-listbox";
 import { useCollectionState } from "../../primitives/collection/collection-state-context";
 import { useListboxCollection } from "./listbox-collection-context";
@@ -12,7 +12,7 @@ export type ListboxListProps = {
   checkmark?: boolean;
 };
 
-export function ListboxList({ checkmark = true }: ListboxListProps): JSX.Element[] {
+export function ListboxList({ checkmark = true }: ListboxListProps): ReactNode[] {
   const { size, disabled, readOnly } = useCollectionState();
   const { nodeItems } = useListboxCollection();
   const { getItemValue, getItemLabel, getItemChildren } = useListboxFields();
@@ -54,33 +54,30 @@ export function ListboxList({ checkmark = true }: ListboxListProps): JSX.Element
   return nodeItems.map((item) => {
     const children = getItemChildren<ListboxNodeItem>(item);
 
-    if (Array.isArray(children)) {
-      return (
-        <div key={getItemLabel(item)} role="group">
-          <ListboxGroupLabel group={item} size={size} />
-          {children.map((child) => (
-            <ListboxItem
-              key={getItemValue(child)}
-              size={size}
-              disabled={disabled}
-              readOnly={readOnly}
-              checkmark={checkmark}
-              item={child}
-            />
-          ))}
-        </div>
-      );
-    } else {
-      return (
-        <ListboxItem
-          key={getItemValue(item)}
-          size={size}
-          disabled={disabled}
-          readOnly={readOnly}
-          checkmark={checkmark}
-          item={item}
-        />
-      );
-    }
+    return isArray(children) ? (
+      // react-doctor-disable-next-line react-doctor/prefer-tag-over-role
+      <div key={getItemLabel(item)} role="group">
+        <ListboxGroupLabel group={item} size={size} />
+        {children.map((child) => (
+          <ListboxItem
+            key={getItemValue(child)}
+            size={size}
+            disabled={disabled}
+            readOnly={readOnly}
+            checkmark={checkmark}
+            item={child}
+          />
+        ))}
+      </div>
+    ) : (
+      <ListboxItem
+        key={getItemValue(item)}
+        size={size}
+        disabled={disabled}
+        readOnly={readOnly}
+        checkmark={checkmark}
+        item={item}
+      />
+    );
   });
 }

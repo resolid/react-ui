@@ -1,11 +1,11 @@
-import type { JSX } from "react/jsx-runtime";
+import type { ReactNode } from "react";
 import type { PrimitiveProps } from "../polymorphic";
-import { tx } from "../../utils";
+import { tx } from "../../utils/clsx";
 import { calendarBaseStyles, type CalendarColor, calendarColorStyles } from "./calendar.styles";
 
 export function CalendarNavButton(
   props: PrimitiveProps<"button", { color: CalendarColor }>,
-): JSX.Element {
+): ReactNode {
   const { className, disabled, color, ...rest } = props;
 
   const colorStyle = calendarColorStyles[color];

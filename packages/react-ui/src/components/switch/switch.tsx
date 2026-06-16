@@ -1,8 +1,7 @@
-import type { ChangeEvent, CSSProperties } from "react";
-import type { JSX } from "react/jsx-runtime";
-import type { PrimitiveProps } from "../../primitives";
+import type { ChangeEvent, CSSProperties, ReactNode } from "react";
+import type { PrimitiveProps } from "../../primitives/polymorphic";
 import type { CheckedValueProps, FormFieldProps } from "../../shared/types";
-import { useControllableState } from "../../hooks";
+import { useControllableState } from "../../hooks/use-controllable-state";
 import {
   inputTextShareStyles,
   type ToggleColor,
@@ -10,7 +9,8 @@ import {
   toggleControlShareStyles,
   toggleLabelShareStyles,
 } from "../../shared/styles";
-import { ariaAttr, tx } from "../../utils";
+import { tx } from "../../utils/clsx";
+import { ariaAttr } from "../../utils/dom";
 import { type SwitchSize, switchSizeStyles } from "./switch.styles";
 
 export type SwitchProps = CheckedValueProps &
@@ -45,7 +45,7 @@ export type SwitchProps = CheckedValueProps &
     spacing?: string | number;
   };
 
-export function Switch(props: PrimitiveProps<"input", SwitchProps, "role" | "type">): JSX.Element {
+export function Switch(props: PrimitiveProps<"input", SwitchProps, "role" | "type">): ReactNode {
   const {
     color = "primary",
     size = "md",

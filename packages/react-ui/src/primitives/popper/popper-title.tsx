@@ -1,9 +1,9 @@
-import type { JSX } from "react/jsx-runtime";
+import type { ReactNode } from "react";
 import type { EmptyObject, PrimitiveProps } from "../polymorphic";
-import { tx } from "../../utils";
+import { tx } from "../../utils/clsx";
 import { usePopperAria } from "./popper-aria-context";
 
-export function PopperTitle(props: PrimitiveProps<"h2", EmptyObject, "id">): JSX.Element {
+export function PopperTitle(props: PrimitiveProps<"h2", EmptyObject, "id">): ReactNode {
   const { className, children, ...rest } = props;
 
   const { labelId } = usePopperAria();

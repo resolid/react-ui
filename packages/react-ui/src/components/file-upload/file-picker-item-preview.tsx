@@ -1,8 +1,7 @@
 import type { ReactNode } from "react";
-import type { JSX } from "react/jsx-runtime";
-import type { PrimitiveProps } from "../../primitives";
+import type { PrimitiveProps } from "../../primitives/polymorphic";
 import { hasRoundedBaseClass } from "../../shared/utils";
-import { tx } from "../../utils";
+import { tx } from "../../utils/clsx";
 import { FilePickerImagePreview } from "./file-picker-image-preview";
 import { useFilePickerItem } from "./file-picker-item-context";
 
@@ -22,7 +21,7 @@ export type FilePickerItemPreviewProps = {
 
 export function FilePickerItemPreview(
   props: PrimitiveProps<"div", FilePickerItemPreviewProps, "children">,
-): JSX.Element {
+): ReactNode {
   const { rules = [], className, ...rest } = props;
 
   const file = useFilePickerItem();

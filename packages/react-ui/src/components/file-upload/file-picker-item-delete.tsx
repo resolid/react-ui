@@ -1,4 +1,4 @@
-import type { JSX } from "react/jsx-runtime";
+import type { ReactNode } from "react";
 import type { PrimitiveProps } from "../../primitives";
 import { CloseButton, type CloseButtonProps } from "../close-button/close-button";
 import { useLocale } from "../provider/locale-context";
@@ -7,7 +7,7 @@ import { useFilePickerItem } from "./file-picker-item-context";
 
 export function FilePickerItemDelete(
   props: PrimitiveProps<"button", CloseButtonProps, "onClick" | "disabled">,
-): JSX.Element {
+): ReactNode {
   const { t } = useLocale();
   const { disabled } = useFilePickerStatus();
   const { removeFile } = useFilePickerAction();

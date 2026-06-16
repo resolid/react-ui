@@ -52,7 +52,9 @@ async function openProject(name: string, code: string) {
   const inputs: HTMLInputElement[] = [];
 
   const filename = name
+    // oxlint-disable-next-line prefer-named-capture-group
     .replace(/([a-z0-9])([A-Z])/g, "$1-$2")
+    // oxlint-disable-next-line prefer-named-capture-group
     .replace(/([A-Z]+)([A-Z][a-z])/g, "$1-$2")
     .toLowerCase();
 

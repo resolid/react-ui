@@ -15,7 +15,7 @@ import type { PopperTransitionContextValue } from "../../primitives/popper/poppe
 import type { PopperTriggerContextValue } from "../../primitives/popper/popper-trigger-context";
 import type { DisclosureProps } from "../../shared/types";
 import type { PickerRootContextValue, PickerStatusContextValue } from "./picker-context";
-import { useDisclosure } from "../../hooks";
+import { useDisclosure } from "../../hooks/use-disclosure";
 
 export type UsePickerOptions = DisclosureProps &
   PickerStatusContextValue & {

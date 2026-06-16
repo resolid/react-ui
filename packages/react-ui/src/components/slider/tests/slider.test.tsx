@@ -1,16 +1,14 @@
-import type { JSX } from "react/jsx-runtime";
 import { act, cleanup, render, waitFor } from "@testing-library/react";
 import user from "@testing-library/user-event";
-import { useState } from "react";
+import { type ReactNode, useState } from "react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { axe } from "../../../../plugins/vitest-axe";
 import { DirectionContext } from "../../provider/direction-context";
 import { Slider, type SliderProps, SliderThumb, SliderTrack } from "../slider";
 
-const ComponentUnderTest = (props: SliderProps): JSX.Element => {
+const ComponentUnderTest = (props: SliderProps): ReactNode => {
   const { onChange, ...rest } = props;
 
-  // oxlint-disable-next-line typescript/no-unnecessary-type-arguments
   const [value, setValue] = useState<[number, number]>([-20, 20]);
 
   return (

@@ -1,8 +1,8 @@
-import type { JSX } from "react/jsx-runtime";
+import type { ReactNode } from "react";
 import type { PrimitiveProps } from "../polymorphic";
-import { tx } from "../../utils";
+import { tx } from "../../utils/clsx";
 
-export function MenuLabel(props: PrimitiveProps<"div">): JSX.Element {
+export function MenuLabel(props: PrimitiveProps<"div">): ReactNode {
   const { children, className, ...rest } = props;
 
   return (

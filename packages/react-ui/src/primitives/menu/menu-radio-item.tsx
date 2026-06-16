@@ -1,6 +1,7 @@
-import type { JSX } from "react/jsx-runtime";
+import type { ReactNode } from "react";
 import type { PolymorphicProps } from "../polymorphic";
-import { ariaAttr, tx } from "../../utils";
+import { tx } from "../../utils/clsx";
+import { ariaAttr } from "../../utils/dom";
 import { MenuItem, type MenuItemProps } from "./menu-item";
 import { MenuItemIndicatorContext } from "./menu-item-indicator-context";
 import { useMenuRadioGroup } from "./menu-radio-group-context";
@@ -14,7 +15,7 @@ export type MenuRadioItemProps = MenuItemProps & {
 
 export function MenuRadioItem(
   props: PolymorphicProps<"div", MenuRadioItemProps, "role" | "tabIndex">,
-): JSX.Element {
+): ReactNode {
   const { value, onSelect, children, className, ...rest } = props;
 
   const group = useMenuRadioGroup();

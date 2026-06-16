@@ -1,4 +1,4 @@
-import type { JSX, PropsWithChildren } from "react";
+import type { PropsWithChildren, ReactNode } from "react";
 import type { ListboxItem } from "../listbox/use-listbox";
 import type { UserComboboxReturnType } from "./use-combobox";
 import { OptionEmptyContext } from "../../primitives/common/option-empty-context";
@@ -19,7 +19,7 @@ export type ComboboxProviderProps<T extends ListboxItem> = {
 export function ComboboxProvider<T extends ListboxItem>({
   value,
   children,
-}: PropsWithChildren<ComboboxProviderProps<T>>): JSX.Element {
+}: PropsWithChildren<ComboboxProviderProps<T>>): ReactNode {
   return (
     <ComboboxRootContext value={value.rootContext}>
       <ComboboxPopupContext value={value.popupContext}>

@@ -1,7 +1,7 @@
-import type { JSX } from "react/jsx-runtime";
-import type { PrimitiveProps } from "../../primitives";
+import type { ReactNode } from "react";
+import type { PrimitiveProps } from "../../primitives/polymorphic";
 import type { Orientation } from "../../shared/types";
-import { tx } from "../../utils";
+import { tx } from "../../utils/clsx";
 import { useFilePickerFiles } from "./file-picker-context";
 import { FilePickerItemContext } from "./file-picker-item-context";
 
@@ -13,9 +13,7 @@ export type FilePickerListProps = {
   orientation?: Orientation;
 };
 
-export function FilePickerList(
-  props: PrimitiveProps<"ul", FilePickerListProps>,
-): JSX.Element | null {
+export function FilePickerList(props: PrimitiveProps<"ul", FilePickerListProps>): ReactNode {
   const { orientation = "vertical", className, children, ...rest } = props;
 
   const files = useFilePickerFiles();

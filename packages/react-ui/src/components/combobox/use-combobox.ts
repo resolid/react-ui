@@ -18,7 +18,7 @@ import type { ComboboxInputContextValue } from "./combobox-input-context";
 import type { ComboboxPopupContextValue } from "./combobox-popup-context";
 import type { ComboboxStateContextValue } from "./combobox-state-context";
 import type { ComboboxTriggerContextValue } from "./combobox-trigger-context";
-import { useDisclosure } from "../../hooks";
+import { useDisclosure } from "../../hooks/use-disclosure";
 import { type ListboxItem, useListbox } from "../listbox/use-listbox";
 
 export type ComboboxProps<T extends ListboxItem> = DisclosureProps &

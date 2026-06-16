@@ -1,7 +1,7 @@
-import type { JSX } from "react/jsx-runtime";
+import type { ReactNode } from "react";
 import { formatDate } from "@resolid/utils/date";
 import { useLocale } from "../../components/provider/locale-context";
-import { tx } from "../../utils";
+import { tx } from "../../utils/clsx";
 import {
   useCalendar,
   useCalendarDate,
@@ -11,7 +11,7 @@ import {
 import { CalendarNavButton } from "./calendar-nav-button";
 import { type CalendarButtonProps, getDecadeRange, getNextView } from "./utils";
 
-export function CalendarTitle(props: CalendarButtonProps): JSX.Element {
+export function CalendarTitle(props: CalendarButtonProps): ReactNode {
   const { className, ...rest } = props;
 
   const { t } = useLocale();

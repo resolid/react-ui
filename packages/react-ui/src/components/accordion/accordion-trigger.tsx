@@ -1,15 +1,14 @@
-import type { MouseEvent } from "react";
-import type { JSX } from "react/jsx-runtime";
+import type { MouseEvent, ReactNode } from "react";
 import { useListItem } from "@floating-ui/react";
-import type { EmptyObject, PolymorphicProps } from "../../primitives";
-import { useMergeRefs } from "../../hooks";
+import type { EmptyObject, PolymorphicProps } from "../../primitives/polymorphic";
+import { useMergeRefs } from "../../hooks/use-merge-refs";
 import { useComposite } from "../../primitives/composite/composite-context";
-import { dataAttr } from "../../utils";
+import { dataAttr } from "../../utils/dom";
 import { CollapsibleTrigger } from "../collapsible/collapsible-trigger";
 
 export function AccordionTrigger(
   props: PolymorphicProps<"button", EmptyObject, "type" | "disabled">,
-): JSX.Element {
+): ReactNode {
   const { ref, onClick, ...rest } = props;
 
   const { ref: itemRef, index } = useListItem();

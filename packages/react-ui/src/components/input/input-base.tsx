@@ -1,10 +1,10 @@
-import type { JSX } from "react/jsx-runtime";
 import { type ChangeEvent, type CSSProperties, type ReactNode, useRef } from "react";
-import type { PrimitiveProps } from "../../primitives";
+import type { PrimitiveProps } from "../../primitives/polymorphic";
 import type { FormInputFieldProps, ValueProp } from "../../shared/types";
-import { useControllableState, useMergeRefs } from "../../hooks";
+import { useControllableState } from "../../hooks/use-controllable-state";
+import { useMergeRefs } from "../../hooks/use-merge-refs";
 import { inputTextShareStyles } from "../../shared/styles";
-import { tx } from "../../utils";
+import { tx } from "../../utils/clsx";
 import { InputAffix } from "./input-affix";
 import { type InputGroupContextValue, useInputGroup } from "./input-group-context";
 import {
@@ -48,7 +48,7 @@ export type InputBaseProps = Partial<InputGroupContextValue> &
     focusable?: boolean;
   };
 
-export function InputBase(props: PrimitiveProps<"input", InputBaseProps, "children">): JSX.Element {
+export function InputBase(props: PrimitiveProps<"input", InputBaseProps, "children">): ReactNode {
   const group = useInputGroup(true);
 
   const {

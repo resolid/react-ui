@@ -1,19 +1,18 @@
-import type { JSX } from "react/jsx-runtime";
-import { useRef } from "react";
-import type { EmptyObject, PrimitiveProps } from "../../primitives";
-import { useMergeRefs } from "../../hooks";
+import { type ReactNode, useRef } from "react";
+import type { EmptyObject, PrimitiveProps } from "../../primitives/polymorphic";
+import { useMergeRefs } from "../../hooks/use-merge-refs";
 import { inputItemSizeStyles } from "../../primitives/common/input-item.styles";
 import { InputTrigger } from "../../primitives/common/input-trigger";
 import { usePopperTrigger } from "../../primitives/popper/popper-trigger-context";
 import { CalendarRangeIcon } from "../../shared/icons";
-import { tx } from "../../utils";
+import { tx } from "../../utils/clsx";
 import { selectChevronStyle, selectSizeStyles } from "../select/select.styles";
 import { useDateRangePickerState } from "./date-range-picker-context";
 import { usePickerRoot, usePickerStatus } from "./picker-context";
 
 export function DateRangePickerTrigger(
   props: PrimitiveProps<"div", EmptyObject, "tabIndex">,
-): JSX.Element {
+): ReactNode {
   const { className, children, ref, ...rest } = props;
 
   const triggerRef = useRef(null);

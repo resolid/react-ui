@@ -1,12 +1,11 @@
-import type { SVGAttributes } from "react";
-import type { JSX } from "react/jsx-runtime";
+import type { ReactNode, SVGAttributes } from "react";
 
 type IconProps = Omit<
   SVGAttributes<HTMLOrSVGElement>,
   "viewBox" | "stroke" | "strokeWidth" | "strokeLinejoin" | "strokeLinecap" | "fill" | "style"
 > & { size?: string };
 
-export function CloseIcon(props: IconProps): JSX.Element {
+export function CloseIcon(props: IconProps): ReactNode {
   const { size = "1em", ...rest } = props;
 
   return (
@@ -25,7 +24,7 @@ export function CloseIcon(props: IconProps): JSX.Element {
   );
 }
 
-export function AngleLeftIcon(props: IconProps): JSX.Element {
+export function AngleLeftIcon(props: IconProps): ReactNode {
   const { size = "1em", ...rest } = props;
 
   return (
@@ -42,7 +41,7 @@ export function AngleLeftIcon(props: IconProps): JSX.Element {
   );
 }
 
-export function AngleRightIcon(props: IconProps): JSX.Element {
+export function AngleRightIcon(props: IconProps): ReactNode {
   const { size = "1em", ...rest } = props;
 
   return (
@@ -59,7 +58,7 @@ export function AngleRightIcon(props: IconProps): JSX.Element {
   );
 }
 
-export function AngleUpIcon(props: IconProps): JSX.Element {
+export function AngleUpIcon(props: IconProps): ReactNode {
   const { size = "1em", ...rest } = props;
 
   return (
@@ -78,7 +77,7 @@ export function AngleUpIcon(props: IconProps): JSX.Element {
   );
 }
 
-export function AngleDownIcon(props: IconProps): JSX.Element {
+export function AngleDownIcon(props: IconProps): ReactNode {
   const { size = "1em", ...rest } = props;
 
   return (
@@ -97,7 +96,7 @@ export function AngleDownIcon(props: IconProps): JSX.Element {
   );
 }
 
-export function CheckIcon(props: IconProps): JSX.Element {
+export function CheckIcon(props: IconProps): ReactNode {
   const { size = "1em", ...rest } = props;
 
   return (
@@ -116,7 +115,7 @@ export function CheckIcon(props: IconProps): JSX.Element {
   );
 }
 
-export function CheckedIcon(props: IconProps): JSX.Element {
+export function CheckedIcon(props: IconProps): ReactNode {
   const { size = "1em", ...rest } = props;
 
   return (
@@ -135,7 +134,7 @@ export function CheckedIcon(props: IconProps): JSX.Element {
   );
 }
 
-export function IndeterminateIcon(props: IconProps): JSX.Element {
+export function IndeterminateIcon(props: IconProps): ReactNode {
   const { size = "1em", ...rest } = props;
 
   return (
@@ -151,7 +150,7 @@ export function IndeterminateIcon(props: IconProps): JSX.Element {
   );
 }
 
-export function SearchIcon(props: IconProps): JSX.Element {
+export function SearchIcon(props: IconProps): ReactNode {
   const { size = "1em", ...rest } = props;
 
   return (
@@ -164,7 +163,7 @@ export function SearchIcon(props: IconProps): JSX.Element {
   );
 }
 
-export function CalendarIcon(props: IconProps): JSX.Element {
+export function CalendarIcon(props: IconProps): ReactNode {
   const { size = "1em", ...rest } = props;
 
   return (
@@ -177,7 +176,7 @@ export function CalendarIcon(props: IconProps): JSX.Element {
   );
 }
 
-export function CalendarRangeIcon(props: IconProps): JSX.Element {
+export function CalendarRangeIcon(props: IconProps): ReactNode {
   const { size = "1em", ...rest } = props;
 
   return (

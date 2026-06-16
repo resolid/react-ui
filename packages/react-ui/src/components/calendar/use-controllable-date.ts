@@ -1,7 +1,7 @@
 import type { Dispatch, SetStateAction } from "react";
 import { isDefined } from "@resolid/utils";
 import type { MultipleValueProps } from "../../shared/types";
-import { useControllableState } from "../../hooks";
+import { useControllableState } from "../../hooks/use-controllable-state";
 import { type CalendarFormatProps, formatBaseDate, parseBaseDateValue } from "./utils";
 
 type UseControllableDateOptions = Omit<MultipleValueProps<string>, "multiple"> & {

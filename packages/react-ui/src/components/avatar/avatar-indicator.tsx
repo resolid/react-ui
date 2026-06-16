@@ -1,6 +1,6 @@
-import type { JSX } from "react/jsx-runtime";
-import type { PrimitiveProps } from "../../primitives";
-import { tx } from "../../utils";
+import type { ReactNode } from "react";
+import type { PrimitiveProps } from "../../primitives/polymorphic";
+import { tx } from "../../utils/clsx";
 import { useDirection } from "../provider/direction-context";
 
 export type AvatarIndicatorProps = {
@@ -11,7 +11,7 @@ export type AvatarIndicatorProps = {
   position?: "top" | "bottom";
 };
 
-export function AvatarIndicator(props: PrimitiveProps<"div", AvatarIndicatorProps>): JSX.Element {
+export function AvatarIndicator(props: PrimitiveProps<"div", AvatarIndicatorProps>): ReactNode {
   const { position = "top", className, children, ...rest } = props;
 
   const direction = useDirection(true);

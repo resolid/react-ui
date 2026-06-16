@@ -1,5 +1,4 @@
-import type { PropsWithChildren } from "react";
-import type { JSX } from "react/jsx-runtime";
+import type { PropsWithChildren, ReactNode } from "react";
 import type { UseToolTipReturnContexts } from "./use-tooltip";
 import { PopperFloatingContext } from "../../primitives/popper/popper-floating-context";
 import { PopperProvider } from "../../primitives/popper/popper-provider";
@@ -13,7 +12,7 @@ export type TooltipProviderProps = {
 export function TooltipProvider({
   value,
   children,
-}: PropsWithChildren<TooltipProviderProps>): JSX.Element {
+}: PropsWithChildren<TooltipProviderProps>): ReactNode {
   const { referenceContext, floatingContext, tooltipRootContext, ...popperContexts } = value;
 
   return (

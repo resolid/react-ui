@@ -1,9 +1,8 @@
-import type { JSX } from "react/jsx-runtime";
-import { type CSSProperties, useId } from "react";
+import { type CSSProperties, type ReactNode, useId } from "react";
 import type { PrimitiveProps } from "../../primitives";
 import type { DisclosureProps } from "../../shared/types";
-import { useDisclosure } from "../../hooks";
-import { tx } from "../../utils";
+import { useDisclosure } from "../../hooks/use-disclosure";
+import { tx } from "../../utils/clsx";
 import {
   CollapsibleContentContext,
   type CollapsibleContentContextValue,
@@ -21,7 +20,7 @@ export type CollapsibleRootProps = DisclosureProps & {
   disabled?: boolean;
 };
 
-export function CollapsibleRoot(props: PrimitiveProps<"div", CollapsibleRootProps>): JSX.Element {
+export function CollapsibleRoot(props: PrimitiveProps<"div", CollapsibleRootProps>): ReactNode {
   const {
     open,
     defaultOpen = false,

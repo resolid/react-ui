@@ -1,10 +1,9 @@
-import type { MouseEvent } from "react";
-import type { JSX } from "react/jsx-runtime";
-import { useButtonProps } from "../../hooks";
+import type { MouseEvent, ReactNode } from "react";
+import { useButtonProps } from "../../hooks/use-button-props";
 import { type EmptyObject, Polymorphic, type PolymorphicProps } from "../polymorphic";
 import { usePopperDispatch } from "./popper-dispatch-context";
 
-export function PopperClose(props: PolymorphicProps<"button", EmptyObject, "type">): JSX.Element {
+export function PopperClose(props: PolymorphicProps<"button", EmptyObject, "type">): ReactNode {
   const { render, children, tabIndex, disabled = false, onClick, ...rest } = props;
 
   const { handleClose } = usePopperDispatch();

@@ -1,3 +1,4 @@
+import type { SyntheticEvent } from "react";
 import { type Booleanish, isObject } from "@resolid/utils";
 
 export function dataAttr(condition: boolean | null | undefined) {
@@ -10,4 +11,9 @@ export function ariaAttr(condition: boolean | null | undefined): true | undefine
 
 export function isInputEvent(value: unknown): value is { target: HTMLInputElement } {
   return !!value && isObject(value) && isObject(value.target);
+}
+
+export function stopEvent(e: SyntheticEvent): void {
+  e.preventDefault();
+  e.stopPropagation();
 }

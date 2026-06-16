@@ -1,10 +1,9 @@
-import type { Dispatch, RefObject, SetStateAction } from "react";
-import type { JSX } from "react/jsx-runtime";
+import type { Dispatch, ReactNode, RefObject, SetStateAction } from "react";
 import { noop } from "@resolid/utils";
 import { formatDate, parseDate } from "@resolid/utils/date";
-import type { PrimitiveProps } from "../../primitives";
-import { useMergeRefs } from "../../hooks";
+import type { PrimitiveProps } from "../../primitives/polymorphic";
 import { useControllableState } from "../../hooks/use-controllable-state";
+import { useMergeRefs } from "../../hooks/use-merge-refs";
 import {
   CalendarViewControlContext,
   type CalenderCellRender,
@@ -15,7 +14,7 @@ import { tx } from "../../utils/clsx";
 import { ariaAttr } from "../../utils/dom";
 import { calendarStatusColorStyles } from "./calendar.styles";
 import { useControllableView, type UseControllableViewOptions } from "./use-controllable-view";
-import { getBaseFocusedValue, type CalendarBaseProps, type CalendarFormatProps } from "./utils";
+import { type CalendarBaseProps, type CalendarFormatProps, getBaseFocusedValue } from "./utils";
 
 export type DateCalendarRootProps = {
   value: Date | Date[] | null;
@@ -29,7 +28,7 @@ export type DateCalendarRootProps = {
   CalendarBaseProps &
   Partial<UseControllableViewOptions>;
 
-export function DateCalendarRoot(props: PrimitiveProps<"div", DateCalendarRootProps>): JSX.Element {
+export function DateCalendarRoot(props: PrimitiveProps<"div", DateCalendarRootProps>): ReactNode {
   const {
     value,
     setValue,

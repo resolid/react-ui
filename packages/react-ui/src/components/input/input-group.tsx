@@ -1,12 +1,12 @@
-import type { JSX } from "react/jsx-runtime";
-import type { PrimitiveProps } from "../../primitives";
-import { tx } from "../../utils";
+import type { ReactNode } from "react";
+import type { PrimitiveProps } from "../../primitives/polymorphic";
+import { tx } from "../../utils/clsx";
 import { InputGroupContext, type InputGroupContextValue } from "./input-group-context";
 
 export type InputGroupProps = Partial<InputGroupContextValue>;
 
 // oxlint-disable-next-line typescript/no-unnecessary-type-arguments
-export function InputGroup(props: PrimitiveProps<"div", InputGroupProps>): JSX.Element {
+export function InputGroup(props: PrimitiveProps<"div", InputGroupProps>): ReactNode {
   const { children, className, size = "md", ...rest } = props;
 
   return (

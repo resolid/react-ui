@@ -1,9 +1,11 @@
-import type { JSX } from "react/jsx-runtime";
-import { useButtonProps, useMergeRefs } from "../../hooks";
-import { type EmptyObject, Polymorphic, type PolymorphicProps } from "../../primitives";
+import type { ReactNode } from "react";
+import { useButtonProps } from "../../hooks/use-button-props";
+import { useMergeRefs } from "../../hooks/use-merge-refs";
 import { useCollectionState } from "../../primitives/collection/collection-state-context";
+import { type EmptyObject, Polymorphic, type PolymorphicProps } from "../../primitives/polymorphic";
 import { AngleDownIcon } from "../../shared/icons";
-import { ariaAttr, tx } from "../../utils";
+import { tx } from "../../utils/clsx";
+import { ariaAttr } from "../../utils/dom";
 import { selectSizeStyles } from "../select/select.styles";
 import { useComboboxInput } from "./combobox-input-context";
 import { useComboboxRoot } from "./combobox-root-context";
@@ -11,7 +13,7 @@ import { useComboboxTrigger } from "./combobox-trigger-context";
 
 export function ComboboxTrigger(
   props: PolymorphicProps<"button", EmptyObject, "type" | "tabIndex" | "disabled">,
-): JSX.Element {
+): ReactNode {
   const { render, children, ref, ...rest } = props;
 
   const { inputRef } = useComboboxInput();
@@ -21,7 +23,7 @@ export function ComboboxTrigger(
 
   const buttonProps = useButtonProps({
     hasRender: !!render,
-    disabled: disabled,
+    disabled,
     tabIndex: -1,
   });
 

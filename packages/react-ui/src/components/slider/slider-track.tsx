@@ -1,10 +1,10 @@
-import type { JSX } from "react/jsx-runtime";
-import type { PrimitiveProps } from "../../primitives";
-import { tx } from "../../utils";
+import type { ReactNode } from "react";
+import type { PrimitiveProps } from "../../primitives/polymorphic";
+import { tx } from "../../utils/clsx";
 import { useSlider } from "./slider-context";
 import { sliderColorStyles } from "./slider.styles";
 
-export function SliderTrack(props: PrimitiveProps<"div">): JSX.Element {
+export function SliderTrack(props: PrimitiveProps<"div">): ReactNode {
   const { className, ...rest } = props;
 
   const { color, disabled, vertical, inverted } = useSlider();

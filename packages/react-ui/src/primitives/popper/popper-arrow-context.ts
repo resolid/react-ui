@@ -1,5 +1,5 @@
 import type { FloatingContext } from "@floating-ui/react";
-import { createSafeContext, type SafeContext, type UseSafeContext } from "../index";
+import { createSafeContext, type SafeContext, type UseSafeContext } from "../context";
 
 export type PopperArrowContextValue = {
   context: FloatingContext;

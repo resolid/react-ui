@@ -1,13 +1,13 @@
-import type { JSX } from "react/jsx-runtime";
-import type { PrimitiveProps } from "../../primitives";
-import { tx } from "../../utils";
+import type { ReactNode } from "react";
+import type { PrimitiveProps } from "../../primitives/polymorphic";
+import { tx } from "../../utils/clsx";
 import { CloseButton } from "../close-button/close-button";
 import { AlertContext, type AlertContextValue, useAlert } from "./alert-context";
 import { alertStyles } from "./alert.styles";
 
 export type AlertProps = Partial<AlertContextValue>;
 
-export function Alert(props: PrimitiveProps<"div", AlertProps, "role">): JSX.Element {
+export function Alert(props: PrimitiveProps<"div", AlertProps, "role">): ReactNode {
   const { children, className, color = "primary", variant = "soft", ...rest } = props;
   return (
     <div role="alert" className={tx(alertStyles({ variant, color }), className)} {...rest}>
@@ -16,17 +16,17 @@ export function Alert(props: PrimitiveProps<"div", AlertProps, "role">): JSX.Ele
   );
 }
 
-export function AlertContent(props: PrimitiveProps<"div">): JSX.Element {
+export function AlertContent(props: PrimitiveProps<"div">): ReactNode {
   return <div {...props} />;
 }
 
-export function AlertTitle(props: PrimitiveProps<"div">): JSX.Element {
+export function AlertTitle(props: PrimitiveProps<"div">): ReactNode {
   const { className, ...rest } = props;
 
   return <div className={tx("font-medium", className)} {...rest} />;
 }
 
-export function AlertDescription(props: PrimitiveProps<"div">): JSX.Element {
+export function AlertDescription(props: PrimitiveProps<"div">): ReactNode {
   const { className, ...rest } = props;
 
   const { variant } = useAlert();
@@ -39,7 +39,7 @@ export function AlertDescription(props: PrimitiveProps<"div">): JSX.Element {
   );
 }
 
-export function AlertIndicator(props: PrimitiveProps<"span">): JSX.Element {
+export function AlertIndicator(props: PrimitiveProps<"span">): ReactNode {
   const { className, ...rest } = props;
 
   return <span className={tx("shrink-0", className)} {...rest} />;
@@ -55,7 +55,7 @@ export type AlertCloseButtonProps = {
 
 export function AlertCloseButton(
   props: PrimitiveProps<"button", AlertCloseButtonProps, "type" | "color">,
-): JSX.Element {
+): ReactNode {
   const { size, ...rest } = props;
 
   const { variant, color } = useAlert();

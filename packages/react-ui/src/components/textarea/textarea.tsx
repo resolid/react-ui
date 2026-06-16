@@ -1,8 +1,8 @@
-import type { JSX } from "react";
-import type { PrimitiveProps } from "../../primitives";
-import { tx } from "../../utils";
+import type { ReactNode } from "react";
+import type { PrimitiveProps } from "../../primitives/polymorphic";
+import { tx } from "../../utils/clsx";
 
-export function Textarea({ className, ...rest }: PrimitiveProps<"textarea">): JSX.Element {
+export function Textarea({ className, ...rest }: PrimitiveProps<"textarea">): ReactNode {
   return (
     <textarea
       className={tx(

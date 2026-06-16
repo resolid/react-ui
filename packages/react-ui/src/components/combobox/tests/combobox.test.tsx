@@ -7,9 +7,9 @@ import { LocaleProvider } from "../../provider/locale-provider";
 import {
   Combobox,
   ComboboxAnchor,
+  ComboboxContent,
   ComboboxInput,
   ComboboxList,
-  ComboboxContent,
   ComboboxTrigger,
 } from "../combobox";
 

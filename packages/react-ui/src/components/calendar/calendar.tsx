@@ -1,4 +1,4 @@
-import type { JSX } from "react/jsx-runtime";
+import type { ReactNode } from "react";
 import type { PrimitiveProps } from "../../primitives";
 import { CalendarViewControlContext } from "../../primitives/calendar/calendar-context";
 import { CalendarRoot, type CalendarRootProps } from "../../primitives/calendar/calendar-root";
@@ -6,7 +6,7 @@ import { useControllableView, type UseControllableViewOptions } from "./use-cont
 
 export type CalendarProps = Omit<CalendarRootProps, "view"> & Partial<UseControllableViewOptions>;
 
-export function Calendar(props: PrimitiveProps<"div", CalendarProps>): JSX.Element {
+export function Calendar(props: PrimitiveProps<"div", CalendarProps>): ReactNode {
   const {
     view,
     defaultView,

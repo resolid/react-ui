@@ -1,12 +1,11 @@
-import type { ComponentProps } from "react";
-import type { JSX } from "react/jsx-runtime";
+import type { ComponentProps, ReactNode } from "react";
 import { PopperTrigger } from "../../primitives/popper/popper-trigger";
 
 export { DialogRoot as Dialog, type DialogRootProps as DialogProps } from "./dialog-root";
 
 export function DialogTrigger(
   props: Omit<ComponentProps<typeof PopperTrigger>, "active">,
-): JSX.Element {
+): ReactNode {
   return <PopperTrigger active={false} {...props} />;
 }
 

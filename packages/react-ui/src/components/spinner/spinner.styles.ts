@@ -1,4 +1,4 @@
-import { tv, type TvReturnType, type VP } from "../../utils";
+import { tv, type TvReturnType, type VP } from "../../utils/clsx";
 
 type SpinnerVariants = {
   size: {

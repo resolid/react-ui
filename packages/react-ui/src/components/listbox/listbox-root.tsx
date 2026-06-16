@@ -1,9 +1,8 @@
-import type { JSX } from "react/jsx-runtime";
 import { useFloatingRootContext, useInteractions, useRole } from "@floating-ui/react";
-import { type FocusEvent, useState } from "react";
-import type { PrimitiveProps } from "../../primitives";
+import { type FocusEvent, type ReactNode, useState } from "react";
+import type { PrimitiveProps } from "../../primitives/polymorphic";
 import type { FormFieldProps } from "../../shared/types";
-import { tx } from "../../utils";
+import { tx } from "../../utils/clsx";
 import { VisuallyHiddenInput } from "../visually-hidden/visually-hidden-input";
 import { ListboxProvider } from "./listbox-provider";
 import { type ListboxBaseProps, type ListboxItem, useListbox } from "./use-listbox";
@@ -18,7 +17,7 @@ export type ListboxRootProps<T extends ListboxItem = ListboxItem> = FormFieldPro
 
 export function ListboxRoot<T extends ListboxItem>(
   props: PrimitiveProps<"div", ListboxRootProps<T>>,
-): JSX.Element {
+): ReactNode {
   const {
     multiple = false,
     value,
@@ -47,7 +46,7 @@ export function ListboxRoot<T extends ListboxItem>(
 
   const context = useFloatingRootContext({
     open: true,
-    elements: { floating: floating, reference: null },
+    elements: { floating, reference: null },
   });
 
   const {

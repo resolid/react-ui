@@ -1,10 +1,10 @@
-import type { MouseEvent } from "react";
-import type { JSX } from "react/jsx-runtime";
+import type { MouseEvent, ReactNode } from "react";
 import type { InputSize } from "../../components/input/input.styles";
 import type { PrimitiveProps } from "../polymorphic";
-import { CloseButton } from "../../components";
+import { CloseButton } from "../../components/close-button/close-button";
 import { useLocale } from "../../components/provider/locale-context";
-import { ariaAttr, tx } from "../../utils";
+import { tx } from "../../utils/clsx";
+import { ariaAttr } from "../../utils/dom";
 import { inputItemSizeStyles } from "./input-item.styles";
 
 export type InputItemProps = {
@@ -13,7 +13,7 @@ export type InputItemProps = {
   onRemove: () => void;
 };
 
-export function InputItem(props: PrimitiveProps<"div", InputItemProps>): JSX.Element {
+export function InputItem(props: PrimitiveProps<"div", InputItemProps>): ReactNode {
   const { size, disabled, onRemove, className, children, ...rest } = props;
 
   const { t } = useLocale();

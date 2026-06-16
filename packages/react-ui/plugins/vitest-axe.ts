@@ -20,6 +20,7 @@ function mount(html: Element | string): [HTMLElement, () => void] {
     html = html.outerHTML;
   }
 
+  // oxlint-disable-next-line prefer-named-capture-group
   if (typeof html === "string" && /(<([^>]+)>)/i.test(html)) {
     const originalHTML = document.body.innerHTML;
 
@@ -86,12 +87,12 @@ function configureAxe(
 
 export type NoViolationsMatcherResult = {
   actual: Result[];
-  message(): string;
+  message: () => string;
   pass: boolean;
 };
 
 export type AxeMatchers = {
-  toHaveNoViolations(): NoViolationsMatcherResult;
+  toHaveNoViolations: () => NoViolationsMatcherResult;
 };
 
 const {

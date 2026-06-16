@@ -1,12 +1,11 @@
-import type { MouseEvent } from "react";
-import type { JSX } from "react/jsx-runtime";
+import type { MouseEvent, ReactNode } from "react";
 import type { PageType } from "./use-pagination";
-import { useButtonProps } from "../../hooks";
-import { Polymorphic, type PolymorphicProps } from "../../primitives";
+import { useButtonProps } from "../../hooks/use-button-props";
+import { Polymorphic, type PolymorphicProps } from "../../primitives/polymorphic";
 import { AngleLeftIcon, AngleRightIcon } from "../../shared/icons";
-import { tx } from "../../utils";
+import { tx } from "../../utils/clsx";
 import { useLocale } from "../provider/locale-context";
-import { type PageColor, currentPageColorStyles } from "./pagination.styles";
+import { currentPageColorStyles, type PageColor } from "./pagination.styles";
 
 export type PaginationItemProps = {
   page: number;
@@ -19,7 +18,7 @@ export type PaginationItemProps = {
 
 export function PaginationItem(
   props: PolymorphicProps<"button", PaginationItemProps, "type" | "role">,
-): JSX.Element {
+): ReactNode {
   const {
     render,
     color,

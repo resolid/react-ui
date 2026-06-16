@@ -1,4 +1,4 @@
-import type { JSX } from "react/jsx-runtime";
+import type { ReactNode } from "react";
 import type { EmptyObject, PrimitiveProps } from "../../primitives";
 import { usePopperFloating } from "../../primitives/popper/popper-floating-context";
 import { DateRangeCalendarRoot } from "./date-range-calendar-root";
@@ -7,7 +7,7 @@ import { PickerContent } from "./picker-content";
 
 export function DateRangePickerCalendar(
   props: PrimitiveProps<"div", EmptyObject, "color">,
-): JSX.Element | null {
+): ReactNode {
   const { children, ...rest } = props;
 
   const { getFloatingProps } = usePopperFloating();

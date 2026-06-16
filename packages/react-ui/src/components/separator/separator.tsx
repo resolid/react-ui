@@ -1,7 +1,6 @@
-import type { CSSProperties } from "react";
-import type { JSX } from "react/jsx-runtime";
-import type { PrimitiveProps } from "../../primitives";
-import { tx } from "../../utils";
+import type { CSSProperties, ReactNode } from "react";
+import type { PrimitiveProps } from "../../primitives/polymorphic";
+import { tx } from "../../utils/clsx";
 import { type SeparatorStyleProps, separatorStyles } from "./separator.styles";
 
 export type SeparatorProps = {
@@ -36,7 +35,7 @@ export type SeparatorProps = {
   position?: "left" | "right" | "center";
 };
 
-export function Separator(props: PrimitiveProps<"div", SeparatorProps, "role">): JSX.Element {
+export function Separator(props: PrimitiveProps<"div", SeparatorProps, "role">): ReactNode {
   const {
     color = "neutral",
     orientation = "horizontal",
@@ -52,6 +51,7 @@ export function Separator(props: PrimitiveProps<"div", SeparatorProps, "role">):
 
   return (
     <div
+      // react-doctor-disable-next-line react-doctor/prefer-tag-over-role
       role="separator"
       tabIndex={-1}
       aria-orientation={orientation}

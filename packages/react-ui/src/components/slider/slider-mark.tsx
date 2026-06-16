@@ -1,7 +1,6 @@
 import type { CSSProperties, ReactNode } from "react";
-import type { JSX } from "react/jsx-runtime";
 import type { Direction } from "../../shared/types";
-import { tx } from "../../utils";
+import { tx } from "../../utils/clsx";
 import { getOffset, getPosition } from "./utils";
 
 export type SliderMarkProps = {
@@ -22,7 +21,7 @@ export function SliderMark({
   vertical,
   thumbHalf,
   computeOffset,
-}: SliderMarkProps): JSX.Element {
+}: SliderMarkProps): ReactNode {
   return (
     <div className="pointer-events-none absolute flex h-full w-full items-center justify-center select-none">
       {marks.map((mark) => {

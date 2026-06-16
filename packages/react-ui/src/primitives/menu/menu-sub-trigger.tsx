@@ -1,9 +1,9 @@
-import type { ComponentProps } from "react";
-import type { JSX } from "react/jsx-runtime";
+import type { ComponentProps, ReactNode } from "react";
 import type { PolymorphicProps } from "../polymorphic";
-import { useMergeRefs } from "../../hooks";
+import { useMergeRefs } from "../../hooks/use-merge-refs";
 import { AngleRightIcon } from "../../shared/icons";
-import { dataAttr, tx } from "../../utils";
+import { tx } from "../../utils/clsx";
+import { dataAttr } from "../../utils/dom";
 import { usePopperState } from "../popper/popper-state-context";
 import { usePopperTrigger } from "../popper/popper-trigger-context";
 import { MenuBaseItem, type MenuBaseItemProps } from "./menu-base-item";
@@ -13,7 +13,7 @@ export type MenuSubTriggerProps = MenuBaseItemProps;
 
 export function MenuSubTrigger(
   props: PolymorphicProps<"div", MenuSubTriggerProps, "role" | "tabIndex">,
-): JSX.Element {
+): ReactNode {
   const { render, children, ref, className, disabled, ...rest } = props;
 
   const { open } = usePopperState();

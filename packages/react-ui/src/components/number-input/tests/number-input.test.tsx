@@ -51,8 +51,10 @@ describe("NumberInput", () => {
   it("should handle custom format and parse functions", async () => {
     render(
       <NumberInput
+        // oxlint-disable-next-line prefer-named-capture-group
         parse={(value) => value.replace(/\$\s?|(,*)/g, "")}
         format={(value) =>
+          // oxlint-disable-next-line prefer-named-capture-group
           !Number.isNaN(value) ? `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "$ "
         }
         defaultValue={1999}

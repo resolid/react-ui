@@ -1,4 +1,4 @@
-import type { JSX, PropsWithChildren } from "react";
+import type { PropsWithChildren, ReactNode } from "react";
 import type { ListboxItem } from "../listbox/use-listbox";
 import { ComboboxProvider } from "./combobox-provider";
 import { type ComboboxProps, useCombobox } from "./use-combobox";
@@ -7,7 +7,7 @@ export type { ComboboxProps };
 
 export function Combobox<T extends ListboxItem>(
   props: PropsWithChildren<ComboboxProps<T>>,
-): JSX.Element {
+): ReactNode {
   const { children, ...rest } = props;
 
   const combobox = useCombobox<T>(rest);

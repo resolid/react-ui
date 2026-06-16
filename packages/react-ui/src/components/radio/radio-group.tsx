@@ -1,8 +1,9 @@
-import type { JSX } from "react/jsx-runtime";
-import type { PrimitiveProps } from "../../primitives";
+import type { ReactNode } from "react";
+import type { PrimitiveProps } from "../../primitives/polymorphic";
 import type { Orientation } from "../../shared/types";
-import { useControllableState } from "../../hooks";
-import { ariaAttr, tx } from "../../utils";
+import { useControllableState } from "../../hooks/use-controllable-state";
+import { tx } from "../../utils/clsx";
+import { ariaAttr } from "../../utils/dom";
 import { type RadioGroupBaseProps, RadioGroupContext } from "./radio-group-context";
 
 export type RadioGroupProps = RadioGroupBaseProps & {
@@ -23,7 +24,7 @@ export type RadioGroupProps = RadioGroupBaseProps & {
   orientation?: Orientation;
 };
 
-export function RadioGroup(props: PrimitiveProps<"div", RadioGroupProps, "role">): JSX.Element {
+export function RadioGroup(props: PrimitiveProps<"div", RadioGroupProps, "role">): ReactNode {
   const {
     color = "primary",
     size = "md",
@@ -72,7 +73,6 @@ export function RadioGroup(props: PrimitiveProps<"div", RadioGroupProps, "role">
       role="radiogroup"
       aria-disabled={ariaAttr(disabled)}
       aria-required={ariaAttr(required)}
-      aria-readonly={ariaAttr(readOnly)}
       aria-invalid={ariaAttr(invalid)}
       aria-orientation={orientation}
       className={tx(

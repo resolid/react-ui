@@ -1,6 +1,6 @@
-import type { JSX } from "react/jsx-runtime";
-import type { PrimitiveProps } from "../../primitives";
-import { tx } from "../../utils";
+import type { ReactNode } from "react";
+import type { PrimitiveProps } from "../../primitives/polymorphic";
+import { tx } from "../../utils/clsx";
 import { getPanelId, getTabId, useTabs } from "./tabs-context";
 
 export type TabsPanelProps = {
@@ -12,7 +12,7 @@ export type TabsPanelProps = {
 
 export function TabsPanel(
   props: PrimitiveProps<"div", TabsPanelProps, "id" | "role" | "aria-labelledby">,
-): JSX.Element | null {
+): ReactNode {
   const { children, className, tabIndex, value, ...rest } = props;
 
   const { baseId, selectedValue } = useTabs();

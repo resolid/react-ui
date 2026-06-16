@@ -1,11 +1,11 @@
-import type { JSX } from "react/jsx-runtime";
+import type { ReactNode } from "react";
 import type { PrimitiveProps } from "../polymorphic";
 import { hasBackgroundBaseClass } from "../../shared/utils";
-import { tx } from "../../utils";
+import { tx } from "../../utils/clsx";
 import { usePopperTransition } from "./popper-transtion-context";
 import { getPopperAnimationProps } from "./utils";
 
-export function PopperBackdrop(props: PrimitiveProps<"div">): JSX.Element | null {
+export function PopperBackdrop(props: PrimitiveProps<"div">): ReactNode {
   const { className, children, style, ...rest } = props;
 
   const { status, mounted, duration } = usePopperTransition();

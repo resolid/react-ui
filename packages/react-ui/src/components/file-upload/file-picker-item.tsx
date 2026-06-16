@@ -1,9 +1,9 @@
-import type { JSX } from "react/jsx-runtime";
+import type { ReactNode } from "react";
 import type { PrimitiveProps } from "../../primitives";
 import { hasRoundedBaseClass } from "../../shared/utils";
-import { tx } from "../../utils";
+import { tx } from "../../utils/clsx";
 
-export function FilePickerItem(props: PrimitiveProps<"li">): JSX.Element {
+export function FilePickerItem(props: PrimitiveProps<"li">): ReactNode {
   const { className, children, ...rest } = props;
 
   return (

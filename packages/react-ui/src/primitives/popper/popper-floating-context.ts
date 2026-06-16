@@ -1,5 +1,6 @@
 import type { HTMLProps } from "react";
-import { type AnyObject, createSafeContext, type SafeContext, type UseSafeContext } from "../index";
+import type { AnyObject } from "../polymorphic";
+import { createSafeContext, type SafeContext, type UseSafeContext } from "../context";
 
 export type PopperFloatingContextValue = {
   setFloating?: (node: HTMLElement | null) => void;

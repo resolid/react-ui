@@ -1,9 +1,9 @@
-import type { JSX } from "react/jsx-runtime";
+import type { ReactNode } from "react";
 import { endOfMonth, endOfYear, isAfter, setYear, subMonths, subYears } from "@resolid/utils/date";
 import type { CalendarButtonProps } from "./utils";
 import { useLocale } from "../../components/provider/locale-context";
 import { AngleLeftIcon } from "../../shared/icons";
-import { tx } from "../../utils";
+import { tx } from "../../utils/clsx";
 import {
   useCalendar,
   useCalendarButton,
@@ -13,7 +13,7 @@ import {
 } from "./calendar-context";
 import { CalendarNavButton } from "./calendar-nav-button";
 
-export function CalendarPrev(props: CalendarButtonProps): JSX.Element {
+export function CalendarPrev(props: CalendarButtonProps): ReactNode {
   const { className, ...rest } = props;
 
   const { t } = useLocale();
