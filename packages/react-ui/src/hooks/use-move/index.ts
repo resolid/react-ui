@@ -1,5 +1,5 @@
 import { clamp } from "@resolid/utils";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Direction } from "../../shared/types";
 
 export type UseMovePosition = {
@@ -36,99 +36,96 @@ export function useMove<T extends HTMLElement = HTMLDivElement>(
 
   const { onScrubStart, onScrubEnd } = handlers ?? {};
 
-  const ref = useCallback(
-    (node: T | null) => {
-      const startScrubbing = () => {
-        if (!sliding.current && mounted.current) {
-          sliding.current = true;
-          onScrubStart?.();
-          setActive(true);
-          bindEvents();
-        }
-      };
+  const ref = (node: T | null) => {
+    const startScrubbing = () => {
+      if (!sliding.current && mounted.current) {
+        sliding.current = true;
+        onScrubStart?.();
+        setActive(true);
+        bindEvents();
+      }
+    };
 
-      const stopScrubbing = () => {
-        if (sliding.current && mounted.current) {
-          sliding.current = false;
-          setActive(false);
-          unbindEvents();
-          setTimeout(() => {
-            onScrubEnd?.();
-          }, 0);
-        }
-      };
+    const stopScrubbing = () => {
+      if (sliding.current && mounted.current) {
+        sliding.current = false;
+        setActive(false);
+        unbindEvents();
+        setTimeout(() => {
+          onScrubEnd?.();
+        }, 0);
+      }
+    };
 
-      const handleScrub = ({ x, y }: UseMovePosition) => {
-        cancelAnimationFrame(frame.current);
+    const handleScrub = ({ x, y }: UseMovePosition) => {
+      cancelAnimationFrame(frame.current);
 
-        frame.current = requestAnimationFrame(() => {
-          if (mounted.current && node) {
-            node.style.userSelect = "none";
-            const rect = node.getBoundingClientRect();
+      frame.current = requestAnimationFrame(() => {
+        if (mounted.current && node) {
+          node.style.userSelect = "none";
+          const rect = node.getBoundingClientRect();
 
-            if (rect.width && rect.height) {
-              const _x = clamp((x - rect.left) / rect.width, 0, 1);
-              onChange({
-                x: direction == "rtl" ? 1 - _x : _x,
-                y: clamp((y - rect.top) / rect.height, 0, 1),
-              });
-            }
+          if (rect.width && rect.height) {
+            const _x = clamp((x - rect.left) / rect.width, 0, 1);
+            onChange({
+              x: direction == "rtl" ? 1 - _x : _x,
+              y: clamp((y - rect.top) / rect.height, 0, 1),
+            });
           }
-        });
-      };
+        }
+      });
+    };
 
-      const handleMouseMove = (event: MouseEvent) =>
-        handleScrub({ x: event.clientX, y: event.clientY });
+    const handleMouseMove = (event: MouseEvent) =>
+      handleScrub({ x: event.clientX, y: event.clientY });
 
-      const handleMouseDown = (event: MouseEvent) => {
-        startScrubbing();
+    const handleMouseDown = (event: MouseEvent) => {
+      startScrubbing();
+      event.preventDefault();
+      handleMouseMove(event);
+    };
+
+    const handleTouchMove = (event: TouchEvent) => {
+      if (event.cancelable) {
         event.preventDefault();
-        handleMouseMove(event);
-      };
+      }
 
-      const handleTouchMove = (event: TouchEvent) => {
-        if (event.cancelable) {
-          event.preventDefault();
-        }
+      handleScrub({ x: event.changedTouches[0]!.clientX, y: event.changedTouches[0]!.clientY });
+    };
 
-        handleScrub({ x: event.changedTouches[0]!.clientX, y: event.changedTouches[0]!.clientY });
-      };
+    const handleTouchStart = (event: TouchEvent) => {
+      if (event.cancelable) {
+        event.preventDefault();
+      }
 
-      const handleTouchStart = (event: TouchEvent) => {
-        if (event.cancelable) {
-          event.preventDefault();
-        }
+      startScrubbing();
+      handleTouchMove(event);
+    };
 
-        startScrubbing();
-        handleTouchMove(event);
-      };
+    const bindEvents = () => {
+      document.addEventListener("mousemove", handleMouseMove);
+      document.addEventListener("mouseup", stopScrubbing);
+      document.addEventListener("touchmove", handleTouchMove, { passive: false });
+      document.addEventListener("touchend", stopScrubbing);
+    };
 
-      const bindEvents = () => {
-        document.addEventListener("mousemove", handleMouseMove);
-        document.addEventListener("mouseup", stopScrubbing);
-        document.addEventListener("touchmove", handleTouchMove, { passive: false });
-        document.addEventListener("touchend", stopScrubbing);
-      };
+    const unbindEvents = () => {
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseup", stopScrubbing);
+      document.removeEventListener("touchmove", handleTouchMove);
+      document.removeEventListener("touchend", stopScrubbing);
+    };
 
-      const unbindEvents = () => {
-        document.removeEventListener("mousemove", handleMouseMove);
-        document.removeEventListener("mouseup", stopScrubbing);
-        document.removeEventListener("touchmove", handleTouchMove);
-        document.removeEventListener("touchend", stopScrubbing);
-      };
+    node?.addEventListener("mousedown", handleMouseDown);
+    node?.addEventListener("touchstart", handleTouchStart, { passive: false });
 
-      node?.addEventListener("mousedown", handleMouseDown);
-      node?.addEventListener("touchstart", handleTouchStart, { passive: false });
-
-      return () => {
-        if (node) {
-          node.removeEventListener("mousedown", handleMouseDown);
-          node.removeEventListener("touchstart", handleTouchStart);
-        }
-      };
-    },
-    [direction, onChange, onScrubEnd, onScrubStart],
-  );
+    return () => {
+      if (node) {
+        node.removeEventListener("mousedown", handleMouseDown);
+        node.removeEventListener("touchstart", handleTouchStart);
+      }
+    };
+  };
 
   return [ref, active];
 }

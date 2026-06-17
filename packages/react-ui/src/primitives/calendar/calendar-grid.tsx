@@ -213,7 +213,7 @@ export function CalendarGrid(
 
   return (
     <table
-      // react-doctor-disable-next-line react-doctor/no-noninteractive-element-to-interactive-role
+      // oxlint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role, react-doctor/no-noninteractive-element-to-interactive-role
       role="grid"
       dir={direction}
       tabIndex={-1}

@@ -156,6 +156,7 @@ export function ListboxVirtualizer({
   );
 }
 
+// oxlint-disable-next-line react/react-compiler
 function useListboxVirtualizer(options: Parameters<typeof useVirtualizer>[0]) {
   "use no memo";
 
