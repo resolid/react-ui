@@ -4,6 +4,7 @@
     <option name="configPath" value="oxlint.config.ts" />
     <flags>
       <entry key="disable_nested_config" value="false" />
+      <entry key="fix_kind" value="ALL" />
     </flags>
     <option name="typeAware" value="true" />
   </component>
