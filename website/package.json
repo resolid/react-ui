@@ -28,7 +28,7 @@
     "@mdx-js/rollup": "^3.1.1",
     "@react-router/dev": "^8.0.0",
     "@resolid/config": "^5.3.25",
-    "@resolid/dev": "^0.6.0",
+    "@resolid/dev": "^0.6.1",
     "@rolldown/plugin-babel": "^0.2.3",
     "@shikijs/rehype": "^4.2.0",
     "@tailwindcss/vite": "^4.3.1",

@@ -172,8 +172,8 @@ importers:
         specifier: ^5.3.25
         version: 5.3.25(eslint-plugin-react-you-might-not-need-an-effect@1.0.1(eslint@10.4.0(jiti@2.7.0)))(oxfmt@0.55.0)(oxlint-tsgolint@0.23.0)(oxlint@1.70.0(oxlint-tsgolint@0.23.0))(typescript@6.0.3)
       '@resolid/dev':
-        specifier: ^0.6.0
-        version: 0.6.0(@netlify/types@2.7.0)(@react-router/dev@8.0.0(react-router@8.0.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(jiti@2.7.0)(yaml@2.9.0)))(@react-router/node@8.0.0(react-router@8.0.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(typescript@6.0.3))(isbot@5.1.43)(react-dom@19.2.7(react@19.2.7))(react-router@8.0.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)(rollup@4.60.4)(vite@8.0.16(@types/node@24.13.2)(jiti@2.7.0)(yaml@2.9.0))
+        specifier: ^0.6.1
+        version: 0.6.1(@netlify/types@2.7.0)(@react-router/dev@8.0.0(react-router@8.0.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(jiti@2.7.0)(yaml@2.9.0)))(@react-router/node@8.0.0(react-router@8.0.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(typescript@6.0.3))(isbot@5.1.43)(react-dom@19.2.7(react@19.2.7))(react-router@8.0.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)(rollup@4.60.4)(vite@8.0.16(@types/node@24.13.2)(jiti@2.7.0)(yaml@2.9.0))
       '@rolldown/plugin-babel':
         specifier: ^0.2.3
         version: 0.2.3(@babel/core@7.29.7)(@babel/runtime@7.29.7)(rolldown@1.1.1)(vite@8.0.16(@types/node@24.13.2)(jiti@2.7.0)(yaml@2.9.0))
@@ -1115,8 +1115,8 @@ packages:
       typescript:
         optional: true
 
-  '@resolid/dev@0.6.0':
-    resolution: {integrity: sha512-rMz3De+aickuUjBRd3VPYyEqmdMD2Ymx1reTfnBEKDb10ds45ImF3x5pROkozHgeK4w0djDF8VSBBgafeeFe7g==}
+  '@resolid/dev@0.6.1':
+    resolution: {integrity: sha512-JpfiXba3mDpHlrGE3oz3fxlJvuISRIj/eLbRtTmu+F2eVrJgbVkIqVFFmHq8sMBBg5vQkqRRrw/T2XMnDMPudA==}
     engines: {node: ^22.22.0 || >=24}
     peerDependencies:
       '@netlify/types': ^2.8.0
@@ -4783,7 +4783,7 @@ snapshots:
       oxlint-tsgolint: 0.23.0
       typescript: 6.0.3
 
-  '@resolid/dev@0.6.0(@netlify/types@2.7.0)(@react-router/dev@8.0.0(react-router@8.0.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(jiti@2.7.0)(yaml@2.9.0)))(@react-router/node@8.0.0(react-router@8.0.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(typescript@6.0.3))(isbot@5.1.43)(react-dom@19.2.7(react@19.2.7))(react-router@8.0.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)(rollup@4.60.4)(vite@8.0.16(@types/node@24.13.2)(jiti@2.7.0)(yaml@2.9.0))':
+  '@resolid/dev@0.6.1(@netlify/types@2.7.0)(@react-router/dev@8.0.0(react-router@8.0.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(typescript@6.0.3)(vite@8.0.16(@types/node@24.13.2)(jiti@2.7.0)(yaml@2.9.0)))(@react-router/node@8.0.0(react-router@8.0.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(typescript@6.0.3))(isbot@5.1.43)(react-dom@19.2.7(react@19.2.7))(react-router@8.0.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)(rollup@4.60.4)(vite@8.0.16(@types/node@24.13.2)(jiti@2.7.0)(yaml@2.9.0))':
     dependencies:
       '@hono/node-server': 2.0.5(hono@4.12.25)
       '@netlify/types': 2.7.0
