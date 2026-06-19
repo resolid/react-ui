@@ -81,6 +81,7 @@ export function ListboxVirtualizer({
   const { getItemChildren, childrenKey } = useListboxFields();
   const { scrollToRef, scrollRef } = useListboxScroll();
 
+  // react-doctor-disable-next-line react-doctor/react-compiler-no-manual-memoization
   const { flatItems, groupLabelIndices, groupIndices } = useMemo(() => {
     const items: ListboxFlatItem[] = [];
     const labelIndices: Set<number> = new Set();

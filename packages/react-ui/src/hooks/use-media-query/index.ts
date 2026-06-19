@@ -3,6 +3,7 @@ import { useCallback, useSyncExternalStore } from "react";
 const getServerSnapshot = () => false;
 
 export function useMediaQuery(query: string): boolean {
+  // react-doctor-disable-next-line react-doctor/react-compiler-no-manual-memoization
   const subscribe = useCallback(
     (callback: () => void) => {
       const matchMedia = window.matchMedia(query);

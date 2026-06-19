@@ -32,6 +32,10 @@ export function useMove<T extends HTMLElement = HTMLDivElement>(
 
   useEffect(() => {
     mounted.current = true;
+
+    return () => {
+      mounted.current = false;
+    };
   }, []);
 
   const { onScrubStart, onScrubEnd } = handlers ?? {};
@@ -105,7 +109,9 @@ export function useMove<T extends HTMLElement = HTMLDivElement>(
     const bindEvents = () => {
       document.addEventListener("mousemove", handleMouseMove);
       document.addEventListener("mouseup", stopScrubbing);
+      // react-doctor-disable-next-line react-doctor/client-passive-event-listeners
       document.addEventListener("touchmove", handleTouchMove, { passive: false });
+      // react-doctor-disable-next-line react-doctor/client-passive-event-listeners
       document.addEventListener("touchend", stopScrubbing);
     };
 
@@ -116,7 +122,9 @@ export function useMove<T extends HTMLElement = HTMLDivElement>(
       document.removeEventListener("touchend", stopScrubbing);
     };
 
+    // react-doctor-disable-next-line react-doctor/client-passive-event-listeners
     node?.addEventListener("mousedown", handleMouseDown);
+    // react-doctor-disable-next-line react-doctor/client-passive-event-listeners
     node?.addEventListener("touchstart", handleTouchStart, { passive: false });
 
     return () => {

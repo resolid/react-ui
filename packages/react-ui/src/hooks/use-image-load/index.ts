@@ -1,4 +1,4 @@
-import { isBrowser } from "@resolid/utils";
+import { noop } from "@resolid/utils";
 import { type ImgHTMLAttributes, useEffectEvent, useState } from "react";
 import { useIsomorphicEffect } from "../use-isomorphic-effect";
 
@@ -6,6 +6,8 @@ type NativeImageProps = ImgHTMLAttributes<HTMLImageElement>;
 
 export type UseImageLoadOptions = {
   src?: NativeImageProps["src"];
+  srcSet?: NativeImageProps["srcSet"];
+  sizes?: NativeImageProps["sizes"];
   crossOrigin?: NativeImageProps["crossOrigin"];
   referrerPolicy?: NativeImageProps["referrerPolicy"];
   delayLoad?: boolean;
@@ -14,7 +16,7 @@ export type UseImageLoadOptions = {
 export type ImageLoadStatus = "idle" | "loading" | "loaded" | "error";
 
 export function useImageLoad(options: UseImageLoadOptions): ImageLoadStatus {
-  const { src, crossOrigin, referrerPolicy } = options;
+  const { src, srcSet, sizes, crossOrigin, referrerPolicy } = options;
 
   const [loadStatus, setLoadStatus] = useState<ImageLoadStatus>("idle");
 
@@ -23,10 +25,10 @@ export function useImageLoad(options: UseImageLoadOptions): ImageLoadStatus {
   });
 
   useIsomorphicEffect(() => {
-    if (!src || !isBrowser) {
+    if (!src && !srcSet) {
       // react-doctor-disable-next-line react-doctor/rules-of-hooks
       setLoadStatusEffect("error");
-      return;
+      return noop;
     }
 
     const image = new window.Image();
@@ -45,14 +47,25 @@ export function useImageLoad(options: UseImageLoadOptions): ImageLoadStatus {
     if (referrerPolicy) {
       image.referrerPolicy = referrerPolicy;
     }
+    if (sizes) {
+      image.sizes = sizes;
+    }
+    if (srcSet) {
+      image.srcset = srcSet;
+    }
+    if (src) {
+      image.src = src;
+    }
 
-    image.src = src;
+    if (image.complete) {
+      setLoadStatus(image.naturalWidth > 0 ? "loaded" : "error");
+    }
 
     return () => {
       image.onload = null;
       image.onerror = null;
     };
-  }, [src, crossOrigin, referrerPolicy]);
+  }, [src, srcSet, sizes, crossOrigin, referrerPolicy]);
 
   return loadStatus;
 }

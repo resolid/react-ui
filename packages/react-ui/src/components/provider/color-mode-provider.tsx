@@ -27,11 +27,11 @@ export function ColorModeProvider({
   useEffect(() => {
     let style: HTMLStyleElement | undefined;
 
-    // oxlint-disable-next-line react-you-might-not-need-an-effect-js/no-event-handler
+    // oxlint-disable-next-line react-you-might-not-need-an-effect-js/no-event-handler, react-doctor/no-event-handler
     if (disableTransition) {
       style = document.createElement("style");
 
-      // oxlint-disable-next-line react-you-might-not-need-an-effect-js/no-event-handler
+      // oxlint-disable-next-line react-you-might-not-need-an-effect-js/no-event-handler, react-doctor/no-event-handler
       if (nonce) {
         style.setAttribute("nonce", nonce);
       }
@@ -71,7 +71,7 @@ export function ColorModeProvider({
       <ColorModeStateContext value={value}>
         <script
           nonce={nonce}
-          // react-doctor-disable-next-line react-doctor/dangerous-html-sink
+          // react-doctor-disable-next-line react-doctor/no-danger, react-doctor/dangerous-html-sink
           dangerouslySetInnerHTML={{
             __html: `try{var dark=localStorage.getItem("${COLOR_MODE_STORAGE_KEY}");(dark?'"dark"'==dark:matchMedia("${COLOR_SCHEME_QUERY}").matches)&&document.documentElement.classList.add("dark-mode")}catch(a){}`,
           }}

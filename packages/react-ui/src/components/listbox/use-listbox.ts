@@ -123,9 +123,13 @@ export function useListbox<T extends ListboxItem>(
 
   const direction = useDirection(true);
 
+  // react-doctor-disable-next-line react-doctor/react-compiler-no-manual-memoization
   const getItemValue = useCallback((item: T) => item[valueKey] as string | number, [valueKey]);
+  // react-doctor-disable-next-line react-doctor/react-compiler-no-manual-memoization
   const getItemLabel = useCallback((item: T) => item[labelKey] as string, [labelKey]);
+  // react-doctor-disable-next-line react-doctor/react-compiler-no-manual-memoization
   const getItemDisabled = useCallback((item: T) => item[disabledKey] as boolean, [disabledKey]);
+  // react-doctor-disable-next-line react-doctor/react-compiler-no-manual-memoization
   const getItemChildren = useCallback(
     <E = T>(item: T) => item[childrenKey] as E[] | undefined,
     [childrenKey],
@@ -139,6 +143,7 @@ export function useListbox<T extends ListboxItem>(
   const [filterKeyword, setFilterKeyword] = useState<string>();
   const deferredKeyword = useDeferredValue(filterKeyword);
 
+  // react-doctor-disable-next-line react-doctor/react-compiler-no-manual-memoization
   const { nodeItems, indexedItems, selectedItems, selectedIndices } = useMemo(() => {
     const nodes: ListboxNodeItem[] = [];
     const indexes: T[] = [];
@@ -193,6 +198,7 @@ export function useListbox<T extends ListboxItem>(
         for (const child of children) {
           if (addItem(child)) {
             childrenItems.push({ ...child, __index: itemIndex });
+            // react-doctor-disable-next-line
             itemIndex++;
           }
         }
@@ -203,6 +209,7 @@ export function useListbox<T extends ListboxItem>(
       } else {
         if (addItem(item)) {
           nodes.push({ ...item, __index: itemIndex });
+          // react-doctor-disable-next-line
           itemIndex++;
         }
       }

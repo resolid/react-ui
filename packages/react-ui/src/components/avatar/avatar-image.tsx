@@ -14,7 +14,7 @@ export type AvatarImageProps = {
 export function AvatarImage(
   props: PrimitiveProps<"img", AvatarImageProps, "alt" | "draggable">,
 ): ReactNode {
-  const { src, crossOrigin, referrerPolicy, className, ...rest } = props;
+  const { src, srcSet, sizes, crossOrigin, referrerPolicy, className, ...rest } = props;
 
   const { name, radiusClass } = useAvatar();
 
@@ -22,6 +22,8 @@ export function AvatarImage(
 
   const imageLoadStatus = useImageLoad({
     src,
+    srcSet,
+    sizes,
     crossOrigin,
     referrerPolicy,
   });
@@ -32,6 +34,10 @@ export function AvatarImage(
     }
   }, [imageLoadStatus, setImageLoadStatus]);
 
+  useLayoutEffect(() => {
+    return () => setImageLoadStatus("idle");
+  }, [setImageLoadStatus]);
+
   if (imageLoadStatus != "loaded") {
     return null;
   }
@@ -40,6 +46,8 @@ export function AvatarImage(
     <img
       alt={name}
       src={src}
+      srcSet={srcSet}
+      sizes={sizes}
       draggable={false}
       crossOrigin={crossOrigin}
       referrerPolicy={referrerPolicy}

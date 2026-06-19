@@ -63,6 +63,7 @@ export function usePreventScroll(options: UsePreventScrollOptions): void {
             }
           };
 
+          // react-doctor-disable-next-line react-doctor/client-passive-event-listeners
           doc.addEventListener("touchmove", stopTouchMove, { passive: false });
 
           return () => {
