@@ -13,7 +13,7 @@ const config: UserConfig = defineConfig({
   dts: true,
   treeshake: true,
   clean: true,
-  minify: "dce-only",
+  minify: true,
   plugins: [rolldownBabel({ presets: [reactCompilerPreset()] })],
 });
 

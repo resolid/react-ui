@@ -50,6 +50,7 @@
     "@floating-ui/react": "^0.27.19",
     "@resolid/utils": "^1.6.1",
     "@tanstack/react-virtual": "^3.14.3",
+    "react-compiler-runtime": "^1.0.0",
     "tailwind-variants": "^3.2.2"
   },
   "devDependencies": {
