@@ -30,7 +30,8 @@ export function Layout({ children }: PropsWithChildren) {
         <link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <Meta />
-        <link rel="stylesheet" href={style} />
+        <link rel="preload" href={style} as="style" />
+        <link rel="stylesheet" precedence="default" href={style} />
       </head>
       <body className="min-h-screen overflow-y-scroll">
         <RouteProcessBar />
