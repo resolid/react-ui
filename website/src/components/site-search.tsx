@@ -40,6 +40,7 @@ export function SiteSearch() {
       <DialogTrigger
         render={(props) => (
           <button
+            aria-label="搜索"
             className="inline-flex items-center justify-between rounded-md border border-bg-subtlest bg-bg-subtlest px-2 py-1 text-fg-subtlest hover:bg-bg-normal md:w-70"
             {...props}
           >

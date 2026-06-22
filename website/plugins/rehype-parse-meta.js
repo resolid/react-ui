@@ -1,24 +1,20 @@
-const metaValues = [
-  {
-    name: "online",
-    // oxlint-disable-next-line prefer-named-capture-group
-    regex: /online=["']?([a-zA-Z]+)["']?/,
-  },
-  {
-    name: "codeGroup",
-    // oxlint-disable-next-line prefer-named-capture-group
-    regex: /\[([^\]]+)]/,
-  },
-];
-
 export function rehypeParseMeta(meta) {
-  return metaValues.reduce((map, { name, regex }) => {
-    const match = meta.match(regex);
+  const map = {};
 
-    if (match) {
-      [, map[name]] = match;
-    }
+  // oxlint-disable-next-line prefer-named-capture-group
+  const online = /online=["']?([a-zA-Z]+)["']?/;
+  // oxlint-disable-next-line prefer-named-capture-group
+  const codeGroup = /\[([^\]]+)]/;
 
-    return map;
-  }, {});
+  let m;
+
+  if ((m = online.exec(meta))) {
+    [, map.online] = m;
+  }
+
+  if ((m = codeGroup.exec(meta))) {
+    [, map.codeGroup] = m;
+  }
+
+  return map;
 }

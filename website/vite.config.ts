@@ -66,13 +66,11 @@ export default defineConfig(({ command }) => {
             groups: [
               {
                 name: "react",
-                // oxlint-disable-next-line prefer-named-capture-group
-                test: /node_modules[\\/](react|react-dom|react-is|scheduler)[\\/]/,
+                test: /node_modules[\\/](?:react|react-dom|react-is|scheduler)[\\/]/,
               },
               {
                 name: "react-router",
-                // oxlint-disable-next-line prefer-named-capture-group
-                test: /node_modules[\\/](@react-router|react-router)[\\/]/,
+                test: /node_modules[\\/](?:@react-router|react-router)[\\/]/,
               },
               {
                 name: "components",

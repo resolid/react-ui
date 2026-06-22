@@ -20,8 +20,7 @@ function mount(html: Element | string): [HTMLElement, () => void] {
     html = html.outerHTML;
   }
 
-  // oxlint-disable-next-line prefer-named-capture-group
-  if (typeof html === "string" && /(<([^>]+)>)/i.test(html)) {
+  if (typeof html === "string" && /<[^>]+>/i.test(html)) {
     const originalHTML = document.body.innerHTML;
 
     const restore = () => {

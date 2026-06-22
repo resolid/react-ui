@@ -492,23 +492,27 @@ const getComponentPropsData = (componentFile, sourceRoot, virtualDir) => {
 };
 
 const getComponentDemoPropsMeta = (meta) => {
-  // oxlint-disable-next-line prefer-named-capture-group
-  const matches = meta.match(/componentProps=(["']?)([^"'\s]+)\1/);
+  const matches = meta.match(
+    // oxlint-disable-next-line prefer-named-capture-group
+    /componentProps=(?:"([^"]+)"|'([^']+)'|(\S+))/,
+  );
 
   if (!matches) {
     return null;
   }
 
-  const metas = matches[2].split("|");
+  const value = matches[1] ?? matches[2] ?? matches[3];
 
-  if (metas.length !== 2) {
+  const [file, props] = value.split("|");
+
+  if (!props) {
     return null;
   }
 
   return {
-    componentFile: metas[0],
+    componentFile: file,
     settingProps: Object.fromEntries(
-      metas[1].split(",").map((item) => {
+      props.split(",").map((item) => {
         const [key, value] = item.split("=");
         return [key, value];
       }),

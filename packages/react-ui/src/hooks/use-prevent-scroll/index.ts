@@ -44,8 +44,7 @@ export function usePreventScroll(options: UsePreventScrollOptions): void {
         [paddingProperty]: `${scrollbarWidth}px`,
       });
 
-    // oxlint-disable-next-line prefer-named-capture-group
-    const preventScrollMobileSafari = /iP(hone|ad|od)|iOS/.test(getPlatform())
+    const preventScrollMobileSafari = /iPhone|iPad|iPod|iOS/.test(getPlatform())
       ? () => {
           const stopTouchMove = (e: TouchEvent) => {
             const { target } = e;

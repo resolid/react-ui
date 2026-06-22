@@ -40,8 +40,7 @@ export function MdxCodeDemo(props: {
       validProps.map(({ name, defaultValue }) => {
         const value =
           props.settingProps[name] ??
-          // oxlint-disable-next-line prefer-named-capture-group
-          (defaultValue && /^[+-]?(\d+\.?\d*|\.\d+)([eE][+-]?\d+)?$/.test(defaultValue)
+          (defaultValue && /^[+-]?(?:\d+\.?\d*|\.\d+)(?:[eE][+-]?\d+)?$/.test(defaultValue)
             ? defaultValue
             : defaultValue == "Number.MIN_SAFE_INTEGER" || defaultValue == "Number.MAX_SAFE_INTEGER"
               ? undefined

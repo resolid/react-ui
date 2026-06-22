@@ -114,11 +114,9 @@ async function contentBuild({ root, contentDir, watch }) {
       const doc = await readFile(file, { encoding: "utf-8" });
 
       const match = doc.match(MATTER_RE);
-      const matter = match == null ? null : match[1];
-
-      const meta = matter == null ? {} : (parse(matter) ?? {});
-
-      const tree = fromMarkdown(match == null ? doc : doc.slice(match[0].length).trim());
+      const matter = match?.[1] ?? null;
+      const meta = matter ? (parse(matter) ?? {}) : {};
+      const tree = fromMarkdown(match ? doc.slice(match[0].length) : doc);
 
       const toc = [];
 
