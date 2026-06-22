@@ -1,5 +1,11 @@
 # @resolid/react-ui
 
+## 0.3.2
+
+### Patch Changes
+
+- [`3e7c660`](https://github.com/resolid/react-ui/commit/3e7c660f2631a5448be86e40267ea2111fda8dde) - feat: add react-compiler-runtime to dependencies
+
 ## 0.3.1
 
 ### Patch Changes
