@@ -8,7 +8,7 @@ import {
   useState,
 } from "react";
 import type { PrimitiveProps } from "../../primitives/polymorphic";
-import type { ValueProp } from "../../shared/types";
+import type { ValueProps } from "../../shared/types";
 import { useControllableState } from "../../hooks/use-controllable-state";
 import { useEventListener } from "../../hooks/use-event-listener";
 import { useMergeRefs } from "../../hooks/use-merge-refs";
@@ -19,7 +19,7 @@ export type NumberInputProps = Omit<
   InputProps,
   "type" | "suffix" | "suffixWidth" | "value" | "defaultValue" | "onChange"
 > &
-  ValueProp<number | undefined> & {
+  ValueProps<number | undefined> & {
     /**
      * 最小值
      * @default Number.MIN_SAFE_INTEGER

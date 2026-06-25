@@ -8,14 +8,14 @@ import type {
 } from "react";
 import { useListItem } from "@floating-ui/react";
 import type { PrimitiveProps } from "../../primitives/polymorphic";
-import type { ValueProp } from "../../shared/types";
+import type { ValueProps } from "../../shared/types";
 import { useControllableState } from "../../hooks/use-controllable-state";
 import { useMergeRefs } from "../../hooks/use-merge-refs";
 import { useComposite } from "../../primitives/composite/composite-context";
 import { tx } from "../../utils/clsx";
 import { useTagsInputRoot } from "./tags-input-root-context";
 
-export type TagsInputInputProps = ValueProp<string> & {
+export type TagsInputInputProps = ValueProps<string> & {
   /**
    * 占位符文本
    */

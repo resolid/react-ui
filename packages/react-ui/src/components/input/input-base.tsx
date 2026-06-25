@@ -1,6 +1,6 @@
 import { type ChangeEvent, type CSSProperties, type ReactNode, useRef } from "react";
 import type { PrimitiveProps } from "../../primitives/polymorphic";
-import type { FormInputFieldProps, ValueProp } from "../../shared/types";
+import type { FormInputFieldProps, ValueProps } from "../../shared/types";
 import { useControllableState } from "../../hooks/use-controllable-state";
 import { useMergeRefs } from "../../hooks/use-merge-refs";
 import { inputTextShareStyles } from "../../shared/styles";
@@ -18,7 +18,7 @@ import {
 
 export type InputBaseProps = Partial<InputGroupContextValue> &
   FormInputFieldProps &
-  ValueProp<string | number> & {
+  ValueProps<string | number> & {
     /**
      * 前置元素
      */

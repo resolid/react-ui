@@ -1,6 +1,6 @@
 import type { Dispatch, SetStateAction } from "react";
 import { isDefined } from "@resolid/utils";
-import type { ValueProp } from "../../shared/types";
+import type { ValueProps } from "../../shared/types";
 import { useControllableState } from "../../hooks/use-controllable-state";
 import {
   type CalendarFormatProps,
@@ -9,7 +9,7 @@ import {
   type RangeDate,
 } from "./utils";
 
-export type UseControllableDateRangeOptions = ValueProp<string | null, string> & {
+export type UseControllableDateRangeOptions = ValueProps<string | null, string> & {
   separator: string;
 } & Required<CalendarFormatProps>;
 

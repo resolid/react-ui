@@ -1,7 +1,7 @@
 import { Composite } from "@floating-ui/react";
 import { type ReactNode, useRef, useState } from "react";
 import type { PrimitiveProps } from "../../primitives/polymorphic";
-import type { FormInputFieldProps, ValueProp } from "../../shared/types";
+import type { FormInputFieldProps, ValueProps } from "../../shared/types";
 import { useControllableState } from "../../hooks/use-controllable-state";
 import {
   InputClearContext,
@@ -32,7 +32,7 @@ import { tagsInputSizeStyles } from "./tags-input.styles";
 
 export type TagsInputRootProps = Omit<FormInputFieldProps, "placeholder"> &
   TagsInputBaseProps &
-  ValueProp<string[]> & {
+  ValueProps<string[]> & {
     /**
      * 大小
      * @default "md"

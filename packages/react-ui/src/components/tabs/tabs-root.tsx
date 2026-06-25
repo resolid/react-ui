@@ -1,12 +1,12 @@
 import { type ReactNode, useId } from "react";
 import type { PrimitiveProps } from "../../primitives/polymorphic";
-import type { Orientation, ValueProp } from "../../shared/types";
+import type { Orientation, ValueProps } from "../../shared/types";
 import { useControllableState } from "../../hooks/use-controllable-state";
 import { OrientationContext } from "../../primitives/composite/orientation-context";
 import { tx } from "../../utils/clsx";
 import { TabsContext, type TabsContextValue } from "./tabs-context";
 
-export type TabsRootProps = ValueProp<string> & {
+export type TabsRootProps = ValueProps<string> & {
   /**
    * 方向
    * @default "horizontal"

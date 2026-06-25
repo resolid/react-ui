@@ -55,6 +55,7 @@ export function useCollection<T extends CollectionItem>({
   const [filterKeyword, setFilterKeyword] = useState<string>();
   const deferredKeyword = useDeferredValue(filterKeyword);
 
+  // react-doctor-disable-next-line react-doctor/react-compiler-no-manual-memoization
   const filterPredicate = useCallback(
     (item: T) => {
       if (!deferredKeyword || deferredKeyword.length == 0) {

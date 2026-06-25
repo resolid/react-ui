@@ -14,7 +14,7 @@ export type DisclosureProps = UseDisclosureOptions & {
   duration?: number;
 };
 
-export type ValueProp<T, D = T> = {
+export type ValueProps<T, D = T> = {
   /**
    * 受控值
    */
