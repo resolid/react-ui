@@ -10,16 +10,17 @@ import {
   type ReactNode,
   type RefObject,
   type SetStateAction,
-  useCallback,
-  useDeferredValue,
   useMemo,
-  useRef,
-  useState,
 } from "react";
-import type { CollectionItem, CollectionProps } from "../../primitives/collection/types";
+import type {
+  CollectionFields,
+  CollectionItem,
+  CollectionProps,
+} from "../../primitives/collection/types";
 import type { MultipleValueProps } from "../../shared/types";
 import type { InputSize } from "../input/input.styles";
 import { useControllableState } from "../../hooks/use-controllable-state";
+import { useCollection } from "../../primitives/collection/use-collection";
 import { useDirection } from "../provider/direction-context";
 
 export type ListboxValue = (string | number)[] | string | number | null;
@@ -48,7 +49,7 @@ export type ListboxBaseProps<T extends ListboxItem> = MultipleValueProps<string 
 
 export type UseListboxOptions<T extends ListboxItem> = Omit<
   ListboxBaseProps<T>,
-  "renderItem" | "renderGroupLabel"
+  "renderItem" | "renderGroupLabel" | "size"
 > & {
   context: FloatingRootContext;
   typeahead?: boolean;
@@ -60,12 +61,7 @@ export type UseListboxOptions<T extends ListboxItem> = Omit<
   openOnArrowKeyDown?: boolean;
 };
 
-export type UseListboxResult<T extends ListboxItem> = {
-  getItemValue: (item: T) => string | number;
-  getItemLabel: (item: T) => string;
-  getItemDisabled: (item: T) => boolean;
-  getItemChildren: <E = T>(item: T) => E[] | undefined;
-  childrenKey: string;
+export type UseListboxResult<T extends ListboxItem> = CollectionFields<T> & {
   activeIndex: number | null;
   setActiveIndex: Dispatch<SetStateAction<number | null>>;
   selectedIndex: number | null;
@@ -115,33 +111,38 @@ export function useListbox<T extends ListboxItem>(
     searchFilter,
   } = options;
 
+  const direction = useDirection(true);
+
   const [valueState, setValueState] = useControllableState<ListboxValue>({
     value,
     defaultValue,
     onChange,
   });
 
-  const direction = useDirection(true);
-
-  // react-doctor-disable-next-line react-doctor/react-compiler-no-manual-memoization
-  const getItemValue = useCallback((item: T) => item[valueKey] as string | number, [valueKey]);
-  // react-doctor-disable-next-line react-doctor/react-compiler-no-manual-memoization
-  const getItemLabel = useCallback((item: T) => item[labelKey] as string, [labelKey]);
-  // react-doctor-disable-next-line react-doctor/react-compiler-no-manual-memoization
-  const getItemDisabled = useCallback((item: T) => item[disabledKey] as boolean, [disabledKey]);
-  // react-doctor-disable-next-line react-doctor/react-compiler-no-manual-memoization
-  const getItemChildren = useCallback(
-    <E = T>(item: T) => item[childrenKey] as E[] | undefined,
-    [childrenKey],
-  );
-
-  const elementsRef = useRef<(HTMLDivElement | null)[]>([]);
-  const filterInputRef = useRef<HTMLInputElement | null>(null);
-  const labelsRef = useRef<(string | null)[]>([]);
-  const typingRef = useRef(false);
-  const [hasFilter, setHasFilter] = useState(false);
-  const [filterKeyword, setFilterKeyword] = useState<string>();
-  const deferredKeyword = useDeferredValue(filterKeyword);
+  const {
+    getItemValue,
+    getItemLabel,
+    getItemDisabled,
+    getItemChildren,
+    elementsRef,
+    filterInputRef,
+    labelsRef,
+    typingRef,
+    hasFilter,
+    setHasFilter,
+    filterPredicate,
+    setFilterKeyword,
+    activeIndex,
+    setActiveIndex,
+    pointer,
+    setPointer,
+  } = useCollection({
+    valueKey,
+    labelKey,
+    childrenKey,
+    disabledKey,
+    searchFilter,
+  });
 
   // react-doctor-disable-next-line react-doctor/react-compiler-no-manual-memoization
   const { nodeItems, indexedItems, selectedItems, selectedIndices } = useMemo(() => {
@@ -151,22 +152,6 @@ export function useListbox<T extends ListboxItem>(
     const indices: number[] = [];
 
     let itemIndex = 0;
-
-    const checkFilter = (item: T) => {
-      if (!deferredKeyword) {
-        return true;
-      }
-
-      if (deferredKeyword.length == 0) {
-        return true;
-      }
-
-      return (
-        searchFilter ??
-        ((keyword, listItem) =>
-          getItemValue(listItem).toString().toLowerCase().includes(keyword.toLowerCase()))
-      )(deferredKeyword, item);
-    };
 
     const addItem = (item: T) => {
       const itemValue = getItemValue(item);
@@ -180,7 +165,7 @@ export function useListbox<T extends ListboxItem>(
         indices.push(itemIndex);
       }
 
-      if (selected || checkFilter(item)) {
+      if (selected || filterPredicate(item)) {
         indexes.push(item);
 
         return true;
@@ -193,18 +178,18 @@ export function useListbox<T extends ListboxItem>(
       const children = getItemChildren(item);
 
       if (Array.isArray(children)) {
-        const childrenItems = [];
+        const childrenNodes = [];
 
         for (const child of children) {
           if (addItem(child)) {
-            childrenItems.push({ ...child, __index: itemIndex });
+            childrenNodes.push({ ...child, __index: itemIndex });
             // react-doctor-disable-next-line
             itemIndex++;
           }
         }
 
-        if (childrenItems.length > 0) {
-          nodes.push({ ...item, [childrenKey]: childrenItems, __index: 0 });
+        if (childrenNodes.length > 0) {
+          nodes.push({ ...item, [childrenKey]: childrenNodes, __index: 0 });
         }
       } else {
         if (addItem(item)) {
@@ -221,18 +206,7 @@ export function useListbox<T extends ListboxItem>(
       selectedItems: selects,
       selectedIndices: indices,
     };
-  }, [
-    childrenKey,
-    collection,
-    deferredKeyword,
-    getItemChildren,
-    getItemValue,
-    searchFilter,
-    valueState,
-  ]);
-
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const [pointer, setPointer] = useState(false);
+  }, [childrenKey, collection, getItemChildren, getItemValue, filterPredicate, valueState]);
 
   const selectedIndex = selectedIndices[0] ?? null;
 

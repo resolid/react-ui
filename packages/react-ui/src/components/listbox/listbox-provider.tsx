@@ -10,17 +10,23 @@ import type { InputSize } from "../input/input.styles";
 import type { ListboxBaseProps, ListboxItem, UseListboxResult } from "./use-listbox";
 import { useIsomorphicEffect } from "../../hooks/use-isomorphic-effect";
 import { usePrevious } from "../../hooks/use-previous";
+import {
+  CollectionFieldsContext,
+  type CollectionFieldsContextValue,
+} from "../../primitives/collection/collection-fields-context";
+import { CollectionNodesContext } from "../../primitives/collection/collection-nodes-context";
+import {
+  CollectionScrollContext,
+  type CollectionScrollTo,
+} from "../../primitives/collection/collection-scroll-context";
 import { CollectionStateContext } from "../../primitives/collection/collection-state-context";
 import {
   PopperFloatingContext,
   type PopperFloatingContextValue,
 } from "../../primitives/popper/popper-floating-context";
-import { ListboxCollectionContext } from "./listbox-collection-context";
-import { ListboxFieldsContext, type ListboxFieldsContextValue } from "./listbox-field-context";
 import { ListboxFilterContext } from "./listbox-filter-context";
 import { ListboxGroupContext, type ListboxGroupContextValue } from "./listbox-group-context";
 import { ListboxItemContext, type ListboxItemContextValue } from "./listbox-item-context";
-import { ListboxScrollContext, type VirtualScrollTo } from "./listbox-scroll-context";
 
 export type ListboxProviderProps<T extends ListboxItem> = {
   value: Omit<
@@ -110,7 +116,7 @@ export function ListboxProvider<T extends ListboxItem>(
     getItemDisabled,
     getItemChildren,
     childrenKey,
-  } as ListboxFieldsContextValue;
+  } as CollectionFieldsContextValue;
 
   const groupContext = {
     renderGroupLabel,
@@ -119,7 +125,7 @@ export function ListboxProvider<T extends ListboxItem>(
   // 滚动
   const scrollRef = useRef<HTMLElement | null>(null);
   // 虚拟滚动
-  const scrollToRef = useRef<VirtualScrollTo | null>(null);
+  const scrollToRef = useRef<CollectionScrollTo | null>(null);
 
   const prevActiveIndex = usePrevious(activeIndex);
 
@@ -202,17 +208,17 @@ export function ListboxProvider<T extends ListboxItem>(
       <ListboxFilterContext
         value={{ getNavigationProps, filterInputRef, setHasFilter, setFilterKeyword }}
       >
-        <ListboxScrollContext value={{ scrollToRef, scrollRef }}>
+        <CollectionScrollContext value={{ scrollToRef, scrollRef }}>
           <PopperFloatingContext value={{ setFloating, getFloatingProps }}>
-            <ListboxFieldsContext value={fieldContext}>
-              <ListboxCollectionContext value={{ nodeItems }}>
+            <CollectionFieldsContext value={fieldContext}>
+              <CollectionNodesContext value={{ nodeItems }}>
                 <ListboxGroupContext value={groupContext}>
                   <ListboxItemContext value={itemContext}>{children}</ListboxItemContext>
                 </ListboxGroupContext>
-              </ListboxCollectionContext>
-            </ListboxFieldsContext>
+              </CollectionNodesContext>
+            </CollectionFieldsContext>
           </PopperFloatingContext>
-        </ListboxScrollContext>
+        </CollectionScrollContext>
       </ListboxFilterContext>
     </CollectionStateContext>
   );

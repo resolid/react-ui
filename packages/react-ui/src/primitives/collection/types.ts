@@ -37,3 +37,11 @@ export type CollectionProps<T extends CollectionItem> = {
    */
   searchFilter?: (keyword: string, item: T) => boolean;
 };
+
+export type CollectionFields<T extends CollectionItem = CollectionItem> = {
+  childrenKey: string;
+  getItemValue: (item: T) => string | number;
+  getItemLabel: (item: T) => string;
+  getItemDisabled: (item: T) => boolean;
+  getItemChildren: <E = T>(item: T) => E[] | undefined;
+};

@@ -1,12 +1,12 @@
 import type { ReactNode } from "react";
 import type { AnyObject, PrimitiveProps } from "../../primitives/polymorphic";
 import { useMergeRefs } from "../../hooks/use-merge-refs";
+import { useCollectionFields } from "../../primitives/collection/collection-fields-context";
 import { CheckIcon } from "../../shared/icons";
 import { getInteractiveHandlers } from "../../shared/utils";
 import { tx } from "../../utils/clsx";
 import { ariaAttr, dataAttr } from "../../utils/dom";
 import { inputPxStyles, type InputSize } from "../input/input.styles";
-import { useListboxFields } from "./listbox-field-context";
 import { useListboxItem } from "./listbox-item-context";
 import { listboxItemStyles } from "./listbox.styles";
 
@@ -46,7 +46,7 @@ export function ListboxItem(
     labelsRef,
   } = useListboxItem();
 
-  const { getItemDisabled } = useListboxFields();
+  const { getItemDisabled } = useCollectionFields();
 
   const refs = useMergeRefs(ref, (node) => {
     if (node) {

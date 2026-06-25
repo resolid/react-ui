@@ -1,12 +1,12 @@
 import { type ReactNode, useLayoutEffect, useState } from "react";
 import type { EmptyObject, PrimitiveProps } from "../../primitives/polymorphic";
 import { useMergeRefs } from "../../hooks/use-merge-refs";
+import { useCollectionScroll } from "../../primitives/collection/collection-scroll-context";
 import { useCollectionState } from "../../primitives/collection/collection-state-context";
 import { usePopperFloating } from "../../primitives/popper/popper-floating-context";
 import { inputTextShareStyles } from "../../shared/styles";
 import { tx } from "../../utils/clsx";
 import { ariaAttr } from "../../utils/dom";
-import { useListboxScroll } from "./listbox-scroll-context";
 
 export function ListboxContent(
   props: PrimitiveProps<"div", EmptyObject, "role" | "tabIndex">,
@@ -14,7 +14,7 @@ export function ListboxContent(
   const { children, className, ref, ...rest } = props;
 
   const { size, multiple } = useCollectionState();
-  const { scrollToRef, scrollRef } = useListboxScroll();
+  const { scrollToRef, scrollRef } = useCollectionScroll();
   const { setFloating, getFloatingProps } = usePopperFloating();
 
   const [hasScrollTo, setHasScrollTo] = useState(false);

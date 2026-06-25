@@ -1,12 +1,12 @@
 import type { CSSProperties, ReactNode } from "react";
 import { isArray } from "@resolid/utils";
-import type { ListboxNodeItem } from "./use-listbox";
+import type { ListboxFlatItem, ListboxNodeItem } from "./use-listbox";
+import { useCollectionFields } from "../../primitives/collection/collection-fields-context";
+import { useCollectionNodes } from "../../primitives/collection/collection-nodes-context";
 import { useCollectionState } from "../../primitives/collection/collection-state-context";
-import { useListboxCollection } from "./listbox-collection-context";
-import { useListboxFields } from "./listbox-field-context";
+import { useCollectionVirtualizer } from "../../primitives/collection/collection-virtualizer-context";
 import { ListboxGroupLabel } from "./listbox-group-label";
 import { ListboxItem } from "./listbox-item";
-import { useListboxVirtualizer } from "./listbox-virtualizer-context";
 
 export type ListboxListProps = {
   checkmark?: boolean;
@@ -14,10 +14,10 @@ export type ListboxListProps = {
 
 export function ListboxList({ checkmark = true }: ListboxListProps): ReactNode[] {
   const { size, disabled, readOnly } = useCollectionState();
-  const { nodeItems } = useListboxCollection();
-  const { getItemValue, getItemLabel, getItemChildren } = useListboxFields();
+  const { nodeItems } = useCollectionNodes<ListboxNodeItem>();
+  const { getItemValue, getItemLabel, getItemChildren } = useCollectionFields();
 
-  const virtual = useListboxVirtualizer(true);
+  const virtual = useCollectionVirtualizer<ListboxFlatItem>();
 
   if (virtual) {
     const setSize = virtual.flatItems.length;
