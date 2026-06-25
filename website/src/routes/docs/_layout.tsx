@@ -250,4 +250,13 @@ const menus: Menu[] = [
       },
     ],
   },
+  {
+    label: "工具组件",
+    children: [
+      {
+        label: "仅客户端渲染",
+        path: "components/client-only",
+      },
+    ],
+  },
 ];

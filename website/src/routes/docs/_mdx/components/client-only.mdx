@@ -1,0 +1,97 @@
+---
+title: 仅客户端渲染
+description: 用于仅在客户端渲染内容。
+---
+
+## 演示
+
+```jsx demo
+import { ClientOnly } from "@resolid/react-ui";
+
+export default function App() {
+  return <ClientOnly>此内容仅在客户端渲染。</ClientOnly>;
+}
+```
+
+## 用法
+
+```js
+import { ClientOnly } from "@resolid/react-ui";
+```
+
+```jsx
+<ClientOnly>
+  <ColorModeButton />
+</ClientOnly>
+```
+
+## 举例
+
+### Fallback
+
+使用 `fallback` 属性，在客户端内容准备期间渲染加载状态。
+
+```jsx demo
+import { ClientOnly } from "@resolid/react-ui";
+import { useEffect, useState } from "react";
+
+function Clock() {
+  const [time, setTime] = useState(() => new Date().toLocaleTimeString());
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setTime(new Date().toLocaleTimeString());
+    }, 1000);
+
+    return () => window.clearInterval(interval);
+  }, []);
+
+  return <p className="text-right tabular-nums">当前时间: {time}</p>;
+}
+
+export default function App() {
+  return (
+    <div className="flex flex-col">
+      <ClientOnly fallback={<div className="h-14 w-35 rounded-md bg-bg-subtlest" />}>
+        <p>客户端时钟</p>
+        <Clock />
+      </ClientOnly>
+    </div>
+  );
+}
+```
+
+### 渲染属性模式
+
+当组件需要访问仅限浏览器环境的 API（如 `window`、`document` 或 `localStorage`）时，请使用渲染属性模式，以避免服务端渲染问题
+
+```jsx demo
+import { ClientOnly } from "@resolid/react-ui";
+
+export default function App() {
+  return (
+    <ClientOnly>
+      {() => (
+        <div>
+          <p>
+            当前链接:&nbsp;
+            <code className="font-mono text-sm bg-bg-subtlest px-1 py-0.5">
+              {window.location.href}
+            </code>
+          </p>
+          <p>
+            屏幕宽度:&nbsp;
+            <code className="font-mono text-sm bg-bg-subtlest px-1 py-0.5">
+              {window.innerWidth}px
+            </code>
+          </p>
+        </div>
+      )}
+    </ClientOnly>
+  );
+}
+```
+
+## 属性
+
+::PropsTable{file=client-only/client-only.tsx}

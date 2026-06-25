@@ -3,7 +3,14 @@ import { runIf } from "@resolid/utils";
 import { useHydrated } from "../../hooks/use-hydrated";
 
 export type ClientOnlyProps = {
+  /**
+   * @ignore
+   * */
   children: ReactNode | (() => ReactNode);
+
+  /**
+   * 组件在客户端挂载期间渲染的后备内容。
+   * */
   fallback?: ReactNode;
 };
 
