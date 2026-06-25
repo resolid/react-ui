@@ -50,7 +50,6 @@
     "@floating-ui/react": "^0.27.19",
     "@resolid/utils": "^1.6.1",
     "@tanstack/react-virtual": "^3.14.3",
-    "react-compiler-runtime": "^1.0.0",
     "tailwind-variants": "^3.2.2"
   },
   "devDependencies": {
@@ -61,7 +60,7 @@
     "@testing-library/user-event": "^14.6.1",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^6.0.2",
+    "@vitejs/plugin-react": "^6.0.3",
     "@vitest/pretty-format": "^4.1.9",
     "axe-core": "^4.12.1",
     "babel-plugin-react-compiler": "^1.0.0",

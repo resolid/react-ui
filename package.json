@@ -14,7 +14,6 @@
     "dev": "pnpm run --filter website dev",
     "changeset": "changeset",
     "format": "oxfmt",
-    "preinstall": "npx only-allow pnpm",
     "lint": "pnpm run -r --if-present lint",
     "start": "pnpm run --filter website start",
     "test:packages": "pnpm run --filter @resolid/* test",
@@ -24,20 +23,20 @@
   "devDependencies": {
     "@changesets/changelog-github": "^0.7.0",
     "@changesets/cli": "^2.31.0",
-    "@commitlint/cli": "^20.5.3",
-    "@commitlint/config-conventional": "^20.5.3",
-    "@resolid/config": "^5.3.25",
+    "@commitlint/cli": "^21.1.0",
+    "@commitlint/config-conventional": "^21.1.0",
+    "@resolid/config": "^5.3.26",
     "@tailwindcss/language-server": "^0.14.29",
     "@types/node": "^24.13.2",
     "eslint-plugin-react-you-might-not-need-an-effect": "^1.0.1",
     "lefthook": "^2.1.9",
-    "oxfmt": "^0.55.0",
-    "oxlint": "^1.70.0",
+    "oxfmt": "^0.56.0",
+    "oxlint": "^1.71.0",
     "oxlint-tsgolint": "^0.23.0",
     "typescript": "^6.0.3"
   },
   "engines": {
     "node": "^22.13.0 || >=24"
   },
-  "packageManager": "pnpm@11.8.0"
+  "packageManager": "pnpm@11.9.0"
 }

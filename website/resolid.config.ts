@@ -7,4 +7,9 @@ export const { vitePluginOptions, reactRouterConfig } = defineDevConfig({
   nodeVersion: 24,
   includeFiles: [".resolid/content/*.json"],
   devExclude: ["/.resolid/**/*"],
+  reactRouterConfig: {
+    future: {
+      unstable_optimizeDeps: true,
+    },
+  },
 });
