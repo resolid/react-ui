@@ -1,4 +1,4 @@
-import { clamp } from "@resolid/utils";
+import { clamp, isArray } from "@resolid/utils";
 import type { ValueType } from "./slider-context";
 
 export function getNextValue(
@@ -27,7 +27,7 @@ export function getStepValue(
   max: number,
   thumbIndex?: number,
 ): ValueType {
-  if (Array.isArray(value)) {
+  if (isArray(value)) {
     return getChangeValue(
       value,
       thumbIndex == 1 ? value[1] + step : value[0] + step,
@@ -47,7 +47,7 @@ export function getChangeValue(
   max: number,
   thumbIndex?: number,
 ): ValueType {
-  return Array.isArray(value)
+  return isArray(value)
     ? thumbIndex == 1
       ? [value[0], clamp(next, value[0], max)]
       : [clamp(next, min, value[1]), value[1]]

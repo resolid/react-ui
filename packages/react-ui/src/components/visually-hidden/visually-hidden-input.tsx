@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { isArray } from "@resolid/utils";
 import type { PrimitiveProps } from "../../primitives";
 
 export type VisuallyHiddenInputProps<T> = {
@@ -18,7 +19,7 @@ export function VisuallyHiddenInput<T>({
   disabled,
   ...rest
 }: PrimitiveProps<"input", VisuallyHiddenInputProps<T>>): ReactNode | ReactNode[] {
-  if (Array.isArray(value)) {
+  if (isArray(value)) {
     if (value.length == 0 && required) {
       return (
         <input

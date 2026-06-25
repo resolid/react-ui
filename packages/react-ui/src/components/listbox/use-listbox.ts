@@ -4,6 +4,7 @@ import {
   useListNavigation,
   useTypeahead,
 } from "@floating-ui/react";
+import { isArray } from "@resolid/utils";
 import {
   type Dispatch,
   type KeyboardEvent,
@@ -156,7 +157,7 @@ export function useListbox<T extends ListboxItem>(
     const addItem = (item: T) => {
       const itemValue = getItemValue(item);
 
-      const selected = Array.isArray(valueState)
+      const selected = isArray(valueState)
         ? valueState.includes(itemValue)
         : valueState == itemValue;
 
@@ -177,7 +178,7 @@ export function useListbox<T extends ListboxItem>(
     for (const item of collection) {
       const children = getItemChildren(item);
 
-      if (Array.isArray(children)) {
+      if (isArray(children)) {
         const childrenNodes = [];
 
         for (const child of children) {
@@ -213,7 +214,7 @@ export function useListbox<T extends ListboxItem>(
   const handleSelect = (item: T): void => {
     const itemValue = getItemValue(item);
 
-    if (Array.isArray(valueState)) {
+    if (isArray(valueState)) {
       if (valueState.includes(itemValue)) {
         setValueState(valueState.filter((p) => p != itemValue));
       } else {

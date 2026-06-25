@@ -1,3 +1,4 @@
+import { isArray } from "@resolid/utils";
 import { type ClipboardEvent, type ReactNode, useRef } from "react";
 import type { EmptyObject, PrimitiveProps } from "../../primitives/polymorphic";
 import { useMergeRefs } from "../../hooks/use-merge-refs";
@@ -57,7 +58,7 @@ export function DatePickerTrigger(
       {...getReferenceProps(rest)}
     >
       {value.length > 0 ? (
-        Array.isArray(value) ? (
+        isArray(value) ? (
           <div className="inline-flex flex-wrap gap-1">
             {value.map((v) => (
               <InputItem

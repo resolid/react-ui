@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { isArray } from "@resolid/utils";
 import type { PrimitiveProps } from "../../primitives";
 import { dataAttr } from "../../utils/dom";
 import { CollapsibleRoot } from "../collapsible/collapsible-root";
@@ -28,17 +29,17 @@ export function AccordionItem(props: PrimitiveProps<"div", AccordionItemProps>):
 
   const { value, disabled = accordionDisabled, children, ...rest } = props;
 
-  const opened = Array.isArray(openedValue) ? openedValue.includes(value) : openedValue == value;
+  const opened = isArray(openedValue) ? openedValue.includes(value) : openedValue == value;
 
   const handleOpenChange = (open: boolean) => {
     if (open) {
-      if (Array.isArray(openedValue)) {
+      if (isArray(openedValue)) {
         setOpenedValue((prev) => [value, ...(prev as (string | number)[])]);
       } else {
         setOpenedValue(value);
       }
     } else {
-      if (Array.isArray(openedValue)) {
+      if (isArray(openedValue)) {
         setOpenedValue((prev) => (prev as (string | number)[]).filter((p) => p != value));
       } else {
         if (collapsible) {

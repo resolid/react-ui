@@ -7,6 +7,7 @@ import {
   useInteractions,
   useRole,
 } from "@floating-ui/react";
+import { isArray } from "@resolid/utils";
 import { type HTMLProps, type InputEvent, type KeyboardEvent, useRef, useState } from "react";
 import type { PopperAnchorContextValue } from "../../primitives/popper/popper-anchor-context";
 import type { PopperStateContextValue } from "../../primitives/popper/popper-state-context";
@@ -97,7 +98,7 @@ export function useCombobox<T extends ListboxItem>({
   const [inputValue, setInputValue] = useState(
     defaultValue === null
       ? ""
-      : Array.isArray(defaultValue)
+      : isArray(defaultValue)
         ? defaultValue.join(",")
         : String(defaultValue),
   );
@@ -152,7 +153,7 @@ export function useCombobox<T extends ListboxItem>({
     onChange: (changed) => {
       if (changed == null) {
         setInputValue("");
-      } else if (Array.isArray(changed)) {
+      } else if (isArray(changed)) {
         setInputValue(changed.join(","));
       } else {
         setInputValue(String(changed));

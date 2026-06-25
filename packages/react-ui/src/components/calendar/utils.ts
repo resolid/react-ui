@@ -1,4 +1,4 @@
-import { isDefined } from "@resolid/utils";
+import { isArray, isDefined } from "@resolid/utils";
 import {
   addMonths,
   addYears,
@@ -81,7 +81,7 @@ export type CalendarBaseProps = {
   };
 
 export function formatBaseDate(date: Date | Date[] | null, format: string): string | string[] {
-  if (Array.isArray(date)) {
+  if (isArray(date)) {
     return date.map((d) => tryFormatDate(d, format));
   }
 
@@ -117,17 +117,17 @@ export function parseBaseDateValue(
   format: string,
   multiple: boolean,
 ): Date | Date[] | null {
-  const isArray = Array.isArray(value);
+  const array = isArray(value);
 
   if (multiple) {
-    if (isArray) {
+    if (array) {
       return value.map((v) => tryParseDate(v, format)).filter((d) => d != null);
     }
 
     throw new Error("Calendar: `value` must be an array when `multiple` is true.");
   }
 
-  if (isArray) {
+  if (array) {
     throw new Error("Calendar: `value` not be an array when `multiple` is false.");
   }
 
@@ -171,7 +171,7 @@ export function getBaseFocusedValue(
   }
 
   if (multiple) {
-    if (Array.isArray(value)) {
+    if (isArray(value)) {
       return toDate(value[0]);
     }
 

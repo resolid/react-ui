@@ -112,7 +112,7 @@ export function DatePickerRoot(props: PropsWithChildren<DatePickerRootProps>): R
     },
     remove: (v) => {
       setValue((prev) => {
-        if (Array.isArray(prev)) {
+        if (isArray(prev)) {
           return prev.filter((p) => {
             return formatBaseDate(p, format) != v;
           });

@@ -1,5 +1,5 @@
 import type { KeyboardEvent, ReactNode } from "react";
-import { runIf } from "@resolid/utils";
+import { isArray, runIf } from "@resolid/utils";
 import type { PrimitiveProps } from "../../primitives/polymorphic";
 import { useFocus } from "../../hooks/use-focus";
 import { useHover } from "../../hooks/use-hover";
@@ -53,7 +53,7 @@ export function SliderThumb(
       e.preventDefault();
       e.stopPropagation();
 
-      const next: ValueType = Array.isArray(value)
+      const next: ValueType = isArray(value)
         ? index == 1
           ? [value[0], value[0]]
           : [min, value[1]]
@@ -69,7 +69,7 @@ export function SliderThumb(
       e.preventDefault();
       e.stopPropagation();
 
-      const next: ValueType = Array.isArray(value)
+      const next: ValueType = isArray(value)
         ? index == 1
           ? [value[0], max]
           : [value[1], value[1]]
@@ -80,7 +80,7 @@ export function SliderThumb(
     }
   };
 
-  if (Array.isArray(value)) {
+  if (isArray(value)) {
     return (
       <>
         <SliderThumbButton

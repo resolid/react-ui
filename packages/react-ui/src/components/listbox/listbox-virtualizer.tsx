@@ -1,4 +1,4 @@
-import { omit } from "@resolid/utils";
+import { isArray, omit } from "@resolid/utils";
 import { type PropsWithChildren, type ReactNode, useMemo } from "react";
 import type { ListboxFlatItem, ListboxNodeItem } from "./use-listbox";
 import { useCollectionFields } from "../../primitives/collection/collection-fields-context";
@@ -44,7 +44,7 @@ export function ListboxVirtualizer({
     for (const item of nodeItems) {
       const itemChildren = getItemChildren<ListboxNodeItem>(item);
 
-      if (Array.isArray(itemChildren)) {
+      if (isArray(itemChildren)) {
         labelIndices.add(itemIndex);
         groupIndices.push(groupIndex);
 

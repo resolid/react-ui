@@ -1,4 +1,5 @@
 import { Composite } from "@floating-ui/react";
+import { isArray } from "@resolid/utils";
 import { type ReactNode, useRef, useState } from "react";
 import type { PrimitiveProps } from "../../primitives/polymorphic";
 import type { FormInputFieldProps, ValueProps } from "../../shared/types";
@@ -74,7 +75,7 @@ export function TagsInputRoot(props: PrimitiveProps<"div", TagsInputRootProps>):
   const [valueState, setValueState] = useControllableState({ value, defaultValue, onChange });
 
   const addValue = (added: string | string[]) => {
-    if (Array.isArray(added)) {
+    if (isArray(added)) {
       if (added.length == 0) {
         return true;
       }

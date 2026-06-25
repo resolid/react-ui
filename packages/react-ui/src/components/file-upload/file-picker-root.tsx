@@ -1,4 +1,4 @@
-import { formatBytes, isNullish, matchesAccept, omit, random } from "@resolid/utils";
+import { formatBytes, isArray, isNullish, matchesAccept, omit, random } from "@resolid/utils";
 import { type ChangeEvent, type ReactNode, useReducer, useRef } from "react";
 import type { PrimitiveProps } from "../../primitives";
 import type { FormFieldProps, MultipleValueProps } from "../../shared/types";
@@ -93,14 +93,14 @@ export function FilePickerRoot(
   const [state, dispatch] = useReducer(
     reducer,
     value !== undefined
-      ? Array.isArray(value)
+      ? isArray(value)
         ? value
         : value !== null
           ? [value]
           : []
       : isNullish(defaultValue)
         ? []
-        : (Array.isArray(defaultValue) ? defaultValue : [defaultValue]).map(
+        : (isArray(defaultValue) ? defaultValue : [defaultValue]).map(
             (file) =>
               ({
                 id: file.id,
@@ -115,9 +115,7 @@ export function FilePickerRoot(
   const onChangeCallback = (changed: FileItem[] | FileItem | null) => {
     queueMicrotask(() => {
       if (inputRef.current) {
-        const files = convertToDataTransfer(
-          Array.isArray(changed) ? changed : changed ? [changed] : [],
-        );
+        const files = convertToDataTransfer(isArray(changed) ? changed : changed ? [changed] : []);
 
         if (files) {
           inputRef.current.files = files;

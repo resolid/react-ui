@@ -1,4 +1,4 @@
-import { clamp, isNumber } from "@resolid/utils";
+import { clamp, isArray, isNumber } from "@resolid/utils";
 import {
   type CSSProperties,
   type MouseEvent,
@@ -171,7 +171,7 @@ export function SliderRoot(props: PrimitiveProps<"div", SliderRootProps>): React
   const handleTrackMouseDownCapture = (
     e: MouseEvent<HTMLDivElement> | TouchEvent<HTMLDivElement>,
   ) => {
-    if (!Array.isArray(valueState)) {
+    if (!isArray(valueState)) {
       return;
     }
 
@@ -208,7 +208,7 @@ export function SliderRoot(props: PrimitiveProps<"div", SliderRootProps>): React
     setThumbIndex(nearest);
   };
 
-  const position = Array.isArray(valueState)
+  const position = isArray(valueState)
     ? [getPosition(valueState[0], min, max), getPosition(valueState[1], min, max)]
     : getPosition(valueState, min, max);
 
@@ -217,21 +217,21 @@ export function SliderRoot(props: PrimitiveProps<"div", SliderRootProps>): React
   const computeOffset = linearScale([0, 50], [0, thumbHalf]);
   const directionValue = !vertical && direction == "rtl" ? -1 : 1;
 
-  const thumbOffsets = Array.isArray(position)
+  const thumbOffsets = isArray(position)
     ? [
         getOffset(thumbHalf, computeOffset(position[0]!), directionValue),
         getOffset(thumbHalf, computeOffset(position[1]!), directionValue),
       ]
     : [getOffset(thumbHalf, computeOffset(position), directionValue), 0];
 
-  const thumbStarts = Array.isArray(position)
+  const thumbStarts = isArray(position)
     ? [`${position[0]}%`, `${position[1]}%`]
     : [`${position}%`, "0%"];
 
   const style = {
     "--s-root-s": vertical ? sizeStyle.width : sizeStyle.heigh,
-    "--s-track-s": Array.isArray(position) ? `${position[0]!}%` : "0%",
-    "--s-track-e": Array.isArray(position) ? `${100 - position[1]!}%` : `${100 - position}%`,
+    "--s-track-s": isArray(position) ? `${position[0]!}%` : "0%",
+    "--s-track-e": isArray(position) ? `${100 - position[1]!}%` : `${100 - position}%`,
     "--s-thumb-w": `${resolvedThumbSize.width}px`,
     "--s-thumb-h": `${resolvedThumbSize.height}px`,
     "--s-thumb-s0": thumbStarts[0],
