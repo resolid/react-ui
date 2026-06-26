@@ -1,11 +1,14 @@
 import type { ReactNode } from "react";
-import type { PrimitiveProps } from "../../primitives";
-import { ListboxFilterBase, type ListboxFilterBaseProps } from "./listbox-filter-base";
+import type { PrimitiveProps } from "../../primitives/polymorphic";
+import {
+  CollectionFilter,
+  type CollectionFilterProps,
+} from "../../primitives/collection/collection-filter";
 
-export type ListboxFilterProps = Omit<ListboxFilterBaseProps, "focusable">;
+export type ListboxFilterProps = Omit<CollectionFilterProps, "focusable">;
 
 export function ListboxFilter(
-  props: PrimitiveProps<"input", ListboxFilterProps, "children" | "type" | "disabled">,
+  props: PrimitiveProps<"input", ListboxFilterProps, "children" | "type">,
 ): ReactNode {
-  return <ListboxFilterBase {...props} />;
+  return <CollectionFilter {...props} />;
 }

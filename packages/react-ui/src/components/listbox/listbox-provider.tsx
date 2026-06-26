@@ -14,6 +14,7 @@ import {
   CollectionFieldsContext,
   type CollectionFieldsContextValue,
 } from "../../primitives/collection/collection-fields-context";
+import { CollectionFilterContext } from "../../primitives/collection/collection-filter-context";
 import { CollectionNodesContext } from "../../primitives/collection/collection-nodes-context";
 import {
   CollectionScrollContext,
@@ -24,7 +25,6 @@ import {
   PopperFloatingContext,
   type PopperFloatingContextValue,
 } from "../../primitives/popper/popper-floating-context";
-import { ListboxFilterContext } from "./listbox-filter-context";
 import { ListboxGroupContext, type ListboxGroupContextValue } from "./listbox-group-context";
 import { ListboxItemContext, type ListboxItemContextValue } from "./listbox-item-context";
 
@@ -205,7 +205,7 @@ export function ListboxProvider<T extends ListboxItem>(
 
   return (
     <CollectionStateContext value={{ size, multiple, disabled, readOnly }}>
-      <ListboxFilterContext
+      <CollectionFilterContext
         value={{ getNavigationProps, filterInputRef, setHasFilter, setFilterKeyword }}
       >
         <CollectionScrollContext value={{ scrollToRef, scrollRef }}>
@@ -219,7 +219,7 @@ export function ListboxProvider<T extends ListboxItem>(
             </CollectionFieldsContext>
           </PopperFloatingContext>
         </CollectionScrollContext>
-      </ListboxFilterContext>
+      </CollectionFilterContext>
     </CollectionStateContext>
   );
 }

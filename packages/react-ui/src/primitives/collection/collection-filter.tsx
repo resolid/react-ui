@@ -1,26 +1,28 @@
 import type { ReactNode } from "react";
 import type { PrimitiveProps } from "../../primitives/polymorphic";
+import { InputBase, type InputBaseProps } from "../../components/input/input-base";
 import { useMergeRefs } from "../../hooks/use-merge-refs";
 import { useCollectionState } from "../../primitives/collection/collection-state-context";
 import { SearchIcon } from "../../shared/icons";
 import { tx } from "../../utils/clsx";
-import { InputBase, type InputBaseProps } from "../input/input-base";
-import { useListboxFilter } from "./listbox-filter-context";
+import { useCollectionFilter } from "./collection-filter-context";
 
-export type ListboxFilterBaseProps = Omit<
+export type CollectionFilterProps = Omit<
   InputBaseProps,
   "type" | "name" | "required" | "readOnly" | "invalid" | "suffix" | "suffixWidth"
 >;
 
-export function ListboxFilterBase(
-  props: PrimitiveProps<"input", ListboxFilterBaseProps, "children" | "type" | "disabled">,
+export function CollectionFilter(
+  props: PrimitiveProps<"input", CollectionFilterProps, "children" | "type" | "disabled">,
 ): ReactNode {
-  const { size: listboxSize, disabled } = useCollectionState();
+  const { size: initSize, disabled: initDisabled } = useCollectionState();
 
-  const { getNavigationProps, filterInputRef, setHasFilter, setFilterKeyword } = useListboxFilter();
+  const { getNavigationProps, filterInputRef, setHasFilter, setFilterKeyword } =
+    useCollectionFilter();
 
   const {
-    size = listboxSize,
+    size = initSize,
+    disabled = initDisabled,
     prefix,
     prefixWidth,
     value,
@@ -34,13 +36,11 @@ export function ListboxFilterBase(
 
   const handleChange = (changed: string | number) => {
     onChange?.(changed);
-
     setFilterKeyword(changed.toString());
   };
 
   const refs = useMergeRefs(ref, filterInputRef, () => {
     setHasFilter(true);
-
     return () => {
       setHasFilter(false);
     };
