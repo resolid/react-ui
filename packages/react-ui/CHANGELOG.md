@@ -1,5 +1,17 @@
 # @resolid/react-ui
 
+## 0.3.3
+
+### Patch Changes
+
+- [`6dcee1a`](https://github.com/resolid/react-ui/commit/6dcee1a40f28a046b5fa752cbf24b48946d4fe3c) - refactor: rename ValueProp to ValueProps
+
+- [`c8d2556`](https://github.com/resolid/react-ui/commit/c8d2556507121909427acfb89c06277567ecc657) - refactor: extract collection contexts into primitives
+
+- [`df5862f`](https://github.com/resolid/react-ui/commit/df5862fd652912e415e4971fe38be5c77bcc2e48) - refactor: simplify collection state
+
+- [`43b8e44`](https://github.com/resolid/react-ui/commit/43b8e44af83ae14876d7b2d2245d6d11e9901060) - refactor: extract collection filter into primitives
+
 ## 0.3.2
 
 ### Patch Changes
