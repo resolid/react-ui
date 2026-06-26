@@ -1,6 +1,5 @@
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { type PropsWithChildren, type ReactNode, useLayoutEffect } from "react";
-import type { CollectionItem } from "./types";
 import { usePopperFloating } from "../popper/popper-floating-context";
 import { useCollectionScroll } from "./collection-scroll-context";
 import { CollectionVirtualizerContext } from "./collection-virtualizer-context";
@@ -48,17 +47,12 @@ export type CollectionVirtualizerBaseProps = {
   useAnimationFrameWithResizeObserver?: boolean;
 };
 
-type CollectionVirtualizerProps<T extends CollectionItem> = CollectionVirtualizerBaseProps & {
-  flatItems: T[];
-  labelIndices: Set<number>;
-  groupIndices: number[];
-  itemHeight: number;
-  labelHeight: number;
+type CollectionVirtualizerProps = CollectionVirtualizerBaseProps & {
+  totalCount: number;
+  estimateSize: (index: number) => number;
 };
 
-export function CollectionVirtualizer<T extends CollectionItem>({
-  itemHeight,
-  labelHeight,
+export function CollectionVirtualizer({
   overscan = 3,
   paddingStart = 4,
   paddingEnd = 4,
@@ -66,18 +60,17 @@ export function CollectionVirtualizer<T extends CollectionItem>({
   scrollPaddingEnd = 4,
   gap,
   useAnimationFrameWithResizeObserver = false,
-  flatItems,
-  labelIndices,
-  groupIndices,
+  totalCount,
+  estimateSize,
   children,
-}: PropsWithChildren<CollectionVirtualizerProps<T>>): ReactNode {
+}: PropsWithChildren<CollectionVirtualizerProps>): ReactNode {
   const { getFloatingProps } = usePopperFloating();
   const { scrollToRef, scrollRef } = useCollectionScroll();
 
   const { virtualItems, totalSize, scrollToIndex } = useVirtualizerCompiler({
-    count: flatItems.length,
+    count: totalCount,
     getScrollElement: () => scrollRef.current,
-    estimateSize: (index) => (labelIndices.has(index) ? labelHeight : itemHeight),
+    estimateSize,
     overscan,
     paddingStart,
     paddingEnd,
@@ -88,17 +81,12 @@ export function CollectionVirtualizer<T extends CollectionItem>({
   });
 
   useLayoutEffect(() => {
-    scrollToRef.current = (index, options) => {
-      const scrollIndex =
-        index > 0 ? index + groupIndices.reduce((acc, num) => acc + (num <= index ? 1 : 0), 0) : 0;
-
-      scrollToIndex(scrollIndex, options);
-    };
+    scrollToRef.current = scrollToIndex;
 
     return () => {
       scrollToRef.current = null;
     };
-  }, [groupIndices, scrollToIndex, scrollToRef]);
+  }, [scrollToIndex, scrollToRef]);
 
   return (
     <div
@@ -106,7 +94,7 @@ export function CollectionVirtualizer<T extends CollectionItem>({
       style={{ height: `${totalSize}px` }}
       {...getFloatingProps()}
     >
-      <CollectionVirtualizerContext value={{ virtualItems, flatItems }}>
+      <CollectionVirtualizerContext value={{ virtualItems }}>
         {children}
       </CollectionVirtualizerContext>
     </div>

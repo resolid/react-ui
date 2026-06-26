@@ -7,7 +7,7 @@ import {
   useRef,
   useState,
 } from "react";
-import type { CollectionItem, CollectionProps } from "./types";
+import type { CollectionItem, CollectionProps } from "./collection-types";
 
 export type UseCollectionOptions<T extends CollectionItem> = Omit<CollectionProps<T>, "collection">;
 

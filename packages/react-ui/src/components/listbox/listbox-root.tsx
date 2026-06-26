@@ -50,6 +50,7 @@ export function ListboxRoot<T extends ListboxItem>(
   });
 
   const {
+    firstIndex,
     selectedItems,
     navigationInteraction,
     typeaheadInteraction,
@@ -57,7 +58,6 @@ export function ListboxRoot<T extends ListboxItem>(
     handleEnterKeydown,
     activeIndex,
     setActiveIndex,
-    selectedIndices,
     selectedIndex,
     ...providerValue
   } = useListbox({
@@ -96,7 +96,7 @@ export function ListboxRoot<T extends ListboxItem>(
 
   const handleFocus = () => {
     if (activeIndex == null) {
-      setActiveIndex(selectedIndex ?? 0);
+      setActiveIndex(selectedIndex ?? firstIndex);
     }
   };
 
@@ -115,9 +115,9 @@ export function ListboxRoot<T extends ListboxItem>(
       <ListboxProvider
         value={{
           ...providerValue,
+          firstIndex,
           activeIndex,
           selectedIndex,
-          selectedIndices,
           setFloating,
           getFloatingProps: (floatingProps) =>
             getFloatingProps(

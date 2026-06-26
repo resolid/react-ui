@@ -112,7 +112,7 @@ export function useCombobox<T extends ListboxItem>({
     onOpenChange: (opened, e, reason) => {
       if (opened) {
         if (reason != "click") {
-          setActiveIndex(selectedIndex ?? 0);
+          setActiveIndex(selectedIndex ?? firstIndex);
         }
         handleOpen();
       } else {
@@ -134,9 +134,9 @@ export function useCombobox<T extends ListboxItem>({
   });
 
   const {
-    selectedItems: _,
+    firstIndex,
     setActiveIndex,
-    selectedIndices,
+    selectedItems: _,
     selectedIndex,
     navigationInteraction,
     typeaheadInteraction: __,
@@ -247,10 +247,10 @@ export function useCombobox<T extends ListboxItem>({
     popperTriggerContext: referenceContext,
     popperAnchorContext,
     listboxProviderValue: {
-      selectedIndices,
+      ...providerValue,
+      firstIndex,
       selectedIndex,
       setFilterKeyword,
-      ...providerValue,
       getFloatingProps: (props) =>
         getFloatingProps(
           getNavigationFloatingProps({

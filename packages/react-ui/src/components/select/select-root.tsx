@@ -111,7 +111,7 @@ export function SelectRoot<T extends ListboxItem>(
     onOpenChange: (opened, _e, reason) => {
       if (opened) {
         if (reason != "click") {
-          setActiveIndex(selectedIndex ?? 0);
+          setActiveIndex(selectedIndex ?? firstIndex);
         }
 
         handleOpen();
@@ -134,9 +134,9 @@ export function SelectRoot<T extends ListboxItem>(
   });
 
   const {
+    firstIndex,
     selectedItems,
     setActiveIndex,
-    selectedIndices,
     selectedIndex,
     navigationInteraction,
     typeaheadInteraction,
@@ -255,7 +255,7 @@ export function SelectRoot<T extends ListboxItem>(
       {isMounted && (
         <Portal>
           <PopperPositionerContext value={positionerContext}>
-            <OptionEmptyContext value={providerValue.nodeItems.length == 0}>
+            <OptionEmptyContext value={providerValue.flatItems.length == 0}>
               <PopperPositioner
                 style={animationProps.style}
                 className={tx(
@@ -274,8 +274,8 @@ export function SelectRoot<T extends ListboxItem>(
                   <ListboxProvider
                     value={{
                       ...providerValue,
+                      firstIndex,
                       selectedIndex,
-                      selectedIndices,
                       setFilterKeyword,
                       handleSelect,
                       filterInputRef,

@@ -1,5 +1,5 @@
 import type { CSSProperties, KeyboardEvent, MouseEvent, RefObject } from "react";
-import { isNumber } from "@resolid/utils";
+import { isArray, isNumber } from "@resolid/utils";
 
 const radiusStyles = {
   none: "",
@@ -77,4 +77,11 @@ export function getInteractiveHandlers<E extends HTMLElement = HTMLDivElement>({
   };
 
   return { handleClick, handleKeyDown, handleKeyUp };
+}
+
+export function hasValue(
+  value: (string | number)[] | string | number | null,
+  item: string | number,
+): boolean {
+  return isArray(value) ? value.includes(item) : value == item;
 }

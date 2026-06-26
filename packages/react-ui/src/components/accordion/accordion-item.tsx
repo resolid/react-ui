@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { isArray } from "@resolid/utils";
 import type { PrimitiveProps } from "../../primitives";
+import { hasValue } from "../../shared/utils";
 import { dataAttr } from "../../utils/dom";
 import { CollapsibleRoot } from "../collapsible/collapsible-root";
 import { useAccordion } from "./accordion-context";
@@ -29,7 +30,7 @@ export function AccordionItem(props: PrimitiveProps<"div", AccordionItemProps>):
 
   const { value, disabled = accordionDisabled, children, ...rest } = props;
 
-  const opened = isArray(openedValue) ? openedValue.includes(value) : openedValue == value;
+  const opened = hasValue(openedValue, value);
 
   const handleOpenChange = (open: boolean) => {
     if (open) {

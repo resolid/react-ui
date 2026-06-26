@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
-import type { AnyObject, PrimitiveProps } from "../../primitives/polymorphic";
+import type { PrimitiveProps } from "../../primitives/polymorphic";
+import type { ListboxFlatItem } from "./use-listbox";
 import { useMergeRefs } from "../../hooks/use-merge-refs";
-import { useCollectionFields } from "../../primitives/collection/collection-fields-context";
 import { CheckIcon } from "../../shared/icons";
 import { getInteractiveHandlers } from "../../shared/utils";
 import { tx } from "../../utils/clsx";
@@ -11,7 +11,7 @@ import { useListboxItem } from "./listbox-item-context";
 import { listboxItemStyles } from "./listbox.styles";
 
 type ListboxItemProps = {
-  item: AnyObject & { __index: number };
+  item: ListboxFlatItem;
   size: InputSize;
   disabled: boolean;
   readOnly: boolean;
@@ -33,9 +33,10 @@ export function ListboxItem(
   } = props;
 
   const {
+    firstIndex,
     activeIndex,
+    selectedIndex,
     handleSelect,
-    selectedIndices,
     getItemProps,
     getItemValue,
     typingRef,
@@ -45,8 +46,6 @@ export function ListboxItem(
     elementsRef,
     labelsRef,
   } = useListboxItem();
-
-  const { getItemDisabled } = useCollectionFields();
 
   const refs = useMergeRefs(ref, (node) => {
     if (node) {
@@ -61,8 +60,8 @@ export function ListboxItem(
   });
 
   const active = item.__index === activeIndex;
-  const selected = selectedIndices.includes(item.__index);
-  const disabled = disabledProps || getItemDisabled(item);
+  const selected = item.__selected;
+  const disabled = disabledProps || item.__disabled;
   const tabIndex =
     disabled || focusItemOnOpen !== false
       ? undefined
@@ -72,11 +71,11 @@ export function ListboxItem(
           ? active
             ? 0
             : -1
-          : selectedIndices.length > 0
-            ? selectedIndices[0] == item.__index
+          : selectedIndex != null
+            ? selected
               ? 0
               : -1
-            : item.__index == 0
+            : item.__index == firstIndex
               ? 0
               : -1;
 

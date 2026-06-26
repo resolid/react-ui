@@ -4,8 +4,9 @@ import type { ListboxBaseProps, ListboxItem, UseListboxResult } from "./use-list
 import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives/context";
 
 export type ListboxItemContextValue = {
+  firstIndex: number;
   activeIndex: number | null;
-  selectedIndices: number[];
+  selectedIndex: number | null;
   getItemProps: (userProps?: HTMLProps<HTMLElement>) => AnyObject;
   getItemValue: (item: ListboxItem) => string | number;
   elementsRef: RefObject<(HTMLDivElement | null)[]>;

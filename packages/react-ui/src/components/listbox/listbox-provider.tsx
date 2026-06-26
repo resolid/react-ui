@@ -10,12 +10,8 @@ import type { InputSize } from "../input/input.styles";
 import type { ListboxBaseProps, ListboxItem, UseListboxResult } from "./use-listbox";
 import { useIsomorphicEffect } from "../../hooks/use-isomorphic-effect";
 import { usePrevious } from "../../hooks/use-previous";
-import {
-  CollectionFieldsContext,
-  type CollectionFieldsContextValue,
-} from "../../primitives/collection/collection-fields-context";
 import { CollectionFilterContext } from "../../primitives/collection/collection-filter-context";
-import { CollectionNodesContext } from "../../primitives/collection/collection-nodes-context";
+import { CollectionFlatContext } from "../../primitives/collection/collection-flat-context";
 import {
   CollectionScrollContext,
   type CollectionScrollTo,
@@ -35,7 +31,6 @@ export type ListboxProviderProps<T extends ListboxItem> = {
     | "typeaheadInteraction"
     | "interactiveHandlers"
     | "handleEnterKeydown"
-    | "indexedItems"
     | "selectedItems"
     | "setActiveIndex"
   > &
@@ -61,13 +56,10 @@ export function ListboxProvider<T extends ListboxItem>(
     value: {
       getItemValue,
       getItemLabel,
-      getItemDisabled,
-      getItemChildren,
-      childrenKey,
-      nodeItems,
+      flatItems,
+      firstIndex,
       activeIndex,
       selectedIndex,
-      selectedIndices,
       elementsRef,
       labelsRef,
       typingRef,
@@ -97,8 +89,9 @@ export function ListboxProvider<T extends ListboxItem>(
   const renderItem = renderItemProp ?? ((item) => getItemLabel(item) as ReactNode);
 
   const itemContext = {
+    firstIndex,
     activeIndex,
-    selectedIndices,
+    selectedIndex,
     handleSelect,
     getItemProps,
     getItemValue,
@@ -109,14 +102,6 @@ export function ListboxProvider<T extends ListboxItem>(
     focusItemOnOpen,
     virtual,
   } as ListboxItemContextValue;
-
-  const fieldContext = {
-    getItemValue,
-    getItemLabel,
-    getItemDisabled,
-    getItemChildren,
-    childrenKey,
-  } as CollectionFieldsContextValue;
 
   const groupContext = {
     renderGroupLabel,
@@ -178,7 +163,7 @@ export function ListboxProvider<T extends ListboxItem>(
     requestAnimationFrame(() => {
       if (scrollToRef.current) {
         if (selectedIndex !== null) {
-          scrollToRef.current(selectedIndex, { align: "center" });
+          scrollToRef.current(selectedIndex, { align: "center", behavior: "instant" });
         }
       } else {
         const floating = scrollRef.current;
@@ -210,13 +195,11 @@ export function ListboxProvider<T extends ListboxItem>(
       >
         <CollectionScrollContext value={{ scrollToRef, scrollRef }}>
           <PopperFloatingContext value={{ setFloating, getFloatingProps }}>
-            <CollectionFieldsContext value={fieldContext}>
-              <CollectionNodesContext value={{ nodeItems }}>
-                <ListboxGroupContext value={groupContext}>
-                  <ListboxItemContext value={itemContext}>{children}</ListboxItemContext>
-                </ListboxGroupContext>
-              </CollectionNodesContext>
-            </CollectionFieldsContext>
+            <CollectionFlatContext value={{ flatItems }}>
+              <ListboxGroupContext value={groupContext}>
+                <ListboxItemContext value={itemContext}>{children}</ListboxItemContext>
+              </ListboxGroupContext>
+            </CollectionFlatContext>
           </PopperFloatingContext>
         </CollectionScrollContext>
       </CollectionFilterContext>

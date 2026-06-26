@@ -1,7 +1,6 @@
 import type { AnyObject } from "../polymorphic";
 
 export type CollectionItem = AnyObject;
-
 export type CollectionProps<T extends CollectionItem> = {
   /**
    * 项目的集合
@@ -36,12 +35,4 @@ export type CollectionProps<T extends CollectionItem> = {
    * 自定义过滤函数
    */
   searchFilter?: (keyword: string, item: T) => boolean;
-};
-
-export type CollectionFields<T extends CollectionItem = CollectionItem> = {
-  childrenKey: string;
-  getItemValue: (item: T) => string | number;
-  getItemLabel: (item: T) => string;
-  getItemDisabled: (item: T) => boolean;
-  getItemChildren: <E = T>(item: T) => E[] | undefined;
 };

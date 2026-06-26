@@ -20,6 +20,7 @@ export function ListboxGroupLabel(
 
   return (
     <div
+      tabIndex={-1}
       className={tx(
         "flex w-full items-center px-1 text-[0.9em] leading-none text-fg-subtle",
         listboxGroupLabelStyles[size],

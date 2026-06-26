@@ -1,8 +1,6 @@
-import { isArray, omit } from "@resolid/utils";
-import { type PropsWithChildren, type ReactNode, useMemo } from "react";
-import type { ListboxFlatItem, ListboxNodeItem } from "./use-listbox";
-import { useCollectionFields } from "../../primitives/collection/collection-fields-context";
-import { useCollectionNodes } from "../../primitives/collection/collection-nodes-context";
+import type { PropsWithChildren, ReactNode } from "react";
+import type { ListboxFlatItem } from "./use-listbox";
+import { useCollectionFlat } from "../../primitives/collection/collection-flat-context";
 import { useCollectionState } from "../../primitives/collection/collection-state-context";
 import {
   CollectionVirtualizer,
@@ -29,50 +27,16 @@ export function ListboxVirtualizer({
   ...rest
 }: PropsWithChildren<ListboxVirtualizerProps>): ReactNode {
   const { size } = useCollectionState();
-  const { nodeItems } = useCollectionNodes<ListboxNodeItem>();
-  const { getItemChildren, childrenKey } = useCollectionFields();
+  const { flatItems } = useCollectionFlat<ListboxFlatItem>();
 
-  // react-doctor-disable-next-line react-doctor/react-compiler-no-manual-memoization
-  const flat = useMemo(() => {
-    const flatItems: ListboxFlatItem[] = [];
-    const labelIndices: Set<number> = new Set();
-    const groupIndices: number[] = [];
-
-    let itemIndex = 0;
-    let groupIndex = 0;
-
-    for (const item of nodeItems) {
-      const itemChildren = getItemChildren<ListboxNodeItem>(item);
-
-      if (isArray(itemChildren)) {
-        labelIndices.add(itemIndex);
-        groupIndices.push(groupIndex);
-
-        flatItems.push({ ...(omit(item, [childrenKey]) as ListboxNodeItem), __group: true });
-        itemIndex++;
-
-        for (const child of itemChildren) {
-          flatItems.push(child);
-          itemIndex++;
-          groupIndex++;
-        }
-      } else {
-        flatItems.push(item);
-        itemIndex++;
-        groupIndex++;
-      }
-    }
-
-    return { flatItems, labelIndices, groupIndices };
-  }, [childrenKey, nodeItems, getItemChildren]);
+  const estimateSize = (index: number) => {
+    return flatItems[index]?.__group
+      ? (groupLabelHeight ?? listboxGroupLabelHeights[size])
+      : (itemHeight ?? listboxItemHeights[size]);
+  };
 
   return (
-    <CollectionVirtualizer
-      itemHeight={itemHeight ?? listboxItemHeights[size]}
-      labelHeight={groupLabelHeight ?? listboxGroupLabelHeights[size]}
-      {...flat}
-      {...rest}
-    >
+    <CollectionVirtualizer totalCount={flatItems.length} estimateSize={estimateSize} {...rest}>
       {children}
     </CollectionVirtualizer>
   );

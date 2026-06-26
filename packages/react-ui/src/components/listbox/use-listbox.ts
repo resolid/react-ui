@@ -4,7 +4,7 @@ import {
   useListNavigation,
   useTypeahead,
 } from "@floating-ui/react";
-import { isArray } from "@resolid/utils";
+import { isArray, omit } from "@resolid/utils";
 import {
   type Dispatch,
   type KeyboardEvent,
@@ -13,21 +13,23 @@ import {
   type SetStateAction,
   useMemo,
 } from "react";
-import type {
-  CollectionFields,
-  CollectionItem,
-  CollectionProps,
-} from "../../primitives/collection/types";
+import type { CollectionItem, CollectionProps } from "../../primitives/collection/collection-types";
 import type { MultipleValueProps } from "../../shared/types";
 import type { InputSize } from "../input/input.styles";
 import { useControllableState } from "../../hooks/use-controllable-state";
 import { useCollection } from "../../primitives/collection/use-collection";
+import { hasValue } from "../../shared/utils";
 import { useDirection } from "../provider/direction-context";
 
 export type ListboxValue = (string | number)[] | string | number | null;
 export type ListboxItem = CollectionItem;
-export type ListboxNodeItem = ListboxItem & { __index: number };
-export type ListboxFlatItem = ListboxNodeItem & { __group?: boolean };
+export type ListboxFlatItem = ListboxItem & {
+  __key: string;
+  __index: number;
+  __group: boolean;
+  __selected: boolean;
+  __disabled: boolean;
+};
 
 export type ListboxBaseProps<T extends ListboxItem> = MultipleValueProps<string | number> &
   CollectionProps<T> & {
@@ -62,14 +64,16 @@ export type UseListboxOptions<T extends ListboxItem> = Omit<
   openOnArrowKeyDown?: boolean;
 };
 
-export type UseListboxResult<T extends ListboxItem> = CollectionFields<T> & {
+export type UseListboxResult<T extends ListboxItem> = {
+  getItemValue: (item: T) => string | number;
+  getItemLabel: (item: T) => string;
+  flatItems: ListboxFlatItem[];
+  selectedItems: T[];
+  handleSelect: (item: T) => void;
+  firstIndex: number;
   activeIndex: number | null;
   setActiveIndex: Dispatch<SetStateAction<number | null>>;
   selectedIndex: number | null;
-  nodeItems: ListboxNodeItem[];
-  selectedItems: T[];
-  selectedIndices: number[];
-  handleSelect: (item: T) => void;
   navigationInteraction: ElementProps;
   typeaheadInteraction: ElementProps;
   pointer: boolean;
@@ -146,70 +150,77 @@ export function useListbox<T extends ListboxItem>(
   });
 
   // react-doctor-disable-next-line react-doctor/react-compiler-no-manual-memoization
-  const { nodeItems, indexedItems, selectedItems, selectedIndices } = useMemo(() => {
-    const nodes: ListboxNodeItem[] = [];
-    const indexes: T[] = [];
-    const selects: T[] = [];
-    const indices: number[] = [];
+  const { flatItems, firstIndex, selectedItems, selectedIndex } = useMemo(() => {
+    const flatItems: ListboxFlatItem[] = [];
+    const selectedItems: T[] = [];
+    let firstIndex: number = -1;
+    let selectedIndex: number | null = null;
 
-    let itemIndex = 0;
+    const pushItem = (item: T, selected: boolean) => {
+      const index = flatItems.length;
 
-    const addItem = (item: T) => {
-      const itemValue = getItemValue(item);
+      flatItems.push({
+        ...item,
+        __key: String(getItemValue(item)),
+        __index: index,
+        __group: false,
+        __selected: selected,
+        __disabled: getItemDisabled(item),
+      });
 
-      const selected = isArray(valueState)
-        ? valueState.includes(itemValue)
-        : valueState == itemValue;
+      if (firstIndex == -1) {
+        firstIndex = index;
+      }
 
       if (selected) {
-        selects.push(item);
-        indices.push(itemIndex);
+        selectedItems.push(item);
+        selectedIndex ??= index;
       }
-
-      if (selected || filterPredicate(item)) {
-        indexes.push(item);
-
-        return true;
-      }
-
-      return false;
     };
 
     for (const item of collection) {
-      const children = getItemChildren(item);
+      const itemChildren = getItemChildren(item);
+      const hasChildren = isArray(itemChildren);
 
-      if (isArray(children)) {
-        const childrenNodes = [];
+      if (!hasChildren) {
+        const selected = hasValue(valueState, getItemValue(item));
 
-        for (const child of children) {
-          if (addItem(child)) {
-            childrenNodes.push({ ...child, __index: itemIndex });
-            // react-doctor-disable-next-line
-            itemIndex++;
-          }
-        }
-
-        if (childrenNodes.length > 0) {
-          nodes.push({ ...item, [childrenKey]: childrenNodes, __index: 0 });
+        if (selected || filterPredicate(item)) {
+          pushItem(item, selected);
         }
       } else {
-        if (addItem(item)) {
-          nodes.push({ ...item, __index: itemIndex });
-          // react-doctor-disable-next-line
-          itemIndex++;
+        const flatChildren = itemChildren
+          .map((child) => ({ child, selected: hasValue(valueState, getItemValue(child)) }))
+          .filter(({ child, selected }) => selected || filterPredicate(child));
+
+        if (flatChildren.length > 0) {
+          flatItems.push({
+            ...omit(item, [childrenKey]),
+            __key: getItemLabel(item),
+            __index: flatItems.length,
+            __group: true,
+            __selected: false,
+            __disabled: true,
+          });
+        }
+
+        for (const { child, selected } of flatChildren) {
+          pushItem(child, selected);
         }
       }
     }
 
-    return {
-      nodeItems: nodes,
-      indexedItems: indexes,
-      selectedItems: selects,
-      selectedIndices: indices,
-    };
-  }, [childrenKey, collection, getItemChildren, getItemValue, filterPredicate, valueState]);
-
-  const selectedIndex = selectedIndices[0] ?? null;
+    return { flatItems, firstIndex, selectedItems, selectedIndex };
+  }, [
+    childrenKey,
+    getItemValue,
+    collection,
+    getItemLabel,
+    getItemChildren,
+    filterPredicate,
+    valueState,
+    getItemDisabled,
+  ]);
 
   const handleSelect = (item: T): void => {
     const itemValue = getItemValue(item);
@@ -264,7 +275,7 @@ export function useListbox<T extends ListboxItem>(
 
   const handleEnterKeydown = (e: KeyboardEvent<HTMLElement>): void => {
     if (activeIndex != null && e.key == "Enter") {
-      handleSelect(indexedItems[activeIndex]!);
+      handleSelect(flatItems[activeIndex]! as T);
     }
   };
 
@@ -283,7 +294,7 @@ export function useListbox<T extends ListboxItem>(
     },
     onKeyUp: (e: KeyboardEvent<HTMLElement>): void => {
       if (activeIndex != null && e.key == " " && !typingRef.current) {
-        handleSelect(indexedItems[activeIndex]!);
+        handleSelect(flatItems[activeIndex]! as T);
       }
     },
   };
@@ -291,16 +302,13 @@ export function useListbox<T extends ListboxItem>(
   return {
     getItemValue,
     getItemLabel,
-    getItemDisabled,
-    getItemChildren,
-    childrenKey,
+    flatItems,
+    firstIndex,
+    selectedItems,
+    selectedIndex,
+    handleSelect,
     activeIndex,
     setActiveIndex,
-    selectedIndex,
-    nodeItems,
-    selectedItems,
-    selectedIndices,
-    handleSelect,
     navigationInteraction,
     typeaheadInteraction,
     pointer,
