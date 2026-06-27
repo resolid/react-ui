@@ -158,6 +158,7 @@ export function useListbox<T extends ListboxItem>(
 
     const pushItem = (item: T, selected: boolean) => {
       const index = flatItems.length;
+      const disabled = getItemDisabled(item);
 
       flatItems.push({
         ...item,
@@ -165,10 +166,10 @@ export function useListbox<T extends ListboxItem>(
         __index: index,
         __group: false,
         __selected: selected,
-        __disabled: getItemDisabled(item),
+        __disabled: disabled,
       });
 
-      if (firstIndex == -1) {
+      if (firstIndex == -1 && !disabled) {
         firstIndex = index;
       }
 
@@ -180,9 +181,8 @@ export function useListbox<T extends ListboxItem>(
 
     for (const item of collection) {
       const itemChildren = getItemChildren(item);
-      const hasChildren = isArray(itemChildren);
 
-      if (!hasChildren) {
+      if (!itemChildren) {
         const selected = hasValue(valueState, getItemValue(item));
 
         if (selected || filterPredicate(item)) {
