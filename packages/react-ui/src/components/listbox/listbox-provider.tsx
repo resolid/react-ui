@@ -46,6 +46,7 @@ export type ListboxProviderProps<T extends ListboxItem> = {
       multiple: boolean;
       disabled: boolean;
       readOnly: boolean;
+      filterKeyword?: string;
     };
 };
 
@@ -74,6 +75,7 @@ export function ListboxProvider<T extends ListboxItem>(
       filterInputRef,
       setHasFilter,
       setFilterKeyword,
+      filterKeyword,
       open,
       size,
       multiple,
@@ -191,7 +193,13 @@ export function ListboxProvider<T extends ListboxItem>(
   return (
     <CollectionStateContext value={{ size, multiple, disabled, readOnly }}>
       <CollectionFilterContext
-        value={{ getNavigationProps, filterInputRef, setHasFilter, setFilterKeyword }}
+        value={{
+          getNavigationProps,
+          filterInputRef,
+          setHasFilter,
+          filterKeyword,
+          setFilterKeyword,
+        }}
       >
         <CollectionScrollContext value={{ scrollToRef, scrollRef }}>
           <PopperFloatingContext value={{ setFloating, getFloatingProps }}>

@@ -349,6 +349,9 @@ const tsParser = withCustomConfig("tsconfig.json", {
 
 const componentPropsSorts = [
   "name",
+  "placeholder",
+
+  "collection",
 
   "multiple",
   "value",
@@ -379,6 +382,7 @@ const componentPropsSorts = [
   "open",
   "defaultOpen",
   "onOpenChange",
+  "closeOnSelect",
 
   "view",
   "defaultView",
@@ -415,6 +419,9 @@ const componentPropsSorts = [
   "required",
   "readOnly",
   "invalid",
+
+  "searchFilter",
+  "defaultKeyword",
 ];
 
 const getComponentPropsData = (componentFile, sourceRoot, virtualDir) => {

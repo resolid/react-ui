@@ -9,7 +9,15 @@ import { useCollectionFilter } from "./collection-filter-context";
 
 export type CollectionFilterProps = Omit<
   InputBaseProps,
-  "type" | "name" | "required" | "readOnly" | "invalid" | "suffix" | "suffixWidth"
+  | "type"
+  | "name"
+  | "required"
+  | "readOnly"
+  | "invalid"
+  | "suffix"
+  | "suffixWidth"
+  | "value"
+  | "defaultValue"
 >;
 
 export function CollectionFilter(
@@ -17,7 +25,7 @@ export function CollectionFilter(
 ): ReactNode {
   const { size: initSize, disabled: initDisabled } = useCollectionState();
 
-  const { getNavigationProps, filterInputRef, setHasFilter, setFilterKeyword } =
+  const { getNavigationProps, filterInputRef, setHasFilter, filterKeyword, setFilterKeyword } =
     useCollectionFilter();
 
   const {
@@ -25,8 +33,6 @@ export function CollectionFilter(
     disabled = initDisabled,
     prefix,
     prefixWidth,
-    value,
-    defaultValue,
     onChange,
     className,
     focusable,
@@ -49,8 +55,7 @@ export function CollectionFilter(
   return (
     <InputBase
       ref={refs}
-      value={value}
-      defaultValue={defaultValue}
+      defaultValue={filterKeyword}
       onChange={handleChange}
       prefix={prefix}
       prefixWidth={prefixWidth}

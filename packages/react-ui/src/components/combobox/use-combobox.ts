@@ -23,7 +23,7 @@ import { useDisclosure } from "../../hooks/use-disclosure";
 import { type ListboxItem, useListbox } from "../listbox/use-listbox";
 
 export type ComboboxProps<T extends ListboxItem> = DisclosureProps &
-  ListboxRootProps<T> & {
+  Omit<ListboxRootProps<T>, "defaultKeyword"> & {
     /**
      * 选择后关闭
      * @default true

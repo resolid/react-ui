@@ -15,7 +15,6 @@ import {
 } from "react";
 import type { CollectionItem, CollectionProps } from "../../primitives/collection/collection-types";
 import type { MultipleValueProps } from "../../shared/types";
-import type { InputSize } from "../input/input.styles";
 import { useControllableState } from "../../hooks/use-controllable-state";
 import { useCollection } from "../../primitives/collection/use-collection";
 import { hasValue } from "../../shared/utils";
@@ -42,17 +41,11 @@ export type ListboxBaseProps<T extends ListboxItem> = MultipleValueProps<string 
      * 自定义组标签渲染
      */
     renderGroupLabel?: (group: T) => ReactNode;
-
-    /**
-     * 大小
-     * @default "md"
-     */
-    size?: InputSize;
   };
 
 export type UseListboxOptions<T extends ListboxItem> = Omit<
   ListboxBaseProps<T>,
-  "renderItem" | "renderGroupLabel" | "size"
+  "renderItem" | "renderGroupLabel"
 > & {
   context: FloatingRootContext;
   typeahead?: boolean;
@@ -114,6 +107,7 @@ export function useListbox<T extends ListboxItem>(
     openOnArrowKeyDown,
     onSelect,
     searchFilter,
+    defaultKeyword,
   } = options;
 
   const direction = useDirection(true);
@@ -147,6 +141,7 @@ export function useListbox<T extends ListboxItem>(
     childrenKey,
     disabledKey,
     searchFilter,
+    defaultKeyword,
   });
 
   // react-doctor-disable-next-line react-doctor/react-compiler-no-manual-memoization

@@ -5,6 +5,7 @@ import { createSafeContext, type SafeContext, type UseSafeContext } from "../../
 export type CollectionFilterContextValue = {
   filterInputRef: RefObject<HTMLInputElement | null>;
   setHasFilter: Dispatch<SetStateAction<boolean>>;
+  filterKeyword: string | undefined;
   setFilterKeyword: Dispatch<SetStateAction<string | undefined>>;
   getNavigationProps: (userProps?: HTMLProps<HTMLElement>) => AnyObject;
 };

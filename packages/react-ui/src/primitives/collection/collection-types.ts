@@ -35,4 +35,9 @@ export type CollectionProps<T extends CollectionItem> = {
    * 自定义过滤函数
    */
   searchFilter?: (keyword: string, item: T) => boolean;
+
+  /**
+   * 默认过滤参数
+   */
+  defaultKeyword?: string;
 };

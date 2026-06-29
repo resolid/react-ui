@@ -17,6 +17,7 @@ export function useCollection<T extends CollectionItem>({
   disabledKey = "disabled",
   childrenKey = "children",
   searchFilter,
+  defaultKeyword,
 }: UseCollectionOptions<T>): {
   getItemValue: (item: T) => string | number;
   getItemLabel: (item: T) => string;
@@ -52,8 +53,8 @@ export function useCollection<T extends CollectionItem>({
   const labelsRef = useRef<(string | null)[]>([]);
   const typingRef = useRef(false);
   const [hasFilter, setHasFilter] = useState(false);
-  const [filterKeyword, setFilterKeyword] = useState<string>();
-  const deferredKeyword = useDeferredValue(filterKeyword);
+  const [filterKeyword, setFilterKeyword] = useState<string | undefined>(defaultKeyword);
+  const deferredKeyword = useDeferredValue(filterKeyword, defaultKeyword);
 
   // react-doctor-disable-next-line react-doctor/react-compiler-no-manual-memoization
   const filterPredicate = useCallback(

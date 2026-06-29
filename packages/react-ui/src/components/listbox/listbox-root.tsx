@@ -2,6 +2,7 @@ import { useFloatingRootContext, useInteractions, useRole } from "@floating-ui/r
 import { type FocusEvent, type ReactNode, useState } from "react";
 import type { PrimitiveProps } from "../../primitives/polymorphic";
 import type { FormFieldProps } from "../../shared/types";
+import type { InputSize } from "../input/input.styles";
 import { tx } from "../../utils/clsx";
 import { VisuallyHiddenInput } from "../visually-hidden/visually-hidden-input";
 import { ListboxProvider } from "./listbox-provider";
@@ -13,6 +14,12 @@ export type ListboxRootProps<T extends ListboxItem = ListboxItem> = FormFieldPro
    * @default false
    */
   invalid?: boolean;
+
+  /**
+   * 大小
+   * @default "md"
+   */
+  size?: InputSize;
 } & ListboxBaseProps<T>;
 
 export function ListboxRoot<T extends ListboxItem>(
@@ -36,6 +43,7 @@ export function ListboxRoot<T extends ListboxItem>(
     required = false,
     invalid = false,
     size = "md",
+    defaultKeyword,
     searchFilter,
     className,
     children,
@@ -74,6 +82,7 @@ export function ListboxRoot<T extends ListboxItem>(
     disabledKey,
     childrenKey,
     context,
+    defaultKeyword,
     focusItemOnOpen: false,
   });
 
@@ -139,6 +148,7 @@ export function ListboxRoot<T extends ListboxItem>(
           multiple,
           disabled,
           readOnly,
+          filterKeyword: defaultKeyword,
           focusItemOnOpen: false,
         }}
       >
