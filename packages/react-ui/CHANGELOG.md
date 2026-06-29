@@ -1,5 +1,13 @@
 # @resolid/react-ui
 
+## 0.3.4
+
+### Patch Changes
+
+- [`f2dc299`](https://github.com/resolid/react-ui/commit/f2dc299ce3517eed61afb3077391c2e6deec62f0) - feat: add defaultKeyword prop to Listbox
+
+- [`8f87f4e`](https://github.com/resolid/react-ui/commit/8f87f4e96c3268d0d80a9442e93ce099cb020ec4) - fix: correctly determine first enabled item in useListbox
+
 ## 0.3.3
 
 ### Patch Changes
