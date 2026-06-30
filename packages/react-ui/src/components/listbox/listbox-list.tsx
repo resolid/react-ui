@@ -1,4 +1,5 @@
 import type { CSSProperties, ReactNode } from "react";
+import type { AnyObject } from "../../primitives";
 import type { ListboxFlatItem } from "./use-listbox";
 import { useCollectionFlat } from "../../primitives/collection/collection-flat-context";
 import { useCollectionState } from "../../primitives/collection/collection-state-context";
@@ -11,12 +12,12 @@ export type ListboxListProps = {
 };
 
 export function ListboxList({ checkmark }: ListboxListProps): ReactNode[] {
-  const { flatItems } = useCollectionFlat<ListboxFlatItem>();
+  const { flatItems } = useCollectionFlat<ListboxFlatItem<AnyObject>>();
 
   const virtualizer = useCollectionVirtualizer();
 
   if (!virtualizer) {
-    return flatItems.map((item) => <Item key={item.__key} item={item} checkmark={checkmark} />);
+    return flatItems.map((item) => <FlatItem key={item.key} item={item} checkmark={checkmark} />);
   }
 
   const setSize = flatItems.length;
@@ -25,8 +26,8 @@ export function ListboxList({ checkmark }: ListboxListProps): ReactNode[] {
     const item = flatItems[row.index]!;
 
     return (
-      <Item
-        key={item.__key}
+      <FlatItem
+        key={item.key}
         item={item}
         setSize={setSize}
         style={{
@@ -41,20 +42,20 @@ export function ListboxList({ checkmark }: ListboxListProps): ReactNode[] {
   });
 }
 
-const Item = ({
+const FlatItem = ({
   item,
   style,
   checkmark = true,
   setSize,
 }: {
-  item: ListboxFlatItem;
+  item: ListboxFlatItem<AnyObject>;
   style?: CSSProperties;
   checkmark?: boolean;
   setSize?: number;
 }) => {
   const { size, disabled, readOnly } = useCollectionState();
 
-  if (item.__group) {
+  if (item.group) {
     return <ListboxGroupLabel group={item} size={size} style={style} />;
   }
 
@@ -66,7 +67,7 @@ const Item = ({
       readOnly={readOnly}
       checkmark={checkmark}
       aria-setsize={setSize}
-      aria-posinset={item.__index + 1}
+      aria-posinset={item.index + 1}
       style={style}
     />
   );

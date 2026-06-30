@@ -7,7 +7,7 @@ import {
 } from "react";
 import type { AnyObject } from "../../primitives/polymorphic";
 import type { InputSize } from "../input/input.styles";
-import type { ListboxBaseProps, ListboxItem, UseListboxResult } from "./use-listbox";
+import type { ListboxBaseProps, UseListboxResult } from "./use-listbox";
 import { useIsomorphicEffect } from "../../hooks/use-isomorphic-effect";
 import { usePrevious } from "../../hooks/use-previous";
 import { CollectionFilterContext } from "../../primitives/collection/collection-filter-context";
@@ -24,7 +24,7 @@ import {
 import { ListboxGroupContext, type ListboxGroupContextValue } from "./listbox-group-context";
 import { ListboxItemContext, type ListboxItemContextValue } from "./listbox-item-context";
 
-export type ListboxProviderProps<T extends ListboxItem> = {
+export type ListboxProviderProps<T extends AnyObject> = {
   value: Omit<
     UseListboxResult<T>,
     | "navigationInteraction"
@@ -50,7 +50,7 @@ export type ListboxProviderProps<T extends ListboxItem> = {
     };
 };
 
-export function ListboxProvider<T extends ListboxItem>(
+export function ListboxProvider<T extends AnyObject>(
   props: PropsWithChildren<ListboxProviderProps<T>>,
 ): ReactNode {
   const {

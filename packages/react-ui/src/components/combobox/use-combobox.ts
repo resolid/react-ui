@@ -9,6 +9,7 @@ import {
 } from "@floating-ui/react";
 import { isArray } from "@resolid/utils";
 import { type HTMLProps, type InputEvent, type KeyboardEvent, useRef, useState } from "react";
+import type { AnyObject } from "../../primitives/polymorphic";
 import type { PopperAnchorContextValue } from "../../primitives/popper/popper-anchor-context";
 import type { PopperStateContextValue } from "../../primitives/popper/popper-state-context";
 import type { PopperTriggerContextValue } from "../../primitives/popper/popper-trigger-context";
@@ -20,9 +21,9 @@ import type { ComboboxPopupContextValue } from "./combobox-popup-context";
 import type { ComboboxStateContextValue } from "./combobox-state-context";
 import type { ComboboxTriggerContextValue } from "./combobox-trigger-context";
 import { useDisclosure } from "../../hooks/use-disclosure";
-import { type ListboxItem, useListbox } from "../listbox/use-listbox";
+import { useListbox } from "../listbox/use-listbox";
 
-export type ComboboxProps<T extends ListboxItem> = DisclosureProps &
+export type ComboboxProps<T extends AnyObject = AnyObject> = DisclosureProps &
   Omit<ListboxRootProps<T>, "defaultKeyword"> & {
     /**
      * 选择后关闭
@@ -43,7 +44,7 @@ export type ComboboxProps<T extends ListboxItem> = DisclosureProps &
     openOnArrowKeyDown?: boolean;
   };
 
-export type UserComboboxReturnType<T extends ListboxItem> = {
+export type UserComboboxReturnType<T extends AnyObject> = {
   open: boolean;
   setOpen: (open: boolean) => void;
   setPosition: (node: ReferenceType | null) => void;
@@ -59,7 +60,7 @@ export type UserComboboxReturnType<T extends ListboxItem> = {
   listboxProviderValue: ListboxProviderProps<T>["value"];
 };
 
-export function useCombobox<T extends ListboxItem>({
+export function useCombobox<T extends AnyObject = AnyObject>({
   open,
   defaultOpen,
   onOpenChange,

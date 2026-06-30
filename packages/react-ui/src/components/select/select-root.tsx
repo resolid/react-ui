@@ -12,7 +12,7 @@ import {
   useTransitionStatus,
 } from "@floating-ui/react";
 import { type ReactNode, useRef } from "react";
-import type { PrimitiveProps } from "../../primitives/polymorphic";
+import type { AnyObject, PrimitiveProps } from "../../primitives/polymorphic";
 import type { DisclosureProps } from "../../shared/types";
 import type { ListboxRootProps } from "../listbox/listbox-root";
 import { useDisclosure } from "../../hooks/use-disclosure";
@@ -29,13 +29,13 @@ import {
 import { getPopperAnimationProps } from "../../primitives/popper/utils";
 import { tx } from "../../utils/clsx";
 import { ListboxProvider } from "../listbox/listbox-provider";
-import { type ListboxItem, useListbox } from "../listbox/use-listbox";
+import { useListbox } from "../listbox/use-listbox";
 import { Portal } from "../portal/portal";
 import { VisuallyHiddenInput } from "../visually-hidden/visually-hidden-input";
 import { SelectChevron } from "./select-chevron";
 import { selectSizeStyles } from "./select.styles";
 
-export type SelectRootProps<T extends ListboxItem = ListboxItem> = DisclosureProps &
+export type SelectRootProps<T extends AnyObject = AnyObject> = DisclosureProps &
   ListboxRootProps<T> & {
     /**
      * 自定义值渲染
@@ -54,7 +54,7 @@ export type SelectRootProps<T extends ListboxItem = ListboxItem> = DisclosurePro
     closeOnSelect?: boolean;
   };
 
-export function SelectRoot<T extends ListboxItem>(
+export function SelectRoot<T extends AnyObject = AnyObject>(
   props: PrimitiveProps<"div", SelectRootProps<T>>,
 ): ReactNode {
   const {

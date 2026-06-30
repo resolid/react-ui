@@ -1,13 +1,13 @@
 import type { ReactNode } from "react";
-import type { PrimitiveProps } from "../../primitives/polymorphic";
+import type { AnyObject, PrimitiveProps } from "../../primitives/polymorphic";
 import type { InputSize } from "../input/input.styles";
-import type { ListboxItem } from "./use-listbox";
+import type { ListboxFlatItem } from "./use-listbox";
 import { tx } from "../../utils/clsx";
 import { useListboxGroup } from "./listbox-group-context";
 import { listboxGroupLabelStyles } from "./listbox.styles";
 
-type ListboxGroupLabelProps = {
-  group: ListboxItem;
+type ListboxGroupLabelProps<T extends AnyObject = AnyObject> = {
+  group: ListboxFlatItem<T>;
   size: InputSize;
 };
 
@@ -30,7 +30,7 @@ export function ListboxGroupLabel(
     >
       {
         // react-doctor-disable-next-line react-doctor/no-render-in-render
-        renderGroupLabel(group)
+        renderGroupLabel(group.item)
       }
     </div>
   );

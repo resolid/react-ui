@@ -1,6 +1,5 @@
 import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import type { ListboxItem } from "../../listbox/use-listbox";
 import type { ComboboxProps } from "../use-combobox";
 import { axe } from "../../../../plugins/vitest-axe";
 import { LocaleProvider } from "../../provider/locale-provider";
@@ -13,7 +12,7 @@ import {
   ComboboxTrigger,
 } from "../combobox";
 
-const ComponentUnderTest = (props: Omit<ComboboxProps<ListboxItem>, "collection">) => {
+const ComponentUnderTest = (props: Omit<ComboboxProps, "collection">) => {
   const collection = [
     { value: "react" },
     { value: "solid" },

@@ -1,5 +1,5 @@
 import type { PropsWithChildren, ReactNode } from "react";
-import type { ListboxItem } from "../listbox/use-listbox";
+import type { AnyObject } from "../../primitives/polymorphic";
 import type { UserComboboxReturnType } from "./use-combobox";
 import { OptionEmptyContext } from "../../primitives/common/option-empty-context";
 import { PopperAnchorContext } from "../../primitives/popper/popper-anchor-context";
@@ -12,11 +12,11 @@ import { ComboboxRootContext } from "./combobox-root-context";
 import { ComboboxStateContext } from "./combobox-state-context";
 import { ComboboxTriggerContext } from "./combobox-trigger-context";
 
-export type ComboboxProviderProps<T extends ListboxItem> = {
+export type ComboboxProviderProps<T extends AnyObject> = {
   value: Omit<UserComboboxReturnType<T>, "open" | "setOpen" | "setPosition" | "floatingElement">;
 };
 
-export function ComboboxProvider<T extends ListboxItem>({
+export function ComboboxProvider<T extends AnyObject = AnyObject>({
   value,
   children,
 }: PropsWithChildren<ComboboxProviderProps<T>>): ReactNode {

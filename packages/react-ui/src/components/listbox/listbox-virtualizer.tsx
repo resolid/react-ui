@@ -1,4 +1,5 @@
 import type { PropsWithChildren, ReactNode } from "react";
+import type { AnyObject } from "../../primitives/polymorphic";
 import type { ListboxFlatItem } from "./use-listbox";
 import { useCollectionFlat } from "../../primitives/collection/collection-flat-context";
 import { useCollectionState } from "../../primitives/collection/collection-state-context";
@@ -27,10 +28,10 @@ export function ListboxVirtualizer({
   ...rest
 }: PropsWithChildren<ListboxVirtualizerProps>): ReactNode {
   const { size } = useCollectionState();
-  const { flatItems } = useCollectionFlat<ListboxFlatItem>();
+  const { flatItems } = useCollectionFlat<ListboxFlatItem<AnyObject>>();
 
   const estimateSize = (index: number) => {
-    return flatItems[index]?.__group
+    return flatItems[index]?.group
       ? (groupLabelHeight ?? listboxGroupLabelHeights[size])
       : (itemHeight ?? listboxItemHeights[size]);
   };

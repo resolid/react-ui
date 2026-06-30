@@ -7,11 +7,12 @@ import {
   useRef,
   useState,
 } from "react";
-import type { CollectionItem, CollectionProps } from "./collection-types";
+import type { AnyObject } from "../polymorphic";
+import type { CollectionProps } from "./collection-types";
 
-export type UseCollectionOptions<T extends CollectionItem> = Omit<CollectionProps<T>, "collection">;
+export type UseCollectionOptions<T extends AnyObject> = Omit<CollectionProps<T>, "collection">;
 
-export function useCollection<T extends CollectionItem>({
+export function useCollection<T extends AnyObject>({
   valueKey = "value",
   labelKey = "label",
   disabledKey = "disabled",

@@ -1,7 +1,7 @@
-import type { CollectionItem } from "./collection-types";
+import type { AnyObject } from "../polymorphic";
 import { createSafeContext, type SafeContext } from "../../primitives/context";
 
-export type CollectionFlatContextValue<T extends CollectionItem = CollectionItem> = {
+export type CollectionFlatContextValue<T extends AnyObject = AnyObject> = {
   flatItems: T[];
 };
 
@@ -11,6 +11,6 @@ const [context, hook] = createSafeContext<CollectionFlatContextValue>({
 
 export const CollectionFlatContext: SafeContext<CollectionFlatContextValue> = context;
 
-export function useCollectionFlat<T extends CollectionItem>() {
+export function useCollectionFlat<T extends AnyObject>() {
   return hook() as CollectionFlatContextValue<T>;
 }

@@ -1,14 +1,14 @@
 import { useFloatingRootContext, useInteractions, useRole } from "@floating-ui/react";
 import { type FocusEvent, type ReactNode, useState } from "react";
-import type { PrimitiveProps } from "../../primitives/polymorphic";
+import type { AnyObject, PrimitiveProps } from "../../primitives/polymorphic";
 import type { FormFieldProps } from "../../shared/types";
 import type { InputSize } from "../input/input.styles";
 import { tx } from "../../utils/clsx";
 import { VisuallyHiddenInput } from "../visually-hidden/visually-hidden-input";
 import { ListboxProvider } from "./listbox-provider";
-import { type ListboxBaseProps, type ListboxItem, useListbox } from "./use-listbox";
+import { type ListboxBaseProps, useListbox } from "./use-listbox";
 
-export type ListboxRootProps<T extends ListboxItem = ListboxItem> = FormFieldProps & {
+export type ListboxRootProps<T extends AnyObject = AnyObject> = FormFieldProps & {
   /**
    * 是否无效
    * @default false
@@ -22,7 +22,7 @@ export type ListboxRootProps<T extends ListboxItem = ListboxItem> = FormFieldPro
   size?: InputSize;
 } & ListboxBaseProps<T>;
 
-export function ListboxRoot<T extends ListboxItem>(
+export function ListboxRoot<T extends AnyObject = AnyObject>(
   props: PrimitiveProps<"div", ListboxRootProps<T>>,
 ): ReactNode {
   const {

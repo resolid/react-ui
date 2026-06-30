@@ -1,11 +1,11 @@
 import type { PropsWithChildren, ReactNode } from "react";
-import type { ListboxItem } from "../listbox/use-listbox";
+import type { AnyObject } from "../../primitives/polymorphic";
 import { ComboboxProvider } from "./combobox-provider";
 import { type ComboboxProps, useCombobox } from "./use-combobox";
 
 export type { ComboboxProps };
 
-export function Combobox<T extends ListboxItem>(
+export function Combobox<T extends AnyObject = AnyObject>(
   props: PropsWithChildren<ComboboxProps<T>>,
 ): ReactNode {
   const { children, ...rest } = props;

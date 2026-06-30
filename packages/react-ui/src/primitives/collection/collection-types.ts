@@ -1,7 +1,6 @@
 import type { AnyObject } from "../polymorphic";
 
-export type CollectionItem = AnyObject;
-export type CollectionProps<T extends CollectionItem> = {
+export type CollectionProps<T extends AnyObject> = {
   /**
    * 项目的集合
    */

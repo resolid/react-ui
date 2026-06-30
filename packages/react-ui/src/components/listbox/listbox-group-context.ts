@@ -1,8 +1,9 @@
-import type { ListboxBaseProps, ListboxItem } from "./use-listbox";
+import type { AnyObject } from "../../primitives/polymorphic";
+import type { ListboxBaseProps } from "./use-listbox";
 import { createSafeContext, type SafeContext, type UseSafeContext } from "../../primitives/context";
 
-export type ListboxGroupContextValue = Required<
-  Pick<ListboxBaseProps<ListboxItem>, "renderGroupLabel">
+export type ListboxGroupContextValue<T extends AnyObject = AnyObject> = Required<
+  Pick<ListboxBaseProps<T>, "renderGroupLabel">
 >;
 
 const [context, hook] = createSafeContext<ListboxGroupContextValue>({

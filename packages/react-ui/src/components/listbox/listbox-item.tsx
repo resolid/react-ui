@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import type { PrimitiveProps } from "../../primitives/polymorphic";
+import type { AnyObject, PrimitiveProps } from "../../primitives/polymorphic";
 import type { ListboxFlatItem } from "./use-listbox";
 import { useMergeRefs } from "../../hooks/use-merge-refs";
 import { CheckIcon } from "../../shared/icons";
@@ -11,7 +11,7 @@ import { useListboxItem } from "./listbox-item-context";
 import { listboxItemStyles } from "./listbox.styles";
 
 type ListboxItemProps = {
-  item: ListboxFlatItem;
+  item: ListboxFlatItem<AnyObject>;
   size: InputSize;
   disabled: boolean;
   readOnly: boolean;
@@ -49,19 +49,18 @@ export function ListboxItem(
 
   const refs = useMergeRefs(ref, (node) => {
     if (node) {
-      elementsRef.current[item.__index] = node;
-      labelsRef.current[item.__index] = String(getItemValue(item));
+      elementsRef.current[item.index] = node;
+      labelsRef.current[item.index] = String(getItemValue(item));
     }
 
     return () => {
-      elementsRef.current[item.__index] = null;
-      labelsRef.current[item.__index] = null;
+      elementsRef.current[item.index] = null;
+      labelsRef.current[item.index] = null;
     };
   });
 
-  const active = item.__index === activeIndex;
-  const selected = item.__selected;
-  const disabled = disabledProps || item.__disabled;
+  const active = item.index === activeIndex;
+  const disabled = disabledProps || item.disabled;
   const tabIndex =
     disabled || focusItemOnOpen !== false
       ? undefined
@@ -72,10 +71,10 @@ export function ListboxItem(
             ? 0
             : -1
           : selectedIndex != null
-            ? selected
+            ? item.selected
               ? 0
               : -1
-            : item.__index == firstIndex
+            : item.index == firstIndex
               ? 0
               : -1;
 
@@ -93,14 +92,14 @@ export function ListboxItem(
       // react-doctor-disable-next-line react-doctor/prefer-tag-over-role
       role="option"
       data-active={dataAttr(active)}
-      aria-selected={ariaAttr(selected)}
+      aria-selected={ariaAttr(item.selected)}
       aria-disabled={ariaAttr(disabled)}
       className={tx(
         "flex w-full cursor-default items-center justify-between gap-1 rounded-md leading-none transition-colors outline-none",
-        disabled ? !selected && "text-fg-subtlest" : "active:bg-bg-subtle",
+        disabled ? !item.selected && "text-fg-subtlest" : "active:bg-bg-subtle",
         listboxItemStyles[size],
         inputPxStyles[size],
-        selected && "text-fg-primary",
+        item.selected && "text-fg-primary",
         className,
       )}
       {...getItemProps({
@@ -113,9 +112,9 @@ export function ListboxItem(
     >
       {
         // react-doctor-disable-next-line react-doctor/no-render-in-render
-        renderItem(item, { active, selected })
+        renderItem(item.item, { active, selected: item.selected })
       }
-      {checkmark && selected && <CheckIcon />}
+      {checkmark && item.selected && <CheckIcon />}
     </div>
   );
 }
