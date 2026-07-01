@@ -1,5 +1,13 @@
 # @resolid/react-ui
 
+## 0.3.5
+
+### Patch Changes
+
+- [`bdca99b`](https://github.com/resolid/react-ui/commit/bdca99b3274b194c917be8109d597384e5961b38) - fix: fix types
+
+- [`70f593c`](https://github.com/resolid/react-ui/commit/70f593ca53e6f34929ec060b7155dde5dd9d1178) - refactor: change ListboxFlatItem type
+
 ## 0.3.4
 
 ### Patch Changes
