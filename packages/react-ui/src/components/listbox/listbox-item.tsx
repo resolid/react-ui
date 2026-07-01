@@ -82,7 +82,7 @@ export function ListboxItem(
     disabled: disabled || readOnly,
     typingRef,
     onClick: () => {
-      handleSelect(item);
+      handleSelect(item.item);
     },
   });
 

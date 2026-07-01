@@ -1,4 +1,4 @@
-import type { ComponentProps, ReactNode } from "react";
+import type { ReactNode } from "react";
 import type { PolymorphicProps } from "../polymorphic";
 import { useMergeRefs } from "../../hooks/use-merge-refs";
 import { AngleRightIcon } from "../../shared/icons";
@@ -28,12 +28,12 @@ export function MenuSubTrigger(
       ref={refs}
       data-open={dataAttr(open)}
       className={tx("justify-between pe-0.5 open:not-active:bg-bg-subtlest", className)}
-      {...(getReferenceProps({
+      {...getReferenceProps({
         ...rest,
         onMouseEnter: () => {
           setHoverEnabled(true);
         },
-      }) as ComponentProps<typeof MenuBaseItem>)}
+      })}
     >
       {children}
       <span className={tx("ms-5", disabled ? "text-fg-subtle" : "text-fg-muted")}>

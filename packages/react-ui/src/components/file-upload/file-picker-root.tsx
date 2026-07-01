@@ -100,14 +100,11 @@ export function FilePickerRoot(
           : []
       : isNullish(defaultValue)
         ? []
-        : (isArray(defaultValue) ? defaultValue : [defaultValue]).map(
-            (file) =>
-              ({
-                id: file.id,
-                kind: "remote",
-                file: omit(file, ["id"]),
-              }) as FileItem,
-          ),
+        : (isArray(defaultValue) ? defaultValue : [defaultValue]).map((file) => ({
+            id: file.id,
+            kind: "remote",
+            file: omit(file, ["id"]),
+          })),
   );
 
   const inputRef = useRef<HTMLInputElement>(null);
@@ -193,7 +190,7 @@ export function FilePickerRoot(
         kind: "local",
         status: "ready",
         progress: 0,
-      } as LocalFileItem);
+      });
     }
 
     if (errors.length > 0) {

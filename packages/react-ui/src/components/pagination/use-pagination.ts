@@ -51,12 +51,14 @@ export type UsePaginationOptions = {
 
 export type PageType = "page" | "next" | "previous" | "start-ellipsis" | "end-ellipsis";
 
+type PageItem = {
+  page: number;
+  pageType: PageType;
+  disabled: boolean;
+};
+
 export function usePagination(options: UsePaginationOptions): {
-  pageItems: {
-    page: number;
-    pageType: PageType;
-    disabled: boolean;
-  }[];
+  pageItems: PageItem[];
   totalPages: number;
   currentPage: number;
   setCurrentPage: (value: SetStateAction<number>) => void;
@@ -80,9 +82,18 @@ export function usePagination(options: UsePaginationOptions): {
     onChange,
   });
 
-  const pageItems = buildPageItems(currentPage, totalPages, boundaries, siblings, disabled);
-
-  return { pageItems, totalPages, currentPage, setCurrentPage };
+  return {
+    pageItems: buildPageItems(
+      currentPage,
+      totalPages,
+      boundaries,
+      siblings,
+      disabled,
+    ) as PageItem[],
+    totalPages,
+    currentPage,
+    setCurrentPage,
+  };
 }
 
 function buildPageItems(
@@ -123,7 +134,7 @@ function buildPageItems(
     ["next", Math.min(totalPages, currentPage + 1)],
   ].map((pn) =>
     isNumber(pn)
-      ? { page: pn, pageType: "page" as PageType, disabled }
+      ? { page: pn, pageType: "page", disabled }
       : {
           page: pn[1] as number,
           pageType: pn[0] as PageType,

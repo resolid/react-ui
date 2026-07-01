@@ -1,5 +1,3 @@
-import type { Locale } from "../primitives";
-
 export default {
   name: "简体中文",
   code: "zh-CN",
@@ -50,4 +48,4 @@ export default {
       deleteError: "删除远程文件失败.",
     },
   },
-} as Locale;
+};

@@ -1,4 +1,4 @@
-import type { AriaRole, CSSProperties, ReactNode } from "react";
+import type { AriaRole, ReactNode } from "react";
 import { useButtonProps } from "../../hooks/use-button-props";
 import { Polymorphic, type PolymorphicProps } from "../../primitives/polymorphic";
 import { getRadiusStyleAndClass } from "../../shared/utils";
@@ -101,7 +101,7 @@ export function Button(props: PolymorphicProps<"button", ButtonProps, "role">): 
       render={render}
       {...buttonProps}
       data-active={dataAttr(active)}
-      style={{ ...style, ...radiusStyle } as CSSProperties}
+      style={{ ...style, ...radiusStyle }}
       className={tx(
         buttonStyles({ variant, color, size, disabled: disabledStatus, iconOnly, noPadding }),
         radiusClass,
