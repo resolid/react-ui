@@ -6,7 +6,6 @@ export const listboxItemStyles = {
   xl: "py-2 min-h-11",
 };
 
-// react-doctor-disable-next-line deslop/unused-export
 export const listboxItemHeights = {
   xs: 28,
   sm: 32,
@@ -23,7 +22,6 @@ export const listboxGroupLabelStyles = {
   xl: "py-0.5 min-h-9.5",
 };
 
-// react-doctor-disable-next-line deslop/unused-export
 export const listboxGroupLabelHeights = {
   xs: 22,
   sm: 26,

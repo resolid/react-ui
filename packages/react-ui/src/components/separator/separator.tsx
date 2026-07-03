@@ -51,7 +51,6 @@ export function Separator(props: PrimitiveProps<"div", SeparatorProps, "role">):
 
   return (
     <div
-      // react-doctor-disable-next-line react-doctor/prefer-tag-over-role
       role="separator"
       tabIndex={-1}
       aria-orientation={orientation}

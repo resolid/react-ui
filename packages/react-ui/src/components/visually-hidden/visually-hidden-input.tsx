@@ -44,9 +44,9 @@ export function VisuallyHiddenInput<T>({
           disabled={disabled}
           required={required}
           name={`${name}[]`}
-          key={sv}
           value={sv}
           {...rest}
+          key={sv}
         />
       );
     });

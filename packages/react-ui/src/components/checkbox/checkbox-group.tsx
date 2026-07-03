@@ -69,7 +69,6 @@ export function CheckboxGroup(props: PrimitiveProps<"div", CheckboxGroupProps, "
   };
 
   return (
-    // react-doctor-disable-next-line prefer-tag-over-role, react-doctor/prefer-tag-over-role
     <div
       role="group"
       className={tx(

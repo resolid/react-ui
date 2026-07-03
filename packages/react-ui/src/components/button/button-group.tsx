@@ -19,7 +19,6 @@ export function ButtonGroup(props: PrimitiveProps<"div", ButtonGroupProps, "role
 
   return (
     <div
-      // react-doctor-disable-next-line react-doctor/prefer-tag-over-role
       role="group"
       className={tx(
         "inline-flex",

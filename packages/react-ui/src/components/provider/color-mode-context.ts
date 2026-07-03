@@ -7,7 +7,6 @@ const [context, hook] = createSafeContext<ColorMode>({
   name: "ColorModeStateContext",
 });
 
-// react-doctor-disable-next-line deslop/unused-export
 export const ColorModeStateContext: SafeContext<ColorMode> = context;
 export const useColorModeState: UseSafeContext<ColorMode> = hook;
 
@@ -15,7 +14,6 @@ const [dispatchContext, dispatchHook] = createSafeContext<Dispatch<SetStateActio
   name: "ColorModeDispatchContext",
 });
 
-// react-doctor-disable-next-line deslop/unused-export
 export const ColorModeDispatchContext: SafeContext<Dispatch<SetStateAction<ColorMode>>> =
   dispatchContext;
 export const useColorModeDispatch: UseSafeContext<Dispatch<SetStateAction<ColorMode>>> =

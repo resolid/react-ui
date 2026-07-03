@@ -89,7 +89,6 @@ export function ListboxItem(
   return (
     <div
       ref={refs}
-      // react-doctor-disable-next-line react-doctor/prefer-tag-over-role
       role="option"
       data-active={dataAttr(active)}
       aria-selected={ariaAttr(item.selected)}

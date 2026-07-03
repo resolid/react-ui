@@ -17,7 +17,7 @@ export function useTransitionComplete({
   const onCloseCompleteEvent = useEffectEvent(onCloseComplete);
 
   useEffect(() => {
-    // oxlint-disable-next-line react-you-might-not-need-an-effect-js/no-event-handler,react-doctor/no-event-handler
+    // oxlint-disable-next-line react-you-might-not-need-an-effect-js/no-event-handler
     if (prevStatus == "close" && status == "unmounted") {
       onCloseCompleteEvent();
     }

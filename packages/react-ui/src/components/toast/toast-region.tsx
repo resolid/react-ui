@@ -41,7 +41,6 @@ export function ToastRegion({
 }: ToastRegionProps): ReactNode {
   return (
     <div
-      // react-doctor-disable-next-line react-doctor/prefer-tag-over-role
       role="region"
       aria-live="polite"
       style={{ "--sv": spacing } as CSSProperties}

@@ -36,5 +36,4 @@ const [context, hook] = createSafeContext<TagsInputRootContextValue>({
 });
 
 export const TagsInputRootContext: SafeContext<TagsInputRootContextValue> = context;
-// react-doctor-disable-next-line deslop/unused-export
 export const useTagsInputRoot: UseSafeContext<TagsInputRootContextValue> = hook;

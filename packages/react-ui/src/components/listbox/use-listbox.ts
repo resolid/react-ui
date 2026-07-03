@@ -171,7 +171,10 @@ export function useListbox<T extends AnyObject>(
 
       if (selected) {
         selectedItems.push(item);
-        selectedIndex ??= index;
+        // oxlint-disable-next-line typescript/prefer-nullish-coalescing
+        if (selectedIndex == null) {
+          selectedIndex = index;
+        }
       }
     };
 
