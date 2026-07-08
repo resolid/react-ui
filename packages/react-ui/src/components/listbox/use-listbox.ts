@@ -181,13 +181,7 @@ export function useListbox<T extends AnyObject>(
     for (const item of collection) {
       const itemChildren = getItemChildren(item);
 
-      if (!itemChildren) {
-        const selected = hasValue(valueState, getItemValue(item));
-
-        if (selected || filterPredicate(item)) {
-          pushItem(item, selected);
-        }
-      } else {
+      if (itemChildren) {
         const flatChildren: { child: T; selected: boolean }[] = [];
 
         for (const child of itemChildren) {
@@ -211,6 +205,12 @@ export function useListbox<T extends AnyObject>(
 
         for (const { child, selected } of flatChildren) {
           pushItem(child, selected);
+        }
+      } else {
+        const selected = hasValue(valueState, getItemValue(item));
+
+        if (selected || filterPredicate(item)) {
+          pushItem(item, selected);
         }
       }
     }
@@ -236,10 +236,10 @@ export function useListbox<T extends AnyObject>(
         setValueState([...valueState, itemValue]);
       }
     } else {
-      if (itemValue != valueState) {
-        setValueState(itemValue);
-      } else {
+      if (itemValue == valueState) {
         setValueState(null);
+      } else {
+        setValueState(itemValue);
       }
     }
 

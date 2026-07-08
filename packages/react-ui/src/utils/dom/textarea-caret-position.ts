@@ -74,36 +74,32 @@ export function getCaretCoordinates(
     style.visibility = "hidden";
   }
 
-  Object.assign(
-    style,
-    CARET_PROPERTIES.reduce(
-      (acc, prop) => {
-        acc[prop as string] = computed.getPropertyValue(prop as string);
+  const result: Record<string, string> = {};
 
-        return acc;
-      },
-      {} as Record<string, string>,
-    ),
-  );
+  for (const prop of CARET_PROPERTIES) {
+    result[prop as string] = computed.getPropertyValue(prop as string);
+  }
+
+  Object.assign(style, result);
 
   if (window.navigator.userAgent.toLowerCase().includes("firefox")) {
-    if (element.scrollHeight > parseInt(computed.height)) {
+    if (element.scrollHeight > Number.parseInt(computed.height)) {
       style.overflowY = "scroll";
     }
   } else {
     style.overflow = "hidden";
   }
 
-  div.textContent = element.value.substring(0, position);
+  div.textContent = element.value.slice(0, position);
 
   const span = document.createElement("span");
-  span.textContent = element.value.substring(position) || "\u200b";
+  span.textContent = element.value.slice(position) || "\u200B";
   div.appendChild(span);
 
   const coordinates: CaretCoordinates = {
-    top: span.offsetTop + parseInt(computed.borderTopWidth),
-    left: span.offsetLeft + parseInt(computed.borderLeftWidth),
-    height: parseInt(computed.lineHeight),
+    top: span.offsetTop + Number.parseInt(computed.borderTopWidth),
+    left: span.offsetLeft + Number.parseInt(computed.borderLeftWidth),
+    height: Number.parseInt(computed.lineHeight),
   };
 
   if (debug) {

@@ -11,11 +11,11 @@ export function getNextValue(
 ): number {
   return Number(
     (
-      (value !== 0
-        ? Math.round(vertical ? max - value : value / step) * step
-        : vertical
+      (value === 0
+        ? vertical
           ? max
-          : 0) + min
+          : 0
+        : Math.round(vertical ? max - value : value / step) * step) + min
     ).toFixed(precision),
   );
 }

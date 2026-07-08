@@ -6,6 +6,7 @@ import { ErrorComponent } from "~/components/error-component";
 import { RouteProcessBar } from "~/components/route-process-bar";
 import { SiteLayout } from "~/components/site-layout";
 import { VercelAnalytics } from "~/components/vercel-analytics";
+import type { Route } from "./+types/root";
 
 import style from "~/root.css?url";
 
@@ -52,4 +53,6 @@ export default function Root() {
   return <Outlet />;
 }
 
-export const ErrorBoundary = ErrorComponent;
+export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
+  return <ErrorComponent error={error} />;
+}

@@ -66,17 +66,17 @@ export function ListboxItem(
       ? undefined
       : virtual
         ? -1
-        : activeIndex != null
-          ? active
-            ? 0
-            : -1
-          : selectedIndex != null
-            ? item.selected
+        : activeIndex == null
+          ? selectedIndex == null
+            ? item.index == firstIndex
               ? 0
               : -1
-            : item.index == firstIndex
+            : item.selected
               ? 0
-              : -1;
+              : -1
+          : active
+            ? 0
+            : -1;
 
   const { handleClick, handleKeyUp, handleKeyDown } = getInteractiveHandlers({
     disabled: disabled || readOnly,

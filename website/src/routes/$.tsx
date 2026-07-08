@@ -1,5 +1,6 @@
 import { mergeMeta } from "@resolid/dev/router";
 import { ErrorComponent } from "~/components/error-component";
+import type { Route } from "./+types/$";
 
 export const loader = async () => {
   throw new Response("页面未找到", { status: 404 });
@@ -15,4 +16,6 @@ export default function Catchall() {
   return null;
 }
 
-export const ErrorBoundary = ErrorComponent;
+export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
+  return <ErrorComponent error={error} />;
+}

@@ -57,7 +57,7 @@ export function TabsTab(
       setActiveElement?.(elementRef.current);
 
       if (index > -1 && index != activeIndex) {
-        // react-doctor-disable-next-line react-doctor/rules-of-hooks
+        // oxlint-disable-next-line react-hooks/rules-of-hooks,react-doctor/rules-of-hooks
         setActive(index);
       }
     }

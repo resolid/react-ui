@@ -4,7 +4,7 @@ import rolldownBabel from "@rolldown/plugin-babel";
 import rehypeShiki from "@shikijs/rehype";
 import tailwindcss from "@tailwindcss/vite";
 import { reactCompilerPreset } from "@vitejs/plugin-react";
-import { join } from "node:path";
+import nodePath from "node:path";
 import rehypeSlug from "rehype-slug";
 import remarkDirective from "remark-directive";
 import remarkFrontmatter from "remark-frontmatter";
@@ -48,7 +48,9 @@ export default defineConfig(({ command }) => {
           remarkDetails,
           [
             remarkDocgen,
-            { sourceRoot: join(import.meta.dirname, "../packages/react-ui/src/components") },
+            {
+              sourceRoot: nodePath.join(import.meta.dirname, "../packages/react-ui/src/components"),
+            },
           ],
           remarkRemove,
         ],
@@ -83,9 +85,9 @@ export default defineConfig(({ command }) => {
     },
     resolve: {
       tsconfigPaths: !isBuild,
-      alias: [isBuild && { find: "~", replacement: join(import.meta.dirname, "./src") }].filter(
-        Boolean,
-      ) as AliasOptions,
+      alias: [
+        isBuild && { find: "~", replacement: nodePath.join(import.meta.dirname, "./src") },
+      ].filter(Boolean) as AliasOptions,
     },
   };
 

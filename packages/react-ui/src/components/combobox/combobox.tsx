@@ -3,7 +3,7 @@ import type { AnyObject } from "../../primitives/polymorphic";
 import { ComboboxProvider } from "./combobox-provider";
 import { type ComboboxProps, useCombobox } from "./use-combobox";
 
-export type { ComboboxProps };
+export type { ComboboxProps } from "./use-combobox";
 
 export function Combobox<T extends AnyObject = AnyObject>(
   props: PropsWithChildren<ComboboxProps<T>>,

@@ -1,5 +1,5 @@
 import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
-import { join, parse } from "node:path";
+import nodePath from "node:path";
 import { cwd } from "node:process";
 import { withCustomConfig } from "react-docgen-typescript";
 import { isExportDeclaration, isNamedExports } from "typescript";
@@ -10,9 +10,9 @@ export default function remarkDocgen({ sourceRoot }) {
     throw new Error("Please set sourceRoot.");
   }
 
-  const currentDir = join(cwd(), ".resolid");
-  const componentPropsDir = join(currentDir, "component-props");
-  const componentDemosDir = join(currentDir, "component-demos");
+  const currentDir = nodePath.join(cwd(), ".resolid");
+  const componentPropsDir = nodePath.join(currentDir, "component-props");
+  const componentDemosDir = nodePath.join(currentDir, "component-demos");
 
   mkdirSync(componentPropsDir, { recursive: true });
   mkdirSync(componentDemosDir, { recursive: true });
@@ -60,7 +60,7 @@ export default function remarkDocgen({ sourceRoot }) {
 
         const demoId = `_${pageName}_${demoIndex++}`;
         const demoName = `D_${demoId.replaceAll("-", "_")}`;
-        const virtualModulePath = join(componentDemosDir, `${demoId}.tsx`);
+        const virtualModulePath = nodePath.join(componentDemosDir, `${demoId}.tsx`);
 
         demoMdx.push({
           type: "mdxjsEsm",
@@ -102,71 +102,75 @@ export default function remarkDocgen({ sourceRoot }) {
             .replace("App()", "App(props)")
             .replace(`<${componentName}`, `<${componentName} {...props}`);
 
-          codeDemoAttrs.push({
-            type: "mdxJsxAttribute",
-            name: "componentProps",
-            value: {
-              type: "mdxJsxAttributeValueExpression",
-              value: componentPropsVar,
-              data: {
-                estree: {
-                  type: "Program",
-                  body: [
-                    {
-                      type: "ExpressionStatement",
-                      expression: {
-                        type: "Identifier",
-                        name: componentPropsVar,
+          codeDemoAttrs.push(
+            {
+              type: "mdxJsxAttribute",
+              name: "componentProps",
+              value: {
+                type: "mdxJsxAttributeValueExpression",
+                value: componentPropsVar,
+                data: {
+                  estree: {
+                    type: "Program",
+                    body: [
+                      {
+                        type: "ExpressionStatement",
+                        expression: {
+                          type: "Identifier",
+                          name: componentPropsVar,
+                        },
                       },
-                    },
-                  ],
-                  sourceType: "module",
-                  comments: [],
+                    ],
+                    sourceType: "module",
+                    comments: [],
+                  },
                 },
               },
             },
-          });
-          codeDemoAttrs.push({
-            type: "mdxJsxAttribute",
-            name: "settingProps",
-            value: {
-              type: "mdxJsxAttributeValueExpression",
-              value: JSON.stringify(propsMeta.settingProps),
-              data: {
-                estree: {
-                  type: "Program",
-                  body: [
-                    {
-                      type: "ExpressionStatement",
-                      expression: {
-                        type: "ObjectExpression",
-                        properties: Object.entries(propsMeta.settingProps).map(([key, value]) => ({
-                          type: "Property",
-                          key: {
-                            type: "Identifier",
-                            name: key,
-                          },
-                          computed: false,
-                          shorthand: false,
-                          kind: "init",
-                          value:
-                            value === undefined
-                              ? { type: "Identifier", name: "undefined" }
-                              : {
-                                  type: "Literal",
-                                  value,
-                                  raw: JSON.stringify(value),
-                                },
-                        })),
+            {
+              type: "mdxJsxAttribute",
+              name: "settingProps",
+              value: {
+                type: "mdxJsxAttributeValueExpression",
+                value: JSON.stringify(propsMeta.settingProps),
+                data: {
+                  estree: {
+                    type: "Program",
+                    body: [
+                      {
+                        type: "ExpressionStatement",
+                        expression: {
+                          type: "ObjectExpression",
+                          properties: Object.entries(propsMeta.settingProps).map(
+                            ([key, value]) => ({
+                              type: "Property",
+                              key: {
+                                type: "Identifier",
+                                name: key,
+                              },
+                              computed: false,
+                              shorthand: false,
+                              kind: "init",
+                              value:
+                                value === undefined
+                                  ? { type: "Identifier", name: "undefined" }
+                                  : {
+                                      type: "Literal",
+                                      value,
+                                      raw: JSON.stringify(value),
+                                    },
+                            }),
+                          ),
+                        },
                       },
-                    },
-                  ],
-                  sourceType: "module",
-                  comments: [],
+                    ],
+                    sourceType: "module",
+                    comments: [],
+                  },
                 },
               },
             },
-          });
+          );
         }
 
         parent.children[index] = {
@@ -241,14 +245,14 @@ export default function remarkDocgen({ sourceRoot }) {
         };
 
         if (existsSync(virtualModulePath)) {
-          const content = readFileSync(virtualModulePath, "utf8");
+          const content = readFileSync(virtualModulePath, "utf-8");
 
           if (content === code) {
             return;
           }
         }
 
-        writeFileSync(virtualModulePath, code, "utf8");
+        writeFileSync(virtualModulePath, code, "utf-8");
       }
 
       if (node.type === "leafDirective") {
@@ -293,8 +297,10 @@ export default function remarkDocgen({ sourceRoot }) {
       }
     });
 
-    tree.children.unshift(...Array.from(propsData.values(), (item) => item.componentPropsModule));
-    tree.children.unshift(...demoMdx);
+    tree.children.unshift(
+      ...demoMdx,
+      ...Array.from(propsData.values(), (item) => item.componentPropsModule),
+    );
   };
 }
 
@@ -315,9 +321,8 @@ const tsParser = withCustomConfig("tsconfig.json", {
     }
 
     if (prop.declarations && prop.declarations.length > 0) {
-      return (
-        prop.declarations.find((declaration) => !declaration.fileName.includes("node_modules")) !==
-        undefined
+      return prop.declarations.some(
+        (declaration) => !declaration.fileName.includes("node_modules"),
       );
     }
 
@@ -425,12 +430,12 @@ const componentPropsSorts = [
 ];
 
 const getComponentPropsData = (componentFile, sourceRoot, virtualDir) => {
-  const sourceFile = join(sourceRoot, componentFile);
-  const componentName = (parse(componentFile).name.match(/[a-zA-Z0-9]+/g) ?? [])
+  const sourceFile = nodePath.join(sourceRoot, componentFile);
+  const componentName = (nodePath.parse(componentFile).name.match(/[a-zA-Z0-9]+/g) ?? [])
     .map((w) => `${w.charAt(0).toUpperCase()}${w.slice(1)}`)
     .join("");
 
-  const componentPropsFile = join(virtualDir, `${componentName}.json`);
+  const componentPropsFile = nodePath.join(virtualDir, `${componentName}.json`);
 
   if (
     !existsSync(componentPropsFile) ||
@@ -461,7 +466,7 @@ const getComponentPropsData = (componentFile, sourceRoot, virtualDir) => {
           })
       : null;
 
-    writeFileSync(componentPropsFile, JSON.stringify(props, null, 2), "utf8");
+    writeFileSync(componentPropsFile, JSON.stringify(props, null, 2), "utf-8");
   }
 
   const componentPropsVar = `ComponentProps_${componentName}`;
@@ -567,7 +572,7 @@ const parsePropsType = (typeName, typeValue) => {
     propType.type = typeValues
       .join(" | ")
       .replace("React.", "")
-      .replace(/ReactElement<.*>/g, "ReactElement");
+      .replaceAll(/ReactElement<.*>/g, "ReactElement");
 
     const stringValues = typeValues.filter((v) => v.includes('"'));
 

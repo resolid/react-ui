@@ -110,7 +110,7 @@ class MatchMediaMock {
       return [];
     }
 
-    return this.mediaQueries[mediaQuery].slice();
+    return [...this.mediaQueries[mediaQuery]];
   }
 
   public clear(): void {

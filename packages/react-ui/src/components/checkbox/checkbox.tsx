@@ -101,10 +101,8 @@ export function Checkbox(
   }, [indeterminate]);
 
   useIsomorphicEffect(() => {
-    if (inputRef.current) {
-      if (checkedState != inputRef.current.checked) {
-        setCheckedState(inputRef.current.checked);
-      }
+    if (inputRef.current && checkedState != inputRef.current.checked) {
+      setCheckedState(inputRef.current.checked);
     }
   }, [setCheckedState, checkedState]);
 

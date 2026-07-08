@@ -51,9 +51,9 @@ describe("NumberInput", () => {
   it("should handle custom format and parse functions", async () => {
     render(
       <NumberInput
-        parse={(value) => value.replace(/\$\s?|,*/g, "")}
+        parse={(value) => value.replaceAll(/\$\s?|,*/g, "")}
         format={(value) =>
-          !Number.isNaN(value) ? `$ ${value}`.replace(/\B(?=(?:\d{3})+(?!\d))/g, ",") : "$ "
+          Number.isNaN(value) ? "$ " : `$ ${value}`.replaceAll(/\B(?=(?:\d{3})+(?!\d))/g, ",")
         }
         defaultValue={1999}
       />,

@@ -53,15 +53,14 @@ async function openProject(name: string, code: string) {
 
   const filename = name
     // oxlint-disable-next-line prefer-named-capture-group
-    .replace(/([a-z0-9])([A-Z])/g, "$1-$2")
+    .replaceAll(/([a-z0-9])([A-Z])/g, "$1-$2")
     // oxlint-disable-next-line prefer-named-capture-group
-    .replace(/([A-Z]+)([A-Z][a-z])/g, "$1-$2")
+    .replaceAll(/([A-Z]+)([A-Z][a-z])/g, "$1-$2")
     .toLowerCase();
 
-  inputs.push(createHiddenInput("project[title]", `${name} - Resolid UI`));
-  inputs.push(createHiddenInput("project[template]", "node"));
-
   inputs.push(
+    createHiddenInput("project[title]", `${name} - Resolid UI`),
+    createHiddenInput("project[template]", "node"),
     createHiddenInput(
       "project[files][package.json]",
       // oxlint-disable-next-line no-template-curly-in-string
@@ -71,45 +70,25 @@ async function openProject(name: string, code: string) {
         commitSha,
       ),
     ),
-  );
-
-  inputs.push(
     createHiddenInput("project[files][tsconfig.json]", sandbox["../assets/sandbox/tsconfig.txt"]!),
-  );
-
-  inputs.push(
     createHiddenInput("project[files][vite.config.ts]", sandbox["../assets/sandbox/vite.txt"]!),
-  );
-
-  inputs.push(
     createHiddenInput(
       "project[files][index.html]",
       // oxlint-disable-next-line no-template-curly-in-string
       sandbox["../assets/sandbox/index.txt"]!.replaceAll("${name}", name),
     ),
-  );
-
-  inputs.push(
     createHiddenInput("project[files][src/root.tsx]", sandbox["../assets/sandbox/root.txt"]!),
-  );
-
-  inputs.push(createHiddenInput("project[files][src/app.tsx]", code));
-
-  inputs.push(
+    createHiddenInput("project[files][src/app.tsx]", code),
     createHiddenInput(
       "project[files][src/assets/icons/sprite.svg]",
       sandbox["../assets/icons/sprite.svg"]!,
     ),
-  );
-
-  inputs.push(
     createHiddenInput(
       "project[files][src/components/sprite-icon.tsx]",
       sandbox["./sprite-icon.tsx"]!,
     ),
+    createHiddenInput("project[template]", "node"),
   );
-
-  inputs.push(createHiddenInput("project[template]", "node"));
 
   const form = document.createElement("form");
   form.method = "POST";

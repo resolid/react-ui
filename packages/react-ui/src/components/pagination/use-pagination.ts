@@ -78,7 +78,7 @@ export function usePagination(options: UsePaginationOptions): {
 
   const [currentPage, setCurrentPage] = useControllableState<number>({
     value: page,
-    defaultValue: isString(defaultPage) ? parseInt(defaultPage) : (defaultPage ?? 1),
+    defaultValue: isString(defaultPage) ? Number.parseInt(defaultPage) : (defaultPage ?? 1),
     onChange,
   });
 

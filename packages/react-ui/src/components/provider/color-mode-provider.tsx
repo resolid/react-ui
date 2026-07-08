@@ -51,11 +51,10 @@ export function ColorModeProvider({
       document.head.appendChild(style);
     }
 
-    if (value == "dark" || (value == "auto" && osDark)) {
-      document.documentElement.classList.add("dark-mode");
-    } else {
-      document.documentElement.classList.remove("dark-mode");
-    }
+    document.documentElement.classList.toggle(
+      "dark-mode",
+      value == "dark" || (value == "auto" && osDark),
+    );
 
     if (style) {
       void window.getComputedStyle(style).opacity;

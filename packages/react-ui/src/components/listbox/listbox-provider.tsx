@@ -130,11 +130,11 @@ export function ListboxProvider<T extends AnyObject>(
 
       if (floating && floating.offsetHeight < floating.scrollHeight) {
         const item =
-          activeIndex != null
-            ? elementsRef.current[activeIndex]
-            : selectedIndex != null
-              ? elementsRef.current[selectedIndex]
-              : null;
+          activeIndex == null
+            ? selectedIndex == null
+              ? null
+              : elementsRef.current[selectedIndex]
+            : elementsRef.current[activeIndex];
 
         if (item) {
           const offsetHeight = elementsRef.current[prev]?.offsetHeight ?? 0;
@@ -157,7 +157,7 @@ export function ListboxProvider<T extends AnyObject>(
       return;
     }
 
-    // react-doctor-disable-next-line react-doctor/rules-of-hooks
+    // oxlint-disable-next-line react-hooks/rules-of-hooks,react-doctor/rules-of-hooks
     scrollEvent(prevActiveIndex);
   }, [open, pointer, prevActiveIndex]);
 
@@ -171,7 +171,7 @@ export function ListboxProvider<T extends AnyObject>(
         const floating = scrollRef.current;
 
         if (floating && floating.offsetHeight < floating.scrollHeight) {
-          const item = selectedIndex !== null ? elementsRef.current[selectedIndex] : null;
+          const item = selectedIndex === null ? null : elementsRef.current[selectedIndex];
 
           if (item) {
             floating.scrollTop = item.offsetTop - floating.offsetHeight / 2 + item.offsetHeight / 2;
@@ -186,7 +186,7 @@ export function ListboxProvider<T extends AnyObject>(
       return;
     }
 
-    // react-doctor-disable-next-line react-doctor/rules-of-hooks
+    // oxlint-disable-next-line react-hooks/rules-of-hooks,react-doctor/rules-of-hooks
     initScrollEvent();
   }, [open]);
 

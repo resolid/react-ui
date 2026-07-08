@@ -11,7 +11,7 @@ export async function uploadthing(act: string | undefined, data: FormData) {
       body: JSON.stringify({
         customId: data.get("fileId"),
         fileName: data.get("fileName"),
-        fileSize: parseFloat(data.get("fileSize") as string),
+        fileSize: Number.parseFloat(data.get("fileSize") as string),
         fileType: data.get("fileType"),
       }),
     });

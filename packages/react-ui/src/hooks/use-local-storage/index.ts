@@ -16,7 +16,7 @@ export function useLocalStorage<T>(
   const setValue = (value: SetStateAction<T>) => {
     const nextValue = runIf(value, store ? JSON.parse(store) : initialResolved);
 
-    setLocalStorageItem(key, nextValue !== undefined ? JSON.stringify(nextValue) : undefined);
+    setLocalStorageItem(key, nextValue === undefined ? undefined : JSON.stringify(nextValue));
   };
 
   useIsomorphicEffect(() => {
@@ -25,7 +25,7 @@ export function useLocalStorage<T>(
     }
   }, [key, initialResolved]);
 
-  return [store !== undefined ? (JSON.parse(store) as T) : store, setValue] as const;
+  return [store === undefined ? store : (JSON.parse(store) as T), setValue] as const;
 }
 
 function getLocalStorageItem(key: string) {

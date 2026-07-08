@@ -1,6 +1,6 @@
 import MiniSearch from "minisearch";
 import { readFile } from "node:fs/promises";
-import { join } from "node:path";
+import nodePath from "node:path";
 import { cwd } from "node:process";
 
 export async function getMdxMeta(pathname: string): Promise<{
@@ -9,7 +9,7 @@ export async function getMdxMeta(pathname: string): Promise<{
   sourceLink: string | null;
   toc: { depth: number; text: string; slug: string }[];
 } | null> {
-  const filePath = join(cwd(), ".resolid/content/markdown.json");
+  const filePath = nodePath.join(cwd(), ".resolid/content/markdown.json");
 
   const markdownMeta = JSON.parse(await readFile(filePath, { encoding: "utf-8" }));
 
@@ -17,7 +17,7 @@ export async function getMdxMeta(pathname: string): Promise<{
 }
 
 export async function getSearchData(q: string) {
-  const filePath = join(cwd(), ".resolid/content/search.json");
+  const filePath = nodePath.join(cwd(), ".resolid/content/search.json");
 
   const searchData = JSON.parse(await readFile(filePath, { encoding: "utf-8" }));
 

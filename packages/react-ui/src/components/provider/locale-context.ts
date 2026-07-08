@@ -24,7 +24,7 @@ export function useLocale(): {
       const prop = get(locale, `messages.${path}`, path);
 
       // oxlint-disable-next-line prefer-named-capture-group
-      return prop.replace(/\{(\w+)}/g, (_, key) => `${option?.[key] ?? `{${key}}`}`);
+      return prop.replaceAll(/\{(\w+)}/g, (_, key) => `${option?.[key] ?? `{${key}}`}`);
     },
   };
 }

@@ -26,19 +26,19 @@ export function useImageLoad(options: UseImageLoadOptions): ImageLoadStatus {
 
   useIsomorphicEffect(() => {
     if (!src && !srcSet) {
-      // react-doctor-disable-next-line react-doctor/rules-of-hooks
+      // oxlint-disable-next-line react-hooks/rules-of-hooks,react-doctor/rules-of-hooks
       setLoadStatusEffect("error");
       return noop;
     }
 
     const image = new window.Image();
 
-    // react-doctor-disable-next-line react-doctor/rules-of-hooks
+    // oxlint-disable-next-line react-hooks/rules-of-hooks,react-doctor/rules-of-hooks
     setLoadStatusEffect("loading");
 
-    // react-doctor-disable-next-line react-doctor/rules-of-hooks
+    // oxlint-disable-next-line react-hooks/rules-of-hooks,react-doctor/rules-of-hooks
     image.onload = () => setLoadStatusEffect("loaded");
-    // react-doctor-disable-next-line react-doctor/rules-of-hooks
+    // oxlint-disable-next-line react-hooks/rules-of-hooks,react-doctor/rules-of-hooks
     image.onerror = () => setLoadStatusEffect("error");
 
     if (crossOrigin) {

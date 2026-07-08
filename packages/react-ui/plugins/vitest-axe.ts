@@ -33,7 +33,7 @@ function mount(html: Element | string): [HTMLElement, () => void] {
   }
 
   if (typeof html === "string") {
-    throw new Error(`html parameter ("${html}") has no elements`);
+    throw new TypeError(`html parameter ("${html}") has no elements`);
   }
 
   throw new Error(`html parameter should be an HTML string or an HTML element`);
@@ -147,7 +147,7 @@ function stringify(object: unknown, maxDepth = 10, maxWidth = 10): string {
 }
 
 function replaceTrailingSpaces(text: string): string {
-  return text.replace(/\s+$/gm, (spaces) => SPACE_SYMBOL.repeat(spaces.length));
+  return text.replaceAll(/\s+$/gm, (spaces) => SPACE_SYMBOL.repeat(spaces.length));
 }
 
 function filterViolations(violations: Result[], impactLevels: ImpactValue[]) {
@@ -226,8 +226,9 @@ function matcherHint(
 }
 
 function toHaveNoViolations(results: AxeResults): NoViolationsMatcherResult {
+  // oxlint-disable-next-line unicorn/no-typeof-undefined
   if (typeof results.violations === "undefined") {
-    throw new Error(
+    throw new TypeError(
       "Unexpected aXe results object. No violations property found.\nDid you change the `reporter` in your aXe configuration?",
     );
   }

@@ -33,7 +33,7 @@ export function AlertDescription(props: PrimitiveProps<"div">): ReactNode {
 
   return (
     <div
-      className={tx(variant != "solid" ? "text-fg-normal" : "text-fg-emphasized", className)}
+      className={tx(variant == "solid" ? "text-fg-emphasized" : "text-fg-normal", className)}
       {...rest}
     />
   );

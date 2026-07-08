@@ -28,14 +28,14 @@ export function Indicator(
     const listStyle = getComputedStyle(listElement);
 
     const offset = vertical
-      ? activeElement.offsetTop - parseFloat(listStyle.paddingTop)
+      ? activeElement.offsetTop - Number.parseFloat(listStyle.paddingTop)
       : direction == "rtl"
         ? -1 *
             ((activeElement.offsetParent as HTMLElement).offsetWidth -
               activeElement.offsetWidth -
               activeElement.offsetLeft) +
-          parseFloat(listStyle.paddingLeft)
-        : activeElement.offsetLeft - parseFloat(listStyle.paddingLeft);
+          Number.parseFloat(listStyle.paddingLeft)
+        : activeElement.offsetLeft - Number.parseFloat(listStyle.paddingLeft);
 
     return {
       "--wv": `${activeElement.offsetWidth}px`,

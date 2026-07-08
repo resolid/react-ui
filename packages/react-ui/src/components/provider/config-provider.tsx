@@ -6,14 +6,14 @@ import { ColorModeProvider, type ColorModeProviderProps } from "./color-mode-pro
 import { DirectionContext } from "./direction-context";
 import { LocaleProvider } from "./locale-provider";
 
+export { DirectionContext } from "./direction-context";
+
 export type ConfigProviderProps = {
   dir?: Direction;
   locale?: Locale;
   colorMode?: ColorModeProviderProps;
   toastConfig?: ToastProviderProps;
 };
-
-export { DirectionContext };
 
 export function ConfigProvider({
   dir = "ltr",

@@ -4,7 +4,7 @@ import { PopperTrigger } from "../../primitives/popper/popper-trigger";
 import { PopoverProvider } from "./popover-provider";
 import { type PopoverProps, usePopover } from "./use-popover";
 
-export type { PopoverProps };
+export type { PopoverProps } from "./use-popover";
 
 export function Popover(props: PropsWithChildren<PopoverProps>): ReactNode {
   const { children, ...rest } = props;

@@ -223,8 +223,9 @@ function reducer(state: ToastState, action: ToastAction) {
         [placement]: [...state[placement].slice(0, index), ...state[placement].slice(index + 1)],
       };
     }
-    default:
+    default: {
       return state;
+    }
   }
 }
 

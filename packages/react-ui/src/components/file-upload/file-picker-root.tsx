@@ -92,19 +92,19 @@ export function FilePickerRoot(
 
   const [state, dispatch] = useReducer(
     reducer,
-    value !== undefined
-      ? isArray(value)
-        ? value
-        : value !== null
-          ? [value]
-          : []
-      : isNullish(defaultValue)
+    value === undefined
+      ? isNullish(defaultValue)
         ? []
         : (isArray(defaultValue) ? defaultValue : [defaultValue]).map((file) => ({
             id: file.id,
             kind: "remote",
             file: omit(file, ["id"]),
-          })),
+          }))
+      : isArray(value)
+        ? value
+        : value === null
+          ? []
+          : [value],
   );
 
   const inputRef = useRef<HTMLInputElement>(null);
@@ -128,7 +128,7 @@ export function FilePickerRoot(
       return;
     }
 
-    const newFiles = Array.from(files);
+    const newFiles = [...files];
 
     if (multiple && maxFiles !== Infinity && state.length + newFiles.length > maxFiles) {
       onError?.(t("fileUpload.maxFiles", { maxFiles }));
@@ -155,14 +155,13 @@ export function FilePickerRoot(
         transformed = file;
       }
 
-      if (multiple) {
-        if (
-          state.some(
-            (item) => item.file.name === transformed.name && item.file.size === transformed.size,
-          )
-        ) {
-          continue;
-        }
+      if (
+        multiple &&
+        state.some(
+          (item) => item.file.name === transformed.name && item.file.size === transformed.size,
+        )
+      ) {
+        continue;
       }
 
       if (file.size > maxSize) {
@@ -282,7 +281,7 @@ export function FilePickerRoot(
       <input
         ref={refs}
         type="file"
-        name={!upload ? name : undefined}
+        name={upload ? undefined : name}
         disabled={disabled}
         multiple={multiple}
         accept={accept}
@@ -340,7 +339,7 @@ function reducer(state: FileItem[], action: PickerReducerAction): FileItem[] {
     case "UPDATE_FILE": {
       const index = state.findIndex((item) => item.id === action.payload.file.id);
 
-      if (index > -1) {
+      if (index !== -1) {
         const next = [...state.slice(0, index), action.payload.file, ...state.slice(index + 1)];
 
         action.payload.onChange(action.payload.multiple ? next : (next[0] ?? null));
@@ -353,7 +352,7 @@ function reducer(state: FileItem[], action: PickerReducerAction): FileItem[] {
     case "REMOVE_FILE": {
       const index = state.findIndex((item) => item.id === action.payload.id);
 
-      if (index > -1) {
+      if (index !== -1) {
         if (action.payload.cancelUpload) {
           action.payload.cancelUpload(action.payload.id);
         }
@@ -367,8 +366,9 @@ function reducer(state: FileItem[], action: PickerReducerAction): FileItem[] {
 
       return state;
     }
-    default:
+    default: {
       return state;
+    }
   }
 }
 

@@ -51,7 +51,7 @@ export function mergeProps<T extends Props>(
         continue;
       }
 
-      result[key] = b !== undefined ? b : a;
+      result[key] = b === undefined ? a : b;
     }
   }
 

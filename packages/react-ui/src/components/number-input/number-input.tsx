@@ -141,7 +141,7 @@ export function NumberInput(
   const increment = (incrementStep = stepValue) => {
     if (valueState === undefined) {
       update(min ?? 0);
-      setInputValue(min !== undefined ? min.toFixed(precisionValue) : "0");
+      setInputValue(min === undefined ? "0" : min.toFixed(precisionValue));
     } else {
       const fixed = clamp(valueState + incrementStep, minValue, maxValue).toFixed(precisionValue);
 
@@ -153,7 +153,7 @@ export function NumberInput(
   const decrement = (decrementStep = stepValue) => {
     if (valueState === undefined) {
       update(min ?? 0);
-      setInputValue(min !== undefined ? min.toFixed(precisionValue) : "0");
+      setInputValue(min === undefined ? "0" : min.toFixed(precisionValue));
     } else {
       const fixed = clamp(valueState - decrementStep, minValue, maxValue).toFixed(precisionValue);
 
@@ -238,11 +238,11 @@ export function NumberInput(
         maxValue,
       );
 
-      if (!Number.isNaN(parsed)) {
+      if (Number.isNaN(parsed)) {
+        setInputValue(valueState === undefined ? "" : valueState.toFixed(precisionValue));
+      } else {
         setInputValue(parsed.toFixed(precisionValue));
         update(Number.parseFloat(parsed.toFixed(precisionValue)));
-      } else {
-        setInputValue(valueState !== undefined ? valueState.toFixed(precisionValue) : "");
       }
     }
 
@@ -265,7 +265,7 @@ export function NumberInput(
       autoCorrect="off"
       spellCheck={false}
       aria-valuenow={valueState}
-      aria-valuetext={formattedValue != "" ? formattedValue : undefined}
+      aria-valuetext={formattedValue == "" ? undefined : formattedValue}
       disabled={disabled}
       readOnly={readOnly}
       value={formattedValue}

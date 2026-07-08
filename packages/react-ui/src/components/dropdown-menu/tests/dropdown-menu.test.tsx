@@ -149,9 +149,9 @@ describe("Menu", () => {
       expect(firstItem!.tabIndex).to.equal(0);
     });
 
-    otherItems.forEach((item) => {
+    for (const item of otherItems) {
       expect(item.tabIndex).to.equal(-1);
-    });
+    }
   });
 
   it("focuses the first item when down arrow key opens the menu", async () => {
@@ -169,8 +169,8 @@ describe("Menu", () => {
 
     await waitFor(() => expect(firstItem).toHaveFocus());
 
-    otherItems.forEach((item) => {
+    for (const item of otherItems) {
       expect(item.tabIndex).to.equal(-1);
-    });
+    }
   });
 });

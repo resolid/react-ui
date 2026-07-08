@@ -33,7 +33,9 @@ function MenuItem({
 }) {
   return (
     <li>
-      {menu.path != null ? (
+      {menu.path == null ? (
+        <h5 className={depth > 1 ? "mb-1 ps-4 font-normal" : "mb-2 font-medium"}>{menu.label}</h5>
+      ) : (
         <HistoryNavLink
           discover="none"
           className={({ isActive }) =>
@@ -49,8 +51,6 @@ function MenuItem({
         >
           {menu.label}
         </HistoryNavLink>
-      ) : (
-        <h5 className={depth > 1 ? "mb-1 ps-4 font-normal" : "mb-2 font-medium"}>{menu.label}</h5>
       )}
       {menu.children && (
         <ul className="space-y-0.5">

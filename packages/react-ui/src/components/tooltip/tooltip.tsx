@@ -3,7 +3,7 @@ import { PopperTrigger } from "../../primitives/popper/popper-trigger";
 import { TooltipProvider } from "./tooltip-provider";
 import { type TooltipProps, useTooltip } from "./use-tooltip";
 
-export type { TooltipProps };
+export type { TooltipProps } from "./use-tooltip";
 
 export function Tooltip(props: PropsWithChildren<TooltipProps>): ReactNode {
   const { children, ...rest } = props;

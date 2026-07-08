@@ -17,8 +17,8 @@ export function MdxToc({
       return;
     }
 
-    const h2 = Array.from(node.querySelectorAll("h2"));
-    const h3 = Array.from(node.querySelectorAll("h3"));
+    const h2 = [...node.querySelectorAll("h2")];
+    const h3 = [...node.querySelectorAll("h3")];
 
     const combinedHeadings = [...h2, ...h3].sort((a, b) => a.offsetTop - b.offsetTop).reverse();
 

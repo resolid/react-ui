@@ -6,14 +6,14 @@ import { fromMarkdown } from "mdast-util-from-markdown";
 import { toString } from "mdast-util-to-string";
 import { mkdirSync } from "node:fs";
 import { readFile, writeFile } from "node:fs/promises";
-import { join, relative, sep } from "node:path";
+import nodePath from "node:path";
 import { cwd } from "node:process";
 import removeMd from "remove-markdown";
 import { visit } from "unist-util-visit";
 import { parse } from "yaml";
 
 export default function viteContent() {
-  const contentDir = join(cwd(), ".resolid", "content");
+  const contentDir = nodePath.join(cwd(), ".resolid", "content");
 
   mkdirSync(contentDir, { recursive: true });
 
@@ -63,13 +63,7 @@ export default function viteContent() {
 }
 
 function isEnabled(config) {
-  if (!config.build?.ssr) {
-    if (config.__reactRouterPluginContext) {
-      return true;
-    }
-  }
-
-  return false;
+  return !config.build?.ssr && config.__reactRouterPluginContext;
 }
 
 // oxlint-disable-next-line prefer-named-capture-group
@@ -77,7 +71,7 @@ const MATTER_RE = /^---(?:\r?\n|\r)(?:([\s\S]*?)(?:\r?\n|\r))?---(?:\r?\n|\r|$)/
 
 async function contentBuild({ root, contentDir, watch }) {
   const pattern = "src/routes/docs/_mdx/**/*.mdx";
-  const routesPath = join(root, "src/routes");
+  const routesPath = nodePath.join(root, "src/routes");
   const githubRepo = "https://github.com/resolid/react-ui/blob/main/";
 
   const build = async () => {
@@ -89,7 +83,7 @@ async function contentBuild({ root, contentDir, watch }) {
     for (const file of files) {
       const slugs = new GithubSlugger();
 
-      const resolvePath = relative(routesPath, file).split(sep).join("/");
+      const resolvePath = nodePath.relative(routesPath, file).split(nodePath.sep).join("/");
 
       const documentLink = new URL(resolvePath, `${githubRepo}website/src/routes/`).toString();
 
@@ -146,19 +140,27 @@ async function contentBuild({ root, contentDir, watch }) {
         content: removeMd(
           doc
             .replace(MATTER_RE, "")
-            .replace(/```[\s\S]*?```/g, "")
-            .replace(/::[A-Za-z0-9_-]+\{[^}]*}/g, ""),
+            .replaceAll(/```[\s\S]*?```/g, "")
+            .replaceAll(/::[A-Za-z0-9_-]+\{[^}]*}/g, ""),
           {},
-        ).replace(/\n+/g, "\n"),
+        ).replaceAll(/\n+/g, "\n"),
       });
     }
 
-    await writeFile(join(contentDir, "markdown.json"), JSON.stringify(markdownMeta, null, 2), {
-      encoding: "utf8",
-    });
-    await writeFile(join(contentDir, "search.json"), JSON.stringify(markdownSearch, null, 2), {
-      encoding: "utf8",
-    });
+    await writeFile(
+      nodePath.join(contentDir, "markdown.json"),
+      JSON.stringify(markdownMeta, null, 2),
+      {
+        encoding: "utf-8",
+      },
+    );
+    await writeFile(
+      nodePath.join(contentDir, "search.json"),
+      JSON.stringify(markdownSearch, null, 2),
+      {
+        encoding: "utf-8",
+      },
+    );
   };
 
   if (watch) {

@@ -32,7 +32,7 @@ export function CalendarTitle(props: CalendarButtonProps): ReactNode {
     <CalendarNavButton
       disabled={isDisabled}
       color={color}
-      aria-label={!lastView ? t(`calendar.switchView.${nextView}`) : undefined}
+      aria-label={lastView ? undefined : t(`calendar.switchView.${nextView}`)}
       className={tx("flex-1", className)}
       onClick={handleClick}
       {...rest}

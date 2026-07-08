@@ -87,10 +87,11 @@ function assignStyle(element: HTMLElement | null | undefined, style: Partial<CSS
     return;
   }
 
-  const current = Object.keys(style).reduce((acc, key) => {
-    acc[key] = element.style.getPropertyValue(key);
-    return acc;
-  }, {} as Dict<string>);
+  const current: Dict<string> = {};
+
+  for (const key of Object.keys(style)) {
+    current[key] = element.style.getPropertyValue(key);
+  }
 
   Object.assign(element.style, style);
 

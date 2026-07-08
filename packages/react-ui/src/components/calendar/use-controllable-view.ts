@@ -27,7 +27,7 @@ export function useControllableView(
   const { view, defaultView = "month", onViewChange, minView, maxView } = options;
 
   return useControllableState({
-    value: view !== undefined ? clampView(view, minView, maxView) : undefined,
+    value: view === undefined ? undefined : clampView(view, minView, maxView),
     defaultValue: clampView(defaultView, minView, maxView),
     onChange: onViewChange,
   });

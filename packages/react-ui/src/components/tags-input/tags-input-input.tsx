@@ -76,10 +76,8 @@ export function TagsInputInput(
   const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
     onBlur?.(e);
 
-    if (addOnBlur) {
-      if (e.target.value && onAdd(e.target.value)) {
-        setValueState("");
-      }
+    if (addOnBlur && e.target.value && onAdd(e.target.value)) {
+      setValueState("");
     }
 
     setActiveIndex(undefined);
