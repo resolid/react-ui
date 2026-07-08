@@ -1,5 +1,11 @@
 # @resolid/react-ui
 
+## 0.3.6
+
+### Patch Changes
+
+- [`44de442`](https://github.com/resolid/react-ui/commit/44de442041efa4229d0a18ed394bd473678a4371) - fix: fix lint error
+
 ## 0.3.5
 
 ### Patch Changes
