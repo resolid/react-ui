@@ -4,7 +4,7 @@ import type { PrimitiveProps } from "../../primitives";
 import { usePopperAria } from "../../primitives/popper/popper-aria-context";
 import { PopperFloating } from "../../primitives/popper/popper-floating";
 import { usePopperTransition } from "../../primitives/popper/popper-transtion-context";
-import { getPopperAnimationProps } from "../../primitives/popper/utils";
+import { getPopperAnimationProps } from "../../primitives/popper/popper.utils";
 import { hasBackgroundBaseClass } from "../../shared/utils";
 import { tx } from "../../utils/clsx";
 import { useDialog } from "../dialog/dialog-context";

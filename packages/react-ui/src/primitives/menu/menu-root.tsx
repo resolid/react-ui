@@ -211,8 +211,9 @@ function MenuTree(props: PropsWithChildren<MenuRootProps>) {
   };
 
   const anchorContext: PopperAnchorContextValue = {
-    // oxlint-disable-next-line typescript/unbound-method
-    setPositionReference: refs.setPositionReference,
+    setPositionReference(node) {
+      refs.setPositionReference(node);
+    },
   };
 
   const menuEvents = useFloatingTree()!.events;

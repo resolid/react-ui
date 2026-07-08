@@ -7,7 +7,7 @@ import { tx } from "../../utils/clsx";
 import { PopperFloating } from "../popper/popper-floating";
 import { usePopperPositioner } from "../popper/popper-positioner-context";
 import { usePopperTransition } from "../popper/popper-transtion-context";
-import { getPopperAnimationProps } from "../popper/utils";
+import { getPopperAnimationProps } from "../popper/popper.utils";
 import { useMenu } from "./menu-context";
 import { useMenuHover } from "./menu-hover-context";
 import { MenuItemContext, type MenuItemContextValue } from "./menu-item-context";

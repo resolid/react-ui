@@ -16,7 +16,7 @@ import {
   PopperPositionerContext,
   type PopperPositionerContextValue,
 } from "../../primitives/popper/popper-positioner-context";
-import { getPopperAnimationProps } from "../../primitives/popper/utils";
+import { getPopperAnimationProps } from "../../primitives/popper/popper.utils";
 import { tx } from "../../utils/clsx";
 import { ListboxContent } from "../listbox/listbox";
 import { Portal } from "../portal/portal";

@@ -9,7 +9,7 @@ import {
   useCalendarViewControl,
 } from "./calendar-context";
 import { CalendarNavButton } from "./calendar-nav-button";
-import { type CalendarButtonProps, getDecadeRange, getNextView } from "./utils";
+import { type CalendarButtonProps, getDecadeRange, getNextView } from "./calendar.utils";
 
 export function CalendarTitle(props: CalendarButtonProps): ReactNode {
   const { className, ...rest } = props;

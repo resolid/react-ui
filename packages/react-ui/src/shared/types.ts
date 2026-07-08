@@ -110,3 +110,19 @@ export type FormInputFieldProps = FormFieldProps & {
    */
   placeholder?: string;
 };
+
+export type DelayProps = {
+  /**
+   * 打开延迟
+   * @default 300
+   */
+  openDelay?: number;
+
+  /**
+   * 关闭延迟
+   * @default 150
+   */
+  closeDelay?: number;
+};
+
+export type Duration = number | { open: number; close: number };

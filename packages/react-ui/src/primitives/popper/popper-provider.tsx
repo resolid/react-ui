@@ -5,10 +5,13 @@ import { PopperArrowContext } from "./popper-arrow-context";
 import { PopperDispatchContext } from "./popper-dispatch-context";
 import { PopperPositionerContext } from "./popper-positioner-context";
 import { PopperStateContext } from "./popper-state-context";
-import { PopperTransitionContext } from "./popper-transtion-context";
+import {
+  PopperTransitionContext,
+  type PopperTransitionContextValue,
+} from "./popper-transtion-context";
 
 export type PopperProviderProps = {
-  value: UsePopperReturnContexts;
+  value: UsePopperReturnContexts & { transitionContext: PopperTransitionContextValue };
 };
 
 export function PopperProvider({

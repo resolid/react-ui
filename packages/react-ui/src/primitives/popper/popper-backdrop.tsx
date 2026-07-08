@@ -3,7 +3,7 @@ import type { PrimitiveProps } from "../polymorphic";
 import { hasBackgroundBaseClass } from "../../shared/utils";
 import { tx } from "../../utils/clsx";
 import { usePopperTransition } from "./popper-transtion-context";
-import { getPopperAnimationProps } from "./utils";
+import { getPopperAnimationProps } from "./popper.utils";
 
 export function PopperBackdrop(props: PrimitiveProps<"div">): ReactNode {
   const { className, children, style, ...rest } = props;

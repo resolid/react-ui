@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { endOfMonth, endOfYear, isAfter, setYear, subMonths, subYears } from "@resolid/utils/date";
-import type { CalendarButtonProps } from "./utils";
+import type { CalendarButtonProps } from "./calendar.utils";
 import { useLocale } from "../../components/provider/locale-context";
 import { AngleLeftIcon } from "../../shared/icons";
 import { tx } from "../../utils/clsx";

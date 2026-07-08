@@ -6,7 +6,7 @@ import { useTimeout } from "../../hooks/use-timeout";
 import { useTransitionComplete } from "../../hooks/use-transition-complete";
 import { PopperAriaContext } from "../../primitives/popper/popper-aria-context";
 import { PopperDispatchContext } from "../../primitives/popper/popper-dispatch-context";
-import { getPopperAnimationProps } from "../../primitives/popper/utils";
+import { getPopperAnimationProps } from "../../primitives/popper/popper.utils";
 import { tx } from "../../utils/clsx";
 import { Alert, type AlertProps } from "../alert/alert";
 import { useToastComponent } from "./toast-context";

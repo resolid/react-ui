@@ -2,7 +2,7 @@ import type { ReactElement, ReactNode } from "react";
 import { FloatingFocusManager } from "@floating-ui/react";
 import { PopperPositioner } from "../../primitives/popper/popper-positioner";
 import { usePopperTransition } from "../../primitives/popper/popper-transtion-context";
-import { getPopperAnimationProps } from "../../primitives/popper/utils";
+import { getPopperAnimationProps } from "../../primitives/popper/popper.utils";
 import { tx } from "../../utils/clsx";
 import { Portal } from "../portal/portal";
 import { usePickerRoot } from "./picker-context";

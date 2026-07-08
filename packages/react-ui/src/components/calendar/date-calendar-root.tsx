@@ -9,12 +9,16 @@ import {
   type CalenderCellRender,
 } from "../../primitives/calendar/calendar-context";
 import { CalendarRoot } from "../../primitives/calendar/calendar-root";
-import { calendarIsSameStrategy, returnFalse } from "../../primitives/calendar/utils";
+import { calendarIsSameStrategy, returnFalse } from "../../primitives/calendar/calendar.utils";
 import { tx } from "../../utils/clsx";
 import { ariaAttr } from "../../utils/dom";
 import { calendarStatusColorStyles } from "./calendar.styles";
+import {
+  type CalendarBaseProps,
+  type CalendarFormatProps,
+  getBaseFocusedValue,
+} from "./calendar.utils";
 import { useControllableView, type UseControllableViewOptions } from "./use-controllable-view";
-import { type CalendarBaseProps, type CalendarFormatProps, getBaseFocusedValue } from "./utils";
 
 export type DateCalendarRootProps = {
   value: Date | Date[] | null;

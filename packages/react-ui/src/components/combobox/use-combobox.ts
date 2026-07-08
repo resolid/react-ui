@@ -229,9 +229,10 @@ export function useCombobox<T extends AnyObject = AnyObject>({
     },
   };
 
-  const popperAnchorContext = {
-    // oxlint-disable-next-line typescript/unbound-method
-    setPositionReference: context.refs.setPositionReference,
+  const popperAnchorContext: PopperAnchorContextValue = {
+    setPositionReference(node) {
+      context.refs.setPositionReference(node);
+    },
   };
 
   return {

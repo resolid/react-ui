@@ -5,7 +5,7 @@ import { usePopperAria } from "../../primitives/popper/popper-aria-context";
 import { PopperFloating } from "../../primitives/popper/popper-floating";
 import { PopperPositioner } from "../../primitives/popper/popper-positioner";
 import { usePopperTransition } from "../../primitives/popper/popper-transtion-context";
-import { getPopperAnimationProps } from "../../primitives/popper/utils";
+import { getPopperAnimationProps } from "../../primitives/popper/popper.utils";
 import { hasBackgroundBaseClass } from "../../shared/utils";
 import { tx } from "../../utils/clsx";
 import { Portal } from "../portal/portal";

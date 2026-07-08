@@ -10,6 +10,7 @@ import type { DisclosureProps } from "../../shared/types";
 import type { InputSize } from "../input/input.styles";
 import type { DateCalendarProps } from "./date-calendar";
 import { VisuallyHiddenInput } from "../visually-hidden/visually-hidden-input";
+import { formatBaseDate, inputToCalendarSize } from "./calendar.utils";
 import {
   DatePickerCalendarContext,
   type DatePickerCalendarContextValue,
@@ -19,7 +20,6 @@ import {
 import { PickerProvider } from "./picker-provider";
 import { useControllableDate } from "./use-controllable-date";
 import { usePicker } from "./use-picker";
-import { formatBaseDate, inputToCalendarSize } from "./utils";
 
 export type DatePickerRootProps = DisclosureProps & {
   /**

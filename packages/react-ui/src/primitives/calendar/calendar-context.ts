@@ -2,7 +2,7 @@ import type { FirstWeekContains, MaybeDateInput, WeekStartsOn } from "@resolid/u
 import type { Dispatch, DOMAttributes, ReactElement, SetStateAction } from "react";
 import type { ElementProps } from "../polymorphic";
 import type { CalendarColor, CalendarSize } from "./calendar.styles";
-import type { CalendarView } from "./utils";
+import type { CalendarView } from "./calendar.utils";
 import { createSafeContext, type SafeContext, type UseSafeContext } from "../context";
 
 export type CalendarContextValue = {

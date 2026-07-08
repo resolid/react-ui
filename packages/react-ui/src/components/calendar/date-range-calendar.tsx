@@ -1,11 +1,15 @@
 import type { ReactNode } from "react";
-import type { PrimitiveProps } from "../../primitives";
-import type { CalendarView } from "../../primitives/calendar/utils";
+import type { CalendarView } from "../../primitives/calendar/calendar.utils";
+import type { PrimitiveProps } from "../../primitives/polymorphic";
 import type { FormFieldProps, ValueProps } from "../../shared/types";
 import { VisuallyHiddenInput } from "../visually-hidden/visually-hidden-input";
+import {
+  type CalendarBaseProps,
+  type CalendarFormatProps,
+  formatRangeDate,
+} from "./calendar.utils";
 import { DateRangeCalendarRoot } from "./date-range-calendar-root";
 import { useControllableDateRange } from "./use-controllable-date-range";
-import { type CalendarBaseProps, type CalendarFormatProps, formatRangeDate } from "./utils";
 
 export type DateRangeCalendarProps = ValueProps<string | null, string> & {
   /**

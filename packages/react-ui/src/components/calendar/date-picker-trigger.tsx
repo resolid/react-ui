@@ -9,9 +9,9 @@ import { usePopperTrigger } from "../../primitives/popper/popper-trigger-context
 import { CalendarIcon } from "../../shared/icons";
 import { tx } from "../../utils/clsx";
 import { selectChevronStyle, selectSizeStyles } from "../select/select.styles";
+import { tryParseDate } from "./calendar.utils";
 import { useDatePickerState } from "./date-picker-context";
 import { usePickerRoot, usePickerStatus } from "./picker-context";
-import { tryParseDate } from "./utils";
 
 export function DatePickerTrigger(
   props: PrimitiveProps<"div", EmptyObject, "tabIndex">,

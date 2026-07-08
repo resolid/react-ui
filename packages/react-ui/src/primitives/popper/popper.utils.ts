@@ -1,5 +1,6 @@
 import type { CSSProperties, RefObject } from "react";
-import type { TransitionStatus } from "../../shared/types";
+import { isNumber } from "@resolid/utils";
+import type { Duration, TransitionStatus } from "../../shared/types";
 import { tx } from "../../utils/clsx";
 
 export type PopperFocusProps = {
@@ -16,7 +17,7 @@ export type PopperFocusProps = {
 
 export type PopperAnimationProps = {
   status: TransitionStatus;
-  duration: number;
+  duration: Duration;
   transitionClassName?: string | string[];
   openClassName?: string | string[];
   defaultClassName?: string | string[];
@@ -34,9 +35,15 @@ export function getPopperAnimationProps(props: PopperAnimationProps): {
     defaultClassName = "opacity-0",
   } = props;
 
+  const transitionDuration = isNumber(duration)
+    ? duration
+    : status == "open"
+      ? duration.open
+      : duration.close;
+
   return {
     style: {
-      "--dv": `${duration}ms`,
+      "--dv": `${transitionDuration}ms`,
     } as CSSProperties,
     className: tx(
       "duration-(--dv)",

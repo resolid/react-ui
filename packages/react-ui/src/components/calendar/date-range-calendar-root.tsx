@@ -19,7 +19,7 @@ import {
   calendarIsSameStrategy,
   type CalendarView,
   returnFalse,
-} from "../../primitives/calendar/utils";
+} from "../../primitives/calendar/calendar.utils";
 import { tx } from "../../utils/clsx";
 import { ariaAttr } from "../../utils/dom";
 import { Separator } from "../separator/separator";
@@ -31,7 +31,7 @@ import {
   getRangeFocusedValue,
   getValidRangeDate,
   type RangeDate,
-} from "./utils";
+} from "./calendar.utils";
 
 export type DateRangeCalendarRootProps = {
   view?: CalendarView;

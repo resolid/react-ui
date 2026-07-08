@@ -388,6 +388,8 @@ const componentPropsSorts = [
   "defaultOpen",
   "onOpenChange",
   "closeOnSelect",
+  "openDelay",
+  "closeDelay",
 
   "view",
   "defaultView",

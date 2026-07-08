@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { clampDate, type DateInput, toDate } from "@resolid/utils/date";
 import type { PrimitiveProps } from "../polymorphic";
-import type { CalendarView } from "./utils";
+import type { CalendarView } from "./calendar.utils";
 import { useControllableState } from "../../hooks/use-controllable-state";
 import { ariaAttr } from "../../utils/dom";
 import {

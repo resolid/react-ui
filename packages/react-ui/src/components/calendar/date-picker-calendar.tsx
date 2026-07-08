@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import type { EmptyObject, PrimitiveProps } from "../../primitives";
+import type { EmptyObject, PrimitiveProps } from "../../primitives/polymorphic";
 import { usePopperFloating } from "../../primitives/popper/popper-floating-context";
 import { DateCalendarRoot } from "./date-calendar-root";
 import { useDatePickerCalendar } from "./date-picker-context";

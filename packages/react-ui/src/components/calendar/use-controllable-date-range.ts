@@ -7,7 +7,7 @@ import {
   formatRangeDate,
   parseRangeDateValue,
   type RangeDate,
-} from "./utils";
+} from "./calendar.utils";
 
 export type UseControllableDateRangeOptions = ValueProps<string | null, string> & {
   separator: string;

@@ -1,7 +1,7 @@
 import type { Dispatch, SetStateAction } from "react";
 import type { CalenderViewBound } from "../../primitives/calendar/calendar-context";
 import { useControllableState } from "../../hooks/use-controllable-state";
-import { type CalendarView, clampView } from "../../primitives/calendar/utils";
+import { type CalendarView, clampView } from "../../primitives/calendar/calendar.utils";
 
 export type UseControllableViewOptions = {
   /**

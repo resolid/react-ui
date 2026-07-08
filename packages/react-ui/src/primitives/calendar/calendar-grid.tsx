@@ -34,7 +34,7 @@ import {
   getActiveIndex,
   getPreviousView,
   returnFalse,
-} from "./utils";
+} from "./calendar.utils";
 
 export function CalendarGrid(
   props: PrimitiveProps<"table", EmptyObject, "children" | "role" | "color">,

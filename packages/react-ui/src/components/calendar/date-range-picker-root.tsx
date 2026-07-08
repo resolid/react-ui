@@ -3,6 +3,7 @@ import type { DisclosureProps } from "../../shared/types";
 import type { InputSize } from "../input/input.styles";
 import type { DateRangeCalendarProps } from "./date-range-calendar";
 import { VisuallyHiddenInput } from "../visually-hidden/visually-hidden-input";
+import { formatRangeDate, inputToCalendarSize } from "./calendar.utils";
 import {
   DateRangePickerCalendarContext,
   type DateRangePickerCalendarContextValue,
@@ -12,7 +13,6 @@ import {
 import { PickerProvider } from "./picker-provider";
 import { useControllableDateRange } from "./use-controllable-date-range";
 import { usePicker } from "./use-picker";
-import { formatRangeDate, inputToCalendarSize } from "./utils";
 
 export type DateRangePickerRootProps = DisclosureProps & {
   /**

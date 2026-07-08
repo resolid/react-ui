@@ -20,7 +20,7 @@ import {
   calendarAddUnitStrategy,
   type CalendarCompareStrategy,
   type CalendarView,
-} from "../../primitives/calendar/utils";
+} from "../../primitives/calendar/calendar.utils";
 
 export type CalendarFormatProps = {
   /**

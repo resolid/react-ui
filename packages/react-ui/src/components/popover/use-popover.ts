@@ -4,9 +4,11 @@ import {
   useDismiss,
   useInteractions,
   useRole,
+  useTransitionStatus,
 } from "@floating-ui/react";
 import { useId } from "react";
 import type { PopperFloatingContextValue } from "../../primitives/popper/popper-floating-context";
+import type { PopperTransitionContextValue } from "../../primitives/popper/popper-transtion-context";
 import type { PopperTriggerContextValue } from "../../primitives/popper/popper-trigger-context";
 import type { PopoverBaseProps, PopoverRootContextValue } from "./popover-root-context";
 import {
@@ -37,6 +39,7 @@ export type UsePopoverReturnContexts = {
   };
   referenceContext: PopperTriggerContextValue;
   floatingContext: PopperFloatingContextValue;
+  transitionContext: PopperTransitionContextValue;
   popoverRootContext: PopoverRootContextValue;
 } & UsePopperReturnContexts;
 
@@ -69,11 +72,20 @@ export function usePopover({
     open,
     defaultOpen,
     onOpenChange,
-    duration,
     placement,
     inlineMiddleware,
     arrowClassName: "fill-bg-normal [&>path:first-of-type]:stroke-bd-normal",
   });
+
+  const { isMounted, status } = useTransitionStatus(context, {
+    duration,
+  });
+
+  const transitionContext: PopperTransitionContextValue = {
+    status,
+    mounted: isMounted,
+    duration,
+  };
 
   const { getFloatingProps, getReferenceProps } = useInteractions([
     useRole(context),
@@ -103,14 +115,16 @@ export function usePopover({
   };
 
   return {
-    // oxlint-disable-next-line typescript/unbound-method
-    setOpen: context.onOpenChange,
+    setOpen(opened) {
+      context.onOpenChange(opened);
+    },
     setPosition: anchorContext.setPositionReference,
     floatingElement: context.elements.floating,
     ariaContext,
     popoverRootContext,
     floatingContext,
     referenceContext,
+    transitionContext,
     anchorContext,
     ...restContext,
   };

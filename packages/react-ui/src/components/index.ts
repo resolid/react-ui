@@ -57,6 +57,7 @@ export * from "./textarea/textarea";
 export * from "./toast/toast";
 export * from "./toast/use-toast";
 export * from "./tooltip/tooltip";
+export * from "./tooltip/tooltip-group";
 export * from "./tooltip/tooltip-provider";
 export * from "./tooltip/use-tooltip";
 export * from "./visually-hidden/visually-hidden";

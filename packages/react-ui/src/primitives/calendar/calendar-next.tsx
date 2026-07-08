@@ -7,7 +7,7 @@ import {
   startOfMonth,
   startOfYear,
 } from "@resolid/utils/date";
-import type { CalendarButtonProps } from "./utils";
+import type { CalendarButtonProps } from "./calendar.utils";
 import { useLocale } from "../../components/provider/locale-context";
 import { AngleRightIcon } from "../../shared/icons";
 import { tx } from "../../utils/clsx";

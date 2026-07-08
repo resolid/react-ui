@@ -10,7 +10,6 @@ import {
   type ReferenceType,
   shift,
   useFloating,
-  useTransitionStatus,
 } from "@floating-ui/react";
 import { useState } from "react";
 import type { DisclosureProps } from "../../shared/types";
@@ -19,7 +18,6 @@ import type { PopperArrowContextValue } from "./popper-arrow-context";
 import type { PopperDispatchContextValue } from "./popper-dispatch-context";
 import type { PopperPositionerContextValue } from "./popper-positioner-context";
 import type { PopperStateContextValue } from "./popper-state-context";
-import type { PopperTransitionContextValue } from "./popper-transtion-context";
 import { useDisclosure } from "../../hooks/use-disclosure";
 
 export type UsePopperProps = DisclosureProps & {
@@ -36,7 +34,7 @@ export type UsePopperProps = DisclosureProps & {
   inlineMiddleware?: boolean;
 };
 
-type UsePopperOptions = UsePopperProps & {
+type UsePopperOptions = Omit<UsePopperProps, "duration"> & {
   arrowClassName: string;
 };
 
@@ -45,7 +43,6 @@ export type UsePopperReturnContexts = {
   arrowContext: PopperArrowContextValue;
   anchorContext: PopperAnchorContextValue;
   positionerContext: PopperPositionerContextValue;
-  transitionContext: PopperTransitionContextValue;
   dispatchContext: PopperDispatchContextValue;
 };
 
@@ -53,7 +50,6 @@ export function usePopper({
   open,
   defaultOpen = false,
   onOpenChange,
-  duration = 250,
   placement = "auto",
   inlineMiddleware = false,
   arrowClassName,
@@ -103,16 +99,9 @@ export function usePopper({
   };
 
   const anchorContext: PopperAnchorContextValue = {
-    // oxlint-disable-next-line typescript/unbound-method
-    setPositionReference: refs.setPositionReference,
-  };
-
-  const { isMounted, status } = useTransitionStatus(context, { duration });
-
-  const transitionContext: PopperTransitionContextValue = {
-    status,
-    mounted: isMounted,
-    duration,
+    setPositionReference(node) {
+      refs.setPositionReference(node);
+    },
   };
 
   const positionerContext: PopperPositionerContextValue = {
@@ -132,7 +121,6 @@ export function usePopper({
     arrowContext,
     anchorContext,
     positionerContext,
-    transitionContext,
     dispatchContext,
   };
 }

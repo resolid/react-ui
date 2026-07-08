@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import type { PrimitiveProps } from "../../primitives";
+import type { PrimitiveProps } from "../../primitives/polymorphic";
 import { CalendarViewControlContext } from "../../primitives/calendar/calendar-context";
 import { CalendarRoot, type CalendarRootProps } from "../../primitives/calendar/calendar-root";
 import { useControllableView, type UseControllableViewOptions } from "./use-controllable-view";

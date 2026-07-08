@@ -4,7 +4,7 @@ import { useMergeRefs } from "../../hooks/use-merge-refs";
 import { PopperFloating } from "../../primitives/popper/popper-floating";
 import { usePopperPositioner } from "../../primitives/popper/popper-positioner-context";
 import { usePopperTransition } from "../../primitives/popper/popper-transtion-context";
-import { getPopperAnimationProps } from "../../primitives/popper/utils";
+import { getPopperAnimationProps } from "../../primitives/popper/popper.utils";
 import { tx } from "../../utils/clsx";
 import { PortalLite } from "../portal/portal-lite";
 import { useTooltipRoot } from "./tooltip-root-context";

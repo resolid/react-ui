@@ -266,6 +266,51 @@ export default function App() {
 }
 ```
 
+### 延迟组
+
+`TooltipGroup` 组件可用于同步多个工具提示的开合延迟。
+
+```jsx demo
+import {
+  Button,
+  Tooltip,
+  TooltipArrow,
+  TooltipContent,
+  TooltipGroup,
+  TooltipTrigger,
+} from "@resolid/react-ui";
+
+export default function App() {
+  return (
+    <TooltipGroup>
+      <div className="flex gap-3">
+        <Tooltip placement="top">
+          <TooltipTrigger render={(props) => <Button {...props} />}>按钮</TooltipTrigger>
+          <TooltipContent>
+            <TooltipArrow />
+            工具提示内容
+          </TooltipContent>
+        </Tooltip>
+        <Tooltip placement="top">
+          <TooltipTrigger render={(props) => <Button {...props} />}>按钮</TooltipTrigger>
+          <TooltipContent>
+            <TooltipArrow />
+            工具提示内容
+          </TooltipContent>
+        </Tooltip>
+        <Tooltip placement="top">
+          <TooltipTrigger render={(props) => <Button {...props} />}>按钮</TooltipTrigger>
+          <TooltipContent>
+            <TooltipArrow />
+            工具提示内容
+          </TooltipContent>
+        </Tooltip>
+      </div>
+    </TooltipGroup>
+  );
+}
+```
+
 ### 放置位置
 
 通过传递 `placement` 属性来更改工具提示的放置位置。
@@ -324,4 +369,10 @@ export default function App() {
 
 ## 属性
 
+### Tooltip
+
 ::PropsTable{file=tooltip/tooltip.tsx}
+
+### TooltipGroup
+
+::PropsTable{file=tooltip/tooltip-group.tsx}
