@@ -81,6 +81,7 @@ export function TagsInputRoot(props: PrimitiveProps<"div", TagsInputRootProps>):
       }
 
       const appends = added
+        // react-doctor-disable-next-line react-doctor/js-set-map-lookups
         .filter((v) => !valueState.includes(v))
         .slice(0, max - valueState.length);
 
@@ -89,7 +90,6 @@ export function TagsInputRoot(props: PrimitiveProps<"div", TagsInputRootProps>):
       }
 
       setValueState((prev) => [...prev, ...appends]);
-
       setActiveIndex((idx) => (idx ? idx + appends.length : 1));
 
       return true;
@@ -100,7 +100,6 @@ export function TagsInputRoot(props: PrimitiveProps<"div", TagsInputRootProps>):
     }
 
     setValueState((prev) => [...prev, added]);
-
     setActiveIndex((idx) => (idx ? idx + 1 : 1));
 
     return true;

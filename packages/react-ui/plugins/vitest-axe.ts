@@ -152,6 +152,7 @@ function replaceTrailingSpaces(text: string): string {
 
 function filterViolations(violations: Result[], impactLevels: ImpactValue[]) {
   if (impactLevels.length > 0) {
+    // react-doctor-disable-next-line react-doctor/js-set-map-lookups
     return violations.filter((v) => impactLevels.includes(v.impact!));
   }
 
