@@ -7,6 +7,7 @@
       <w>commitlint</w>
       <w>commitsha</w>
       <w>frontmatter</w>
+      <w>hono</w>
       <w>langs</w>
       <w>listbox</w>
       <w>mdxjs</w>
@@ -17,6 +18,7 @@
       <w>openchange</w>
       <w>rehype</w>
       <w>tablist</w>
+      <w>tinyglobby</w>
       <w>treeshake</w>
       <w>uploadthing</w>
       <w>vfile</w>

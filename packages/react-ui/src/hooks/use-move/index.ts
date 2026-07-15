@@ -27,6 +27,7 @@ export function useMove<T extends HTMLElement = HTMLDivElement>(
   const frame = useRef(0);
   const mounted = useRef(false);
   const sliding = useRef(false);
+  const cleanup = useRef<(() => void) | null>(null);
 
   const [active, setActive] = useState(false);
 
@@ -34,7 +35,7 @@ export function useMove<T extends HTMLElement = HTMLDivElement>(
     mounted.current = true;
 
     return () => {
-      mounted.current = false;
+      cleanup.current?.();
     };
   }, []);
 
@@ -121,8 +122,14 @@ export function useMove<T extends HTMLElement = HTMLDivElement>(
       document.removeEventListener("touchend", stopScrubbing);
     };
 
+    // react-doctor-disable-next-line react-doctor/effect-needs-cleanup
     node?.addEventListener("mousedown", handleMouseDown);
     node?.addEventListener("touchstart", handleTouchStart, { passive: false });
+
+    cleanup.current = () => {
+      unbindEvents();
+      cancelAnimationFrame(frame.current);
+    };
 
     return () => {
       if (node) {

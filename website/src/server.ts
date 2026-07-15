@@ -7,7 +7,7 @@ import {
 import { search } from "~/api/search";
 import { uploadthing } from "~/api/uploadthing";
 
-const configure = <E extends Env>(app: Hono<E>) => {
+const honoConfig = <E extends Env>(app: Hono<E>) => {
   app.get("/api/search", async (c) => c.json(await search(c.req.query("q"))));
   app.post(
     "/api/uploadthing",
@@ -16,5 +16,5 @@ const configure = <E extends Env>(app: Hono<E>) => {
 };
 
 export default await (import.meta.env.RESOLID_PLATFORM == "vercel"
-  ? createHonoVercelServer({ configure })
-  : createHonoNodeServer({ configure }));
+  ? createHonoVercelServer({ honoConfig })
+  : createHonoNodeServer({ honoConfig }));

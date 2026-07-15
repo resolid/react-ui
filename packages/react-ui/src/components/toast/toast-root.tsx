@@ -66,6 +66,7 @@ export function ToastRoot(props: PrimitiveProps<"div", ToastRootProps, "role" | 
     onDismiss?.();
   };
 
+  // react-doctor-disable-next-line react-doctor/no-effect-with-fresh-deps,react-doctor/exhaustive-deps
   const { reset, clear } = useTimeout(handleDismiss, duration);
 
   useEventListener("blur", clear);

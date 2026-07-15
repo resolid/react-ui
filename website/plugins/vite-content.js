@@ -1,6 +1,5 @@
 import { trimEnd } from "@resolid/utils";
 import { watch as chokidarWatch } from "chokidar";
-import glob from "fast-glob";
 import GithubSlugger from "github-slugger";
 import { fromMarkdown } from "mdast-util-from-markdown";
 import { toString } from "mdast-util-to-string";
@@ -9,6 +8,7 @@ import { readFile, writeFile } from "node:fs/promises";
 import nodePath from "node:path";
 import { cwd } from "node:process";
 import removeMd from "remove-markdown";
+import { glob } from "tinyglobby";
 import { visit } from "unist-util-visit";
 import { parse } from "yaml";
 

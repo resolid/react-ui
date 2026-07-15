@@ -199,6 +199,7 @@ export function NumberInput(
   const inputRef = useRef<HTMLInputElement>(null);
   const focusRef = useRef(false);
 
+  // react-doctor-disable-next-line react-doctor/exhaustive-deps
   useEventListener(
     "wheel",
     (event) => {
@@ -217,6 +218,7 @@ export function NumberInput(
       }
     },
     inputRef,
+    // react-doctor-disable-next-line react-doctor/no-effect-with-fresh-deps,react-doctor/exhaustive-deps
     { passive: false },
   );
 

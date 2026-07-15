@@ -46,7 +46,7 @@ export function useEventListener<
       return;
     }
 
-    const eventListener = (event: Event) => handlerEvent(event as unknown as TargetEvent);
+    const eventListener = (event: Event) => handlerEvent(event as TargetEvent);
 
     targetElement.addEventListener(eventName, eventListener, options);
 

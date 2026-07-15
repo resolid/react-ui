@@ -47,9 +47,9 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@floating-ui/react": "^0.27.19",
-    "@resolid/utils": "^1.6.3",
-    "@tanstack/react-virtual": "^3.14.5",
+    "@floating-ui/react": "^0.27.20",
+    "@resolid/utils": "^1.7.0",
+    "@tanstack/react-virtual": "^3.14.6",
     "tailwind-variants": "^3.2.2"
   },
   "devDependencies": {
@@ -67,7 +67,7 @@
     "jsdom": "^29.1.1",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
-    "tsdown": "^0.22.4",
+    "tsdown": "^0.22.7",
     "vitest": "^4.1.10"
   },
   "peerDependencies": {

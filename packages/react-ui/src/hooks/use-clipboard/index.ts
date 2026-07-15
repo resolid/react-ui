@@ -13,12 +13,14 @@ export function useClipboard(
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    const id = copied ? setTimeout(() => setCopied(false), duration) : null;
+    if (!copied) {
+      return;
+    }
+
+    const id = setTimeout(() => setCopied(false), duration);
 
     return () => {
-      if (id) {
-        clearTimeout(id);
-      }
+      clearTimeout(id);
     };
   }, [duration, copied]);
 
