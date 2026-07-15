@@ -1,5 +1,13 @@
 # @resolid/react-ui
 
+## 0.3.7
+
+### Patch Changes
+
+- [`b5be1a9`](https://github.com/resolid/react-ui/commit/b5be1a9909979a9d2bd4399516101de475e0e129) - fix: fix useMove incorrect events removal handling
+
+- [`e4644a6`](https://github.com/resolid/react-ui/commit/e4644a62a76526a140942c3cc3c378132c7badb4) - feat: add TooltipGroup component
+
 ## 0.3.6
 
 ### Patch Changes
