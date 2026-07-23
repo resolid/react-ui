@@ -55,7 +55,7 @@ export function DrawerContent(props: PrimitiveProps<"div">): ReactNode {
   });
 
   return (
-    <div className="fixed top-0 left-0 z-55 flex h-screen w-screen justify-center">
+    <div className="fixed top-0 left-0 z-55 flex h-dvh w-dvw justify-center">
       <FloatingFocusManager
         disabled={!context.open}
         context={context}

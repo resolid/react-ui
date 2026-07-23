@@ -1,5 +1,6 @@
-import type { ReactNode, SyntheticEvent } from "react";
+import type { ReactNode } from "react";
 import type { EmptyObject, PrimitiveProps } from "../../primitives/polymorphic";
+import { useObjectUrl } from "../../hooks/use-object-url";
 import { tx } from "../../utils/clsx";
 import { useFilePickerItem } from "./file-picker-item-context";
 
@@ -11,23 +12,13 @@ export function FilePickerImagePreview(
   const file = useFilePickerItem();
 
   const local = file.kind == "local";
-
-  const handleLoad = (e: SyntheticEvent<HTMLImageElement>) => {
-    if (!(e.target instanceof HTMLImageElement)) {
-      return;
-    }
-
-    if (local) {
-      URL.revokeObjectURL(e.target.src);
-    }
-  };
+  const localUrl = useObjectUrl(local ? file.file : null);
 
   return (
     <img
-      src={local ? URL.createObjectURL(file.file) : (file.file.preview ?? file.file.url)}
+      src={local ? localUrl : (file.file.preview ?? file.file.url)}
       alt={file.file.name}
       className={tx("size-full object-cover", className)}
-      onLoad={handleLoad}
       {...rest}
     />
   );

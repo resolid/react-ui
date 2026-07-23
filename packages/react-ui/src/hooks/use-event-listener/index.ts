@@ -51,7 +51,7 @@ export function useEventListener<
     targetElement.addEventListener(eventName, eventListener, options);
 
     return () => {
-      targetElement.removeEventListener(eventName, eventListener);
+      targetElement.removeEventListener(eventName, eventListener, options);
     };
   }, [target, eventName, options]);
 }
