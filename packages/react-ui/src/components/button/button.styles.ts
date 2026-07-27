@@ -1,4 +1,4 @@
-import { tv, type TvReturnType, type VP } from "../../utils/clsx";
+import { tv, type TvReturnType, type TvReturnTypeLike, type VP } from "../../utils/clsx";
 
 type ButtonVariants = {
   variant: {
@@ -43,7 +43,8 @@ export const buttonStyles: TvReturnType<
   undefined,
   string[],
   ButtonVariants,
-  undefined
+  undefined,
+  TvReturnTypeLike<ButtonVariants, undefined>
 > = tv({
   base: [
     "inline-flex items-center justify-center border",

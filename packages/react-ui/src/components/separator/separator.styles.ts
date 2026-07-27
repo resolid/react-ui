@@ -1,4 +1,4 @@
-import { tv, type TvReturnType, type VP } from "../../utils/clsx";
+import { tv, type TvReturnType, type TvReturnTypeLike, type VP } from "../../utils/clsx";
 
 type SeparatorVariants = {
   color: {
@@ -34,7 +34,8 @@ export const separatorStyles: TvReturnType<
   undefined,
   string,
   SeparatorVariants,
-  undefined
+  undefined,
+  TvReturnTypeLike<SeparatorVariants, undefined>
 > = tv({
   base: "m-0 border-0",
   variants: {

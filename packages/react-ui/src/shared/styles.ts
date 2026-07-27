@@ -1,4 +1,4 @@
-import { tv, type TvReturnType } from "../utils/clsx";
+import { tv, type TvReturnType, type TvReturnTypeLike } from "../utils/clsx";
 
 export const inputTextShareStyles = {
   xs: "text-xs",
@@ -134,7 +134,8 @@ export type AlertAndBadgeShareStyles = TvReturnType<
   undefined,
   undefined,
   AlertAndBadgeVariants,
-  undefined
+  undefined,
+  TvReturnTypeLike<AlertAndBadgeVariants, undefined>
 >;
 
 export const alertAndBadgeShareStyles: AlertAndBadgeShareStyles = tv({

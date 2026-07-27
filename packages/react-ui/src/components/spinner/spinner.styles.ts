@@ -1,4 +1,4 @@
-import { tv, type TvReturnType, type VP } from "../../utils/clsx";
+import { tv, type TvReturnType, type TvReturnTypeLike, type VP } from "../../utils/clsx";
 
 type SpinnerVariants = {
   size: {
@@ -23,7 +23,8 @@ export const spinnerStyles: TvReturnType<
   undefined,
   string,
   SpinnerVariants,
-  undefined
+  undefined,
+  TvReturnTypeLike<SpinnerVariants, undefined>
 > = tv({
   base: "inline-block animate-spin rounded-full",
   variants: {

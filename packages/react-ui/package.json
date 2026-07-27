@@ -50,7 +50,7 @@
     "@floating-ui/react": "^0.27.20",
     "@resolid/utils": "^1.7.1",
     "@tanstack/react-virtual": "^3.14.8",
-    "tailwind-variants": "^3.2.2"
+    "tailwind-variants": "^3.3.0"
   },
   "devDependencies": {
     "@babel/core": "^8.0.1",
@@ -67,7 +67,7 @@
     "jsdom": "^29.1.1",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
-    "tsdown": "^0.22.13",
+    "tsdown": "^0.22.14",
     "vitest": "^4.1.10"
   },
   "peerDependencies": {

@@ -1,4 +1,4 @@
-import { tv, type TvReturnType } from "../../utils/clsx";
+import { tv, type TvReturnType, type TvReturnTypeLike } from "../../utils/clsx";
 
 export const inputPxStyles = {
   xs: "px-2.5",
@@ -56,7 +56,8 @@ export const inputStyles: TvReturnType<
   undefined,
   string[],
   InputVariants,
-  undefined
+  undefined,
+  TvReturnTypeLike<InputVariants, undefined>
 > = tv({
   base: [
     "relative inline-flex items-center rounded-md border",
