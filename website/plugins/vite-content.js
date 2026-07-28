@@ -15,6 +15,7 @@ import { parse } from "yaml";
 export default function viteContent() {
   const contentDir = nodePath.join(cwd(), ".resolid", "content");
 
+  // oxlint-disable-next-line node/no-sync
   mkdirSync(contentDir, { recursive: true });
 
   let root;

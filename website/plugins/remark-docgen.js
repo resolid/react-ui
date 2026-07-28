@@ -14,7 +14,9 @@ export default function remarkDocgen({ sourceRoot }) {
   const componentPropsDir = nodePath.join(currentDir, "component-props");
   const componentDemosDir = nodePath.join(currentDir, "component-demos");
 
+  // oxlint-disable-next-line node/no-sync
   mkdirSync(componentPropsDir, { recursive: true });
+  // oxlint-disable-next-line node/no-sync
   mkdirSync(componentDemosDir, { recursive: true });
 
   return (tree, vfile) => {
@@ -244,7 +246,9 @@ export default function remarkDocgen({ sourceRoot }) {
           ],
         };
 
+        // oxlint-disable-next-line node/no-sync
         if (existsSync(virtualModulePath)) {
+          // oxlint-disable-next-line node/no-sync
           const content = readFileSync(virtualModulePath, "utf-8");
 
           if (content === code) {
@@ -252,6 +256,7 @@ export default function remarkDocgen({ sourceRoot }) {
           }
         }
 
+        // oxlint-disable-next-line node/no-sync
         writeFileSync(virtualModulePath, code, "utf-8");
       }
 
@@ -440,7 +445,9 @@ const getComponentPropsData = (componentFile, sourceRoot, virtualDir) => {
   const componentPropsFile = nodePath.join(virtualDir, `${componentName}.json`);
 
   if (
+    // oxlint-disable-next-line node/no-sync
     !existsSync(componentPropsFile) ||
+    // oxlint-disable-next-line node/no-sync
     statSync(componentPropsFile).mtimeMs < statSync(sourceFile).mtimeMs
   ) {
     const componentDoc = tsParser.parse(sourceFile).find((c) => c.displayName === componentName);
@@ -468,6 +475,7 @@ const getComponentPropsData = (componentFile, sourceRoot, virtualDir) => {
           })
       : null;
 
+    // oxlint-disable-next-line node/no-sync
     writeFileSync(componentPropsFile, JSON.stringify(props, null, 2), "utf-8");
   }
 

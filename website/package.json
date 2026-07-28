@@ -26,7 +26,7 @@
   "devDependencies": {
     "@mdx-js/rollup": "^3.1.1",
     "@react-router/dev": "^8.3.0",
-    "@resolid/config": "^6.1.0",
+    "@resolid/config": "^6.2.0",
     "@resolid/dev": "^0.8.2",
     "@rolldown/plugin-babel": "^0.2.3",
     "@shikijs/rehype": "^4.3.1",
