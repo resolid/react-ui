@@ -8,6 +8,7 @@
     "env.d.ts"
   ],
   "compilerOptions": {
+    "allowImportingTsExtensions": true,
     "rootDirs": [".", "./.react-router/types"],
     "paths": {
       "~/*": ["./src/*"],

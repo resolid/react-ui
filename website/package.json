@@ -26,14 +26,14 @@
   "devDependencies": {
     "@mdx-js/rollup": "^3.1.1",
     "@react-router/dev": "^8.3.0",
-    "@resolid/config": "^6.2.0",
+    "@resolid/config": "^6.2.1",
     "@resolid/dev": "^0.8.2",
     "@rolldown/plugin-babel": "^0.2.3",
-    "@shikijs/rehype": "^4.3.1",
+    "@shikijs/rehype": "^4.4.2",
     "@tailwindcss/vite": "^4.3.3",
-    "@types/react": "^19.2.17",
-    "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^6.0.4",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "@vitejs/plugin-react": "^6.0.5",
     "babel-plugin-react-compiler": "^1.0.0",
     "chokidar": "^5.0.0",
     "github-slugger": "^2.0.0",
@@ -48,7 +48,7 @@
     "tinyglobby": "^0.2.17",
     "typescript": "npm:@typescript/typescript6@^6.0.2",
     "unist-util-visit": "^5.1.0",
-    "vite": "^8.1.5",
+    "vite": "^8.2.1",
     "yaml": "^2.9.0"
   },
   "engines": {

@@ -10,13 +10,13 @@ import remarkDirective from "remark-directive";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkGfm from "remark-gfm";
 import { type AliasOptions, defineConfig, type UserConfig } from "vite";
-import { rehypeParseMeta } from "./plugins/rehype-parse-meta";
-import remarkDetails from "./plugins/remark-details";
-import remarkDocgen from "./plugins/remark-docgen";
-import remarkGithubAlert from "./plugins/remark-github-alert";
-import remarkRemove from "./plugins/remark-remove";
-import viteContent from "./plugins/vite-content";
-import { vitePluginOptions } from "./resolid.config";
+import { rehypeParseMeta } from "./plugins/rehype-parse-meta.js";
+import remarkDetails from "./plugins/remark-details.js";
+import remarkDocgen from "./plugins/remark-docgen.js";
+import remarkGithubAlert from "./plugins/remark-github-alert.js";
+import remarkRemove from "./plugins/remark-remove.js";
+import viteContent from "./plugins/vite-content.js";
+import { vitePluginOptions } from "./resolid.config.ts";
 
 export default defineConfig(({ command }) => {
   const isBuild = command == "build";
