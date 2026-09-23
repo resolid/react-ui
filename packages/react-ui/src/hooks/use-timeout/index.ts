@@ -32,6 +32,7 @@ export function useTimeout(
     resetEvent();
 
     return clear;
+    // oxlint-disable-next-line react/exhaustive-effect-dependencies
   }, []);
 
   return { clear, reset };

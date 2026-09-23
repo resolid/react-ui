@@ -3,7 +3,9 @@ import { describe, expect, it } from "vitest";
 import { axe } from "../../../../plugins/vitest-axe";
 import { ProgressBar, type ProgressBarProps } from "../progress-bar";
 
-const ProgressBarUnderTest = (props: ProgressBarProps) => <ProgressBar {...props} />;
+function ProgressBarUnderTest(props: ProgressBarProps) {
+  return <ProgressBar {...props} />;
+}
 
 describe("ProgressBar", () => {
   it("should have no a11y violations", async () => {

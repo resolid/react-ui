@@ -14,19 +14,21 @@ import {
   DialogTrigger,
 } from "../dialog";
 
-const ComponentUnderTest = (props: DialogProps) => (
-  <Dialog {...props}>
-    <DialogTrigger>Open Dialog</DialogTrigger>
-    <DialogPortal>
-      <DialogBackdrop />
-      <DialogContent>
-        <DialogTitle>Dialog Title</DialogTitle>
-        <DialogDescription>Dialog Description</DialogDescription>
-        <DialogClose>Close</DialogClose>
-      </DialogContent>
-    </DialogPortal>
-  </Dialog>
-);
+function ComponentUnderTest(props: DialogProps) {
+  return (
+    <Dialog {...props}>
+      <DialogTrigger>Open Dialog</DialogTrigger>
+      <DialogPortal>
+        <DialogBackdrop />
+        <DialogContent>
+          <DialogTitle>Dialog Title</DialogTitle>
+          <DialogDescription>Dialog Description</DialogDescription>
+          <DialogClose>Close</DialogClose>
+        </DialogContent>
+      </DialogPortal>
+    </Dialog>
+  );
+}
 
 describe("Dialog", () => {
   afterEach(() => {

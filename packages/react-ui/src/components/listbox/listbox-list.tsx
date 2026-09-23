@@ -42,7 +42,7 @@ export function ListboxList({ checkmark }: ListboxListProps): ReactNode[] {
   });
 }
 
-const FlatItem = ({
+function FlatItem({
   item,
   style,
   checkmark = true,
@@ -52,7 +52,7 @@ const FlatItem = ({
   style?: CSSProperties;
   checkmark?: boolean;
   setSize?: number;
-}) => {
+}) {
   const { size, disabled, readOnly } = useCollectionState();
 
   if (item.group) {
@@ -71,4 +71,4 @@ const FlatItem = ({
       style={style}
     />
   );
-};
+}

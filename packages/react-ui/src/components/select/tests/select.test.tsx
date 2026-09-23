@@ -5,7 +5,7 @@ import { axe } from "../../../../plugins/vitest-axe";
 import { LocaleProvider } from "../../provider/locale-provider";
 import { Select, SelectContent, SelectList, type SelectProps } from "../select";
 
-const ComponentUnderTest = (props: Omit<SelectProps, "collection">) => {
+function ComponentUnderTest(props: Omit<SelectProps, "collection">) {
   const items = [
     { label: "React", value: "react" },
     { label: "Solid", value: "solid" },
@@ -21,7 +21,7 @@ const ComponentUnderTest = (props: Omit<SelectProps, "collection">) => {
       </Select>
     </LocaleProvider>
   );
-};
+}
 
 describe("Select", () => {
   afterEach(() => {

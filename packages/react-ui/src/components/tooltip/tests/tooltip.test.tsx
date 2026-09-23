@@ -5,15 +5,17 @@ import type { TooltipProps } from "../use-tooltip";
 import { axe } from "../../../../plugins/vitest-axe";
 import { Tooltip, TooltipArrow, TooltipContent, TooltipTrigger } from "../tooltip";
 
-const ComponentUnderTest = (props: TooltipProps) => (
-  <Tooltip openDelay={0} closeDelay={0} {...props}>
-    <TooltipTrigger>trigger</TooltipTrigger>
-    <TooltipContent>
-      <TooltipArrow />
-      content
-    </TooltipContent>
-  </Tooltip>
-);
+function ComponentUnderTest(props: TooltipProps) {
+  return (
+    <Tooltip openDelay={0} closeDelay={0} {...props}>
+      <TooltipTrigger>trigger</TooltipTrigger>
+      <TooltipContent>
+        <TooltipArrow />
+        content
+      </TooltipContent>
+    </Tooltip>
+  );
+}
 
 describe("Tooltip", () => {
   afterEach(() => {

@@ -2,7 +2,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { useFocus } from "./index";
 
-const ComponentUnderTest = () => {
+function ComponentUnderTest() {
   const [ref, focused] = useFocus<HTMLDivElement>();
 
   return (
@@ -10,7 +10,7 @@ const ComponentUnderTest = () => {
       {focused ? "true" : "false"}
     </div>
   );
-};
+}
 
 describe("useFocus", () => {
   it("changes `focused` on focus correctly", () => {

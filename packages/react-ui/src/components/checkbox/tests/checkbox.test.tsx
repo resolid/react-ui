@@ -5,9 +5,11 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { axe } from "../../../../plugins/vitest-axe";
 import { Checkbox, type CheckboxProps } from "../checkbox";
 
-const ComponentUnderTest = (props: CheckboxProps) => <Checkbox {...props}>Checkbox</Checkbox>;
+function ComponentUnderTest(props: CheckboxProps) {
+  return <Checkbox {...props}>Checkbox</Checkbox>;
+}
 
-const ControlledComponentUnderTest = (props: CheckboxProps) => {
+function ControlledComponentUnderTest(props: CheckboxProps) {
   const [checked, setChecked] = useState(false);
   return (
     <>
@@ -17,7 +19,7 @@ const ControlledComponentUnderTest = (props: CheckboxProps) => {
       <ComponentUnderTest {...props} checked={checked} />
     </>
   );
-};
+}
 
 describe("Checkbox", () => {
   afterEach(() => {

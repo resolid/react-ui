@@ -3,14 +3,16 @@ import { afterEach, describe, expect, it } from "vitest";
 import { axe } from "../../../../plugins/vitest-axe";
 import { Alert, AlertContent, AlertDescription, type AlertProps, AlertTitle } from "../alert";
 
-const ComponentUnderTest = (props: AlertProps) => (
-  <Alert {...props}>
-    <AlertContent>
-      <AlertTitle>title</AlertTitle>
-      <AlertDescription>description</AlertDescription>
-    </AlertContent>
-  </Alert>
-);
+function ComponentUnderTest(props: AlertProps) {
+  return (
+    <Alert {...props}>
+      <AlertContent>
+        <AlertTitle>title</AlertTitle>
+        <AlertDescription>description</AlertDescription>
+      </AlertContent>
+    </Alert>
+  );
+}
 
 describe("Alert", () => {
   afterEach(() => {

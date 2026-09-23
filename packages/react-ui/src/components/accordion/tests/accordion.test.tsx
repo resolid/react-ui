@@ -11,7 +11,7 @@ import {
   AccordionTrigger,
 } from "../accordion";
 
-const ComponentUnderTest = (props: AccordionProps) => {
+function ComponentUnderTest(props: AccordionProps) {
   const items = [
     { value: "React" },
     { value: "Solid" },
@@ -31,7 +31,7 @@ const ComponentUnderTest = (props: AccordionProps) => {
       ))}
     </Accordion>
   );
-};
+}
 
 describe("Accordion", () => {
   afterEach(() => {

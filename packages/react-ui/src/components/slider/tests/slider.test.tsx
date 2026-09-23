@@ -6,7 +6,7 @@ import { axe } from "../../../../plugins/vitest-axe";
 import { DirectionContext } from "../../provider/direction-context";
 import { Slider, type SliderProps, SliderThumb, SliderTrack } from "../slider";
 
-const ComponentUnderTest = (props: SliderProps): ReactNode => {
+function ComponentUnderTest(props: SliderProps): ReactNode {
   const { onChange, ...rest } = props;
 
   const [value, setValue] = useState<[number, number]>([-20, 20]);
@@ -26,7 +26,7 @@ const ComponentUnderTest = (props: SliderProps): ReactNode => {
       <SliderThumb aria-label="Volume" />
     </Slider>
   );
-};
+}
 
 describe("Slider", () => {
   afterEach(() => {

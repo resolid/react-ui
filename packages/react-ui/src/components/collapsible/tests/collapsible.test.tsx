@@ -9,12 +9,14 @@ import {
   CollapsibleTrigger,
 } from "../collapsible";
 
-const ComponentUnderTest = (props: CollapsibleProps) => (
-  <Collapsible {...props}>
-    <CollapsibleTrigger>Toggle</CollapsibleTrigger>
-    <CollapsibleContent>Content</CollapsibleContent>
-  </Collapsible>
-);
+function ComponentUnderTest(props: CollapsibleProps) {
+  return (
+    <Collapsible {...props}>
+      <CollapsibleTrigger>Toggle</CollapsibleTrigger>
+      <CollapsibleContent>Content</CollapsibleContent>
+    </Collapsible>
+  );
+}
 
 describe("Collapsible", () => {
   afterEach(() => {

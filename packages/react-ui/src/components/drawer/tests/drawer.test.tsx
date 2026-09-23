@@ -14,19 +14,21 @@ import {
   DrawerTrigger,
 } from "../drawer";
 
-const ComponentUnderTest = (props: DrawerProps) => (
-  <Drawer {...props}>
-    <DrawerTrigger>Open Drawer</DrawerTrigger>
-    <DrawerPortal>
-      <DrawerBackdrop />
-      <DrawerContent>
-        <DrawerTitle>Drawer Title</DrawerTitle>
-        <DrawerDescription>Drawer Description</DrawerDescription>
-        <DrawerClose>Close</DrawerClose>
-      </DrawerContent>
-    </DrawerPortal>
-  </Drawer>
-);
+function ComponentUnderTest(props: DrawerProps) {
+  return (
+    <Drawer {...props}>
+      <DrawerTrigger>Open Drawer</DrawerTrigger>
+      <DrawerPortal>
+        <DrawerBackdrop />
+        <DrawerContent>
+          <DrawerTitle>Drawer Title</DrawerTitle>
+          <DrawerDescription>Drawer Description</DrawerDescription>
+          <DrawerClose>Close</DrawerClose>
+        </DrawerContent>
+      </DrawerPortal>
+    </Drawer>
+  );
+}
 
 describe("Drawer", () => {
   afterEach(() => {

@@ -19,11 +19,11 @@ import {
   DropdownMenuTrigger,
 } from "../dropdown-menu";
 
-const ComponentUnderTest = (
+function ComponentUnderTest(
   props: DropdownMenuProps & {
     onValueChange?: (value: string | number) => void;
   },
-) => {
+) {
   const { onValueChange, ...rest } = props;
   return (
     <DropdownMenu {...rest}>
@@ -65,7 +65,7 @@ const ComponentUnderTest = (
       </DropdownMenuContent>
     </DropdownMenu>
   );
-};
+}
 
 describe("Menu", () => {
   afterEach(() => {

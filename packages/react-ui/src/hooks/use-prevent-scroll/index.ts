@@ -46,22 +46,6 @@ export function usePreventScroll(options: UsePreventScrollOptions): void {
 
     const preventScrollMobileSafari = /iPhone|iPad|iPod|iOS/.test(getPlatform())
       ? () => {
-          const stopTouchMove = (e: TouchEvent) => {
-            const { target } = e;
-
-            if (target instanceof Element && checkOverflowScroll(target)) {
-              return;
-            }
-
-            if (e.touches.length > 1) {
-              return;
-            }
-
-            if (e.cancelable) {
-              e.preventDefault();
-            }
-          };
-
           doc.addEventListener("touchmove", stopTouchMove, { passive: false });
 
           return () => {
@@ -144,4 +128,20 @@ function checkOverflowScroll(element: Element): boolean {
   }
 
   return checkOverflowScroll(parent);
+}
+
+function stopTouchMove(e: TouchEvent) {
+  const { target } = e;
+
+  if (target instanceof Element && checkOverflowScroll(target)) {
+    return;
+  }
+
+  if (e.touches.length > 1) {
+    return;
+  }
+
+  if (e.cancelable) {
+    e.preventDefault();
+  }
 }

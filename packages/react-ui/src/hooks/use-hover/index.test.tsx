@@ -2,7 +2,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { useHover } from "./index";
 
-const ComponentUnderTest = () => {
+function ComponentUnderTest() {
   const [ref, hovered] = useHover<HTMLDivElement>();
 
   return (
@@ -10,7 +10,7 @@ const ComponentUnderTest = () => {
       {hovered ? "true" : "false"}
     </div>
   );
-};
+}
 
 describe("userHover", () => {
   it("changes `hovered` on mouseenter/mouseleave correctly", () => {

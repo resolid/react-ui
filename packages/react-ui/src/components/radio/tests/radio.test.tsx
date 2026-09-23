@@ -5,7 +5,7 @@ import { axe } from "../../../../plugins/vitest-axe";
 import { Radio } from "../radio";
 import { RadioGroup, type RadioGroupProps } from "../radio-group";
 
-const ComponentUnderTest = (props: RadioGroupProps) => {
+function ComponentUnderTest(props: RadioGroupProps) {
   const items = [
     { label: "React", value: "react" },
     { label: "Solid", value: "solid" },
@@ -21,7 +21,7 @@ const ComponentUnderTest = (props: RadioGroupProps) => {
       ))}
     </RadioGroup>
   );
-};
+}
 
 describe("Radio", () => {
   afterEach(() => {

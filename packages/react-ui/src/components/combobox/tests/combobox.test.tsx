@@ -12,7 +12,7 @@ import {
   ComboboxTrigger,
 } from "../combobox";
 
-const ComponentUnderTest = (props: Omit<ComboboxProps, "collection">) => {
+function ComponentUnderTest(props: Omit<ComboboxProps, "collection">) {
   const collection = [
     { value: "react" },
     { value: "solid" },
@@ -33,7 +33,7 @@ const ComponentUnderTest = (props: Omit<ComboboxProps, "collection">) => {
       </Combobox>
     </LocaleProvider>
   );
-};
+}
 
 describe("Combobox", () => {
   afterEach(() => {

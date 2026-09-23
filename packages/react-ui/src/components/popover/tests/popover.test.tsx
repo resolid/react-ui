@@ -13,17 +13,19 @@ import {
   PopoverTrigger,
 } from "../popover";
 
-const ComponentUnderTest = (props: PopoverProps) => (
-  <Popover {...props}>
-    <PopoverTrigger>click me</PopoverTrigger>
-    <PopoverContent>
-      <PopoverArrow />
-      <PopoverTitle>title</PopoverTitle>
-      <PopoverDescription>description</PopoverDescription>
-      <PopoverClose>close</PopoverClose>
-    </PopoverContent>
-  </Popover>
-);
+function ComponentUnderTest(props: PopoverProps) {
+  return (
+    <Popover {...props}>
+      <PopoverTrigger>click me</PopoverTrigger>
+      <PopoverContent>
+        <PopoverArrow />
+        <PopoverTitle>title</PopoverTitle>
+        <PopoverDescription>description</PopoverDescription>
+        <PopoverClose>close</PopoverClose>
+      </PopoverContent>
+    </Popover>
+  );
+}
 
 describe("Popover", () => {
   afterEach(() => {

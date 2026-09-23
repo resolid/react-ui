@@ -4,11 +4,13 @@ import { axe } from "../../../../plugins/vitest-axe";
 import { LocaleProvider } from "../../provider/locale-provider";
 import { Spinner, type SpinnerProps } from "../spinner";
 
-const ComponentUnderTest = (props: SpinnerProps) => (
-  <LocaleProvider>
-    <Spinner {...props} />
-  </LocaleProvider>
-);
+function ComponentUnderTest(props: SpinnerProps) {
+  return (
+    <LocaleProvider>
+      <Spinner {...props} />
+    </LocaleProvider>
+  );
+}
 
 describe("Spinner", () => {
   afterEach(() => {

@@ -226,6 +226,40 @@ function matcherHint(
   return hint;
 }
 
+function reporter(violations: Result[]) {
+  if (violations.length === 0) {
+    return [];
+  }
+
+  const lineBreak = "\n\n";
+  const horizontalLine = "\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500";
+
+  return violations
+    .map((violation) => {
+      return violation.nodes
+        .map((node) => {
+          return [
+            `Expected the HTML found at $('${node.target.join(", ")}') to have no violations:`,
+            styleText("gray", node.html),
+            "Received:",
+            styleText(
+              "red",
+              replaceTrailingSpaces(stringify(`${violation.help} (${violation.id})`)),
+            ),
+            styleText("yellow", node.failureSummary ?? ""),
+            violation.helpUrl
+              ? `You can find more information on this issue here: \n${styleText(
+                  "blue",
+                  violation.helpUrl,
+                )}`
+              : "",
+          ].join(lineBreak);
+        })
+        .join(lineBreak);
+    })
+    .join(lineBreak + horizontalLine + lineBreak);
+}
+
 function toHaveNoViolations(results: AxeResults): NoViolationsMatcherResult {
   // oxlint-disable-next-line unicorn/no-typeof-undefined
   if (typeof results.violations === "undefined") {
@@ -239,40 +273,6 @@ function toHaveNoViolations(results: AxeResults): NoViolationsMatcherResult {
     // @ts-expect-error impactLevels
     results.toolOptions.impactLevels ?? [],
   );
-
-  function reporter(violations: Result[]) {
-    if (violations.length === 0) {
-      return [];
-    }
-
-    const lineBreak = "\n\n";
-    const horizontalLine = "\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500";
-
-    return violations
-      .map((violation) => {
-        return violation.nodes
-          .map((node) => {
-            return [
-              `Expected the HTML found at $('${node.target.join(", ")}') to have no violations:`,
-              styleText("gray", node.html),
-              "Received:",
-              styleText(
-                "red",
-                replaceTrailingSpaces(stringify(`${violation.help} (${violation.id})`)),
-              ),
-              styleText("yellow", node.failureSummary ?? ""),
-              violation.helpUrl
-                ? `You can find more information on this issue here: \n${styleText(
-                    "blue",
-                    violation.helpUrl,
-                  )}`
-                : "",
-            ].join(lineBreak);
-          })
-          .join(lineBreak);
-      })
-      .join(lineBreak + horizontalLine + lineBreak);
-  }
 
   const formatedViolations = reporter(violations);
   const pass = formatedViolations.length === 0;

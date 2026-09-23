@@ -4,7 +4,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { axe } from "../../../../plugins/vitest-axe";
 import { Tabs, TabsList, TabsPanel, type TabsProps, TabsTab } from "../tabs";
 
-const ComponentUnderTest = (props: TabsProps) => {
+function ComponentUnderTest(props: TabsProps) {
   const items = [
     { value: "React" },
     { value: "Solid" },
@@ -27,7 +27,7 @@ const ComponentUnderTest = (props: TabsProps) => {
       ))}
     </Tabs>
   );
-};
+}
 
 describe("Tabs", () => {
   afterEach(() => {
