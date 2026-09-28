@@ -62,7 +62,7 @@ export default defineConfig(({ command }) => {
     ],
     build: {
       rolldownOptions: {
-        checks: { pluginTimings: false },
+        checks: { bundlerTimings: false },
         output: {
           codeSplitting: {
             groups: [

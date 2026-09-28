@@ -27,16 +27,16 @@
     "@commitlint/config-conventional": "^21.2.3",
     "@resolid/config": "^6.3.4",
     "@tailwindcss/language-server": "^0.16.0",
-    "@types/node": "^24.13.6",
+    "@types/node": "^24.19.0",
     "eslint-plugin-react-you-might-not-need-an-effect": "^1.0.2",
     "lefthook": "^2.1.14",
     "oxfmt": "^0.70.0",
     "oxlint": "^1.85.0",
-    "oxlint-tsgolint": "^7.0.2002",
+    "oxlint-tsgolint": "^7.0.2003",
     "typescript": "^7.0.2"
   },
   "engines": {
     "node": "^22.22.0 || >=24"
   },
-  "packageManager": "pnpm@12.5.1"
+  "packageManager": "pnpm@12.6.0"
 }
