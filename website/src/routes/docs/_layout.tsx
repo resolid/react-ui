@@ -1,4 +1,4 @@
-import { mergeMeta } from "@resolid/dev/router";
+import { mergeMeta } from "@resolid/dev/react";
 import { CloseButton, tx } from "@resolid/react-ui";
 import { useState } from "react";
 import { Outlet } from "react-router";

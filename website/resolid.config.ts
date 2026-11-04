@@ -4,7 +4,7 @@ import { env } from "node:process";
 export const { vitePluginOptions, reactRouterConfig } = defineDevConfig({
   appDirectory: "src",
   platform: env.VERCEL == 1 ? "vercel" : "node",
-  nodeVersion: 24,
+  nodeVersion: 26,
   includeFiles: [".resolid/content/*.json"],
   devExclude: ["/.resolid/**/*"],
   reactRouterConfig: {

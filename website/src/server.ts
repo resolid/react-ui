@@ -3,7 +3,7 @@ import {
   createHonoNodeServer,
   type Hono,
   type Env,
-} from "@resolid/dev/http.server";
+} from "@resolid/dev/http";
 import { search } from "~/api/search";
 import { uploadthing } from "~/api/uploadthing";
 

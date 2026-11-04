@@ -1,4 +1,4 @@
-import { runIf } from "@resolid/utils";
+import { resolveValue } from "@resolid/utils";
 import { type Dispatch, type SetStateAction, useState } from "react";
 
 export type UseControllableStateOptions<T> = {
@@ -19,7 +19,7 @@ export function useControllableState<T>(
   const currentValue = controlled ? value : uncontrolledState;
 
   const setValue = (next: SetStateAction<T>) => {
-    const nextValue = runIf(next, currentValue);
+    const nextValue = resolveValue(next, currentValue);
 
     if (!shouldUpdate(currentValue, nextValue)) {
       return;

@@ -57,7 +57,7 @@ export default defineConfig(({ command }) => {
       }),
       resolidVite(vitePluginOptions),
       tailwindcss(),
-      rolldownBabel({ presets: [reactCompilerPreset()] }),
+      rolldownBabel({ presets: [reactCompilerPreset()], sourceMap: false }),
       viteContent(),
     ],
     build: {

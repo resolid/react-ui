@@ -1,8 +1,8 @@
 import { MDXProvider } from "@mdx-js/react";
-import { httpNotFound } from "@resolid/dev/http.server";
-import { mergeMeta } from "@resolid/dev/router";
+import { httpNotFound } from "@resolid/dev/http";
+import { mergeMeta } from "@resolid/dev/react";
 import { type Dict, type PrimitiveProps, tx } from "@resolid/react-ui";
-import { startsWith, trimStart } from "@resolid/utils";
+import { trimStart } from "@resolid/utils";
 import {
   Children,
   type ComponentProps,
@@ -24,7 +24,7 @@ import { SpriteIcon } from "~/components/sprite-icon";
 import { getMdxMeta } from "~/utils/mdx-utils.server";
 import type { Route } from "./+types/_layout";
 
-export const meta: Route.MetaFunction = mergeMeta(({ loaderData }) => [
+export const meta: Route.MetaFunction = mergeMeta(({ loaderData }: Route.MetaArgs) => [
   {
     title: loaderData.meta.title,
   },
@@ -52,7 +52,7 @@ const mdxComponents = {
   ),
   pre: MdxCode,
   a: ({ children, href = "", className, ...rest }: ComponentProps<"a">) => {
-    const external = startsWith(href, "http://") || startsWith(href, "https://");
+    const external = href.startsWith("http://") || href.startsWith("https://");
 
     return (
       <a

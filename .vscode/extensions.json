@@ -4,6 +4,7 @@
     "editorconfig.editorconfig",
     "bradlc.vscode-tailwindcss",
     "vitest.explorer",
-    "oxc.oxc-vscode"
+    "oxc.oxc-vscode",
+    "blazejkustra.react-compiler-marker"
   ]
 }

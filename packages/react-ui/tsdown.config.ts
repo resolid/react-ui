@@ -14,7 +14,8 @@ const config: UserConfig = defineConfig({
   treeshake: true,
   clean: true,
   minify: true,
-  plugins: [rolldownBabel({ presets: [reactCompilerPreset()] })],
+  css: false,
+  plugins: [rolldownBabel({ presets: [reactCompilerPreset()], sourceMap: false })],
 });
 
 export default config;

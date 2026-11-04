@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { runIf } from "@resolid/utils";
+import { resolveValue } from "@resolid/utils";
 import { useHydrated } from "../../hooks/use-hydrated";
 
 export type ClientOnlyProps = {
@@ -17,5 +17,5 @@ export type ClientOnlyProps = {
 export function ClientOnly({ children, fallback }: ClientOnlyProps): ReactNode {
   const hydrated = useHydrated();
 
-  return hydrated ? runIf(children) : fallback;
+  return hydrated ? resolveValue(children) : fallback;
 }

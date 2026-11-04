@@ -1,5 +1,5 @@
 import type { KeyboardEvent, ReactNode } from "react";
-import { isArray, runIf } from "@resolid/utils";
+import { isArray, resolveValue } from "@resolid/utils";
 import type { PrimitiveProps } from "../../primitives/polymorphic";
 import { useFocus } from "../../hooks/use-focus";
 import { useHover } from "../../hooks/use-hover";
@@ -177,7 +177,7 @@ function SliderThumbButton(props: PrimitiveProps<"div", SliderThumbButtonProps>)
             {...triggerProps}
             {...rest}
           >
-            {runIf(children, index, disabled)}
+            {resolveValue(children, index, disabled)}
           </div>
         )}
       />

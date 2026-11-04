@@ -47,5 +47,6 @@
     ".resolid"
   ],
   "js/ts.implicitProjectConfig.target": "ES2022",
-  "js/ts.tsdk.promptToUseWorkspaceVersion": true
+  "js/ts.tsdk.promptToUseWorkspaceVersion": true,
+  "js/ts.experimental.useTsgo": true
 }

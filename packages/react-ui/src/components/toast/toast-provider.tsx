@@ -1,4 +1,4 @@
-import { runIf } from "@resolid/utils";
+import { resolveValue } from "@resolid/utils";
 import { type PropsWithChildren, type ReactElement, type ReactNode, useReducer } from "react";
 import { PortalLite } from "../portal/portal-lite";
 import {
@@ -65,7 +65,7 @@ export function ToastProvider({
 
       const toastId = context.show(component({ state: "pending" }), { ...options, duration: null });
 
-      runIf(promise)
+      resolveValue(promise)
         .then((data) => {
           dispatch({
             type: "UPDATE",

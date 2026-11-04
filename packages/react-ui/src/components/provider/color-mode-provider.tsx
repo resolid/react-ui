@@ -27,11 +27,11 @@ export function ColorModeProvider({
   useEffect(() => {
     let style: HTMLStyleElement | undefined;
 
-    // oxlint-disable-next-line react-you-might-not-need-an-effect-js/no-event-handler, react-doctor/no-event-handler
+    // oxlint-disable-next-line react-you-might-not-need-an-effect/no-event-handler, react-doctor/no-event-handler
     if (disableTransition) {
       style = document.createElement("style");
 
-      // oxlint-disable-next-line react-you-might-not-need-an-effect-js/no-event-handler, react-doctor/no-event-handler
+      // oxlint-disable-next-line react-you-might-not-need-an-effect/no-event-handler, react-doctor/no-event-handler
       if (nonce) {
         style.setAttribute("nonce", nonce);
       }

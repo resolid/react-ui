@@ -1,4 +1,4 @@
-import { isFunction, runIf } from "@resolid/utils";
+import { isFunction, resolveValue } from "@resolid/utils";
 import { type SetStateAction, useSyncExternalStore } from "react";
 import { useIsomorphicEffect } from "../use-isomorphic-effect";
 
@@ -14,7 +14,7 @@ export function useLocalStorage<T>(
   const store = useSyncExternalStore(localStorageSubscribe, getSnapshot, getServerSnapshot);
 
   const setValue = (value: SetStateAction<T>) => {
-    const nextValue = runIf(value, store ? JSON.parse(store) : initialResolved);
+    const nextValue = resolveValue(value, store ? JSON.parse(store) : initialResolved);
 
     setLocalStorageItem(key, nextValue === undefined ? undefined : JSON.stringify(nextValue));
   };

@@ -68,7 +68,7 @@ export function CloseButton(props: PrimitiveProps<"button", CloseButtonProps, "t
       className={tx(!noPadding && "p-1", className)}
       {...rest}
     >
-      {children ?? <CloseIcon className="-mb-[.1em]" size={size} />}
+      {children ?? <CloseIcon className="mb-[-0.1em]" size={size} />}
     </Button>
   );
 }

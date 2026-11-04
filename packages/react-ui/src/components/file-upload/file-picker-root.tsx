@@ -1,4 +1,4 @@
-import { formatBytes, isArray, isNullish, matchesAccept, omit, random } from "@resolid/utils";
+import { formatBytes, isArray, isNullish, matchesAccept, omit, randomString } from "@resolid/utils";
 import { type ChangeEvent, type ReactNode, useReducer, useRef } from "react";
 import type { PrimitiveProps } from "../../primitives";
 import type { FormFieldProps, MultipleValueProps } from "../../shared/types";
@@ -184,7 +184,7 @@ export function FilePickerRoot(
       }
 
       validFiles.push({
-        id: random(),
+        id: randomString(),
         file: transformed,
         kind: "local",
         status: "ready",

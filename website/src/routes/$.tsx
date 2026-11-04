@@ -1,4 +1,4 @@
-import { mergeMeta } from "@resolid/dev/router";
+import { mergeMeta } from "@resolid/dev/react";
 import { ErrorComponent } from "~/components/error-component";
 import type { Route } from "./+types/$";
 
