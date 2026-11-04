@@ -1,5 +1,11 @@
 # @resolid/react-ui
 
+## 0.3.8
+
+### Patch Changes
+
+- [`746f3ea`](https://github.com/resolid/react-ui/commit/746f3ead930022bcae507c81bb7eac2a45979c70) - refactor: migrate to @resolid/utils v2
+
 ## 0.3.7
 
 ### Patch Changes
