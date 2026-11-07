@@ -10,4 +10,4 @@ const honoConfig = <E extends Env>(app: Hono<E>) => {
   );
 };
 
-export default createHonoNodeServer({ honoConfig });
+export default createHonoNodeServer({ honoConfig, trustProxy: "loopback" });
