@@ -10,7 +10,6 @@
   "scripts": {
     "build": "pnpm run --filter website... build",
     "build:packages": "pnpm run --filter @resolid/* build",
-    "build:vercel": "VERCEL=1 pnpm run --filter website... build",
     "dev": "pnpm run --filter website dev",
     "changeset": "changeset",
     "format": "oxfmt",
@@ -18,25 +17,25 @@
     "start": "pnpm run --filter website start",
     "test:packages": "pnpm run --filter @resolid/* test",
     "typecheck": "pnpm run -r --if-present typecheck",
-    "doctor": "npx react-doctor@latest packages/react-ui --verbose -y"
+    "doctor": "pnpx react-doctor@latest packages/react-ui --verbose -y"
   },
   "devDependencies": {
     "@changesets/changelog-github": "^1.0.1",
     "@changesets/cli": "^3.0.3",
     "@commitlint/cli": "^21.2.4",
     "@commitlint/config-conventional": "^21.2.4",
-    "@resolid/config": "^6.3.10",
+    "@resolid/config": "^6.3.11",
     "@tailwindcss/language-server": "^0.16.0",
     "@types/node": "^24.19.2",
     "eslint-plugin-react-you-might-not-need-an-effect": "^1.1.0",
     "lefthook": "^2.2.2",
-    "oxfmt": "^0.76.0",
-    "oxlint": "^1.91.0",
-    "oxlint-tsgolint": "^7.0.2005",
+    "oxfmt": "^0.77.0",
+    "oxlint": "^1.92.0",
+    "oxlint-tsgolint": "^7.0.2006",
     "typescript": "^7.0.2"
   },
   "engines": {
     "node": "^22.22.0 || >=24"
   },
-  "packageManager": "pnpm@12.16.1"
+  "packageManager": "pnpm@12.18.0"
 }

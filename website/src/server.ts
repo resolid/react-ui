@@ -1,9 +1,4 @@
-import {
-  createHonoVercelServer,
-  createHonoNodeServer,
-  type Hono,
-  type Env,
-} from "@resolid/dev/http";
+import { createHonoNodeServer, type Hono, type Env } from "@resolid/dev/http";
 import { search } from "~/api/search";
 import { uploadthing } from "~/api/uploadthing";
 
@@ -15,6 +10,4 @@ const honoConfig = <E extends Env>(app: Hono<E>) => {
   );
 };
 
-export default await (import.meta.env.RESOLID_PLATFORM == "vercel"
-  ? createHonoVercelServer({ honoConfig })
-  : createHonoNodeServer({ honoConfig }));
+export default createHonoNodeServer({ honoConfig });
