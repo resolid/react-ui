@@ -15,9 +15,7 @@ const sandbox = import.meta.glob<string>(
   },
 );
 
-const commitSha = import.meta.env.VITE_VERCEL_GIT_COMMIT_SHA
-  ? import.meta.env.VITE_VERCEL_GIT_COMMIT_SHA.slice(0, 8)
-  : import.meta.env.VITE_GIT_COMMIT_SHA.slice(0, 8);
+const commitSha = import.meta.env.VITE_GIT_COMMIT_SHA.slice(0, 8);
 
 export function StackblitzButton({ name, code }: StackblitzButtonProps) {
   const handleClick = async () => {

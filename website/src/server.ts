@@ -1,4 +1,5 @@
 import { createHonoNodeServer, type Hono, type Env } from "@resolid/dev/http";
+import { env } from "node:process";
 import { search } from "~/api/search";
 import { uploadthing } from "~/api/uploadthing";
 
@@ -10,4 +11,4 @@ const honoConfig = <E extends Env>(app: Hono<E>) => {
   );
 };
 
-export default createHonoNodeServer({ honoConfig, trustProxy: "loopback" });
+export default createHonoNodeServer({ honoConfig, port: env.SERVER_PORT, trustProxy: "loopback" });
