@@ -29,24 +29,15 @@ jobs:
       - name: Build Website
         run: pnpm run build
 
-      - name: Rsync Build
-        uses: burnett01/rsync-deployments@v9
+      - name: Deploy Website
+        uses: easingthemes/ssh-deploy@main
         with:
-          switches: -avzr --delete --no-owner --no-group
-          path: website/build/
-          remote_host: ${{ secrets.HOST }}
-          remote_port: ${{ secrets.PORT }}
-          remote_user: ${{ secrets.USERNAME }}
-          remote_key: ${{ secrets.PRIVATE_KEY }}
-          remote_path: /home/websites/react-ui/build/
-
-      - name: Rsync Content
-        uses: burnett01/rsync-deployments@v9
-        with:
-          switches: -avzr --delete --no-owner --no-group
-          path: website/.resolid/
-          remote_host: ${{ secrets.HOST }}
-          remote_port: ${{ secrets.PORT }}
-          remote_user: ${{ secrets.USERNAME }}
-          remote_key: ${{ secrets.PRIVATE_KEY }}
-          remote_path: /home/websites/react-ui/.resolid/
+          REMOTE_HOST: ${{ secrets.HOST }}
+          REMOTE_PORT: ${{ secrets.PORT }}
+          REMOTE_USER: ${{ secrets.USERNAME }}
+          SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+          ARGS: "-avzr --delete"
+          SOURCE: "website/build/"
+          TARGET: "/home/websites/react-ui/build/"
+          SCRIPT_AFTER: pm0 restart react-ui
+          SCRIPT_AFTER_REQUIRED: true
